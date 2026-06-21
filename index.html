@@ -1917,7 +1917,14 @@ function navegar(destino) {
   switch(destino) {
     case 'home': voltarHome(); break;
     case 'textos': irBanco(); break;
-    case 'falar': ir('conversacao'); break;
+    case 'falar': 
+      ir('conversacao');
+      setTimeout(function() {
+        if (respostasContextuais && respostasContextuais.greeting) {
+          lerTextoMasculino(respostasContextuais.greeting[0]);
+        }
+      }, 600);
+      break;
     case 'progresso': ir('progresso'); break;
     case 'perfil': ir('perfil'); break;
     case 'ouvir': ir('treino-audio'); break;
@@ -2148,6 +2155,9 @@ function renderBanco() {
 // Texto atual selecionado pelo aluno
 var textoSelecionado = null;
 var textoAtualAudicao = '';
+var micAtivo = false;
+var reconhecimento = null;
+var textoAcumulado = '';
 
 function abrirTexto(t) {
   // Salvar texto atual
@@ -2601,10 +2611,6 @@ window.onload = function() {
       document.getElementById('ctSend').onclick();
     }
   };
-  var micAtivo = false;
-  var reconhecimento = null;
-  var textoAcumulado = '';
-
   document.getElementById('ctMic').onclick = function() {
     if (micAtivo) {
       // PARAR gravação manualmente
@@ -2675,16 +2681,7 @@ window.onload = function() {
   });
 
   // Dar boas vindas com voz masculina quando entra na conversação
-  var _irOriginal = ir;
-  ir = function(id) {
-    _irOriginal(id);
-    if (id === 'conversacao') {
-      setTimeout(function() {
-        var boasVindas = respostasContextuais.greeting[0];
-        lerTextoMasculino(boasVindas);
-      }, 500);
-    }
-  };
+  // (tratado diretamente na função navegar)
 
   // CONECTAR FALAR na home cambridge
   document.getElementById('navFalar').onclick = function() { ir('conversacao'); };
