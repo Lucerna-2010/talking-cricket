@@ -1676,14 +1676,138 @@ function responderEaQuiz(qi, oi, q) {
 }
 
 // ===== CONVERSAÇÃO =====
-var conversasRespostas = [
-  'That is interesting! Can you tell me more about your daily routine?',
-  'Great! I would love to hear more. What do you enjoy doing in your free time?',
-  'Very good! Your English is improving. Let us continue — what are your plans for the weekend?',
-  'Excellent answer! Now, can you describe a typical day at work or school for you?',
-  'Well done! You are making great progress. Try to use more adjectives to describe things.'
+// ===== CONVERSAÇÃO MELHORADA =====
+var conversaHistorico = [];
+var topicoAtual = 'daily routine';
+var nivelConv = 'B1';
+
+// Banco de respostas contextuais por tópico
+var respostasContextuais = {
+  greeting: [
+    "Hello! Great to meet you! I am Cricket, your English practice partner. Today we will talk about daily life. To start, can you tell me what you usually do in the morning?",
+    "Hi there! Welcome to our English conversation practice! I am Cricket. Let us start with something simple — can you describe your typical morning routine?"
+  ],
+  daily: [
+    "That sounds like a great routine! How long does it take you to get to work or school?",
+    "Interesting! Do you prefer mornings or evenings? Why?",
+    "I see! What do you usually have for breakfast? Is it important to you?",
+    "That is a busy schedule! How do you relax after a long day?",
+    "Great answer! Do you think your daily routine has changed much in recent years?"
+  ],
+  hobby: [
+    "That sounds really enjoyable! How long have you been doing that hobby?",
+    "Interesting choice! Do you do that alone or with other people?",
+    "I love that! Has this hobby taught you anything new or useful?",
+    "Wonderful! Would you recommend that hobby to other people? Why?"
+  ],
+  travel: [
+    "That sounds amazing! What was the most memorable thing about that trip?",
+    "Interesting! Would you like to go back there one day?",
+    "Great experience! How was the food there? Did you try anything new?",
+    "Wonderful! What advice would you give to someone visiting that place?"
+  ],
+  work: [
+    "That sounds like an interesting job! What do you enjoy most about your work?",
+    "I see! Is there anything challenging about your job?",
+    "Interesting! How did you choose that career path?",
+    "Great! Do you think your job will change much in the next ten years?"
+  ],
+  general: [
+    "Very interesting! Can you tell me more about that?",
+    "I understand! What do you think about that topic in general?",
+    "Good point! How does that affect your daily life?",
+    "That is a great perspective! Do you have any examples you can share?",
+    "Excellent! And what would you say to someone who disagrees with you on that?"
+  ]
+};
+
+// Correções gramaticais simuladas
+var correcoesComuns = [
+  {errado: " i ", correto: " I ", msg: "Remember: always capitalise I when referring to yourself!"},
+  {errado: "dont", correto: "don't", msg: "Use the apostrophe in don't"},
+  {errado: "doesnt", correto: "doesn't", msg: "Use the apostrophe in doesn't"},
+  {errado: "cant", correto: "can't", msg: "Use the apostrophe in can't"},
+  {errado: "wont", correto: "won't", msg: "Use the apostrophe in won't"},
+  {errado: "im ", correto: "I'm ", msg: "Use capital I and apostrophe: I'm"},
+  {errado: "ive ", correto: "I've ", msg: "Use the apostrophe in I've"}
 ];
-var conversaIndex = 0;
+
+function detectarTopico(texto) {
+  texto = texto.toLowerCase();
+  if (texto.match(/morning|wake|breakfast|routine|day|work|school|evening|night/)) return 'daily';
+  if (texto.match(/hobby|sport|music|read|watch|play|enjoy|like|love/)) return 'hobby';
+  if (texto.match(/travel|trip|visit|country|city|holiday|vacation|flight/)) return 'travel';
+  if (texto.match(/job|work|career|office|company|boss|colleague|profession/)) return 'work';
+  return 'general';
+}
+
+function verificarGramatica(texto) {
+  var erros = [];
+  var textoLower = ' ' + texto.toLowerCase() + ' ';
+  correcoesComuns.forEach(function(c) {
+    if (textoLower.indexOf(c.errado) >= 0) {
+      erros.push(c.msg);
+    }
+  });
+  return erros;
+}
+
+function gerarResposta(texto) {
+  var topico = detectarTopico(texto);
+  topicoAtual = topico;
+  var respostas = respostasContextuais[topico] || respostasContextuais.general;
+  var idx = Math.floor(Math.random() * respostas.length);
+  return respostas[idx];
+}
+
+function lerTextoMasculino(texto) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  var utter = new SpeechSynthesisUtterance(texto);
+  utter.lang = 'en-GB';
+  utter.rate = 0.9;
+  utter.pitch = 0.7; // Voz mais grave (masculina)
+  utter.volume = 1;
+  var falar = function() {
+    var vozes = window.speechSynthesis.getVoices();
+    // Tentar encontrar voz masculina
+    var vozMasc = vozes.find(function(v) {
+      return v.lang.indexOf('en') === 0 && (v.name.indexOf('Male') >= 0 || v.name.indexOf('David') >= 0 || v.name.indexOf('George') >= 0 || v.name.indexOf('Daniel') >= 0);
+    });
+    if (!vozMasc) {
+      vozMasc = vozes.find(function(v) { return v.lang.indexOf('en') === 0; });
+    }
+    if (vozMasc) utter.voice = vozMasc;
+    window.speechSynthesis.speak(utter);
+  };
+  if (window.speechSynthesis.getVoices().length > 0) { falar(); }
+  else { window.speechSynthesis.addEventListener('voiceschanged', falar, {once:true}); setTimeout(falar, 300); }
+}
+
+function adicionarMsgCricket(texto) {
+  var chat = document.getElementById('ct-chat');
+  if (!chat) return;
+
+  // Indicador de digitação
+  var typing = document.createElement('div');
+  typing.className = 'ct-msg cricket-msg';
+  typing.id = 'ct-typing';
+  typing.innerHTML = '<div class="ct-avatar cricket">🦗</div><div class="ct-bubble" style="color:#6b7280;font-style:italic">Cricket is thinking...</div>';
+  chat.appendChild(typing);
+  chat.scrollTop = chat.scrollHeight;
+
+  setTimeout(function() {
+    var typingEl = document.getElementById('ct-typing');
+    if (typingEl) typingEl.remove();
+
+    var msg = document.createElement('div');
+    msg.className = 'ct-msg cricket-msg';
+    msg.innerHTML = '<div class="ct-avatar cricket">🦗</div><div class="ct-bubble">' + texto + '</div>';
+    chat.appendChild(msg);
+    chat.scrollTop = chat.scrollHeight;
+    lerTextoMasculino(texto);
+  }, 1200);
+}
 
 function enviarMensagemConv(texto) {
   if (!texto || !texto.trim()) return;
@@ -1695,36 +1819,28 @@ function enviarMensagemConv(texto) {
   // Mensagem do usuário
   var userMsg = document.createElement('div');
   userMsg.className = 'ct-msg user';
-  userMsg.innerHTML =
-    '<div class="ct-avatar user-av">' + avatarIni + '</div>' +
-    '<div class="ct-bubble">' + texto + '</div>';
+  userMsg.innerHTML = '<div class="ct-avatar user-av">' + avatarIni + '</div><div class="ct-bubble">' + texto + '</div>';
   chat.appendChild(userMsg);
 
-  // Correção simples (simulada)
-  if (texto.length > 10) {
+  // Verificar gramática
+  var erros = verificarGramatica(texto);
+  if (erros.length > 0) {
     var corrDiv = document.createElement('div');
-    corrDiv.style.cssText = 'display:flex;justify-content:flex-end;';
-    corrDiv.innerHTML = '<div class="ct-correction">✓ Good sentence structure! Keep practicing.</div>';
+    corrDiv.style.cssText = 'display:flex;justify-content:flex-end;margin-top:-4px;';
+    corrDiv.innerHTML = '<div class="ct-correction">📝 ' + erros[0] + '</div>';
     chat.appendChild(corrDiv);
+  } else if (texto.split(' ').length >= 5) {
+    var okDiv = document.createElement('div');
+    okDiv.style.cssText = 'display:flex;justify-content:flex-end;margin-top:-4px;';
+    okDiv.innerHTML = '<div class="ct-correction" style="background:#E1F5EE;border-color:#5DCAA5;color:#085041;">✓ Good English! Well done.</div>';
+    chat.appendChild(okDiv);
   }
 
-  // Resposta do Cricket
-  setTimeout(function() {
-    var resp = conversasRespostas[conversaIndex % conversasRespostas.length];
-    conversaIndex++;
-    var cricketMsg = document.createElement('div');
-    cricketMsg.className = 'ct-msg cricket-msg';
-    cricketMsg.innerHTML =
-      '<div class="ct-avatar cricket">🦗</div>' +
-      '<div class="ct-bubble">' + resp + '</div>';
-    chat.appendChild(cricketMsg);
-    chat.scrollTop = chat.scrollHeight;
-
-    // TTS da resposta
-    lerTexto(resp, 0.9);
-  }, 800);
-
   chat.scrollTop = chat.scrollHeight;
+
+  // Gerar e mostrar resposta contextual
+  var resposta = gerarResposta(texto);
+  adicionarMsgCricket(resposta);
 }
 
 // ===== CORRIGIR QUIZ COM SOM =====
@@ -2373,8 +2489,16 @@ window.onload = function() {
   document.getElementById('ctSend').onclick = function() {
     var input = document.getElementById('ctInput');
     if (input && input.value.trim()) {
+      // Parar microfone se estiver ativo
+      if (micAtivo) {
+        micAtivo = false;
+        document.getElementById('ctMic').classList.remove('recording');
+        if (reconhecimento) { try { reconhecimento.stop(); } catch(e) {} reconhecimento = null; }
+        textoAcumulado = '';
+      }
       enviarMensagemConv(input.value.trim());
       input.value = '';
+      input.placeholder = 'Type in English or use the microphone...';
     }
   };
   document.getElementById('ctInput').onkeydown = function(e) {
@@ -2383,33 +2507,90 @@ window.onload = function() {
       document.getElementById('ctSend').onclick();
     }
   };
+  var micAtivo = false;
+  var reconhecimento = null;
+  var textoAcumulado = '';
+
   document.getElementById('ctMic').onclick = function() {
-    this.classList.toggle('recording');
-    if (this.classList.contains('recording')) {
-      if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
-        var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-        var rec = new SR();
-        rec.lang = 'en-US';
-        rec.onresult = function(e) {
-          var texto = e.results[0][0].transcript;
-          document.getElementById('ctInput').value = texto;
-          document.getElementById('ctMic').classList.remove('recording');
-        };
-        rec.onerror = function() { document.getElementById('ctMic').classList.remove('recording'); };
-        rec.start();
-      } else {
-        alert('Reconhecimento de voz não disponível neste navegador. Tente Chrome.');
-        this.classList.remove('recording');
+    if (micAtivo) {
+      // PARAR gravação manualmente
+      micAtivo = false;
+      this.classList.remove('recording');
+      if (reconhecimento) { try { reconhecimento.stop(); } catch(e) {} }
+      // Colocar texto acumulado no input
+      if (textoAcumulado.trim()) {
+        document.getElementById('ctInput').value = textoAcumulado.trim();
       }
-    } else {
-      window.speechSynthesis && window.speechSynthesis.cancel();
+      textoAcumulado = '';
+      return;
     }
+
+    if (!('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
+      alert('Reconhecimento de voz não disponível. Use o Chrome!');
+      return;
+    }
+
+    // INICIAR gravação
+    micAtivo = true;
+    textoAcumulado = '';
+    this.classList.add('recording');
+
+    var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    reconhecimento = new SR();
+    reconhecimento.lang = 'en-US';
+    reconhecimento.continuous = true;     // Não para automaticamente
+    reconhecimento.interimResults = true; // Mostrar texto enquanto fala
+
+    reconhecimento.onresult = function(e) {
+      var transcricaoFinal = '';
+      var transcricaoInterim = '';
+      for (var i = e.resultIndex; i < e.results.length; i++) {
+        if (e.results[i].isFinal) {
+          transcricaoFinal += e.results[i][0].transcript + ' ';
+        } else {
+          transcricaoInterim += e.results[i][0].transcript;
+        }
+      }
+      textoAcumulado += transcricaoFinal;
+      // Mostrar texto no input em tempo real
+      document.getElementById('ctInput').value = (textoAcumulado + transcricaoInterim).trim();
+    };
+
+    reconhecimento.onerror = function(e) {
+      if (e.error !== 'no-speech') {
+        micAtivo = false;
+        document.getElementById('ctMic').classList.remove('recording');
+        reconhecimento = null;
+      }
+    };
+
+    reconhecimento.onend = function() {
+      // Se ainda ativo, reiniciar (para continuar gravando)
+      if (micAtivo) {
+        try { reconhecimento.start(); } catch(e) {}
+      }
+    };
+
+    reconhecimento.start();
+    document.getElementById('ctInput').placeholder = '🎤 Falando... clique no microfone para parar';
   };
   document.querySelectorAll('.ct-sug').forEach(function(sug) {
     sug.onclick = function() {
       document.getElementById('ctInput').value = this.textContent;
     };
   });
+
+  // Dar boas vindas com voz masculina quando entra na conversação
+  var _irOriginal = ir;
+  ir = function(id) {
+    _irOriginal(id);
+    if (id === 'conversacao') {
+      setTimeout(function() {
+        var boasVindas = respostasContextuais.greeting[0];
+        lerTextoMasculino(boasVindas);
+      }, 500);
+    }
+  };
 
   // CONECTAR FALAR na home cambridge
   document.getElementById('navFalar').onclick = function() { ir('conversacao'); };
