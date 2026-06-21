@@ -6,6 +6,7 @@
 <meta name="theme-color" content="#1D9E75">
 <title>Talking Cricket</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<script src="https://code.responsivevoice.org/responsivevoice.js?key=FREE"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
@@ -1477,21 +1478,54 @@ var ttsAtivo = false;
 var ttsUtterance = null;
 
 function lerTexto(texto, velocidade) {
-  if (!window.speechSynthesis) { alert('Seu navegador não suporta áudio. Use Chrome ou Edge.'); return; }
-  window.speechSynthesis.cancel();
-  if (ttsAtivo) { ttsAtivo = false; return; }
-  ttsUtterance = new SpeechSynthesisUtterance(texto);
-  ttsUtterance.lang = 'en-US';
-  ttsUtterance.rate = velocidade || 1;
-  ttsUtterance.pitch = 1;
-  var vozes = window.speechSynthesis.getVoices();
-  var vozEN = vozes.find(function(v) { return v.lang.startsWith('en'); });
-  if (vozEN) ttsUtterance.voice = vozEN;
+  if (ttsAtivo) {
+    // Parar áudio
+    if (window.responsiveVoice) responsiveVoice.cancel();
+    else if (window.speechSynthesis) window.speechSynthesis.cancel();
+    ttsAtivo = false;
+    atualizarBtnPlay(false);
+    return;
+  }
+
   ttsAtivo = true;
-  ttsUtterance.onend = function() { ttsAtivo = false; atualizarBtnPlay(false); };
-  ttsUtterance.onerror = function() { ttsAtivo = false; atualizarBtnPlay(false); };
-  window.speechSynthesis.speak(ttsUtterance);
   atualizarBtnPlay(true);
+
+  var rate = velocidade || 1;
+  var onEnd = function() { ttsAtivo = false; atualizarBtnPlay(false); };
+
+  // Tentar ResponsiveVoice primeiro
+  if (window.responsiveVoice && responsiveVoice.voiceSupport()) {
+    responsiveVoice.speak(texto, 'UK English Female', {
+      rate: rate,
+      onend: onEnd,
+      onerror: onEnd
+    });
+    return;
+  }
+
+  // Fallback para SpeechSynthesis
+  if (window.speechSynthesis) {
+    window.speechSynthesis.cancel();
+    var utter = new SpeechSynthesisUtterance(texto);
+    utter.lang = 'en-US';
+    utter.rate = rate;
+    utter.onend = onEnd;
+    utter.onerror = onEnd;
+    // Esperar vozes carregarem
+    var falar = function() {
+      var vozes = window.speechSynthesis.getVoices();
+      var vozEN = vozes.find(function(v) { return v.lang.indexOf('en') === 0; });
+      if (vozEN) utter.voice = vozEN;
+      window.speechSynthesis.speak(utter);
+    };
+    if (window.speechSynthesis.getVoices().length > 0) { falar(); }
+    else { window.speechSynthesis.onvoiceschanged = falar; }
+    return;
+  }
+
+  alert('Áudio não disponível neste navegador.');
+  ttsAtivo = false;
+  atualizarBtnPlay(false);
 }
 
 function atualizarBtnPlay(tocando) {
