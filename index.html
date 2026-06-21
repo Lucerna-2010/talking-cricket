@@ -6,7 +6,6 @@
 <meta name="theme-color" content="#1D9E75">
 <title>Talking Cricket</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-<script src="https://code.responsivevoice.org/responsivevoice.js?key=FREE"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
@@ -836,9 +835,9 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
   </div>
   <nav class="nav">
     <div class="nitem" id="pnavHome"><i class="ti ti-home"></i>Início</div>
-    <div class="nitem"><i class="ti ti-book"></i>Textos</div>
-    <div class="nitem"><i class="ti ti-microphone"></i>Falar</div>
-    <div class="nitem"><i class="ti ti-chart-bar"></i>Progresso</div>
+    <div class="nitem" id="pnavTextos"><i class="ti ti-book"></i>Textos</div>
+    <div class="nitem" id="pnavFalar"><i class="ti ti-microphone"></i>Falar</div>
+    <div class="nitem" id="pnavProgresso"><i class="ti ti-chart-bar"></i>Progresso</div>
     <div class="nitem on"><i class="ti ti-user"></i>Perfil</div>
   </nav>
 </div>
@@ -1478,54 +1477,47 @@ var ttsAtivo = false;
 var ttsUtterance = null;
 
 function lerTexto(texto, velocidade) {
+  // Parar se já estiver tocando
+  try { window.speechSynthesis.cancel(); } catch(e) {}
   if (ttsAtivo) {
-    // Parar áudio
-    if (window.responsiveVoice) responsiveVoice.cancel();
-    else if (window.speechSynthesis) window.speechSynthesis.cancel();
     ttsAtivo = false;
     atualizarBtnPlay(false);
     return;
   }
 
+  if (!texto || !texto.trim()) return;
+  
   ttsAtivo = true;
   atualizarBtnPlay(true);
 
-  var rate = velocidade || 1;
-  var onEnd = function() { ttsAtivo = false; atualizarBtnPlay(false); };
-
-  // Tentar ResponsiveVoice primeiro
-  if (window.responsiveVoice && responsiveVoice.voiceSupport()) {
-    responsiveVoice.speak(texto, 'UK English Female', {
-      rate: rate,
-      onend: onEnd,
-      onerror: onEnd
-    });
-    return;
-  }
-
-  // Fallback para SpeechSynthesis
-  if (window.speechSynthesis) {
-    window.speechSynthesis.cancel();
+  function falar() {
     var utter = new SpeechSynthesisUtterance(texto);
-    utter.lang = 'en-US';
-    utter.rate = rate;
-    utter.onend = onEnd;
-    utter.onerror = onEnd;
-    // Esperar vozes carregarem
-    var falar = function() {
-      var vozes = window.speechSynthesis.getVoices();
-      var vozEN = vozes.find(function(v) { return v.lang.indexOf('en') === 0; });
-      if (vozEN) utter.voice = vozEN;
-      window.speechSynthesis.speak(utter);
+    utter.lang = 'en-GB';
+    utter.rate = velocidade || 1;
+    utter.pitch = 1;
+    utter.volume = 1;
+    utter.onend = function() { ttsAtivo = false; atualizarBtnPlay(false); };
+    utter.onerror = function(e) { 
+      console.log('TTS erro:', e);
+      ttsAtivo = false; 
+      atualizarBtnPlay(false); 
     };
-    if (window.speechSynthesis.getVoices().length > 0) { falar(); }
-    else { window.speechSynthesis.onvoiceschanged = falar; }
-    return;
+    window.speechSynthesis.speak(utter);
   }
 
-  alert('Áudio não disponível neste navegador.');
-  ttsAtivo = false;
-  atualizarBtnPlay(false);
+  // Carregar vozes e falar
+  var vozes = window.speechSynthesis.getVoices();
+  if (vozes.length > 0) {
+    falar();
+  } else {
+    window.speechSynthesis.addEventListener('voiceschanged', function() {
+      falar();
+    }, { once: true });
+    // Timeout de segurança
+    setTimeout(function() {
+      if (ttsAtivo) falar();
+    }, 500);
+  }
 }
 
 function atualizarBtnPlay(tocando) {
@@ -2016,6 +2008,13 @@ function irBanco() {
 }
 
 window.onload = function() {
+
+  // Função auxiliar para adicionar eventos com segurança
+  function addEvt(id, evt, fn) {
+    var el = document.getElementById(id);
+    if (el) el[evt] = fn;
+  }
+
   // SPLASH
   document.getElementById('btnCriar').onclick = function() { ir('cadastro'); };
   document.getElementById('btnLogin').onclick = function() { ir('codigo'); };
@@ -2223,9 +2222,9 @@ window.onload = function() {
 
 
   // CORRIGIR NAV DO PERFIL
-  document.getElementById('pnavTextos').onclick = function() { playSound('clique'); irBanco(); };
-  document.getElementById('pnavFalar').onclick = function() { playSound('clique'); ir('conversacao'); };
-  document.getElementById('pnavProgresso').onclick = function() { playSound('clique'); ir('progresso'); };
+  var pnavT = document.getElementById('pnavTextos'); if(pnavT) pnavT.onclick = function() { playSound('clique'); irBanco(); };
+  var pnavF = document.getElementById('pnavFalar'); if(pnavF) pnavF.onclick = function() { playSound('clique'); ir('conversacao'); };
+  var pnavP = document.getElementById('pnavProgresso'); if(pnavP) pnavP.onclick = function() { playSound('clique'); ir('progresso'); };
 
   // TREINO AUDITIVO
   document.getElementById('btnVoltarTreino').onclick = function() { voltarHome(); };
@@ -2269,17 +2268,11 @@ window.onload = function() {
 
   // BOTÃO PLAY NA TELA DE AUDIÇÃO (texto)
   document.getElementById('btnPlay').onclick = function() {
-    var textoEN = document.getElementById('texto-en-content');
-    var texto = textoEN ? textoEN.textContent.trim() : '';
-    if (!texto) { alert('Nenhum texto carregado.'); return; }
-    if (ttsAtivo) {
-      window.speechSynthesis.cancel();
-      ttsAtivo = false;
-      this.textContent = '▶';
-    } else {
-      lerTexto(texto, velocidadeAtual);
-      this.textContent = '⏸';
-    }
+    // Pegar texto da transcrição da tela de audição
+    var transcEN = document.getElementById('transcricao-en');
+    var texto = transcEN ? transcEN.textContent.trim() : '';
+    if (!texto) texto = 'Climate change is one of the most pressing issues of our time. Rising temperatures are affecting ecosystems around the world.';
+    lerTexto(texto, velocidadeAtual);
   };
 
   // CONVERSAÇÃO
