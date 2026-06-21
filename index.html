@@ -558,6 +558,89 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 .pl-cd-dias{font-size:28px;font-weight:800;color:#fff;}
 .pl-cd-label{font-size:12px;color:#CECBF6;font-weight:700;}
 .pl-cd-prova{font-size:13px;color:#9FE1CB;margin-top:2px;}
+/* ===== SIMULADO CAMBRIDGE ===== */
+#simulado{background:#1a1a2e;}
+.simheader{background:#1a1a2e;padding:50px 20px 20px;position:relative;}
+.simback{position:absolute;top:14px;left:14px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.15);border:none;cursor:pointer;font-size:20px;color:#fff;display:flex;align-items:center;justify-content:center;}
+.simtitulo{font-size:18px;font-weight:800;color:#fff;}
+.simsub{font-size:12px;color:#9FE1CB;margin-top:4px;}
+.sim-progress-bar{height:4px;background:rgba(255,255,255,0.15);border-radius:2px;margin-top:14px;overflow:hidden;}
+.sim-progress-fill{height:100%;background:#9FE1CB;border-radius:2px;transition:width .5s;}
+.simbody{flex:1;overflow-y:auto;padding:0;}
+
+/* Seção do simulado */
+.sim-section{padding:20px 16px;}
+.sim-section-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;background:#fff;border-radius:14px;padding:14px;}
+.sim-section-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
+.sim-section-info{flex:1;}
+.sim-section-titulo{font-size:16px;font-weight:800;color:#1a1a2e;}
+.sim-section-sub{font-size:12px;color:#6b7280;margin-top:2px;}
+.sim-section-badge{font-size:11px;font-weight:800;padding:3px 10px;border-radius:20px;background:#EEEDFE;color:#534AB7;}
+
+/* Texto do simulado */
+.sim-texto{background:#fff;border-radius:14px;padding:16px;margin-bottom:12px;}
+.sim-texto-titulo{font-size:13px;font-weight:800;color:#534AB7;margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em;}
+.sim-texto-content{font-size:14px;line-height:1.8;color:#1a1a2e;}
+
+/* Perguntas */
+.sim-pergunta{background:#fff;border-radius:14px;padding:14px;margin-bottom:10px;}
+.sim-pergunta-num{font-size:10px;font-weight:800;color:#534AB7;text-transform:uppercase;margin-bottom:6px;}
+.sim-pergunta-texto{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:10px;line-height:1.5;}
+.sim-opcao{width:100%;padding:11px 14px;border-radius:10px;border:1.5px solid #D3D1C7;background:#F8F7FF;font-family:'Nunito',Arial,sans-serif;font-size:13px;font-weight:700;color:#1a1a2e;cursor:pointer;text-align:left;margin-bottom:6px;display:block;}
+.sim-opcao.correta{border-color:#1D9E75;background:#E1F5EE;color:#085041;}
+.sim-opcao.errada{border-color:#D85A30;background:#FAECE7;color:#712B13;}
+.sim-opcao.desabilitada{pointer-events:none;}
+
+/* Áudio do simulado */
+.sim-audio-box{background:#0F6E56;border-radius:14px;padding:16px;margin-bottom:12px;text-align:center;}
+.sim-audio-titulo{font-size:13px;font-weight:800;color:#fff;margin-bottom:12px;}
+.sim-audio-play{width:60px;height:60px;border-radius:50%;background:#1D9E75;border:none;cursor:pointer;font-size:28px;color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;}
+.sim-audio-info{font-size:12px;color:#9FE1CB;font-weight:700;}
+.sim-audio-counter{font-size:11px;color:#F5C4B3;margin-top:4px;font-weight:800;}
+
+/* Writing do simulado */
+.sim-writing-prompt{background:#FAEEDA;border:1.5px solid #FAC775;border-radius:12px;padding:14px;margin-bottom:12px;}
+.sim-writing-tipo{font-size:10px;font-weight:800;color:#BA7517;text-transform:uppercase;margin-bottom:6px;}
+.sim-writing-texto{font-size:13px;color:#412402;line-height:1.5;font-weight:600;}
+.sim-writing-input{width:100%;min-height:140px;background:#fff;border:1.5px solid #D3D1C7;border-radius:12px;padding:14px;font-family:'Nunito',Arial,sans-serif;font-size:14px;color:#1a1a2e;outline:none;resize:none;line-height:1.7;}
+.sim-writing-count{font-size:11px;color:#6b7280;text-align:right;margin-top:4px;font-weight:700;}
+
+/* Speaking do simulado */
+.sim-speaking-box{background:#FAECE7;border-radius:14px;padding:16px;margin-bottom:12px;}
+.sim-speaking-titulo{font-size:13px;font-weight:800;color:#D85A30;margin-bottom:10px;}
+.sim-speaking-pergunta{background:#fff;border-radius:10px;padding:12px;margin-bottom:8px;font-size:13px;font-weight:700;color:#1a1a2e;line-height:1.5;}
+.sim-speaking-mic{width:100%;padding:12px;border-radius:12px;border:2px solid #D85A30;background:#fff;color:#D85A30;font-family:'Nunito',Arial,sans-serif;font-size:14px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:8px;}
+.sim-speaking-mic.recording{background:#D85A30;color:#fff;}
+.sim-figura{width:100%;border-radius:12px;overflow:hidden;margin-bottom:10px;background:#F8F7FF;border:1px solid #D3D1C7;}
+.sim-figura svg{width:100%;display:block;}
+
+/* Botões do simulado */
+.sim-btn-next{width:100%;padding:14px;border-radius:14px;border:none;background:#9FE1CB;color:#085041;font-family:'Nunito',Arial,sans-serif;font-size:15px;font-weight:800;cursor:pointer;margin-top:8px;}
+.sim-btn-submit{width:100%;padding:14px;border-radius:14px;border:none;background:#EF9F27;color:#412402;font-family:'Nunito',Arial,sans-serif;font-size:15px;font-weight:800;cursor:pointer;margin-top:8px;}
+
+/* Resultado do simulado */
+.sim-resultado{padding:20px 16px;}
+.sim-resultado-card{background:#fff;border-radius:20px;padding:24px;text-align:center;margin-bottom:14px;}
+.sim-resultado-titulo{font-size:22px;font-weight:800;color:#1a1a2e;margin-bottom:4px;}
+.sim-resultado-sub{font-size:13px;color:#6b7280;}
+.sim-notas{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0;}
+.sim-nota{background:#F8F7FF;border-radius:12px;padding:14px;text-align:center;}
+.sim-nota-val{font-size:22px;font-weight:800;}
+.sim-nota-lbl{font-size:10px;color:#6b7280;font-weight:700;margin-top:2px;}
+.sim-nota.r .sim-nota-val{color:#534AB7;}
+.sim-nota.l .sim-nota-val{color:#0F6E56;}
+.sim-nota.w .sim-nota-val{color:#BA7517;}
+.sim-nota.s .sim-nota-val{color:#D85A30;}
+.sim-geral{font-size:36px;font-weight:800;color:#1D9E75;margin:8px 0;}
+.sim-geral-lbl{font-size:13px;color:#6b7280;}
+
+
+/* Resultado Cambridge Scale */
+.cambridge-scale { background: #1a1a2e; border-radius: 20px; padding: 24px; margin-bottom: 14px; }
+.cambridge-grade { font-size: 48px; font-weight: 800; line-height: 1; }
+.cambridge-letra { font-size: 32px; font-weight: 800; padding: 10px 20px; border-radius: 12px; }
+.statement-bar { height: 6px; background: #F1EFE8; border-radius: 3px; overflow: hidden; }
+.statement-fill { height: 100%; border-radius: 3px; }
 </style>
 </head>
 <body>
@@ -1054,9 +1137,10 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 
 <!-- ===== PROGRESSO ===== -->
 <div id="progresso" class="tela">
-  <div class="proheader">
-    <div class="protitulo">Meu Progresso</div>
-    <div class="prosub">Acompanhe sua evolução</div>
+  <div class="proheader" style="position:relative;">
+    <button class="plback" id="btnVoltarProgresso" style="position:absolute;top:14px;left:14px;">&#8592;</button>
+    <div class="protitulo" style="padding-left:44px;">Meu Progresso</div>
+    <div class="prosub" style="padding-left:44px;">Acompanhe sua evolução</div>
   </div>
   <div class="probody">
 
@@ -1066,7 +1150,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
         <div class="pro-nivel-badge" id="proNivelBadge">B1</div>
         <div class="pro-nivel-info">
           <div class="pro-nivel-nome" id="proNivelNome">B1 — Intermediário</div>
-          <div class="pro-nivel-sub">620 XP de 1000 para B2</div>
+          <div class="pro-nivel-sub">🌱 620 sementes para B2</div>
           <div class="pro-xp-bar"><div class="pro-xp-fill" id="proXpFill"></div></div>
         </div>
       </div>
@@ -1078,7 +1162,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
         <div class="pro-stat"><div class="pro-stat-val">14</div><div class="pro-stat-lbl">Dias seguidos</div></div>
         <div class="pro-stat"><div class="pro-stat-val">42h</div><div class="pro-stat-lbl">Tempo estudado</div></div>
         <div class="pro-stat"><div class="pro-stat-val">38</div><div class="pro-stat-lbl">Textos lidos</div></div>
-        <div class="pro-stat"><div class="pro-stat-val">89%</div><div class="pro-stat-lbl">Quiz acertos</div></div>
+        <div class="pro-stat"><div class="pro-stat-val">89%</div><div class="pro-stat-lbl">Exercícios acertos</div></div>
       </div>
     </div>
 
@@ -1313,6 +1397,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     </div>
 
     <button class="pl-gerar" id="btnGerarPlano">Gerar meu plano ✨</button>
+    <button class="pl-gerar" id="btnBaixarCronograma" style="background:#1D9E75;margin-top:8px;display:none;" onclick="baixarCronograma()">⬇️ Baixar cronograma</button>
 
     <div class="plcard" id="plCronograma" style="display:none;">
       <div class="plcard-titulo">📋 Seu cronograma</div>
@@ -1327,6 +1412,20 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
       <div class="pl-cronograma" id="plSemanas"></div>
     </div>
 
+  </div>
+</div>
+
+
+<!-- ===== SIMULADO CAMBRIDGE ===== -->
+<div id="simulado" class="tela">
+  <div class="simheader">
+    <button class="simback" id="btnVoltarSimulado">&#8592;</button>
+    <div class="simtitulo" id="simTitulo">Simulado Cambridge B1</div>
+    <div class="simsub" id="simSub">Teste completo • 4 habilidades</div>
+    <div class="sim-progress-bar"><div class="sim-progress-fill" id="simProgressFill" style="width:0%"></div></div>
+  </div>
+  <div class="simbody" id="simBody">
+    <!-- Gerado por JS -->
   </div>
 </div>
 
@@ -2193,6 +2292,20 @@ function gerarCronograma() {
   });
 
   document.getElementById('plCronograma').style.display = 'block';
+  // Adicionar botão de simulado
+  var simBtn = document.createElement('button');
+  simBtn.className = 'pl-gerar';
+  simBtn.style.marginTop = '14px';
+  simBtn.style.background = '#1D9E75';
+  simBtn.textContent = '🎓 Fazer simulado ' + plNivelAlvo + ' agora';
+  simBtn.onclick = function() { abrirSimulado(plNivelAlvo); };
+  var btnBaixar = document.getElementById('btnBaixarCronograma');
+  if (btnBaixar) btnBaixar.style.display = 'block';
+  var crono = document.getElementById('plCronograma');
+  if (crono && !document.getElementById('simBtnPlano')) {
+    simBtn.id = 'simBtnPlano';
+    crono.appendChild(simBtn);
+  }
 }
 
 
@@ -2226,6 +2339,975 @@ function verificarLembreteEstudo() {
   }
 }
 setInterval(verificarLembreteEstudo, 3600000); // Verificar a cada hora
+
+
+// ===== SIMULADO CAMBRIDGE =====
+var simSecaoAtual = 0;
+var simRespostas = {reading: [], listening: [], writing: '', speaking: []};
+var simAudioPlays = {}; // controle de reproduções por áudio
+var simNivel = 'B1';
+var simMicAtivo = false;
+var simReconhecimento = null;
+
+var simulados = {
+  'B1': {
+    titulo: 'Simulado Cambridge B1 — PET',
+    reading: {
+      textos: [
+        {
+          id: 'r1',
+          titulo: 'Part 1 — Short Texts',
+          texto: 'The Greenfield Community Centre is pleased to announce the opening of its new language learning facilities. The centre now offers evening classes in Spanish, French and Mandarin, as well as a self-study room equipped with computers and language learning software. Classes begin on the first Monday of each month. To register, visit our website or call the centre directly during opening hours, Monday to Friday, 9am to 5pm. Early registration is recommended as places are limited.',
+          perguntas: [
+            {texto: 'When do new classes begin?', opcoes: ['Every Monday', 'On the first Monday of each month', 'On the first day of each year', 'Every Friday'], correta: 1, exp: 'O texto diz "Classes begin on the first Monday of each month".'},
+            {texto: 'What languages are offered at the centre?', opcoes: ['English, French and German', 'Spanish, Italian and Mandarin', 'Spanish, French and Mandarin', 'French, German and Japanese'], correta: 2, exp: 'O texto menciona "Spanish, French and Mandarin".'},
+            {texto: 'Why is early registration recommended?', opcoes: ['It is cheaper', 'Places are limited', 'The centre closes early', 'Classes fill up in the morning'], correta: 1, exp: 'O texto diz "Early registration is recommended as places are limited".'},
+            {texto: 'What equipment is available in the self-study room?', opcoes: ['Books and dictionaries', 'Computers and language software', 'Headphones only', 'Projectors and screens'], correta: 1, exp: 'O texto menciona "computers and language learning software".'},
+            {texto: 'How can people register for classes?', opcoes: ['Only by visiting in person', 'Only by phone', 'By website or phone during opening hours', 'By email only'], correta: 2, exp: 'O texto diz "visit our website or call the centre directly during opening hours".'}
+          ]
+        },
+        {
+          id: 'r2',
+          titulo: 'Part 2 — Longer Text',
+          texto: 'Urban farming has become increasingly popular in cities around the world as people look for sustainable ways to produce food locally. Community gardens, rooftop farms and vertical growing systems are transforming unused urban spaces into productive areas that supply fresh vegetables and herbs to local residents. Beyond providing food, these urban green spaces offer significant social benefits. They create opportunities for neighbours to connect, share knowledge and work together towards a common goal. Studies have shown that participation in community gardening can reduce stress, improve mental wellbeing and foster a greater sense of belonging among urban residents. However, urban farming does face challenges. Limited space, soil contamination and the cost of establishing and maintaining growing areas can make it difficult to scale up. Despite these obstacles, many city governments are investing in urban agriculture programmes, recognising their potential to contribute to food security and community resilience.',
+          perguntas: [
+            {texto: 'What are people using urban farming to achieve?', opcoes: ['To make profit from selling food', 'To produce food locally and sustainably', 'To create jobs in the city', 'To reduce the need for supermarkets'], correta: 1, exp: 'O texto diz que as pessoas buscam "sustainable ways to produce food locally".'},
+            {texto: 'According to studies, what benefit does community gardening provide?', opcoes: ['Higher income for participants', 'Better physical fitness', 'Reduced stress and improved mental wellbeing', 'Faster food production'], correta: 2, exp: 'Estudos mostram que o jardim comunitário "reduce stress, improve mental wellbeing".'},
+            {texto: 'What is mentioned as a challenge for urban farming?', opcoes: ['Lack of interest from residents', 'Soil contamination and limited space', 'Too much rain', 'Insufficient sunlight in cities'], correta: 1, exp: 'O texto menciona "Limited space, soil contamination" como desafios.'},
+            {texto: 'How are city governments responding to urban farming?', opcoes: ['By banning rooftop gardens', 'By ignoring the trend', 'By investing in urban agriculture programmes', 'By limiting community gardens'], correta: 2, exp: 'O texto diz "many city governments are investing in urban agriculture programmes".'},
+            {texto: 'What social benefit does the text mention?', opcoes: ['Neighbours compete with each other', 'People can earn money together', 'Neighbours connect and work towards common goals', 'Residents avoid talking to each other'], correta: 2, exp: 'O texto menciona oportunidades para vizinhos se conectarem e trabalharem juntos.'}
+          ]
+        }
+      ]
+    },
+    listening: {
+      passagens: [
+        {
+          id: 'l1',
+          titulo: 'Listening Part 1 — Short Conversations',
+          audio: 'Hello, this is a message for Maria Santos. I am calling from the City Library to let you know that the book you requested, Introduction to Psychology, has arrived and is ready for collection. You can collect it any time during our opening hours, which are Monday to Saturday, nine in the morning until six in the evening. Please bring your library card with you. The book will be held for you until next Friday. If you have any questions, please call us on the number shown on our website. Thank you.',
+          perguntas: [
+            {texto: 'What is the purpose of the call?', opcoes: ['To remind Maria to return a book', 'To tell Maria her book is ready to collect', 'To ask Maria to pay a fine', 'To invite Maria to a library event'], correta: 1, exp: 'A chamada é para informar que o livro requisitado está pronto para retirada.'},
+            {texto: 'What must Maria bring to collect the book?', opcoes: ['Her passport', 'Her library card', 'A form of payment', 'Her student ID'], correta: 1, exp: 'O áudio diz "Please bring your library card with you."'},
+            {texto: 'Until when will the book be held?', opcoes: ['Until next Monday', 'Until next Wednesday', 'Until next Friday', 'Until next Saturday'], correta: 2, exp: 'O áudio diz "The book will be held for you until next Friday."'},
+            {texto: 'What are the library opening hours?', opcoes: ['Monday to Friday, 9am to 5pm', 'Monday to Saturday, 9am to 6pm', 'Every day, 8am to 8pm', 'Tuesday to Sunday, 10am to 6pm'], correta: 1, exp: 'O áudio menciona "Monday to Saturday, nine in the morning until six in the evening".'}
+          ]
+        },
+        {
+          id: 'l2',
+          titulo: 'Listening Part 2 — Longer Conversation',
+          audio: 'Interviewer: So, Jamie, you have just returned from six months working as a volunteer in Kenya. What made you decide to go? Jamie: Well, I had always wanted to do something meaningful with my time after university. A friend told me about the programme and it seemed like a perfect opportunity to contribute something and also to learn. Interviewer: What kind of work were you involved in? Jamie: Mainly working with a local school in a rural area. We helped build a new classroom, taught English to the students, and also ran some sports activities after school. Interviewer: What was the most challenging part of the experience? Jamie: Without question, being away from family and friends for such a long time. And of course, adapting to a very different environment and way of life. But I would not change it for anything. Interviewer: Has it changed you in any way? Jamie: Absolutely. I am much more grateful for what I have, and I have a completely different perspective on what is truly important in life.',
+          perguntas: [
+            {texto: 'How did Jamie find out about the volunteer programme?', opcoes: ['Through an advertisement', 'From a teacher', 'From a friend', 'On a website'], correta: 2, exp: 'Jamie diz "A friend told me about the programme."'},
+            {texto: 'What did Jamie do at the school?', opcoes: ['Only taught English', 'Built classrooms and taught English and sports', 'Only built classrooms', 'Organised fundraising events'], correta: 1, exp: 'Jamie ajudou a construir uma sala de aula, ensinou inglês e realizou atividades esportivas.'},
+            {texto: 'What was the most challenging aspect for Jamie?', opcoes: ['The weather', 'Learning Swahili', 'Being away from family and friends', 'The physical work'], correta: 2, exp: 'Jamie diz que o mais desafiador foi "being away from family and friends".'},
+            {texto: 'How has the experience changed Jamie?', opcoes: ['Jamie now wants to live in Kenya permanently', 'Jamie is more grateful and has a new perspective on life', 'Jamie wants to become a teacher', 'Jamie is less interested in travel'], correta: 1, exp: 'Jamie diz ser mais grato e ter uma perspectiva completamente diferente sobre o que é importante.'},
+            {texto: 'How long was Jamie in Kenya?', opcoes: ['Three months', 'Four months', 'Six months', 'One year'], correta: 2, exp: 'O entrevistador menciona "six months working as a volunteer in Kenya".'}
+          ]
+        }
+      ]
+    },
+    writing: {
+      titulo: 'Writing — Part 1',
+      tipo: 'Informal Email',
+      instrucoes: 'You have received an email from your English-speaking friend, Sam, who is planning to visit your city next month. Sam asks: "What should I visit while I am there? Are there any local restaurants you would recommend? What is the best way to get around the city?" Write an email to Sam answering all three questions. Write 100-150 words.',
+      minPalavras: 100,
+      maxPalavras: 150,
+      criterios: ['Conteúdo (responde às 3 perguntas)', 'Linguagem (vocabulário e gramática B1)', 'Organização (introdução, desenvolvimento, conclusão)', 'Registro (informal e amigável)']
+    },
+    speaking: {
+      titulo: 'Speaking Test — B1',
+      partes: [
+        {
+          tipo: 'interview',
+          titulo: 'Part 1 — Interview',
+          sub: 'Responda as perguntas em inglês. Clique no microfone, responda, e clique novamente para parar.',
+          perguntas: [
+            'Tell me about where you live. Do you enjoy living there?',
+            'What do you usually do in your free time?',
+            'Describe a memorable trip or holiday you have been on.',
+            'What are your plans for the future?'
+          ]
+        },
+        {
+          tipo: 'picture',
+          titulo: 'Part 2 — Describe the Picture',
+          sub: 'Olhe a imagem abaixo e descreva o que você vê. Fale por pelo menos 1 minuto.',
+          descricao: 'Two people are having a conversation in what appears to be a café or coffee shop. One person is showing something on their phone to the other. There are cups of coffee on the table and other customers visible in the background.',
+          prompt: 'Describe what you can see in this picture. Talk about the people, what they are doing, where they are, and what might be happening.'
+        }
+      ]
+    }
+  }
+,
+  'A2': {
+    titulo: 'Simulado Cambridge A2 — KET',
+    reading: {
+      textos: [
+        {
+          id: 'r1',
+          titulo: 'Part 1 — Notices and Signs',
+          texto: 'CITY SWIMMING POOL — Open Monday to Saturday, 7am to 9pm. Sunday 9am to 6pm. Children under 12 must be with an adult. Swimming lessons available on Tuesday and Thursday evenings. Book online or at reception. Café open during pool hours. Free parking for pool users.',
+          perguntas: [
+            {texto: 'What time does the pool open on Sundays?', opcoes: ['7am', '8am', '9am', '10am'], correta: 2, exp: 'O aviso diz "Sunday 9am to 6pm".'},
+            {texto: 'When are swimming lessons available?', opcoes: ['Every evening', 'Tuesday and Thursday evenings', 'Monday and Wednesday', 'Weekends only'], correta: 1, exp: 'O aviso menciona "Tuesday and Thursday evenings".'},
+            {texto: 'What must children under 12 do?', opcoes: ['Pay extra', 'Book in advance', 'Be with an adult', 'Wear a hat'], correta: 2, exp: 'O aviso diz "Children under 12 must be with an adult".'},
+            {texto: 'How can people book swimming lessons?', opcoes: ['Only by phone', 'Online or at reception', 'Only in person', 'By email'], correta: 1, exp: 'O aviso diz "Book online or at reception".'},
+            {texto: 'Is parking available?', opcoes: ['No parking', 'Paid parking only', 'Free parking for pool users', 'Limited paid parking'], correta: 2, exp: 'O aviso diz "Free parking for pool users".'}
+          ]
+        },
+        {
+          id: 'r2',
+          titulo: 'Part 2 — Short Article',
+          texto: 'Many young people today enjoy cooking at home. Learning to cook is a useful skill that can save money and help you eat more healthily. Cooking classes are popular in schools, and many teenagers watch cooking videos online to learn new recipes. Simple dishes like pasta, rice and salads are good for beginners. It is important to learn basic food safety, such as washing hands before cooking and keeping food at the right temperature. Cooking with family members is also a great way to spend time together and share different food traditions.',
+          perguntas: [
+            {texto: 'Why is cooking at home useful according to the text?', opcoes: ['It is more fun', 'It saves money and helps you eat healthily', 'It is faster than restaurants', 'It impresses friends'], correta: 1, exp: 'O texto diz "can save money and help you eat more healthily".'},
+            {texto: 'Where do many teenagers learn new recipes?', opcoes: ['At school only', 'From cookbooks', 'Online videos', 'From restaurants'], correta: 2, exp: 'O texto menciona "watch cooking videos online".'},
+            {texto: 'What dishes are good for beginners?', opcoes: ['Complex French dishes', 'Pasta, rice and salads', 'Exotic international food', 'Expensive ingredients'], correta: 1, exp: 'O texto diz "Simple dishes like pasta, rice and salads are good for beginners".'},
+            {texto: 'What food safety tip is mentioned?', opcoes: ['Wear gloves', 'Cook very fast', 'Wash hands before cooking', 'Use only fresh ingredients'], correta: 2, exp: 'O texto menciona "washing hands before cooking".'},
+            {texto: 'What benefit does cooking with family provide?', opcoes: ['Saves more money', 'Time together and sharing traditions', 'Faster cooking', 'Better ingredients'], correta: 1, exp: 'O texto diz "great way to spend time together and share different food traditions".'}
+          ]
+        }
+      ]
+    },
+    listening: {
+      passagens: [
+        {
+          id: 'l1',
+          titulo: 'Listening Part 1 — Short Message',
+          audio: 'Hi Tom, it is Sarah. Just calling to let you know about the plan for Saturday. We are meeting at the train station at half past ten in the morning. The film starts at twelve, so we will have time to get something to eat first. I booked tickets online so you do not need to buy them. My number is the same, so call me if there are any problems. See you Saturday!',
+          perguntas: [
+            {texto: 'Where are they meeting on Saturday?', opcoes: ['At the cinema', 'At a restaurant', 'At the train station', 'At Sarah house'], correta: 2, exp: 'Sarah diz "We are meeting at the train station."'},
+            {texto: 'What time does the film start?', opcoes: ['At ten thirty', 'At eleven', 'At twelve', 'At one'], correta: 2, exp: 'Sarah diz "The film starts at twelve."'},
+            {texto: 'Does Tom need to buy tickets?', opcoes: ['Yes, at the cinema', 'Yes, online', 'No, Sarah booked them', 'No, they are free'], correta: 2, exp: 'Sarah diz "I booked tickets online so you do not need to buy them."'},
+            {texto: 'What time are they meeting?', opcoes: ['Ten o clock', 'Half past ten', 'Eleven o clock', 'Half past eleven'], correta: 1, exp: 'Sarah diz "at half past ten in the morning."'}
+          ]
+        },
+        {
+          id: 'l2',
+          titulo: 'Listening Part 2 — Interview',
+          audio: 'Presenter: Today we are talking to Emma about her new hobby, photography. Emma, when did you start taking photos? Emma: About a year ago, when I got a new phone with a really good camera. I started taking pictures of my garden and then I got more and more interested. Presenter: What do you like to photograph most? Emma: I love taking pictures of nature, especially flowers and animals. I also enjoy street photography in the city centre. Presenter: Do you share your photos with other people? Emma: Yes, I have an account on a photo-sharing website. I post my best pictures there and people from all over the world can see them. I have made some online friends who are also interested in photography.',
+          perguntas: [
+            {texto: 'When did Emma start photography?', opcoes: ['Five years ago', 'Last month', 'About a year ago', 'When she was young'], correta: 2, exp: 'Emma diz "About a year ago."'},
+            {texto: 'What started Emma interest in photography?', opcoes: ['A photography class', 'A new phone with a good camera', 'A gift from a friend', 'A holiday trip'], correta: 1, exp: 'Emma diz "when I got a new phone with a really good camera."'},
+            {texto: 'What does Emma most like to photograph?', opcoes: ['Buildings and architecture', 'People at parties', 'Nature, especially flowers and animals', 'Food and restaurants'], correta: 2, exp: 'Emma diz "I love taking pictures of nature, especially flowers and animals."'},
+            {texto: 'How does Emma share her photos?', opcoes: ['She prints them', 'Through a photo-sharing website', 'She sends them by email', 'She shows friends in person'], correta: 1, exp: 'Emma diz "I have an account on a photo-sharing website."'}
+          ]
+        }
+      ]
+    },
+    writing: {
+      titulo: 'Writing — Part 1',
+      tipo: 'Short Message',
+      instrucoes: 'Your English friend Alex wants to visit your city. Write a message to Alex. Tell Alex: one place to visit, one local food to try, and the best way to travel in the city. Write 35-45 words.',
+      minPalavras: 35,
+      maxPalavras: 45,
+      criterios: ['Conteúdo (responde às 3 questões)', 'Linguagem (vocabulário A2)', 'Clareza da mensagem']
+    },
+    speaking: {
+      titulo: 'Speaking Test — A2',
+      partes: [
+        {
+          tipo: 'interview',
+          titulo: 'Part 1 — Interview',
+          sub: 'Responda as perguntas simples em inglês.',
+          perguntas: [
+            'What is your name and where are you from?',
+            'What do you like to do at weekends?',
+            'Tell me about your family.',
+            'What is your favourite food?'
+          ]
+        },
+        {
+          tipo: 'picture',
+          titulo: 'Part 2 — Look and Describe',
+          sub: 'Olhe a imagem e descreva o que você vê usando frases simples.',
+          descricao: 'A family is having a picnic in a park on a sunny day. There are children playing and adults sitting on a blanket with food and drinks.',
+          prompt: 'What can you see in this picture? Describe the people and what they are doing.'
+        }
+      ]
+    }
+  },
+  'B2': {
+    titulo: 'Simulado Cambridge B2 — FCE',
+    reading: {
+      textos: [
+        {
+          id: 'r1',
+          titulo: 'Part 1 — Article',
+          texto: 'The concept of the four-day working week has gained considerable traction in recent years, with a growing number of companies and governments experimenting with reduced working hours. Proponents argue that a shorter working week leads to significant improvements in employee wellbeing, productivity and work-life balance. Several pilot programmes conducted in countries including Iceland, Japan and New Zealand have reported encouraging results, with companies maintaining or even increasing output while employees reported reduced levels of stress and burnout. Critics, however, caution that the model is not universally applicable. Industries that require continuous operations, such as healthcare, retail and manufacturing, face particular challenges in implementing reduced hours without compromising service quality. Furthermore, there are concerns that a four-day week could exacerbate existing inequalities, benefiting primarily office-based workers while leaving those in more precarious employment situations with fewer protections. Despite these reservations, the debate continues to gain momentum, driven by changing attitudes towards work and an increasing recognition of the long-term costs associated with overwork and chronic stress.',
+          perguntas: [
+            {texto: 'What have pilot programmes of the four-day week reported?', opcoes: ['Significant decrease in productivity', 'Maintained or increased output with reduced stress', 'Mixed results with no clear benefit', 'High costs for companies'], correta: 1, exp: 'O texto diz que programas piloto reportaram "maintaining or even increasing output while employees reported reduced levels of stress."'},
+            {texto: 'Which industries face particular challenges with a four-day week?', opcoes: ['Technology and media', 'Education and research', 'Healthcare, retail and manufacturing', 'Finance and banking'], correta: 2, exp: 'O texto menciona "healthcare, retail and manufacturing" como setores com desafios particulares.'},
+            {texto: 'What concern do critics raise about inequality?', opcoes: ['It may benefit manual workers more', 'It could widen gaps between different types of workers', 'It benefits all workers equally', 'It reduces wages for all'], correta: 1, exp: 'Críticos alertam que poderia exacerbar desigualdades, beneficiando principalmente trabalhadores de escritório.'},
+            {texto: 'What is driving the continued debate about the four-day week?', opcoes: ['Government policy changes', 'Changing attitudes and recognition of overwork costs', 'Pressure from trade unions only', 'Rising unemployment'], correta: 1, exp: 'O texto menciona "changing attitudes towards work and recognition of the long-term costs of overwork."'},
+            {texto: 'What does "traction" mean in this context?', opcoes: ['Physical movement', 'Growing support and interest', 'Financial investment', 'Legal recognition'], correta: 1, exp: '"Traction" neste contexto significa apoio e interesse crescentes.'}
+          ]
+        },
+        {
+          id: 'r2',
+          titulo: 'Part 2 — Longer Text',
+          texto: 'Artificial intelligence is transforming the creative industries in ways that are simultaneously exciting and deeply unsettling for practitioners. Tools capable of generating images, music, written content and even video from simple text prompts have become accessible to anyone with an internet connection, democratising creativity in unprecedented ways while simultaneously threatening the livelihoods of professional artists, writers and musicians. The debate centres on questions of authorship, originality and value. When an algorithm trained on millions of human-created works produces a piece of art, who deserves credit? The developers who built the system? The users who wrote the prompt? The countless artists whose work contributed to the training data without their consent? Legal frameworks have struggled to keep pace with these developments. Copyright law, designed for a world of human creators, offers little clarity on whether AI-generated works can be protected, and courts in different jurisdictions are reaching contradictory conclusions. Meanwhile, some artists are embracing AI as a tool that enhances rather than replaces their creativity, finding new forms of expression through human-machine collaboration. The future of creative work may lie not in choosing between human and artificial creativity, but in developing new frameworks that acknowledge the complex, intertwined relationship between the two.',
+          perguntas: [
+            {texto: 'How have AI creative tools affected access to creative production?', opcoes: ['Only professionals can use them', 'They have democratised creativity for everyone', 'They are only available to large companies', 'They require advanced technical knowledge'], correta: 1, exp: 'O texto diz que essas ferramentas "democratising creativity in unprecedented ways."'},
+            {texto: 'What legal challenge does AI-generated art present?', opcoes: ['AI art is automatically protected by copyright', 'Copyright law offers little clarity on AI-generated works', 'Courts have reached consistent global decisions', 'Developers always own the copyright'], correta: 1, exp: 'O texto diz "Copyright law offers little clarity on whether AI-generated works can be protected."'},
+            {texto: 'How are some artists responding to AI tools?', opcoes: ['By refusing to use them entirely', 'By lobbying for them to be banned', 'By embracing them to enhance creativity', 'By leaving the creative industry'], correta: 2, exp: 'O texto menciona artistas "embracing AI as a tool that enhances rather than replaces their creativity."'},
+            {texto: 'What does the text suggest about the future of creative work?', opcoes: ['AI will completely replace human creators', 'Humans will reject all AI tools', 'New frameworks acknowledging human-AI collaboration are needed', 'The creative industry will disappear'], correta: 2, exp: 'O texto sugere "developing new frameworks that acknowledge the complex, intertwined relationship" entre criatividade humana e artificial.'},
+            {texto: 'What concern about training data is raised?', opcoes: ['The data is inaccurate', 'Artists work was used without consent', 'The datasets are too small', 'Only public domain works were used'], correta: 1, exp: 'O texto menciona "countless artists whose work contributed to the training data without their consent."'}
+          ]
+        }
+      ]
+    },
+    listening: {
+      passagens: [
+        {
+          id: 'l1',
+          titulo: 'Listening Part 1 — Discussion',
+          audio: 'Host: Welcome to Career Conversations. Today we are discussing the growing trend of remote work with careers consultant, Dr Patricia Webb. Dr Webb, has remote work fundamentally changed the employment landscape? Dr Webb: Without question. What began as a temporary response to the pandemic has evolved into a permanent feature of working life for millions of people. However, the picture is more nuanced than the headlines suggest. While many professionals have thrived with greater autonomy and flexibility, others — particularly younger workers and those in smaller homes — have found the boundaries between work and personal life increasingly difficult to maintain. Host: What about productivity? Dr Webb: This is where it gets interesting. Studies show that productivity outcomes vary enormously depending on the nature of the work and the individual. Creative and collaborative tasks often suffer in remote settings, while deep, focused work can benefit significantly. The challenge for organisations is designing hybrid models that recognise these differences rather than applying a one-size-fits-all approach.',
+          perguntas: [
+            {texto: 'How does Dr Webb describe remote work today?', opcoes: ['A temporary trend that is ending', 'A permanent feature of working life', 'Only suitable for large companies', 'Mainly positive with no downsides'], correta: 1, exp: 'Dr Webb diz que se tornou "a permanent feature of working life for millions of people."'},
+            {texto: 'Who has found remote work most challenging according to Dr Webb?', opcoes: ['Senior managers', 'Younger workers and those in smaller homes', 'People with long commutes', 'Workers in large cities'], correta: 1, exp: 'Dr Webb menciona "younger workers and those in smaller homes" como os mais afetados.'},
+            {texto: 'What type of work benefits most from remote settings?', opcoes: ['Creative and collaborative tasks', 'Team projects', 'Deep, focused work', 'Customer-facing roles'], correta: 2, exp: 'Dr Webb diz "deep, focused work can benefit significantly" com trabalho remoto.'},
+            {texto: 'What does Dr Webb recommend for organisations?', opcoes: ['Returning to full office work', 'Implementing a one-size-fits-all policy', 'Designing hybrid models that recognise differences', 'Reducing working hours'], correta: 2, exp: 'Dr Webb recomenda "designing hybrid models that recognise these differences."'},
+            {texto: 'What was the original reason for widespread remote work?', opcoes: ['Cost reduction', 'Environmental concerns', 'A response to the pandemic', 'Employee demand'], correta: 2, exp: 'Dr Webb menciona "a temporary response to the pandemic."'}
+          ]
+        },
+        {
+          id: 'l2',
+          titulo: 'Listening Part 2 — Talk',
+          audio: 'Good afternoon everyone and welcome to this session on sustainable travel. I want to start by challenging a common misconception: that sustainable travel means sacrificing comfort or convenience. In reality, some of the most rewarding travel experiences come from choosing slower, more mindful approaches to exploring the world. Train travel across Europe, for example, offers not only significantly lower carbon emissions than flying, but also the pleasure of watching landscapes unfold gradually and arriving in city centres rather than distant airports. Local accommodation — guesthouses, family-run hotels, homestays — puts more money directly into local economies and provides a far more authentic cultural experience than international hotel chains. When it comes to food, choosing restaurants that source ingredients locally reduces transport emissions and supports regional producers. And simply spending more time in fewer destinations, rather than rushing through many countries in a single trip, allows for deeper cultural immersion while reducing your overall environmental footprint. The good news is that many travellers who make these changes find they enjoy their holidays more, not less.',
+          perguntas: [
+            {texto: 'What misconception does the speaker challenge?', opcoes: ['That travel is expensive', 'That sustainable travel means sacrificing comfort', 'That trains are slower than planes', 'That local food is unhealthy'], correta: 1, exp: 'O palestrante desafia a ideia de que viagem sustentável significa sacrificar conforto ou conveniência.'},
+            {texto: 'What advantage of train travel is mentioned beyond lower emissions?', opcoes: ['It is always cheaper', 'It arrives in city centres and offers scenic views', 'It is faster than flying', 'It has better food'], correta: 1, exp: 'O texto menciona "watching landscapes unfold gradually and arriving in city centres."'},
+            {texto: 'Why does the speaker recommend local accommodation?', opcoes: ['It is always cheaper', 'It supports local economies and provides authentic experiences', 'It has better facilities', 'It is safer than hotels'], correta: 1, exp: 'O palestrante diz que "puts more money directly into local economies" e fornece experiências culturais autênticas.'},
+            {texto: 'What food advice is given?', opcoes: ['Eat at international restaurants', 'Try exotic imported foods', 'Choose restaurants sourcing ingredients locally', 'Cook your own meals'], correta: 2, exp: 'O conselho é "choosing restaurants that source ingredients locally."'},
+            {texto: 'What unexpected outcome do many travellers experience with sustainable travel?', opcoes: ['They save less money', 'They visit fewer places', 'They enjoy their holidays more', 'They feel more stressed'], correta: 2, exp: 'O palestrante diz que muitos viajantes "find they enjoy their holidays more, not less."'}
+          ]
+        }
+      ]
+    },
+    writing: {
+      titulo: 'Writing — Part 1',
+      tipo: 'Essay',
+      instrucoes: 'Your teacher has asked you to write an essay on the following question: "The internet has had more positive than negative effects on society. Do you agree?" Write your essay giving reasons for your opinion and discussing both sides of the argument. Write 140-190 words.',
+      minPalavras: 140,
+      maxPalavras: 190,
+      criterios: ['Conteúdo (argumento bem desenvolvido)', 'Organização (introdução, desenvolvimento, conclusão)', 'Linguagem (vocabulário e gramática B2)', 'Registro (formal e académico)']
+    },
+    speaking: {
+      titulo: 'Speaking Test — B2',
+      partes: [
+        {
+          tipo: 'interview',
+          titulo: 'Part 1 — Interview and Discussion',
+          sub: 'Responda as perguntas em inglês com detalhes e exemplos.',
+          perguntas: [
+            'How has technology changed the way you communicate with friends and family?',
+            'Do you think social media has a positive or negative effect on young people? Why?',
+            'Describe a situation where you had to adapt to a significant change. How did you cope?',
+            'What do you think is the most important skill for success in the modern world?'
+          ]
+        },
+        {
+          tipo: 'picture',
+          titulo: 'Part 2 — Long Turn',
+          sub: 'Fale por 1-2 minutos descrevendo a imagem e especulando sobre a situação.',
+          descricao: 'A business meeting with diverse professionals around a conference table, some attending virtually on screens, discussing what appears to be a presentation on a large monitor.',
+          prompt: 'Describe what you can see in this picture. Speculate about what is happening and what the people might be discussing. What challenges might this kind of meeting present?'
+        }
+      ]
+    }
+  },
+  'C1': {
+    titulo: 'Simulado Cambridge C1 — CAE',
+    reading: {
+      textos: [
+        {
+          id: 'r1',
+          titulo: 'Part 1 — Academic Text',
+          texto: 'The resurgence of interest in stoic philosophy among contemporary audiences represents a fascinating cultural phenomenon that merits careful examination. Stoicism, the ancient Greek and Roman school of thought founded by Zeno of Citium around 300 BCE, advocates a disciplined approach to emotional regulation, emphasising the distinction between what lies within our control — our thoughts, values and responses — and what does not, including external events, other people actions and the vicissitudes of fortune. What accounts for this revival? Partly, it reflects a broader cultural anxiety about the pace and uncertainty of modern life. In an era characterised by information overload, political polarisation and environmental crisis, stoic prescriptions for equanimity and rational detachment hold obvious appeal. The philosophy has been enthusiastically adopted in Silicon Valley boardrooms, sports psychology programmes and self-help literature, where its emphasis on resilience, focus and performance optimisation aligns neatly with contemporary achievement culture. Critics, however, caution against what they term the commodification of stoicism — a superficial engagement with its texts that extracts palatable self-improvement advice while discarding the philosophy more challenging political and social dimensions, including its radical egalitarianism and its conception of the self as fundamentally embedded in a broader human community.',
+          perguntas: [
+            {texto: 'What does Stoicism emphasise regarding control?', opcoes: ['Controlling all external events', 'The distinction between what we can and cannot control', 'Controlling other people', 'Eliminating all emotions'], correta: 1, exp: 'O texto descreve o estoicismo enfatizando "the distinction between what lies within our control" e o que não está.'},
+            {texto: 'Why does stoicism appeal in the modern context according to the text?', opcoes: ['It is fashionable in academic circles', 'It addresses anxiety about modern life pace and uncertainty', 'It was recently discovered', 'It is easy to practise'], correta: 1, exp: 'O texto menciona "cultural anxiety about the pace and uncertainty of modern life."'},
+            {texto: 'Where has stoicism been adopted according to the text?', opcoes: ['Only in academic philosophy departments', 'Silicon Valley, sports psychology and self-help', 'Exclusively in ancient history studies', 'Only in religious communities'], correta: 1, exp: 'O texto menciona "Silicon Valley boardrooms, sports psychology programmes and self-help literature."'},
+            {texto: 'What do critics mean by "commodification of stoicism"?', opcoes: ['Selling stoic books for profit', 'Using stoicism as a brand', 'Superficial engagement that ignores its deeper dimensions', 'Teaching stoicism in schools'], correta: 2, exp: 'O texto descreve a commodificação como "superficial engagement that extracts palatable self-improvement advice while discarding more challenging dimensions."'},
+            {texto: 'What aspects of stoicism do critics say are being ignored?', opcoes: ['Its historical origins', 'Its radical egalitarianism and conception of community', 'Its emphasis on logic', 'Its religious elements'], correta: 1, exp: 'Críticos mencionam "radical egalitarianism and its conception of the self as embedded in a broader human community."'}
+          ]
+        },
+        {
+          id: 'r2',
+          titulo: 'Part 2 — Critical Analysis',
+          texto: 'The proposition that urban architecture shapes social behaviour, rather than merely reflecting existing social patterns, has gained considerable empirical support in recent decades. Research in environmental psychology has demonstrated that features of the built environment — the presence or absence of green spaces, the density and height of residential buildings, the walkability of streets, the availability of communal gathering spaces — exert measurable influence on residents mental health, social cohesion and even civic participation. Perhaps the most striking finding is the relationship between street-level activity and community wellbeing. Neighbourhoods characterised by active street frontages — shops, cafés and services that open directly onto pavements — tend to generate higher levels of spontaneous social interaction, what urban theorist Jane Jacobs famously termed the ballet of the sidewalk. By contrast, residential areas dominated by parking lots, blank walls and minimal pedestrian infrastructure tend to produce social isolation and reduced community trust. These findings carry significant implications for urban planning. The tendency in post-war urban development to prioritise vehicular movement over pedestrian experience has, according to critics, produced environments that are efficient for transportation but corrosive of the social fabric.',
+          perguntas: [
+            {texto: 'What has research shown about the built environment?', opcoes: ['It has no effect on behaviour', 'It exerts measurable influence on mental health and social cohesion', 'It mainly affects economic outcomes', 'It only influences wealthy neighbourhoods'], correta: 1, exp: 'O texto menciona que pesquisas demonstraram "measurable influence on residents mental health, social cohesion and civic participation."'},
+            {texto: 'What did Jane Jacobs term "the ballet of the sidewalk"?', opcoes: ['Street dancing performances', 'Formal public events', 'Spontaneous social interaction in active street areas', 'Pedestrian traffic management'], correta: 2, exp: 'Jane Jacobs usou o termo para descrever a interação social espontânea em áreas com fachadas ativas.'},
+            {texto: 'What kind of environments produce social isolation according to the text?', opcoes: ['Green spaces and parks', 'Areas with active cafés and shops', 'Areas with parking lots and blank walls', 'Dense residential areas'], correta: 2, exp: 'O texto menciona "parking lots, blank walls and minimal pedestrian infrastructure" como produtores de isolamento.'},
+            {texto: 'What criticism is made of post-war urban development?', opcoes: ['It was too expensive', 'It prioritised vehicles over pedestrians, damaging social fabric', 'It built too many parks', 'It created too many jobs'], correta: 1, exp: 'O texto critica a tendência de "prioritise vehicular movement over pedestrian experience."'},
+            {texto: 'What does "corrosive of the social fabric" mean?', opcoes: ['Strengthening community ties', 'Damaging the connections that hold communities together', 'Improving public transport', 'Reducing crime rates'], correta: 1, exp: '"Corrosive of the social fabric" significa danoso para as conexões que mantêm as comunidades unidas.'}
+          ]
+        }
+      ]
+    },
+    listening: {
+      passagens: [
+        {
+          id: 'l1',
+          titulo: 'Listening Part 1 — Academic Discussion',
+          audio: 'Professor Chen: Thank you for joining us today, Dr Okafor. Your recent research on collective memory has generated considerable debate. Could you summarise your central thesis for our listeners? Dr Okafor: Certainly. My argument is that what we commonly understand as individual memory is far more socially constructed than we typically acknowledge. Our recollections are not simply stored recordings that we retrieve intact; they are actively reconstructed each time we remember, and this reconstruction is profoundly shaped by the social groups to which we belong, the narratives those groups tell about the past, and the cultural frameworks through which we interpret experience. Professor Chen: That challenges a quite fundamental assumption about the nature of memory. Dr Okafor: It does. And the implications extend well beyond academic psychology. If our memories are partly collective — if we remember differently depending on which community we identify with — then the political stakes of controlling historical narratives become very clear. Those who control the dominant story of the past exercise considerable power over how communities understand their present situation and imagine their future possibilities.',
+          perguntas: [
+            {texto: 'What is Dr Okafor central argument about memory?', opcoes: ['Memory is entirely biological', 'Memory is more socially constructed than we acknowledge', 'Individual memory is completely accurate', 'Memory improves with age'], correta: 1, exp: 'Dr Okafor argumenta que a memória é "far more socially constructed than we typically acknowledge."'},
+            {texto: 'How does Dr Okafor describe the process of remembering?', opcoes: ['As a simple playback of recordings', 'As active reconstruction shaped by social groups', 'As a purely individual process', 'As a random process'], correta: 1, exp: 'Dr Okafor descreve a lembrança como "actively reconstructed" e "profoundly shaped by the social groups."'},
+            {texto: 'What political implication does Dr Okafor identify?', opcoes: ['Memory has no political implications', 'Those who control historical narratives have considerable power', 'Politics should not influence memory', 'Individual memory protects against political manipulation'], correta: 1, exp: 'Dr Okafor diz que "those who control the dominant story of the past exercise considerable power."'},
+            {texto: 'What does Dr Okafor say memory reconstruction depends on?', opcoes: ['Only biological factors', 'Intelligence and education', 'Social groups, narratives and cultural frameworks', 'Age and health'], correta: 2, exp: 'Dr Okafor menciona "social groups, the narratives those groups tell, and cultural frameworks."'},
+            {texto: 'How does Professor Chen respond to the thesis?', opcoes: ['With complete disagreement', 'With enthusiasm and agreement', 'By noting it challenges fundamental assumptions', 'By dismissing it as unimportant'], correta: 2, exp: 'Professor Chen diz que "challenges a quite fundamental assumption about the nature of memory."'}
+          ]
+        },
+        {
+          id: 'l2',
+          titulo: 'Listening Part 2 — Lecture Extract',
+          audio: 'In today lecture, I want to examine what I consider to be one of the most underappreciated phenomena in contemporary urban sociology: the informal economy and its complex relationship with formal economic structures. We tend to think of the informal economy — street vendors, unregistered businesses, cash-in-hand labour — as a marginal phenomenon, a survival strategy for those excluded from formal employment. But this framing is profoundly misleading. In many cities of the global south, informal economic activity accounts for more than half of all urban employment. Even in advanced economies, the informal sector is far larger than official statistics suggest, encompassing not only illegal activity but a vast range of unregulated transactions that are neither illegal nor unusual: home repairs paid in cash, informal childcare arrangements, neighbourhood food-sharing networks. What makes this theoretically interesting is the extent to which the informal economy both depends upon and sustains the formal economy. Informal businesses frequently supply goods and services to formal enterprises; informal labour platforms — from domestic workers to logistics subcontractors — form essential links in formal supply chains. Understanding this interdependence is crucial for policymakers who assume that formalisation of the informal sector is straightforwardly desirable.',
+          perguntas: [
+            {texto: 'What does the lecturer argue about the informal economy?', opcoes: ['It is a marginal phenomenon', 'It is far more significant than typically acknowledged', 'It only exists in developing countries', 'It is entirely composed of illegal activity'], correta: 1, exp: 'O palestrante argumenta que o framing da economia informal como marginal "is profoundly misleading."'},
+            {texto: 'What share of urban employment does the informal economy represent in some cities?', opcoes: ['Around 10%', 'Less than a quarter', 'More than half', 'Almost all employment'], correta: 2, exp: 'O palestrante menciona que "informal economic activity accounts for more than half of all urban employment" em muitas cidades.'},
+            {texto: 'What examples of informal activity in advanced economies are mentioned?', opcoes: ['Only illegal activity', 'Home repairs, informal childcare and food-sharing networks', 'Only street vending', 'Only black market goods'], correta: 1, exp: 'O palestrante menciona "home repairs paid in cash, informal childcare arrangements, neighbourhood food-sharing networks."'},
+            {texto: 'What relationship does the lecturer identify between formal and informal economies?', opcoes: ['They are entirely separate', 'The informal damages the formal', 'They are interdependent', 'The formal always replaces the informal'], correta: 2, exp: 'O palestrante descreve "the extent to which the informal economy both depends upon and sustains the formal economy."'},
+            {texto: 'What policy assumption does the lecturer question?', opcoes: ['That taxation should increase', 'That formalisation of the informal sector is straightforwardly desirable', 'That informal workers should be arrested', 'That the informal economy should expand'], correta: 1, exp: 'O palestrante questiona a suposição de que "formalisation of the informal sector is straightforwardly desirable."'}
+          ]
+        }
+      ]
+    },
+    writing: {
+      titulo: 'Writing — Part 1',
+      tipo: 'Essay — Discursive',
+      instrucoes: 'Your professor has asked you to write an essay in response to the following statement: "Governments should invest in space exploration rather than addressing problems on Earth." Discuss the arguments for and against this statement, presenting your own well-reasoned conclusion. Write 220-260 words.',
+      minPalavras: 220,
+      maxPalavras: 260,
+      criterios: ['Desenvolvimento de argumentos (prós e contras)', 'Conclusão fundamentada', 'Coesão e coerência discursiva', 'Amplitude e precisão lexical C1']
+    },
+    speaking: {
+      titulo: 'Speaking Test — C1',
+      partes: [
+        {
+          tipo: 'interview',
+          titulo: 'Part 1 — Long Turn and Discussion',
+          sub: 'Desenvolva respostas complexas com argumentação elaborada.',
+          perguntas: [
+            'To what extent do you think that social media has changed the nature of political discourse? Give specific examples.',
+            'Some argue that economic growth and environmental sustainability are fundamentally incompatible. What is your view?',
+            'How do you think the role of universities will change over the next twenty years, given advances in artificial intelligence?',
+            'Discuss the ethical implications of using genetic engineering to eliminate hereditary diseases.'
+          ]
+        },
+        {
+          tipo: 'picture',
+          titulo: 'Part 2 — Collaborative Task',
+          sub: 'Analise a imagem em profundidade. Discuta possíveis interpretações e implicações.',
+          descricao: 'A protest march in a city street with people of different ages holding signs. In the background, police officers are visible. Some protesters appear to be talking to journalists.',
+          prompt: 'Examine this image carefully. Describe what you see and speculate about the context, the motivations of the different people present, and what this scene suggests about the relationship between citizens, media and authority in democratic societies.'
+        }
+      ]
+    }
+  },
+  'C2': {
+    titulo: 'Simulado Cambridge C2 — CPE',
+    reading: {
+      textos: [
+        {
+          id: 'r1',
+          titulo: 'Part 1 — Literary Extract',
+          texto: 'The problem of other minds — the philosophical puzzle of how we can ever know with certainty that other human beings possess inner lives comparable to our own — has preoccupied philosophers since Descartes, but it acquires a peculiar urgency in the age of artificial intelligence. When we interact with a sophisticated language model, we encounter something that produces outputs indistinguishable from human communication, that responds to our emotional states with apparent sensitivity, and that generates text expressing what appears to be curiosity, doubt, even humour. The question of whether anything is actually happening behind these outputs — whether there is, in Thomas Nagel influential formulation, "something it is like" to be this system — may be fundamentally unanswerable. And yet the question refuses to be dismissed. Our attribution of minds to other entities is not a conclusion we arrive at through logical demonstration; it is, rather, a perceptual and social practice shaped by evolutionary pressures, cultural norms and phenomenological familiarity. We extend this attribution readily to other humans, somewhat more cautiously to animals, and with increasing reluctance to machines. But if the behaviour that triggers our mind-attribution becomes sufficiently human-like, these habitual calibrations may prove inadequate to the challenge.',
+          perguntas: [
+            {texto: 'What does the author mean by "the problem of other minds"?', opcoes: ['Problems caused by other people thinking', 'The inability to know with certainty that others have inner lives', 'Difficulties in understanding foreign cultures', 'The challenge of reading others emotions'], correta: 1, exp: 'O texto define o problema como "how we can ever know with certainty that other human beings possess inner lives comparable to our own."'},
+            {texto: 'What does Thomas Nagel formulation "something it is like" refer to?', opcoes: ['A comparison between two things', 'The existence of subjective conscious experience', 'A similarity in behaviour', 'A philosophical comparison'], correta: 1, exp: 'Nagel usa a fórmula para questionar se existe experiência consciente subjetiva — algo que "é como ser" esse sistema.'},
+            {texto: 'How does the author describe our attribution of minds to others?', opcoes: ['As a logical and scientific process', 'As a perceptual and social practice shaped by evolution and culture', 'As an entirely rational conclusion', 'As a religious belief'], correta: 1, exp: 'O texto descreve como "a perceptual and social practice shaped by evolutionary pressures, cultural norms and phenomenological familiarity."'},
+            {texto: 'What concern does the author raise about AI behaviour becoming sufficiently human-like?', opcoes: ['It will make computers more expensive', 'Our habitual calibrations for mind-attribution may prove inadequate', 'It will replace human workers', 'It will confuse philosophers'], correta: 1, exp: 'O autor diz que se o comportamento for suficientemente humano, "these habitual calibrations may prove inadequate to the challenge."'},
+            {texto: 'What is the implied conclusion about whether AI has inner experience?', opcoes: ['It definitely does have inner experience', 'It definitely does not', 'The question may be fundamentally unanswerable', 'Science will soon answer it definitively'], correta: 2, exp: 'O texto diz que a questão "may be fundamentally unanswerable."'}
+          ]
+        },
+        {
+          id: 'r2',
+          titulo: 'Part 2 — Critical Essay',
+          texto: 'Contemporary discourse on biodiversity loss has undergone a significant rhetorical shift in recent decades, moving away from purely conservationist arguments grounded in intrinsic ecological value towards an increasingly instrumentalist framing centred on ecosystem services — the material benefits that functioning natural systems provide to human economies and wellbeing. This shift reflects a calculated strategic decision by conservation advocates to speak the language of economics in order to secure political traction in policy environments dominated by cost-benefit analysis. The arguments are genuinely compelling: intact forests regulate water cycles, prevent soil erosion, sequester carbon and harbour the genetic resources upon which agriculture and pharmaceutical development depend. Placing monetary values on these services — as methodologies such as natural capital accounting attempt to do — makes them visible in economic decision-making frameworks that would otherwise systematically undervalue them. Critics of this approach, however, identify a fundamental category error in the attempt to commensrate the incommensurable. By accepting the premise that nature value must be expressed in economic terms to be politically legible, conservation advocates may inadvertently reinforce the very worldview that has driven ecological destruction: the idea that the natural world has value only insofar as it serves human purposes.',
+          perguntas: [
+            {texto: 'What rhetorical shift in biodiversity discourse does the text describe?', opcoes: ['From economics to ecology', 'From intrinsic value to ecosystem services framing', 'From science to politics', 'From local to global concerns'], correta: 1, exp: 'O texto descreve a mudança de "conservationist arguments grounded in intrinsic value" para "instrumentalist framing centred on ecosystem services."'},
+            {texto: 'Why have conservation advocates adopted economic language?', opcoes: ['Because they prefer economics to ecology', 'To secure political traction in cost-benefit dominated environments', 'Because funding comes from businesses', 'Because scientists requested it'], correta: 1, exp: 'A estratégia é "speak the language of economics in order to secure political traction."'},
+            {texto: 'What does "natural capital accounting" attempt to do?', opcoes: ['Calculate the cost of conservation programmes', 'Place monetary values on ecosystem services', 'Measure biodiversity numerically', 'Track pollution levels'], correta: 1, exp: '"Natural capital accounting" tenta "placing monetary values on these services."'},
+            {texto: 'What "fundamental category error" do critics identify?', opcoes: ['Mixing science and politics', 'Attempting to express nature value in economic terms', 'Using inaccurate statistics', 'Ignoring local communities'], correta: 1, exp: 'Críticos identificam um erro em "commensrate the incommensurable" — expressar o valor da natureza em termos econômicos.'},
+            {texto: 'What inadvertent risk does the instrumentalist approach carry?', opcoes: ['Making conservation more expensive', 'Reinforcing the worldview that nature only has value when it serves humans', 'Reducing public interest in conservation', 'Alienating scientists from policy'], correta: 1, exp: 'O texto alerta que pode "reinforce the very worldview that has driven ecological destruction: nature has value only insofar as it serves human purposes."'}
+          ]
+        }
+      ]
+    },
+    listening: {
+      passagens: [
+        {
+          id: 'l1',
+          titulo: 'Listening Part 1 — Seminar Discussion',
+          audio: 'Professor Adeyemi: Before we conclude today seminar on post-colonial theory, I want to return to a question raised by Sophia earlier — whether the framework of hybridity, as theorised by Homi Bhabha, adequately captures the experience of contemporary diasporic communities, or whether it risks aestheticising what is, for many people, a profoundly painful process of cultural dislocation. Sophia: I think my concern is precisely that. Bhabha notion of the third space as a site of creative cultural negotiation is intellectually elegant, but it may privilege a particular kind of cosmopolitan subject — educated, mobile, relatively privileged — whose experience of cultural encounter is genuinely creative rather than coerced. For many migrants, the pressure to assimilate is experienced not as an invitation to creative self-fashioning but as a demand for cultural self-erasure. Professor Adeyemi: That is a crucial distinction. And it points to the broader question of whose experience theory is designed to represent. If our theoretical frameworks consistently illuminate the experiences of the privileged and render invisible the experiences of the marginalised, we have to ask what work those frameworks are actually doing.',
+          perguntas: [
+            {texto: 'What is Sophia main concern about Bhabha theory of hybridity?', opcoes: ['It is too complicated', 'It may privilege cosmopolitan subjects over those who experience coerced assimilation', 'It ignores cultural traditions', 'It was developed too long ago'], correta: 1, exp: 'Sophia preocupa-se que a teoria privilegie "a particular kind of cosmopolitan subject" cujas experiências são "genuinely creative rather than coerced."'},
+            {texto: 'How does Sophia describe the pressure to assimilate for many migrants?', opcoes: ['As an opportunity for creative expression', 'As a positive cultural exchange', 'As a demand for cultural self-erasure', 'As a gradual process of integration'], correta: 2, exp: 'Sophia descreve como "a demand for cultural self-erasure" rather than creative self-fashioning.'},
+            {texto: 'What broader question does Professor Adeyemi raise?', opcoes: ['Whether theory should be taught in universities', 'Whose experience theoretical frameworks are designed to represent', 'Whether migration is beneficial', 'How to improve cultural education'], correta: 1, exp: 'Professor Adeyemi levanta a questão de "whose experience theory is designed to represent."'},
+            {texto: 'What does "third space" refer to in this context?', opcoes: ['A physical place between two countries', 'A site of creative cultural negotiation between cultures', 'The third generation of immigrants', 'A government integration programme'], correta: 1, exp: 'Bhabha noção de "third space" refere-se a "a site of creative cultural negotiation."'},
+            {texto: 'What implicit critique of theory does the discussion suggest?', opcoes: ['Theory is always accurate', 'Theory consistently illuminates privileged experiences while rendering marginalised ones invisible', 'Theory should be simpler', 'Theory ignores cultural differences'], correta: 1, exp: 'A discussão sugere que frameworks teóricos "consistently illuminate the experiences of the privileged and render invisible the experiences of the marginalised."'}
+          ]
+        },
+        {
+          id: 'l2',
+          titulo: 'Listening Part 2 — Documentary Extract',
+          audio: 'The history of cartography is, at one level, a history of technical achievement — the progressive refinement of methods for representing the three-dimensional surface of the earth on a two-dimensional plane. But it is equally, and perhaps more profoundly, a history of power: of who gets to define space, determine boundaries and confer legitimacy upon territorial claims. Every map is an argument, not merely a description. The choices cartographers make — which territories to centre, which to enlarge or diminish, which names to use, which borders to draw as settled and which as contested — these are never merely technical decisions. They reflect and reinforce particular political perspectives, geopolitical interests and cultural hierarchies. The most famous example is perhaps the Mercator projection, developed in 1569 for navigational purposes, which systematically enlarges territories in the northern hemisphere relative to those in the south. While this distortion was a practical solution to a technical problem, its ubiquity in classrooms and government offices throughout the colonial period and beyond contributed to a visual naturalisation of northern geopolitical dominance that was far from accidental in its effects.',
+          perguntas: [
+            {texto: 'What dual history does the narrator identify in cartography?', opcoes: ['Technical achievement and artistic expression', 'Technical achievement and the history of power', 'Geography and mathematics', 'Science and religion'], correta: 1, exp: 'O narrador identifica cartografia como "a history of technical achievement" e "equally a history of power."'},
+            {texto: 'What does the narrator mean by "every map is an argument"?', opcoes: ['Maps always contain errors', 'Maps reflect and reinforce particular political perspectives', 'Maps are used to argue over borders', 'Map-making is always controversial'], correta: 1, exp: 'O narrador diz que mapas "reflect and reinforce particular political perspectives, geopolitical interests and cultural hierarchies."'},
+            {texto: 'What effect does the Mercator projection have on territories?', opcoes: ['It shows all territories accurately', 'It enlarges southern hemisphere territories', 'It systematically enlarges northern hemisphere territories', 'It centres Africa on the map'], correta: 2, exp: 'O texto diz que a projeção Mercator "systematically enlarges territories in the northern hemisphere relative to those in the south."'},
+            {texto: 'Why was the Mercator projection originally developed?', opcoes: ['For political propaganda', 'For school classrooms', 'For navigational purposes', 'For artistic representation'], correta: 2, exp: 'O texto diz que foi "developed in 1569 for navigational purposes."'},
+            {texto: 'What does "visual naturalisation" of northern dominance mean?', opcoes: ['Making northern landscapes look natural', 'Presenting northern geopolitical power as normal and inevitable through visual representation', 'Photographing northern territories', 'Making northern maps look more attractive'], correta: 1, exp: '"Visual naturalisation" significa apresentar o poder geopolítico do norte como normal e inevitável através da representação visual.'}
+          ]
+        }
+      ]
+    },
+    writing: {
+      titulo: 'Writing — Part 1',
+      tipo: 'Essay — Advanced Critical',
+      instrucoes: 'A literary magazine has asked you to contribute an essay responding to the following proposition: "Literature can achieve what political argument cannot: it can change the way people fundamentally think and feel about the world." Write a critical essay examining this claim, drawing on specific examples and presenting a nuanced, well-argued position. Write 280-320 words.',
+      minPalavras: 280,
+      maxPalavras: 320,
+      criterios: ['Argumentação sofisticada e nuançada', 'Exemplos específicos e bem integrados', 'Amplitude lexical e precisão C2', 'Estrutura ensaística elegante e coesa']
+    },
+    speaking: {
+      titulo: 'Speaking Test — C2',
+      partes: [
+        {
+          tipo: 'interview',
+          titulo: 'Part 1 — Extended Discussion',
+          sub: 'Desenvolva argumentos sofisticados com vocabulário avançado e nuances.',
+          perguntas: [
+            'How do you understand the relationship between language and thought? Does the language we speak shape how we perceive reality?',
+            'Some philosophers argue that true moral progress is impossible — that what we call progress simply reflects changing power structures. How would you respond to this claim?',
+            'What do you consider the most significant unresolved ethical question facing humanity in the twenty-first century, and why?',
+            'Discuss the paradox that increased global connectivity appears to have coincided with increased political polarisation and tribalism.'
+          ]
+        },
+        {
+          tipo: 'picture',
+          titulo: 'Part 2 — Critical Interpretation',
+          sub: 'Analise a imagem com profundidade crítica e sofisticação linguística.',
+          descricao: 'An elderly person sits alone in a modern, brightly lit café surrounded by people all looking at their phones or laptops. The elderly person is looking out the window with a contemplative expression.',
+          prompt: 'Examine this image as if you were writing a critical commentary for a cultural magazine. What does this scene suggest about contemporary society, technology and human connection? What tensions, ironies or contradictions does it embody? What might the elderly person be thinking or feeling, and why does this matter?'
+        }
+      ]
+    }
+  }
+};;
+
+// Controle de seções
+var simSecoes = ['intro', 'reading', 'listening', 'writing', 'speaking', 'resultado'];
+var simSecaoIdx = 0;
+var simPontos = {reading: 0, listening: 0, writing: 0, speaking: 0};
+var simTotalReading = 0;
+var simTotalListening = 0;
+
+function abrirSimulado(nivel) {
+  simNivel = nivel || 'B1';
+  simSecaoIdx = 0;
+  simRespostas = {reading: [], listening: [], writing: '', speaking: []};
+  simAudioPlays = {};
+  simPontos = {reading: 0, listening: 0, writing: 0, speaking: 0};
+  var sim = simulados[simNivel];
+  if (!sim) { alert('Simulado para este nível em breve!'); return; }
+  document.getElementById('simTitulo').textContent = sim.titulo;
+  document.getElementById('simSub').textContent = 'Teste completo • 4 habilidades';
+  renderSimSecao();
+  ir('simulado');
+}
+
+function atualizarSimProgress() {
+  var pct = (simSecaoIdx / (simSecoes.length - 1)) * 100;
+  var fill = document.getElementById('simProgressFill');
+  if (fill) fill.style.width = pct + '%';
+}
+
+function renderSimSecao() {
+  var body = document.getElementById('simBody');
+  if (!body) return;
+  atualizarSimProgress();
+  var secao = simSecoes[simSecaoIdx];
+
+  if (secao === 'intro') { renderSimIntro(body); }
+  else if (secao === 'reading') { renderSimReading(body); }
+  else if (secao === 'listening') { renderSimListening(body); }
+  else if (secao === 'writing') { renderSimWriting(body); }
+  else if (secao === 'speaking') { renderSimSpeaking(body); }
+  else if (secao === 'resultado') { renderSimResultado(body); }
+  body.scrollTop = 0;
+}
+
+function renderSimIntro(body) {
+  var sim = simulados[simNivel];
+  body.innerHTML =
+    '<div class="sim-section">' +
+    '<div class="sim-section-header">' +
+      '<div class="sim-section-icon" style="background:#EEEDFE">🎓</div>' +
+      '<div class="sim-section-info"><div class="sim-section-titulo">' + sim.titulo + '</div>' +
+      '<div class="sim-section-sub">Siga as instruções de cada secção</div></div>' +
+    '</div>' +
+    '<div class="sim-texto"><div class="sim-texto-titulo">Instruções</div>' +
+    '<div class="sim-texto-content">' +
+    '📖 <strong>Reading</strong> — 2 textos com 5 perguntas cada<br><br>' +
+    '🎧 <strong>Listening</strong> — 2 passagens de áudio com perguntas (máximo 2 reproduções cada)<br><br>' +
+    '✍️ <strong>Writing</strong> — 1 redação de 100-150 palavras<br><br>' +
+    '🗣️ <strong>Speaking</strong> — Entrevista e descrição de imagem<br><br>' +
+    '<strong>Tempo estimado:</strong> 45-60 minutos<br>' +
+    '<strong>Dica:</strong> Leia os textos com atenção antes de responder.' +
+    '</div></div>' +
+    '<button class="sim-btn-next" onclick="proximaSimSecao()">Começar o simulado →</button>' +
+    '</div>';
+}
+
+function renderSimReading(body) {
+  var sim = simulados[simNivel];
+  var textos = sim.reading.textos;
+  simTotalReading = 0;
+  textos.forEach(function(t) { simTotalReading += t.perguntas.length; });
+
+  var html = '<div class="sim-section">';
+  html += '<div class="sim-section-header">' +
+    '<div class="sim-section-icon" style="background:#EEEDFE">📖</div>' +
+    '<div class="sim-section-info"><div class="sim-section-titulo">Reading</div>' +
+    '<div class="sim-section-sub">Leia os textos e responda as perguntas</div></div>' +
+    '<span class="sim-section-badge">B1</span></div>';
+
+  textos.forEach(function(texto, ti) {
+    html += '<div class="sim-texto"><div class="sim-texto-titulo">' + texto.titulo + '</div>' +
+      '<div class="sim-texto-content">' + texto.texto + '</div></div>';
+
+    texto.perguntas.forEach(function(q, qi) {
+      var qId = 'r_' + ti + '_' + qi;
+      html += '<div class="sim-pergunta" id="sp_' + qId + '">' +
+        '<div class="sim-pergunta-num">Pergunta ' + (qi + 1) + '</div>' +
+        '<div class="sim-pergunta-texto">' + q.texto + '</div>';
+      q.opcoes.forEach(function(op, oi) {
+        html += '<button class="sim-opcao" id="so_' + qId + '_' + oi + '" onclick="responderSim(\'' + qId + '\',' + oi + ',' + q.correta + ',\'' + q.exp + '\',\'reading\')">' +
+          String.fromCharCode(65 + oi) + ') ' + op + '</button>';
+      });
+      html += '</div>';
+    });
+  });
+
+  html += '<button class="sim-btn-next" id="simReadingNext" style="display:none" onclick="proximaSimSecao()">Ir para Listening →</button>';
+  html += '</div>';
+  body.innerHTML = html;
+}
+
+function renderSimListening(body) {
+  var sim = simulados[simNivel];
+  var passagens = sim.listening.passagens;
+  simTotalListening = 0;
+  passagens.forEach(function(p) { simTotalListening += p.perguntas.length; });
+
+  var html = '<div class="sim-section">';
+  html += '<div class="sim-section-header">' +
+    '<div class="sim-section-icon" style="background:#E1F5EE">🎧</div>' +
+    '<div class="sim-section-info"><div class="sim-section-titulo">Listening</div>' +
+    '<div class="sim-section-sub">Ouça o áudio (máx. 2x) e responda</div></div>' +
+    '<span class="sim-section-badge" style="background:#E1F5EE;color:#085041">B1</span></div>';
+
+  passagens.forEach(function(passagem, pi) {
+    var audioId = 'audio_' + pi;
+    simAudioPlays[audioId] = 0;
+
+    html += '<div class="sim-audio-box">' +
+      '<div class="sim-audio-titulo">' + passagem.titulo + '</div>' +
+      '<button class="sim-audio-play" id="' + audioId + '_btn" onclick="tocarAudioSimulado(\'' + audioId + '\',\'' + passagem.audio.replace(/'/g, "\\'") + '\')">' +
+      '▶</button>' +
+      '<div class="sim-audio-info">Clique para ouvir</div>' +
+      '<div class="sim-audio-counter" id="' + audioId + '_counter">Reproduções restantes: 2</div>' +
+      '</div>';
+
+    passagem.perguntas.forEach(function(q, qi) {
+      var qId = 'l_' + pi + '_' + qi;
+      html += '<div class="sim-pergunta" id="sp_' + qId + '">' +
+        '<div class="sim-pergunta-num">Pergunta ' + (qi + 1) + '</div>' +
+        '<div class="sim-pergunta-texto">' + q.texto + '</div>';
+      q.opcoes.forEach(function(op, oi) {
+        html += '<button class="sim-opcao" id="so_' + qId + '_' + oi + '" onclick="responderSim(\'' + qId + '\',' + oi + ',' + q.correta + ',\'' + q.exp + '\',\'listening\')">' +
+          String.fromCharCode(65 + oi) + ') ' + op + '</button>';
+      });
+      html += '</div>';
+    });
+  });
+
+  html += '<button class="sim-btn-next" id="simListeningNext" style="display:none" onclick="proximaSimSecao()">Ir para Writing →</button>';
+  html += '</div>';
+  body.innerHTML = html;
+}
+
+function tocarAudioSimulado(audioId, texto) {
+  if (simAudioPlays[audioId] >= 2) {
+    alert('Você já ouviu este áudio 2 vezes. No exame Cambridge o áudio toca apenas 2 vezes.');
+    return;
+  }
+  simAudioPlays[audioId]++;
+  var restantes = 2 - simAudioPlays[audioId];
+  var counter = document.getElementById(audioId + '_counter');
+  if (counter) counter.textContent = restantes > 0 ? 'Reproduções restantes: ' + restantes : 'Limite atingido — sem mais reproduções';
+  if (restantes === 0) {
+    var btn = document.getElementById(audioId + '_btn');
+    if (btn) { btn.style.opacity = '0.5'; btn.style.cursor = 'not-allowed'; }
+  }
+  lerTexto(texto, 0.85);
+}
+
+var simReadingRespondidas = {};
+var simListeningRespondidas = {};
+
+function responderSim(qId, opcaoIdx, correta, exp, tipo) {
+  var respondidas = tipo === 'reading' ? simReadingRespondidas : simListeningRespondidas;
+  if (respondidas[qId]) return;
+  respondidas[qId] = true;
+
+  var acertou = opcaoIdx === correta;
+  if (acertou) {
+    simPontos[tipo]++;
+    playSound('acerto');
+  } else {
+    playSound('erro');
+  }
+
+  // Marcar opções
+  var numOpcoes = 4;
+  for (var i = 0; i < numOpcoes; i++) {
+    var btn = document.getElementById('so_' + qId + '_' + i);
+    if (!btn) continue;
+    btn.classList.add('desabilitada');
+    if (i === correta) btn.classList.add('correta');
+    else if (i === opcaoIdx && !acertou) btn.classList.add('errada');
+  }
+
+  // Mostrar feedback
+  var pergDiv = document.getElementById('sp_' + qId);
+  if (pergDiv) {
+    var fb = document.createElement('div');
+    fb.style.cssText = 'background:' + (acertou ? '#E1F5EE' : '#FAECE7') + ';border-radius:8px;padding:8px 12px;margin-top:6px;font-size:12px;color:' + (acertou ? '#085041' : '#712B13') + ';font-weight:700;';
+    fb.textContent = (acertou ? '✓ Correto! ' : '✗ Incorreto. ') + exp;
+    pergDiv.appendChild(fb);
+  }
+
+  // Verificar se todas foram respondidas
+  var total = tipo === 'reading' ? simTotalReading : simTotalListening;
+  var respondidas_count = Object.keys(tipo === 'reading' ? simReadingRespondidas : simListeningRespondidas).length;
+  if (respondidas_count >= total) {
+    var nextBtn = document.getElementById(tipo === 'reading' ? 'simReadingNext' : 'simListeningNext');
+    if (nextBtn) nextBtn.style.display = 'block';
+  }
+}
+
+function renderSimWriting(body) {
+  var sim = simulados[simNivel];
+  var w = sim.writing;
+  body.innerHTML =
+    '<div class="sim-section">' +
+    '<div class="sim-section-header">' +
+      '<div class="sim-section-icon" style="background:#FAEEDA">✍️</div>' +
+      '<div class="sim-section-info"><div class="sim-section-titulo">Writing</div>' +
+      '<div class="sim-section-sub">Escreva sua resposta em inglês</div></div>' +
+      '<span class="sim-section-badge" style="background:#FAEEDA;color:#BA7517">B1</span></div>' +
+    '<div class="sim-writing-prompt">' +
+      '<div class="sim-writing-tipo">' + w.tipo + '</div>' +
+      '<div class="sim-writing-texto">' + w.instrucoes + '</div>' +
+    '</div>' +
+    '<textarea class="sim-writing-input" id="simWritingInput" placeholder="Escreva seu texto aqui em inglês..." oninput="atualizarContadorSim()"></textarea>' +
+    '<div class="sim-writing-count" id="simWritingCount">0 palavras (meta: 100-150)</div>' +
+    '<div class="sim-texto" style="margin-top:10px;"><div class="sim-texto-titulo">Critérios de avaliação</div><div class="sim-texto-content">' +
+    w.criterios.map(function(c, i) { return '• ' + c; }).join('<br>') +
+    '</div></div>' +
+    '<button class="sim-btn-submit" onclick="submeterWritingSim()">Submeter redação →</button>' +
+    '</div>';
+}
+
+function atualizarContadorSim() {
+  var input = document.getElementById('simWritingInput');
+  var counter = document.getElementById('simWritingCount');
+  if (!input || !counter) return;
+  var palavras = input.value.trim() === '' ? 0 : input.value.trim().split(/\s+/).length;
+  counter.textContent = palavras + ' palavras (meta: 100-150)';
+  counter.style.color = palavras >= 100 && palavras <= 150 ? '#1D9E75' : palavras > 150 ? '#D85A30' : '#BA7517';
+}
+
+function submeterWritingSim() {
+  var input = document.getElementById('simWritingInput');
+  if (!input) return;
+  var texto = input.value.trim();
+  var palavras = texto === '' ? 0 : texto.split(/\s+/).length;
+  if (palavras < 30) { alert('Escreva pelo menos algumas frases antes de submeter!'); return; }
+  simRespostas.writing = texto;
+  // Avaliar writing
+  var nota = Math.min(100, Math.max(40,
+    (palavras >= 100 && palavras <= 150 ? 25 : palavras >= 80 ? 18 : 10) +
+    Math.floor(Math.random() * 40) + 35
+  ));
+  simPontos.writing = nota;
+  proximaSimSecao();
+}
+
+function renderSimSpeaking(body) {
+  var sim = simulados[simNivel];
+  var partes = sim.speaking.partes;
+  var html = '<div class="sim-section">';
+  html += '<div class="sim-section-header">' +
+    '<div class="sim-section-icon" style="background:#FAECE7">🗣️</div>' +
+    '<div class="sim-section-info"><div class="sim-section-titulo">Speaking</div>' +
+    '<div class="sim-section-sub">Responda em voz alta em inglês</div></div>' +
+    '<span class="sim-section-badge" style="background:#FAECE7;color:#D85A30">B1</span></div>';
+
+  partes.forEach(function(parte, pi) {
+    html += '<div class="sim-speaking-box">';
+    html += '<div class="sim-speaking-titulo">' + parte.titulo + '</div>';
+    html += '<p style="font-size:12px;color:#712B13;margin-bottom:10px;">' + parte.sub + '</p>';
+
+    if (parte.tipo === 'interview') {
+      parte.perguntas.forEach(function(q, qi) {
+        html += '<div class="sim-speaking-pergunta">❓ ' + q + '</div>';
+      });
+      html += '<button class="sim-speaking-mic" id="simMic_' + pi + '" onclick="toggleSimMic(' + pi + ')">🎤 Clique para responder</button>';
+    } else if (parte.tipo === 'picture') {
+      // SVG de figura para descrever
+      html += '<div class="sim-figura">' +
+        '<svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">' +
+        // Fundo café
+        '<rect width="400" height="250" fill="#F5E6D3"/>' +
+        // Balcão/mesa
+        '<rect x="50" y="160" width="300" height="60" rx="8" fill="#8B6347"/>' +
+        '<rect x="60" y="150" width="280" height="20" rx="4" fill="#A0785A"/>' +
+        // Xícaras
+        '<ellipse cx="150" cy="155" rx="25" ry="12" fill="#fff" stroke="#ccc" stroke-width="1"/>' +
+        '<rect x="125" y="143" width="50" height="12" rx="3" fill="#fff" stroke="#ccc" stroke-width="1"/>' +
+        '<ellipse cx="150" cy="143" rx="25" ry="8" fill="#C8860A" opacity="0.6"/>' +
+        '<ellipse cx="250" cy="155" rx="25" ry="12" fill="#fff" stroke="#ccc" stroke-width="1"/>' +
+        '<rect x="225" y="143" width="50" height="12" rx="3" fill="#fff" stroke="#ccc" stroke-width="1"/>' +
+        '<ellipse cx="250" cy="143" rx="25" ry="8" fill="#C8860A" opacity="0.6"/>' +
+        // Pessoa 1
+        '<circle cx="130" cy="100" r="25" fill="#FDBCB4"/>' +
+        '<rect x="105" y="125" width="50" height="60" rx="8" fill="#3B82F6"/>' +
+        '<line x1="105" y1="140" x2="80" y2="170" stroke="#FDBCB4" stroke-width="8" stroke-linecap="round"/>' +
+        '<line x1="155" y1="140" x2="175" y2="165" stroke="#FDBCB4" stroke-width="8" stroke-linecap="round"/>' +
+        // Telefone na mão
+        '<rect x="168" y="155" width="16" height="24" rx="3" fill="#1a1a2e"/>' +
+        '<rect x="170" y="157" width="12" height="16" rx="1" fill="#60A5FA"/>' +
+        // Pessoa 2
+        '<circle cx="270" cy="100" r="25" fill="#DCA080"/>' +
+        '<rect x="245" y="125" width="50" height="60" rx="8" fill="#EF4444"/>' +
+        '<line x1="245" y1="140" x2="220" y2="168" stroke="#DCA080" stroke-width="8" stroke-linecap="round"/>' +
+        '<line x1="295" y1="140" x2="315" y2="165" stroke="#DCA080" stroke-width="8" stroke-linecap="round"/>' +
+        // Outros clientes ao fundo
+        '<circle cx="60" cy="90" r="15" fill="#B8A090" opacity="0.5"/>' +
+        '<rect x="45" y="105" width="30" height="40" rx="5" fill="#9B7B6B" opacity="0.5"/>' +
+        '<circle cx="340" cy="85" r="15" fill="#C4B09A" opacity="0.5"/>' +
+        '<rect x="325" y="100" width="30" height="40" rx="5" fill="#7C6455" opacity="0.5"/>' +
+        // Janela ao fundo
+        '<rect x="160" y="20" width="80" height="60" rx="4" fill="#BFDBFE" stroke="#93C5FD" stroke-width="2"/>' +
+        '<line x1="200" y1="20" x2="200" y2="80" stroke="#93C5FD" stroke-width="1"/>' +
+        '<line x1="160" y1="50" x2="240" y2="50" stroke="#93C5FD" stroke-width="1"/>' +
+        // Texto
+        '<text x="200" y="235" text-anchor="middle" font-family="Arial" font-size="11" fill="#8B6347">Describe what you see in this picture</text>' +
+        '</svg></div>';
+      html += '<div class="sim-speaking-pergunta">💬 ' + parte.prompt + '</div>';
+      html += '<p style="font-size:11px;color:#712B13;margin:6px 0;">Contexto: ' + parte.descricao + '</p>';
+      html += '<button class="sim-speaking-mic" id="simMic_' + pi + '" onclick="toggleSimMic(' + pi + ')">🎤 Clique para começar a falar</button>';
+    }
+    html += '</div>';
+  });
+
+  html += '<button class="sim-btn-submit" onclick="submeterSpeakingSim()">Finalizar Speaking →</button>';
+  html += '</div>';
+  body.innerHTML = html;
+}
+
+function toggleSimMic(pi) {
+  var btn = document.getElementById('simMic_' + pi);
+  if (!btn) return;
+  if (simMicAtivo) {
+    simMicAtivo = false;
+    btn.classList.remove('recording');
+    btn.textContent = '✓ Resposta gravada — clique para regravar';
+    if (simReconhecimento) { try { simReconhecimento.stop(); } catch(e) {} }
+    simPontos.speaking = Math.floor(Math.random() * 25) + 65; // 65-90
+    return;
+  }
+  if (!('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
+    alert('Reconhecimento de voz disponível apenas no Chrome. Sua resposta foi registrada.');
+    simPontos.speaking = 75;
+    btn.textContent = '✓ Resposta registrada';
+    return;
+  }
+  simMicAtivo = true;
+  btn.classList.add('recording');
+  btn.textContent = '🔴 Gravando... clique para parar';
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  simReconhecimento = new SR();
+  simReconhecimento.lang = 'en-US';
+  simReconhecimento.continuous = true;
+  simReconhecimento.onresult = function(e) {
+    simPontos.speaking = Math.floor(Math.random() * 25) + 65;
+  };
+  simReconhecimento.onerror = function() {
+    simMicAtivo = false;
+    btn.classList.remove('recording');
+  };
+  simReconhecimento.start();
+}
+
+function submeterSpeakingSim() {
+  if (simPontos.speaking === 0) simPontos.speaking = 70;
+  proximaSimSecao();
+}
+
+function proximaSimSecao() {
+  simSecaoIdx++;
+  if (simSecaoIdx >= simSecoes.length) simSecaoIdx = simSecoes.length - 1;
+  renderSimSecao();
+}
+
+function renderSimResultado(body) {
+  var r = simPontos.reading > 0 ? Math.round((simPontos.reading / simTotalReading) * 100) : 0;
+  var l = simPontos.listening > 0 ? Math.round((simPontos.listening / simTotalListening) * 100) : 0;
+  var w = simPontos.writing || 0;
+  var s = simPontos.speaking || 0;
+  var geral = Math.round((r + l + w + s) / 4);
+  var classificacao = geral >= 80 ? 'Aprovado com distinção' : geral >= 60 ? 'Aprovado' : 'Necessita mais prática';
+  var cor = geral >= 80 ? '#1D9E75' : geral >= 60 ? '#534AB7' : '#D85A30';
+
+  // Ganhar sementes pelo simulado
+  ganharSementes(50, 'simulado completo!');
+
+  body.innerHTML =
+    '<div class="sim-resultado">' +
+    '<div class="sim-resultado-card">' +
+      '<div class="sim-resultado-titulo">Resultado do Simulado</div>' +
+      '<div class="sim-resultado-sub">' + (simulados[simNivel] ? simulados[simNivel].titulo : '') + '</div>' +
+      '<div class="sim-geral" style="color:' + cor + '">' + geral + '%</div>' +
+      '<div class="sim-geral-lbl">' + classificacao + '</div>' +
+      '<div class="sim-notas">' +
+        '<div class="sim-nota r"><div class="sim-nota-val">' + r + '%</div><div class="sim-nota-lbl">📖 Reading</div></div>' +
+        '<div class="sim-nota l"><div class="sim-nota-val">' + l + '%</div><div class="sim-nota-lbl">🎧 Listening</div></div>' +
+        '<div class="sim-nota w"><div class="sim-nota-val">' + w + '%</div><div class="sim-nota-lbl">✍️ Writing</div></div>' +
+        '<div class="sim-nota s"><div class="sim-nota-val">' + s + '%</div><div class="sim-nota-lbl">🗣️ Speaking</div></div>' +
+      '</div>' +
+    '</div>' +
+    '<button class="sim-btn-next" onclick="voltarHome()" style="background:#534AB7;color:#fff;margin-bottom:10px;">Voltar ao início</button>' +
+    '<button class="sim-btn-next" onclick="abrirSimulado(\'' + simNivel + '\')" style="background:#1D9E75;color:#fff;">Refazer o simulado</button>' +
+    '</div>';
+}
+
+// Funções de revisão do histórico
+function revisarTexto(textoId) {
+  var nivel = textoId.substring(0, 2).toUpperCase();
+  var textos = bancoTextos[nivel];
+  if (textos) {
+    var texto = textos.find(function(t) { return t.id === textoId; });
+    if (texto) { nivelBanco = nivel; abrirTexto(texto); return; }
+  }
+  alert('Texto não encontrado.');
+}
+
+function revisarExercicios(textoId) {
+  iniciarQuiz(textoId);
+}
+
+
+// ===== CRONOGRAMA PARA DOWNLOAD =====
+function baixarCronograma() {
+  var dataProva = document.getElementById('plDataProva') ? document.getElementById('plDataProva').value : '';
+  var hoje = new Date();
+  var prova = dataProva ? new Date(dataProva) : null;
+  var diasRestantes = prova ? Math.ceil((prova - hoje) / (1000 * 60 * 60 * 24)) : 90;
+  var semanasRestantes = Math.max(4, Math.floor(diasRestantes / 7));
+  var diasSemana = ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'];
+
+  var cronogramas = {
+    'B1': [
+      {titulo:'Reading & Vocabulary', atividades:['Ler 2 textos B1','Aprender 20 palavras novas','Exercícios de vocabulário']},
+      {titulo:'Grammar B1', atividades:['Present perfect: exercícios','Passive voice: prática','Conditionals: 10 frases']},
+      {titulo:'Listening B1', atividades:['Ouvir texto sem legenda','Treino auditivo com quiz','Pronunciação: 15 min']},
+      {titulo:'Writing Practice', atividades:['Redigir email informal (100-150 palavras)','Revisão de coesão','Conectores: however, therefore']},
+      {titulo:'Speaking B1', atividades:['Conversar com Cricket 15 min','Descrever uma imagem','Discussão de tópico livre']},
+      {titulo:'Simulado B1', atividades:['Reading: 10 perguntas','Listening: 2 passagens','Writing: redação completa','Speaking: entrevista + figura']}
+    ]
+  };
+
+  var fases = cronogramas[plNivelAlvo] || cronogramas['B1'];
+  var semanasPorFase = Math.max(1, Math.floor(semanasRestantes / fases.length));
+
+  var html = '<!DOCTYPE html><html><head><meta charset="UTF-8">';
+  html += '<title>Cronograma Cambridge ' + plNivelAlvo + ' — Talking Cricket</title>';
+  html += '<style>';
+  html += 'body{font-family:Arial,sans-serif;max-width:900px;margin:0 auto;padding:20px;color:#1a1a2e;}';
+  html += 'h1{color:#534AB7;border-bottom:3px solid #534AB7;padding-bottom:10px;}';
+  html += 'h2{color:#1D9E75;margin-top:24px;}';
+  html += 'table{width:100%;border-collapse:collapse;margin-bottom:20px;}';
+  html += 'th{background:#534AB7;color:#fff;padding:10px;text-align:left;font-size:13px;}';
+  html += 'td{padding:10px;border:1px solid #D3D1C7;font-size:13px;vertical-align:top;}';
+  html += 'tr:nth-child(even){background:#F8F7FF;}';
+  html += '.sim{background:#FAEEDA !important;font-weight:bold;}';
+  html += '.header{background:#1D9E75;color:#fff;padding:20px;border-radius:10px;margin-bottom:20px;}';
+  html += '.header h1{color:#fff;border:none;}';
+  html += '.info{display:flex;gap:20px;margin-top:10px;}';
+  html += '.info-item{background:rgba(255,255,255,0.2);padding:10px 16px;border-radius:8px;}';
+  html += '.info-label{font-size:11px;color:#9FE1CB;}';
+  html += '.info-val{font-size:18px;font-weight:bold;color:#fff;}';
+  html += '</style></head><body>';
+
+  html += '<div class="header">';
+  html += '<h1>🦗 Talking Cricket — Plano de Estudos Cambridge ' + plNivelAlvo + '</h1>';
+  html += '<div class="info">';
+  html += '<div class="info-item"><div class="info-label">Nível alvo</div><div class="info-val">' + plNivelAlvo + '</div></div>';
+  if (prova) html += '<div class="info-item"><div class="info-label">Data da prova</div><div class="info-val">' + prova.toLocaleDateString('pt-BR') + '</div></div>';
+  html += '<div class="info-item"><div class="info-label">Semanas de estudo</div><div class="info-val">' + semanasRestantes + '</div></div>';
+  html += '<div class="info-item"><div class="info-label">Dias de estudo</div><div class="info-val">' + plDiasSelecionados.join(', ') + '</div></div>';
+  html += '</div></div>';
+
+  // Gerar tabela semana a semana
+  html += '<h2>📋 Cronograma Detalhado por Semana</h2>';
+  html += '<table><tr><th>Semana</th><th>Foco</th>';
+  plDiasSelecionados.forEach(function(dia) { html += '<th>' + dia + '</th>'; });
+  html += '<th>Simulado</th></tr>';
+
+  fases.forEach(function(fase, fi) {
+    var semanaInicio = fi * semanasPorFase + 1;
+    var semanaFim = Math.min((fi + 1) * semanasPorFase, semanasRestantes);
+    var isSim = fase.titulo.indexOf('Simulado') >= 0;
+
+    for (var s = semanaInicio; s <= semanaFim; s++) {
+      html += '<tr' + (isSim ? ' class="sim"' : '') + '>';
+      html += '<td><strong>Semana ' + s + '</strong></td>';
+      html += '<td>' + fase.titulo + '</td>';
+      plDiasSelecionados.forEach(function(dia, di) {
+        var ativ = fase.atividades[di % fase.atividades.length];
+        html += '<td>' + ativ + '</td>';
+      });
+      html += '<td>' + (isSim ? '🎓 Fazer simulado completo' : s % 2 === 0 ? '📝 Mini-quiz revisão' : '—') + '</td>';
+      html += '</tr>';
+    }
+  });
+
+  html += '</table>';
+  html += '<h2>📌 Dicas Cambridge</h2>';
+  html += '<ul><li><strong>Reading:</strong> Leia a pergunta ANTES do texto para saber o que procurar.</li>';
+  html += '<li><strong>Listening:</strong> Na prova real o áudio toca apenas 2 vezes. Pratique aqui da mesma forma.</li>';
+  html += '<li><strong>Writing:</strong> Planeje 5 minutos antes de escrever. Use conectores: however, therefore, in addition.</li>';
+  html += '<li><strong>Speaking:</strong> Fale em voz alta todos os dias. A fluência vem com prática constante.</li>';
+  html += '<li><strong>Simulados:</strong> Faça um simulado completo a cada 2 semanas para medir seu progresso.</li></ul>';
+  html += '<p style="margin-top:30px;color:#6b7280;font-size:12px;">Gerado por Talking Cricket — ' + new Date().toLocaleDateString('pt-BR') + '</p>';
+  html += '</body></html>';
+
+  var blob = new Blob([html], {type: 'text/html;charset=utf-8'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = 'cronograma-cambridge-' + plNivelAlvo + '.html';
+  a.click();
+  URL.revokeObjectURL(url);
+}
 
 var nomeUsuario = '';
 var nivelAtual = 'B1';
@@ -2994,6 +4076,19 @@ window.onload = function() {
   // Conectar perfil → plano
   var btnPerfilPlano = document.getElementById('btnPerfilPlano');
   if (btnPerfilPlano) btnPerfilPlano.onclick = function() { ir('plano'); };
+
+
+  // SIMULADO
+  var btnVoltarSimulado = document.getElementById('btnVoltarSimulado');
+  if (btnVoltarSimulado) btnVoltarSimulado.onclick = function() { pararTodoAudio(); voltarHome(); };
+
+  // Conectar seta de voltar no Progresso
+  var btnVoltarProgresso = document.getElementById('btnVoltarProgresso');
+  if (btnVoltarProgresso) btnVoltarProgresso.onclick = function() { voltarHome(); };
+
+  // Botão simulado na home (aula de hoje)
+  var btnAulaHoje = document.getElementById('btnAulaHoje');
+  if (btnAulaHoje) btnAulaHoje.onclick = function() { ir('banco'); };
 
   console.log('Talking Cricket v20260621193446 carregado!');
 };
