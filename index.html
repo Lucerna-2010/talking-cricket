@@ -1477,103 +1477,107 @@ var ttsAtivo = false;
 var ttsUtterance = null;
 
 function lerTexto(texto, velocidade) {
-  // Animar barrinha e tempo
-  var waveInterval = null;
-  var tempoInterval = null;
-  var tempoSeg = 0;
-
-  function iniciarAnimacao() {
-    // Animar barras de onda
-    var bars = document.querySelectorAll('.audio-bar');
-    var heights = [8,18,24,12,22,8,20,16,24,10,18,22];
-    var dir = 1;
-    waveInterval = setInterval(function() {
-      bars.forEach(function(bar, i) {
-        var h = heights[i] + (Math.random() * 10 - 5);
-        h = Math.max(4, Math.min(28, h));
-        bar.style.height = h + 'px';
-      });
-    }, 150);
-
-    // Animar tempo
-    var durEstimada = Math.ceil(texto.split(' ').length / 2.5); // ~2.5 palavras/seg
-    tempoInterval = setInterval(function() {
-      tempoSeg++;
-      var min = Math.floor(tempoSeg / 60);
-      var seg = tempoSeg % 60;
-      var durMin = Math.floor(durEstimada / 60);
-      var durSeg = durEstimada % 60;
-      var timeEl = document.getElementById('audio-time');
-      if (timeEl) timeEl.textContent = 
-        min + ':' + (seg < 10 ? '0' : '') + seg + ' / ' + 
-        durMin + ':' + (durSeg < 10 ? '0' : '') + durSeg;
-    }, 1000);
-  }
-
-  function pararAnimacao() {
-    if (waveInterval) { clearInterval(waveInterval); waveInterval = null; }
-    if (tempoInterval) { clearInterval(tempoInterval); tempoInterval = null; }
-    // Resetar barras
-    var bars = document.querySelectorAll('.audio-bar');
-    bars.forEach(function(bar, i) {
-      var alts = [8,18,24,12,22,8,20,16,24,10,18,22];
-      bar.style.height = alts[i % alts.length] + 'px';
-    });
-    tempoSeg = 0;
-    var timeEl = document.getElementById('audio-time');
-    if (timeEl) timeEl.textContent = '0:00 / 0:00';
-  }
-
-  // Parar se já estiver tocando
-  try { window.speechSynthesis.cancel(); } catch(e) {}
+  // Se já tocando — PARAR
   if (ttsAtivo) {
+    window.speechSynthesis.cancel();
     ttsAtivo = false;
     atualizarBtnPlay(false);
-    // Resetar animação
-    var bars = document.querySelectorAll('.audio-bar');
-    var alts = [8,18,24,12,22,8,20,16,24,10,18,22];
-    bars.forEach(function(bar, i) { bar.style.height = alts[i % alts.length] + 'px'; });
-    var timeEl = document.getElementById('audio-time');
-    if (timeEl) timeEl.textContent = '0:00 / 0:00';
+    pararAnimacaoAudio();
     return;
   }
 
   if (!texto || !texto.trim()) return;
-  
+
   ttsAtivo = true;
   atualizarBtnPlay(true);
+  iniciarAnimacaoAudio(texto);
 
-  function falar() {
-    var utter = new SpeechSynthesisUtterance(texto);
-    utter.lang = 'en-GB';
-    utter.rate = velocidade || 1;
-    utter.pitch = 1;
-    utter.volume = 1;
-    utter.onend = function() { ttsAtivo = false; atualizarBtnPlay(false); pararAnimacao(); };
-    utter.onerror = function(e) { 
-      console.log('TTS erro:', e);
-      ttsAtivo = false; 
-      atualizarBtnPlay(false);
-      pararAnimacao();
-    };
+  var utter = new SpeechSynthesisUtterance(texto);
+  utter.lang = 'en-GB';
+  utter.rate = velocidade || 1;
+  utter.pitch = 1;
+  utter.volume = 1;
+
+  utter.onend = function() {
+    ttsAtivo = false;
+    atualizarBtnPlay(false);
+    pararAnimacaoAudio();
+  };
+  utter.onerror = function() {
+    ttsAtivo = false;
+    atualizarBtnPlay(false);
+    pararAnimacaoAudio();
+  };
+
+  var falar = function() {
     window.speechSynthesis.speak(utter);
-    iniciarAnimacao();
-  }
+  };
 
-  // Carregar vozes e falar
-  var vozes = window.speechSynthesis.getVoices();
-  if (vozes.length > 0) {
+  if (window.speechSynthesis.getVoices().length > 0) {
     falar();
   } else {
-    window.speechSynthesis.addEventListener('voiceschanged', function() {
-      falar();
-    }, { once: true });
-    // Timeout de segurança
-    setTimeout(function() {
-      if (ttsAtivo) falar();
-    }, 500);
+    window.speechSynthesis.addEventListener('voiceschanged', falar, { once: true });
+    setTimeout(falar, 500);
   }
 }
+
+// Variáveis globais de animação
+var _waveInterval = null;
+var _tempoInterval = null;
+var _tempoSeg = 0;
+var _durEstimada = 0;
+
+function iniciarAnimacaoAudio(texto) {
+  pararAnimacaoAudio(); // limpar qualquer animação anterior
+  _tempoSeg = 0;
+  _durEstimada = Math.ceil(texto.split(' ').length / 2.5);
+
+  // Animar barras
+  _waveInterval = setInterval(function() {
+    if (!ttsAtivo) { pararAnimacaoAudio(); return; }
+    document.querySelectorAll('.audio-bar').forEach(function(bar) {
+      var h = Math.floor(Math.random() * 24) + 4;
+      bar.style.height = h + 'px';
+    });
+  }, 150);
+
+  // Animar tempo
+  _tempoInterval = setInterval(function() {
+    if (!ttsAtivo) { pararAnimacaoAudio(); return; }
+    _tempoSeg++;
+    var min = Math.floor(_tempoSeg / 60);
+    var seg = _tempoSeg % 60;
+    var dMin = Math.floor(_durEstimada / 60);
+    var dSeg = _durEstimada % 60;
+    var el = document.getElementById('audio-time');
+    if (el) el.textContent =
+      min + ':' + (seg < 10 ? '0' : '') + seg + ' / ' +
+      dMin + ':' + (dSeg < 10 ? '0' : '') + dSeg;
+  }, 1000);
+}
+
+function pararAnimacaoAudio() {
+  if (_waveInterval) { clearInterval(_waveInterval); _waveInterval = null; }
+  if (_tempoInterval) { clearInterval(_tempoInterval); _tempoInterval = null; }
+  _tempoSeg = 0;
+  // Resetar barras
+  var alts = [8,18,24,12,22,8,20,16,24,10,18,22];
+  document.querySelectorAll('.audio-bar').forEach(function(bar, i) {
+    bar.style.height = alts[i % alts.length] + 'px';
+  });
+  var el = document.getElementById('audio-time');
+  if (el) el.textContent = '0:00 / 0:00';
+}
+
+function pararTodoAudio() {
+  if (ttsAtivo || window.speechSynthesis.speaking) {
+    window.speechSynthesis.cancel();
+    ttsAtivo = false;
+    atualizarBtnPlay(false);
+    pararAnimacaoAudio();
+  }
+}
+
 
 function atualizarBtnPlay(tocando) {
   var btn = document.getElementById('btnPlay');
@@ -1796,6 +1800,8 @@ var palavras = {
 };
 
 function ir(id) {
+  // Parar áudio ao trocar de tela
+  pararTodoAudio();
   var telas = document.querySelectorAll('.tela');
   for (var i = 0; i < telas.length; i++) {
     telas[i].classList.remove('ativa');
