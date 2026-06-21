@@ -1530,7 +1530,10 @@ var _durEstimada = 0;
 function iniciarAnimacaoAudio(texto) {
   pararAnimacaoAudio(); // limpar qualquer animação anterior
   _tempoSeg = 0;
-  _durEstimada = Math.ceil(texto.split(' ').length / 2.5);
+  // Usar duração já calculada ou estimar
+  if (_durEstimada === 0) {
+    _durEstimada = Math.ceil(texto.split(' ').length / 2.5);
+  }
 
   // Animar barras
   _waveInterval = setInterval(function() {
@@ -1560,6 +1563,7 @@ function pararAnimacaoAudio() {
   if (_waveInterval) { clearInterval(_waveInterval); _waveInterval = null; }
   if (_tempoInterval) { clearInterval(_tempoInterval); _tempoInterval = null; }
   _tempoSeg = 0;
+  _durEstimada = 0;
   // Resetar barras
   var alts = [8,18,24,12,22,8,20,16,24,10,18,22];
   document.querySelectorAll('.audio-bar').forEach(function(bar, i) {
@@ -1979,8 +1983,15 @@ function renderBanco() {
   });
 }
 
+// Texto atual selecionado pelo aluno
+var textoSelecionado = null;
+var textoAtualAudicao = '';
+
 function abrirTexto(t) {
-  // Atualizar título e badges
+  // Salvar texto atual
+  textoSelecionado = t;
+
+  // Atualizar título e badges na leitura
   document.getElementById('ltitulo').textContent = t.titulo;
   document.getElementById('lbadge2').textContent = nivelBanco;
 
@@ -2024,6 +2035,71 @@ function abrirTexto(t) {
   if (ptBox) ptBox.style.display = 'none';
 
   ir('leitura');
+}
+
+function abrirAudicaoDoTexto() {
+  if (!textoSelecionado) { alert('Selecione um texto primeiro.'); return; }
+  var t = textoSelecionado;
+
+  // Atualizar tela de audição com o texto correto
+  var atitulo = document.getElementById('atitulo');
+  if (atitulo) atitulo.textContent = 'Listening — ' + nivelBanco;
+
+  var audioTitulo = document.getElementById('audio-titulo');
+  if (audioTitulo) audioTitulo.textContent = t.titulo;
+
+  // Texto limpo para TTS (sem tags <w>)
+  var textoLimpo = t.en.replace(/<w>/g, '').replace(/<\/w>/g, '');
+
+  // Atualizar transcrição EN
+  var transcEN = document.getElementById('transcricao-en');
+  if (transcEN) {
+    transcEN.innerHTML = '';
+    var partes = t.en.split(/<w>|<\/w>/);
+    partes.forEach(function(parte, i) {
+      if (i % 2 === 0) {
+        transcEN.appendChild(document.createTextNode(parte));
+      } else {
+        var btn = document.createElement('button');
+        btn.className = 'w';
+        btn.style.cssText = 'background:#E1F5EE;color:#085041;border-color:#5DCAA5;';
+        btn.setAttribute('data-word', parte);
+        btn.textContent = parte;
+        btn.onclick = function() { abrirPalavraTexto(this.getAttribute('data-word')); };
+        transcEN.appendChild(btn);
+      }
+    });
+  }
+
+  // Atualizar transcrição PT
+  var transcPT = document.getElementById('transcricao-pt');
+  if (transcPT) transcPT.textContent = t.pt;
+
+  // Salvar texto limpo para o TTS
+  textoAtualAudicao = textoLimpo;
+
+  // Resetar player
+  pararTodoAudio();
+  var timeEl = document.getElementById('audio-time');
+  if (timeEl) {
+    var palavras = textoLimpo.split(' ').length;
+    var durSeg = Math.ceil(palavras / 2.5);
+    var dMin = Math.floor(durSeg / 60);
+    var dSeg = durSeg % 60;
+    timeEl.textContent = '0:00 / ' + dMin + ':' + (dSeg < 10 ? '0' : '') + dSeg;
+  }
+
+  // Resetar toggle EN/PT
+  var langEN = document.getElementById('langEN');
+  var langPT = document.getElementById('langPT');
+  var tEN = document.getElementById('transcricao-en');
+  var tPT = document.getElementById('transcricao-pt');
+  if (langEN) langEN.classList.add('on');
+  if (langPT) langPT.classList.remove('on');
+  if (tEN) tEN.style.display = 'block';
+  if (tPT) tPT.style.display = 'none';
+
+  ir('audicao');
 }
 
 function abrirPalavraTexto(word) {
@@ -2218,11 +2294,10 @@ window.onload = function() {
   // btnPlay onclick definido abaixo
   document.getElementById('btnQuizAudio').onclick = function() { iniciarQuiz('b1-1'); };
   document.getElementById('btnRepetir').onclick = function() {
-    var transcEN = document.getElementById('transcricao-en');
-    var texto = transcEN ? transcEN.textContent.trim() : '';
+    var texto = textoAtualAudicao || (document.getElementById('transcricao-en') ? document.getElementById('transcricao-en').textContent.trim() : '');
     if (texto) {
       if (ttsAtivo) { window.speechSynthesis.cancel(); ttsAtivo = false; }
-      setTimeout(function() { lerTexto(texto, velocidadeAtual); }, 200);
+      setTimeout(function() { lerTexto(texto, velocidadeAtual); }, 300);
     }
   };
   document.getElementById('langEN').onclick = function() {
@@ -2286,7 +2361,7 @@ window.onload = function() {
   document.getElementById('btnQuiz').onclick = function() { iniciarQuiz('b1-1'); };
 
   // Conectar botão Audio na leitura
-  document.getElementById('btnAudio').onclick = function() { ir('audicao'); };
+  document.getElementById('btnAudio').onclick = function() { abrirAudicaoDoTexto(); };
 
 
   // CORRIGIR NAV DO PERFIL
@@ -2336,10 +2411,8 @@ window.onload = function() {
 
   // BOTÃO PLAY NA TELA DE AUDIÇÃO (texto)
   document.getElementById('btnPlay').onclick = function() {
-    // Pegar texto da transcrição da tela de audição
-    var transcEN = document.getElementById('transcricao-en');
-    var texto = transcEN ? transcEN.textContent.trim() : '';
-    if (!texto) texto = 'Climate change is one of the most pressing issues of our time. Rising temperatures are affecting ecosystems around the world.';
+    var texto = textoAtualAudicao || (document.getElementById('transcricao-en') ? document.getElementById('transcricao-en').textContent.trim() : '');
+    if (!texto) { alert('Selecione um texto no banco de textos primeiro.'); return; }
     lerTexto(texto, velocidadeAtual);
   };
 
