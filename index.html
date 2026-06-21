@@ -424,6 +424,87 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 .pro-hist-titulo{font-size:13px;font-weight:800;color:#1a1a2e;}
 .pro-hist-data{font-size:11px;color:#6b7280;margin-top:2px;}
 .pro-hist-nota{font-size:13px;font-weight:800;color:#1D9E75;}
+
+/* ===== TREINO AUDITIVO ===== */
+#treino-audio{background:#F8F7FF;}
+.taheader{background:#0F6E56;padding:50px 20px 20px;position:relative;}
+.taback{position:absolute;top:14px;left:14px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.2);border:none;cursor:pointer;font-size:20px;color:#fff;display:flex;align-items:center;justify-content:center;z-index:10;}
+.tatitulo{font-size:18px;font-weight:800;color:#fff;}
+.tasub{font-size:13px;color:#9FE1CB;margin-top:4px;}
+.tabody{padding:16px;display:flex;flex-direction:column;gap:14px;flex:1;}
+.ta-nivel-tabs{display:flex;gap:6px;overflow-x:auto;padding:12px 16px 0;}
+.ta-tab{font-size:12px;font-weight:800;padding:6px 14px;border-radius:20px;border:1.5px solid #D3D1C7;color:#6b7280;background:#fff;cursor:pointer;white-space:nowrap;font-family:'Nunito',Arial,sans-serif;}
+.ta-tab.on{background:#0F6E56;color:#fff;border-color:#0F6E56;}
+.ta-card{background:#fff;border-radius:14px;padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;border:1.5px solid #F1EFE8;margin-bottom:8px;}
+.ta-card:active{background:#f0fbf7;}
+.ta-icon{width:52px;height:52px;border-radius:12px;background:#E1F5EE;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
+.ta-info{flex:1;}
+.ta-titulo{font-size:14px;font-weight:800;color:#1a1a2e;margin-bottom:4px;}
+.ta-meta{display:flex;gap:6px;align-items:center;}
+.ta-badge{font-size:10px;font-weight:800;padding:2px 8px;border-radius:10px;background:#E1F5EE;color:#085041;}
+.ta-dur{font-size:10px;color:#6b7280;font-weight:600;}
+.ta-arrow{font-size:18px;color:#D3D1C7;}
+
+/* EXERCÍCIO DE TREINO AUDITIVO */
+#exercicio-audio{background:#F8F7FF;}
+.eaheader{background:#0F6E56;padding:50px 20px 20px;position:relative;}
+.eaback{position:absolute;top:14px;left:14px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.2);border:none;cursor:pointer;font-size:20px;color:#fff;display:flex;align-items:center;justify-content:center;z-index:10;}
+.eatitulo{font-size:16px;font-weight:800;color:#fff;}
+.eabody{padding:20px 16px;display:flex;flex-direction:column;gap:14px;flex:1;}
+.ea-instrucao{background:#E1F5EE;border-radius:14px;padding:14px;text-align:center;}
+.ea-instrucao-icon{font-size:36px;margin-bottom:8px;}
+.ea-instrucao-texto{font-size:14px;font-weight:700;color:#085041;line-height:1.5;}
+.ea-instrucao-sub{font-size:12px;color:#0F6E56;margin-top:4px;}
+.ea-player{background:#fff;border-radius:14px;padding:16px;text-align:center;}
+.ea-play-btn{width:72px;height:72px;border-radius:50%;background:#0F6E56;border:none;cursor:pointer;font-size:32px;color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;}
+.ea-wave{display:flex;align-items:center;justify-content:center;gap:3px;height:40px;margin-bottom:10px;}
+.ea-wave-bar{width:4px;border-radius:2px;background:#5DCAA5;animation:wave 1s ease-in-out infinite;}
+.ea-wave-bar:nth-child(2){animation-delay:.1s;}
+.ea-wave-bar:nth-child(3){animation-delay:.2s;}
+.ea-wave-bar:nth-child(4){animation-delay:.3s;}
+.ea-wave-bar:nth-child(5){animation-delay:.4s;}
+.ea-wave-bar:nth-child(6){animation-delay:.3s;}
+.ea-wave-bar:nth-child(7){animation-delay:.2s;}
+.ea-wave-bar:nth-child(8){animation-delay:.1s;}
+@keyframes wave{0%,100%{height:8px;}50%{height:32px;}}
+.ea-playing .ea-wave-bar{animation-play-state:running;}
+.ea-stopped .ea-wave-bar{animation-play-state:paused;height:8px;}
+.ea-time{font-size:12px;color:#6b7280;font-weight:700;}
+.ea-speed{display:flex;gap:6px;justify-content:center;margin-top:8px;}
+.ea-reveal-btn{width:100%;padding:12px;border-radius:12px;border:2px solid #0F6E56;background:#fff;color:#0F6E56;font-family:'Nunito',Arial,sans-serif;font-size:14px;font-weight:800;cursor:pointer;}
+.ea-transcricao{background:#E1F5EE;border-radius:12px;padding:14px;display:none;font-size:14px;line-height:1.7;color:#085041;}
+.ea-transcricao.show{display:block;}
+.ea-quiz-titulo{font-size:14px;font-weight:800;color:#1a1a2e;margin-bottom:10px;}
+
+/* ===== CONVERSAÇÃO ===== */
+#conversacao{background:#F8F7FF;}
+.ctheader{background:#D85A30;padding:50px 20px 20px;position:relative;}
+.ctback{position:absolute;top:14px;left:14px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.2);border:none;cursor:pointer;font-size:20px;color:#fff;display:flex;align-items:center;justify-content:center;z-index:10;}
+.cttitulo{font-size:18px;font-weight:800;color:#fff;}
+.ctsub{font-size:13px;color:#F5C4B3;margin-top:4px;}
+.ctbody{display:flex;flex-direction:column;flex:1;overflow:hidden;}
+.ct-topico{background:#FAECE7;border-bottom:1px solid #F0997B;padding:10px 16px;display:flex;align-items:center;gap:8px;}
+.ct-topico-badge{font-size:11px;font-weight:800;background:#D85A30;color:#fff;padding:3px 10px;border-radius:20px;}
+.ct-topico-texto{font-size:12px;color:#712B13;font-weight:600;}
+.ct-chat{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;}
+.ct-msg{display:flex;gap:8px;align-items:flex-end;}
+.ct-msg.user{flex-direction:row-reverse;}
+.ct-avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.ct-avatar.cricket{background:#1D9E75;}
+.ct-avatar.user-av{background:#534AB7;font-size:10px;font-weight:800;color:#fff;}
+.ct-bubble{max-width:75%;padding:10px 14px;border-radius:14px;font-size:13px;line-height:1.5;font-weight:600;}
+.ct-msg.cricket-msg .ct-bubble{background:#fff;color:#1a1a2e;border-bottom-left-radius:2px;border:1px solid #F1EFE8;}
+.ct-msg.user .ct-bubble{background:#534AB7;color:#fff;border-bottom-right-radius:2px;}
+.ct-correction{background:#FFF8F0;border:1px solid #FAC775;border-radius:10px;padding:8px 12px;font-size:11px;color:#412402;margin-top:4px;line-height:1.5;}
+.ct-input-area{padding:12px 16px;background:#fff;border-top:1px solid #F1EFE8;display:flex;gap:8px;align-items:flex-end;}
+.ct-input{flex:1;background:#F8F7FF;border:1.5px solid #D3D1C7;border-radius:20px;padding:10px 16px;font-family:'Nunito',Arial,sans-serif;font-size:13px;color:#1a1a2e;outline:none;resize:none;min-height:40px;max-height:100px;}
+.ct-input:focus{border-color:#D85A30;}
+.ct-send{width:40px;height:40px;border-radius:50%;background:#D85A30;border:none;cursor:pointer;color:#fff;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ct-mic{width:40px;height:40px;border-radius:50%;background:#FAECE7;border:1.5px solid #F0997B;cursor:pointer;color:#D85A30;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ct-mic.recording{background:#D85A30;color:#fff;animation:pulse 1s ease-in-out infinite;}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.1);}}
+.ct-sugestoes{display:flex;gap:6px;overflow-x:auto;padding:8px 16px 0;}
+.ct-sug{font-size:11px;font-weight:700;padding:5px 12px;border-radius:20px;border:1.5px solid #F0997B;color:#D85A30;background:#fff;cursor:pointer;white-space:nowrap;font-family:'Nunito',Arial,sans-serif;}
 </style>
 </head>
 <body>
@@ -1032,6 +1113,117 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
   </nav>
 </div>
 
+
+<!-- ===== TREINO AUDITIVO ===== -->
+<div id="treino-audio" class="tela">
+  <div class="taheader">
+    <button class="taback" id="btnVoltarTreino">&#8592;</button>
+    <div class="tatitulo">Treino Auditivo</div>
+    <div class="tasub">Ouça e responda — sem ver o texto</div>
+  </div>
+  <div class="ta-nivel-tabs" id="ta-nivel-tabs">
+    <button class="ta-tab on" data-nivel="A1">A1</button>
+    <button class="ta-tab" data-nivel="A2">A2</button>
+    <button class="ta-tab" data-nivel="B1">B1</button>
+    <button class="ta-tab" data-nivel="B2">B2</button>
+    <button class="ta-tab" data-nivel="C1">C1</button>
+    <button class="ta-tab" data-nivel="C2">C2</button>
+  </div>
+  <div class="tabody" id="ta-lista">
+    <!-- Gerado por JS -->
+  </div>
+  <nav class="nav">
+    <div class="nitem" id="tanavHome"><i class="ti ti-home"></i>Início</div>
+    <div class="nitem" id="tanavTextos"><i class="ti ti-book"></i>Textos</div>
+    <div class="nitem on"><i class="ti ti-headphones"></i>Ouvir</div>
+    <div class="nitem" id="tanavProgresso"><i class="ti ti-chart-bar"></i>Progresso</div>
+    <div class="nitem" id="tanavPerfil"><i class="ti ti-user"></i>Perfil</div>
+  </nav>
+</div>
+
+<!-- ===== EXERCÍCIO DE ÁUDIO ===== -->
+<div id="exercicio-audio" class="tela">
+  <div class="eaheader">
+    <button class="eaback" id="btnVoltarExAudio">&#8592;</button>
+    <div class="eatitulo" id="ea-titulo">Listening Exercise</div>
+  </div>
+  <div class="eabody">
+    <div class="ea-instrucao">
+      <div class="ea-instrucao-icon">🎧</div>
+      <div class="ea-instrucao-texto">Ouça o áudio com atenção</div>
+      <div class="ea-instrucao-sub">Responda as perguntas sem ver o texto</div>
+    </div>
+
+    <div class="ea-player">
+      <button class="ea-play-btn" id="eaPlayBtn">▶</button>
+      <div class="ea-wave ea-stopped" id="eaWave">
+        <div class="ea-wave-bar"></div>
+        <div class="ea-wave-bar"></div>
+        <div class="ea-wave-bar"></div>
+        <div class="ea-wave-bar"></div>
+        <div class="ea-wave-bar"></div>
+        <div class="ea-wave-bar"></div>
+        <div class="ea-wave-bar"></div>
+        <div class="ea-wave-bar"></div>
+      </div>
+      <div class="ea-time" id="ea-time">Clique para ouvir</div>
+      <div class="ea-speed">
+        <button class="speed-btn" data-speed="0.75">0.75x</button>
+        <button class="speed-btn on" data-speed="1">1x</button>
+        <button class="speed-btn" data-speed="1.25">1.25x</button>
+      </div>
+    </div>
+
+    <button class="ea-reveal-btn" id="eaRevealBtn">👁 Ver transcrição</button>
+    <div class="ea-transcricao" id="ea-transcricao"></div>
+
+    <div id="ea-quiz-area">
+      <div class="ea-quiz-titulo">📝 Responda as perguntas</div>
+      <div class="qopcoes" id="ea-quiz-perguntas"></div>
+    </div>
+  </div>
+  <nav class="nav">
+    <div class="nitem" id="eaNavHome"><i class="ti ti-home"></i>Início</div>
+    <div class="nitem"><i class="ti ti-book"></i>Textos</div>
+    <div class="nitem on" id="eaNavOuvir"><i class="ti ti-headphones"></i>Ouvir</div>
+    <div class="nitem"><i class="ti ti-chart-bar"></i>Progresso</div>
+    <div class="nitem"><i class="ti ti-user"></i>Perfil</div>
+  </nav>
+</div>
+
+<!-- ===== CONVERSAÇÃO ===== -->
+<div id="conversacao" class="tela">
+  <div class="ctheader">
+    <button class="ctback" id="btnVoltarConv">&#8592;</button>
+    <div class="cttitulo">Falar com Cricket</div>
+    <div class="ctsub">Conversação em inglês com correção</div>
+  </div>
+  <div class="ctbody">
+    <div class="ct-topico">
+      <div class="ct-topico-badge">B1</div>
+      <div class="ct-topico-texto">Tópico: Daily Routine & Lifestyle</div>
+    </div>
+    <div class="ct-sugestoes">
+      <div class="ct-sug" id="sug1">What do you do every day?</div>
+      <div class="ct-sug" id="sug2">Tell me about your hobbies</div>
+      <div class="ct-sug" id="sug3">Describe your home</div>
+    </div>
+    <div class="ct-chat" id="ct-chat">
+      <div class="ct-msg cricket-msg">
+        <div class="ct-avatar cricket">🦗</div>
+        <div>
+          <div class="ct-bubble">Hello! I am Cricket, your English conversation partner. Let us practice together! Tell me, what do you usually do in the morning?</div>
+        </div>
+      </div>
+    </div>
+    <div class="ct-input-area">
+      <button class="ct-mic" id="ctMic">🎤</button>
+      <textarea class="ct-input" id="ctInput" placeholder="Type in English or use the microphone..." rows="1"></textarea>
+      <button class="ct-send" id="ctSend">➤</button>
+    </div>
+  </div>
+</div>
+
 <!-- SELETOR DE NÍVEL -->
 <div class="nivel-sheet" id="nivel-sheet">
   <div class="nivel-sheet-box">
@@ -1245,6 +1437,263 @@ function avaliarEscrita(texto) {
   var result = document.getElementById('eresultado');
   if (result) result.classList.add('show');
 }
+
+
+// ===== SONS DO APP =====
+function playSound(tipo) {
+  try {
+    var ctx = new (window.AudioContext || window.webkitAudioContext)();
+    var osc = ctx.createOscillator();
+    var gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    if (tipo === 'acerto') {
+      osc.frequency.setValueAtTime(523, ctx.currentTime);
+      osc.frequency.setValueAtTime(659, ctx.currentTime + 0.1);
+      osc.frequency.setValueAtTime(784, ctx.currentTime + 0.2);
+      gain.gain.setValueAtTime(0.3, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime + 0.4);
+    } else if (tipo === 'erro') {
+      osc.frequency.setValueAtTime(300, ctx.currentTime);
+      osc.frequency.setValueAtTime(200, ctx.currentTime + 0.15);
+      gain.gain.setValueAtTime(0.3, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime + 0.3);
+    } else if (tipo === 'clique') {
+      osc.frequency.setValueAtTime(800, ctx.currentTime);
+      gain.gain.setValueAtTime(0.1, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.05);
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime + 0.05);
+    }
+  } catch(e) {}
+}
+
+// ===== TEXT TO SPEECH =====
+var ttsAtivo = false;
+var ttsUtterance = null;
+
+function lerTexto(texto, velocidade) {
+  if (!window.speechSynthesis) { alert('Seu navegador não suporta áudio. Tente Chrome ou Edge.'); return; }
+  window.speechSynthesis.cancel();
+  if (ttsAtivo) { ttsAtivo = false; return; }
+  ttsUtterance = new SpeechSynthesisUtterance(texto);
+  ttsUtterance.lang = 'en-US';
+  ttsUtterance.rate = velocidade || 1;
+  ttsUtterance.pitch = 1;
+  var vozes = window.speechSynthesis.getVoices();
+  var vozEN = vozes.find(function(v) { return v.lang.startsWith('en'); });
+  if (vozEN) ttsUtterance.voice = vozEN;
+  ttsAtivo = true;
+  ttsUtterance.onend = function() { ttsAtivo = false; atualizarBtnPlay(false); };
+  ttsUtterance.onerror = function() { ttsAtivo = false; atualizarBtnPlay(false); };
+  window.speechSynthesis.speak(ttsUtterance);
+  atualizarBtnPlay(true);
+}
+
+function atualizarBtnPlay(tocando) {
+  var btn = document.getElementById('btnPlay');
+  if (btn) btn.textContent = tocando ? '⏸' : '▶';
+  var eaBtn = document.getElementById('eaPlayBtn');
+  if (eaBtn) eaBtn.textContent = tocando ? '⏸' : '▶';
+  var wave = document.getElementById('eaWave');
+  if (wave) {
+    wave.className = tocando ? 'ea-wave ea-playing' : 'ea-wave ea-stopped';
+  }
+}
+
+var textoAtualTTS = '';
+var velocidadeAtual = 1;
+
+// ===== TREINO AUDITIVO =====
+var treinoNivel = 'B1';
+
+var treinoExercicios = {
+  'A1': [
+    {titulo:'Family Members',audio:'I have a mother, a father, a brother and a sister. We live in a small house. My brother is young. My sister is older. We are a happy family.',
+     transcricao:'I have a mother, a father, a brother and a sister. We live in a small house. My brother is young. My sister is older. We are a happy family.',
+     perguntas:[
+       {p:'How many siblings does the speaker have?',ops:['One','Two','Three','Four'],c:1,exp:'O texto menciona "a brother and a sister" — dois irmãos.'},
+       {p:'Where does the family live?',ops:['A big house','A small house','An apartment','A farm'],c:1,exp:'O texto diz "We live in a small house".'}
+     ]},
+    {titulo:'My School Day',audio:'I wake up at seven. I eat breakfast and go to school. I study English and maths. School finishes at three. I go home and do my homework.',
+     transcricao:'I wake up at seven. I eat breakfast and go to school. I study English and maths. School finishes at three. I go home and do my homework.',
+     perguntas:[
+       {p:'What time does school finish?',ops:['At seven','At two','At three','At four'],c:2,exp:'O texto diz "School finishes at three".'},
+       {p:'What subjects does the speaker study?',ops:['Science and art','English and maths','History and music','French and sport'],c:1,exp:'O texto menciona "I study English and maths".'}
+     ]}
+  ],
+  'B1': [
+    {titulo:'Climate Change',audio:'Climate change is one of the most pressing issues of our time. Rising temperatures are affecting ecosystems around the world, causing unprecedented shifts in weather patterns. Scientists warn that without immediate action, the consequences could be devastating for future generations.',
+     transcricao:'Climate change is one of the most pressing issues of our time. Rising temperatures are affecting ecosystems around the world, causing unprecedented shifts in weather patterns. Scientists warn that without immediate action, the consequences could be devastating for future generations.',
+     perguntas:[
+       {p:'What are rising temperatures affecting?',ops:['Only polar regions','Only the oceans','Ecosystems around the world','Only cities'],c:2,exp:'O texto afirma que as temperaturas estão afetando ecossistemas ao redor do mundo.'},
+       {p:'What do scientists warn could happen without action?',ops:['Nothing serious','Devastating consequences','Minor problems','Improvement'],c:1,exp:'Cientistas alertam que as consequências poderiam ser devastadoras.'},
+       {p:'What kind of shifts are happening in weather patterns?',ops:['Small and expected','Unprecedented','Positive and helpful','Temporary'],c:1,exp:'O texto usa a palavra "unprecedented" — sem precedentes.'}
+     ]},
+    {titulo:'Football Tactics',audio:'Modern football is as much about tactics as it is about skill. Coaches analyse their opponents carefully before each match. The team formation can change the entire game. A well-planned strategy often leads to victory, even against stronger teams.',
+     transcricao:'Modern football is as much about tactics as it is about skill. Coaches analyse their opponents carefully before each match. The team formation can change the entire game. A well-planned strategy often leads to victory, even against stronger teams.',
+     perguntas:[
+       {p:'What do coaches do before each match?',ops:['Train players','Analyse their opponents','Change the formation','Buy new players'],c:1,exp:'O texto diz "Coaches analyse their opponents carefully before each match".'},
+       {p:'What can a well-planned strategy lead to?',ops:['Defeat','A draw','Victory','More money'],c:2,exp:'O texto afirma que uma boa estratégia leva à vitória.'}
+     ]}
+  ],
+  'B2': [
+    {titulo:'Technology and Society',audio:'The rapid advancement of technology has fundamentally transformed modern society. While digital innovation brings considerable benefits, it also raises significant ethical concerns regarding privacy and employment. Governments and corporations must collaborate to ensure that technological progress remains sustainable and inclusive.',
+     transcricao:'The rapid advancement of technology has fundamentally transformed modern society. While digital innovation brings considerable benefits, it also raises significant ethical concerns regarding privacy and employment. Governments and corporations must collaborate to ensure that technological progress remains sustainable and inclusive.',
+     perguntas:[
+       {p:'What ethical concerns does digital innovation raise?',ops:['Climate and nature','Privacy and employment','Education and health','Sport and leisure'],c:1,exp:'O texto menciona preocupações sobre privacidade e emprego.'},
+       {p:'Who must collaborate to ensure sustainable progress?',ops:['Scientists only','Students and teachers','Governments and corporations','Citizens and police'],c:2,exp:'O texto afirma que governos e corporações devem colaborar.'}
+     ]}
+  ]
+};
+
+function renderTreinoLista(nivel) {
+  treinoNivel = nivel;
+  var lista = document.getElementById('ta-lista');
+  if (!lista) return;
+  var exercicios = treinoExercicios[nivel] || treinoExercicios['B1'];
+  lista.innerHTML = '';
+  exercicios.forEach(function(ex, i) {
+    var card = document.createElement('div');
+    card.className = 'ta-card';
+    card.innerHTML =
+      '<div class="ta-icon">🎧</div>' +
+      '<div class="ta-info">' +
+        '<div class="ta-titulo">' + ex.titulo + '</div>' +
+        '<div class="ta-meta">' +
+          '<span class="ta-badge">' + nivel + '</span>' +
+          '<span class="ta-dur">Listening + Quiz</span>' +
+        '</div>' +
+      '</div>' +
+      '<div class="ta-arrow">→</div>';
+    card.onclick = function() { abrirExercicioAudio(ex, nivel); };
+    lista.appendChild(card);
+  });
+}
+
+var exercicioAtual = null;
+var eaQuizIndex = 0;
+var eaQuizAcertos = 0;
+var eaRespondida = false;
+
+function abrirExercicioAudio(ex, nivel) {
+  exercicioAtual = ex;
+  eaQuizIndex = 0;
+  eaQuizAcertos = 0;
+  eaRespondida = false;
+  textoAtualTTS = ex.audio;
+
+  var titulo = document.getElementById('ea-titulo');
+  if (titulo) titulo.textContent = ex.titulo + ' — ' + nivel;
+
+  var transc = document.getElementById('ea-transcricao');
+  if (transc) { transc.textContent = ex.transcricao; transc.classList.remove('show'); }
+
+  var revBtn = document.getElementById('eaRevealBtn');
+  if (revBtn) revBtn.textContent = '👁 Ver transcrição';
+
+  atualizarBtnPlay(false);
+  renderEaQuiz();
+  ir('exercicio-audio');
+}
+
+function renderEaQuiz() {
+  if (!exercicioAtual) return;
+  var area = document.getElementById('ea-quiz-perguntas');
+  if (!area) return;
+  area.innerHTML = '';
+
+  exercicioAtual.perguntas.forEach(function(q, qi) {
+    var div = document.createElement('div');
+    div.style.cssText = 'background:#fff;border-radius:14px;padding:14px;margin-bottom:10px;';
+    div.innerHTML = '<div style="font-size:13px;font-weight:800;color:#1a1a2e;margin-bottom:10px;">' + (qi+1) + '. ' + q.p + '</div>';
+    q.ops.forEach(function(op, oi) {
+      var btn = document.createElement('button');
+      btn.className = 'qopcao';
+      btn.textContent = op;
+      btn.setAttribute('data-qi', qi);
+      btn.setAttribute('data-oi', oi);
+      btn.onclick = function() { responderEaQuiz(qi, oi, q); };
+      div.appendChild(btn);
+    });
+    area.appendChild(div);
+  });
+}
+
+function responderEaQuiz(qi, oi, q) {
+  var btns = document.querySelectorAll('[data-qi="'+qi+'"]');
+  btns.forEach(function(b) {
+    b.classList.add('desabilitada');
+    if (parseInt(b.getAttribute('data-oi')) === q.c) b.classList.add('correta');
+    else if (parseInt(b.getAttribute('data-oi')) === oi && oi !== q.c) b.classList.add('errada');
+  });
+  if (oi === q.c) { playSound('acerto'); } else { playSound('erro'); }
+}
+
+// ===== CONVERSAÇÃO =====
+var conversasRespostas = [
+  'That is interesting! Can you tell me more about your daily routine?',
+  'Great! I would love to hear more. What do you enjoy doing in your free time?',
+  'Very good! Your English is improving. Let us continue — what are your plans for the weekend?',
+  'Excellent answer! Now, can you describe a typical day at work or school for you?',
+  'Well done! You are making great progress. Try to use more adjectives to describe things.'
+];
+var conversaIndex = 0;
+
+function enviarMensagemConv(texto) {
+  if (!texto || !texto.trim()) return;
+  var chat = document.getElementById('ct-chat');
+  if (!chat) return;
+
+  var avatarIni = nomeUsuario ? nomeUsuario.split(' ').map(function(n){return n[0];}).slice(0,2).join('').toUpperCase() : 'EU';
+
+  // Mensagem do usuário
+  var userMsg = document.createElement('div');
+  userMsg.className = 'ct-msg user';
+  userMsg.innerHTML =
+    '<div class="ct-avatar user-av">' + avatarIni + '</div>' +
+    '<div class="ct-bubble">' + texto + '</div>';
+  chat.appendChild(userMsg);
+
+  // Correção simples (simulada)
+  if (texto.length > 10) {
+    var corrDiv = document.createElement('div');
+    corrDiv.style.cssText = 'display:flex;justify-content:flex-end;';
+    corrDiv.innerHTML = '<div class="ct-correction">✓ Good sentence structure! Keep practicing.</div>';
+    chat.appendChild(corrDiv);
+  }
+
+  // Resposta do Cricket
+  setTimeout(function() {
+    var resp = conversasRespostas[conversaIndex % conversasRespostas.length];
+    conversaIndex++;
+    var cricketMsg = document.createElement('div');
+    cricketMsg.className = 'ct-msg cricket-msg';
+    cricketMsg.innerHTML =
+      '<div class="ct-avatar cricket">🦗</div>' +
+      '<div class="ct-bubble">' + resp + '</div>';
+    chat.appendChild(cricketMsg);
+    chat.scrollTop = chat.scrollHeight;
+
+    // TTS da resposta
+    lerTexto(resp, 0.9);
+  }, 800);
+
+  chat.scrollTop = chat.scrollHeight;
+}
+
+// ===== CORRIGIR QUIZ COM SOM =====
+var _responderQuizOriginal = responderQuiz;
+responderQuiz = function(indice) {
+  var q = quizAtual[quizIndex];
+  var correta = q && q.correta === indice;
+  playSound(correta ? 'acerto' : 'erro');
+  _responderQuizOriginal(indice);
+};
 
 var nomeUsuario = '';
 var nivelAtual = 'B1';
@@ -1740,6 +2189,111 @@ window.onload = function() {
 
   // Conectar botão Audio na leitura
   document.getElementById('btnAudio').onclick = function() { ir('audicao'); };
+
+
+  // CORRIGIR NAV DO PERFIL
+  document.getElementById('pnavTextos').onclick = function() { playSound('clique'); irBanco(); };
+  document.getElementById('pnavFalar').onclick = function() { playSound('clique'); ir('conversacao'); };
+  document.getElementById('pnavProgresso').onclick = function() { playSound('clique'); ir('progresso'); };
+
+  // TREINO AUDITIVO
+  document.getElementById('btnVoltarTreino').onclick = function() { voltarHome(); };
+  document.getElementById('tanavHome').onclick = function() { voltarHome(); };
+  document.getElementById('tanavTextos').onclick = function() { irBanco(); };
+  document.getElementById('tanavProgresso').onclick = function() { ir('progresso'); };
+  document.getElementById('tanavPerfil').onclick = function() { ir('perfil'); };
+  document.querySelectorAll('.ta-tab').forEach(function(tab) {
+    tab.onclick = function() {
+      document.querySelectorAll('.ta-tab').forEach(function(t) { t.classList.remove('on'); });
+      this.classList.add('on');
+      renderTreinoLista(this.getAttribute('data-nivel'));
+    };
+  });
+  renderTreinoLista('B1');
+
+  // EXERCÍCIO DE ÁUDIO
+  document.getElementById('btnVoltarExAudio').onclick = function() { ir('treino-audio'); };
+  document.getElementById('eaNavHome').onclick = function() { voltarHome(); };
+  document.getElementById('eaNavOuvir').onclick = function() { ir('treino-audio'); };
+  document.getElementById('eaPlayBtn').onclick = function() {
+    if (exercicioAtual) {
+      if (ttsAtivo) { window.speechSynthesis.cancel(); ttsAtivo = false; atualizarBtnPlay(false); }
+      else { lerTexto(exercicioAtual.audio, velocidadeAtual); }
+    } else { alert('Selecione um exercício primeiro.'); }
+  };
+  document.getElementById('eaRevealBtn').onclick = function() {
+    var transc = document.getElementById('ea-transcricao');
+    if (transc) {
+      transc.classList.toggle('show');
+      this.textContent = transc.classList.contains('show') ? '👁 Ocultar transcrição' : '👁 Ver transcrição';
+    }
+  };
+  document.querySelectorAll('.speed-btn').forEach(function(btn) {
+    btn.onclick = function() {
+      document.querySelectorAll('.speed-btn').forEach(function(b) { b.classList.remove('on'); });
+      this.classList.add('on');
+      velocidadeAtual = parseFloat(this.getAttribute('data-speed'));
+    };
+  });
+
+  // BOTÃO PLAY NA TELA DE AUDIÇÃO (texto)
+  document.getElementById('btnPlay').onclick = function() {
+    var textoEN = document.getElementById('texto-en-content');
+    var texto = textoEN ? textoEN.textContent : '';
+    if (ttsAtivo) { window.speechSynthesis.cancel(); ttsAtivo = false; this.textContent = '▶'; }
+    else { lerTexto(texto, velocidadeAtual); this.textContent = '⏸'; }
+  };
+
+  // CONVERSAÇÃO
+  document.getElementById('btnVoltarConv').onclick = function() { voltarHome(); };
+  document.getElementById('ctSend').onclick = function() {
+    var input = document.getElementById('ctInput');
+    if (input && input.value.trim()) {
+      enviarMensagemConv(input.value.trim());
+      input.value = '';
+    }
+  };
+  document.getElementById('ctInput').onkeydown = function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      document.getElementById('ctSend').onclick();
+    }
+  };
+  document.getElementById('ctMic').onclick = function() {
+    this.classList.toggle('recording');
+    if (this.classList.contains('recording')) {
+      if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+        var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+        var rec = new SR();
+        rec.lang = 'en-US';
+        rec.onresult = function(e) {
+          var texto = e.results[0][0].transcript;
+          document.getElementById('ctInput').value = texto;
+          document.getElementById('ctMic').classList.remove('recording');
+        };
+        rec.onerror = function() { document.getElementById('ctMic').classList.remove('recording'); };
+        rec.start();
+      } else {
+        alert('Reconhecimento de voz não disponível neste navegador. Tente Chrome.');
+        this.classList.remove('recording');
+      }
+    } else {
+      window.speechSynthesis && window.speechSynthesis.cancel();
+    }
+  };
+  document.querySelectorAll('.ct-sug').forEach(function(sug) {
+    sug.onclick = function() {
+      document.getElementById('ctInput').value = this.textContent;
+    };
+  });
+
+  // CONECTAR FALAR na home cambridge
+  document.getElementById('navFalar').onclick = function() { ir('conversacao'); };
+
+  // SONS NOS BOTÕES DE NAV
+  document.querySelectorAll('.nav .nitem').forEach(function(item) {
+    item.addEventListener('click', function() { playSound('clique'); });
+  });
 
   console.log('Talking Cricket carregado!');
 };
