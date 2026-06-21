@@ -2373,11 +2373,6 @@ window.onload = function() {
   document.getElementById('lvpill').onclick = function() { document.getElementById('nivel-sheet').classList.add('show'); };
   document.getElementById('btnLeitura').onclick = function() { ir('leitura'); };
   document.getElementById('btnAulaHoje').onclick = function() { ir('leitura'); };
-  document.getElementById('navHome').onclick = function() { voltarHome(); };
-  document.getElementById('navPerfil').onclick = function() { ir('perfil'); };
-  document.getElementById('navTextos').onclick = function() { irBanco(); };
-  document.getElementById('navFalar').onclick = function() { alert('Conversação em breve!'); };
-  document.getElementById('navProgresso').onclick = function() { alert('Progresso em breve!'); };
 
   // HOME KIDS
   document.getElementById('btnTrocarModoKids').onclick = function() { ir('modo'); };
@@ -2386,9 +2381,6 @@ window.onload = function() {
 
   // LEITURA
   document.getElementById('btnVoltarLeitura').onclick = function() { voltarHome(); };
-  document.getElementById('lnavHome').onclick = function() { voltarHome(); };
-  document.getElementById('lnavTextos').onclick = function() { irBanco(); };
-  document.getElementById('lnavPerfil').onclick = function() { ir('perfil'); };
   document.getElementById('toggleTrad').onclick = function() {
     tradAtiva = !tradAtiva;
     this.classList.toggle('on', tradAtiva);
@@ -2441,8 +2433,6 @@ window.onload = function() {
 
   // BANCO DE TEXTOS
   document.getElementById('btnVoltarBanco').onclick = function() { voltarHome(); };
-  document.getElementById('bnavHome').onclick = function() { voltarHome(); };
-  document.getElementById('bnavPerfil').onclick = function() { ir('perfil'); };
   document.querySelectorAll('.nivel-tab').forEach(function(tab) {
     tab.onclick = function() {
       nivelBanco = this.getAttribute('data-nivel');
@@ -2456,13 +2446,9 @@ window.onload = function() {
 
 
   // QUIZ
-  document.getElementById('btnVoltarQuiz').onclick = function() { ir('leitura'); };
-  document.getElementById('qnavHome').onclick = function() { voltarHome(); };
-  document.getElementById('qnavTextos').onclick = function() { irBanco(); };
 
   // AUDIÇÃO
   document.getElementById('btnVoltarAudicao').onclick = function() { voltarHome(); };
-  document.getElementById('anavHome').onclick = function() { voltarHome(); };
   // btnPlay onclick definido abaixo
   var _bqa = document.getElementById('btnQuizAudio'); if(_bqa) _bqa.onclick = function() { iniciarQuiz(textoSelecionado ? textoSelecionado.id : 'b1-1'); };
   document.getElementById('btnRepetir').onclick = function() {
@@ -2493,7 +2479,6 @@ window.onload = function() {
 
   // ESCRITA
   document.getElementById('btnVoltarEscrita').onclick = function() { voltarHome(); };
-  document.getElementById('enavHome').onclick = function() { voltarHome(); };
   document.getElementById('escritaInput').oninput = function() {
     var n = contarPalavras(this.value);
     var el = document.getElementById('escritaCount');
@@ -2514,12 +2499,11 @@ window.onload = function() {
   };
 
   // PROGRESSO
-  document.getElementById('pronavHome').onclick = function() { voltarHome(); };
-  document.getElementById('pronavTextos').onclick = function() { irBanco(); };
-  document.getElementById('pronavPerfil').onclick = function() { ir('perfil'); };
+  var _ph = document.getElementById('pronavHome'); if(_ph) _ph.onclick = function() { voltarHome(); };
+  var _pt = document.getElementById('pronavTextos'); if(_pt) _pt.onclick = function() { irBanco(); };
+  var _pp = document.getElementById('pronavPerfil'); if(_pp) _pp.onclick = function() { ir('perfil'); };
 
   // Conectar botões da home com novas telas
-  document.getElementById('navProgresso').onclick = function() { ir('progresso'); };
 
   // Conectar skill cards
   document.getElementById('btnLeitura').onclick = function() { ir('leitura'); };
@@ -2543,10 +2527,6 @@ window.onload = function() {
 
   // TREINO AUDITIVO
   document.getElementById('btnVoltarTreino').onclick = function() { voltarHome(); };
-  document.getElementById('tanavHome').onclick = function() { voltarHome(); };
-  document.getElementById('tanavTextos').onclick = function() { irBanco(); };
-  document.getElementById('tanavProgresso').onclick = function() { ir('progresso'); };
-  document.getElementById('tanavPerfil').onclick = function() { ir('perfil'); };
   document.querySelectorAll('.ta-tab').forEach(function(tab) {
     tab.onclick = function() {
       document.querySelectorAll('.ta-tab').forEach(function(t) { t.classList.remove('on'); });
@@ -2558,8 +2538,6 @@ window.onload = function() {
 
   // EXERCÍCIO DE ÁUDIO
   document.getElementById('btnVoltarExAudio').onclick = function() { ir('treino-audio'); };
-  document.getElementById('eaNavHome').onclick = function() { voltarHome(); };
-  document.getElementById('eaNavOuvir').onclick = function() { ir('treino-audio'); };
   document.getElementById('eaPlayBtn').onclick = function() {
     if (exercicioAtual) {
       if (ttsAtivo) { window.speechSynthesis.cancel(); ttsAtivo = false; atualizarBtnPlay(false); }
@@ -2684,14 +2662,13 @@ window.onload = function() {
   // (tratado diretamente na função navegar)
 
   // CONECTAR FALAR na home cambridge
-  document.getElementById('navFalar').onclick = function() { ir('conversacao'); };
 
   // SONS NOS BOTÕES DE NAV
   document.querySelectorAll('.nav .nitem').forEach(function(item) {
     item.addEventListener('click', function() { playSound('clique'); });
   });
 
-  console.log('Talking Cricket carregado!');
+  console.log('Talking Cricket v20260621193446 carregado!');
 };
 </script>
 </body>
