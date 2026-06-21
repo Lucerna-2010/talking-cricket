@@ -921,23 +921,29 @@ function carregarTexto(sigla) {
   var t = textos[sigla];
   if(!t) return;
 
-  // Atualizar header da leitura
+  // Atualizar título
   var ltitulo = document.querySelector('.ltitulo');
   if(ltitulo) ltitulo.textContent = t.titulo;
   var lbadge = document.querySelector('.lbadge2');
   if(lbadge) lbadge.textContent = sigla;
 
-  // Montar texto em inglês com palavras clicáveis
-  var conteudo = '';
-  t.en.forEach(function(parte) {
-    conteudo += parte.antes;
-    conteudo += '<button class="w" onclick="abrirPalavra(\''+parte.palavra+'\')">'+parte.palavra+'</button>';
-    conteudo += parte.depois;
-  });
+  // Montar texto com palavras clicáveis
   var textoEn = document.querySelector('#texto-en .text-content');
-  if(textoEn) textoEn.innerHTML = conteudo;
+  if(textoEn) {
+    textoEn.innerHTML = '';
+    t.en.forEach(function(parte) {
+      textoEn.appendChild(document.createTextNode(parte.antes));
+      var btn = document.createElement('button');
+      btn.className = 'w';
+      btn.textContent = parte.palavra;
+      btn.setAttribute('data-word', parte.palavra);
+      btn.onclick = function(){ abrirPalavra(this.getAttribute('data-word')); };
+      textoEn.appendChild(btn);
+      textoEn.appendChild(document.createTextNode(parte.depois));
+    });
+  }
 
-  // Atualizar tradução PT
+  // Atualizar tradução
   var textoPt = document.querySelector('#texto-pt .text-content');
   if(textoPt) textoPt.textContent = t.pt;
 
@@ -949,12 +955,13 @@ function carregarTexto(sigla) {
       var pill = document.createElement('div');
       pill.className = 'vpill';
       pill.textContent = word;
-      pill.onclick = function(){ abrirPalavra(word); };
+      pill.setAttribute('data-word', word);
+      pill.onclick = function(){ abrirPalavra(this.getAttribute('data-word')); };
       pillsContainer.appendChild(pill);
     });
   }
 
-  // Atualizar dicionário de palavras ativo
+  // Atualizar dicionário ativo
   palavras = t.palavras;
 }
 
