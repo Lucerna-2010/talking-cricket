@@ -1550,12 +1550,10 @@ function pararAnimacaoAudio() {
 }
 
 function pararTodoAudio() {
-  if (ttsAtivo || window.speechSynthesis.speaking) {
-    window.speechSynthesis.cancel();
-    ttsAtivo = false;
-    atualizarBtnPlay(false);
-    pararAnimacaoAudio();
-  }
+  try { window.speechSynthesis.cancel(); } catch(e) {}
+  ttsAtivo = false;
+  atualizarBtnPlay(false);
+  pararAnimacaoAudio();
 }
 
 
@@ -1919,11 +1917,6 @@ function navegar(destino) {
     case 'textos': irBanco(); break;
     case 'falar': 
       ir('conversacao');
-      setTimeout(function() {
-        if (respostasContextuais && respostasContextuais.greeting) {
-          lerTextoMasculino(respostasContextuais.greeting[0]);
-        }
-      }, 600);
       break;
     case 'progresso': ir('progresso'); break;
     case 'perfil': ir('perfil'); break;
@@ -2416,19 +2409,28 @@ window.onload = function() {
   document.getElementById('btnSair').onclick = function() { if (confirm('Deseja sair?')) { ir('splash'); } };
 
   // DÍGITOS DO CÓDIGO
-  for (var i = 0; i < 4; i++) {
-    (function(idx) {
-      var inp = document.getElementById('d' + idx);
-      if (!inp) return;
-      inp.oninput = function() {
-        this.value = this.value.replace(/[^0-9]/g, '').slice(-1);
-        if (this.value && idx < 3) { var nx = document.getElementById('d' + (idx + 1)); if (nx) nx.focus(); }
-      };
-      inp.onkeydown = function(e) {
-        if (e.key === 'Backspace' && !this.value && idx > 0) { var pv = document.getElementById('d' + (idx - 1)); if (pv) pv.focus(); }
-      };
-    })(i);
-  }
+  (function() {
+    for (var i = 0; i < 4; i++) {
+      (function(idx) {
+        var inp = document.getElementById('d' + idx);
+        if (!inp) return;
+        inp.addEventListener('input', function() {
+          this.value = this.value.replace(/[^0-9]/g, '').slice(-1);
+          if (this.value.length === 1 && idx < 3) {
+            var nx = document.getElementById('d' + (idx + 1));
+            if (nx) { nx.focus(); nx.select(); }
+          }
+        });
+        inp.addEventListener('keydown', function(e) {
+          if (e.key === 'Backspace' && !this.value && idx > 0) {
+            var pv = document.getElementById('d' + (idx - 1));
+            if (pv) { pv.focus(); pv.select(); }
+          }
+        });
+        inp.addEventListener('click', function() { this.select(); });
+      })(i);
+    }
+  })();
 
 
   // BANCO DE TEXTOS
@@ -2567,7 +2569,14 @@ window.onload = function() {
   };
 
   // CONVERSAÇÃO
-  document.getElementById('btnVoltarConv').onclick = function() { voltarHome(); };
+  document.getElementById('btnVoltarConv').onclick = function() {
+    // Parar qualquer áudio tocando
+    try { window.speechSynthesis.cancel(); } catch(e) {}
+    ttsAtivo = false;
+    micAtivo = false;
+    if (reconhecimento) { try { reconhecimento.stop(); } catch(e) {} reconhecimento = null; }
+    voltarHome();
+  };
   document.getElementById('ctSend').onclick = function() {
     var input = document.getElementById('ctInput');
     if (input && input.value.trim()) {
