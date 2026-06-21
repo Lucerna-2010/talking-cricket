@@ -1477,7 +1477,7 @@ var ttsAtivo = false;
 var ttsUtterance = null;
 
 function lerTexto(texto, velocidade) {
-  if (!window.speechSynthesis) { alert('Seu navegador não suporta áudio. Tente Chrome ou Edge.'); return; }
+  if (!window.speechSynthesis) { alert('Seu navegador não suporta áudio. Use Chrome ou Edge.'); return; }
   window.speechSynthesis.cancel();
   if (ttsAtivo) { ttsAtivo = false; return; }
   ttsUtterance = new SpeechSynthesisUtterance(texto);
@@ -2121,10 +2121,7 @@ window.onload = function() {
   // AUDIÇÃO
   document.getElementById('btnVoltarAudicao').onclick = function() { voltarHome(); };
   document.getElementById('anavHome').onclick = function() { voltarHome(); };
-  document.getElementById('btnPlay').onclick = function() {
-    var btn = this;
-    btn.textContent = btn.textContent === '▶' ? '⏸' : '▶';
-  };
+  // btnPlay onclick definido abaixo
   document.getElementById('btnQuizAudio').onclick = function() { iniciarQuiz('b1-1'); };
   document.getElementById('btnRepetir').onclick = function() { document.getElementById('btnPlay').textContent = '▶'; };
   document.getElementById('langEN').onclick = function() {
@@ -2239,9 +2236,16 @@ window.onload = function() {
   // BOTÃO PLAY NA TELA DE AUDIÇÃO (texto)
   document.getElementById('btnPlay').onclick = function() {
     var textoEN = document.getElementById('texto-en-content');
-    var texto = textoEN ? textoEN.textContent : '';
-    if (ttsAtivo) { window.speechSynthesis.cancel(); ttsAtivo = false; this.textContent = '▶'; }
-    else { lerTexto(texto, velocidadeAtual); this.textContent = '⏸'; }
+    var texto = textoEN ? textoEN.textContent.trim() : '';
+    if (!texto) { alert('Nenhum texto carregado.'); return; }
+    if (ttsAtivo) {
+      window.speechSynthesis.cancel();
+      ttsAtivo = false;
+      this.textContent = '▶';
+    } else {
+      lerTexto(texto, velocidadeAtual);
+      this.textContent = '⏸';
+    }
   };
 
   // CONVERSAÇÃO
@@ -2299,5 +2303,4 @@ window.onload = function() {
 };
 </script>
 </body>
-
 </html>
