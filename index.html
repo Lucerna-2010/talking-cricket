@@ -775,4 +775,451 @@ var bancoPalavras = {
   advancement:{pron:'/ədˈvɑːnsmənt/',meaning:'Avanço, progresso em direção a algo melhor.',example:'"The advancement of AI is changing industries."'},
   transformed:{pron:'/trænsˈfɔːrmd/',meaning:'Transformado, mudado completamente.',example:'"The internet has transformed communication."'},
   benefits:{pron:'/ˈbenɪfɪts/',meaning:'Benefícios, vantagens resultantes de algo.',example:'"The benefits of exercise include better health."'},
-  concerns:{pron:'/kənˈsɜːrnz/',meaning:'Preocupações, questões que causam ansiedade.',example:'"There are growing concerns about privacy."
+  concerns:{pron:'/kənˈsɜːrnz/',meaning:'Preocupações, questões que causam ansiedade.',example:'"There are growing concerns about privacy."'},
+  big:{pron:'/bɪɡ/',meaning:'Grande, de tamanho considerável.',example:'"I have a big family with many members."'},
+  brothers:{pron:'/ˈbrʌðərz/',meaning:'Irmãos, pessoas do sexo masculino da mesma família.',example:'"My two brothers play football together."'},
+  young:{pron:'/jʌŋ/',meaning:'Jovem, de pouca idade.',example:'"My brothers are young — they are 8 and 10 years old."'},
+  older:{pron:'/ˈoʊldər/',meaning:'Mais velho, de maior idade.',example:'"My sister is older than me."'},
+  bus:{pron:'/bʌs/',meaning:'Ônibus, transporte público coletivo.',example:'"I take the bus to work every day."'},
+  busy:{pron:'/ˈbɪzi/',meaning:'Movimentado, cheio de atividade.',example:'"The city centre is very busy at rush hour."'},
+  office:{pron:'/ˈɒfɪs/',meaning:'Escritório, local de trabalho.',example:'"She works in a large office building."'},
+  restaurant:{pron:'/ˈrestrɒnt/',meaning:'Restaurante, local para refeições.',example:'"We had lunch at an Italian restaurant."'}
+};
+
+var bancoTextos = {
+  A1: [
+    {
+      id:'a1-1', titulo:'My Family', tema:'Família', icone:'👨‍👩‍👧‍👦', cor:'tb-fam',
+      en: 'I have a <w>big</w> family. My mother and father live at home. I have two <w>brothers</w> and one sister. My brothers are <w>young</w>. They go to school every day. My sister is <w>older</w>. She has a job.',
+      pt: 'Eu tenho uma família grande. Minha mãe e meu pai moram em casa. Eu tenho dois irmãos e uma irmã. Meus irmãos são jovens. Eles vão à escola todos os dias. Minha irmã é mais velha. Ela tem um emprego.',
+      vocab: ['big','brothers','young','older'], concluido: false
+    },
+    {
+      id:'a1-2', titulo:'My House', tema:'Casa', icone:'🏠', cor:'tb-city',
+      en: 'I live in a <w>small</w> house. My house has three <w>rooms</w>. There is a kitchen, a living room and a bedroom. I have a <w>garden</w> with flowers. I love my house.',
+      pt: 'Eu moro em uma casa pequena. Minha casa tem três cômodos. Tem uma cozinha, uma sala de estar e um quarto. Eu tenho um jardim com flores. Eu amo minha casa.',
+      vocab: ['small','rooms','garden'], concluido: false
+    },
+    {
+      id:'a1-3', titulo:'My Day', tema:'Rotina', icone:'☀️', cor:'tb-city',
+      en: 'I wake up at seven. I eat <w>breakfast</w> with my family. Then I go to school. I study English and <w>maths</w>. At three, I go <w>home</w>. I watch TV and do my homework.',
+      pt: 'Eu acordo às sete. Eu tomo café da manhã com minha família. Depois vou para a escola. Eu estudo inglês e matemática. Às três, vou para casa. Eu assisto TV e faço minha lição.',
+      vocab: ['breakfast','maths','home'], concluido: false
+    }
+  ],
+  A2: [
+    {
+      id:'a2-1', titulo:'A Day in the City', tema:'Cidade', icone:'🏙️', cor:'tb-city',
+      en: 'Every morning, I take the <w>bus</w> to work. The city is always <w>busy</w> in the morning. I work in a small <w>office</w> near the centre. At lunch, I go to a <w>restaurant</w> with my colleagues.',
+      pt: 'Toda manhã, pego o ônibus para o trabalho. A cidade é sempre movimentada de manhã. Trabalho em um pequeno escritório perto do centro. No almoço, vou a um restaurante com meus colegas.',
+      vocab: ['bus','busy','office','restaurant'], concluido: false
+    },
+    {
+      id:'a2-2', titulo:'Sports Day', tema:'Esportes', icone:'⚽', cor:'tb-sport',
+      en: 'My school has a sports day every year. Students <w>compete</w> in running, jumping and swimming. It is very <w>exciting</w>. I like to run. Last year, I won a <w>medal</w>. My parents were very <w>proud</w>.',
+      pt: 'Minha escola tem um dia de esportes todo ano. Os alunos competem em corrida, salto e natação. É muito emocionante. Eu gosto de correr. Ano passado, ganhei uma medalha. Meus pais ficaram muito orgulhosos.',
+      vocab: ['compete','exciting','medal','proud'], concluido: false
+    },
+    {
+      id:'a2-3', titulo:'The Market', tema:'Cidade', icone:'🛒', cor:'tb-city',
+      en: 'On Saturdays, my mum goes to the <w>market</w>. She buys fresh <w>vegetables</w> and fruit. The market is very <w>colourful</w>. There are many <w>stalls</w> with food and clothes. I love going with her.',
+      pt: 'Aos sábados, minha mãe vai ao mercado. Ela compra legumes e frutas frescos. O mercado é muito colorido. Há muitas barracas com comida e roupas. Adoro ir com ela.',
+      vocab: ['market','vegetables','colourful','stalls'], concluido: false
+    }
+  ],
+  B1: [
+    {
+      id:'b1-1', titulo:'Environment & Climate Change', tema:'Meio Ambiente', icone:'🌍', cor:'tb-env',
+      en: 'Climate change is one of the most <w>pressing</w> issues of our time. Rising temperatures are <w>affecting</w> ecosystems around the world, causing <w>unprecedented</w> shifts in weather patterns. Scientists warn that without <w>immediate</w> action, the <w>consequences</w> could be <w>devastating</w> for future generations.',
+      pt: 'A mudança climática é uma das questões mais urgentes do nosso tempo. O aumento das temperaturas está afetando os ecossistemas ao redor do mundo, causando mudanças sem precedentes nos padrões climáticos. Cientistas alertam que sem uma ação imediata, as consequências podem ser devastadoras para as gerações futuras.',
+      vocab: ['pressing','affecting','unprecedented','immediate','consequences','devastating'], concluido: false
+    },
+    {
+      id:'b1-2', titulo:'Tactics in Modern Football', tema:'Esportes', icone:'⚽', cor:'tb-sport',
+      en: 'Modern football is as much about <w>tactics</w> as it is about skill. Coaches analyse their <w>opponents</w> carefully before each match. The team's <w>formation</w> can change the entire game. A well-planned strategy often leads to <w>victory</w>, even against stronger teams.',
+      pt: 'O futebol moderno é tanto sobre táticas quanto sobre habilidade. Os técnicos analisam seus adversários cuidadosamente antes de cada partida. A formação do time pode mudar o jogo inteiro. Uma estratégia bem planejada frequentemente leva à vitória, mesmo contra times mais fortes.',
+      vocab: ['tactics','opponents','formation','victory'], concluido: false
+    },
+    {
+      id:'b1-3', titulo:'Military Leadership in WWII', tema:'Militar', icone:'🎖️', cor:'tb-mil',
+      en: 'During World War II, effective <w>commanders</w> were essential to military success. Their <w>strategy</w> had to balance speed, resources and risk. Many critical <w>missions</w> were carried out by small groups of highly trained <w>troops</w>. Leadership under pressure defined the outcome of many battles.',
+      pt: 'Durante a Segunda Guerra Mundial, comandantes eficazes eram essenciais para o sucesso militar. Sua estratégia tinha que equilibrar velocidade, recursos e risco. Muitas missões críticas foram realizadas por pequenos grupos de tropas altamente treinadas. A liderança sob pressão definiu o resultado de muitas batalhas.',
+      vocab: ['commander','strategy','mission','troops'], concluido: false
+    }
+  ],
+  B2: [
+    {
+      id:'b2-1', titulo:'Technology & Society', tema:'Tecnologia', icone:'💻', cor:'tb-tech',
+      en: 'The rapid <w>advancement</w> of technology has fundamentally <w>transformed</w> modern society. While digital innovation brings considerable <w>benefits</w>, it also raises significant ethical <w>concerns</w> regarding privacy and employment. Governments must collaborate to ensure technological progress remains sustainable.',
+      pt: 'O rápido avanço da tecnologia transformou fundamentalmente a sociedade moderna. Embora a inovação digital traga benefícios consideráveis, ela também levanta preocupações éticas significativas em relação à privacidade e ao emprego. Os governos devem colaborar para garantir que o progresso tecnológico permaneça sustentável.',
+      vocab: ['advancement','transformed','benefits','concerns'], concluido: false
+    },
+    {
+      id:'b2-2', titulo:'Elite Sports Performance', tema:'Esportes', icone:'🏅', cor:'tb-sport',
+      en: 'Elite athletes dedicate years to perfecting their <w>technique</w>. Beyond physical training, mental <w>resilience</w> is equally important. Coaches now use data <w>analytics</w> to monitor performance and prevent injuries. The marginal gains philosophy suggests that small <w>improvements</w> in multiple areas lead to exceptional results.',
+      pt: 'Atletas de elite dedicam anos para aperfeiçoar sua técnica. Além do treinamento físico, a resiliência mental é igualmente importante. Os treinadores agora usam análise de dados para monitorar o desempenho e prevenir lesões. A filosofia dos ganhos marginais sugere que pequenas melhorias em múltiplas áreas levam a resultados excepcionais.',
+      vocab: ['technique','resilience','analytics','improvements'], concluido: false
+    },
+    {
+      id:'b2-3', titulo:'Modern Military Technology', tema:'Militar', icone:'🎖️', cor:'tb-mil',
+      en: 'Contemporary warfare has been <w>revolutionised</w> by technology. Drones, cyber operations and artificial intelligence have become central to modern military <w>doctrine</w>. Nations invest heavily in <w>cybersecurity</w> to protect critical infrastructure. The ethical <w>implications</w> of autonomous weapons systems remain highly debated.',
+      pt: 'A guerra contemporânea foi revolucionada pela tecnologia. Drones, operações cibernéticas e inteligência artificial tornaram-se centrais para a doutrina militar moderna. As nações investem pesadamente em segurança cibernética para proteger infraestruturas críticas. As implicações éticas dos sistemas de armas autônomas permanecem muito debatidas.',
+      vocab: ['revolutionised','doctrine','cybersecurity','implications'], concluido: false
+    }
+  ],
+  C1: [
+    {
+      id:'c1-1', titulo:'The Philosophy of Free Will', tema:'Filosofia', icone:'🧠', cor:'tb-phil',
+      en: 'The question of whether humans possess genuine <w>autonomy</w> over their actions has been a central <w>preoccupation</w> of philosophical inquiry for centuries. Determinists argue that every human action is the <w>inevitable</w> consequence of prior causes, thereby <w>undermining</w> the notion of moral responsibility.',
+      pt: 'A questão de se os seres humanos possuem autonomia genuína sobre suas ações tem sido uma preocupação central da investigação filosófica por séculos. Os deterministas argumentam que toda ação humana é a consequência inevitável de causas anteriores, minando assim a noção de responsabilidade moral.',
+      vocab: ['autonomy','preoccupation','inevitable','undermining'], concluido: false
+    },
+    {
+      id:'c1-2', titulo:'Geopolitics of Energy', tema:'Geopolítica', icone:'⚡', cor:'tb-tech',
+      en: 'Energy resources have long been a source of geopolitical <w>tension</w>. Nations that control oil and gas reserves wield considerable <w>leverage</w> over global markets. The transition to renewable energy is gradually <w>reshaping</w> these power dynamics, though the pace remains <w>uneven</w> across regions.',
+      pt: 'Os recursos energéticos têm sido há muito tempo uma fonte de tensão geopolítica. As nações que controlam reservas de petróleo e gás exercem uma influência considerável sobre os mercados globais. A transição para energias renováveis está gradualmente remodelando essas dinâmicas de poder, embora o ritmo permaneça desigual entre as regiões.',
+      vocab: ['tension','leverage','reshaping','uneven'], concluido: false
+    },
+    {
+      id:'c1-3', titulo:'Psychology of Athletic Excellence', tema:'Esportes', icone:'🏋️', cor:'tb-sport',
+      en: 'Peak athletic performance is as much a <w>psychological</w> as a physical achievement. Elite competitors develop exceptional capacity for <w>concentration</w> under extreme pressure. The concept of flow — a state of complete <w>immersion</w> in an activity — is frequently cited as a key factor in <w>transcendent</w> athletic performances.',
+      pt: 'O desempenho atlético de pico é tanto uma conquista psicológica quanto física. Competidores de elite desenvolvem capacidade excepcional de concentração sob pressão extrema. O conceito de fluxo — um estado de imersão completa em uma atividade — é frequentemente citado como fator-chave em desempenhos atléticos transcendentes.',
+      vocab: ['psychological','concentration','immersion','transcendent'], concluido: false
+    }
+  ],
+  C2: [
+    {
+      id:'c2-1', titulo:'Epistemology of Scientific Knowledge', tema:'Ciência', icone:'🔬', cor:'tb-sci',
+      en: 'Scientific knowledge is epistemologically distinguished from mere belief by its adherence to <w>rigorous</w> methodological standards. The <w>falsifiability</w> criterion, advanced by Karl Popper, posits that a theory acquires scientific <w>legitimacy</w> only insofar as it remains, in principle, <w>refutable</w>.',
+      pt: 'O conhecimento científico distingue-se epistemologicamente da mera crença por sua adesão a padrões metodológicos rigorosos. O critério da falsificabilidade, desenvolvido por Karl Popper, postula que uma teoria adquire legitimidade científica somente na medida em que permanece, em princípio, refutável.',
+      vocab: ['rigorous','falsifiability','legitimacy','refutable'], concluido: false
+    },
+    {
+      id:'c2-2', titulo:'Strategic Deterrence Theory', tema:'Militar', icone:'🎖️', cor:'tb-mil',
+      en: 'Nuclear deterrence rests upon the <w>paradoxical</w> premise that possessing weapons of mass destruction prevents their use. This doctrine of mutual assured destruction <w>presupposes</w> rational actors capable of calculating consequences. Critics argue that such <w>assumptions</w> are dangerously <w>fallacious</w> in an era of non-state actors.',
+      pt: 'A dissuasão nuclear baseia-se na premissa paradoxal de que possuir armas de destruição em massa impede seu uso. Esta doutrina de destruição mútua assegurada pressupõe atores racionais capazes de calcular consequências. Os críticos argumentam que tais suposições são perigosamente falaciosas em uma era de atores não-estatais.',
+      vocab: ['paradoxical','presupposes','assumptions','fallacious'], concluido: false
+    },
+    {
+      id:'c2-3', titulo:'Biomechanics of Elite Performance', tema:'Esportes', icone:'🏅', cor:'tb-sci',
+      en: 'The <w>biomechanical</w> analysis of elite athletic movement has revealed extraordinary <w>nuances</w> in technique that separate world-class performers from merely exceptional ones. Advanced motion-capture technology now enables coaches to <w>quantify</w> subtle kinematic variables previously <w>imperceptible</w> to the naked eye.',
+      pt: 'A análise biomecânica do movimento atlético de elite revelou nuances extraordinárias de técnica que separam os performers de classe mundial dos meramente excepcionais. A tecnologia avançada de captura de movimento agora permite que técnicos quantifiquem variáveis cinemáticas sutis anteriormente imperceptíveis a olho nu.',
+      vocab: ['biomechanical','nuances','quantify','imperceptible'], concluido: false
+    }
+  ]
+};
+
+var nivelBanco = 'B1';
+var temaFiltro = 'Todos';
+
+// Palavras de todos os textos
+var todasPalavras = {
+  small:{pron:'/smɔːl/',meaning:'Pequeno, de tamanho reduzido.',example:'"I live in a small house near the park."'},
+  rooms:{pron:'/ruːmz/',meaning:'Cômodos, divisões internas de uma casa.',example:'"My house has four rooms."'},
+  garden:{pron:'/ˈɡɑːrdən/',meaning:'Jardim, área externa com plantas e flores.',example:'"We have a beautiful garden."'},
+  breakfast:{pron:'/ˈbrekfəst/',meaning:'Café da manhã, primeira refeição do dia.',example:'"I eat breakfast at seven every morning."'},
+  maths:{pron:'/mæθs/',meaning:'Matemática, ciência dos números.',example:'"She is very good at maths."'},
+  home:{pron:'/hoʊm/',meaning:'Casa, lar, lugar onde se mora.',example:'"I go home after school."'},
+  compete:{pron:'/kəmˈpiːt/',meaning:'Competir, disputar com outros.',example:'"Students compete in sports every year."'},
+  exciting:{pron:'/ɪkˈsaɪtɪŋ/',meaning:'Emocionante, que causa entusiasmo.',example:'"The match was very exciting."'},
+  medal:{pron:'/ˈmedəl/',meaning:'Medalha, prêmio dado a vencedores.',example:'"She won a gold medal at the Olympics."'},
+  proud:{pron:'/praʊd/',meaning:'Orgulhoso, sentindo satisfação por uma conquista.',example:'"My parents were very proud of me."'},
+  market:{pron:'/ˈmɑːrkɪt/',meaning:'Mercado, lugar onde se compram e vendem produtos.',example:'"We buy fresh fruit at the market."'},
+  vegetables:{pron:'/ˈvedʒtəbəlz/',meaning:'Legumes e verduras, alimentos vegetais.',example:'"I eat vegetables every day."'},
+  colourful:{pron:'/ˈkʌlərfəl/',meaning:'Colorido, com muitas cores vivas.',example:'"The market is very colourful."'},
+  stalls:{pron:'/stɔːlz/',meaning:'Barracas, bancas de vendedores no mercado.',example:'"There are many stalls at the fair."'},
+  technique:{pron:'/tekˈniːk/',meaning:'Técnica, método habilidoso para realizar algo.',example:'"Good technique is essential in sport."'},
+  resilience:{pron:'/rɪˈzɪliəns/',meaning:'Resiliência, capacidade de se recuperar de dificuldades.',example:'"Mental resilience is key to success."'},
+  analytics:{pron:'/ˌænəˈlɪtɪks/',meaning:'Análise de dados, estudo sistemático de informações.',example:'"Teams use analytics to improve performance."'},
+  improvements:{pron:'/ɪmˈpruːvmənts/',meaning:'Melhorias, mudanças que tornam algo melhor.',example:'"Small improvements lead to big results."'},
+  revolutionised:{pron:'/ˌrevəˈluːʃənaɪzd/',meaning:'Revolucionado, completamente transformado.',example:'"Technology has revolutionised warfare."'},
+  doctrine:{pron:'/ˈdɒktrɪn/',meaning:'Doutrina, conjunto de princípios ou regras adotados.',example:'"Military doctrine guides battlefield decisions."'},
+  cybersecurity:{pron:'/ˌsaɪbərsɪˈkjʊərɪti/',meaning:'Segurança cibernética, proteção de sistemas digitais.',example:'"Cybersecurity is a national priority."'},
+  implications:{pron:'/ˌɪmplɪˈkeɪʃənz/',meaning:'Implicações, consequências ou significados de algo.',example:'"The implications of this decision are serious."'},
+  autonomy:{pron:'/ɔːˈtɒnəmi/',meaning:'Autonomia, capacidade de agir de forma independente.',example:'"Personal autonomy is a fundamental right."'},
+  preoccupation:{pron:'/priˌɒkjuˈpeɪʃən/',meaning:'Preocupação intensa, pensamento dominante.',example:'"His preoccupation with success affected his life."'},
+  inevitable:{pron:'/ɪnˈevɪtəbl/',meaning:'Inevitável, que não pode ser evitado.',example:'"Change is inevitable in any system."'},
+  undermining:{pron:'/ˌʌndəˈmaɪnɪŋ/',meaning:'Minando, enfraquecendo gradualmente algo.',example:'"His behaviour was undermining team morale."'},
+  tension:{pron:'/ˈtenʃən/',meaning:'Tensão, estado de conflito ou pressão.',example:'"There is tension between the two countries."'},
+  leverage:{pron:'/ˈlevərɪdʒ/',meaning:'Influência, poder de pressionar ou negociar.',example:'"They used oil as political leverage."'},
+  reshaping:{pron:'/riːˈʃeɪpɪŋ/',meaning:'Remodelando, dando nova forma a algo.',example:'"Technology is reshaping the economy."'},
+  uneven:{pron:'/ʌnˈiːvən/',meaning:'Desigual, não uniforme entre partes.',example:'"Progress has been uneven across regions."'},
+  psychological:{pron:'/ˌsaɪkəˈlɒdʒɪkəl/',meaning:'Psicológico, relacionado à mente e comportamento.',example:'"The psychological pressure was enormous."'},
+  concentration:{pron:'/ˌkɒnsənˈtreɪʃən/',meaning:'Concentração, foco intenso em algo.',example:'"She showed remarkable concentration during the match."'},
+  immersion:{pron:'/ɪˈmɜːrʒən/',meaning:'Imersão, estado de estar completamente absorto.',example:'"Total immersion in the task improves performance."'},
+  transcendent:{pron:'/trænˈsendənt/',meaning:'Transcendente, que vai além dos limites comuns.',example:'"It was a truly transcendent performance."'},
+  rigorous:{pron:'/ˈrɪɡərəs/',meaning:'Rigoroso, extremamente cuidadoso e preciso.',example:'"The study followed rigorous scientific methods."'},
+  falsifiability:{pron:'/ˌfɔːlsɪfaɪəˈbɪlɪti/',meaning:'Falsificabilidade, capacidade de ser refutado.',example:'"Falsifiability is central to Popper philosophy."'},
+  legitimacy:{pron:'/lɪˈdʒɪtɪməsi/',meaning:'Legitimidade, qualidade de ser válido e aceito.',example:'"The theory lacks scientific legitimacy."'},
+  refutable:{pron:'/rɪˈfjuːtəbl/',meaning:'Refutável, que pode ser provado falso.',example:'"A good hypothesis must be refutable."'},
+  paradoxical:{pron:'/ˌpærəˈdɒksɪkəl/',meaning:'Paradoxal, que parece contraditório mas pode ser verdadeiro.',example:'"It is paradoxical that weapons prevent war."'},
+  presupposes:{pron:'/ˌpriːsəˈpoʊzɪz/',meaning:'Pressupõe, assume algo como verdadeiro de antemão.',example:'"The theory presupposes rational behaviour."'},
+  assumptions:{pron:'/əˈsʌmpʃənz/',meaning:'Suposições, ideias aceitas sem prova.',example:'"We must question our basic assumptions."'},
+  fallacious:{pron:'/fəˈleɪʃəs/',meaning:'Falacioso, baseado em raciocínio incorreto.',example:'"That argument is completely fallacious."'},
+  biomechanical:{pron:'/ˌbaɪoʊmɪˈkænɪkəl/',meaning:'Biomecânico, relativo à mecânica do corpo humano.',example:'"Biomechanical analysis improves athletic technique."'},
+  nuances:{pron:'/ˈnjuːɑːnsɪz/',meaning:'Nuances, diferenças sutis e detalhadas.',example:'"She appreciated the nuances of the performance."'},
+  quantify:{pron:'/ˈkwɒntɪfaɪ/',meaning:'Quantificar, medir e expressar em números.',example:'"It is hard to quantify the impact of stress."'},
+  imperceptible:{pron:'/ˌɪmpəˈseptɪbəl/',meaning:'Imperceptível, impossível de perceber.',example:'"The change was almost imperceptible."'}
+};
+
+// Mesclar palavras
+Object.assign(bancoPalavras, todasPalavras);
+
+function renderBanco() {
+  var nivel = nivelBanco;
+  var textos = bancoTextos[nivel] || [];
+  var lista = document.getElementById('texto-lista');
+  if (!lista) return;
+  lista.innerHTML = '';
+
+  var filtrados = textos.filter(function(t) {
+    return temaFiltro === 'Todos' || t.tema === temaFiltro;
+  });
+
+  if (filtrados.length === 0) {
+    lista.innerHTML = '<div class="texto-vazio">Nenhum texto encontrado para este filtro.</div>';
+    return;
+  }
+
+  filtrados.forEach(function(t) {
+    var card = document.createElement('div');
+    card.className = 'texto-card';
+    card.innerHTML =
+      '<div class="texto-icon" style="background:#F8F7FF">' + t.icone + '</div>' +
+      '<div class="texto-info">' +
+        '<div class="texto-titulo">' + t.titulo + '</div>' +
+        '<div class="texto-meta">' +
+          '<span class="texto-badge ' + t.cor + '">' + t.tema + '</span>' +
+          '<span class="texto-dur">5 min</span>' +
+        '</div>' +
+      '</div>' +
+      (t.concluido ? '<div class="texto-check">✓</div>' : '<div class="texto-arrow">→</div>');
+    card.onclick = function() { abrirTexto(t); };
+    lista.appendChild(card);
+  });
+}
+
+function abrirTexto(t) {
+  // Atualizar título e badges
+  document.getElementById('ltitulo').textContent = t.titulo;
+  document.getElementById('lbadge2').textContent = nivelBanco;
+
+  // Montar texto EN com palavras clicáveis
+  var enContent = document.getElementById('texto-en-content');
+  enContent.innerHTML = '';
+  var partes = t.en.split(/<w>|<\/w>/);
+  partes.forEach(function(parte, i) {
+    if (i % 2 === 0) {
+      enContent.appendChild(document.createTextNode(parte));
+    } else {
+      var btn = document.createElement('button');
+      btn.className = 'w';
+      btn.setAttribute('data-word', parte);
+      btn.textContent = parte;
+      btn.onclick = function() { abrirPalavraTexto(this.getAttribute('data-word')); };
+      enContent.appendChild(btn);
+    }
+  });
+
+  // Tradução PT
+  document.getElementById('texto-pt-content').textContent = t.pt;
+
+  // Vocabulário
+  var pills = document.getElementById('vocab-pills');
+  pills.innerHTML = '';
+  t.vocab.forEach(function(word) {
+    var pill = document.createElement('div');
+    pill.className = 'vpill';
+    pill.setAttribute('data-word', word);
+    pill.textContent = word;
+    pill.onclick = function() { abrirPalavraTexto(this.getAttribute('data-word')); };
+    pills.appendChild(pill);
+  });
+
+  // Resetar tradução
+  tradAtiva = false;
+  var sw = document.getElementById('toggleTrad');
+  if (sw) sw.classList.remove('on');
+  var ptBox = document.getElementById('texto-pt');
+  if (ptBox) ptBox.style.display = 'none';
+
+  ir('leitura');
+}
+
+function abrirPalavraTexto(word) {
+  var p = bancoPalavras[word];
+  if (!p) { p = {pron:'', meaning:'Palavra do texto.', example:''}; }
+  document.getElementById('pw').textContent = word;
+  document.getElementById('pp').textContent = p.pron;
+  document.getElementById('pm').textContent = p.meaning;
+  document.getElementById('pe').textContent = p.example;
+  document.getElementById('popup').classList.add('show');
+}
+
+function renderTemasFiltro(nivel) {
+  var textos = bancoTextos[nivel] || [];
+  var temas = ['Todos'];
+  textos.forEach(function(t) { if (temas.indexOf(t.tema) === -1) temas.push(t.tema); });
+  var container = document.getElementById('tema-filter');
+  if (!container) return;
+  container.innerHTML = '';
+  temas.forEach(function(tema) {
+    var pill = document.createElement('button');
+    pill.className = 'tema-pill' + (tema === temaFiltro ? ' on' : '');
+    pill.textContent = tema;
+    pill.onclick = function() {
+      temaFiltro = tema;
+      document.querySelectorAll('.tema-pill').forEach(function(p) { p.classList.remove('on'); });
+      pill.classList.add('on');
+      renderBanco();
+    };
+    container.appendChild(pill);
+  });
+}
+
+function irBanco() {
+  nivelBanco = nivelAtual;
+  temaFiltro = 'Todos';
+  document.querySelectorAll('.nivel-tab').forEach(function(tab) {
+    tab.classList.toggle('on', tab.getAttribute('data-nivel') === nivelBanco);
+  });
+  renderTemasFiltro(nivelBanco);
+  renderBanco();
+  ir('banco');
+}
+
+window.onload = function() {
+  // SPLASH
+  document.getElementById('btnCriar').onclick = function() { ir('cadastro'); };
+  document.getElementById('btnLogin').onclick = function() { ir('codigo'); };
+
+  // CADASTRO
+  document.getElementById('btnVoltarCadastro').onclick = function() { ir('splash'); };
+  document.getElementById('btnVoltarInicio1').onclick = function() { ir('splash'); };
+  document.getElementById('btnEnviarCodigo').onclick = function() {
+    var n = document.getElementById('inp-nome').value.trim();
+    var i = document.getElementById('inp-idade').value.trim();
+    var c = document.getElementById('inp-contato').value.trim();
+    if (!n) { alert('Informe seu nome.'); return; }
+    if (!i) { alert('Informe sua idade.'); return; }
+    if (!c) { alert('Informe seu email ou telefone.'); return; }
+    nomeUsuario = n;
+    document.getElementById('dest').textContent = c;
+    ir('codigo');
+  };
+
+  // CÓDIGO
+  document.getElementById('btnVoltarCodigo').onclick = function() { ir('cadastro'); };
+  document.getElementById('btnVoltarInicio2').onclick = function() { ir('splash'); };
+  document.getElementById('btnReenviar').onclick = function() { alert('Use o código: 7429'); };
+  document.getElementById('btnConfirmar').onclick = function() {
+    var cod = '';
+    for (var i = 0; i < 4; i++) { var d = document.getElementById('d' + i); if (d) cod += d.value; }
+    if (cod.length < 4) { alert('Digite os 4 dígitos. Use: 7429'); return; }
+    if (cod === '7429') {
+      var pn = nomeUsuario ? nomeUsuario.split(' ')[0] : 'Você';
+      document.getElementById('modo-nome').textContent = 'Bem-vindo, ' + pn + '!';
+      var ini = nomeUsuario ? nomeUsuario.split(' ').map(function(x){return x[0];}).slice(0,2).join('').toUpperCase() : 'TC';
+      document.getElementById('havatar').textContent = ini;
+      document.getElementById('pavatar').textContent = ini;
+      document.getElementById('hcnome').textContent = pn;
+      document.getElementById('hknome').textContent = pn;
+      document.getElementById('pnome').textContent = nomeUsuario || pn;
+      ir('modo');
+    } else { alert('Código incorreto. Use: 7429'); }
+  };
+
+  // MODO
+  document.getElementById('btnCambridge').onclick = function() { voltarHome(); };
+  document.getElementById('btnKids').onclick = function() { ir('home-kids'); };
+
+  // HOME CAMBRIDGE
+  document.getElementById('btnTrocarModo').onclick = function() { ir('modo'); };
+  document.getElementById('lvpill').onclick = function() { document.getElementById('nivel-sheet').classList.add('show'); };
+  document.getElementById('btnLeitura').onclick = function() { ir('leitura'); };
+  document.getElementById('btnAulaHoje').onclick = function() { ir('leitura'); };
+  document.getElementById('navHome').onclick = function() { voltarHome(); };
+  document.getElementById('navPerfil').onclick = function() { ir('perfil'); };
+  document.getElementById('navTextos').onclick = function() { irBanco(); };
+  document.getElementById('navFalar').onclick = function() { alert('Conversação em breve!'); };
+  document.getElementById('navProgresso').onclick = function() { alert('Progresso em breve!'); };
+
+  // HOME KIDS
+  document.getElementById('btnTrocarModoKids').onclick = function() { ir('modo'); };
+  document.getElementById('btnJogar').onclick = function() { alert('Jogos em breve!'); };
+  document.getElementById('knavHome').onclick = function() { ir('home-kids'); };
+
+  // LEITURA
+  document.getElementById('btnVoltarLeitura').onclick = function() { voltarHome(); };
+  document.getElementById('lnavHome').onclick = function() { voltarHome(); };
+  document.getElementById('lnavPerfil').onclick = function() { ir('perfil'); };
+  document.getElementById('toggleTrad').onclick = function() {
+    tradAtiva = !tradAtiva;
+    this.classList.toggle('on', tradAtiva);
+    document.getElementById('texto-pt').style.display = tradAtiva ? 'block' : 'none';
+  };
+  document.getElementById('btnQuiz').onclick = function() { alert('Quiz em breve!'); };
+  document.getElementById('btnAudio').onclick = function() { alert('Áudio em breve!'); };
+
+  // Palavras clicáveis no texto
+  document.querySelectorAll('.w').forEach(function(btn) {
+    btn.onclick = function() { abrirPalavra(this.getAttribute('data-word')); };
+  });
+  document.querySelectorAll('.vpill').forEach(function(pill) {
+    pill.onclick = function() { abrirPalavra(this.getAttribute('data-word')); };
+  });
+
+  // POPUP
+  document.getElementById('btnFecharPopup').onclick = function() { document.getElementById('popup').classList.remove('show'); };
+  document.getElementById('popup').onclick = function(e) { if (e.target === this) this.classList.remove('show'); };
+
+  // SELETOR DE NÍVEL
+  document.getElementById('nivel-sheet').onclick = function(e) { if (e.target === this) this.classList.remove('show'); };
+  document.querySelectorAll('.nivel-item').forEach(function(item) {
+    item.onclick = function() { mudarNivel(this.getAttribute('data-sigla'), this.getAttribute('data-nome')); };
+  });
+
+  // PERFIL
+  document.getElementById('btnVoltarPerfil').onclick = function() { voltarHome(); };
+  document.getElementById('pnavHome').onclick = function() { voltarHome(); };
+  document.getElementById('btnPerfilModo').onclick = function() { ir('modo'); };
+  document.getElementById('btnPerfilPlano').onclick = function() { alert('Plano de estudos em breve!'); };
+  document.getElementById('btnPerfilNotif').onclick = function() { alert('Notificações em breve!'); };
+  document.getElementById('btnSair').onclick = function() { if (confirm('Deseja sair?')) { ir('splash'); } };
+
+  // DÍGITOS DO CÓDIGO
+  for (var i = 0; i < 4; i++) {
+    (function(idx) {
+      var inp = document.getElementById('d' + idx);
+      if (!inp) return;
+      inp.oninput = function() {
+        this.value = this.value.replace(/[^0-9]/g, '').slice(-1);
+        if (this.value && idx < 3) { var nx = document.getElementById('d' + (idx + 1)); if (nx) nx.focus(); }
+      };
+      inp.onkeydown = function(e) {
+        if (e.key === 'Backspace' && !this.value && idx > 0) { var pv = document.getElementById('d' + (idx - 1)); if (pv) pv.focus(); }
+      };
+    })(i);
+  }
+
+
+  // BANCO DE TEXTOS
+  document.getElementById('btnVoltarBanco').onclick = function() { voltarHome(); };
+  document.getElementById('bnavHome').onclick = function() { voltarHome(); };
+  document.getElementById('bnavPerfil').onclick = function() { ir('perfil'); };
+  document.querySelectorAll('.nivel-tab').forEach(function(tab) {
+    tab.onclick = function() {
+      nivelBanco = this.getAttribute('data-nivel');
+      temaFiltro = 'Todos';
+      document.querySelectorAll('.nivel-tab').forEach(function(t) { t.classList.remove('on'); });
+      this.classList.add('on');
+      renderTemasFiltro(nivelBanco);
+      renderBanco();
+    };
+  });
+
+  console.log('Talking Cricket carregado!');
+};
+</script>
+</body>
+</html>
