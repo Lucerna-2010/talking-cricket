@@ -1477,11 +1477,64 @@ var ttsAtivo = false;
 var ttsUtterance = null;
 
 function lerTexto(texto, velocidade) {
+  // Animar barrinha e tempo
+  var waveInterval = null;
+  var tempoInterval = null;
+  var tempoSeg = 0;
+
+  function iniciarAnimacao() {
+    // Animar barras de onda
+    var bars = document.querySelectorAll('.audio-bar');
+    var heights = [8,18,24,12,22,8,20,16,24,10,18,22];
+    var dir = 1;
+    waveInterval = setInterval(function() {
+      bars.forEach(function(bar, i) {
+        var h = heights[i] + (Math.random() * 10 - 5);
+        h = Math.max(4, Math.min(28, h));
+        bar.style.height = h + 'px';
+      });
+    }, 150);
+
+    // Animar tempo
+    var durEstimada = Math.ceil(texto.split(' ').length / 2.5); // ~2.5 palavras/seg
+    tempoInterval = setInterval(function() {
+      tempoSeg++;
+      var min = Math.floor(tempoSeg / 60);
+      var seg = tempoSeg % 60;
+      var durMin = Math.floor(durEstimada / 60);
+      var durSeg = durEstimada % 60;
+      var timeEl = document.getElementById('audio-time');
+      if (timeEl) timeEl.textContent = 
+        min + ':' + (seg < 10 ? '0' : '') + seg + ' / ' + 
+        durMin + ':' + (durSeg < 10 ? '0' : '') + durSeg;
+    }, 1000);
+  }
+
+  function pararAnimacao() {
+    if (waveInterval) { clearInterval(waveInterval); waveInterval = null; }
+    if (tempoInterval) { clearInterval(tempoInterval); tempoInterval = null; }
+    // Resetar barras
+    var bars = document.querySelectorAll('.audio-bar');
+    bars.forEach(function(bar, i) {
+      var alts = [8,18,24,12,22,8,20,16,24,10,18,22];
+      bar.style.height = alts[i % alts.length] + 'px';
+    });
+    tempoSeg = 0;
+    var timeEl = document.getElementById('audio-time');
+    if (timeEl) timeEl.textContent = '0:00 / 0:00';
+  }
+
   // Parar se já estiver tocando
   try { window.speechSynthesis.cancel(); } catch(e) {}
   if (ttsAtivo) {
     ttsAtivo = false;
     atualizarBtnPlay(false);
+    // Resetar animação
+    var bars = document.querySelectorAll('.audio-bar');
+    var alts = [8,18,24,12,22,8,20,16,24,10,18,22];
+    bars.forEach(function(bar, i) { bar.style.height = alts[i % alts.length] + 'px'; });
+    var timeEl = document.getElementById('audio-time');
+    if (timeEl) timeEl.textContent = '0:00 / 0:00';
     return;
   }
 
@@ -1496,13 +1549,15 @@ function lerTexto(texto, velocidade) {
     utter.rate = velocidade || 1;
     utter.pitch = 1;
     utter.volume = 1;
-    utter.onend = function() { ttsAtivo = false; atualizarBtnPlay(false); };
+    utter.onend = function() { ttsAtivo = false; atualizarBtnPlay(false); pararAnimacao(); };
     utter.onerror = function(e) { 
       console.log('TTS erro:', e);
       ttsAtivo = false; 
-      atualizarBtnPlay(false); 
+      atualizarBtnPlay(false);
+      pararAnimacao();
     };
     window.speechSynthesis.speak(utter);
+    iniciarAnimacao();
   }
 
   // Carregar vozes e falar
@@ -2156,7 +2211,14 @@ window.onload = function() {
   document.getElementById('anavHome').onclick = function() { voltarHome(); };
   // btnPlay onclick definido abaixo
   document.getElementById('btnQuizAudio').onclick = function() { iniciarQuiz('b1-1'); };
-  document.getElementById('btnRepetir').onclick = function() { document.getElementById('btnPlay').textContent = '▶'; };
+  document.getElementById('btnRepetir').onclick = function() {
+    var transcEN = document.getElementById('transcricao-en');
+    var texto = transcEN ? transcEN.textContent.trim() : '';
+    if (texto) {
+      if (ttsAtivo) { window.speechSynthesis.cancel(); ttsAtivo = false; }
+      setTimeout(function() { lerTexto(texto, velocidadeAtual); }, 200);
+    }
+  };
   document.getElementById('langEN').onclick = function() {
     this.classList.add('on');
     document.getElementById('langPT').classList.remove('on');
