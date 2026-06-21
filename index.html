@@ -283,6 +283,147 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 .texto-check{font-size:18px;color:#1D9E75;}
 .texto-arrow{font-size:18px;color:#D3D1C7;}
 .texto-vazio{text-align:center;padding:40px 20px;color:#6b7280;font-size:14px;}
+
+/* ===== QUIZ ===== */
+#quiz{background:#F8F7FF;}
+.qheader{background:#534AB7;padding:50px 20px 20px;position:relative;}
+.qback{position:absolute;top:14px;left:14px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.2);border:none;cursor:pointer;font-size:20px;color:#fff;display:flex;align-items:center;justify-content:center;z-index:10;}
+.qtitulo{font-size:16px;font-weight:800;color:#fff;}
+.qprogresso{display:flex;gap:5px;margin-top:14px;}
+.qponto{height:6px;flex:1;border-radius:3px;background:rgba(255,255,255,0.2);}
+.qponto.on{background:#9FE1CB;}
+.qponto.erro{background:#F0997B;}
+.qbody{padding:20px 16px;display:flex;flex-direction:column;gap:14px;flex:1;}
+.qpergunta-box{background:#fff;border-radius:14px;padding:16px;}
+.qnum{font-size:11px;font-weight:800;color:#534AB7;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;}
+.qpergunta{font-size:15px;font-weight:700;color:#1a1a2e;line-height:1.5;}
+.qopcoes{display:flex;flex-direction:column;gap:8px;}
+.qopcao{background:#fff;border:2px solid #D3D1C7;border-radius:12px;padding:14px 16px;font-family:'Nunito',Arial,sans-serif;font-size:14px;font-weight:700;color:#1a1a2e;cursor:pointer;text-align:left;transition:all .15s;}
+.qopcao:active{transform:scale(0.98);}
+.qopcao.correta{border-color:#1D9E75;background:#E1F5EE;color:#085041;}
+.qopcao.errada{border-color:#D85A30;background:#FAECE7;color:#712B13;}
+.qopcao.desabilitada{pointer-events:none;opacity:0.6;}
+.qfeedback{border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:10px;}
+.qfeedback.ok{background:#E1F5EE;border:1.5px solid #5DCAA5;}
+.qfeedback.nok{background:#FAECE7;border:1.5px solid #F0997B;}
+.qfeedback-icon{font-size:24px;flex-shrink:0;}
+.qfeedback-texto{font-size:13px;font-weight:700;color:#1a1a2e;line-height:1.4;}
+.qfeedback-exp{font-size:12px;color:#6b7280;margin-top:3px;line-height:1.4;}
+.qbtn-next{width:100%;padding:14px;border-radius:14px;border:none;background:#534AB7;color:#fff;font-family:'Nunito',Arial,sans-serif;font-size:15px;font-weight:800;cursor:pointer;margin-bottom:8px;}
+
+/* RESULTADO DO QUIZ */
+.qresultado{display:flex;flex-direction:column;align-items:center;padding:30px 20px;gap:16px;flex:1;}
+.qresultado-circulo{width:100px;height:100px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-direction:column;border:4px solid #534AB7;background:#EEEDFE;}
+.qresultado-nota{font-size:28px;font-weight:800;color:#534AB7;}
+.qresultado-label{font-size:10px;font-weight:800;color:#534AB7;}
+.qresultado-titulo{font-size:20px;font-weight:800;color:#1a1a2e;}
+.qresultado-sub{font-size:14px;color:#6b7280;text-align:center;line-height:1.5;}
+.qresultado-stats{display:flex;gap:16px;}
+.qstat{background:#fff;border-radius:12px;padding:12px 20px;text-align:center;border:1px solid #D3D1C7;}
+.qstat-val{font-size:20px;font-weight:800;}
+.qstat-lbl{font-size:10px;color:#6b7280;font-weight:700;}
+.qstat.green .qstat-val{color:#1D9E75;}
+.qstat.red .qstat-val{color:#D85A30;}
+
+/* ===== AUDIÇÃO ===== */
+#audicao{background:#F8F7FF;}
+.aheader{background:#0F6E56;padding:50px 20px 20px;position:relative;}
+.aback{position:absolute;top:14px;left:14px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.2);border:none;cursor:pointer;font-size:20px;color:#fff;display:flex;align-items:center;justify-content:center;z-index:10;}
+.atitulo{font-size:16px;font-weight:800;color:#fff;}
+.abadge{background:#085041;color:#9FE1CB;font-size:10px;font-weight:800;padding:3px 10px;border-radius:20px;margin-top:6px;display:inline-block;}
+.abody{padding:20px 16px;display:flex;flex-direction:column;gap:14px;flex:1;}
+.audio-player{background:#fff;border-radius:14px;padding:16px;}
+.audio-titulo{font-size:13px;font-weight:800;color:#1a1a2e;margin-bottom:12px;}
+.audio-controls{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.audio-play{width:48px;height:48px;border-radius:50%;background:#0F6E56;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;flex-shrink:0;}
+.audio-wave{flex:1;height:32px;display:flex;align-items:center;gap:2px;}
+.audio-bar{width:3px;border-radius:2px;background:#5DCAA5;}
+.audio-time{font-size:11px;color:#6b7280;font-weight:700;white-space:nowrap;}
+.audio-speed{display:flex;gap:6px;}
+.speed-btn{padding:4px 10px;border-radius:20px;border:1.5px solid #D3D1C7;background:#fff;font-family:'Nunito',Arial,sans-serif;font-size:11px;font-weight:800;cursor:pointer;color:#6b7280;}
+.speed-btn.on{background:#0F6E56;color:#fff;border-color:#0F6E56;}
+.transcricao-box{background:#fff;border-radius:14px;padding:16px;}
+.transcricao-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.transcricao-titulo{font-size:12px;font-weight:800;color:#6b7280;text-transform:uppercase;letter-spacing:.06em;}
+.lang-toggle{display:flex;background:#F1EFE8;border-radius:8px;padding:2px;gap:2px;}
+.lang-btn{font-size:11px;font-weight:800;padding:4px 12px;border-radius:6px;cursor:pointer;color:#6b7280;border:none;background:transparent;font-family:'Nunito',Arial,sans-serif;}
+.lang-btn.on{background:#fff;color:#0F6E56;border:1px solid #5DCAA5;}
+.transcricao-texto{font-size:14px;line-height:1.8;color:#1a1a2e;}
+.transcricao-texto .w{background:#E1F5EE;color:#085041;border-color:#5DCAA5;}
+.audio-acoes{display:flex;gap:8px;margin-bottom:8px;}
+.audio-acao{flex:1;padding:12px;border-radius:12px;border:none;font-family:'Nunito',Arial,sans-serif;font-size:12px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;}
+.audio-acao.quiz{background:#0F6E56;color:#fff;}
+.audio-acao.repeat{background:#E1F5EE;color:#085041;}
+
+/* ===== ESCRITA ===== */
+#escrita{background:#F8F7FF;}
+.eheader{background:#BA7517;padding:50px 20px 20px;position:relative;}
+.eback{position:absolute;top:14px;left:14px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.2);border:none;cursor:pointer;font-size:20px;color:#fff;display:flex;align-items:center;justify-content:center;z-index:10;}
+.etitulo{font-size:16px;font-weight:800;color:#fff;}
+.ebadge{background:#854F0B;color:#FAEEDA;font-size:10px;font-weight:800;padding:3px 10px;border-radius:20px;margin-top:6px;display:inline-block;}
+.ebody{padding:20px 16px;display:flex;flex-direction:column;gap:14px;flex:1;}
+.eprompt{background:#FAEEDA;border:1.5px solid #FAC775;border-radius:14px;padding:14px;}
+.eprompt-label{font-size:10px;font-weight:800;color:#BA7517;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;}
+.eprompt-texto{font-size:14px;color:#412402;line-height:1.5;font-weight:600;}
+.eprompt-dica{font-size:12px;color:#854F0B;margin-top:6px;}
+.einput-wrap{background:#fff;border-radius:14px;border:2px solid #D3D1C7;overflow:hidden;}
+.einput{width:100%;min-height:120px;padding:14px 16px;font-family:'Nunito',Arial,sans-serif;font-size:14px;color:#1a1a2e;border:none;outline:none;resize:none;line-height:1.7;}
+.ecount-bar{display:flex;justify-content:space-between;padding:8px 14px;border-top:1px solid #F1EFE8;}
+.ecount{font-size:11px;font-weight:800;}
+.ecount.ok{color:#1D9E75;}
+.ecount.warn{color:#BA7517;}
+.ecount.short{color:#D85A30;}
+.eenviar{width:100%;padding:14px;border-radius:14px;border:none;background:#BA7517;color:#fff;font-family:'Nunito',Arial,sans-serif;font-size:15px;font-weight:800;cursor:pointer;margin-bottom:4px;}
+.eresultado{background:#fff;border-radius:14px;padding:16px;display:none;}
+.eresultado.show{display:block;}
+.enota-geral{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.enota-num{font-size:28px;font-weight:800;color:#BA7517;}
+.enota-badge{background:#FAEEDA;color:#BA7517;font-size:12px;font-weight:800;padding:4px 12px;border-radius:20px;}
+.ecriterios{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
+.ecriterio{display:flex;flex-direction:column;gap:4px;}
+.ecriterio-header{display:flex;justify-content:space-between;align-items:center;}
+.ecriterio-nome{font-size:12px;font-weight:700;color:#6b7280;}
+.ecriterio-val{font-size:12px;font-weight:800;color:#1a1a2e;}
+.ecriterio-bar{height:6px;background:#F1EFE8;border-radius:3px;overflow:hidden;}
+.ecriterio-fill{height:100%;border-radius:3px;background:#BA7517;}
+.efeedback-box{background:#FFF8F0;border-left:3px solid #BA7517;border-radius:0 10px 10px 0;padding:12px 14px;}
+.efeedback-titulo{font-size:11px;font-weight:800;color:#BA7517;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em;}
+.efeedback-texto{font-size:13px;color:#1a1a2e;line-height:1.6;}
+
+/* ===== PROGRESSO ===== */
+#progresso{background:#F8F7FF;}
+.proheader{background:#534AB7;padding:50px 20px 20px;}
+.protitulo{font-size:20px;font-weight:800;color:#fff;}
+.prosub{font-size:13px;color:#CECBF6;margin-top:4px;}
+.probody{padding:16px;display:flex;flex-direction:column;gap:14px;flex:1;}
+.pro-card{background:#fff;border-radius:14px;padding:16px;}
+.pro-card-titulo{font-size:12px;font-weight:800;color:#6b7280;text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;}
+.pro-nivel-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.pro-nivel-badge{width:48px;height:48px;border-radius:12px;background:#EEEDFE;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:#534AB7;flex-shrink:0;}
+.pro-nivel-info{flex:1;}
+.pro-nivel-nome{font-size:14px;font-weight:800;color:#1a1a2e;}
+.pro-nivel-sub{font-size:12px;color:#6b7280;margin-top:2px;}
+.pro-xp-bar{height:8px;background:#F1EFE8;border-radius:4px;overflow:hidden;margin-top:6px;}
+.pro-xp-fill{height:100%;background:#534AB7;border-radius:4px;width:62%;}
+.pro-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.pro-stat{background:#F8F7FF;border-radius:10px;padding:12px;text-align:center;}
+.pro-stat-val{font-size:20px;font-weight:800;color:#534AB7;}
+.pro-stat-lbl{font-size:10px;color:#6b7280;font-weight:700;margin-top:2px;}
+.pro-skills{display:flex;flex-direction:column;gap:10px;}
+.pro-skill{display:flex;align-items:center;gap:10px;}
+.pro-skill-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.pro-skill-info{flex:1;}
+.pro-skill-nome{font-size:13px;font-weight:800;color:#1a1a2e;margin-bottom:4px;}
+.pro-skill-bar{height:6px;background:#F1EFE8;border-radius:3px;overflow:hidden;}
+.pro-skill-fill{height:100%;border-radius:3px;}
+.pro-skill-pct{font-size:12px;font-weight:800;color:#6b7280;width:36px;text-align:right;}
+.pro-historico{display:flex;flex-direction:column;gap:8px;}
+.pro-hist-item{display:flex;align-items:center;gap:10px;padding:10px;background:#F8F7FF;border-radius:10px;}
+.pro-hist-icon{font-size:20px;flex-shrink:0;}
+.pro-hist-info{flex:1;}
+.pro-hist-titulo{font-size:13px;font-weight:800;color:#1a1a2e;}
+.pro-hist-data{font-size:11px;color:#6b7280;margin-top:2px;}
+.pro-hist-nota{font-size:13px;font-weight:800;color:#1D9E75;}
 </style>
 </head>
 <body>
@@ -577,8 +718,8 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     </div>
   </div>
   <nav class="nav">
-    <div class="nitem on" id="lnavHome"><i class="ti ti-home"></i>Início</div>
-    <div class="nitem"><i class="ti ti-book"></i>Textos</div>
+    <div class="nitem" id="lnavHome"><i class="ti ti-home"></i>Início</div>
+    <div class="nitem on" id="lnavTextos"><i class="ti ti-book"></i>Textos</div>
     <div class="nitem"><i class="ti ti-microphone"></i>Falar</div>
     <div class="nitem"><i class="ti ti-chart-bar"></i>Progresso</div>
     <div class="nitem" id="lnavPerfil"><i class="ti ti-user"></i>Perfil</div>
@@ -649,6 +790,248 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
   </nav>
 </div>
 
+
+<!-- ===== QUIZ ===== -->
+<div id="quiz" class="tela">
+  <div class="qheader">
+    <button class="qback" id="btnVoltarQuiz">&#8592;</button>
+    <div class="qtitulo" id="qtitulo">Quiz — Reading B1</div>
+    <div class="qprogresso" id="qprogresso"></div>
+  </div>
+  <div class="qbody" id="qbody">
+    <!-- Gerado por JS -->
+  </div>
+  <nav class="nav">
+    <div class="nitem" id="qnavHome"><i class="ti ti-home"></i>Início</div>
+    <div class="nitem" id="qnavTextos"><i class="ti ti-book"></i>Textos</div>
+    <div class="nitem"><i class="ti ti-microphone"></i>Falar</div>
+    <div class="nitem"><i class="ti ti-chart-bar"></i>Progresso</div>
+    <div class="nitem"><i class="ti ti-user"></i>Perfil</div>
+  </nav>
+</div>
+
+<!-- ===== AUDIÇÃO ===== -->
+<div id="audicao" class="tela">
+  <div class="aheader">
+    <button class="aback" id="btnVoltarAudicao">&#8592;</button>
+    <div class="atitulo" id="atitulo">Listening — B1</div>
+    <div class="abadge" id="abadge">🎧 Audição</div>
+  </div>
+  <div class="abody">
+    <div class="audio-player">
+      <div class="audio-titulo" id="audio-titulo">Environment & Climate Change</div>
+      <div class="audio-controls">
+        <button class="audio-play" id="btnPlay">▶</button>
+        <div class="audio-wave">
+          <div class="audio-bar" style="height:8px"></div>
+          <div class="audio-bar" style="height:18px"></div>
+          <div class="audio-bar" style="height:24px"></div>
+          <div class="audio-bar" style="height:12px"></div>
+          <div class="audio-bar" style="height:22px"></div>
+          <div class="audio-bar" style="height:8px"></div>
+          <div class="audio-bar" style="height:20px"></div>
+          <div class="audio-bar" style="height:16px"></div>
+          <div class="audio-bar" style="height:24px"></div>
+          <div class="audio-bar" style="height:10px"></div>
+          <div class="audio-bar" style="height:18px"></div>
+          <div class="audio-bar" style="height:22px"></div>
+        </div>
+        <div class="audio-time" id="audio-time">0:00 / 2:30</div>
+      </div>
+      <div class="audio-speed">
+        <button class="speed-btn" data-speed="0.75">0.75x</button>
+        <button class="speed-btn on" data-speed="1">1x</button>
+        <button class="speed-btn" data-speed="1.25">1.25x</button>
+        <button class="speed-btn" data-speed="1.5">1.5x</button>
+      </div>
+    </div>
+
+    <div class="transcricao-box">
+      <div class="transcricao-header">
+        <div class="transcricao-titulo">Transcrição</div>
+        <div class="lang-toggle">
+          <button class="lang-btn on" id="langEN">EN</button>
+          <button class="lang-btn" id="langPT">PT</button>
+        </div>
+      </div>
+      <div class="transcricao-texto" id="transcricao-en">
+        Climate change is one of the most <button class="w" data-word="pressing">pressing</button> issues of our time. Rising temperatures are <button class="w" data-word="affecting">affecting</button> ecosystems around the world, causing <button class="w" data-word="unprecedented">unprecedented</button> shifts in weather patterns.
+      </div>
+      <div class="transcricao-texto" id="transcricao-pt" style="display:none">
+        A mudança climática é uma das questões mais urgentes do nosso tempo. O aumento das temperaturas está afetando os ecossistemas ao redor do mundo, causando mudanças sem precedentes nos padrões climáticos.
+      </div>
+    </div>
+
+    <div class="audio-acoes">
+      <button class="audio-acao quiz" id="btnQuizAudio"><i class="ti ti-help" style="font-size:15px"></i> Fazer quiz</button>
+      <button class="audio-acao repeat" id="btnRepetir"><i class="ti ti-repeat" style="font-size:15px"></i> Repetir</button>
+    </div>
+  </div>
+  <nav class="nav">
+    <div class="nitem" id="anavHome"><i class="ti ti-home"></i>Início</div>
+    <div class="nitem on"><i class="ti ti-book"></i>Textos</div>
+    <div class="nitem"><i class="ti ti-microphone"></i>Falar</div>
+    <div class="nitem"><i class="ti ti-chart-bar"></i>Progresso</div>
+    <div class="nitem"><i class="ti ti-user"></i>Perfil</div>
+  </nav>
+</div>
+
+<!-- ===== ESCRITA ===== -->
+<div id="escrita" class="tela">
+  <div class="eheader">
+    <button class="eback" id="btnVoltarEscrita">&#8592;</button>
+    <div class="etitulo">Writing — B1</div>
+    <div class="ebadge">✍️ Escrita</div>
+  </div>
+  <div class="ebody">
+    <div class="eprompt">
+      <div class="eprompt-label">📝 Exercício</div>
+      <div class="eprompt-texto">Describe the effects of climate change on the environment. Give examples and explain why it is important to act now. (80-120 words)</div>
+      <div class="eprompt-dica">💡 Dica: Use os conectores "however", "therefore" e "as a result"</div>
+    </div>
+
+    <div class="einput-wrap">
+      <textarea class="einput" id="escritaInput" placeholder="Escreva sua resposta aqui em inglês..."></textarea>
+      <div class="ecount-bar">
+        <span class="ecount short" id="escritaCount">0 palavras</span>
+        <span style="font-size:11px;color:#6b7280">Meta: 80-120 palavras</span>
+      </div>
+    </div>
+
+    <button class="eenviar" id="btnEnviarEscrita">Enviar para correção</button>
+
+    <div class="eresultado" id="eresultado">
+      <div class="enota-geral">
+        <div>
+          <div class="enota-num" id="enotaNum">78/100</div>
+          <div style="font-size:12px;color:#6b7280">Nota geral</div>
+        </div>
+        <div class="enota-badge" id="enotaBadge">B1 — Bom</div>
+      </div>
+      <div class="ecriterios" id="ecriterios"></div>
+      <div class="efeedback-box">
+        <div class="efeedback-titulo">💬 Feedback da IA</div>
+        <div class="efeedback-texto" id="efeedbackTexto"></div>
+      </div>
+    </div>
+  </div>
+  <nav class="nav">
+    <div class="nitem" id="enavHome"><i class="ti ti-home"></i>Início</div>
+    <div class="nitem"><i class="ti ti-book"></i>Textos</div>
+    <div class="nitem"><i class="ti ti-microphone"></i>Falar</div>
+    <div class="nitem"><i class="ti ti-chart-bar"></i>Progresso</div>
+    <div class="nitem"><i class="ti ti-user"></i>Perfil</div>
+  </nav>
+</div>
+
+<!-- ===== PROGRESSO ===== -->
+<div id="progresso" class="tela">
+  <div class="proheader">
+    <div class="protitulo">Meu Progresso</div>
+    <div class="prosub">Acompanhe sua evolução</div>
+  </div>
+  <div class="probody">
+
+    <div class="pro-card">
+      <div class="pro-card-titulo">Nível atual</div>
+      <div class="pro-nivel-row">
+        <div class="pro-nivel-badge" id="proNivelBadge">B1</div>
+        <div class="pro-nivel-info">
+          <div class="pro-nivel-nome" id="proNivelNome">B1 — Intermediário</div>
+          <div class="pro-nivel-sub">620 XP de 1000 para B2</div>
+          <div class="pro-xp-bar"><div class="pro-xp-fill" id="proXpFill"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pro-card">
+      <div class="pro-card-titulo">Estatísticas</div>
+      <div class="pro-stats">
+        <div class="pro-stat"><div class="pro-stat-val">14</div><div class="pro-stat-lbl">Dias seguidos</div></div>
+        <div class="pro-stat"><div class="pro-stat-val">42h</div><div class="pro-stat-lbl">Tempo estudado</div></div>
+        <div class="pro-stat"><div class="pro-stat-val">38</div><div class="pro-stat-lbl">Textos lidos</div></div>
+        <div class="pro-stat"><div class="pro-stat-val">89%</div><div class="pro-stat-lbl">Quiz acertos</div></div>
+      </div>
+    </div>
+
+    <div class="pro-card">
+      <div class="pro-card-titulo">Habilidades</div>
+      <div class="pro-skills">
+        <div class="pro-skill">
+          <div class="pro-skill-icon" style="background:#EEEDFE">📖</div>
+          <div class="pro-skill-info">
+            <div class="pro-skill-nome">Leitura</div>
+            <div class="pro-skill-bar"><div class="pro-skill-fill" style="width:70%;background:#534AB7"></div></div>
+          </div>
+          <div class="pro-skill-pct">70%</div>
+        </div>
+        <div class="pro-skill">
+          <div class="pro-skill-icon" style="background:#E1F5EE">🎧</div>
+          <div class="pro-skill-info">
+            <div class="pro-skill-nome">Audição</div>
+            <div class="pro-skill-bar"><div class="pro-skill-fill" style="width:45%;background:#1D9E75"></div></div>
+          </div>
+          <div class="pro-skill-pct">45%</div>
+        </div>
+        <div class="pro-skill">
+          <div class="pro-skill-icon" style="background:#FAEEDA">✍️</div>
+          <div class="pro-skill-info">
+            <div class="pro-skill-nome">Escrita</div>
+            <div class="pro-skill-bar"><div class="pro-skill-fill" style="width:55%;background:#BA7517"></div></div>
+          </div>
+          <div class="pro-skill-pct">55%</div>
+        </div>
+        <div class="pro-skill">
+          <div class="pro-skill-icon" style="background:#FAECE7">🗣️</div>
+          <div class="pro-skill-info">
+            <div class="pro-skill-nome">Conversação</div>
+            <div class="pro-skill-bar"><div class="pro-skill-fill" style="width:30%;background:#D85A30"></div></div>
+          </div>
+          <div class="pro-skill-pct">30%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pro-card">
+      <div class="pro-card-titulo">Histórico recente</div>
+      <div class="pro-historico">
+        <div class="pro-hist-item">
+          <div class="pro-hist-icon">📖</div>
+          <div class="pro-hist-info">
+            <div class="pro-hist-titulo">Environment & Climate Change</div>
+            <div class="pro-hist-data">Hoje • Reading B1</div>
+          </div>
+          <div class="pro-hist-nota">✓</div>
+        </div>
+        <div class="pro-hist-item">
+          <div class="pro-hist-icon">🎯</div>
+          <div class="pro-hist-info">
+            <div class="pro-hist-titulo">Quiz — Football Tactics</div>
+            <div class="pro-hist-data">Ontem • 4/5 acertos</div>
+          </div>
+          <div class="pro-hist-nota">80%</div>
+        </div>
+        <div class="pro-hist-item">
+          <div class="pro-hist-icon">✍️</div>
+          <div class="pro-hist-info">
+            <div class="pro-hist-titulo">Writing — Climate essay</div>
+            <div class="pro-hist-data">2 dias atrás • Escrita</div>
+          </div>
+          <div class="pro-hist-nota">78%</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <nav class="nav">
+    <div class="nitem" id="pronavHome"><i class="ti ti-home"></i>Início</div>
+    <div class="nitem" id="pronavTextos"><i class="ti ti-book"></i>Textos</div>
+    <div class="nitem"><i class="ti ti-microphone"></i>Falar</div>
+    <div class="nitem on"><i class="ti ti-chart-bar"></i>Progresso</div>
+    <div class="nitem" id="pronavPerfil"><i class="ti ti-user"></i>Perfil</div>
+  </nav>
+</div>
+
 <!-- SELETOR DE NÍVEL -->
 <div class="nivel-sheet" id="nivel-sheet">
   <div class="nivel-sheet-box">
@@ -681,6 +1064,188 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 </div>
 
 <script>
+
+// ===== DADOS DO QUIZ =====
+var quizAtual = [];
+var quizIndex = 0;
+var quizAcertos = 0;
+var quizRespondida = false;
+
+var quizzes = {
+  'b1-1': [
+    {pergunta: 'What does "pressing" mean in the text?', opcoes: ['Old and forgotten','Urgent and important','Easy to solve','Beautiful'], correta: 1, explicacao: '"Pressing" significa urgente, algo que precisa de atenção imediata.'},
+    {pergunta: 'According to the text, what are rising temperatures affecting?', opcoes: ['Only oceans','Only animals','Ecosystems around the world','Only polar regions'], correta: 2, explicacao: 'O texto diz que as temperaturas estão afetando ecossistemas ao redor do mundo.'},
+    {pergunta: 'What does "unprecedented" mean?', opcoes: ['Common and expected','Never happened before','Very slow','Easily reversed'], correta: 1, explicacao: '"Unprecedented" significa sem precedentes, algo que nunca aconteceu antes.'},
+    {pergunta: 'What do scientists warn about?', opcoes: ['That the weather is improving','That consequences could be devastating without action','That ecosystems are safe','That temperatures are falling'], correta: 1, explicacao: 'Cientistas alertam que sem ação imediata, as consequências podem ser devastadoras.'},
+    {pergunta: 'Choose the correct word: The problem is very ___. We must act now.', opcoes: ['pressing','pressed','pressure','press'], correta: 0, explicacao: '"Pressing" é o adjetivo correto para descrever algo urgente.'}
+  ],
+  'b1-2': [
+    {pergunta: 'What is "tactics" in the context of football?', opcoes: ['The ball used in the game','Plans and strategies to win','The name of the coach','The football stadium'], correta: 1, explicacao: '"Tactics" são planos e estratégias usados para ganhar uma partida.'},
+    {pergunta: 'Who are "opponents" in a football match?', opcoes: ['The supporters','The referees','The teams you play against','The coaches'], correta: 2, explicacao: '"Opponents" são os adversários, as equipes contra as quais você joga.'},
+    {pergunta: 'What does a well-planned strategy often lead to?', opcoes: ['Defeat','More players','Victory','More money'], correta: 2, explicacao: 'O texto diz que uma estratégia bem planejada frequentemente leva à vitória.'},
+    {pergunta: 'Fill in: Coaches _____ their opponents before each match.', opcoes: ['ignore','analyse','forget','play'], correta: 1, explicacao: '"Analyse" significa analisar — os técnicos analisam seus adversários antes de cada jogo.'},
+    {pergunta: 'Modern football requires both skill and...?', opcoes: ['luck','money','tactics','running'], correta: 2, explicacao: 'O texto afirma que o futebol moderno é tanto sobre táticas quanto sobre habilidade.'}
+  ]
+};
+
+function iniciarQuiz(textoId) {
+  var perguntas = quizzes[textoId];
+  if (!perguntas) {
+    perguntas = quizzes['b1-1']; // fallback
+  }
+  quizAtual = perguntas;
+  quizIndex = 0;
+  quizAcertos = 0;
+  quizRespondida = false;
+  renderQuizPergunta();
+  ir('quiz');
+}
+
+function renderQuizPergunta() {
+  var body = document.getElementById('qbody');
+  var progresso = document.getElementById('qprogresso');
+  if (!body || !progresso) return;
+
+  // Atualizar progresso
+  progresso.innerHTML = '';
+  quizAtual.forEach(function(_, i) {
+    var dot = document.createElement('div');
+    dot.className = 'qponto' + (i < quizIndex ? ' on' : '');
+    progresso.appendChild(dot);
+  });
+
+  if (quizIndex >= quizAtual.length) {
+    renderQuizResultado();
+    return;
+  }
+
+  var q = quizAtual[quizIndex];
+  quizRespondida = false;
+
+  body.innerHTML =
+    '<div class="qpergunta-box">' +
+      '<div class="qnum">Pergunta ' + (quizIndex+1) + ' de ' + quizAtual.length + '</div>' +
+      '<div class="qpergunta">' + q.pergunta + '</div>' +
+    '</div>' +
+    '<div class="qopcoes" id="qopcoes"></div>' +
+    '<div id="qfeedback-wrap"></div>' +
+    '<button class="qbtn-next" id="btnProxima" style="display:none">Próxima pergunta →</button>';
+
+  var opcoes = document.getElementById('qopcoes');
+  q.opcoes.forEach(function(op, i) {
+    var btn = document.createElement('button');
+    btn.className = 'qopcao';
+    btn.textContent = op;
+    btn.onclick = function() { responderQuiz(i); };
+    opcoes.appendChild(btn);
+  });
+}
+
+function responderQuiz(indice) {
+  if (quizRespondida) return;
+  quizRespondida = true;
+  var q = quizAtual[quizIndex];
+  var opcoes = document.querySelectorAll('.qopcao');
+  var correta = q.correta === indice;
+  if (correta) quizAcertos++;
+
+  opcoes.forEach(function(op, i) {
+    op.classList.add('desabilitada');
+    if (i === q.correta) op.classList.add('correta');
+    else if (i === indice && !correta) op.classList.add('errada');
+  });
+
+  var wrap = document.getElementById('qfeedback-wrap');
+  var emoji = correta ? '✓' : '✗';
+  var classe = correta ? 'ok' : 'nok';
+  var titulo = correta ? 'Correto!' : 'Incorreto';
+  wrap.innerHTML =
+    '<div class="qfeedback ' + classe + '">' +
+      '<div class="qfeedback-icon">' + emoji + '</div>' +
+      '<div><div class="qfeedback-texto">' + titulo + '</div>' +
+      '<div class="qfeedback-exp">' + q.explicacao + '</div></div>' +
+    '</div>';
+
+  var btnProx = document.getElementById('btnProxima');
+  if (btnProx) {
+    btnProx.style.display = 'block';
+    btnProx.textContent = quizIndex + 1 >= quizAtual.length ? 'Ver resultado' : 'Próxima pergunta →';
+    btnProx.onclick = function() {
+      quizIndex++;
+      renderQuizPergunta();
+    };
+  }
+}
+
+function renderQuizResultado() {
+  var pct = Math.round((quizAcertos / quizAtual.length) * 100);
+  var body = document.getElementById('qbody');
+  var msg = pct >= 80 ? 'Excelente trabalho!' : pct >= 60 ? 'Bom resultado!' : 'Continue praticando!';
+  body.innerHTML =
+    '<div class="qresultado">' +
+      '<div class="qresultado-circulo">' +
+        '<div class="qresultado-nota">' + pct + '%</div>' +
+        '<div class="qresultado-label">ACERTOS</div>' +
+      '</div>' +
+      '<div class="qresultado-titulo">' + msg + '</div>' +
+      '<div class="qresultado-sub">Você acertou ' + quizAcertos + ' de ' + quizAtual.length + ' perguntas.</div>' +
+      '<div class="qresultado-stats">' +
+        '<div class="qstat green"><div class="qstat-val">' + quizAcertos + '</div><div class="qstat-lbl">Corretas</div></div>' +
+        '<div class="qstat red"><div class="qstat-val">' + (quizAtual.length - quizAcertos) + '</div><div class="qstat-lbl">Erradas</div></div>' +
+      '</div>' +
+      '<button class="qbtn-next" onclick="voltarHome()">Voltar ao início</button>' +
+      '<button style="width:100%;padding:12px;border-radius:14px;border:2px solid #534AB7;background:#fff;color:#534AB7;font-family:Nunito,Arial,sans-serif;font-size:14px;font-weight:800;cursor:pointer;" onclick="irBanco()">Ver mais textos</button>' +
+    '</div>';
+}
+
+// ===== ESCRITA =====
+function contarPalavras(texto) {
+  return texto.trim() === '' ? 0 : texto.trim().split(/\s+/).length;
+}
+
+function avaliarEscrita(texto) {
+  var palavras = contarPalavras(texto);
+  var gramatica = Math.min(100, 60 + Math.floor(Math.random() * 30));
+  var conteudo = Math.min(100, 55 + Math.floor(Math.random() * 35));
+  var coesao = Math.min(100, 50 + Math.floor(Math.random() * 35));
+  var extensao = palavras >= 120 ? 100 : palavras >= 80 ? 80 : palavras >= 60 ? 60 : 40;
+  var geral = Math.round((gramatica + conteudo + coesao + extensao) / 4);
+
+  var criterios = document.getElementById('ecriterios');
+  if (criterios) {
+    criterios.innerHTML = [
+      {nome: 'Gramática & vocabulário', val: gramatica, cor: '#534AB7'},
+      {nome: 'Conteúdo & ideias', val: conteudo, cor: '#1D9E75'},
+      {nome: 'Coesão & estrutura', val: coesao, cor: '#BA7517'},
+      {nome: 'Extensão da resposta', val: extensao, cor: extensao >= 80 ? '#1D9E75' : '#D85A30'}
+    ].map(function(c) {
+      return '<div class="ecriterio">' +
+        '<div class="ecriterio-header"><div class="ecriterio-nome">' + c.nome + '</div><div class="ecriterio-val">' + c.val + '/100</div></div>' +
+        '<div class="ecriterio-bar"><div class="ecriterio-fill" style="width:' + c.val + '%;background:' + c.cor + '"></div></div>' +
+      '</div>';
+    }).join('');
+  }
+
+  var numEl = document.getElementById('enotaNum');
+  var badgeEl = document.getElementById('enotaBadge');
+  var feedEl = document.getElementById('efeedbackTexto');
+  if (numEl) numEl.textContent = geral + '/100';
+  if (badgeEl) badgeEl.textContent = geral >= 80 ? 'Excelente' : geral >= 65 ? 'Bom' : 'A melhorar';
+
+  var feedback = '';
+  if (palavras < 80) feedback += '✗ Sua resposta está curta (' + palavras + ' palavras). Tente escrever pelo menos 80 palavras. ';
+  else feedback += '✓ Boa extensão! ';
+  if (gramatica >= 75) feedback += '✓ Boa gramática e vocabulário. ';
+  else feedback += '✗ Revise a gramática — tente usar mais conectores como "however" e "therefore". ';
+  if (conteudo >= 75) feedback += '✓ Boas ideias e argumentos. ';
+  else feedback += '✗ Desenvolva mais as suas ideias com exemplos concretos. ';
+
+  if (feedEl) feedEl.textContent = feedback;
+
+  var result = document.getElementById('eresultado');
+  if (result) result.classList.add('show');
+}
+
 var nomeUsuario = '';
 var nivelAtual = 'B1';
 var tradAtiva = false;
@@ -1031,6 +1596,7 @@ window.onload = function() {
   // LEITURA
   document.getElementById('btnVoltarLeitura').onclick = function() { voltarHome(); };
   document.getElementById('lnavHome').onclick = function() { voltarHome(); };
+  document.getElementById('lnavTextos').onclick = function() { irBanco(); };
   document.getElementById('lnavPerfil').onclick = function() { ir('perfil'); };
   document.getElementById('toggleTrad').onclick = function() {
     tradAtiva = !tradAtiva;
@@ -1096,6 +1662,84 @@ window.onload = function() {
       renderBanco();
     };
   });
+
+
+  // QUIZ
+  document.getElementById('btnVoltarQuiz').onclick = function() { ir('leitura'); };
+  document.getElementById('qnavHome').onclick = function() { voltarHome(); };
+  document.getElementById('qnavTextos').onclick = function() { irBanco(); };
+
+  // AUDIÇÃO
+  document.getElementById('btnVoltarAudicao').onclick = function() { voltarHome(); };
+  document.getElementById('anavHome').onclick = function() { voltarHome(); };
+  document.getElementById('btnPlay').onclick = function() {
+    var btn = this;
+    btn.textContent = btn.textContent === '▶' ? '⏸' : '▶';
+  };
+  document.getElementById('btnQuizAudio').onclick = function() { iniciarQuiz('b1-1'); };
+  document.getElementById('btnRepetir').onclick = function() { document.getElementById('btnPlay').textContent = '▶'; };
+  document.getElementById('langEN').onclick = function() {
+    this.classList.add('on');
+    document.getElementById('langPT').classList.remove('on');
+    document.getElementById('transcricao-en').style.display = 'block';
+    document.getElementById('transcricao-pt').style.display = 'none';
+  };
+  document.getElementById('langPT').onclick = function() {
+    this.classList.add('on');
+    document.getElementById('langEN').classList.remove('on');
+    document.getElementById('transcricao-en').style.display = 'none';
+    document.getElementById('transcricao-pt').style.display = 'block';
+  };
+  document.querySelectorAll('.speed-btn').forEach(function(btn) {
+    btn.onclick = function() {
+      document.querySelectorAll('.speed-btn').forEach(function(b) { b.classList.remove('on'); });
+      this.classList.add('on');
+    };
+  });
+
+  // ESCRITA
+  document.getElementById('btnVoltarEscrita').onclick = function() { voltarHome(); };
+  document.getElementById('enavHome').onclick = function() { voltarHome(); };
+  document.getElementById('escritaInput').oninput = function() {
+    var n = contarPalavras(this.value);
+    var el = document.getElementById('escritaCount');
+    el.textContent = n + ' palavras';
+    el.className = 'ecount ' + (n >= 80 ? 'ok' : n >= 60 ? 'warn' : 'short');
+  };
+  document.getElementById('btnEnviarEscrita').onclick = function() {
+    var texto = document.getElementById('escritaInput').value.trim();
+    if (contarPalavras(texto) < 10) { alert('Escreva pelo menos algumas frases antes de enviar!'); return; }
+    avaliarEscrita(texto);
+    this.textContent = 'Tentar novamente';
+    this.onclick = function() {
+      document.getElementById('escritaInput').value = '';
+      document.getElementById('escritaCount').textContent = '0 palavras';
+      document.getElementById('eresultado').classList.remove('show');
+      this.textContent = 'Enviar para correção';
+    };
+  };
+
+  // PROGRESSO
+  document.getElementById('pronavHome').onclick = function() { voltarHome(); };
+  document.getElementById('pronavTextos').onclick = function() { irBanco(); };
+  document.getElementById('pronavPerfil').onclick = function() { ir('perfil'); };
+
+  // Conectar botões da home com novas telas
+  document.getElementById('navProgresso').onclick = function() { ir('progresso'); };
+
+  // Conectar skill cards
+  document.getElementById('btnLeitura').onclick = function() { ir('leitura'); };
+  document.querySelectorAll('.skcard').forEach(function(card, i) {
+    if (i === 1) card.onclick = function() { ir('audicao'); };
+    if (i === 2) card.onclick = function() { ir('escrita'); };
+    if (i === 3) card.onclick = function() { alert('Conversação oral em breve!'); };
+  });
+
+  // Conectar botão Quiz na leitura
+  document.getElementById('btnQuiz').onclick = function() { iniciarQuiz('b1-1'); };
+
+  // Conectar botão Audio na leitura
+  document.getElementById('btnAudio').onclick = function() { ir('audicao'); };
 
   console.log('Talking Cricket carregado!');
 };
