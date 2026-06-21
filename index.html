@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <meta name="theme-color" content="#1D9E75">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Talking Cricket">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231D9E75'/%3E%3Ctext y='.9em' font-size='80' x='10'%3E🦗%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="data:application/json,%7B%22name%22%3A%22Talking+Cricket%22%2C%22short_name%22%3A%22Cricket%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%231D9E75%22%2C%22theme_color%22%3A%22%231D9E75%22%7D">
 <title>Talking Cricket</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
@@ -511,6 +516,48 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 .nav-universal .nitem { flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:9px;font-weight:800;color:#6b7280;cursor:pointer;padding:4px 0;text-transform:uppercase;letter-spacing:.04em; }
 .nav-universal .nitem i { font-size:22px; }
 .nav-universal .nitem.on { color:#534AB7; }
+
+/* SEMENTES */
+.seed-icon { display:inline-block; }
+.seeds-display { display:flex; align-items:center; gap:6px; }
+.seeds-count { font-size:18px; font-weight:800; color:#EF9F27; }
+.seeds-label { font-size:11px; color:#CECBF6; font-weight:700; }
+.seed-earned { position:fixed; top:80px; right:20px; background:#EF9F27; color:#fff; 
+  font-size:13px; font-weight:800; padding:8px 16px; border-radius:20px; 
+  z-index:999; animation:seedPop .4s ease-out, seedFade 1.5s ease-in forwards;
+  animation-delay:0s, 0.8s; pointer-events:none; }
+@keyframes seedPop { 0%{transform:scale(0.5);opacity:0} 70%{transform:scale(1.2)} 100%{transform:scale(1);opacity:1} }
+@keyframes seedFade { to{opacity:0;transform:translateY(-20px)} }
+
+/* PLANO DE ESTUDOS */
+#plano{background:#F8F7FF;}
+.plheader{background:#534AB7;padding:50px 20px 20px;position:relative;}
+.plback{position:absolute;top:14px;left:14px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.2);border:none;cursor:pointer;font-size:20px;color:#fff;display:flex;align-items:center;justify-content:center;}
+.pltitulo{font-size:20px;font-weight:800;color:#fff;}
+.plsub{font-size:13px;color:#CECBF6;margin-top:4px;}
+.plbody{padding:16px;display:flex;flex-direction:column;gap:14px;overflow-y:auto;flex:1;}
+.plcard{background:#fff;border-radius:14px;padding:16px;}
+.plcard-titulo{font-size:12px;font-weight:800;color:#6b7280;text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;}
+.pldata-input{width:100%;background:#F8F7FF;border:1.5px solid #D3D1C7;border-radius:10px;padding:12px 16px;font-family:'Nunito',Arial,sans-serif;font-size:15px;color:#1a1a2e;outline:none;}
+.pldata-input:focus{border-color:#534AB7;}
+.pl-nivel-select{display:flex;flex-direction:column;gap:8px;}
+.pl-nivel-btn{padding:12px 16px;border-radius:10px;border:2px solid #D3D1C7;background:#fff;font-family:'Nunito',Arial,sans-serif;font-size:14px;font-weight:700;cursor:pointer;text-align:left;color:#1a1a2e;}
+.pl-nivel-btn.on{border-color:#534AB7;background:#EEEDFE;color:#534AB7;}
+.pl-cronograma{display:flex;flex-direction:column;gap:8px;}
+.pl-semana{display:flex;gap:10px;align-items:flex-start;}
+.pl-semana-num{width:32px;height:32px;border-radius:50%;background:#534AB7;color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.pl-semana-info{flex:1;}
+.pl-semana-titulo{font-size:13px;font-weight:800;color:#1a1a2e;}
+.pl-semana-sub{font-size:11px;color:#6b7280;margin-top:2px;line-height:1.4;}
+.pl-dias{display:flex;gap:4px;margin-top:6px;}
+.pl-dia{font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;background:#EEEDFE;color:#534AB7;}
+.pl-gerar{width:100%;padding:14px;border-radius:14px;border:none;background:#534AB7;color:#fff;font-family:'Nunito',Arial,sans-serif;font-size:15px;font-weight:800;cursor:pointer;}
+.pl-countdown{background:#534AB7;border-radius:14px;padding:16px;display:flex;align-items:center;gap:14px;}
+.pl-cd-icon{font-size:32px;}
+.pl-cd-info{flex:1;}
+.pl-cd-dias{font-size:28px;font-weight:800;color:#fff;}
+.pl-cd-label{font-size:12px;color:#CECBF6;font-weight:700;}
+.pl-cd-prova{font-size:13px;color:#9FE1CB;margin-top:2px;}
 </style>
 </head>
 <body>
@@ -519,32 +566,46 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 <!-- SPLASH -->
 <div id="splash" class="tela ativa">
   <div class="splash-topo">
-    <svg width="150" height="130" viewBox="0 0 260 180" fill="none">
-      <ellipse cx="130" cy="115" rx="55" ry="33" fill="#27500A"/>
-      <ellipse cx="128" cy="113" rx="53" ry="31" fill="#639922"/>
-      <ellipse cx="115" cy="100" rx="22" ry="11" fill="#97C459" opacity=".4"/>
-      <ellipse cx="180" cy="102" rx="24" ry="22" fill="#27500A"/>
-      <ellipse cx="179" cy="101" rx="23" ry="21" fill="#5DCAA5"/>
-      <circle cx="186" cy="94" r="10" fill="#fff"/>
-      <circle cx="188" cy="94" r="7" fill="#27500A"/>
-      <circle cx="190" cy="92" r="3.5" fill="#173404"/>
-      <circle cx="192" cy="91" r="1.8" fill="#fff"/>
-      <path d="M175 108 Q181 114 188 108" stroke="#27500A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-      <path d="M184 82 Q194 58 216 40" stroke="#27500A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-      <circle cx="217" cy="39" r="4.5" fill="#EF9F27"/>
-      <path d="M180 81 Q189 56 208 36" stroke="#3B6D11" stroke-width="2" fill="none" stroke-linecap="round"/>
-      <circle cx="209" cy="35" r="3.5" fill="#FAC775"/>
-      <ellipse cx="118" cy="88" rx="42" ry="16" fill="#9FE1CB" opacity=".5"/>
-      <path d="M85 122 L56 100 L34 134" stroke="#27500A" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M85 130 L60 115 L38 148" stroke="#27500A" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M118 143 L106 158 L93 154" stroke="#3B6D11" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M132 146 L122 162 L109 158" stroke="#3B6D11" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M155 137 L150 154 L137 150" stroke="#3B6D11" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      <rect x="200" y="103" width="12" height="19" rx="6" fill="#EF9F27" stroke="#BA7517" stroke-width="1.5"/>
-      <path d="M200 119 Q206 127 212 119" stroke="#BA7517" stroke-width="1.5" fill="none"/>
-      <line x1="206" y1="127" x2="206" y2="136" stroke="#BA7517" stroke-width="1.5"/>
-      <path d="M201 136 L211 136" stroke="#BA7517" stroke-width="1.5" stroke-linecap="round"/>
-    </svg>
+    <svg width="150" height="150" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Corpo principal -->
+  <ellipse cx="100" cy="120" rx="45" ry="30" fill="#2D7D0A"/>
+  <ellipse cx="98" cy="118" rx="43" ry="28" fill="#4CAF0A"/>
+  <!-- Brilho no corpo -->
+  <ellipse cx="88" cy="108" rx="18" ry="10" fill="#7ED321" opacity="0.5"/>
+  <!-- Cabeça -->
+  <circle cx="148" cy="95" r="30" fill="#2D7D0A"/>
+  <circle cx="147" cy="93" r="28" fill="#4CAF0A"/>
+  <!-- Brilho na cabeça -->
+  <ellipse cx="138" cy="82" rx="12" ry="8" fill="#7ED321" opacity="0.4"/>
+  <!-- Olhos grandes expressivos -->
+  <circle cx="158" cy="85" r="14" fill="white"/>
+  <circle cx="158" cy="85" r="10" fill="#1a1a2e"/>
+  <circle cx="161" cy="82" r="5" fill="#333"/>
+  <circle cx="164" cy="80" r="3" fill="white"/>
+  <!-- Sorriso -->
+  <path d="M140 103 Q148 112 158 105" stroke="#1a5c02" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- Antenas -->
+  <path d="M145 67 Q138 40 120 20" stroke="#2D7D0A" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <circle cx="119" cy="19" r="5" fill="#EF9F27"/>
+  <path d="M155 65 Q162 38 175 18" stroke="#2D7D0A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <circle cx="176" cy="17" r="4" fill="#FAC775"/>
+  <!-- Asas -->
+  <ellipse cx="80" cy="105" rx="40" ry="18" fill="#A5D63C" opacity="0.7" transform="rotate(-15 80 105)"/>
+  <ellipse cx="75" cy="108" rx="35" ry="15" fill="#C8E87A" opacity="0.5" transform="rotate(-15 75 108)"/>
+  <!-- Pernas -->
+  <path d="M75 140 L45 125 L25 140" stroke="#2D7D0A" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M75 148 L48 138 L28 155" stroke="#2D7D0A" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M90 152 L80 168 L65 165" stroke="#3B8A10" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M110 150 L102 167 L88 163" stroke="#3B8A10" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M125 144 L120 160 L106 156" stroke="#3B8A10" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Microfone -->
+  <rect x="168" y="100" width="14" height="22" rx="7" fill="#EF9F27" stroke="#BA7517" stroke-width="1.5"/>
+  <path d="M168 118 Q175 128 182 118" stroke="#BA7517" stroke-width="1.5" fill="none"/>
+  <line x1="175" y1="128" x2="175" y2="138" stroke="#BA7517" stroke-width="1.5"/>
+  <path d="M169 138 L181 138" stroke="#BA7517" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Barriga -->
+  <ellipse cx="95" cy="125" rx="20" ry="10" fill="#F9C851" opacity="0.4"/>
+</svg>
     <div class="splash-nome">Talking Cricket</div>
     <div class="splash-tag">Aprenda inglês de verdade</div>
   </div>
@@ -650,9 +711,9 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
       </div>
     </div>
     <div class="xpcard">
-      <div class="xplbls"><span id="xplbl">Nível B1 — 620 XP</span><span>Próximo nível em 380 XP</span></div>
-      <div class="xpbar"><div class="xpfill" id="xpfill"></div></div>
-      <div class="lvpill" id="lvpill">● B1 — Intermediário ▾</div>
+      <div class="xplbls"><span id="xplbl">Nível B1 — 🌱 620 sementes</span><span>Próximo nível em 380 🌱</span></div>
+      <div class="xpbar"><div class="xpfill" id="xpfill" style="width:62%"></div></div>
+      <div class="lvpill" id="lvpill">🌱 B1 — Intermediário ▾</div>
     </div>
   </div>
   <div class="hbody">
@@ -669,7 +730,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
       <div class="stitle">Sequência &amp; Conquistas</div>
       <div class="streak">
         <div class="stcard"><div class="sticon">🔥</div><div class="stval">14</div><div class="stlbl">dias seguidos</div></div>
-        <div class="stcard"><div class="sticon">🏆</div><div class="stval">8</div><div class="stlbl">medalhas</div></div>
+        <div class="stcard"><div class="sticon">🌱</div><div class="stval">620</div><div class="stlbl">sementes</div></div>
         <div class="stcard"><div class="sticon">⏱️</div><div class="stval">42h</div><div class="stlbl">estudadas</div></div>
       </div>
     </div>
@@ -677,7 +738,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
       <div class="stitle">Medalhas</div>
       <div class="medals">
         <div class="mitem"><div class="mcircle mg">🏅</div><div class="mlbl">Leitor veloz</div></div>
-        <div class="mitem"><div class="mcircle mg">🎯</div><div class="mlbl">Quiz perfeito</div></div>
+        <div class="mitem"><div class="mcircle mg">🎯</div><div class="mlbl">Exercício perfeito</div></div>
         <div class="mitem"><div class="mcircle ms">🎧</div><div class="mlbl">Ouvinte</div></div>
         <div class="mitem"><div class="mcircle mb">✍️</div><div class="mlbl">Escritor</div></div>
         <div class="mitem"><div class="mcircle ml">🗣️</div><div class="mlbl">Orador</div></div>
@@ -800,7 +861,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
       </div>
     </div>
     <div class="acoes">
-      <button class="acao-btn acao-quiz" id="btnQuiz"><i class="ti ti-help" style="font-size:16px"></i> Fazer quiz</button>
+      <button class="acao-btn acao-quiz" id="btnExercicios"><i class="ti ti-help" style="font-size:16px"></i> Fazer exercícios</button>
       <button class="acao-btn acao-audio" id="btnAudio"><i class="ti ti-volume" style="font-size:16px"></i> Ouvir texto</button>
     </div>
   </div>
@@ -930,7 +991,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     </div>
 
     <div class="audio-acoes">
-      <button class="audio-acao quiz" id="btnQuizAudio"><i class="ti ti-help" style="font-size:15px"></i> Fazer quiz</button>
+      <button class="audio-acao quiz" id="btnExerciciosAudio"><i class="ti ti-help" style="font-size:15px"></i> Fazer exercícios</button>
       <button class="audio-acao repeat" id="btnRepetir"><i class="ti ti-repeat" style="font-size:15px"></i> Repetir</button>
     </div>
   </div>
@@ -1073,7 +1134,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
         <div class="pro-hist-item">
           <div class="pro-hist-icon">🎯</div>
           <div class="pro-hist-info">
-            <div class="pro-hist-titulo">Quiz — Football Tactics</div>
+            <div class="pro-hist-titulo">Exercícios — Football Tactics</div>
             <div class="pro-hist-data">Ontem • 4/5 acertos</div>
           </div>
           <div class="pro-hist-nota">80%</div>
@@ -1164,7 +1225,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div class="ea-transcricao" id="ea-transcricao"></div>
 
     <div id="ea-quiz-area">
-      <div class="ea-quiz-titulo">📝 Responda as perguntas</div>
+      <div class="ea-quiz-titulo">📝 Exercícios de compreensão</div>
       <div class="qopcoes" id="ea-quiz-perguntas"></div>
     </div>
   </div>
@@ -1207,6 +1268,65 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
       <textarea class="ct-input" id="ctInput" placeholder="Type in English or use the microphone..." rows="1"></textarea>
       <button class="ct-send" id="ctSend">➤</button>
     </div>
+  </div>
+</div>
+
+
+<!-- PLANO DE ESTUDOS -->
+<div id="plano" class="tela">
+  <div class="plheader">
+    <button class="plback" id="btnVoltarPlano">&#8592;</button>
+    <div class="pltitulo">Plano de Estudos</div>
+    <div class="plsub">Cronograma personalizado para o Cambridge</div>
+  </div>
+  <div class="plbody">
+
+    <div class="plcard">
+      <div class="plcard-titulo">📅 Data da prova</div>
+      <input type="date" class="pldata-input" id="plDataProva"/>
+      <p style="font-size:11px;color:#6b7280;margin-top:6px;">Escolha a data do seu exame Cambridge</p>
+    </div>
+
+    <div class="plcard">
+      <div class="plcard-titulo">🎯 Nível alvo</div>
+      <div class="pl-nivel-select">
+        <button class="pl-nivel-btn" data-nivel="A2">A2 — Key (KET)</button>
+        <button class="pl-nivel-btn on" data-nivel="B1">B1 — Preliminary (PET)</button>
+        <button class="pl-nivel-btn" data-nivel="B2">B2 — First (FCE)</button>
+        <button class="pl-nivel-btn" data-nivel="C1">C1 — Advanced (CAE)</button>
+        <button class="pl-nivel-btn" data-nivel="C2">C2 — Proficiency (CPE)</button>
+      </div>
+    </div>
+
+    <div class="plcard">
+      <div class="plcard-titulo">⏱️ Disponibilidade semanal</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;" id="plDias">
+        <button class="pl-dia" data-dia="Seg" style="cursor:pointer;font-size:12px;padding:6px 12px;">Seg</button>
+        <button class="pl-dia" data-dia="Ter" style="cursor:pointer;font-size:12px;padding:6px 12px;">Ter</button>
+        <button class="pl-dia" data-dia="Qua" style="cursor:pointer;font-size:12px;padding:6px 12px;background:#534AB7;color:#fff;">Qua</button>
+        <button class="pl-dia" data-dia="Qui" style="cursor:pointer;font-size:12px;padding:6px 12px;">Qui</button>
+        <button class="pl-dia" data-dia="Sex" style="cursor:pointer;font-size:12px;padding:6px 12px;background:#534AB7;color:#fff;">Sex</button>
+        <button class="pl-dia" data-dia="Sab" style="cursor:pointer;font-size:12px;padding:6px 12px;">Sáb</button>
+        <button class="pl-dia" data-dia="Dom" style="cursor:pointer;font-size:12px;padding:6px 12px;">Dom</button>
+      </div>
+      <p style="font-size:11px;color:#6b7280;margin-top:8px;">Toque nos dias em que pode estudar</p>
+    </div>
+
+    <button class="pl-gerar" id="btnGerarPlano">Gerar meu plano ✨</button>
+
+    <div class="plcard" id="plCronograma" style="display:none;">
+      <div class="plcard-titulo">📋 Seu cronograma</div>
+      <div class="pl-countdown" id="plCountdown" style="margin-bottom:14px;">
+        <div class="pl-cd-icon">🎓</div>
+        <div class="pl-cd-info">
+          <div class="pl-cd-dias" id="plDiasRestantes">--</div>
+          <div class="pl-cd-label">dias até a prova</div>
+          <div class="pl-cd-prova" id="plDataProvaLabel">Defina a data acima</div>
+        </div>
+      </div>
+      <div class="pl-cronograma" id="plSemanas"></div>
+    </div>
+
   </div>
 </div>
 
@@ -1945,6 +2065,168 @@ function renderNav(telaId) {
   });
 }
 
+
+// ===== SISTEMA DE SEMENTES =====
+var sementesTotal = 620;
+
+function ganharSementes(quantidade, motivo) {
+  sementesTotal += quantidade;
+  // Atualizar display
+  var xplbl = document.getElementById('xplbl');
+  if (xplbl) xplbl.textContent = 'Nível ' + nivelAtual + ' — 🌱 ' + sementesTotal + ' sementes';
+  // Mostrar notificação
+  var notif = document.createElement('div');
+  notif.className = 'seed-earned';
+  notif.textContent = '+' + quantidade + ' 🌱 ' + (motivo || 'sementes!');
+  document.body.appendChild(notif);
+  setTimeout(function() { if(notif.parentNode) notif.parentNode.removeChild(notif); }, 2500);
+  // Atualizar barra
+  var fill = document.getElementById('xpfill');
+  if (fill) fill.style.width = Math.min(100, (sementesTotal / 1000) * 100) + '%';
+}
+
+// Ganhar sementes ao completar exercícios
+var _renderResultadoOriginal = renderQuizResultado;
+renderQuizResultado = function() {
+  _renderResultadoOriginal();
+  var sementes = quizAcertos * 10;
+  ganharSementes(sementes, 'exercícios completos!');
+};
+
+
+// ===== PLANO DE ESTUDOS =====
+var plNivelAlvo = 'B1';
+var plDiasSelecionados = ['Qua', 'Sex'];
+
+function gerarCronograma() {
+  var dataProva = document.getElementById('plDataProva').value;
+  var diasRestantes = 0;
+  
+  if (dataProva) {
+    var hoje = new Date();
+    var prova = new Date(dataProva);
+    diasRestantes = Math.ceil((prova - hoje) / (1000 * 60 * 60 * 24));
+  }
+
+  var semanasRestantes = Math.max(1, Math.floor(diasRestantes / 7));
+  
+  var el = document.getElementById('plDiasRestantes');
+  if (el) el.textContent = diasRestantes > 0 ? diasRestantes : '--';
+  
+  var elLabel = document.getElementById('plDataProvaLabel');
+  if (elLabel && dataProva) {
+    var d = new Date(dataProva);
+    elLabel.textContent = 'Prova: ' + d.toLocaleDateString('pt-BR', {day:'2-digit',month:'long',year:'numeric'});
+  }
+
+  var cronogramas = {
+    'A2': [
+      {titulo:'Vocabulário Essencial', sub:'Família, casa, trabalho, rotina — 500 palavras-chave', skills:['Leitura','Vocabulário']},
+      {titulo:'Gramática Básica', sub:'Present simple, past simple, future — estruturas A2', skills:['Escrita','Gramática']},
+      {titulo:'Listening A2', sub:'Diálogos curtos, anúncios, conversas cotidianas', skills:['Audição','Pronúncia']},
+      {titulo:'Speaking Practice', sub:'Descrever imagens, responder perguntas simples', skills:['Conversação']},
+      {titulo:'Simulado KET', sub:'Prova completa no formato Cambridge A2', skills:['Todos']}
+    ],
+    'B1': [
+      {titulo:'Reading & Vocabulary', sub:'Textos de jornais, artigos simples — B1 Cambridge', skills:['Leitura','Vocabulário']},
+      {titulo:'Grammar B1', sub:'Present perfect, conditionals, passive voice', skills:['Escrita','Gramática']},
+      {titulo:'Listening B1', sub:'Notícias, entrevistas, conversas formais e informais', skills:['Audição']},
+      {titulo:'Writing Practice', sub:'Emails, cartas, redações curtas — 100-150 palavras', skills:['Escrita']},
+      {titulo:'Speaking B1', sub:'Discussão de tópicos, opiniões, comparações', skills:['Conversação']},
+      {titulo:'Simulado PET', sub:'Prova completa no formato Cambridge B1', skills:['Todos']}
+    ],
+    'B2': [
+      {titulo:'Advanced Reading', sub:'Textos acadêmicos, artigos de opinião, literatura', skills:['Leitura']},
+      {titulo:'Complex Grammar', sub:'Inversão, cleft sentences, reported speech avançado', skills:['Gramática']},
+      {titulo:'Academic Listening', sub:'Palestras, debates, documentários em inglês nativo', skills:['Audição']},
+      {titulo:'Essay Writing', sub:'Argumentação, análise crítica — 180-220 palavras', skills:['Escrita']},
+      {titulo:'Fluent Speaking', sub:'Debates, discussões abstratas, persuasão', skills:['Conversação']},
+      {titulo:'FCE Mock Exam', sub:'Simulado completo no formato Cambridge B2', skills:['Todos']}
+    ],
+    'C1': [
+      {titulo:'Advanced Vocabulary', sub:'Colocações, phrasal verbs avançados, idioms formais', skills:['Vocabulário']},
+      {titulo:'C1 Grammar Mastery', sub:'Subjunctive, inversion, complex nominal groups', skills:['Gramática']},
+      {titulo:'Academic Listening', sub:'Conferências, entrevistas especializadas, podcasts', skills:['Audição']},
+      {titulo:'Academic Writing', sub:'Ensaios críticos, relatórios formais — 220-260 palavras', skills:['Escrita']},
+      {titulo:'Advanced Speaking', sub:'Análise crítica, abstração, linguagem acadêmica oral', skills:['Conversação']},
+      {titulo:'CAE Mock Exam', sub:'Simulado completo no formato Cambridge C1', skills:['Todos']}
+    ],
+    'C2': [
+      {titulo:'Mastery Vocabulary', sub:'Nuances semânticas, registro formal/informal avançado', skills:['Vocabulário']},
+      {titulo:'Proficient Grammar', sub:'Todos os aspectos da gramática avançada em contexto', skills:['Gramática']},
+      {titulo:'Native Speed Listening', sub:'Filmes, séries, podcasts sem legenda, sotaques variados', skills:['Audição']},
+      {titulo:'Sophisticated Writing', sub:'Crítica literária, ensaios acadêmicos — 280-320 palavras', skills:['Escrita']},
+      {titulo:'Native-like Speaking', sub:'Debate filosófico, humor, conotações culturais', skills:['Conversação']},
+      {titulo:'CPE Mock Exam', sub:'Simulado completo no formato Cambridge C2', skills:['Todos']}
+    ]
+  };
+
+  var fases = cronogramas[plNivelAlvo] || cronogramas['B1'];
+  var semanasPorFase = Math.max(1, Math.floor(semanasRestantes / fases.length));
+
+  var container = document.getElementById('plSemanas');
+  if (!container) return;
+  container.innerHTML = '';
+
+  fases.forEach(function(fase, i) {
+    var semanaInicio = i * semanasPorFase + 1;
+    var semanaFim = (i + 1) * semanasPorFase;
+    var div = document.createElement('div');
+    div.className = 'pl-semana';
+    div.innerHTML = 
+      '<div class="pl-semana-num">' + (i + 1) + '</div>' +
+      '<div class="pl-semana-info">' +
+        '<div class="pl-semana-titulo">' + fase.titulo + '</div>' +
+        '<div class="pl-semana-sub">' + fase.sub + '</div>' +
+        '<div class="pl-dias">' + 
+          fase.skills.map(function(s) { return '<span class="pl-dia">' + s + '</span>'; }).join('') +
+        '</div>' +
+      '</div>';
+    container.appendChild(div);
+
+    // Separador entre fases
+    if (i < fases.length - 1) {
+      var sep = document.createElement('div');
+      sep.style.cssText = 'width:1px;background:#F1EFE8;height:16px;margin-left:16px;';
+      container.appendChild(sep);
+    }
+  });
+
+  document.getElementById('plCronograma').style.display = 'block';
+}
+
+
+// ===== NOTIFICAÇÕES =====
+function solicitarNotificacoes() {
+  if (!('Notification' in window)) {
+    alert('Seu navegador não suporta notificações.');
+    return;
+  }
+  Notification.requestPermission().then(function(perm) {
+    if (perm === 'granted') {
+      new Notification('Talking Cricket 🦗', {
+        body: 'Notificações ativadas! Te lembro de estudar todo dia.',
+        icon: ''
+      });
+      alert('Notificações ativadas! Você receberá lembretes diários.');
+    } else {
+      alert('Permissão negada. Ative nas configurações do navegador.');
+    }
+  });
+}
+
+// Agendar notificação diária (funciona quando o app está aberto)
+function verificarLembreteEstudo() {
+  var hora = new Date().getHours();
+  if (hora >= 19 && hora <= 20 && Notification.permission === 'granted') {
+    new Notification('Hora de estudar! 🦗', {
+      body: 'Que tal 15 minutos de inglês hoje? O Cricket está te esperando!',
+      icon: ''
+    });
+  }
+}
+setInterval(verificarLembreteEstudo, 3600000); // Verificar a cada hora
+
 var nomeUsuario = '';
 var nivelAtual = 'B1';
 var tradAtiva = false;
@@ -2379,7 +2661,7 @@ window.onload = function() {
     this.classList.toggle('on', tradAtiva);
     document.getElementById('texto-pt').style.display = tradAtiva ? 'block' : 'none';
   };
-  document.getElementById('btnQuiz').onclick = function() { alert('Quiz em breve!'); };
+  document.getElementById('btnExercicios').onclick = function() { alert('Quiz em breve!'); };
   document.getElementById('btnAudio').onclick = function() { alert('Áudio em breve!'); };
 
   // Palavras clicáveis no texto
@@ -2405,7 +2687,7 @@ window.onload = function() {
   document.getElementById('pnavHome').onclick = function() { voltarHome(); };
   document.getElementById('btnPerfilModo').onclick = function() { ir('modo'); };
   document.getElementById('btnPerfilPlano').onclick = function() { alert('Plano de estudos em breve!'); };
-  document.getElementById('btnPerfilNotif').onclick = function() { alert('Notificações em breve!'); };
+  document.getElementById('btnPerfilNotif').onclick = function() { solicitarNotificacoes(); };
   document.getElementById('btnSair').onclick = function() { if (confirm('Deseja sair?')) { ir('splash'); } };
 
   // DÍGITOS DO CÓDIGO
@@ -2452,7 +2734,7 @@ window.onload = function() {
   // AUDIÇÃO
   document.getElementById('btnVoltarAudicao').onclick = function() { voltarHome(); };
   // btnPlay onclick definido abaixo
-  var _bqa = document.getElementById('btnQuizAudio'); if(_bqa) _bqa.onclick = function() { iniciarQuiz(textoSelecionado ? textoSelecionado.id : 'b1-1'); };
+  var _bqa = document.getElementById('btnExerciciosAudio'); if(_bqa) _bqa.onclick = function() { iniciarQuiz(textoSelecionado ? textoSelecionado.id : 'b1-1'); };
   document.getElementById('btnRepetir').onclick = function() {
     var texto = textoAtualAudicao || (document.getElementById('transcricao-en') ? document.getElementById('transcricao-en').textContent.trim() : '');
     if (texto) {
@@ -2516,7 +2798,7 @@ window.onload = function() {
   });
 
   // Conectar botão Quiz na leitura
-  document.getElementById('btnQuiz').onclick = function() { iniciarQuiz(textoSelecionado ? textoSelecionado.id : 'b1-1'); };
+  document.getElementById('btnExercicios').onclick = function() { iniciarQuiz(textoSelecionado ? textoSelecionado.id : 'b1-1'); };
 
   // Conectar botão Audio na leitura
   document.getElementById('btnAudio').onclick = function() { abrirAudicaoDoTexto(); };
@@ -2676,6 +2958,42 @@ window.onload = function() {
   document.querySelectorAll('.nav .nitem').forEach(function(item) {
     item.addEventListener('click', function() { playSound('clique'); });
   });
+
+
+  // PLANO DE ESTUDOS
+  var btnVoltarPlano = document.getElementById('btnVoltarPlano');
+  if (btnVoltarPlano) btnVoltarPlano.onclick = function() { ir('perfil'); };
+  
+  document.querySelectorAll('.pl-nivel-btn').forEach(function(btn) {
+    btn.onclick = function() {
+      document.querySelectorAll('.pl-nivel-btn').forEach(function(b) { b.classList.remove('on'); });
+      this.classList.add('on');
+      plNivelAlvo = this.getAttribute('data-nivel');
+    };
+  });
+
+  document.querySelectorAll('#plDias .pl-dia').forEach(function(btn) {
+    btn.onclick = function() {
+      var dia = this.getAttribute('data-dia');
+      var idx = plDiasSelecionados.indexOf(dia);
+      if (idx >= 0) {
+        plDiasSelecionados.splice(idx, 1);
+        this.style.background = '#EEEDFE';
+        this.style.color = '#534AB7';
+      } else {
+        plDiasSelecionados.push(dia);
+        this.style.background = '#534AB7';
+        this.style.color = '#fff';
+      }
+    };
+  });
+
+  var btnGerarPlano = document.getElementById('btnGerarPlano');
+  if (btnGerarPlano) btnGerarPlano.onclick = function() { gerarCronograma(); };
+
+  // Conectar perfil → plano
+  var btnPerfilPlano = document.getElementById('btnPerfilPlano');
+  if (btnPerfilPlano) btnPerfilPlano.onclick = function() { ir('plano'); };
 
   console.log('Talking Cricket v20260621193446 carregado!');
 };
