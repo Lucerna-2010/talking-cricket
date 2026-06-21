@@ -250,6 +250,39 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 .popup-meaning{font-size:15px;color:#1a1a2e;line-height:1.6;margin-bottom:12px;}
 .popup-example{background:#F8F7FF;border-left:3px solid #534AB7;border-radius:0 10px 10px 0;padding:12px 14px;font-size:13px;color:#534AB7;line-height:1.6;margin-bottom:20px;font-style:italic;}
 .popup-close{width:100%;padding:14px;border-radius:14px;border:none;background:#1D9E75;color:#fff;font-family:'Nunito',Arial,sans-serif;font-size:16px;font-weight:800;cursor:pointer;}
+
+/* BANCO DE TEXTOS */
+#banco{background:#F8F7FF;}
+.bheader{background:#534AB7;padding:50px 20px 16px;}
+.bheader-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.bback{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.2);border:none;cursor:pointer;font-size:20px;color:#fff;display:flex;align-items:center;justify-content:center;}
+.btitulo{font-size:18px;font-weight:800;color:#fff;}
+.nivel-tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;}
+.nivel-tab{font-size:12px;font-weight:800;padding:6px 14px;border-radius:20px;border:1.5px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.7);background:transparent;cursor:pointer;white-space:nowrap;font-family:'Nunito',Arial,sans-serif;}
+.nivel-tab.on{background:#fff;color:#534AB7;border-color:#fff;}
+.tema-filter{display:flex;gap:8px;overflow-x:auto;padding:12px 16px 0;}
+.tema-pill{font-size:11px;font-weight:800;padding:5px 12px;border-radius:20px;border:1.5px solid #D3D1C7;color:#6b7280;background:#fff;cursor:pointer;white-space:nowrap;font-family:'Nunito',Arial,sans-serif;}
+.tema-pill.on{background:#534AB7;color:#fff;border-color:#534AB7;}
+.texto-lista{padding:12px 16px;display:flex;flex-direction:column;gap:10px;}
+.texto-card{background:#fff;border-radius:14px;padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;border:1.5px solid #F1EFE8;}
+.texto-card:active{background:#F8F7FF;}
+.texto-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.texto-info{flex:1;}
+.texto-titulo{font-size:14px;font-weight:800;color:#1a1a2e;margin-bottom:4px;}
+.texto-meta{display:flex;gap:6px;align-items:center;}
+.texto-badge{font-size:10px;font-weight:800;padding:2px 8px;border-radius:10px;}
+.tb-env{background:#E1F5EE;color:#085041;}
+.tb-sport{background:#FAEEDA;color:#633806;}
+.tb-mil{background:#F1EFE8;color:#444441;}
+.tb-tech{background:#E6F1FB;color:#0C447C;}
+.tb-fam{background:#FBEAF0;color:#72243E;}
+.tb-city{background:#EEEDFE;color:#26215C;}
+.tb-phil{background:#FAECE7;color:#712B13;}
+.tb-sci{background:#EAF3DE;color:#27500A;}
+.texto-dur{font-size:10px;color:#6b7280;font-weight:600;}
+.texto-check{font-size:18px;color:#1D9E75;}
+.texto-arrow{font-size:18px;color:#D3D1C7;}
+.texto-vazio{text-align:center;padding:40px 20px;color:#6b7280;font-size:14px;}
 </style>
 </head>
 <body>
@@ -587,6 +620,35 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
   </nav>
 </div>
 
+
+<!-- BANCO DE TEXTOS -->
+<div id="banco" class="tela">
+  <div class="bheader">
+    <div class="bheader-top">
+      <button class="bback" id="btnVoltarBanco">&#8592;</button>
+      <div class="btitulo">Banco de Textos</div>
+      <div style="width:40px"></div>
+    </div>
+    <div class="nivel-tabs" id="nivel-tabs">
+      <button class="nivel-tab on" data-nivel="A1">A1</button>
+      <button class="nivel-tab" data-nivel="A2">A2</button>
+      <button class="nivel-tab" data-nivel="B1">B1</button>
+      <button class="nivel-tab" data-nivel="B2">B2</button>
+      <button class="nivel-tab" data-nivel="C1">C1</button>
+      <button class="nivel-tab" data-nivel="C2">C2</button>
+    </div>
+  </div>
+  <div class="tema-filter" id="tema-filter"></div>
+  <div class="texto-lista" id="texto-lista"></div>
+  <nav class="nav">
+    <div class="nitem" id="bnavHome"><i class="ti ti-home"></i>Início</div>
+    <div class="nitem on"><i class="ti ti-book"></i>Textos</div>
+    <div class="nitem"><i class="ti ti-microphone"></i>Falar</div>
+    <div class="nitem"><i class="ti ti-chart-bar"></i>Progresso</div>
+    <div class="nitem" id="bnavPerfil"><i class="ti ti-user"></i>Perfil</div>
+  </nav>
+</div>
+
 <!-- SELETOR DE NÍVEL -->
 <div class="nivel-sheet" id="nivel-sheet">
   <div class="nivel-sheet-box">
@@ -659,7 +721,7 @@ function voltarHome() {
 }
 
 function abrirPalavra(word) {
-  var p = palavras[word];
+  var p = bancoPalavras[word] || palavras[word];
   if (!p) return;
   document.getElementById('pw').textContent = word;
   document.getElementById('pp').textContent = p.pron;
@@ -694,122 +756,23 @@ function mudarNivel(sigla, nomeNivel) {
   document.getElementById('nivel-sheet').classList.remove('show');
 }
 
-window.onload = function() {
-  // SPLASH
-  document.getElementById('btnCriar').onclick = function() { ir('cadastro'); };
-  document.getElementById('btnLogin').onclick = function() { ir('codigo'); };
 
-  // CADASTRO
-  document.getElementById('btnVoltarCadastro').onclick = function() { ir('splash'); };
-  document.getElementById('btnVoltarInicio1').onclick = function() { ir('splash'); };
-  document.getElementById('btnEnviarCodigo').onclick = function() {
-    var n = document.getElementById('inp-nome').value.trim();
-    var i = document.getElementById('inp-idade').value.trim();
-    var c = document.getElementById('inp-contato').value.trim();
-    if (!n) { alert('Informe seu nome.'); return; }
-    if (!i) { alert('Informe sua idade.'); return; }
-    if (!c) { alert('Informe seu email ou telefone.'); return; }
-    nomeUsuario = n;
-    document.getElementById('dest').textContent = c;
-    ir('codigo');
-  };
-
-  // CÓDIGO
-  document.getElementById('btnVoltarCodigo').onclick = function() { ir('cadastro'); };
-  document.getElementById('btnVoltarInicio2').onclick = function() { ir('splash'); };
-  document.getElementById('btnReenviar').onclick = function() { alert('Use o código: 7429'); };
-  document.getElementById('btnConfirmar').onclick = function() {
-    var cod = '';
-    for (var i = 0; i < 4; i++) { var d = document.getElementById('d' + i); if (d) cod += d.value; }
-    if (cod.length < 4) { alert('Digite os 4 dígitos. Use: 7429'); return; }
-    if (cod === '7429') {
-      var pn = nomeUsuario ? nomeUsuario.split(' ')[0] : 'Você';
-      document.getElementById('modo-nome').textContent = 'Bem-vindo, ' + pn + '!';
-      var ini = nomeUsuario ? nomeUsuario.split(' ').map(function(x){return x[0];}).slice(0,2).join('').toUpperCase() : 'TC';
-      document.getElementById('havatar').textContent = ini;
-      document.getElementById('pavatar').textContent = ini;
-      document.getElementById('hcnome').textContent = pn;
-      document.getElementById('hknome').textContent = pn;
-      document.getElementById('pnome').textContent = nomeUsuario || pn;
-      ir('modo');
-    } else { alert('Código incorreto. Use: 7429'); }
-  };
-
-  // MODO
-  document.getElementById('btnCambridge').onclick = function() { voltarHome(); };
-  document.getElementById('btnKids').onclick = function() { ir('home-kids'); };
-
-  // HOME CAMBRIDGE
-  document.getElementById('btnTrocarModo').onclick = function() { ir('modo'); };
-  document.getElementById('lvpill').onclick = function() { document.getElementById('nivel-sheet').classList.add('show'); };
-  document.getElementById('btnLeitura').onclick = function() { ir('leitura'); };
-  document.getElementById('btnAulaHoje').onclick = function() { ir('leitura'); };
-  document.getElementById('navHome').onclick = function() { voltarHome(); };
-  document.getElementById('navPerfil').onclick = function() { ir('perfil'); };
-  document.getElementById('navTextos').onclick = function() { alert('Banco de textos em breve!'); };
-  document.getElementById('navFalar').onclick = function() { alert('Conversação em breve!'); };
-  document.getElementById('navProgresso').onclick = function() { alert('Progresso em breve!'); };
-
-  // HOME KIDS
-  document.getElementById('btnTrocarModoKids').onclick = function() { ir('modo'); };
-  document.getElementById('btnJogar').onclick = function() { alert('Jogos em breve!'); };
-  document.getElementById('knavHome').onclick = function() { ir('home-kids'); };
-
-  // LEITURA
-  document.getElementById('btnVoltarLeitura').onclick = function() { voltarHome(); };
-  document.getElementById('lnavHome').onclick = function() { voltarHome(); };
-  document.getElementById('lnavPerfil').onclick = function() { ir('perfil'); };
-  document.getElementById('toggleTrad').onclick = function() {
-    tradAtiva = !tradAtiva;
-    this.classList.toggle('on', tradAtiva);
-    document.getElementById('texto-pt').style.display = tradAtiva ? 'block' : 'none';
-  };
-  document.getElementById('btnQuiz').onclick = function() { alert('Quiz em breve!'); };
-  document.getElementById('btnAudio').onclick = function() { alert('Áudio em breve!'); };
-
-  // Palavras clicáveis no texto
-  document.querySelectorAll('.w').forEach(function(btn) {
-    btn.onclick = function() { abrirPalavra(this.getAttribute('data-word')); };
-  });
-  document.querySelectorAll('.vpill').forEach(function(pill) {
-    pill.onclick = function() { abrirPalavra(this.getAttribute('data-word')); };
-  });
-
-  // POPUP
-  document.getElementById('btnFecharPopup').onclick = function() { document.getElementById('popup').classList.remove('show'); };
-  document.getElementById('popup').onclick = function(e) { if (e.target === this) this.classList.remove('show'); };
-
-  // SELETOR DE NÍVEL
-  document.getElementById('nivel-sheet').onclick = function(e) { if (e.target === this) this.classList.remove('show'); };
-  document.querySelectorAll('.nivel-item').forEach(function(item) {
-    item.onclick = function() { mudarNivel(this.getAttribute('data-sigla'), this.getAttribute('data-nome')); };
-  });
-
-  // PERFIL
-  document.getElementById('btnVoltarPerfil').onclick = function() { voltarHome(); };
-  document.getElementById('pnavHome').onclick = function() { voltarHome(); };
-  document.getElementById('btnPerfilModo').onclick = function() { ir('modo'); };
-  document.getElementById('btnPerfilPlano').onclick = function() { alert('Plano de estudos em breve!'); };
-  document.getElementById('btnPerfilNotif').onclick = function() { alert('Notificações em breve!'); };
-  document.getElementById('btnSair').onclick = function() { if (confirm('Deseja sair?')) { ir('splash'); } };
-
-  // DÍGITOS DO CÓDIGO
-  for (var i = 0; i < 4; i++) {
-    (function(idx) {
-      var inp = document.getElementById('d' + idx);
-      if (!inp) return;
-      inp.oninput = function() {
-        this.value = this.value.replace(/[^0-9]/g, '').slice(-1);
-        if (this.value && idx < 3) { var nx = document.getElementById('d' + (idx + 1)); if (nx) nx.focus(); }
-      };
-      inp.onkeydown = function(e) {
-        if (e.key === 'Backspace' && !this.value && idx > 0) { var pv = document.getElementById('d' + (idx - 1)); if (pv) pv.focus(); }
-      };
-    })(i);
-  }
-
-  console.log('Talking Cricket carregado!');
-};
-</script>
-</body>
-</html>
+var bancoPalavras = {
+  pressing:{pron:'/ˈpresɪŋ/',meaning:'Urgente, que precisa de atenção imediata.',example:'"Climate change is a pressing issue."'},
+  affecting:{pron:'/əˈfektɪŋ/',meaning:'Afetando, causando impacto em algo.',example:'"Rising temperatures are affecting ecosystems."'},
+  unprecedented:{pron:'/ʌnˈpresɪdentɪd/',meaning:'Sem precedentes, algo que nunca aconteceu antes.',example:'"The storm caused unprecedented damage."'},
+  immediate:{pron:'/ɪˈmiːdiət/',meaning:'Imediato, que acontece agora, sem demora.',example:'"We need immediate action."'},
+  consequences:{pron:'/ˈkɒnsɪkwənsɪz/',meaning:'Consequências, resultados de uma ação.',example:'"There are serious consequences."'},
+  devastating:{pron:'/ˈdevəsteɪtɪŋ/',meaning:'Devastador, que causa grande destruição.',example:'"The flood had a devastating effect."'},
+  tactics:{pron:'/ˈtæktɪks/',meaning:'Táticas, planos e métodos para atingir um objetivo.',example:'"The coach changed the team tactics at half-time."'},
+  opponents:{pron:'/əˈpoʊnənts/',meaning:'Adversários, pessoas ou times que competem contra você.',example:'"The team studied their opponents carefully."'},
+  formation:{pron:'/fɔːrˈmeɪʃən/',meaning:'Formação, arranjo estratégico de jogadores em campo.',example:'"They played in a 4-3-3 formation."'},
+  victory:{pron:'/ˈvɪktəri/',meaning:'Vitória, sucesso em uma competição ou batalha.',example:'"The victory was celebrated by thousands of fans."'},
+  commander:{pron:'/kəˈmɑːndər/',meaning:'Comandante, líder militar responsável por uma unidade.',example:'"The commander ordered the troops to advance."'},
+  strategy:{pron:'/ˈstrætɪdʒi/',meaning:'Estratégia, plano geral para alcançar um objetivo.',example:'"Their military strategy focused on speed."'},
+  mission:{pron:'/ˈmɪʃən/',meaning:'Missão, tarefa ou objetivo específico a ser cumprido.',example:'"The soldiers completed their mission successfully."'},
+  troops:{pron:'/truːps/',meaning:'Tropas, grupo de soldados ou forças militares.',example:'"The troops were deployed to the border."'},
+  advancement:{pron:'/ədˈvɑːnsmənt/',meaning:'Avanço, progresso em direção a algo melhor.',example:'"The advancement of AI is changing industries."'},
+  transformed:{pron:'/trænsˈfɔːrmd/',meaning:'Transformado, mudado completamente.',example:'"The internet has transformed communication."'},
+  benefits:{pron:'/ˈbenɪfɪts/',meaning:'Benefícios, vantagens resultantes de algo.',example:'"The benefits of exercise include better health."'},
+  concerns:{pron:'/kənˈsɜːrnz/',meaning:'Preocupações, questões que causam ansiedade.',example:'"There are growing concerns about privacy."
