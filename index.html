@@ -6119,11 +6119,9 @@ var ksrMostrarPT = false;
 var ksrNarrando = false;
 var ksrAutoTimer = null;
 
-function abrirStories() {
+function popularListaStories() {
   var lista = document.getElementById('ksLista');
-  if (!lista) return;
-  lista.innerHTML = '';
-  
+  if (!lista || lista.children.length > 0) return; // Já populada
   kidsStorias.forEach(function(story) {
     var card = document.createElement('div');
     card.className = 'ks-story-card';
@@ -6142,7 +6140,10 @@ function abrirStories() {
     
     lista.appendChild(card);
   });
-  
+}
+
+function abrirStories() {
+  popularListaStories();
   ir('kids-stories');
 }
 
@@ -6808,6 +6809,11 @@ function irBanco() {
 
 window.onload = function() {
 
+  // SEMPRE iniciar na splash
+  document.querySelectorAll('.tela').forEach(function(t) { t.classList.remove('ativa'); });
+  var splash = document.getElementById('splash');
+  if (splash) splash.classList.add('ativa');
+
   // Função auxiliar para adicionar eventos com segurança
   function addEvt(id, evt, fn) {
     var el = document.getElementById(id);
@@ -7417,7 +7423,7 @@ window.onload = function() {
   // STORIES
   var btnVoltarStories = document.getElementById('btnVoltarStories');
   if (btnVoltarStories) btnVoltarStories.onclick = function() { ir('home-kids'); };
-  abrirStories && abrirStories();
+  // abrirStories é chamada quando usuário abre a aba
 
   // STORY READER
   var btnVoltarReader = document.getElementById('btnVoltarReader');
