@@ -2254,48 +2254,28 @@ var ttsAtivo = false;
 var ttsUtterance = null;
 
 function lerTexto(texto, velocidade) {
-  // Se já tocando — PARAR
   if (ttsAtivo) {
-    window.speechSynthesis.cancel();
+    window.speechSynthesis && window.speechSynthesis.cancel();
     ttsAtivo = false;
     atualizarBtnPlay(false);
     pararAnimacaoAudio();
+    pararKeepAlive();
     return;
   }
-
   if (!texto || !texto.trim()) return;
-
   ttsAtivo = true;
   atualizarBtnPlay(true);
   iniciarAnimacaoAudio(texto);
-
-  var utter = new SpeechSynthesisUtterance(texto);
-  utter.lang = 'en-GB';
-  utter.rate = velocidade || 1;
-  utter.pitch = 1;
-  utter.volume = 1;
-
-  utter.onend = function() {
-    ttsAtivo = false;
-    atualizarBtnPlay(false);
-    pararAnimacaoAudio();
-  };
-  utter.onerror = function() {
-    ttsAtivo = false;
-    atualizarBtnPlay(false);
-    pararAnimacaoAudio();
-  };
-
-  var falar = function() {
-    window.speechSynthesis.speak(utter);
-  };
-
-  if (window.speechSynthesis.getVoices().length > 0) {
-    falar();
-  } else {
-    window.speechSynthesis.addEventListener('voiceschanged', falar, { once: true });
-    setTimeout(falar, 500);
-  }
+  iniciarKeepAlive();
+  falarEN(texto, {
+    rate: velocidade || 0.9,
+    onend: function() {
+      ttsAtivo = false;
+      atualizarBtnPlay(false);
+      pararAnimacaoAudio();
+      pararKeepAlive();
+    }
+  });
 }
 
 // Variáveis globais de animação
@@ -2616,29 +2596,8 @@ function gerarResposta(texto) {
 }
 
 function lerTextoMasculino(texto) {
-  if (!window.speechSynthesis) return;
-  window.speechSynthesis.cancel();
-  var utter = new SpeechSynthesisUtterance(texto);
-  utter.lang = 'en-GB';
-  utter.rate = 0.9;
-  utter.pitch = 1.0; // Pitch neutro para evitar som robótico
-  utter.volume = 1;
-  var falar = function() {
-    var vozes = window.speechSynthesis.getVoices();
-    // Tentar encontrar voz masculina
-    var vozMasc = vozes.find(function(v) {
-      return v.lang.indexOf('en') === 0 && (v.name.indexOf('Male') >= 0 || v.name.indexOf('David') >= 0 || v.name.indexOf('George') >= 0 || v.name.indexOf('Daniel') >= 0);
-    });
-    if (!vozMasc) {
-      vozMasc = vozes.find(function(v) { return v.lang.indexOf('en') === 0; });
-    }
-    if (vozMasc) utter.voice = vozMasc;
-    window.speechSynthesis.speak(utter);
-  };
-  if (window.speechSynthesis.getVoices().length > 0) { falar(); }
-  else { window.speechSynthesis.addEventListener('voiceschanged', falar, {once:true}); setTimeout(falar, 300); }
+  falarEN(texto, {rate: 0.88, pitch: 1.0});
 }
-
 function adicionarMsgCricket(texto) {
   var chat = document.getElementById('ct-chat');
   if (!chat) return;
@@ -2660,23 +2619,8 @@ function adicionarMsgCricket(texto) {
     msg.innerHTML = '<div class="ct-avatar cricket">🦗</div><div class="ct-bubble">' + texto + '</div>';
     chat.appendChild(msg);
     chat.scrollTop = chat.scrollHeight;
-    // Falar com voz do Cricket (não interfere com lerTexto dos textos)
-    if (window.speechSynthesis) {
-      window.speechSynthesis.cancel();
-      var utterCricket = new SpeechSynthesisUtterance(texto);
-      utterCricket.lang = 'en-GB';
-      utterCricket.rate = 0.88;
-      utterCricket.pitch = 1.0;
-      utterCricket.volume = 1;
-      var falarCricket = function() {
-        var vozes = window.speechSynthesis.getVoices();
-        var vozEN = vozes.find(function(v) { return v.lang.indexOf('en') === 0; });
-        if (vozEN) utterCricket.voice = vozEN;
-        window.speechSynthesis.speak(utterCricket);
-      };
-      if (window.speechSynthesis.getVoices().length > 0) { falarCricket(); }
-      else { window.speechSynthesis.addEventListener('voiceschanged', falarCricket, {once:true}); setTimeout(falarCricket, 300); }
-    }
+    // Cricket fala usando sistema centralizado
+    falarEN(texto, {rate: 0.88, pitch: 1.0});
   }, 1200);
 }
 
@@ -4790,20 +4734,8 @@ var kaItemsPorPagina = 4;
 var kaRevelados = {};
 
 function falarPalavraKids(palavra, callback) {
-  if (!window.speechSynthesis) return;
-  window.speechSynthesis.cancel();
-  var utter = new SpeechSynthesisUtterance(palavra);
-  utter.lang = 'en-US';
-  utter.rate = 0.8;
-  utter.pitch = 1.2; // Voz mais agradável para crianças
-  utter.volume = 1;
-  if (callback) utter.onend = callback;
-  var vozes = window.speechSynthesis.getVoices();
-  var voz = vozes.find(function(v) { return v.lang.indexOf('en') === 0; });
-  if (voz) utter.voice = voz;
-  window.speechSynthesis.speak(utter);
+  falarEN(palavra, {rate: 0.8, pitch: 1.1, onend: callback});
 }
-
 function iniciarKidsAudio(categoria) {
   kaCategoria = categoria;
   kaPaginaAtual = 0;
@@ -6288,9 +6220,7 @@ function narrarPaginaAtual() {
   utter.rate = 0.75;
   utter.pitch = 1.1;
   
-  var vozes = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
-  var voz = vozes.find(function(v) { return v.lang.indexOf('en') === 0; });
-  if (voz) utter.voice = voz;
+  if (vozEN) utter.voice = vozEN;
   
   utter.onend = function() {
     ksrNarrando = false;
@@ -6391,6 +6321,104 @@ function responderStoryQuiz(escolha, correta) {
     ksrQuizIdx++;
     renderStoryQuiz();
   }, 1800);
+}
+
+
+// ===== SISTEMA DE ÁUDIO CENTRALIZADO =====
+// Resolve problema de voz robótica no iOS
+
+var vozEN = null; // Voz em inglês carregada
+var vozCarregada = false;
+var iosWorkaround = /iPhone|iPad|iPod/.test(navigator.userAgent);
+
+function carregarVozes() {
+  if (!window.speechSynthesis) return;
+  var vozes = window.speechSynthesis.getVoices();
+  if (vozes.length === 0) return;
+  
+  // Prioridade: vozes nativas de alta qualidade
+  var prioridade = [
+    'Samantha', 'Karen', 'Daniel', 'Google UK English Female',
+    'Google UK English Male', 'Microsoft Zira', 'Alex'
+  ];
+  
+  for (var i = 0; i < prioridade.length; i++) {
+    var v = vozes.find(function(v) { return v.name.indexOf(prioridade[i]) >= 0; });
+    if (v) { vozEN = v; break; }
+  }
+  
+  // Fallback: qualquer voz em inglês
+  if (!vozEN) {
+    vozEN = vozes.find(function(v) { return v.lang.startsWith('en'); });
+  }
+  
+  vozCarregada = !!vozEN;
+}
+
+// Carregar vozes assim que disponíveis
+if (window.speechSynthesis) {
+  carregarVozes();
+  window.speechSynthesis.addEventListener('voiceschanged', carregarVozes);
+  // iOS precisa de múltiplas tentativas
+  setTimeout(carregarVozes, 100);
+  setTimeout(carregarVozes, 500);
+  setTimeout(carregarVozes, 1000);
+}
+
+function falarEN(texto, opcoes) {
+  if (!window.speechSynthesis || !texto) return;
+  opcoes = opcoes || {};
+  
+  // Cancelar qualquer fala anterior
+  window.speechSynthesis.cancel();
+  
+  var utter = new SpeechSynthesisUtterance(texto);
+  utter.lang = 'en-GB';
+  utter.rate = opcoes.rate || 0.9;
+  utter.pitch = opcoes.pitch || 1.0;
+  utter.volume = 1;
+  
+  // Garantir voz carregada
+  if (!vozEN) carregarVozes();
+  if (vozEN) utter.voice = vozEN;
+  
+  if (opcoes.onend) utter.onend = opcoes.onend;
+  
+  var tentar = function() {
+    try {
+      // iOS workaround: precisa de resume()
+      if (window.speechSynthesis.paused) {
+        window.speechSynthesis.resume();
+      }
+      window.speechSynthesis.speak(utter);
+    } catch(e) {
+      console.log('TTS erro:', e);
+    }
+  };
+  
+  // iOS: dar um pequeno delay
+  if (iosWorkaround) {
+    setTimeout(tentar, 50);
+  } else {
+    tentar();
+  }
+}
+
+// Workaround iOS: speechSynthesis para após ~15s sem interação
+// Manter ativo com resume periódico durante narração longa
+var iosKeepAlive = null;
+function iniciarKeepAlive() {
+  if (!iosWorkaround) return;
+  pararKeepAlive();
+  iosKeepAlive = setInterval(function() {
+    if (window.speechSynthesis && window.speechSynthesis.speaking) {
+      window.speechSynthesis.pause();
+      window.speechSynthesis.resume();
+    }
+  }, 10000);
+}
+function pararKeepAlive() {
+  if (iosKeepAlive) { clearInterval(iosKeepAlive); iosKeepAlive = null; }
 }
 
 var nomeUsuario = '';
