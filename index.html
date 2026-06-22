@@ -834,6 +834,51 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 .kf-feedback-texto { font-size: 20px; font-weight: 800; }
 .kf-feedback.ok { background: #E8F5E9; color: #085041; }
 .kf-feedback.nok { background: #FAECE7; color: #712B13; }
+
+/* ===== KIDS FALAR ===== */
+#kids-falar { background: linear-gradient(135deg, #FCE4EC, #F8BBD9); }
+.kflheader { background: linear-gradient(135deg, #E91E63, #AD1457); padding: 50px 20px 20px; position: relative; text-align: center; }
+.kflback { position: absolute; top: 14px; left: 14px; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.25); border: none; cursor: pointer; font-size: 22px; color: #fff; display: flex; align-items: center; justify-content: center; }
+.kfltitulo { font-size: 22px; font-weight: 800; color: #fff; }
+.kflsub { font-size: 13px; color: #FFCDD2; margin-top: 4px; }
+.kfl-progresso { display: flex; gap: 6px; justify-content: center; margin-top: 12px; }
+.kfl-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.3); }
+.kfl-dot.on { background: #fff; transform: scale(1.2); }
+.kflbody { padding: 20px 16px; flex: 1; display: flex; flex-direction: column; gap: 16px; align-items: center; }
+
+/* Card da palavra para falar */
+.kfl-palavra-card { background: #fff; border-radius: 24px; padding: 28px 20px; text-align: center; width: 100%; box-shadow: 0 4px 20px rgba(233,30,99,0.15); border: 3px solid #FFCDD2; }
+.kfl-emoji { font-size: 80px; display: block; margin-bottom: 10px; animation: bounceIn .5s ease; }
+.kfl-palavra { font-size: 36px; font-weight: 800; color: #1a1a2e; margin-bottom: 4px; }
+.kfl-traducao { font-size: 16px; color: #6b7280; font-weight: 600; }
+
+/* Cricket fala */
+.kfl-cricket-box { background: #FCE4EC; border-radius: 16px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; width: 100%; }
+.kfl-cricket-avatar { width: 48px; height: 48px; border-radius: 50%; background: #1D9E75; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+.kfl-cricket-texto { font-size: 14px; font-weight: 700; color: #880E4F; line-height: 1.4; flex: 1; }
+.kfl-cricket-btn { padding: 8px 16px; border-radius: 20px; border: none; background: #E91E63; color: #fff; font-family: 'Nunito', Arial, sans-serif; font-size: 13px; font-weight: 800; cursor: pointer; white-space: nowrap; }
+
+/* Microfone do aluno */
+.kfl-mic-area { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 100%; }
+.kfl-mic-btn { width: 88px; height: 88px; border-radius: 50%; background: linear-gradient(135deg, #E91E63, #AD1457); border: none; cursor: pointer; font-size: 38px; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(233,30,99,0.4); transition: transform .2s; }
+.kfl-mic-btn:active { transform: scale(0.92); }
+.kfl-mic-btn.recording { animation: pulseMic .6s ease-in-out infinite alternate; background: linear-gradient(135deg, #D81B60, #880E4F); }
+@keyframes pulseMic { from{transform:scale(1);box-shadow:0 6px 20px rgba(233,30,99,0.4)} to{transform:scale(1.1);box-shadow:0 10px 30px rgba(233,30,99,0.7)} }
+.kfl-mic-label { font-size: 13px; font-weight: 700; color: #880E4F; }
+.kfl-transcricao { font-size: 14px; color: #1a1a2e; font-weight: 600; background: #fff; border-radius: 12px; padding: 10px 16px; width: 100%; text-align: center; min-height: 44px; border: 2px solid #FFCDD2; }
+
+/* Feedback falar */
+.kfl-feedback { border-radius: 16px; padding: 16px; text-align: center; width: 100%; }
+.kfl-feedback.acerto { background: #E8F5E9; border: 2px solid #1D9E75; }
+.kfl-feedback.erro { background: #FAECE7; border: 2px solid #D85A30; }
+.kfl-feedback-emoji { font-size: 48px; display: block; margin-bottom: 6px; }
+.kfl-feedback-texto { font-size: 16px; font-weight: 800; }
+.kfl-feedback.acerto .kfl-feedback-texto { color: #085041; }
+.kfl-feedback.erro .kfl-feedback-texto { color: #712B13; }
+
+/* Palavras no construtor com troca de posição */
+.kf-palavra-colocada { background: #1D9E75; color: #fff; padding: 8px 16px; border-radius: 20px; font-size: 16px; font-weight: 800; cursor: pointer; border: 3px solid transparent; font-family: 'Nunito', Arial, sans-serif; animation: slideIn .2s ease; transition: all .15s; }
+.kf-palavra-colocada.selecionada { border-color: #EF9F27; background: #0F6E56; transform: scale(1.05); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
 </style>
 </head>
 <body>
@@ -1794,6 +1839,44 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
       <button class="ka-btn ka-btn-cinza" onclick="limparFraseKids()">🗑️ Limpar</button>
       <button class="ka-btn ka-btn-verde" onclick="verificarFraseKids()">✓ Verificar</button>
     </div>
+  </div>
+</div>
+
+
+<!-- ===== KIDS FALAR ===== -->
+<div id="kids-falar" class="tela">
+  <div class="kflheader">
+    <button class="kflback" id="btnVoltarKidsFalar">&#8592;</button>
+    <div class="kfltitulo">🗣️ Falar em Inglês</div>
+    <div class="kflsub">Ouça e repita com o Cricket!</div>
+    <div class="kfl-progresso" id="kflProgresso"></div>
+  </div>
+  <div class="kflbody">
+
+    <!-- Card da palavra -->
+    <div class="kfl-palavra-card" id="kflPalavraCard">
+      <span class="kfl-emoji" id="kflEmoji">🐶</span>
+      <div class="kfl-palavra" id="kflPalavra">Dog</div>
+      <div class="kfl-traducao" id="kflTraducao">Cachorro</div>
+    </div>
+
+    <!-- Cricket fala -->
+    <div class="kfl-cricket-box">
+      <div class="kfl-cricket-avatar">🦗</div>
+      <div class="kfl-cricket-texto" id="kflCricketTexto">Ouça como eu falo e depois repita!</div>
+      <button class="kfl-cricket-btn" id="kflCricketBtn">🔊 Ouvir</button>
+    </div>
+
+    <!-- Microfone do aluno -->
+    <div class="kfl-mic-area">
+      <button class="kfl-mic-btn" id="kflMicBtn">🎤</button>
+      <div class="kfl-mic-label" id="kflMicLabel">Toque para falar</div>
+      <div class="kfl-transcricao" id="kflTranscricao" style="display:none;"></div>
+    </div>
+
+    <!-- Feedback -->
+    <div id="kflFeedback" style="display:none;width:100%;"></div>
+
   </div>
 </div>
 
@@ -5116,7 +5199,52 @@ async function abrirPainelGestor() {
       .stat{background:#fff;border-radius:10px;padding:14px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.08);}
       .stat-val{font-size:28px;font-weight:800;color:#534AB7;}
       .stat-lbl{font-size:11px;color:#6b7280;margin-top:4px;}
-    </style></head><body>`;
+    
+/* ===== KIDS FALAR ===== */
+#kids-falar { background: linear-gradient(135deg, #FCE4EC, #F8BBD9); }
+.kflheader { background: linear-gradient(135deg, #E91E63, #AD1457); padding: 50px 20px 20px; position: relative; text-align: center; }
+.kflback { position: absolute; top: 14px; left: 14px; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.25); border: none; cursor: pointer; font-size: 22px; color: #fff; display: flex; align-items: center; justify-content: center; }
+.kfltitulo { font-size: 22px; font-weight: 800; color: #fff; }
+.kflsub { font-size: 13px; color: #FFCDD2; margin-top: 4px; }
+.kfl-progresso { display: flex; gap: 6px; justify-content: center; margin-top: 12px; }
+.kfl-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.3); }
+.kfl-dot.on { background: #fff; transform: scale(1.2); }
+.kflbody { padding: 20px 16px; flex: 1; display: flex; flex-direction: column; gap: 16px; align-items: center; }
+
+/* Card da palavra para falar */
+.kfl-palavra-card { background: #fff; border-radius: 24px; padding: 28px 20px; text-align: center; width: 100%; box-shadow: 0 4px 20px rgba(233,30,99,0.15); border: 3px solid #FFCDD2; }
+.kfl-emoji { font-size: 80px; display: block; margin-bottom: 10px; animation: bounceIn .5s ease; }
+.kfl-palavra { font-size: 36px; font-weight: 800; color: #1a1a2e; margin-bottom: 4px; }
+.kfl-traducao { font-size: 16px; color: #6b7280; font-weight: 600; }
+
+/* Cricket fala */
+.kfl-cricket-box { background: #FCE4EC; border-radius: 16px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; width: 100%; }
+.kfl-cricket-avatar { width: 48px; height: 48px; border-radius: 50%; background: #1D9E75; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+.kfl-cricket-texto { font-size: 14px; font-weight: 700; color: #880E4F; line-height: 1.4; flex: 1; }
+.kfl-cricket-btn { padding: 8px 16px; border-radius: 20px; border: none; background: #E91E63; color: #fff; font-family: 'Nunito', Arial, sans-serif; font-size: 13px; font-weight: 800; cursor: pointer; white-space: nowrap; }
+
+/* Microfone do aluno */
+.kfl-mic-area { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 100%; }
+.kfl-mic-btn { width: 88px; height: 88px; border-radius: 50%; background: linear-gradient(135deg, #E91E63, #AD1457); border: none; cursor: pointer; font-size: 38px; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(233,30,99,0.4); transition: transform .2s; }
+.kfl-mic-btn:active { transform: scale(0.92); }
+.kfl-mic-btn.recording { animation: pulseMic .6s ease-in-out infinite alternate; background: linear-gradient(135deg, #D81B60, #880E4F); }
+@keyframes pulseMic { from{transform:scale(1);box-shadow:0 6px 20px rgba(233,30,99,0.4)} to{transform:scale(1.1);box-shadow:0 10px 30px rgba(233,30,99,0.7)} }
+.kfl-mic-label { font-size: 13px; font-weight: 700; color: #880E4F; }
+.kfl-transcricao { font-size: 14px; color: #1a1a2e; font-weight: 600; background: #fff; border-radius: 12px; padding: 10px 16px; width: 100%; text-align: center; min-height: 44px; border: 2px solid #FFCDD2; }
+
+/* Feedback falar */
+.kfl-feedback { border-radius: 16px; padding: 16px; text-align: center; width: 100%; }
+.kfl-feedback.acerto { background: #E8F5E9; border: 2px solid #1D9E75; }
+.kfl-feedback.erro { background: #FAECE7; border: 2px solid #D85A30; }
+.kfl-feedback-emoji { font-size: 48px; display: block; margin-bottom: 6px; }
+.kfl-feedback-texto { font-size: 16px; font-weight: 800; }
+.kfl-feedback.acerto .kfl-feedback-texto { color: #085041; }
+.kfl-feedback.erro .kfl-feedback-texto { color: #712B13; }
+
+/* Palavras no construtor com troca de posição */
+.kf-palavra-colocada { background: #1D9E75; color: #fff; padding: 8px 16px; border-radius: 20px; font-size: 16px; font-weight: 800; cursor: pointer; border: 3px solid transparent; font-family: 'Nunito', Arial, sans-serif; animation: slideIn .2s ease; transition: all .15s; }
+.kf-palavra-colocada.selecionada { border-color: #EF9F27; background: #0F6E56; transform: scale(1.05); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+</style></head><body>`;
     
     var numUsuarios = usuarios.data ? usuarios.data.length : 0;
     var numAtividades = progresso.data ? progresso.data.length : 0;
@@ -5204,6 +5332,333 @@ var _voltarHomeOriginal = voltarHome;
 voltarHome = function() {
   _voltarHomeOriginal();
   processarDeepLink();
+};
+
+
+// ===== KIDS FALAR =====
+var kflCategoria = 'animais';
+var kflIdx = 0;
+var kflMicAtivo = false;
+var kflRec = null;
+var kflEsperandoResposta = false;
+
+// Progressão de dificuldade:
+// Fase 1: palavras simples (animais, cores)
+// Fase 2: palavras médias (frutas, família)  
+// Fase 3: frases curtas
+var kflSequencia = [
+  // Fase 1 — palavras simples
+  {tipo:'palavra', en:'Dog', pt:'Cachorro', emoji:'🐶'},
+  {tipo:'palavra', en:'Cat', pt:'Gato', emoji:'🐱'},
+  {tipo:'palavra', en:'Red', pt:'Vermelho', emoji:'🔴'},
+  {tipo:'palavra', en:'Blue', pt:'Azul', emoji:'🔵'},
+  {tipo:'palavra', en:'One', pt:'Um', emoji:'1️⃣'},
+  {tipo:'palavra', en:'Two', pt:'Dois', emoji:'2️⃣'},
+  // Fase 2 — palavras médias
+  {tipo:'palavra', en:'Apple', pt:'Maçã', emoji:'🍎'},
+  {tipo:'palavra', en:'Banana', pt:'Banana', emoji:'🍌'},
+  {tipo:'palavra', en:'Mother', pt:'Mãe', emoji:'👩'},
+  {tipo:'palavra', en:'Father', pt:'Pai', emoji:'👨'},
+  {tipo:'palavra', en:'Elephant', pt:'Elefante', emoji:'🐘'},
+  {tipo:'palavra', en:'Butterfly', pt:'Borboleta', emoji:'🦋'},
+  // Fase 3 — frases curtas
+  {tipo:'frase', en:'I have a dog', pt:'Eu tenho um cachorro', emoji:'🐶'},
+  {tipo:'frase', en:'The cat is big', pt:'O gato é grande', emoji:'🐱'},
+  {tipo:'frase', en:'I like apples', pt:'Eu gosto de maçãs', emoji:'🍎'},
+  {tipo:'frase', en:'She is my mother', pt:'Ela é minha mãe', emoji:'👩'}
+];
+
+var kflAcertos = 0;
+var kflTentativas = 0;
+
+function iniciarKidsFalar() {
+  kflIdx = 0;
+  kflAcertos = 0;
+  kflTentativas = 0;
+  renderKidsFalar();
+  ir('kids-falar');
+}
+
+function renderKidsFalar() {
+  if (kflIdx >= kflSequencia.length) {
+    mostrarResultadoKidsFalar();
+    return;
+  }
+  
+  var item = kflSequencia[kflIdx];
+  kflEsperandoResposta = false;
+  
+  // Progresso
+  var prog = document.getElementById('kflProgresso');
+  if (prog) {
+    prog.innerHTML = '';
+    var total = kflSequencia.length;
+    var por_linha = Math.min(total, 8);
+    for (var i = 0; i < Math.min(total, 16); i++) {
+      var dot = document.createElement('div');
+      dot.className = 'kfl-dot' + (i < kflIdx ? ' on' : '');
+      prog.appendChild(dot);
+    }
+  }
+  
+  // Atualizar card
+  var emoji = document.getElementById('kflEmoji');
+  var palavra = document.getElementById('kflPalavra');
+  var traducao = document.getElementById('kflTraducao');
+  if (emoji) { emoji.textContent = item.emoji; emoji.style.animation = 'none'; setTimeout(function(){emoji.style.animation='bounceIn .5s ease';},10); }
+  if (palavra) palavra.textContent = item.en;
+  if (traducao) traducao.textContent = item.pt;
+  
+  // Texto do Cricket
+  var cricketTexto = document.getElementById('kflCricketTexto');
+  var fase = kflIdx < 6 ? 1 : kflIdx < 12 ? 2 : 3;
+  if (cricketTexto) {
+    if (fase === 1) cricketTexto.textContent = 'Ouça como eu falo esta palavra e depois repita!';
+    else if (fase === 2) cricketTexto.textContent = 'Esta palavra é um pouco mais difícil! Ouça com atenção.';
+    else cricketTexto.textContent = 'Agora vamos falar frases completas! Você consegue!';
+  }
+  
+  // Resetar microfone e feedback
+  var micBtn = document.getElementById('kflMicBtn');
+  var micLabel = document.getElementById('kflMicLabel');
+  var transcricao = document.getElementById('kflTranscricao');
+  var feedback = document.getElementById('kflFeedback');
+  if (micBtn) { micBtn.textContent = '🎤'; micBtn.classList.remove('recording'); }
+  if (micLabel) micLabel.textContent = 'Toque para falar';
+  if (transcricao) { transcricao.style.display = 'none'; transcricao.textContent = ''; }
+  if (feedback) feedback.style.display = 'none';
+  
+  // Botão do Cricket
+  var cricketBtn = document.getElementById('kflCricketBtn');
+  if (cricketBtn) {
+    cricketBtn.textContent = '🔊 Ouvir';
+    cricketBtn.onclick = function() {
+      this.textContent = '🔊...';
+      falarPalavraKids(item.en, function() {
+        var btn = document.getElementById('kflCricketBtn');
+        if (btn) btn.textContent = '🔊 Ouvir';
+        // Após ouvir, mostrar instrução para falar
+        var label = document.getElementById('kflMicLabel');
+        if (label) label.textContent = 'Agora é sua vez! Toque e fale';
+        kflEsperandoResposta = true;
+      });
+    };
+    // Auto-play ao carregar
+    setTimeout(function() {
+      if (cricketBtn) cricketBtn.onclick();
+    }, 600);
+  }
+}
+
+function toggleKidsFalarMic() {
+  var btn = document.getElementById('kflMicBtn');
+  var label = document.getElementById('kflMicLabel');
+  var transcricao = document.getElementById('kflTranscricao');
+  
+  if (kflMicAtivo) {
+    // PARAR
+    kflMicAtivo = false;
+    if (btn) { btn.textContent = '🎤'; btn.classList.remove('recording'); }
+    if (label) label.textContent = 'Toque para falar';
+    if (kflRec) { try { kflRec.stop(); } catch(e) {} kflRec = null; }
+    return;
+  }
+  
+  if (!('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
+    // Sem reconhecimento - simular acerto para não travar o aluno
+    avaliarRespostaKids(kflSequencia[kflIdx].en);
+    return;
+  }
+  
+  kflMicAtivo = true;
+  if (btn) { btn.textContent = '🛑'; btn.classList.add('recording'); }
+  if (label) label.textContent = 'Gravando... fale agora!';
+  if (transcricao) { transcricao.style.display = 'block'; transcricao.textContent = '...'; }
+  
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  kflRec = new SR();
+  kflRec.lang = 'en-US';
+  kflRec.continuous = false;
+  kflRec.interimResults = true;
+  
+  kflRec.onresult = function(e) {
+    var texto = '';
+    for (var i = 0; i < e.results.length; i++) {
+      texto = e.results[i][0].transcript;
+    }
+    if (transcricao) transcricao.textContent = texto;
+    
+    if (e.results[0].isFinal) {
+      kflMicAtivo = false;
+      if (btn) { btn.textContent = '🎤'; btn.classList.remove('recording'); }
+      avaliarRespostaKids(texto);
+    }
+  };
+  
+  kflRec.onerror = function() {
+    kflMicAtivo = false;
+    if (btn) { btn.textContent = '🎤'; btn.classList.remove('recording'); }
+    if (label) label.textContent = 'Erro. Tente novamente!';
+  };
+  
+  kflRec.onend = function() {
+    if (kflMicAtivo) {
+      kflMicAtivo = false;
+      if (btn) { btn.textContent = '🎤'; btn.classList.remove('recording'); }
+    }
+  };
+  
+  kflRec.start();
+}
+
+function avaliarRespostaKids(textoFalado) {
+  var item = kflSequencia[kflIdx];
+  var esperado = item.en.toLowerCase().trim();
+  var falado = textoFalado.toLowerCase().trim();
+  
+  // Verificação flexível - aceita se contém a palavra principal
+  var palavrasPrincipais = esperado.split(' ').filter(function(p) { return p.length > 2; });
+  var acertou = palavrasPrincipais.some(function(p) { return falado.indexOf(p) >= 0; });
+  
+  // Para palavras curtas (one, two, cat, dog) - verificação exata
+  if (esperado.split(' ').length === 1 && esperado.length <= 4) {
+    acertou = falado.indexOf(esperado) >= 0;
+  }
+  
+  kflTentativas++;
+  var feedback = document.getElementById('kflFeedback');
+  
+  if (acertou) {
+    kflAcertos++;
+    playSound('acerto');
+    ganharSementes(5, 'palavra falada!');
+    falarPalavraKids('Great job! Well done!');
+    
+    if (feedback) {
+      feedback.style.display = 'block';
+      feedback.className = 'kfl-feedback acerto';
+      feedback.innerHTML = '<span class="kfl-feedback-emoji">⭐</span><div class="kfl-feedback-texto">Perfeito! Você falou direito!</div>';
+    }
+    
+    setTimeout(function() {
+      kflIdx++;
+      renderKidsFalar();
+    }, 2000);
+    
+  } else {
+    playSound('erro');
+    
+    var msgs = [
+      'Quase! Ouça de novo e tente outra vez!',
+      'Não desista! Você consegue!',
+      'Tente mais uma vez! Eu acredito em você!'
+    ];
+    var msg = msgs[Math.floor(Math.random() * msgs.length)];
+    falarPalavraKids(msg);
+    
+    if (feedback) {
+      feedback.style.display = 'block';
+      feedback.className = 'kfl-feedback erro';
+      feedback.innerHTML = '<span class="kfl-feedback-emoji">🤗</span><div class="kfl-feedback-texto">' + msg + '</div>';
+    }
+    
+    // Repetir a palavra após 2 segundos
+    setTimeout(function() {
+      if (feedback) feedback.style.display = 'none';
+      falarPalavraKids(item.en);
+    }, 2000);
+  }
+}
+
+function mostrarResultadoKidsFalar() {
+  var body = document.querySelector('#kids-falar .kflbody');
+  if (!body) return;
+  
+  ganharSementes(20, 'prática de fala!');
+  var pct = Math.round((kflAcertos / kflTentativas) * 100) || 0;
+  
+  body.innerHTML = 
+    '<div style="text-align:center;padding:20px;">' +
+    '<div style="font-size:80px;margin-bottom:10px;">🏆</div>' +
+    '<div style="font-size:24px;font-weight:800;color:#E91E63;margin-bottom:8px;">Incrível!</div>' +
+    '<div style="font-size:16px;color:#6b7280;margin-bottom:20px;">Você acertou ' + kflAcertos + ' de ' + kflTentativas + ' tentativas!</div>' +
+    '<div style="font-size:36px;font-weight:800;color:#1D9E75;margin-bottom:20px;">' + pct + '%</div>' +
+    '<button onclick="iniciarKidsFalar()" style="padding:14px 28px;border-radius:20px;border:none;background:#E91E63;color:#fff;font-family:Nunito,Arial,sans-serif;font-size:16px;font-weight:800;cursor:pointer;display:block;width:100%;margin-bottom:10px;">🔄 Praticar de novo</button>' +
+    '<button onclick="ir(\'home-kids\')" style="padding:14px 28px;border-radius:20px;border:none;background:#1D9E75;color:#fff;font-family:Nunito,Arial,sans-serif;font-size:16px;font-weight:800;cursor:pointer;display:block;width:100%;">🏠 Início</button>' +
+    '</div>';
+}
+
+// ============================================================
+// CORREÇÃO DO CONSTRUTOR DE FRASES - TROCA DE POSIÇÃO
+// ============================================================
+var kfPalavraSelecionadaIdx = null; // índice da palavra selecionada no construtor
+
+function adicionarPalavraFrase(palavra, idx) {
+  if (kfVerificada) return;
+  kfPalavrasSelecionadas.push({palavra: palavra, idx: idx});
+  
+  var bancoBtn = document.getElementById('kf-banco-' + idx);
+  if (bancoBtn) bancoBtn.classList.add('usada');
+
+  renderConstrutorFrases();
+}
+
+function renderConstrutorFrases() {
+  var construtor = document.getElementById('kfConstrutor');
+  if (!construtor) return;
+  
+  construtor.innerHTML = '';
+  
+  if (kfPalavrasSelecionadas.length === 0) {
+    construtor.innerHTML = '<span class="kf-placeholder">Toque nas palavras abaixo!</span>';
+    return;
+  }
+  
+  kfPalavrasSelecionadas.forEach(function(item, pos) {
+    var btn = document.createElement('button');
+    btn.className = 'kf-palavra-colocada' + (kfPalavraSelecionadaIdx === pos ? ' selecionada' : '');
+    btn.textContent = item.palavra;
+    
+    (function(posicao) {
+      btn.onclick = function() {
+        if (kfVerificada) return;
+        
+        if (kfPalavraSelecionadaIdx === null) {
+          // Primeira seleção
+          kfPalavraSelecionadaIdx = posicao;
+          renderConstrutorFrases();
+          playSound('clique');
+        } else if (kfPalavraSelecionadaIdx === posicao) {
+          // Desselecionar
+          kfPalavraSelecionadaIdx = null;
+          renderConstrutorFrases();
+        } else {
+          // Trocar posições!
+          var temp = kfPalavrasSelecionadas[kfPalavraSelecionadaIdx];
+          kfPalavrasSelecionadas[kfPalavraSelecionadaIdx] = kfPalavrasSelecionadas[posicao];
+          kfPalavrasSelecionadas[posicao] = temp;
+          kfPalavraSelecionadaIdx = null;
+          renderConstrutorFrases();
+          playSound('clique');
+        }
+      };
+    })(pos);
+    
+    construtor.appendChild(btn);
+  });
+}
+
+// Override da função limpar para resetar seleção
+var _limparOriginal = limparFraseKids;
+limparFraseKids = function() {
+  kfPalavraSelecionadaIdx = null;
+  kfPalavrasSelecionadas = [];
+  var construtor = document.getElementById('kfConstrutor');
+  if (construtor) {
+    construtor.className = 'kf-construtor';
+    construtor.innerHTML = '<span class="kf-placeholder">Toque nas palavras abaixo!</span>';
+  }
+  document.querySelectorAll('.kf-palavra-banco').forEach(function(b) { b.classList.remove('usada'); });
 };
 
 var nomeUsuario = '';
@@ -6157,6 +6612,38 @@ window.onload = function() {
   if (actSubs[3]) actSubs[3].textContent = 'Monte a frase!';
 
   initSupabase();
+
+
+  // KIDS FALAR
+  var btnVoltarKidsFalar = document.getElementById('btnVoltarKidsFalar');
+  if (btnVoltarKidsFalar) btnVoltarKidsFalar.onclick = function() {
+    if (kflRec) { try { kflRec.stop(); } catch(e) {} }
+    window.speechSynthesis && window.speechSynthesis.cancel();
+    ir('home-kids');
+  };
+  
+  var kflMicBtn = document.getElementById('kflMicBtn');
+  if (kflMicBtn) kflMicBtn.onclick = function() { toggleKidsFalarMic(); };
+
+  // RECONECTAR ATIVIDADE 2 DA HOME KIDS PARA FALAR
+  var actCards2 = document.querySelectorAll('.acard');
+  if (actCards2[0]) actCards2[0].onclick = function() { iniciarKidsAudio('animais'); };
+  if (actCards2[1]) actCards2[1].onclick = function() { iniciarKidsFalar(); };
+  if (actCards2[2]) actCards2[2].onclick = function() { iniciarKidsAudio('frutas'); };
+  if (actCards2[3]) actCards2[3].onclick = function() { ir('kids-frases'); iniciarKidsFrases(); };
+
+  // Atualizar textos kids
+  var actIcons = document.querySelectorAll('.acard .aicon');
+  var actNomes2 = document.querySelectorAll('.anome');
+  var actSubs2 = document.querySelectorAll('.asub');
+  if (actNomes2[0]) actNomes2[0].textContent = 'Ouvir';
+  if (actSubs2[0]) actSubs2[0].textContent = 'Palavras com som';
+  if (actNomes2[1]) actNomes2[1].textContent = 'Falar';
+  if (actSubs2[1]) actSubs2[1].textContent = 'Repita com Cricket!';
+  if (actNomes2[2]) actNomes2[2].textContent = 'Frutas';
+  if (actSubs2[2]) actSubs2[2].textContent = 'Aprenda as frutas';
+  if (actNomes2[3]) actNomes2[3].textContent = 'Frases';
+  if (actSubs2[3]) actSubs2[3].textContent = 'Monte a frase!';
 
   console.log('Talking Cricket v20260621193446 carregado!');
 };
