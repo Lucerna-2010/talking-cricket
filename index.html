@@ -5549,9 +5549,9 @@ function avaliarRespostaKids(textoFalado) {
     playSound('erro');
     
     var msgs = [
-      'Quase! Ouça de novo e tente outra vez!',
-      'Não desista! Você consegue!',
-      'Tente mais uma vez! Eu acredito em você!'
+      'Almost! Listen again and try one more time!',
+      'Do not give up! You can do it!',
+      'Try again! I believe in you!'
     ];
     var msg = msgs[Math.floor(Math.random() * msgs.length)];
     falarPalavraKids(msg);
@@ -5559,7 +5559,9 @@ function avaliarRespostaKids(textoFalado) {
     if (feedback) {
       feedback.style.display = 'block';
       feedback.className = 'kfl-feedback erro';
-      feedback.innerHTML = '<span class="kfl-feedback-emoji">🤗</span><div class="kfl-feedback-texto">' + msg + '</div>';
+      var msgsPT = ['Quase! Ouça de novo!', 'Não desista!', 'Tente mais uma vez!'];
+      var msgPT = msgsPT[msgs.indexOf(msg)] || 'Tente de novo!';
+      feedback.innerHTML = '<span class="kfl-feedback-emoji">🤗</span><div class="kfl-feedback-texto">' + msgPT + '</div>';
     }
     
     // Repetir a palavra após 2 segundos
