@@ -3551,18 +3551,7 @@ function baixarCronograma() {
       html += '<td>' + (isSim ? '🎓 Fazer simulado completo' : s % 2 === 0 ? '📝 Mini-quiz revisão' : '—') + '</td>';
       html += '</tr>';
       // Versão do app (não do download) - adicionar ao app cronograma
-      if (appCronogramaContainer) {
-        var appRow = document.createElement('div');
-        appRow.style.cssText = 'background:#fff;border-radius:10px;padding:12px 14px;margin-bottom:8px;display:flex;align-items:center;gap:12px;cursor:pointer;border:1.5px solid #F1EFE8;';
-        var rowIcon = isSim ? '🎓' : (s % 2 === 0 ? '📝' : '📖');
-        var rowAction = isSim ? function() { abrirSimulado(plNivelAlvo); } : (s % 2 === 0 ? function() { iniciarQuiz('b1-1'); } : function() { irBanco(); });
-        appRow.innerHTML = '<div style="font-size:20px;">' + rowIcon + '</div>' +
-          '<div style="flex:1;"><div style="font-size:13px;font-weight:800;color:#1a1a2e;">Semana ' + s + ' — ' + fase.titulo + '</div>' +
-          '<div style="font-size:11px;color:#6b7280;margin-top:2px;">' + (fase.atividades[0] || '') + '</div></div>' +
-          '<div style="font-size:18px;color:#D3D1C7;">→</div>';
-        (function(action) { appRow.onclick = action; })(rowAction);
-        appCronogramaContainer.appendChild(appRow);
-      }
+
     }
   });
 
