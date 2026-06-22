@@ -3480,6 +3480,7 @@ function revisarExercicios(textoId) {
 
 // ===== CRONOGRAMA PARA DOWNLOAD =====
 function baixarCronograma() {
+  var APP_URL = 'https://lucerna-2010.github.io/talking-cricket/';
   var dataProva = document.getElementById('plDataProva') ? document.getElementById('plDataProva').value : '';
   var hoje = new Date();
   var prova = dataProva ? new Date(dataProva) : null;
@@ -3531,6 +3532,7 @@ function baixarCronograma() {
 
   // Gerar tabela semana a semana
   html += '<h2>📋 Cronograma Detalhado por Semana</h2>';
+  html += '<p style="background:#E1F5EE;border-radius:8px;padding:12px;color:#085041;font-size:13px;margin-bottom:16px;">💡 <strong>Como usar:</strong> Clique em qualquer atividade para abrir direto no app Talking Cricket e praticar!</p>';
   html += '<table><tr><th>Semana</th><th>Foco</th>';
   plDiasSelecionados.forEach(function(dia) { html += '<th>' + dia + '</th>'; });
   html += '<th>Simulado</th></tr>';
@@ -3541,14 +3543,47 @@ function baixarCronograma() {
     var isSim = fase.titulo.indexOf('Simulado') >= 0;
 
     for (var s = semanaInicio; s <= semanaFim; s++) {
+      // Mapa de links por tipo de atividade
+      var linkMap = {
+        'Reading & Vocabulary': APP_URL + '#banco',
+        'Vocabulário Essencial': APP_URL + '#banco',
+        'Advanced Reading': APP_URL + '#banco',
+        'Mastery Vocabulary': APP_URL + '#banco',
+        'Grammar B1': APP_URL + '#escrita',
+        'Gramática Básica': APP_URL + '#escrita',
+        'Complex Grammar': APP_URL + '#escrita',
+        'C1 Grammar Mastery': APP_URL + '#escrita',
+        'Proficient Grammar': APP_URL + '#escrita',
+        'Listening B1': APP_URL + '#treino-audio',
+        'Listening A2': APP_URL + '#treino-audio',
+        'Academic Listening': APP_URL + '#treino-audio',
+        'Native Speed Listening': APP_URL + '#treino-audio',
+        'Writing Practice': APP_URL + '#escrita',
+        'Essay Writing': APP_URL + '#escrita',
+        'Academic Writing': APP_URL + '#escrita',
+        'Sophisticated Writing': APP_URL + '#escrita',
+        'Speaking B1': APP_URL + '#conversacao',
+        'Speaking Practice': APP_URL + '#conversacao',
+        'Fluent Speaking': APP_URL + '#conversacao',
+        'Advanced Speaking': APP_URL + '#conversacao',
+        'Native-like Speaking': APP_URL + '#conversacao',
+        'Simulado KET': APP_URL + '#simulado-A2',
+        'Simulado PET': APP_URL + '#simulado-B1',
+        'FCE Mock Exam': APP_URL + '#simulado-B2',
+        'CAE Mock Exam': APP_URL + '#simulado-C1',
+        'CPE Mock Exam': APP_URL + '#simulado-C2'
+      };
+      var link = linkMap[fase.titulo] || APP_URL;
+
       html += '<tr' + (isSim ? ' class="sim"' : '') + '>';
       html += '<td><strong>Semana ' + s + '</strong></td>';
-      html += '<td>' + fase.titulo + '</td>';
+      html += '<td><a href="' + link + '" target="_blank" style="color:#534AB7;font-weight:800;text-decoration:none;">' + fase.titulo + ' →</a></td>';
       plDiasSelecionados.forEach(function(dia, di) {
         var ativ = fase.atividades[di % fase.atividades.length];
-        html += '<td>' + ativ + '</td>';
+        html += '<td><a href="' + link + '" target="_blank" style="color:#1a1a2e;text-decoration:none;">' + ativ + '</a></td>';
       });
-      html += '<td>' + (isSim ? '🎓 Fazer simulado completo' : s % 2 === 0 ? '📝 Mini-quiz revisão' : '—') + '</td>';
+      var simLink = isSim ? link : APP_URL;
+      html += '<td>' + (isSim ? '<a href="' + simLink + '" target="_blank" style="color:#EF9F27;font-weight:800;">🎓 Fazer simulado</a>' : s % 2 === 0 ? '<a href="' + APP_URL + '" target="_blank" style="color:#534AB7;">📝 Mini-quiz</a>' : '—') + '</td>';
       html += '</tr>';
       // Versão do app (não do download) - adicionar ao app cronograma
 
