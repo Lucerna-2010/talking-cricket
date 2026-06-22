@@ -231,7 +231,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 .pcard-sub{font-size:12px;color:#6b7280;margin-top:2px;}
 
 /* SELETOR DE NÍVEL */
-.nivel-sheet{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:300;align-items:flex-end;justify-content:center;pointer-events:none;}
+.nivel-sheet{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;align-items:flex-end;justify-content:center;pointer-events:none;}
 .nivel-sheet.show{display:flex;pointer-events:all;}
 .nivel-sheet-box{background:#fff;border-radius:24px 24px 0 0;padding:20px 20px 36px;width:100%;max-width:430px;}
 .nivel-handle{width:40px;height:4px;background:#D3D1C7;border-radius:2px;margin:0 auto 16px;}
@@ -246,7 +246,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 .nivel-check{font-size:18px;color:#534AB7;margin-left:auto;}
 
 /* POPUP PALAVRA */
-.popup-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:100;align-items:flex-end;justify-content:center;pointer-events:none;}
+.popup-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:9999;align-items:flex-end;justify-content:center;pointer-events:none;}
 .popup-overlay.show{display:flex;pointer-events:all;}
 .popup-box{background:#fff;border-radius:24px 24px 0 0;padding:28px 24px 36px;width:100%;max-width:430px;}
 .popup-handle{width:40px;height:4px;background:#D3D1C7;border-radius:2px;margin:0 auto 20px;}
@@ -1579,17 +1579,6 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
   </div>
 </div>
 
-<!-- POPUP PALAVRA -->
-<div class="popup-overlay" id="popup">
-  <div class="popup-box">
-    <div class="popup-handle"></div>
-    <div class="popup-word" id="pw"></div>
-    <div class="popup-pron" id="pp"></div>
-    <div class="popup-meaning" id="pm"></div>
-    <div class="popup-example" id="pe"></div>
-    <button class="popup-close" id="btnFecharPopup">Entendido ✓</button>
-  </div>
-</div>
 
 </div>
 
@@ -3394,7 +3383,7 @@ function baixarCronograma() {
   html += '.info-item{background:rgba(255,255,255,0.2);padding:10px 16px;border-radius:8px;}';
   html += '.info-label{font-size:11px;color:#9FE1CB;}';
   html += '.info-val{font-size:18px;font-weight:bold;color:#fff;}';
-  html += '</style></head><body>';
+  html += '<' + '/style></head><body>';
 
   html += '<div class="header">';
   html += '<h1>🦗 Talking Cricket — Plano de Estudos Cambridge ' + plNivelAlvo + '</h1>';
@@ -3451,7 +3440,6 @@ function baixarCronograma() {
   html += '<li><strong>Simulados:</strong> Faça um simulado completo a cada 2 semanas para medir seu progresso.</li></ul>';
   html += '<p style="margin-top:30px;color:#6b7280;font-size:12px;">Gerado por Talking Cricket — ' + new Date().toLocaleDateString('pt-BR') + '</p>';
   html += '</body></html>';
-
   var blob = new Blob([html], {type: 'text/html;charset=utf-8'});
   var url = URL.createObjectURL(blob);
   var a = document.createElement('a');
@@ -4040,6 +4028,8 @@ function mudarNivel(sigla, nomeNivel) {
   if (aulaLbl) aulaLbl.textContent = 'Reading — ' + sigla;
   var lbadge2 = document.getElementById('lbadge2');
   if (lbadge2) lbadge2.textContent = sigla;
+  var homeSimLbl = document.getElementById('homeSimuladoLbl');
+  if (homeSimLbl) homeSimLbl.textContent = sigla + ' Cambridge';
   document.getElementById('nivel-sheet').classList.remove('show');
 }
 
@@ -4812,5 +4802,17 @@ window.onload = function() {
   console.log('Talking Cricket v20260621193446 carregado!');
 };
 </script>
+
+<!-- POPUP PALAVRA -->
+<div class="popup-overlay" id="popup">
+  <div class="popup-box">
+    <div class="popup-handle"></div>
+    <div class="popup-word" id="pw"></div>
+    <div class="popup-pron" id="pp"></div>
+    <div class="popup-meaning" id="pm"></div>
+    <div class="popup-example" id="pe"></div>
+    <button class="popup-close" id="btnFecharPopup">Entendido ✓</button>
+  </div>
+</div>
 </body>
 </html>
