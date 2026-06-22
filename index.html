@@ -745,6 +745,94 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 .figura-chips { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px; }
 .figura-chip { font-size:11px; font-weight:700; padding:4px 10px; border-radius:20px; background:#EEEDFE; color:#534AB7; }
 .figura-chip.highlight { background:#534AB7; color:#fff; }
+
+/* ===== KIDS AUDITIVO ===== */
+#kids-audio { background: linear-gradient(135deg, #E8F5E9 0%, #E3F2FD 100%); }
+.kaheader { background: linear-gradient(135deg, #1D9E75, #0F6E56); padding: 50px 20px 20px; position: relative; text-align: center; }
+.kaback { position: absolute; top: 14px; left: 14px; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.25); border: none; cursor: pointer; font-size: 22px; color: #fff; display: flex; align-items: center; justify-content: center; }
+.katitulo { font-size: 22px; font-weight: 800; color: #fff; }
+.kasub { font-size: 13px; color: #9FE1CB; margin-top: 4px; }
+.ka-progresso { display: flex; gap: 6px; justify-content: center; margin-top: 12px; }
+.ka-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.3); }
+.ka-dot.on { background: #fff; transform: scale(1.2); }
+.kabody { padding: 16px; flex: 1; display: flex; flex-direction: column; gap: 14px; }
+
+/* Card de palavra */
+.ka-palavra-card { background: #fff; border-radius: 24px; padding: 24px 16px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 3px solid transparent; transition: all .3s; }
+.ka-palavra-card.revelada { border-color: #1D9E75; background: #E8F5E9; }
+.ka-palavra-texto { font-size: 42px; font-weight: 800; color: #1a1a2e; margin-bottom: 8px; letter-spacing: 2px; }
+.ka-palavra-pt { font-size: 16px; color: #6b7280; font-weight: 600; display: none; }
+.ka-palavra-card.revelada .ka-palavra-pt { display: block; }
+.ka-imagem-wrap { display: none; font-size: 100px; margin: 10px 0; animation: popIn .4s cubic-bezier(0.175,0.885,0.32,1.275); }
+.ka-palavra-card.revelada .ka-imagem-wrap { display: block; }
+@keyframes popIn { 0%{transform:scale(0.3);opacity:0} 70%{transform:scale(1.15)} 100%{transform:scale(1);opacity:1} }
+
+/* Botão de ouvir */
+.ka-ouvir-btn { width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, #1D9E75, #0F6E56); border: none; cursor: pointer; font-size: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 6px 20px rgba(29,158,117,0.4); transition: transform .2s; }
+.ka-ouvir-btn:active { transform: scale(0.92); }
+.ka-ouvir-btn.tocando { animation: pulseSom 0.6s ease-in-out infinite alternate; }
+@keyframes pulseSom { from{transform:scale(1);box-shadow:0 6px 20px rgba(29,158,117,0.4)} to{transform:scale(1.08);box-shadow:0 8px 30px rgba(29,158,117,0.7)} }
+.ka-instrucao { font-size: 13px; color: #6b7280; text-align: center; font-weight: 600; }
+
+/* Grade de palavras */
+.ka-grade { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.ka-item { background: #fff; border-radius: 16px; padding: 16px 10px; text-align: center; cursor: pointer; border: 3px solid #E1F5EE; transition: all .2s; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.ka-item:active { transform: scale(0.95); }
+.ka-item.tocando { border-color: #1D9E75; background: #E8F5E9; transform: scale(1.03); }
+.ka-item.revelado { border-color: #1D9E75; }
+.ka-item-emoji { font-size: 48px; display: block; margin-bottom: 6px; min-height: 56px; }
+.ka-item-palavra { font-size: 18px; font-weight: 800; color: #1a1a2e; }
+.ka-item-pt { font-size: 12px; color: #6b7280; font-weight: 600; margin-top: 2px; display: none; }
+.ka-item.revelado .ka-item-pt { display: block; }
+.ka-item-emoji.escondido { filter: blur(8px); font-size: 48px; }
+.ka-item.revelado .ka-item-emoji { filter: none; }
+
+/* Botões de navegação kids */
+.ka-nav { display: flex; gap: 10px; margin-top: 4px; }
+.ka-btn { flex: 1; padding: 14px; border-radius: 16px; border: none; font-family: 'Nunito', Arial, sans-serif; font-size: 15px; font-weight: 800; cursor: pointer; }
+.ka-btn-verde { background: #1D9E75; color: #fff; }
+.ka-btn-cinza { background: #F1EFE8; color: #6b7280; }
+
+/* ===== KIDS CONSTRUTOR DE FRASES ===== */
+#kids-frases { background: linear-gradient(135deg, #FFF9C4, #FFECB3); }
+.kfheader { background: linear-gradient(135deg, #EF9F27, #BA7517); padding: 50px 20px 20px; position: relative; text-align: center; }
+.kfback { position: absolute; top: 14px; left: 14px; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.25); border: none; cursor: pointer; font-size: 22px; color: #fff; display: flex; align-items: center; justify-content: center; }
+.kftitulo { font-size: 20px; font-weight: 800; color: #fff; }
+.kfsub { font-size: 13px; color: #FFF9C4; margin-top: 4px; }
+.kfbody { padding: 16px; flex: 1; display: flex; flex-direction: column; gap: 14px; }
+
+/* Área de áudio da frase */
+.kf-audio-box { background: #fff; border-radius: 20px; padding: 20px; text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+.kf-audio-titulo { font-size: 13px; font-weight: 700; color: #6b7280; margin-bottom: 14px; text-transform: uppercase; letter-spacing: .05em; }
+.kf-play-btn { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, #EF9F27, #BA7517); border: none; cursor: pointer; font-size: 32px; color: #fff; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; box-shadow: 0 4px 16px rgba(239,159,39,0.4); }
+.kf-play-btn.tocando { animation: pulseSom .6s ease-in-out infinite alternate; }
+.kf-instrucao { font-size: 12px; color: #BA7517; font-weight: 700; }
+
+/* Área de construção da frase */
+.kf-construtor { background: #fff; border-radius: 20px; padding: 16px; min-height: 70px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; border: 3px dashed #FAC775; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.kf-construtor.correta { border-color: #1D9E75; border-style: solid; background: #E8F5E9; }
+.kf-construtor.errada { border-color: #D85A30; border-style: solid; background: #FAECE7; animation: shake .3s ease; }
+@keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-8px)} 75%{transform:translateX(8px)} }
+.kf-placeholder { font-size: 13px; color: #D3D1C7; font-weight: 600; width: 100%; text-align: center; }
+
+/* Palavras arrastáveis */
+.kf-palavra-colocada { background: #1D9E75; color: #fff; padding: 8px 16px; border-radius: 20px; font-size: 16px; font-weight: 800; cursor: pointer; border: none; font-family: 'Nunito', Arial, sans-serif; animation: slideIn .2s ease; }
+@keyframes slideIn { from{transform:scale(0.7);opacity:0} to{transform:scale(1);opacity:1} }
+.kf-palavra-colocada:active { transform: scale(0.95); }
+
+/* Banco de palavras */
+.kf-banco-titulo { font-size: 11px; font-weight: 800; color: #6b7280; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 8px; }
+.kf-banco { display: flex; flex-wrap: wrap; gap: 8px; }
+.kf-palavra-banco { background: #fff; color: #1a1a2e; padding: 10px 18px; border-radius: 20px; font-size: 16px; font-weight: 800; cursor: pointer; border: 2.5px solid #FAC775; font-family: 'Nunito', Arial, sans-serif; box-shadow: 0 2px 6px rgba(0,0,0,0.08); transition: all .15s; }
+.kf-palavra-banco:active { transform: scale(0.95); background: #FAEEDA; }
+.kf-palavra-banco.usada { opacity: 0.3; pointer-events: none; }
+
+/* Feedback kids */
+.kf-feedback { text-align: center; padding: 16px; border-radius: 16px; }
+.kf-feedback-emoji { font-size: 60px; display: block; margin-bottom: 8px; }
+.kf-feedback-texto { font-size: 20px; font-weight: 800; }
+.kf-feedback.ok { background: #E8F5E9; color: #085041; }
+.kf-feedback.nok { background: #FAECE7; color: #712B13; }
 </style>
 </head>
 <body>
@@ -1636,6 +1724,69 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
         <div style="font-size:12px;font-weight:800;color:#085041;margin-bottom:6px;">🦗 Feedback do Cricket</div>
         <div id="figFeedbackTexto" style="font-size:13px;color:#0F6E56;line-height:1.5;"></div>
       </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ===== KIDS AUDITIVO ===== -->
+<div id="kids-audio" class="tela">
+  <div class="kaheader">
+    <button class="kaback" id="btnVoltarKidsAudio">&#8592;</button>
+    <div class="katitulo" id="kaTitulo">🐶 Animais</div>
+    <div class="kasub">Clique e ouça a palavra!</div>
+    <div class="ka-progresso" id="kaProgresso"></div>
+  </div>
+  <div class="kabody">
+    <div class="ka-instrucao" id="kaInstrucao">👆 Toque em uma palavra para ouvir!</div>
+    <div class="ka-grade" id="kaGrade">
+      <!-- Gerado por JS -->
+    </div>
+    <div class="ka-nav">
+      <button class="ka-btn ka-btn-cinza" id="kaBtnAnterior">← Anterior</button>
+      <button class="ka-btn ka-btn-verde" id="kaBtnProxima">Próxima →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== KIDS CONSTRUTOR DE FRASES ===== -->
+<div id="kids-frases" class="tela">
+  <div class="kfheader">
+    <button class="kfback" id="btnVoltarKidsFrases">&#8592;</button>
+    <div class="kftitulo">🧩 Monte a Frase!</div>
+    <div class="kfsub">Ouça e coloque as palavras na ordem certa</div>
+  </div>
+  <div class="kfbody">
+    <!-- Áudio da frase -->
+    <div class="kf-audio-box">
+      <div class="kf-audio-titulo">🔊 Ouça a frase</div>
+      <button class="kf-play-btn" id="kfPlayBtn">▶</button>
+      <div class="kf-instrucao" id="kfInstrucao">Toque para ouvir a frase completa</div>
+    </div>
+
+    <!-- Área de construção -->
+    <div>
+      <div style="font-size:11px;font-weight:800;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;">📝 Monte a frase aqui</div>
+      <div class="kf-construtor" id="kfConstrutor">
+        <span class="kf-placeholder">Toque nas palavras abaixo para montar a frase!</span>
+      </div>
+    </div>
+
+    <!-- Banco de palavras -->
+    <div>
+      <div class="kf-banco-titulo">💡 Palavras disponíveis</div>
+      <div class="kf-banco" id="kfBanco">
+        <!-- Gerado por JS -->
+      </div>
+    </div>
+
+    <!-- Feedback -->
+    <div id="kfFeedback" style="display:none;"></div>
+
+    <!-- Botões -->
+    <div class="ka-nav" id="kfNav">
+      <button class="ka-btn ka-btn-cinza" onclick="limparFraseKids()">🗑️ Limpar</button>
+      <button class="ka-btn ka-btn-verde" onclick="verificarFraseKids()">✓ Verificar</button>
     </div>
   </div>
 </div>
@@ -4305,6 +4456,433 @@ function toggleFigSpeakingMic() {
   figRecSpeaking.start();
 }
 
+
+// ===== BANCO DE CONTEÚDO KIDS =====
+var kidsConteudo = {
+  animais: {
+    titulo: '🐶 Animais',
+    palavras: [
+      {en:'Dog', pt:'Cachorro', emoji:'🐶', audio:'Dog'},
+      {en:'Cat', pt:'Gato', emoji:'🐱', audio:'Cat'},
+      {en:'Lion', pt:'Leão', emoji:'🦁', audio:'Lion'},
+      {en:'Elephant', pt:'Elefante', emoji:'🐘', audio:'Elephant'},
+      {en:'Bird', pt:'Pássaro', emoji:'🐦', audio:'Bird'},
+      {en:'Fish', pt:'Peixe', emoji:'🐟', audio:'Fish'},
+      {en:'Frog', pt:'Sapo', emoji:'🐸', audio:'Frog'},
+      {en:'Bear', pt:'Urso', emoji:'🐻', audio:'Bear'},
+      {en:'Rabbit', pt:'Coelho', emoji:'🐰', audio:'Rabbit'},
+      {en:'Horse', pt:'Cavalo', emoji:'🐴', audio:'Horse'},
+      {en:'Cow', pt:'Vaca', emoji:'🐮', audio:'Cow'},
+      {en:'Pig', pt:'Porco', emoji:'🐷', audio:'Pig'}
+    ]
+  },
+  cores: {
+    titulo: '🎨 Cores',
+    palavras: [
+      {en:'Red', pt:'Vermelho', emoji:'🔴', audio:'Red'},
+      {en:'Blue', pt:'Azul', emoji:'🔵', audio:'Blue'},
+      {en:'Green', pt:'Verde', emoji:'🟢', audio:'Green'},
+      {en:'Yellow', pt:'Amarelo', emoji:'🟡', audio:'Yellow'},
+      {en:'Orange', pt:'Laranja', emoji:'🟠', audio:'Orange'},
+      {en:'Purple', pt:'Roxo', emoji:'🟣', audio:'Purple'},
+      {en:'Pink', pt:'Rosa', emoji:'🩷', audio:'Pink'},
+      {en:'White', pt:'Branco', emoji:'⬜', audio:'White'},
+      {en:'Black', pt:'Preto', emoji:'⬛', audio:'Black'},
+      {en:'Brown', pt:'Marrom', emoji:'🟫', audio:'Brown'}
+    ]
+  },
+  numeros: {
+    titulo: '🔢 Números',
+    palavras: [
+      {en:'One', pt:'Um', emoji:'1️⃣', audio:'One'},
+      {en:'Two', pt:'Dois', emoji:'2️⃣', audio:'Two'},
+      {en:'Three', pt:'Três', emoji:'3️⃣', audio:'Three'},
+      {en:'Four', pt:'Quatro', emoji:'4️⃣', audio:'Four'},
+      {en:'Five', pt:'Cinco', emoji:'5️⃣', audio:'Five'},
+      {en:'Six', pt:'Seis', emoji:'6️⃣', audio:'Six'},
+      {en:'Seven', pt:'Sete', emoji:'7️⃣', audio:'Seven'},
+      {en:'Eight', pt:'Oito', emoji:'8️⃣', audio:'Eight'},
+      {en:'Nine', pt:'Nove', emoji:'9️⃣', audio:'Nine'},
+      {en:'Ten', pt:'Dez', emoji:'🔟', audio:'Ten'}
+    ]
+  },
+  frutas: {
+    titulo: '🍎 Frutas',
+    palavras: [
+      {en:'Apple', pt:'Maçã', emoji:'🍎', audio:'Apple'},
+      {en:'Banana', pt:'Banana', emoji:'🍌', audio:'Banana'},
+      {en:'Orange', pt:'Laranja', emoji:'🍊', audio:'Orange'},
+      {en:'Grape', pt:'Uva', emoji:'🍇', audio:'Grape'},
+      {en:'Strawberry', pt:'Morango', emoji:'🍓', audio:'Strawberry'},
+      {en:'Watermelon', pt:'Melancia', emoji:'🍉', audio:'Watermelon'},
+      {en:'Mango', pt:'Manga', emoji:'🥭', audio:'Mango'},
+      {en:'Pineapple', pt:'Abacaxi', emoji:'🍍', audio:'Pineapple'},
+      {en:'Peach', pt:'Pêssego', emoji:'🍑', audio:'Peach'},
+      {en:'Cherry', pt:'Cereja', emoji:'🍒', audio:'Cherry'}
+    ]
+  },
+  familia: {
+    titulo: '👨‍👩‍👧 Família',
+    palavras: [
+      {en:'Mother', pt:'Mãe', emoji:'👩', audio:'Mother'},
+      {en:'Father', pt:'Pai', emoji:'👨', audio:'Father'},
+      {en:'Sister', pt:'Irmã', emoji:'👧', audio:'Sister'},
+      {en:'Brother', pt:'Irmão', emoji:'👦', audio:'Brother'},
+      {en:'Baby', pt:'Bebê', emoji:'👶', audio:'Baby'},
+      {en:'Grandmother', pt:'Avó', emoji:'👵', audio:'Grandmother'},
+      {en:'Grandfather', pt:'Avô', emoji:'👴', audio:'Grandfather'},
+      {en:'Family', pt:'Família', emoji:'👨‍👩‍👧‍👦', audio:'Family'}
+    ]
+  },
+  verbos: {
+    titulo: '🏃 Ações',
+    palavras: [
+      {en:'Run', pt:'Correr', emoji:'🏃', audio:'Run'},
+      {en:'Jump', pt:'Pular', emoji:'🤸', audio:'Jump'},
+      {en:'Eat', pt:'Comer', emoji:'🍽️', audio:'Eat'},
+      {en:'Sleep', pt:'Dormir', emoji:'😴', audio:'Sleep'},
+      {en:'Play', pt:'Brincar', emoji:'🎮', audio:'Play'},
+      {en:'Swim', pt:'Nadar', emoji:'🏊', audio:'Swim'},
+      {en:'Sing', pt:'Cantar', emoji:'🎤', audio:'Sing'},
+      {en:'Dance', pt:'Dançar', emoji:'💃', audio:'Dance'},
+      {en:'Read', pt:'Ler', emoji:'📚', audio:'Read'},
+      {en:'Draw', pt:'Desenhar', emoji:'✏️', audio:'Draw'}
+    ]
+  }
+};
+
+// Estado do jogo auditivo
+var kaCategoria = 'animais';
+var kaPaginaAtual = 0;
+var kaItemsPorPagina = 4;
+var kaRevelados = {};
+
+function falarPalavraKids(palavra, callback) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  var utter = new SpeechSynthesisUtterance(palavra);
+  utter.lang = 'en-US';
+  utter.rate = 0.8;
+  utter.pitch = 1.2; // Voz mais agradável para crianças
+  utter.volume = 1;
+  if (callback) utter.onend = callback;
+  var vozes = window.speechSynthesis.getVoices();
+  var voz = vozes.find(function(v) { return v.lang.indexOf('en') === 0; });
+  if (voz) utter.voice = voz;
+  window.speechSynthesis.speak(utter);
+}
+
+function iniciarKidsAudio(categoria) {
+  kaCategoria = categoria;
+  kaPaginaAtual = 0;
+  kaRevelados = {};
+  var titulo = document.getElementById('kaTitulo');
+  if (titulo) titulo.textContent = kidsConteudo[categoria].titulo;
+  renderKidsAudio();
+  ir('kids-audio');
+}
+
+function renderKidsAudio() {
+  var cat = kidsConteudo[kaCategoria];
+  var palavras = cat.palavras;
+  var total = Math.ceil(palavras.length / kaItemsPorPagina);
+  var inicio = kaPaginaAtual * kaItemsPorPagina;
+  var pagina = palavras.slice(inicio, inicio + kaItemsPorPagina);
+
+  // Progresso
+  var prog = document.getElementById('kaProgresso');
+  if (prog) {
+    prog.innerHTML = '';
+    for (var i = 0; i < total; i++) {
+      var dot = document.createElement('div');
+      dot.className = 'ka-dot' + (i === kaPaginaAtual ? ' on' : '');
+      prog.appendChild(dot);
+    }
+  }
+
+  // Grade
+  var grade = document.getElementById('kaGrade');
+  if (!grade) return;
+  grade.innerHTML = '';
+
+  pagina.forEach(function(p, idx) {
+    var globalIdx = inicio + idx;
+    var revelado = kaRevelados[globalIdx];
+    var item = document.createElement('div');
+    item.className = 'ka-item' + (revelado ? ' revelado' : '');
+    item.innerHTML =
+      '<span class="ka-item-emoji' + (revelado ? '' : ' escondido') + '">' + p.emoji + '</span>' +
+      '<div class="ka-item-palavra">' + p.en + '</div>' +
+      '<div class="ka-item-pt">' + p.pt + '</div>';
+
+    (function(palavra, idx_) {
+      item.onclick = function() {
+        // Tocar o som
+        this.classList.add('tocando');
+        var self = this;
+        falarPalavraKids(palavra.audio, function() {
+          self.classList.remove('tocando');
+        });
+        // Revelar emoji após ouvir
+        if (!kaRevelados[idx_]) {
+          kaRevelados[idx_] = true;
+          setTimeout(function() {
+            self.classList.add('revelado');
+            var emoji = self.querySelector('.ka-item-emoji');
+            if (emoji) emoji.classList.remove('escondido');
+            var pt = self.querySelector('.ka-item-pt');
+            if (pt) pt.style.display = 'block';
+            playSound('acerto');
+          }, 800);
+        }
+      };
+    })(p, globalIdx);
+
+    grade.appendChild(item);
+  });
+
+  // Instrução dinâmica
+  var revelCount = Object.keys(kaRevelados).length;
+  var instrucao = document.getElementById('kaInstrucao');
+  if (instrucao) {
+    if (revelCount === 0) instrucao.textContent = '👆 Toque em uma palavra para ouvir!';
+    else if (revelCount < palavras.length) instrucao.textContent = '🎉 Continue explorando as palavras!';
+    else instrucao.textContent = '⭐ Parabéns! Você aprendeu todas as palavras!';
+  }
+
+  // Botões
+  var btnAnt = document.getElementById('kaBtnAnterior');
+  var btnProx = document.getElementById('kaBtnProxima');
+  if (btnAnt) btnAnt.style.opacity = kaPaginaAtual === 0 ? '0.4' : '1';
+  if (btnProx) {
+    if (kaPaginaAtual >= total - 1) {
+      btnProx.textContent = '🏆 Concluir';
+      btnProx.onclick = function() { mostrarResultadoKidsAudio(); };
+    } else {
+      btnProx.textContent = 'Próxima →';
+      btnProx.onclick = function() { 
+        if (kaPaginaAtual < total - 1) { kaPaginaAtual++; renderKidsAudio(); }
+      };
+    }
+  }
+}
+
+function mostrarResultadoKidsAudio() {
+  var cat = kidsConteudo[kaCategoria];
+  var total = cat.palavras.length;
+  var revelados = Object.keys(kaRevelados).length;
+  ganharSementes(revelados * 3, 'palavras aprendidas! 🌱');
+  
+  var grade = document.getElementById('kaGrade');
+  if (grade) {
+    grade.innerHTML = 
+      '<div style="grid-column:1/-1;text-align:center;padding:20px;">' +
+      '<div style="font-size:72px;margin-bottom:10px;">🌟</div>' +
+      '<div style="font-size:22px;font-weight:800;color:#1D9E75;margin-bottom:6px;">Incrível!</div>' +
+      '<div style="font-size:14px;color:#6b7280;">Você aprendeu ' + revelados + ' palavras!</div>' +
+      '<button onclick="iniciarKidsAudio(\'' + kaCategoria + '\')" style="margin-top:16px;padding:12px 28px;border-radius:20px;border:none;background:#1D9E75;color:#fff;font-family:Nunito,Arial,sans-serif;font-size:16px;font-weight:800;cursor:pointer;">🔄 Repetir</button>' +
+      '<button onclick="ir(\'kids-frases\'); iniciarKidsFrases();" style="margin-top:8px;margin-left:8px;padding:12px 28px;border-radius:20px;border:none;background:#EF9F27;color:#fff;font-family:Nunito,Arial,sans-serif;font-size:16px;font-weight:800;cursor:pointer;">🧩 Montar frases!</button>' +
+      '</div>';
+  }
+}
+
+// ===== CONSTRUTOR DE FRASES KIDS =====
+var kfFrases = [
+  {audio: 'The dog is big', palavras: ['The','dog','is','big'], extras: ['cat','small','a']},
+  {audio: 'I have a cat', palavras: ['I','have','a','cat'], extras: ['dog','the','like']},
+  {audio: 'She can run fast', palavras: ['She','can','run','fast'], extras: ['jump','he','very']},
+  {audio: 'The cat is small', palavras: ['The','cat','is','small'], extras: ['big','dog','a']},
+  {audio: 'I like to eat', palavras: ['I','like','to','eat'], extras: ['sleep','jump','run']},
+  {audio: 'He has a dog', palavras: ['He','has','a','dog'], extras: ['cat','the','she']},
+  {audio: 'We can play now', palavras: ['We','can','play','now'], extras: ['run','jump','they']},
+  {audio: 'The bird can fly', palavras: ['The','bird','can','fly'], extras: ['swim','fish','a']},
+  {audio: 'I see a red apple', palavras: ['I','see','a','red','apple'], extras: ['blue','cat','the']},
+  {audio: 'My family is big', palavras: ['My','family','is','big'], extras: ['small','the','happy']}
+];
+
+var kfFraseIdx = 0;
+var kfPalavrasSelecionadas = [];
+var kfPalavrasEmbaralhadas = [];
+var kfVerificada = false;
+
+function iniciarKidsFrases() {
+  kfFraseIdx = 0;
+  renderKidsFrase();
+}
+
+function renderKidsFrase() {
+  if (kfFraseIdx >= kfFrases.length) {
+    mostrarResultadoKidsFrases();
+    return;
+  }
+  var frase = kfFrases[kfFraseIdx];
+  kfPalavrasSelecionadas = [];
+  kfVerificada = false;
+
+  // Embaralhar palavras (corretas + extras)
+  var todasPalavras = frase.palavras.concat(frase.extras);
+  kfPalavrasEmbaralhadas = todasPalavras.slice().sort(function() { return Math.random() - 0.5; });
+
+  // Limpar construtor
+  var construtor = document.getElementById('kfConstrutor');
+  if (construtor) {
+    construtor.className = 'kf-construtor';
+    construtor.innerHTML = '<span class="kf-placeholder">Toque nas palavras abaixo!</span>';
+  }
+
+  // Renderizar banco de palavras
+  var banco = document.getElementById('kfBanco');
+  if (banco) {
+    banco.innerHTML = '';
+    kfPalavrasEmbaralhadas.forEach(function(palavra, i) {
+      var btn = document.createElement('button');
+      btn.className = 'kf-palavra-banco';
+      btn.id = 'kf-banco-' + i;
+      btn.textContent = palavra;
+      (function(p, idx) {
+        btn.onclick = function() { adicionarPalavraFrase(p, idx); };
+      })(palavra, i);
+      banco.appendChild(btn);
+    });
+  }
+
+  // Limpar feedback
+  var feedback = document.getElementById('kfFeedback');
+  if (feedback) feedback.style.display = 'none';
+
+  // Restaurar botões
+  var nav = document.getElementById('kfNav');
+  if (nav) nav.style.display = 'flex';
+
+  // Instrução
+  var instrucao = document.getElementById('kfInstrucao');
+  if (instrucao) instrucao.textContent = 'Ouça a frase e depois monte ela abaixo!';
+
+  // Botão play
+  var playBtn = document.getElementById('kfPlayBtn');
+  if (playBtn) {
+    playBtn.textContent = '▶';
+    playBtn.classList.remove('tocando');
+    playBtn.onclick = function() {
+      this.classList.add('tocando');
+      this.textContent = '🔊';
+      var self = this;
+      falarPalavraKids(frase.audio, function() {
+        self.classList.remove('tocando');
+        self.textContent = '▶';
+      });
+    };
+  }
+}
+
+function adicionarPalavraFrase(palavra, idx) {
+  if (kfVerificada) return;
+  kfPalavrasSelecionadas.push({palavra: palavra, idx: idx});
+  
+  // Marcar como usada no banco
+  var bancoBtn = document.getElementById('kf-banco-' + idx);
+  if (bancoBtn) bancoBtn.classList.add('usada');
+
+  // Adicionar ao construtor
+  var construtor = document.getElementById('kfConstrutor');
+  if (!construtor) return;
+  
+  // Remover placeholder
+  var placeholder = construtor.querySelector('.kf-placeholder');
+  if (placeholder) placeholder.remove();
+
+  var btn = document.createElement('button');
+  btn.className = 'kf-palavra-colocada';
+  btn.textContent = palavra;
+  (function(p, i, b) {
+    btn.onclick = function() {
+      // Remover da frase e devolver ao banco
+      kfPalavrasSelecionadas = kfPalavrasSelecionadas.filter(function(item) { return item.idx !== i; });
+      btn.remove();
+      if (b) b.classList.remove('usada');
+      if (construtor.children.length === 0) {
+        construtor.innerHTML = '<span class="kf-placeholder">Toque nas palavras abaixo!</span>';
+      }
+    };
+  })(palavra, idx, bancoBtn);
+  construtor.appendChild(btn);
+}
+
+function limparFraseKids() {
+  kfPalavrasSelecionadas = [];
+  var construtor = document.getElementById('kfConstrutor');
+  if (construtor) {
+    construtor.className = 'kf-construtor';
+    construtor.innerHTML = '<span class="kf-placeholder">Toque nas palavras abaixo!</span>';
+  }
+  // Restaurar banco
+  document.querySelectorAll('.kf-palavra-banco').forEach(function(b) { b.classList.remove('usada'); });
+}
+
+function verificarFraseKids() {
+  if (kfPalavrasSelecionadas.length === 0) {
+    alert('Monte a frase primeiro! 😊');
+    return;
+  }
+  kfVerificada = true;
+  var frase = kfFrases[kfFraseIdx];
+  var montada = kfPalavrasSelecionadas.map(function(item) { return item.palavra; });
+  var correta = frase.palavras.every(function(p, i) { return p === montada[i]; }) && montada.length === frase.palavras.length;
+
+  var construtor = document.getElementById('kfConstrutor');
+  var feedback = document.getElementById('kfFeedback');
+  var nav = document.getElementById('kfNav');
+
+  if (correta) {
+    playSound('acerto');
+    ganharSementes(10, 'frase montada! 🌱');
+    if (construtor) construtor.className = 'kf-construtor correta';
+    if (feedback) {
+      feedback.style.display = 'block';
+      feedback.className = 'kf-feedback ok';
+      feedback.innerHTML = '<span class="kf-feedback-emoji">🌟</span><div class="kf-feedback-texto">Perfeito! Você acertou!</div>';
+    }
+    falarPalavraKids('Perfect! Well done!');
+    setTimeout(function() {
+      kfFraseIdx++;
+      renderKidsFrase();
+    }, 2000);
+  } else {
+    playSound('erro');
+    if (construtor) {
+      construtor.className = 'kf-construtor errada';
+      setTimeout(function() { construtor.className = 'kf-construtor'; }, 500);
+    }
+    if (feedback) {
+      feedback.style.display = 'block';
+      feedback.className = 'kf-feedback nok';
+      feedback.innerHTML = '<span class="kf-feedback-emoji">🤔</span><div class="kf-feedback-texto">Tente de novo! A ordem está errada.</div>';
+      setTimeout(function() { feedback.style.display = 'none'; kfVerificada = false; }, 1500);
+    }
+  }
+}
+
+function mostrarResultadoKidsFrases() {
+  var banco = document.getElementById('kfBanco');
+  var construtor = document.getElementById('kfConstrutor');
+  var nav = document.getElementById('kfNav');
+  var feedback = document.getElementById('kfFeedback');
+  
+  if (construtor) construtor.style.display = 'none';
+  if (banco) banco.innerHTML = '';
+  if (nav) nav.style.display = 'none';
+  if (feedback) {
+    feedback.style.display = 'block';
+    feedback.className = 'kf-feedback ok';
+    feedback.innerHTML = 
+      '<span class="kf-feedback-emoji">🏆</span>' +
+      '<div class="kf-feedback-texto">Uau! Você montou todas as frases!</div>' +
+      '<button onclick="iniciarKidsFrases()" style="margin-top:14px;padding:12px 28px;border-radius:20px;border:none;background:#EF9F27;color:#fff;font-family:Nunito,Arial,sans-serif;font-size:16px;font-weight:800;cursor:pointer;">🔄 Repetir</button>' +
+      '<button onclick="ir(\'home-kids\')" style="margin-top:8px;margin-left:8px;padding:12px 28px;border-radius:20px;border:none;background:#1D9E75;color:#fff;font-family:Nunito,Arial,sans-serif;font-size:16px;font-weight:800;cursor:pointer;">🏠 Início</button>';
+    ganharSementes(30, 'todas as frases! 🌱');
+  }
+}
+
 var nomeUsuario = '';
 var nivelAtual = 'B1';
 var tradAtiva = false;
@@ -5198,6 +5776,42 @@ window.onload = function() {
       sugs.appendChild(figBtn);
     }
   }, 500);
+
+
+  // KIDS AUDITIVO
+  var btnVoltarKidsAudio = document.getElementById('btnVoltarKidsAudio');
+  if (btnVoltarKidsAudio) btnVoltarKidsAudio.onclick = function() { ir('home-kids'); };
+  
+  var kaBtnAnterior = document.getElementById('kaBtnAnterior');
+  if (kaBtnAnterior) kaBtnAnterior.onclick = function() {
+    if (kaPaginaAtual > 0) { kaPaginaAtual--; renderKidsAudio(); }
+  };
+
+  // KIDS FRASES
+  var btnVoltarKidsFrases = document.getElementById('btnVoltarKidsFrases');
+  if (btnVoltarKidsFrases) btnVoltarKidsFrases.onclick = function() { ir('home-kids'); };
+
+  // RECONECTAR ATIVIDADES DA HOME KIDS
+  var actCards = document.querySelectorAll('.acard');
+  if (actCards[0]) actCards[0].onclick = function() { iniciarKidsAudio('animais'); };
+  if (actCards[1]) actCards[1].onclick = function() { iniciarKidsAudio('verbos'); };
+  if (actCards[2]) actCards[2].onclick = function() { iniciarKidsAudio('frutas'); };
+  if (actCards[3]) actCards[3].onclick = function() { ir('kids-frases'); iniciarKidsFrases(); };
+  
+  var btnJogar = document.getElementById('btnJogar');
+  if (btnJogar) btnJogar.onclick = function() { iniciarKidsAudio('animais'); };
+
+  // Atualizar textos das atividades kids na home
+  var actNomes = document.querySelectorAll('.anome');
+  var actSubs = document.querySelectorAll('.asub');
+  if (actNomes[0]) actNomes[0].textContent = 'Ouvir';
+  if (actSubs[0]) actSubs[0].textContent = 'Palavras com som';
+  if (actNomes[1]) actNomes[1].textContent = 'Ações';
+  if (actSubs[1]) actSubs[1].textContent = 'Verbos em inglês';
+  if (actNomes[2]) actNomes[2].textContent = 'Frutas';
+  if (actSubs[2]) actSubs[2].textContent = 'Cores e comidas';
+  if (actNomes[3]) actNomes[3].textContent = 'Frases';
+  if (actSubs[3]) actSubs[3].textContent = 'Monte a frase!';
 
   console.log('Talking Cricket v20260621193446 carregado!');
 };
