@@ -1203,7 +1203,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
   <nav class="nav">
     <div class="nitem knitem on" id="knavHome" onclick="ir('home-kids')"><i class="ti ti-home"></i>Home</div>
     <div class="nitem knitem" id="knavGames" onclick="ir('kids-games')"><i class="ti ti-device-gamepad-2"></i>Games</div>
-    <div class="nitem knitem" id="knavStories" onclick="ir('kids-stories')"><i class="ti ti-book"></i>Stories</div>
+    <div class="nitem knitem" id="knavStories" onclick="abrirStories()"><i class="ti ti-book"></i>Stories</div>
     <div class="nitem knitem" id="knavPerfil" onclick="voltarHome()"><i class="ti ti-user"></i>Profile</div>
   </nav>
 </div>
@@ -1381,7 +1381,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 
     <div class="audio-acoes">
       <button class="audio-acao quiz" id="btnExerciciosAudio"><i class="ti ti-help" style="font-size:15px"></i> Fazer exercícios</button>
-      <button class="audio-acao repeat" id="btnRepetir"><i class="ti ti-repeat" style="font-size:15px"></i> Repetir</button>
+      <button class="audio-acao repeat" id="btnTry again"><i class="ti ti-repeat" style="font-size:15px"></i> Try again</button>
     </div>
   </div>
   <nav class="nav nav-universal">
@@ -1681,11 +1681,11 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
         <button class="pl-dia" data-dia="Sab" style="cursor:pointer;font-size:12px;padding:6px 12px;">Sáb</button>
         <button class="pl-dia" data-dia="Dom" style="cursor:pointer;font-size:12px;padding:6px 12px;">Dom</button>
       </div>
-      <p style="font-size:11px;color:#6b7280;margin-top:8px;">Toque nos dias em que pode estudar</p>
+      <p style="font-size:11px;color:#6b7280;margin-top:8px;">Tap the days you can study</p>
     </div>
 
-    <button class="pl-gerar" id="btnGerarPlano">Gerar meu plano ✨</button>
-    <button class="pl-gerar" id="btnBaixarCronograma" style="background:#1D9E75;margin-top:8px;display:none;" onclick="baixarCronograma()">⬇️ Baixar cronograma</button>
+    <button class="pl-gerar" id="btnGerarPlano">Generate my plan ✨</button>
+    <button class="pl-gerar" id="btnBaixarCronograma" style="background:#1D9E75;margin-top:8px;display:none;" onclick="baixarCronograma()">⬇️ Download schedule</button>
 
     <div class="plcard" id="plCronograma" style="display:none;">
       <div id="appCronogramaCards" style="margin-bottom:14px;"></div>
@@ -1776,7 +1776,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div class="kids-opcoes" id="kOpcoes">
       <!-- Gerado por JS -->
     </div>
-    <button class="kids-btn" id="kProxima" style="display:none" onclick="proximaPalavraKids()">Próxima →</button>
+    <button class="kids-btn" id="kProxima" style="display:none" onclick="proximaPalavraKids()">Next →</button>
   </div>
 </div>
 
@@ -1850,17 +1850,17 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
   <div class="kaheader">
     <button class="kaback" id="btnVoltarKidsAudio">&#8592;</button>
     <div class="katitulo" id="kaTitulo">🐶 Animais</div>
-    <div class="kasub">Clique e ouça a palavra!</div>
+    <div class="kasub">Tap and hear the word!</div>
     <div class="ka-progresso" id="kaProgresso"></div>
   </div>
   <div class="kabody">
-    <div class="ka-instrucao" id="kaInstrucao">👆 Toque em uma palavra para ouvir!</div>
+    <div class="ka-instrucao" id="kaInstrucao">👆 Tap a word to hear it!</div>
     <div class="ka-grade" id="kaGrade">
       <!-- Gerado por JS -->
     </div>
     <div class="ka-nav">
-      <button class="ka-btn ka-btn-cinza" id="kaBtnAnterior">← Anterior</button>
-      <button class="ka-btn ka-btn-verde" id="kaBtnProxima">Próxima →</button>
+      <button class="ka-btn ka-btn-cinza" id="kaBtnAnterior">← Back</button>
+      <button class="ka-btn ka-btn-verde" id="kaBtnProxima">Next →</button>
     </div>
   </div>
 </div>
@@ -1870,27 +1870,27 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
   <div class="kfheader">
     <button class="kfback" id="btnVoltarKidsFrases">&#8592;</button>
     <div class="kftitulo">🧩 Monte a Frase!</div>
-    <div class="kfsub">Ouça e coloque as palavras na ordem certa</div>
+    <div class="kfsub">Listen and put the words in the right order</div>
   </div>
   <div class="kfbody">
     <!-- Áudio da frase -->
     <div class="kf-audio-box">
-      <div class="kf-audio-titulo">🔊 Ouça a frase</div>
+      <div class="kf-audio-titulo">🔊 Listen to the sentence</div>
       <button class="kf-play-btn" id="kfPlayBtn">▶</button>
-      <div class="kf-instrucao" id="kfInstrucao">Toque para ouvir a frase completa</div>
+      <div class="kf-instrucao" id="kfInstrucao">Tap to hear the full sentence</div>
     </div>
 
     <!-- Área de construção -->
     <div>
-      <div style="font-size:11px;font-weight:800;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;">📝 Monte a frase aqui</div>
+      <div style="font-size:11px;font-weight:800;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;">📝 Build the sentence here</div>
       <div class="kf-construtor" id="kfConstrutor">
-        <span class="kf-placeholder">Toque nas palavras abaixo para montar a frase!</span>
+        <span class="kf-placeholder">Tap the words below to build the sentence!</span>
       </div>
     </div>
 
     <!-- Banco de palavras -->
     <div>
-      <div class="kf-banco-titulo">💡 Palavras disponíveis</div>
+      <div class="kf-banco-titulo">💡 Available words</div>
       <div class="kf-banco" id="kfBanco">
         <!-- Gerado por JS -->
       </div>
@@ -1901,8 +1901,8 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 
     <!-- Botões -->
     <div class="ka-nav" id="kfNav">
-      <button class="ka-btn ka-btn-cinza" onclick="limparFraseKids()">🗑️ Limpar</button>
-      <button class="ka-btn ka-btn-verde" onclick="verificarFraseKids()">✓ Verificar</button>
+      <button class="ka-btn ka-btn-cinza" onclick="limparFraseKids()">🗑️ Clear</button>
+      <button class="ka-btn ka-btn-verde" onclick="verificarFraseKids()">✓ Check</button>
     </div>
   </div>
 </div>
@@ -1913,7 +1913,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
   <div class="kflheader">
     <button class="kflback" id="btnVoltarKidsFalar">&#8592;</button>
     <div class="kfltitulo">🗣️ Falar em Inglês</div>
-    <div class="kflsub">Ouça e repita com o Cricket!</div>
+    <div class="kflsub">Listen and repeat with Cricket!</div>
     <div class="kfl-progresso" id="kflProgresso"></div>
   </div>
   <div class="kflbody">
@@ -1935,7 +1935,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <!-- Microfone do aluno -->
     <div class="kfl-mic-area">
       <button class="kfl-mic-btn" id="kflMicBtn">🎤</button>
-      <div class="kfl-mic-label" id="kflMicLabel">Toque para falar</div>
+      <div class="kfl-mic-label" id="kflMicLabel">Tap to speak</div>
       <div class="kfl-transcricao" id="kflTranscricao" style="display:none;"></div>
     </div>
 
@@ -4420,7 +4420,7 @@ function renderResultadoKids() {
   var proxBtn = document.getElementById('kProxima');
   if (proxBtn) {
     proxBtn.style.display = 'block';
-    proxBtn.textContent = '🔄 Jogar novamente';
+    proxBtn.textContent = '🔄 Play again';
     proxBtn.onclick = function() { iniciarJogoKids(kJogoAtual); };
   }
 
@@ -4809,7 +4809,7 @@ function renderKidsAudio() {
   var revelCount = Object.keys(kaRevelados).length;
   var instrucao = document.getElementById('kaInstrucao');
   if (instrucao) {
-    if (revelCount === 0) instrucao.textContent = '👆 Toque em uma palavra para ouvir!';
+    if (revelCount === 0) instrucao.textContent = '👆 Tap a word to hear it!';
     else if (revelCount < palavras.length) instrucao.textContent = '🎉 Continue explorando as palavras!';
     else instrucao.textContent = '⭐ Parabéns! Você aprendeu todas as palavras!';
   }
@@ -4823,7 +4823,7 @@ function renderKidsAudio() {
       btnProx.textContent = '🏆 Concluir';
       btnProx.onclick = function() { mostrarResultadoKidsAudio(); };
     } else {
-      btnProx.textContent = 'Próxima →';
+      btnProx.textContent = 'Next →';
       btnProx.onclick = function() { 
         if (kaPaginaAtual < total - 1) { kaPaginaAtual++; renderKidsAudio(); }
       };
@@ -4844,7 +4844,7 @@ function mostrarResultadoKidsAudio() {
       '<div style="font-size:72px;margin-bottom:10px;">🌟</div>' +
       '<div style="font-size:22px;font-weight:800;color:#1D9E75;margin-bottom:6px;">Incrível!</div>' +
       '<div style="font-size:14px;color:#6b7280;">Você aprendeu ' + revelados + ' palavras!</div>' +
-      '<button onclick="iniciarKidsAudio(\'' + kaCategoria + '\')" style="margin-top:16px;padding:12px 28px;border-radius:20px;border:none;background:#1D9E75;color:#fff;font-family:Nunito,Arial,sans-serif;font-size:16px;font-weight:800;cursor:pointer;">🔄 Repetir</button>' +
+      '<button onclick="iniciarKidsAudio(\'' + kaCategoria + '\')" style="margin-top:16px;padding:12px 28px;border-radius:20px;border:none;background:#1D9E75;color:#fff;font-family:Nunito,Arial,sans-serif;font-size:16px;font-weight:800;cursor:pointer;">🔄 Try again</button>' +
       '<button onclick="ir(\'kids-frases\'); iniciarKidsFrases();" style="margin-top:8px;margin-left:8px;padding:12px 28px;border-radius:20px;border:none;background:#EF9F27;color:#fff;font-family:Nunito,Arial,sans-serif;font-size:16px;font-weight:800;cursor:pointer;">🧩 Montar frases!</button>' +
       '</div>';
   }
@@ -5041,7 +5041,7 @@ function mostrarResultadoKidsFrases() {
     feedback.innerHTML = 
       '<span class="kf-feedback-emoji">🏆</span>' +
       '<div class="kf-feedback-texto">Uau! Você montou todas as frases!</div>' +
-      '<button onclick="iniciarKidsFrases()" style="margin-top:14px;padding:12px 28px;border-radius:20px;border:none;background:#EF9F27;color:#fff;font-family:Nunito,Arial,sans-serif;font-size:16px;font-weight:800;cursor:pointer;">🔄 Repetir</button>' +
+      '<button onclick="iniciarKidsFrases()" style="margin-top:14px;padding:12px 28px;border-radius:20px;border:none;background:#EF9F27;color:#fff;font-family:Nunito,Arial,sans-serif;font-size:16px;font-weight:800;cursor:pointer;">🔄 Try again</button>' +
       '<button onclick="ir(\'home-kids\')" style="margin-top:8px;margin-left:8px;padding:12px 28px;border-radius:20px;border:none;background:#1D9E75;color:#fff;font-family:Nunito,Arial,sans-serif;font-size:16px;font-weight:800;cursor:pointer;">🏠 Início</button>';
     ganharSementes(30, 'todas as frases! 🌱');
   }
@@ -5563,7 +5563,7 @@ function renderKidsFalar() {
   var transcricao = document.getElementById('kflTranscricao');
   var feedback = document.getElementById('kflFeedback');
   if (micBtn) { micBtn.textContent = '🎤'; micBtn.classList.remove('recording'); }
-  if (micLabel) micLabel.textContent = 'Toque para falar';
+  if (micLabel) micLabel.textContent = 'Tap to speak';
   if (transcricao) { transcricao.style.display = 'none'; transcricao.textContent = ''; }
   if (feedback) feedback.style.display = 'none';
   
@@ -5598,7 +5598,7 @@ function toggleKidsFalarMic() {
     // PARAR
     kflMicAtivo = false;
     if (btn) { btn.textContent = '🎤'; btn.classList.remove('recording'); }
-    if (label) label.textContent = 'Toque para falar';
+    if (label) label.textContent = 'Tap to speak';
     if (kflRec) { try { kflRec.stop(); } catch(e) {} kflRec = null; }
     return;
   }
@@ -5703,7 +5703,7 @@ function avaliarRespostaKids(textoFalado) {
       feedback.innerHTML = '<span class="kfl-feedback-emoji">🤗</span><div class="kfl-feedback-texto">' + msgPT + '</div>';
     }
     
-    // Repetir a palavra após 2 segundos
+    // Try again a palavra após 2 segundos
     setTimeout(function() {
       if (feedback) feedback.style.display = 'none';
       falarPalavraKids(item.en);
@@ -5760,21 +5760,27 @@ function renderConstrutorFrases() {
     btn.className = 'kf-palavra-colocada' + (kfPalavraSelecionadaIdx === pos ? ' selecionada' : '');
     btn.textContent = item.palavra;
     
-    (function(posicao) {
+    (function(posicao, it) {
       btn.onclick = function() {
         if (kfVerificada) return;
         
         if (kfPalavraSelecionadaIdx === null) {
-          // Primeira seleção
+          // 1º toque — selecionar
           kfPalavraSelecionadaIdx = posicao;
           renderConstrutorFrases();
           playSound('clique');
         } else if (kfPalavraSelecionadaIdx === posicao) {
-          // Desselecionar
+          // 2º toque na MESMA — devolver ao banco!
+          var devolvida = kfPalavrasSelecionadas[posicao];
+          kfPalavrasSelecionadas.splice(posicao, 1);
           kfPalavraSelecionadaIdx = null;
+          // Reativar no banco
+          var bancoBtn = document.getElementById('kf-banco-' + devolvida.idx);
+          if (bancoBtn) bancoBtn.classList.remove('usada');
           renderConstrutorFrases();
+          playSound('clique');
         } else {
-          // Trocar posições!
+          // 2º toque em OUTRA — trocar posições
           var temp = kfPalavrasSelecionadas[kfPalavraSelecionadaIdx];
           kfPalavrasSelecionadas[kfPalavraSelecionadaIdx] = kfPalavrasSelecionadas[posicao];
           kfPalavrasSelecionadas[posicao] = temp;
@@ -5783,10 +5789,18 @@ function renderConstrutorFrases() {
           playSound('clique');
         }
       };
-    })(pos);
+    })(pos, item);
     
     construtor.appendChild(btn);
   });
+  
+  // Mostrar dica se palavra selecionada
+  if (kfPalavraSelecionadaIdx !== null) {
+    var dica = document.createElement('div');
+    dica.style.cssText = 'width:100%;text-align:center;font-size:11px;color:#BA7517;font-weight:700;margin-top:4px;';
+    dica.textContent = '👆 Toque na mesma palavra para devolvê-la • Toque em outra para trocar';
+    construtor.appendChild(dica);
+  }
 }
 
 // Override da função limpar para resetar seleção
@@ -6975,7 +6989,7 @@ window.onload = function() {
   document.getElementById('btnVoltarAudicao').onclick = function() { voltarHome(); };
   // btnPlay onclick definido abaixo
   var _bqa = document.getElementById('btnExerciciosAudio'); if(_bqa) _bqa.onclick = function() { iniciarQuiz(textoSelecionado ? textoSelecionado.id : 'b1-1'); };
-  document.getElementById('btnRepetir').onclick = function() {
+  document.getElementById('btnTry again').onclick = function() {
     var texto = textoAtualAudicao || (document.getElementById('transcricao-en') ? document.getElementById('transcricao-en').textContent.trim() : '');
     if (texto) {
       if (ttsAtivo) { window.speechSynthesis.cancel(); ttsAtivo = false; }
@@ -7368,14 +7382,14 @@ window.onload = function() {
   // Atualizar textos das atividades kids na home
   var actNomes = document.querySelectorAll('.anome');
   var actSubs = document.querySelectorAll('.asub');
-  if (actNomes[0]) actNomes[0].textContent = 'Ouvir';
-  if (actSubs[0]) actSubs[0].textContent = 'Palavras com som';
-  if (actNomes[1]) actNomes[1].textContent = 'Ações';
-  if (actSubs[1]) actSubs[1].textContent = 'Verbos em inglês';
-  if (actNomes[2]) actNomes[2].textContent = 'Frutas';
-  if (actSubs[2]) actSubs[2].textContent = 'Cores e comidas';
-  if (actNomes[3]) actNomes[3].textContent = 'Frases';
-  if (actSubs[3]) actSubs[3].textContent = 'Monte a frase!';
+  if (actNomes[0]) actNomes[0].textContent = 'Listen';
+  if (actSubs[0]) actSubs[0].textContent = 'Words with sounds';
+  if (actNomes[1]) actNomes[1].textContent = 'Speak';
+  if (actSubs[1]) actSubs[1].textContent = 'Repeat with Cricket!';
+  if (actNomes[2]) actNomes[2].textContent = 'Fruits';
+  if (actSubs[2]) actSubs[2].textContent = 'Learn the fruits';
+  if (actNomes[3]) actNomes[3].textContent = 'Phrases';
+  if (actSubs[3]) actSubs[3].textContent = 'Build a sentence!';
 
   initSupabase();
 
@@ -7402,14 +7416,14 @@ window.onload = function() {
   var actIcons = document.querySelectorAll('.acard .aicon');
   var actNomes2 = document.querySelectorAll('.anome');
   var actSubs2 = document.querySelectorAll('.asub');
-  if (actNomes2[0]) actNomes2[0].textContent = 'Ouvir';
-  if (actSubs2[0]) actSubs2[0].textContent = 'Palavras com som';
-  if (actNomes2[1]) actNomes2[1].textContent = 'Falar';
-  if (actSubs2[1]) actSubs2[1].textContent = 'Repita com Cricket!';
-  if (actNomes2[2]) actNomes2[2].textContent = 'Frutas';
-  if (actSubs2[2]) actSubs2[2].textContent = 'Aprenda as frutas';
-  if (actNomes2[3]) actNomes2[3].textContent = 'Frases';
-  if (actSubs2[3]) actSubs2[3].textContent = 'Monte a frase!';
+  if (actNomes2[0]) actNomes2[0].textContent = 'Listen';
+  if (actSubs2[0]) actSubs2[0].textContent = 'Words with sounds';
+  if (actNomes2[1]) actNomes2[1].textContent = 'Speak';
+  if (actSubs2[1]) actSubs2[1].textContent = 'Repeat with Cricket!';
+  if (actNomes2[2]) actNomes2[2].textContent = 'Fruits';
+  if (actSubs2[2]) actSubs2[2].textContent = 'Learn the fruits';
+  if (actNomes2[3]) actNomes2[3].textContent = 'Phrases';
+  if (actSubs2[3]) actSubs2[3].textContent = 'Build a sentence!';
 
 
   // GAMES
