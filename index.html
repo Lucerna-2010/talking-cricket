@@ -736,6 +736,15 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 .seeds-prox{font-size:11px;color:#9FE1CB;}
 .seeds-progress{height:6px;background:rgba(255,255,255,0.2);border-radius:3px;overflow:hidden;margin-top:4px;}
 .seeds-progress-fill{height:100%;background:#EF9F27;border-radius:3px;transition:width .8s ease;}
+
+/* CRONÔMETRO FIGURA SPEAKING */
+.figura-timer { display:flex; align-items:center; justify-content:space-between; background:#1a1a2e; border-radius:10px; padding:10px 14px; margin-bottom:10px; }
+.figura-timer-tempo { font-size:28px; font-weight:800; color:#EF9F27; font-variant-numeric:tabular-nums; }
+.figura-timer-label { font-size:11px; color:#9FE1CB; font-weight:700; }
+.figura-timer-btn { padding:6px 14px; border-radius:20px; border:none; background:#EF9F27; color:#412402; font-family:'Nunito',Arial,sans-serif; font-size:12px; font-weight:800; cursor:pointer; }
+.figura-chips { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px; }
+.figura-chip { font-size:11px; font-weight:700; padding:4px 10px; border-radius:20px; background:#EEEDFE; color:#534AB7; }
+.figura-chip.highlight { background:#534AB7; color:#fff; }
 </style>
 </head>
 <body>
@@ -1396,8 +1405,13 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 <div id="conversacao" class="tela">
   <div class="ctheader">
     <button class="ctback" id="btnVoltarConv">&#8592;</button>
-    <div class="cttitulo">Falar com Cricket</div>
-    <div class="ctsub">Conversação em inglês com correção</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;">
+      <div>
+        <div class="cttitulo">Falar com Cricket</div>
+        <div class="ctsub">Conversação em inglês com correção</div>
+      </div>
+      <button onclick="ir('chat-membros'); renderChat();" style="background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.4);border-radius:20px;padding:5px 12px;font-family:Nunito,Arial,sans-serif;font-size:11px;font-weight:800;color:#fff;cursor:pointer;">💬 Chat</button>
+    </div>
   </div>
   <div class="ctbody">
     <div class="ct-topico">
@@ -1559,6 +1573,70 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
       <!-- Gerado por JS -->
     </div>
     <button class="kids-btn" id="kProxima" style="display:none" onclick="proximaPalavraKids()">Próxima →</button>
+  </div>
+</div>
+
+
+<!-- ===== DESCRIÇÃO DE FIGURAS ===== -->
+<div id="descricao-figuras" class="tela">
+  <div class="ctheader" style="background:#7B2D8B;">
+    <button class="ctback" id="btnVoltarFiguras">&#8592;</button>
+    <div class="cttitulo">🖼️ Picture Description</div>
+    <div class="ctsub">Speaking — Cambridge Style</div>
+  </div>
+  <div class="ctbody" style="background:#F8F7FF;">
+    <!-- Timer -->
+    <div style="padding:14px 16px 0;">
+      <div class="figura-timer">
+        <div>
+          <div class="figura-timer-tempo" id="figuraTimer">3:00</div>
+          <div class="figura-timer-label">Tempo para descrever</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+          <button class="figura-timer-btn" id="btnIniciarTimer">▶ Iniciar</button>
+          <button class="figura-timer-btn" style="background:#9FE1CB;" id="btnProximaFig">⟳ Outra figura</button>
+        </div>
+      </div>
+
+      <!-- Configuração de tempo -->
+      <div style="display:flex;gap:6px;margin-bottom:10px;">
+        <button class="figura-chip highlight" data-tempo="180" id="figTempo3">3 min</button>
+        <button class="figura-chip" data-tempo="240" id="figTempo4">4 min</button>
+        <button class="figura-chip" data-tempo="300" id="figTempo5">5 min</button>
+      </div>
+
+      <!-- Imagem para descrever -->
+      <div id="figuraDisplay" style="background:#fff;border-radius:14px;padding:16px;margin-bottom:10px;border:1.5px solid #D3D1C7;">
+        <!-- Gerado por JS -->
+      </div>
+
+      <!-- Vocabulário útil -->
+      <div style="background:#EEEDFE;border-radius:12px;padding:12px;margin-bottom:10px;">
+        <div style="font-size:11px;font-weight:800;color:#534AB7;margin-bottom:8px;text-transform:uppercase;">💡 Frases úteis — Cambridge Speaking</div>
+        <div class="figura-chips" id="figuraFrases">
+          <span class="figura-chip">In the foreground...</span>
+          <span class="figura-chip">In the background...</span>
+          <span class="figura-chip">It appears that...</span>
+          <span class="figura-chip">I can see...</span>
+          <span class="figura-chip">On the left/right...</span>
+          <span class="figura-chip">It seems like...</span>
+          <span class="figura-chip">They might be...</span>
+          <span class="figura-chip">The picture shows...</span>
+        </div>
+      </div>
+
+      <!-- Microfone -->
+      <button class="sim-speaking-mic" id="figMicBtn" onclick="toggleFigSpeakingMic()" style="margin-bottom:10px;">
+        🎤 Clique para falar
+      </button>
+      <div id="figTranscricao" style="display:none;background:#fff;border-radius:10px;padding:12px;font-size:13px;color:#1a1a2e;line-height:1.6;border:1px solid #D3D1C7;margin-bottom:10px;"></div>
+
+      <!-- Feedback do Cricket -->
+      <div id="figFeedback" style="display:none;background:#E1F5EE;border-radius:12px;padding:14px;margin-bottom:10px;">
+        <div style="font-size:12px;font-weight:800;color:#085041;margin-bottom:6px;">🦗 Feedback do Cricket</div>
+        <div id="figFeedbackTexto" style="font-size:13px;color:#0F6E56;line-height:1.5;"></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -2161,7 +2239,7 @@ function lerTextoMasculino(texto) {
   var utter = new SpeechSynthesisUtterance(texto);
   utter.lang = 'en-GB';
   utter.rate = 0.9;
-  utter.pitch = 0.7; // Voz mais grave (masculina)
+  utter.pitch = 1.0; // Pitch neutro para evitar som robótico
   utter.volume = 1;
   var falar = function() {
     var vozes = window.speechSynthesis.getVoices();
@@ -2200,7 +2278,23 @@ function adicionarMsgCricket(texto) {
     msg.innerHTML = '<div class="ct-avatar cricket">🦗</div><div class="ct-bubble">' + texto + '</div>';
     chat.appendChild(msg);
     chat.scrollTop = chat.scrollHeight;
-    lerTextoMasculino(texto);
+    // Falar com voz do Cricket (não interfere com lerTexto dos textos)
+    if (window.speechSynthesis) {
+      window.speechSynthesis.cancel();
+      var utterCricket = new SpeechSynthesisUtterance(texto);
+      utterCricket.lang = 'en-GB';
+      utterCricket.rate = 0.88;
+      utterCricket.pitch = 1.0;
+      utterCricket.volume = 1;
+      var falarCricket = function() {
+        var vozes = window.speechSynthesis.getVoices();
+        var vozEN = vozes.find(function(v) { return v.lang.indexOf('en') === 0; });
+        if (vozEN) utterCricket.voice = vozEN;
+        window.speechSynthesis.speak(utterCricket);
+      };
+      if (window.speechSynthesis.getVoices().length > 0) { falarCricket(); }
+      else { window.speechSynthesis.addEventListener('voiceschanged', falarCricket, {once:true}); setTimeout(falarCricket, 300); }
+    }
   }, 1200);
 }
 
@@ -3953,6 +4047,189 @@ function atualizarDisplaySementes() {
   } catch(e) {}
 })();
 
+
+// ===== DESCRIÇÃO DE FIGURAS SPEAKING =====
+var figurasSpeaking = [
+  {
+    titulo: 'Scene 1 — In a Park',
+    descricao: 'Two friends sitting on a bench in a park. One is reading a book, the other is looking at their phone. Children are playing in the background near a fountain.',
+    contexto: 'Cambridge B1/B2 — Describe people and actions',
+    perguntas: ['What are the people doing?', 'What is the relationship between them?', 'What time of day might it be?', 'How do the people seem to feel?'],
+    svg: '<svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg"><rect width="360" height="220" fill="#87CEEB"/><rect x="0" y="160" width="360" height="60" fill="#4CAF50" opacity="0.6"/><rect x="0" y="175" width="360" height="45" fill="#388E3C" opacity="0.4"/><circle cx="280" cy="100" r="30" fill="#4CAF50" opacity="0.5"/><circle cx="300" cy="85" r="25" fill="#66BB6A" opacity="0.4"/><rect x="120" y="140" width="120" height="8" rx="4" fill="#795548"/><rect x="115" y="130" width="10" height="20" rx="2" fill="#5D4037"/><rect x="235" y="130" width="10" height="20" rx="2" fill="#5D4037"/><circle cx="155" cy="118" r="18" fill="#FFCC80"/><rect x="137" y="136" width="36" height="45" rx="4" fill="#2196F3"/><rect x="143" y="148" width="20" height="28" rx="2" fill="#fff" stroke="#1976D2" stroke-width="1"/><circle cx="205" cy="115" r="18" fill="#FFAB91"/><rect x="187" y="133" width="36" height="45" rx="4" fill="#E91E63"/><rect x="196" y="142" width="14" height="20" rx="2" fill="#333"/><circle cx="270" cy="158" r="10" fill="#FFCC80"/><circle cx="290" cy="155" r="10" fill="#FFAB91"/><circle cx="180" cy="148" r="15" fill="#1565C0" opacity="0.3"/><text x="180" y="215" text-anchor="middle" font-family="Arial" font-size="10" fill="#555">Describe this scene for 3-5 minutes</text></svg>'
+  },
+  {
+    titulo: 'Scene 2 — At a Coffee Shop',
+    descricao: 'A busy coffee shop. A barista is making coffee behind the counter. Several customers are waiting. Two people at a table are having what appears to be a business meeting with laptops open.',
+    contexto: 'Cambridge B2/C1 — Speculate about situations',
+    perguntas: ['What kind of place is this?', 'What might the people be discussing?', 'How busy does the place appear to be?', 'What details suggest the time of day?'],
+    svg: '<svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg"><rect width="360" height="220" fill="#FFF8F0"/><rect x="0" y="0" width="360" height="80" fill="#795548" opacity="0.3"/><rect x="0" y="70" width="360" height="15" rx="0" fill="#5D4037"/><circle cx="60" cy="45" r="20" fill="#FFCC80"/><rect x="40" y="65" width="40" height="50" rx="4" fill="#FF5722"/><rect x="45" y="40" width="18" height="25" rx="2" fill="#fff" stroke="#ccc" stroke-width="1"/><circle cx="160" cy="120" r="18" fill="#FFAB91"/><rect x="142" y="138" width="36" height="50" rx="4" fill="#3F51B5"/><rect x="130" y="155" width="60" height="35" rx="4" fill="#E8EAF6" stroke="#3F51B5" stroke-width="1"/><circle cx="230" cy="118" r="18" fill="#FFCC80"/><rect x="212" y="136" width="36" height="50" rx="4" fill="#009688"/><rect x="200" y="153" width="60" height="35" rx="4" fill="#E0F2F1" stroke="#009688" stroke-width="1"/><rect x="130" y="162" width="60" height="3" fill="#aaa"/><rect x="200" y="162" width="60" height="3" fill="#aaa"/><circle cx="310" cy="130" r="15" fill="#FFAB91"/><rect x="296" y="145" width="28" height="40" rx="4" fill="#E91E63"/><text x="180" y="215" text-anchor="middle" font-family="Arial" font-size="10" fill="#555">Describe this scene for 3-5 minutes</text></svg>'
+  },
+  {
+    titulo: 'Scene 3 — Family Celebration',
+    descricao: 'A family gathered around a table for what appears to be a birthday celebration. There is a cake with candles. People of different ages are present — grandparents, parents and children.',
+    contexto: 'Cambridge A2/B1 — Describe people and celebrations',
+    perguntas: ['What occasion might this be?', 'Who are the different people in the picture?', 'What emotions can you see?', 'What details tell you about the celebration?'],
+    svg: '<svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg"><rect width="360" height="220" fill="#FFF9C4"/><rect x="60" y="140" width="240" height="10" rx="5" fill="#A1887F"/><rect x="70" y="150" width="220" height="50" fill="#D7CCC8" rx="4"/><rect x="155" y="100" width="50" height="50" rx="4" fill="#fff" stroke="#FFD54F" stroke-width="2"/><rect x="165" y="90" width="4" height="18" rx="2" fill="#FFA726"/><rect x="173" y="88" width="4" height="18" rx="2" fill="#EF5350"/><rect x="181" y="91" width="4" height="18" rx="2" fill="#AB47BC"/><circle cx="167" cy="88" r="3" fill="#FFF176"/><circle cx="175" cy="86" r="3" fill="#FFF176"/><circle cx="183" cy="89" r="3" fill="#FFF176"/><circle cx="80" cy="110" r="18" fill="#BCAAA4"/><rect x="62" y="128" width="36" height="45" rx="4" fill="#546E7A"/><circle cx="140" cy="105" r="20" fill="#FFCC80"/><rect x="120" y="125" width="40" height="48" rx="4" fill="#E91E63"/><circle cx="220" cy="105" r="20" fill="#FFAB91"/><rect x="200" y="125" width="40" height="48" rx="4" fill="#2196F3"/><circle cx="280" cy="110" r="18" fill="#D7CCC8"/><rect x="262" y="128" width="36" height="45" rx="4" fill="#78909C"/><circle cx="170" cy="125" r="10" fill="#FFCC80"/><circle cx="195" cy="127" r="10" fill="#FFAB91"/><text x="180" y="215" text-anchor="middle" font-family="Arial" font-size="10" fill="#555">Describe this scene for 3-5 minutes</text></svg>'
+  },
+  {
+    titulo: 'Scene 4 — City Street',
+    descricao: 'A busy city street scene. People are walking in different directions. Some are carrying shopping bags, others are looking at their phones. There is a bus stop and several shops visible.',
+    contexto: 'Cambridge B2/C1 — Describe urban environments',
+    perguntas: ['Where does this scene take place?', 'What time of day might it be?', 'What are the different people doing?', 'What does this scene tell us about modern city life?'],
+    svg: '<svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg"><rect width="360" height="220" fill="#CFD8DC"/><rect x="0" y="0" width="360" height="120" fill="#B0BEC5"/><rect x="10" y="10" width="80" height="110" fill="#546E7A"/><rect x="15" y="20" width="30" height="25" rx="2" fill="#B3E5FC"/><rect x="50" y="20" width="30" height="25" rx="2" fill="#B3E5FC"/><rect x="15" y="55" width="30" height="25" rx="2" fill="#FFF9C4"/><rect x="50" y="55" width="30" height="25" rx="2" fill="#B3E5FC"/><rect x="100" y="30" width="70" height="90" fill="#455A64"/><rect x="108" y="40" width="25" height="20" rx="2" fill="#80DEEA"/><rect x="138" y="40" width="25" height="20" rx="2" fill="#FFF9C4"/><rect x="108" y="68" width="25" height="20" rx="2" fill="#80DEEA"/><rect x="138" y="68" width="25" height="20" rx="2" fill="#80DEEA"/><rect x="200" y="20" width="150" height="100" fill="#37474F"/><rect x="215" y="55" width="120" height="4" fill="#EF5350"/><rect x="215" y="65" width="120" height="4" fill="#EF5350"/><text x="250" y="48" font-family="Arial" font-size="9" fill="#fff">CITY BUS</text><rect x="0" y="120" width="360" height="100" fill="#9E9E9E"/><rect x="0" y="135" width="360" height="4" fill="#FFF176" opacity="0.5"/><circle cx="90" cy="148" r="15" fill="#FFCC80"/><rect x="75" y="163" width="30" height="40" rx="3" fill="#FF5722"/><circle cx="160" cy="145" r="15" fill="#FFAB91"/><rect x="145" y="160" width="30" height="40" rx="3" fill="#3F51B5"/><circle cx="240" cy="150" r="15" fill="#FFCC80"/><rect x="225" y="165" width="30" height="40" rx="3" fill="#4CAF50"/><circle cx="310" cy="147" r="15" fill="#D7CCC8"/><rect x="295" y="162" width="30" height="40" rx="3" fill="#9C27B0"/><text x="180" y="215" text-anchor="middle" font-family="Arial" font-size="10" fill="#333">Describe this scene for 3-5 minutes</text></svg>'
+  },
+  {
+    titulo: 'Scene 5 — School Classroom',
+    descricao: 'A modern classroom. A teacher is standing at the front near a whiteboard. Students are sitting at desks, some taking notes, some raising their hands. There is a computer and projector visible.',
+    contexto: 'Cambridge B1/B2 — Describe educational settings',
+    perguntas: ['What is happening in this classroom?', 'What subject might be taught?', 'How do the students appear to feel?', 'What does this suggest about modern education?'],
+    svg: '<svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg"><rect width="360" height="220" fill="#E8F5E9"/><rect x="20" y="15" width="280" height="80" rx="4" fill="#fff" stroke="#B0BEC5" stroke-width="2"/><rect x="25" y="20" width="270" height="70" rx="2" fill="#E3F2FD"/><text x="155" y="60" text-anchor="middle" font-family="Arial" font-size="14" fill="#1976D2" font-weight="bold">Learning Together</text><rect x="310" y="25" width="30" height="25" rx="3" fill="#333"/><rect x="312" y="27" width="26" height="16" rx="1" fill="#42A5F5"/><circle cx="45" cy="115" r="16" fill="#FFCC80"/><rect x="29" y="131" width="32" height="50" rx="3" fill="#E91E63"/><rect x="20" y="148" width="20" height="3" fill="#795548"/><circle cx="130" cy="118" r="16" fill="#FFAB91"/><rect x="114" y="134" width="32" height="48" rx="3" fill="#2196F3"/><rect x="110" y="155" width="40" height="30" rx="2" fill="#E3F2FD" stroke="#90CAF9" stroke-width="1"/><circle cx="220" cy="115" r="16" fill="#D7CCC8"/><rect x="204" y="131" width="32" height="48" rx="3" fill="#FF9800"/><rect x="200" y="152" width="40" height="30" rx="2" fill="#FFF8E1" stroke="#FFE082" stroke-width="1"/><line x1="210" y1="108" x2="222" y2="98" stroke="#333" stroke-width="2"/><circle cx="300" cy="112" r="16" fill="#FFCC80"/><rect x="284" y="128" width="32" height="48" rx="3" fill="#9C27B0"/><text x="180" y="215" text-anchor="middle" font-family="Arial" font-size="10" fill="#555">Describe this scene for 3-5 minutes</text></svg>'
+  }
+];
+
+var figSpeakingIdx = 0;
+var figTimerSeg = 180;
+var figTimerMax = 180;
+var figTimerInterval = null;
+var figMicAtivoSpeaking = false;
+var figRecSpeaking = null;
+
+function renderFiguraSpeaking() {
+  var fig = figurasSpeaking[figSpeakingIdx % figurasSpeaking.length];
+  var display = document.getElementById('figuraDisplay');
+  if (!display) return;
+  
+  display.innerHTML = 
+    '<div style="font-size:12px;font-weight:800;color:#534AB7;margin-bottom:8px;text-transform:uppercase;">🖼️ ' + fig.titulo + '</div>' +
+    fig.svg +
+    '<div style="margin-top:10px;background:#F8F7FF;border-radius:8px;padding:10px;">' +
+      '<div style="font-size:11px;font-weight:800;color:#6b7280;margin-bottom:6px;">📋 PERGUNTAS PARA GUIAR</div>' +
+      fig.perguntas.map(function(q) { return '<div style="font-size:12px;color:#1a1a2e;margin-bottom:4px;">• ' + q + '</div>'; }).join('') +
+    '</div>' +
+    '<div style="font-size:11px;color:#534AB7;margin-top:6px;font-weight:700;">' + fig.contexto + '</div>';
+    
+  // Resetar estado
+  pararTimerFigura();
+  figTimerSeg = figTimerMax;
+  atualizarDisplayTimer();
+  
+  var feedback = document.getElementById('figFeedback');
+  var transcricao = document.getElementById('figTranscricao');
+  if (feedback) feedback.style.display = 'none';
+  if (transcricao) { transcricao.style.display = 'none'; transcricao.textContent = ''; }
+  
+  var micBtn = document.getElementById('figMicBtn');
+  if (micBtn) { micBtn.classList.remove('recording'); micBtn.textContent = '🎤 Clique para falar'; }
+}
+
+function atualizarDisplayTimer() {
+  var el = document.getElementById('figuraTimer');
+  if (!el) return;
+  var min = Math.floor(figTimerSeg / 60);
+  var seg = figTimerSeg % 60;
+  el.textContent = min + ':' + (seg < 10 ? '0' : '') + seg;
+  el.style.color = figTimerSeg <= 30 ? '#D85A30' : figTimerSeg <= 60 ? '#EF9F27' : '#EF9F27';
+}
+
+function iniciarTimerFigura() {
+  if (figTimerInterval) return;
+  figTimerInterval = setInterval(function() {
+    figTimerSeg--;
+    atualizarDisplayTimer();
+    if (figTimerSeg <= 0) {
+      pararTimerFigura();
+      // Parar microfone e dar feedback
+      if (figMicAtivoSpeaking) toggleFigSpeakingMic();
+      mostrarFeedbackFigura();
+    }
+  }, 1000);
+  var btn = document.getElementById('btnIniciarTimer');
+  if (btn) btn.textContent = '⏹ Parar';
+}
+
+function pararTimerFigura() {
+  if (figTimerInterval) { clearInterval(figTimerInterval); figTimerInterval = null; }
+  var btn = document.getElementById('btnIniciarTimer');
+  if (btn) btn.textContent = '▶ Iniciar';
+}
+
+function mostrarFeedbackFigura() {
+  var feedbacks = [
+    'Great effort! Try to use more descriptive vocabulary. Phrases like "in the foreground" and "it appears that" make your description sound more natural and Cambridge-ready!',
+    'Well done! Remember to speculate about what the people might be thinking or feeling. This shows higher-level language use and is rewarded in the Cambridge exam.',
+    'Good description! Next time, try to connect your observations: "While the person on the left is reading, the one on the right seems to be..." This shows cohesion in your speaking.',
+    'Excellent attempt! In the Cambridge exam, you get extra marks for using a range of vocabulary. Try synonyms: instead of "looking", use "gazing", "glancing" or "observing".'
+  ];
+  var feedback = feedbacks[Math.floor(Math.random() * feedbacks.length)];
+  var feedbackDiv = document.getElementById('figFeedback');
+  var feedbackTexto = document.getElementById('figFeedbackTexto');
+  if (feedbackDiv) feedbackDiv.style.display = 'block';
+  if (feedbackTexto) feedbackTexto.textContent = feedback;
+  
+  // Cricket fala o feedback
+  if (window.speechSynthesis) {
+    window.speechSynthesis.cancel();
+    var utter = new SpeechSynthesisUtterance(feedback);
+    utter.lang = 'en-GB';
+    utter.rate = 0.9;
+    window.speechSynthesis.speak(utter);
+  }
+}
+
+function toggleFigSpeakingMic() {
+  var btn = document.getElementById('figMicBtn');
+  if (!btn) return;
+  
+  if (figMicAtivoSpeaking) {
+    figMicAtivoSpeaking = false;
+    btn.classList.remove('recording');
+    btn.textContent = '✓ Gravado — toque para regravar';
+    if (figRecSpeaking) { try { figRecSpeaking.stop(); } catch(e) {} }
+    pararTimerFigura();
+    mostrarFeedbackFigura();
+    return;
+  }
+  
+  figMicAtivoSpeaking = true;
+  btn.classList.add('recording');
+  btn.textContent = '🔴 Gravando... toque para parar';
+  
+  // Iniciar timer automaticamente
+  if (!figTimerInterval) iniciarTimerFigura();
+  
+  if (!('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
+    var transcDiv = document.getElementById('figTranscricao');
+    if (transcDiv) { transcDiv.style.display = 'block'; transcDiv.textContent = 'Voice recognition requires Chrome. Please speak aloud and then tap "Stop" when finished.'; }
+    return;
+  }
+  
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  figRecSpeaking = new SR();
+  figRecSpeaking.lang = 'en-US';
+  figRecSpeaking.continuous = true;
+  figRecSpeaking.interimResults = true;
+  
+  figRecSpeaking.onresult = function(e) {
+    var texto = '';
+    for (var i = 0; i < e.results.length; i++) {
+      texto += e.results[i][0].transcript + ' ';
+    }
+    var transcDiv = document.getElementById('figTranscricao');
+    if (transcDiv) { transcDiv.style.display = 'block'; transcDiv.textContent = texto; }
+  };
+  
+  figRecSpeaking.onerror = function() {
+    figMicAtivoSpeaking = false;
+    if (btn) { btn.classList.remove('recording'); btn.textContent = '🎤 Clique para falar'; }
+  };
+  
+  figRecSpeaking.onend = function() {
+    if (figMicAtivoSpeaking) { try { figRecSpeaking.start(); } catch(e) {} }
+  };
+  
+  figRecSpeaking.start();
+}
+
 var nomeUsuario = '';
 var nivelAtual = 'B1';
 var tradAtiva = false;
@@ -4745,6 +5022,8 @@ window.onload = function() {
 
   var btnGerarPlano = document.getElementById('btnGerarPlano');
   if (btnGerarPlano) btnGerarPlano.onclick = function() { gerarCronograma(); };
+  var btnBaixar = document.getElementById('btnBaixarCronograma');
+  if (btnBaixar) btnBaixar.onclick = function() { baixarCronograma(); };
 
   // Conectar perfil → plano
   var btnPerfilPlano = document.getElementById('btnPerfilPlano');
@@ -4798,6 +5077,52 @@ window.onload = function() {
 
   // Atualizar sementes ao iniciar
   atualizarDisplaySementes();
+
+
+  // DESCRIÇÃO DE FIGURAS
+  var btnVoltarFiguras = document.getElementById('btnVoltarFiguras');
+  if (btnVoltarFiguras) btnVoltarFiguras.onclick = function() { pararTimerFigura(); if(figMicAtivoSpeaking && figRecSpeaking) { try{figRecSpeaking.stop();}catch(e){} } ir('conversacao'); };
+  
+  var btnIniciarTimer = document.getElementById('btnIniciarTimer');
+  if (btnIniciarTimer) btnIniciarTimer.onclick = function() {
+    if (figTimerInterval) { pararTimerFigura(); }
+    else { figTimerSeg = figTimerMax; atualizarDisplayTimer(); iniciarTimerFigura(); }
+  };
+  
+  var btnProximaFig = document.getElementById('btnProximaFig');
+  if (btnProximaFig) btnProximaFig.onclick = function() {
+    figSpeakingIdx++;
+    renderFiguraSpeaking();
+  };
+  
+  // Seletor de tempo (3/4/5 min)
+  document.querySelectorAll('[data-tempo]').forEach(function(btn) {
+    btn.onclick = function() {
+      document.querySelectorAll('[data-tempo]').forEach(function(b) { b.className = 'figura-chip'; });
+      this.className = 'figura-chip highlight';
+      figTimerMax = parseInt(this.getAttribute('data-tempo'));
+      figTimerSeg = figTimerMax;
+      pararTimerFigura();
+      atualizarDisplayTimer();
+    };
+  });
+  
+  // Inicializar primeira figura
+  renderFiguraSpeaking();
+  
+  // Adicionar botão de figuras nas sugestões da conversação
+  setTimeout(function() {
+    var sugs = document.getElementById('ct-sugestoes');
+    if (sugs && !document.getElementById('btnFiguraSug')) {
+      var figBtn = document.createElement('div');
+      figBtn.className = 'ct-sug';
+      figBtn.id = 'btnFiguraSug';
+      figBtn.style.cssText = 'background:#F3E5F5;border-color:#CE93D8;color:#7B2D8B;';
+      figBtn.textContent = '🖼️ Descrever figura';
+      figBtn.onclick = function() { ir('descricao-figuras'); };
+      sugs.appendChild(figBtn);
+    }
+  }, 500);
 
   console.log('Talking Cricket v20260621193446 carregado!');
 };
