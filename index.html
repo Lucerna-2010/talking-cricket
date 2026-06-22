@@ -879,6 +879,71 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 /* Palavras no construtor com troca de posição */
 .kf-palavra-colocada { background: #1D9E75; color: #fff; padding: 8px 16px; border-radius: 20px; font-size: 16px; font-weight: 800; cursor: pointer; border: 3px solid transparent; font-family: 'Nunito', Arial, sans-serif; animation: slideIn .2s ease; transition: all .15s; }
 .kf-palavra-colocada.selecionada { border-color: #EF9F27; background: #0F6E56; transform: scale(1.05); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+
+/* ===== KIDS GAMES ===== */
+#kids-games { background: linear-gradient(135deg, #E8EAF6, #C5CAE9); }
+.kgheader { background: linear-gradient(135deg, #3F51B5, #1A237E); padding: 50px 20px 20px; position: relative; text-align: center; }
+.kgback { position: absolute; top: 14px; left: 14px; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.2); border: none; cursor: pointer; font-size: 22px; color: #fff; display: flex; align-items: center; justify-content: center; }
+.kgtitulo { font-size: 22px; font-weight: 800; color: #fff; }
+.kgsub { font-size: 13px; color: #9FA8DA; margin-top: 4px; }
+.kgbody { padding: 16px; flex: 1; overflow-y: auto; }
+.kg-games-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+.kg-game-card { background: #fff; border-radius: 20px; padding: 20px 14px; text-align: center; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.08); border: 3px solid transparent; transition: all .2s; }
+.kg-game-card:active { transform: scale(0.96); }
+.kg-game-icon { font-size: 52px; display: block; margin-bottom: 8px; }
+.kg-game-nome { font-size: 15px; font-weight: 800; color: #1a1a2e; }
+.kg-game-sub { font-size: 11px; color: #6b7280; margin-top: 3px; }
+
+/* ===== JOGO DA MEMÓRIA ===== */
+#kids-memory { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); }
+.kmheader { background: linear-gradient(135deg, #2E7D32, #1B5E20); padding: 50px 20px 16px; position: relative; text-align: center; }
+.kmback { position: absolute; top: 14px; left: 14px; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.2); border: none; cursor: pointer; font-size: 22px; color: #fff; display: flex; align-items: center; justify-content: center; }
+.kmtitulo { font-size: 20px; font-weight: 800; color: #fff; }
+.km-info { display: flex; gap: 16px; justify-content: center; margin-top: 8px; }
+.km-stat { font-size: 12px; color: #A5D6A7; font-weight: 700; }
+.km-stat span { color: #fff; font-size: 16px; font-weight: 800; }
+.kmbody { padding: 14px; flex: 1; }
+.km-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.km-card { aspect-ratio: 1; border-radius: 12px; cursor: pointer; position: relative; transition: transform .3s; transform-style: preserve-3d; }
+.km-card.virada { transform: rotateY(180deg); }
+.km-card.encontrada { transform: rotateY(180deg); opacity: 0.7; pointer-events: none; }
+.km-front, .km-back { position: absolute; width: 100%; height: 100%; border-radius: 12px; backface-visibility: hidden; display: flex; align-items: center; justify-content: center; }
+.km-front { background: linear-gradient(135deg, #3F51B5, #1A237E); font-size: 24px; color: #fff; font-weight: 800; }
+.km-back { background: #fff; border: 3px solid #A5D6A7; transform: rotateY(180deg); flex-direction: column; gap: 4px; }
+.km-back-emoji { font-size: 28px; }
+.km-back-word { font-size: 12px; font-weight: 800; color: #1a1a2e; }
+
+/* ===== KIDS STORIES ===== */
+#kids-stories { background: #FFF8F0; }
+.ksheader { background: linear-gradient(135deg, #FF6F00, #E65100); padding: 50px 20px 20px; position: relative; }
+.ksback { position: absolute; top: 14px; left: 14px; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.2); border: none; cursor: pointer; font-size: 22px; color: #fff; display: flex; align-items: center; justify-content: center; }
+.kstitulo { font-size: 20px; font-weight: 800; color: #fff; }
+.kssub { font-size: 12px; color: #FFCC80; margin-top: 3px; }
+.ksbody { padding: 14px; flex: 1; overflow-y: auto; }
+.ks-story-card { background: #fff; border-radius: 16px; padding: 14px; margin-bottom: 12px; display: flex; gap: 14px; align-items: center; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.07); border: 2px solid #FFE0B2; transition: all .2s; }
+.ks-story-card:active { transform: scale(0.98); border-color: #FF6F00; }
+.ks-story-emoji { font-size: 48px; flex-shrink: 0; }
+.ks-story-info { flex: 1; }
+.ks-story-titulo { font-size: 15px; font-weight: 800; color: #1a1a2e; }
+.ks-story-sub { font-size: 11px; color: #6b7280; margin-top: 3px; }
+.ks-story-badge { font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 10px; background: #FFF3E0; color: #E65100; margin-top: 5px; display: inline-block; }
+
+/* ===== LEITURA DA HISTÓRIA ===== */
+#kids-story-reader { background: #FFF8F0; }
+.ksr-header { background: linear-gradient(135deg, #FF6F00, #E65100); padding: 50px 16px 16px; position: relative; }
+.ksr-back { position: absolute; top: 14px; left: 14px; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.2); border: none; cursor: pointer; font-size: 22px; color: #fff; }
+.ksr-titulo { font-size: 17px; font-weight: 800; color: #fff; }
+.ksr-controls { display: flex; gap: 8px; margin-top: 10px; align-items: center; }
+.ksr-btn { padding: 8px 16px; border-radius: 20px; border: none; background: rgba(255,255,255,0.25); color: #fff; font-family: 'Nunito', Arial, sans-serif; font-size: 13px; font-weight: 800; cursor: pointer; }
+.ksr-btn.play { background: #fff; color: #E65100; }
+.ksr-body { padding: 16px; flex: 1; overflow-y: auto; }
+.ksr-pagina { background: #fff; border-radius: 20px; padding: 20px; margin-bottom: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); border: 2px solid #FFE0B2; }
+.ksr-pagina.ativa { border-color: #FF6F00; background: #FFF3E0; }
+.ksr-balao { font-size: 16px; line-height: 1.8; color: #1a1a2e; font-weight: 600; }
+.ksr-balao .palavra-destaque { color: #E65100; cursor: pointer; border-bottom: 2px dotted #E65100; font-weight: 800; }
+.ksr-traducao { font-size: 13px; color: #6b7280; margin-top: 8px; font-style: italic; display: none; }
+.ksr-pagina.ativa .ksr-traducao { display: block; }
+.ksr-nav { display: flex; gap: 10px; padding: 0 16px 16px; }
 </style>
 </head>
 <body>
@@ -1073,11 +1138,11 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     </div>
   </div>
   <nav class="nav nav-universal">
-    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Início</div>
-    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-book"></i>Textos</div>
-    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Falar</div>
-    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progresso</div>
-    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Perfil</div>
+    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
+    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-book"></i>Texts</div>
+    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
+    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
   </nav>
 </div>
 
@@ -1124,7 +1189,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
       <div class="stitle">O que vamos fazer hoje?</div>
       <div class="acts">
         <div class="acard a1"><div class="aicon"><i class="ti ti-headphones" style="color:#185FA5"></i></div><div class="anome">Ouvir</div><div class="asub">Histórias e músicas</div></div>
-        <div class="acard a2"><div class="aicon"><i class="ti ti-microphone" style="color:#993C1D"></i></div><div class="anome">Falar</div><div class="asub">Repita com Cricket!</div></div>
+        <div class="acard a2"><div class="aicon"><i class="ti ti-microphone" style="color:#993C1D"></i></div><div class="anome">Speak</div><div class="asub">Repita com Cricket!</div></div>
         <div class="acard a3"><div class="aicon"><i class="ti ti-book-2" style="color:#854F0B"></i></div><div class="anome">Ler</div><div class="asub">Palavras e figuras</div></div>
         <div class="acard a4"><div class="aicon"><i class="ti ti-pencil" style="color:#993556"></i></div><div class="anome">Escrever</div><div class="asub">Complete e forme!</div></div>
       </div>
@@ -1136,10 +1201,10 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     </div>
   </div>
   <nav class="nav">
-    <div class="nitem knitem on" id="knavHome"><i class="ti ti-home"></i>Início</div>
-    <div class="nitem knitem" id="knavMundo"><i class="ti ti-planet"></i>Mundo</div>
-    <div class="nitem knitem" id="knavPremios"><i class="ti ti-trophy"></i>Prêmios</div>
-    <div class="nitem knitem" id="knavPerfil"><i class="ti ti-user"></i>Perfil</div>
+    <div class="nitem knitem on" id="knavHome" onclick="ir('home-kids')"><i class="ti ti-home"></i>Home</div>
+    <div class="nitem knitem" id="knavGames" onclick="ir('kids-games')"><i class="ti ti-device-gamepad-2"></i>Games</div>
+    <div class="nitem knitem" id="knavStories" onclick="ir('kids-stories')"><i class="ti ti-book"></i>Stories</div>
+    <div class="nitem knitem" id="knavPerfil" onclick="voltarHome()"><i class="ti ti-user"></i>Profile</div>
   </nav>
 </div>
 
@@ -1185,11 +1250,11 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     </div>
   </div>
   <nav class="nav nav-universal">
-    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Início</div>
-    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-book"></i>Textos</div>
-    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Falar</div>
-    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progresso</div>
-    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Perfil</div>
+    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
+    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-book"></i>Texts</div>
+    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
+    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
   </nav>
 </div>
 
@@ -1225,11 +1290,11 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <button class="btn btn-cinza" id="btnSair">Sair da conta</button>
   </div>
   <nav class="nav">
-    <div class="nitem" id="pnavHome"><i class="ti ti-home"></i>Início</div>
-    <div class="nitem" id="pnavTextos"><i class="ti ti-book"></i>Textos</div>
-    <div class="nitem" id="pnavFalar"><i class="ti ti-microphone"></i>Falar</div>
-    <div class="nitem" id="pnavProgresso"><i class="ti ti-chart-bar"></i>Progresso</div>
-    <div class="nitem on"><i class="ti ti-user"></i>Perfil</div>
+    <div class="nitem" id="pnavHome"><i class="ti ti-home"></i>Home</div>
+    <div class="nitem" id="pnavTextos"><i class="ti ti-book"></i>Texts</div>
+    <div class="nitem" id="pnavFalar"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem" id="pnavProgresso"><i class="ti ti-chart-bar"></i>Progress</div>
+    <div class="nitem on"><i class="ti ti-user"></i>Profile</div>
   </nav>
 </div>
 
@@ -1254,11 +1319,11 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
   <div class="tema-filter" id="tema-filter"></div>
   <div class="texto-lista" id="texto-lista"></div>
   <nav class="nav nav-universal">
-    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Início</div>
-    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-book"></i>Textos</div>
-    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Falar</div>
-    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progresso</div>
-    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Perfil</div>
+    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
+    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-book"></i>Texts</div>
+    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
+    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
   </nav>
 </div>
 
@@ -1320,11 +1385,11 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     </div>
   </div>
   <nav class="nav nav-universal">
-    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Início</div>
-    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-book"></i>Textos</div>
-    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Falar</div>
-    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progresso</div>
-    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Perfil</div>
+    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
+    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-book"></i>Texts</div>
+    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
+    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
   </nav>
 </div>
 
@@ -1368,11 +1433,11 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     </div>
   </div>
   <nav class="nav nav-universal">
-    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Início</div>
-    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-book"></i>Textos</div>
-    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Falar</div>
-    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progresso</div>
-    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Perfil</div>
+    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
+    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-book"></i>Texts</div>
+    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
+    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
   </nav>
 </div>
 
@@ -1454,11 +1519,11 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 
   </div>
   <nav class="nav">
-    <div class="nitem" id="pronavHome"><i class="ti ti-home"></i>Início</div>
-    <div class="nitem" id="pronavTextos"><i class="ti ti-book"></i>Textos</div>
-    <div class="nitem"><i class="ti ti-microphone"></i>Falar</div>
-    <div class="nitem on"><i class="ti ti-chart-bar"></i>Progresso</div>
-    <div class="nitem" id="pronavPerfil"><i class="ti ti-user"></i>Perfil</div>
+    <div class="nitem" id="pronavHome"><i class="ti ti-home"></i>Home</div>
+    <div class="nitem" id="pronavTextos"><i class="ti ti-book"></i>Texts</div>
+    <div class="nitem"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem on"><i class="ti ti-chart-bar"></i>Progress</div>
+    <div class="nitem" id="pronavPerfil"><i class="ti ti-user"></i>Profile</div>
   </nav>
 </div>
 
@@ -1482,11 +1547,11 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <!-- Gerado por JS -->
   </div>
   <nav class="nav nav-universal">
-    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Início</div>
-    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-book"></i>Textos</div>
-    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Falar</div>
-    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progresso</div>
-    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Perfil</div>
+    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
+    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-book"></i>Texts</div>
+    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
+    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
   </nav>
 </div>
 
@@ -1532,11 +1597,11 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     </div>
   </div>
   <nav class="nav nav-universal">
-    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Início</div>
-    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-book"></i>Textos</div>
-    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Falar</div>
-    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progresso</div>
-    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Perfil</div>
+    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
+    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-book"></i>Texts</div>
+    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
+    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
   </nav>
 </div>
 
@@ -1665,11 +1730,11 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <!-- Gerado por JS -->
   </div>
   <nav class="nav nav-universal">
-    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Início</div>
-    <div class="nitem nav-item-univ on" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-book"></i>Textos</div>
-    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Falar</div>
-    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progresso</div>
-    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Perfil</div>
+    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
+    <div class="nitem nav-item-univ on" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-book"></i>Texts</div>
+    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
+    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
   </nav>
 </div>
 
@@ -1877,6 +1942,83 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <!-- Feedback -->
     <div id="kflFeedback" style="display:none;width:100%;"></div>
 
+  </div>
+</div>
+
+
+<!-- ===== KIDS GAMES ===== -->
+<div id="kids-games" class="tela">
+  <div class="kgheader">
+    <button class="kgback" id="btnVoltarGames">&#8592;</button>
+    <div class="kgtitulo">🎮 Games</div>
+    <div class="kgsub">Learn English while playing!</div>
+  </div>
+  <div class="kgbody">
+    <div class="kg-games-grid">
+      <div class="kg-game-card" onclick="iniciarMemoria()">
+        <span class="kg-game-icon">🃏</span>
+        <div class="kg-game-nome">Memory</div>
+        <div class="kg-game-sub">Find the pairs!</div>
+      </div>
+      <div class="kg-game-card" onclick="iniciarKidsAudio('animais'); ir('kids-audio');">
+        <span class="kg-game-icon">🔊</span>
+        <div class="kg-game-nome">Listen & Find</div>
+        <div class="kg-game-sub">Hear and discover!</div>
+      </div>
+      <div class="kg-game-card" onclick="ir('kids-frases'); iniciarKidsFrases();">
+        <span class="kg-game-icon">🧩</span>
+        <div class="kg-game-nome">Build a Sentence</div>
+        <div class="kg-game-sub">Put words in order!</div>
+      </div>
+      <div class="kg-game-card" onclick="iniciarKidsFalar();">
+        <span class="kg-game-icon">🗣️</span>
+        <div class="kg-game-nome">Say it Right!</div>
+        <div class="kg-game-sub">Speak with Cricket!</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== JOGO DA MEMÓRIA ===== -->
+<div id="kids-memory" class="tela">
+  <div class="kmheader">
+    <button class="kmback" id="btnVoltarMemoria">&#8592;</button>
+    <div class="kmtitulo">🃏 Memory Game</div>
+    <div class="km-info">
+      <div class="km-stat">Pairs: <span id="kmPares">0</span>/8</div>
+      <div class="km-stat">Tries: <span id="kmTentativas">0</span></div>
+    </div>
+  </div>
+  <div class="kmbody">
+    <div class="km-grid" id="kmGrid"></div>
+  </div>
+</div>
+
+<!-- ===== KIDS STORIES ===== -->
+<div id="kids-stories" class="tela">
+  <div class="ksheader">
+    <button class="ksback" id="btnVoltarStories">&#8592;</button>
+    <div class="kstitulo">📖 Stories</div>
+    <div class="kssub">Listen, read and learn!</div>
+  </div>
+  <div class="ksbody" id="ksLista"></div>
+</div>
+
+<!-- ===== STORY READER ===== -->
+<div id="kids-story-reader" class="tela">
+  <div class="ksr-header">
+    <button class="ksr-back" id="btnVoltarReader">&#8592;</button>
+    <div class="ksr-titulo" id="ksrTitulo">Story</div>
+    <div class="ksr-controls">
+      <button class="ksr-btn play" id="ksrPlayBtn">▶ Play</button>
+      <button class="ksr-btn" id="ksrAutoBtn">Auto: OFF</button>
+      <button class="ksr-btn" id="ksrPTBtn">🇧🇷 PT</button>
+    </div>
+  </div>
+  <div class="ksr-body" id="ksrBody"></div>
+  <div class="ksr-nav">
+    <button class="ka-btn ka-btn-cinza" id="ksrQuizBtn" style="display:none;" onclick="iniciarStoryQuiz()">📝 Quiz</button>
+    <button class="ka-btn ka-btn-verde" id="ksrProxBtn">Next →</button>
   </div>
 </div>
 
@@ -5244,6 +5386,71 @@ async function abrirPainelGestor() {
 /* Palavras no construtor com troca de posição */
 .kf-palavra-colocada { background: #1D9E75; color: #fff; padding: 8px 16px; border-radius: 20px; font-size: 16px; font-weight: 800; cursor: pointer; border: 3px solid transparent; font-family: 'Nunito', Arial, sans-serif; animation: slideIn .2s ease; transition: all .15s; }
 .kf-palavra-colocada.selecionada { border-color: #EF9F27; background: #0F6E56; transform: scale(1.05); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+
+/* ===== KIDS GAMES ===== */
+#kids-games { background: linear-gradient(135deg, #E8EAF6, #C5CAE9); }
+.kgheader { background: linear-gradient(135deg, #3F51B5, #1A237E); padding: 50px 20px 20px; position: relative; text-align: center; }
+.kgback { position: absolute; top: 14px; left: 14px; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.2); border: none; cursor: pointer; font-size: 22px; color: #fff; display: flex; align-items: center; justify-content: center; }
+.kgtitulo { font-size: 22px; font-weight: 800; color: #fff; }
+.kgsub { font-size: 13px; color: #9FA8DA; margin-top: 4px; }
+.kgbody { padding: 16px; flex: 1; overflow-y: auto; }
+.kg-games-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+.kg-game-card { background: #fff; border-radius: 20px; padding: 20px 14px; text-align: center; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.08); border: 3px solid transparent; transition: all .2s; }
+.kg-game-card:active { transform: scale(0.96); }
+.kg-game-icon { font-size: 52px; display: block; margin-bottom: 8px; }
+.kg-game-nome { font-size: 15px; font-weight: 800; color: #1a1a2e; }
+.kg-game-sub { font-size: 11px; color: #6b7280; margin-top: 3px; }
+
+/* ===== JOGO DA MEMÓRIA ===== */
+#kids-memory { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); }
+.kmheader { background: linear-gradient(135deg, #2E7D32, #1B5E20); padding: 50px 20px 16px; position: relative; text-align: center; }
+.kmback { position: absolute; top: 14px; left: 14px; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.2); border: none; cursor: pointer; font-size: 22px; color: #fff; display: flex; align-items: center; justify-content: center; }
+.kmtitulo { font-size: 20px; font-weight: 800; color: #fff; }
+.km-info { display: flex; gap: 16px; justify-content: center; margin-top: 8px; }
+.km-stat { font-size: 12px; color: #A5D6A7; font-weight: 700; }
+.km-stat span { color: #fff; font-size: 16px; font-weight: 800; }
+.kmbody { padding: 14px; flex: 1; }
+.km-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.km-card { aspect-ratio: 1; border-radius: 12px; cursor: pointer; position: relative; transition: transform .3s; transform-style: preserve-3d; }
+.km-card.virada { transform: rotateY(180deg); }
+.km-card.encontrada { transform: rotateY(180deg); opacity: 0.7; pointer-events: none; }
+.km-front, .km-back { position: absolute; width: 100%; height: 100%; border-radius: 12px; backface-visibility: hidden; display: flex; align-items: center; justify-content: center; }
+.km-front { background: linear-gradient(135deg, #3F51B5, #1A237E); font-size: 24px; color: #fff; font-weight: 800; }
+.km-back { background: #fff; border: 3px solid #A5D6A7; transform: rotateY(180deg); flex-direction: column; gap: 4px; }
+.km-back-emoji { font-size: 28px; }
+.km-back-word { font-size: 12px; font-weight: 800; color: #1a1a2e; }
+
+/* ===== KIDS STORIES ===== */
+#kids-stories { background: #FFF8F0; }
+.ksheader { background: linear-gradient(135deg, #FF6F00, #E65100); padding: 50px 20px 20px; position: relative; }
+.ksback { position: absolute; top: 14px; left: 14px; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.2); border: none; cursor: pointer; font-size: 22px; color: #fff; display: flex; align-items: center; justify-content: center; }
+.kstitulo { font-size: 20px; font-weight: 800; color: #fff; }
+.kssub { font-size: 12px; color: #FFCC80; margin-top: 3px; }
+.ksbody { padding: 14px; flex: 1; overflow-y: auto; }
+.ks-story-card { background: #fff; border-radius: 16px; padding: 14px; margin-bottom: 12px; display: flex; gap: 14px; align-items: center; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.07); border: 2px solid #FFE0B2; transition: all .2s; }
+.ks-story-card:active { transform: scale(0.98); border-color: #FF6F00; }
+.ks-story-emoji { font-size: 48px; flex-shrink: 0; }
+.ks-story-info { flex: 1; }
+.ks-story-titulo { font-size: 15px; font-weight: 800; color: #1a1a2e; }
+.ks-story-sub { font-size: 11px; color: #6b7280; margin-top: 3px; }
+.ks-story-badge { font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 10px; background: #FFF3E0; color: #E65100; margin-top: 5px; display: inline-block; }
+
+/* ===== LEITURA DA HISTÓRIA ===== */
+#kids-story-reader { background: #FFF8F0; }
+.ksr-header { background: linear-gradient(135deg, #FF6F00, #E65100); padding: 50px 16px 16px; position: relative; }
+.ksr-back { position: absolute; top: 14px; left: 14px; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.2); border: none; cursor: pointer; font-size: 22px; color: #fff; }
+.ksr-titulo { font-size: 17px; font-weight: 800; color: #fff; }
+.ksr-controls { display: flex; gap: 8px; margin-top: 10px; align-items: center; }
+.ksr-btn { padding: 8px 16px; border-radius: 20px; border: none; background: rgba(255,255,255,0.25); color: #fff; font-family: 'Nunito', Arial, sans-serif; font-size: 13px; font-weight: 800; cursor: pointer; }
+.ksr-btn.play { background: #fff; color: #E65100; }
+.ksr-body { padding: 16px; flex: 1; overflow-y: auto; }
+.ksr-pagina { background: #fff; border-radius: 20px; padding: 20px; margin-bottom: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); border: 2px solid #FFE0B2; }
+.ksr-pagina.ativa { border-color: #FF6F00; background: #FFF3E0; }
+.ksr-balao { font-size: 16px; line-height: 1.8; color: #1a1a2e; font-weight: 600; }
+.ksr-balao .palavra-destaque { color: #E65100; cursor: pointer; border-bottom: 2px dotted #E65100; font-weight: 800; }
+.ksr-traducao { font-size: 13px; color: #6b7280; margin-top: 8px; font-style: italic; display: none; }
+.ksr-pagina.ativa .ksr-traducao { display: block; }
+.ksr-nav { display: flex; gap: 10px; padding: 0 16px 16px; }
 </style></head><body>`;
     
     var numUsuarios = usuarios.data ? usuarios.data.length : 0;
@@ -5662,6 +5869,529 @@ limparFraseKids = function() {
   }
   document.querySelectorAll('.kf-palavra-banco').forEach(function(b) { b.classList.remove('usada'); });
 };
+
+
+// ===== JOGO DA MEMÓRIA =====
+var kmCartasViradas = [];
+var kmPares = 0;
+var kmTentativas = 0;
+var kmBloqueado = false;
+var kmPalavrasMemoria = [
+  {en:'Dog', emoji:'🐶'}, {en:'Cat', emoji:'🐱'},
+  {en:'Bird', emoji:'🐦'}, {en:'Fish', emoji:'🐟'},
+  {en:'Apple', emoji:'🍎'}, {en:'Banana', emoji:'🍌'},
+  {en:'Red', emoji:'🔴'}, {en:'Blue', emoji:'🔵'}
+];
+
+function iniciarMemoria() {
+  kmPares = 0;
+  kmTentativas = 0;
+  kmCartasViradas = [];
+  kmBloqueado = false;
+  
+  // Criar pares embaralhados
+  var cartas = [];
+  kmPalavrasMemoria.forEach(function(p, i) {
+    cartas.push({id: i*2, pairId: i, tipo: 'emoji', conteudo: p.emoji, palavra: p.en});
+    cartas.push({id: i*2+1, pairId: i, tipo: 'word', conteudo: p.en, palavra: p.en});
+  });
+  cartas.sort(function() { return Math.random() - 0.5; });
+  
+  var grid = document.getElementById('kmGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  
+  cartas.forEach(function(carta, idx) {
+    var div = document.createElement('div');
+    div.className = 'km-card';
+    div.dataset.pairId = carta.pairId;
+    div.dataset.idx = idx;
+    div.innerHTML =
+      '<div class="km-front">?</div>' +
+      '<div class="km-back">' +
+        (carta.tipo === 'emoji' 
+          ? '<span class="km-back-emoji">' + carta.conteudo + '</span>'
+          : '<span class="km-back-word">' + carta.conteudo + '</span>') +
+      '</div>';
+    
+    div.onclick = function() { virarCartaMemoria(this); };
+    grid.appendChild(div);
+  });
+  
+  atualizarStatsMemoria();
+  ir('kids-memory');
+}
+
+function virarCartaMemoria(carta) {
+  if (kmBloqueado) return;
+  if (carta.classList.contains('virada') || carta.classList.contains('encontrada')) return;
+  if (kmCartasViradas.length >= 2) return;
+  
+  carta.classList.add('virada');
+  kmCartasViradas.push(carta);
+  falarPalavraKids(carta.dataset.pairId !== undefined ? kmPalavrasMemoria[carta.dataset.pairId].en : '');
+  
+  if (kmCartasViradas.length === 2) {
+    kmTentativas++;
+    kmBloqueado = true;
+    atualizarStatsMemoria();
+    
+    setTimeout(function() {
+      var c1 = kmCartasViradas[0];
+      var c2 = kmCartasViradas[1];
+      
+      if (c1.dataset.pairId === c2.dataset.pairId && c1 !== c2) {
+        // Par encontrado!
+        c1.classList.add('encontrada');
+        c2.classList.add('encontrada');
+        kmPares++;
+        playSound('acerto');
+        ganharSementes(5, 'par encontrado!');
+        atualizarStatsMemoria();
+        
+        if (kmPares === kmPalavrasMemoria.length) {
+          setTimeout(function() {
+            falarPalavraKids('Congratulations! You found all the pairs!');
+            alert('🏆 Parabéns! Você encontrou todos os pares em ' + kmTentativas + ' tentativas!');
+          }, 500);
+        }
+      } else {
+        // Errou - virar de volta
+        c1.classList.remove('virada');
+        c2.classList.remove('virada');
+        playSound('erro');
+      }
+      
+      kmCartasViradas = [];
+      kmBloqueado = false;
+    }, 1000);
+  }
+}
+
+function atualizarStatsMemoria() {
+  var p = document.getElementById('kmPares');
+  var t = document.getElementById('kmTentativas');
+  if (p) p.textContent = kmPares;
+  if (t) t.textContent = kmTentativas;
+}
+
+// ===== 10 HISTÓRIAS INFANTIS =====
+var kidsStorias = [
+  {
+    id: 1, emoji: '🐷', titulo: 'The Three Little Pigs', nivel: 'Starter',
+    paginas: [
+      {en: 'Once upon a time, there were three little pigs.', pt: 'Era uma vez, havia três porquinhos.'},
+      {en: 'The first pig built a house made of straw.', pt: 'O primeiro porquinho construiu uma casa de palha.'},
+      {en: 'The second pig built a house made of sticks.', pt: 'O segundo porquinho construiu uma casa de gravetos.'},
+      {en: 'The third pig built a house made of bricks.', pt: 'O terceiro porquinho construiu uma casa de tijolos.'},
+      {en: 'A big bad wolf came to the houses.', pt: 'Um lobo mau chegou às casas.'},
+      {en: 'He huffed and puffed and blew the straw house down!', pt: 'Ele soprou e soprou e derrubou a casa de palha!'},
+      {en: 'He huffed and puffed and blew the stick house down!', pt: 'Ele soprou e soprou e derrubou a casa de gravetos!'},
+      {en: 'But he could not blow down the brick house!', pt: 'Mas ele não conseguiu derrubar a casa de tijolos!'},
+      {en: 'The three pigs were safe inside the brick house.', pt: 'Os três porquinhos estavam seguros dentro da casa de tijolos.'},
+      {en: 'And they lived happily ever after. The End!', pt: 'E eles viveram felizes para sempre. Fim!'}
+    ],
+    quiz: [
+      {q: 'What did the third pig use to build his house?', ops: ['Straw', 'Sticks', 'Bricks', 'Wood'], correta: 2},
+      {q: 'Who came to blow down the houses?', ops: ['A bear', 'A wolf', 'A fox', 'A lion'], correta: 1},
+      {q: 'Which house could not be blown down?', ops: ['The straw house', 'The stick house', 'The brick house', 'The wood house'], correta: 2}
+    ]
+  },
+  {
+    id: 2, emoji: '🐻', titulo: 'Goldilocks and the Three Bears', nivel: 'Starter',
+    paginas: [
+      {en: 'Once upon a time, there was a girl called Goldilocks.', pt: 'Era uma vez, havia uma menina chamada Cachinhos de Ouro.'},
+      {en: 'She had beautiful golden hair.', pt: 'Ela tinha um lindo cabelo dourado.'},
+      {en: 'One day, she walked into the forest.', pt: 'Um dia, ela entrou na floresta.'},
+      {en: 'She found a little house and went inside.', pt: 'Ela encontrou uma casinha e entrou.'},
+      {en: 'She saw three bowls of porridge on the table.', pt: 'Ela viu três tigelas de mingau na mesa.'},
+      {en: 'She tried the big bowl. It was too hot!', pt: 'Ela experimentou a tigela grande. Estava quente demais!'},
+      {en: 'She tried the medium bowl. It was too cold!', pt: 'Ela experimentou a tigela média. Estava fria demais!'},
+      {en: 'She tried the small bowl. It was just right!', pt: 'Ela experimentou a tigela pequena. Estava perfeita!'},
+      {en: 'Then the three bears came home.', pt: 'Então os três ursos voltaram para casa.'},
+      {en: 'Goldilocks ran away and never came back. The End!', pt: 'Cachinhos de Ouro fugiu e nunca mais voltou. Fim!'}
+    ],
+    quiz: [
+      {q: 'What colour was Goldilocks hair?', ops: ['Brown', 'Black', 'Golden', 'Red'], correta: 2},
+      {q: 'What did Goldilocks eat?', ops: ['Soup', 'Porridge', 'Bread', 'Cake'], correta: 1},
+      {q: 'How many bears were there?', ops: ['One', 'Two', 'Three', 'Four'], correta: 2}
+    ]
+  },
+  {
+    id: 3, emoji: '🐺', titulo: 'Little Red Riding Hood', nivel: 'Starter',
+    paginas: [
+      {en: 'Once upon a time, there was a little girl.', pt: 'Era uma vez, havia uma menina.'},
+      {en: 'She always wore a red hood.', pt: 'Ela sempre usava um capuz vermelho.'},
+      {en: 'Everyone called her Little Red Riding Hood.', pt: 'Todos a chamavam de Chapeuzinho Vermelho.'},
+      {en: 'One day, she went to visit her grandmother.', pt: 'Um dia, ela foi visitar sua avó.'},
+      {en: 'She carried a basket with food and flowers.', pt: 'Ela carregava uma cesta com comida e flores.'},
+      {en: 'In the forest, she met a big bad wolf.', pt: 'Na floresta, ela encontrou um lobo mau.'},
+      {en: 'The wolf ran ahead to grandmother\'s house.', pt: 'O lobo correu até a casa da avó.'},
+      {en: 'A brave woodcutter saved grandmother and the girl.', pt: 'Um lenhador corajoso salvou a avó e a menina.'},
+      {en: 'The wolf ran away into the forest.', pt: 'O lobo correu para a floresta.'},
+      {en: 'Little Red Riding Hood was safe. The End!', pt: 'Chapeuzinho Vermelho estava salva. Fim!'}
+    ],
+    quiz: [
+      {q: 'What colour was her hood?', ops: ['Blue', 'Green', 'Red', 'Yellow'], correta: 2},
+      {q: 'Who did she go to visit?', ops: ['Her mother', 'Her grandmother', 'Her friend', 'Her teacher'], correta: 1},
+      {q: 'Who saved them from the wolf?', ops: ['A hunter', 'A farmer', 'A woodcutter', 'A policeman'], correta: 2}
+    ]
+  },
+  {
+    id: 4, emoji: '🐢', titulo: 'The Tortoise and the Hare', nivel: 'Elementary',
+    paginas: [
+      {en: 'Once there was a hare who was very fast.', pt: 'Era uma vez uma lebre muito rápida.'},
+      {en: 'He boasted to all the animals about his speed.', pt: 'Ela se gabava para todos os animais de sua velocidade.'},
+      {en: 'A slow tortoise challenged him to a race.', pt: 'Uma tartaruga lenta o desafiou para uma corrida.'},
+      {en: 'All the animals came to watch the race.', pt: 'Todos os animais vieram assistir à corrida.'},
+      {en: 'The hare ran very fast and was far ahead.', pt: 'A lebre correu muito rápido e estava bem à frente.'},
+      {en: 'He stopped to rest under a tree and fell asleep.', pt: 'Ela parou para descansar sob uma árvore e adormeceu.'},
+      {en: 'The tortoise walked slowly but never stopped.', pt: 'A tartaruga andou devagar, mas nunca parou.'},
+      {en: 'The tortoise passed the sleeping hare.', pt: 'A tartaruga passou pela lebre adormecida.'},
+      {en: 'The tortoise crossed the finish line first!', pt: 'A tartaruga cruzou a linha de chegada em primeiro lugar!'},
+      {en: 'Slow and steady wins the race! The End!', pt: 'Devagar e sempre se chega lá! Fim!'}
+    ],
+    quiz: [
+      {q: 'Who won the race?', ops: ['The hare', 'The tortoise', 'The fox', 'Nobody'], correta: 1},
+      {q: 'Why did the hare lose?', ops: ['He was sick', 'He fell asleep', 'He got lost', 'He was slow'], correta: 1},
+      {q: 'What is the lesson of this story?', ops: ['Be fast', 'Never race', 'Slow and steady wins', 'Sleep is good'], correta: 2}
+    ]
+  },
+  {
+    id: 5, emoji: '🦁', titulo: 'The Lion and the Mouse', nivel: 'Elementary',
+    paginas: [
+      {en: 'One day, a lion was sleeping in the forest.', pt: 'Um dia, um leão estava dormindo na floresta.'},
+      {en: 'A little mouse ran across his nose.', pt: 'Um ratinho correu pelo seu nariz.'},
+      {en: 'The lion woke up and caught the mouse.', pt: 'O leão acordou e pegou o ratinho.'},
+      {en: 'Please let me go! I will help you one day!', pt: 'Por favor, me solte! Eu vou te ajudar um dia!'},
+      {en: 'The lion laughed. You are too small to help me!', pt: 'O leão riu. Você é pequeno demais para me ajudar!'},
+      {en: 'But the lion let the little mouse go.', pt: 'Mas o leão soltou o ratinho.'},
+      {en: 'One day, hunters caught the lion in a net.', pt: 'Um dia, caçadores prenderam o leão em uma rede.'},
+      {en: 'The little mouse heard the lion roar for help.', pt: 'O ratinho ouviu o leão rugir pedindo ajuda.'},
+      {en: 'The mouse chewed through the ropes and freed the lion!', pt: 'O ratinho roeu as cordas e libertou o leão!'},
+      {en: 'Even small friends can be big helpers! The End!', pt: 'Mesmo amigos pequenos podem ser grandes ajudantes! Fim!'}
+    ],
+    quiz: [
+      {q: 'What did the mouse do to wake the lion?', ops: ['Bit him', 'Shouted', 'Ran across his nose', 'Pulled his tail'], correta: 2},
+      {q: 'How did the mouse save the lion?', ops: ['Called for help', 'Chewed the ropes', 'Fought the hunters', 'Got a key'], correta: 1},
+      {q: 'What is the lesson of this story?', ops: ['Lions are strong', 'Never sleep outside', 'Small friends can help', 'Mice are fast'], correta: 2}
+    ]
+  },
+  {
+    id: 6, emoji: '🌱', titulo: 'Jack and the Beanstalk', nivel: 'Elementary',
+    paginas: [
+      {en: 'Once there was a boy called Jack who was very poor.', pt: 'Era uma vez um menino chamado João muito pobre.'},
+      {en: 'He traded their cow for magic beans.', pt: 'Ele trocou a vaca deles por feijões mágicos.'},
+      {en: 'His mother was angry and threw the beans away.', pt: 'Sua mãe ficou brava e jogou os feijões fora.'},
+      {en: 'The next morning, a giant beanstalk had grown!', pt: 'Na manhã seguinte, um pé de feijão gigante havia crescido!'},
+      {en: 'Jack climbed up and up to the clouds.', pt: 'João subiu e subiu até as nuvens.'},
+      {en: 'At the top, there was a giant castle.', pt: 'No topo, havia um castelo gigante.'},
+      {en: 'Inside lived a big and terrible giant.', pt: 'Dentro vivia um gigante grande e terrível.'},
+      {en: 'Jack took the giant\'s golden harp and golden eggs.', pt: 'João pegou a harpa dourada e os ovos de ouro do gigante.'},
+      {en: 'He climbed down fast and cut the beanstalk down.', pt: 'Ele desceu rápido e cortou o pé de feijão.'},
+      {en: 'Jack and his mother were rich forever! The End!', pt: 'João e sua mãe ficaram ricos para sempre! Fim!'}
+    ],
+    quiz: [
+      {q: 'What did Jack trade the cow for?', ops: ['Money', 'Magic beans', 'Gold', 'Food'], correta: 1},
+      {q: 'What was at the top of the beanstalk?', ops: ['A village', 'A forest', 'A castle', 'A farm'], correta: 2},
+      {q: 'What did Jack take from the giant?', ops: ['Silver coins', 'A magic lamp', 'Golden harp and eggs', 'A crown'], correta: 2}
+    ]
+  },
+  {
+    id: 7, emoji: '🦆', titulo: 'The Ugly Duckling', nivel: 'Elementary',
+    paginas: [
+      {en: 'Once there was a mother duck with many eggs.', pt: 'Era uma vez uma pata mãe com muitos ovos.'},
+      {en: 'One egg was bigger and different from the rest.', pt: 'Um ovo era maior e diferente dos outros.'},
+      {en: 'When it hatched, out came an ugly grey duckling.', pt: 'Quando eclodiu, saiu um patinho cinza feio.'},
+      {en: 'All the other animals laughed at him.', pt: 'Todos os outros animais riram dele.'},
+      {en: 'The duckling was very sad and ran away.', pt: 'O patinho ficou muito triste e fugiu.'},
+      {en: 'He spent the cold winter alone.', pt: 'Ele passou o inverno frio sozinho.'},
+      {en: 'When spring came, he looked at his reflection.', pt: 'Quando a primavera chegou, ele olhou seu reflexo.'},
+      {en: 'He was not ugly anymore! He was a beautiful swan!', pt: 'Ele não era mais feio! Ele era um belo cisne!'},
+      {en: 'Other swans welcomed him to their group.', pt: 'Outros cisnes o deram boas-vindas ao grupo.'},
+      {en: 'He was happy and loved at last! The End!', pt: 'Ele era feliz e amado afinal! Fim!'}
+    ],
+    quiz: [
+      {q: 'How did the duckling feel at the beginning?', ops: ['Happy', 'Excited', 'Sad', 'Angry'], correta: 2},
+      {q: 'What did the ugly duckling become?', ops: ['A duck', 'A goose', 'A swan', 'A bird'], correta: 2},
+      {q: 'When did the duckling see his true self?', ops: ['In winter', 'In spring', 'In summer', 'In autumn'], correta: 1}
+    ]
+  },
+  {
+    id: 8, emoji: '🐜', titulo: 'The Ant and the Grasshopper', nivel: 'Elementary',
+    paginas: [
+      {en: 'In summer, the ant worked hard every day.', pt: 'No verão, a formiga trabalhava duro todos os dias.'},
+      {en: 'She collected food and stored it for winter.', pt: 'Ela coletava comida e guardava para o inverno.'},
+      {en: 'The grasshopper sang and played all summer long.', pt: 'O gafanhoto cantou e brincou durante todo o verão.'},
+      {en: 'Why do you work so hard? said the grasshopper.', pt: 'Por que você trabalha tão duro? disse o gafanhoto.'},
+      {en: 'I am preparing for winter, said the ant.', pt: 'Estou me preparando para o inverno, disse a formiga.'},
+      {en: 'But the grasshopper just laughed and kept playing.', pt: 'Mas o gafanhoto apenas riu e continuou brincando.'},
+      {en: 'When winter came, the grasshopper had no food.', pt: 'Quando o inverno chegou, o gafanhoto não tinha comida.'},
+      {en: 'He was cold and hungry.', pt: 'Ele estava com frio e fome.'},
+      {en: 'The kind ant shared her food with him.', pt: 'A formiga gentil compartilhou sua comida com ele.'},
+      {en: 'Work hard and plan ahead! The End!', pt: 'Trabalhe duro e planeje com antecedência! Fim!'}
+    ],
+    quiz: [
+      {q: 'What did the ant do in summer?', ops: ['Played music', 'Slept', 'Collected food', 'Danced'], correta: 2},
+      {q: 'What did the grasshopper do in summer?', ops: ['Worked hard', 'Sang and played', 'Stored food', 'Travelled'], correta: 1},
+      {q: 'What is the lesson of this story?', ops: ['Music is fun', 'Be kind to ants', 'Work hard and plan ahead', 'Winter is cold'], correta: 2}
+    ]
+  },
+  {
+    id: 9, emoji: '👸', titulo: 'Cinderella', nivel: 'Elementary',
+    paginas: [
+      {en: 'Once there was a kind girl called Cinderella.', pt: 'Era uma vez uma menina gentil chamada Cinderela.'},
+      {en: 'She lived with her stepmother and two stepsisters.', pt: 'Ela morava com sua madrasta e duas meias-irmãs.'},
+      {en: 'They were cruel and made her do all the work.', pt: 'Elas eram cruéis e a faziam fazer todo o trabalho.'},
+      {en: 'One day, the prince invited everyone to a ball.', pt: 'Um dia, o príncipe convidou todos para um baile.'},
+      {en: 'Cinderella could not go. She had no dress.', pt: 'Cinderela não podia ir. Ela não tinha vestido.'},
+      {en: 'Her fairy godmother appeared and helped her.', pt: 'Sua fada madrinha apareceu e a ajudou.'},
+      {en: 'She got a beautiful dress and glass slippers.', pt: 'Ela ganhou um lindo vestido e sapatinhos de cristal.'},
+      {en: 'At midnight, the magic would end!', pt: 'À meia-noite, a magia acabaria!'},
+      {en: 'She ran away and lost one glass slipper.', pt: 'Ela fugiu e perdeu um sapatinho de cristal.'},
+      {en: 'The prince found her and they lived happily ever after! The End!', pt: 'O príncipe a encontrou e viveram felizes para sempre! Fim!'}
+    ],
+    quiz: [
+      {q: 'Who helped Cinderella go to the ball?', ops: ['Her mother', 'Her friend', 'Her fairy godmother', 'The prince'], correta: 2},
+      {q: 'What did Cinderella lose at midnight?', ops: ['Her dress', 'Her necklace', 'A glass slipper', 'Her bag'], correta: 2},
+      {q: 'How was Cinderella different from her stepsisters?', ops: ['She was rich', 'She was kind', 'She was clever', 'She was tall'], correta: 1}
+    ]
+  },
+  {
+    id: 10, emoji: '🌟', titulo: 'The Little Star', nivel: 'Starter',
+    paginas: [
+      {en: 'High up in the sky, there was a little star.', pt: 'Lá no alto do céu, havia uma estrelinha.'},
+      {en: 'She was the smallest star in the whole sky.', pt: 'Ela era a menor estrela de todo o céu.'},
+      {en: 'I am too small. Nobody can see me! she said.', pt: 'Sou pequena demais. Ninguém pode me ver! ela disse.'},
+      {en: 'One night, a little girl looked up at the sky.', pt: 'Uma noite, uma menininha olhou para o céu.'},
+      {en: 'She saw the little star shining brightly.', pt: 'Ela viu a estrelinha brilhando intensamente.'},
+      {en: 'She pointed and said: Look! That star is beautiful!', pt: 'Ela apontou e disse: Olha! Aquela estrela é linda!'},
+      {en: 'The little star was so happy and shone even brighter.', pt: 'A estrelinha ficou tão feliz e brilhou ainda mais.'},
+      {en: 'You are never too small to shine!', pt: 'Você nunca é pequeno demais para brilhar!'},
+      {en: 'The little star smiled and lit up the whole sky.', pt: 'A estrelinha sorriu e iluminou todo o céu.'},
+      {en: 'Everyone has a light inside them! The End!', pt: 'Todo mundo tem uma luz dentro de si! Fim!'}
+    ],
+    quiz: [
+      {q: 'How did the little star feel at the beginning?', ops: ['Happy', 'Too small and sad', 'Excited', 'Angry'], correta: 1},
+      {q: 'Who noticed the little star?', ops: ['A boy', 'A little girl', 'A teacher', 'A bird'], correta: 1},
+      {q: 'What is the message of this story?', ops: ['Stars are pretty', 'Look at the sky', 'Everyone has a light inside', 'Be the biggest'], correta: 2}
+    ]
+  }
+];
+
+// Estado do reader
+var ksrHistoriaAtual = null;
+var ksrPaginaAtual = 0;
+var ksrAutoPlay = false;
+var ksrMostrarPT = false;
+var ksrNarrando = false;
+var ksrAutoTimer = null;
+
+function abrirStories() {
+  var lista = document.getElementById('ksLista');
+  if (!lista) return;
+  lista.innerHTML = '';
+  
+  kidsStorias.forEach(function(story) {
+    var card = document.createElement('div');
+    card.className = 'ks-story-card';
+    card.innerHTML =
+      '<div class="ks-story-emoji">' + story.emoji + '</div>' +
+      '<div class="ks-story-info">' +
+        '<div class="ks-story-titulo">' + story.titulo + '</div>' +
+        '<div class="ks-story-sub">' + story.paginas.length + ' pages • Quiz included</div>' +
+        '<span class="ks-story-badge">' + story.nivel + '</span>' +
+      '</div>' +
+      '<div style="font-size:20px;color:#FFB74D;">→</div>';
+    
+    (function(s) {
+      card.onclick = function() { abrirStoryReader(s); };
+    })(story);
+    
+    lista.appendChild(card);
+  });
+  
+  ir('kids-stories');
+}
+
+function abrirStoryReader(story) {
+  ksrHistoriaAtual = story;
+  ksrPaginaAtual = 0;
+  ksrAutoPlay = false;
+  ksrMostrarPT = false;
+  ksrNarrando = false;
+  if (ksrAutoTimer) clearTimeout(ksrAutoTimer);
+  
+  var titulo = document.getElementById('ksrTitulo');
+  if (titulo) titulo.textContent = story.emoji + ' ' + story.titulo;
+  
+  var autoBtn = document.getElementById('ksrAutoBtn');
+  if (autoBtn) autoBtn.textContent = 'Auto: OFF';
+  
+  renderStoryPaginas();
+  ir('kids-story-reader');
+  
+  // Auto-começar a narração
+  setTimeout(function() { narrarPaginaAtual(); }, 800);
+}
+
+function renderStoryPaginas() {
+  var body = document.getElementById('ksrBody');
+  if (!body || !ksrHistoriaAtual) return;
+  body.innerHTML = '';
+  
+  ksrHistoriaAtual.paginas.forEach(function(pag, i) {
+    var div = document.createElement('div');
+    div.className = 'ksr-pagina' + (i === ksrPaginaAtual ? ' ativa' : '');
+    div.id = 'ksr-pag-' + i;
+    
+    // Texto com palavras clicáveis
+    var palavras = pag.en.split(' ');
+    var textoHTML = palavras.map(function(p) {
+      var limpa = p.replace(/[.,!?'"]/g, '');
+      if (limpa.length > 3) {
+        return '<span class="palavra-destaque" onclick="traduzirPalavraStory(\'' + limpa + '\', this)">' + p + '</span>';
+      }
+      return p;
+    }).join(' ');
+    
+    div.innerHTML =
+      '<div class="ksr-balao">' + textoHTML + '</div>' +
+      '<div class="ksr-traducao">' + pag.pt + '</div>';
+    
+    body.appendChild(div);
+  });
+  
+  // Scroll para página atual
+  var ativa = document.getElementById('ksr-pag-' + ksrPaginaAtual);
+  if (ativa) setTimeout(function() { ativa.scrollIntoView({behavior:'smooth', block:'center'}); }, 200);
+  
+  // Mostrar botão quiz na última página
+  var quizBtn = document.getElementById('ksrQuizBtn');
+  var proxBtn = document.getElementById('ksrProxBtn');
+  if (quizBtn) quizBtn.style.display = ksrPaginaAtual >= ksrHistoriaAtual.paginas.length - 1 ? 'block' : 'none';
+  if (proxBtn) proxBtn.style.display = ksrPaginaAtual >= ksrHistoriaAtual.paginas.length - 1 ? 'none' : 'block';
+}
+
+function narrarPaginaAtual() {
+  if (!ksrHistoriaAtual) return;
+  var pag = ksrHistoriaAtual.paginas[ksrPaginaAtual];
+  if (!pag) return;
+  
+  ksrNarrando = true;
+  var playBtn = document.getElementById('ksrPlayBtn');
+  if (playBtn) playBtn.textContent = '⏸ Pause';
+  
+  window.speechSynthesis && window.speechSynthesis.cancel();
+  var utter = new SpeechSynthesisUtterance(pag.en);
+  utter.lang = 'en-GB';
+  utter.rate = 0.75;
+  utter.pitch = 1.1;
+  
+  var vozes = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+  var voz = vozes.find(function(v) { return v.lang.indexOf('en') === 0; });
+  if (voz) utter.voice = voz;
+  
+  utter.onend = function() {
+    ksrNarrando = false;
+    if (playBtn) playBtn.textContent = '▶ Play';
+    if (ksrAutoPlay) {
+      ksrAutoTimer = setTimeout(function() {
+        avancarStory();
+      }, 1000);
+    }
+  };
+  
+  window.speechSynthesis && window.speechSynthesis.speak(utter);
+}
+
+function avancarStory() {
+  if (!ksrHistoriaAtual) return;
+  if (ksrPaginaAtual < ksrHistoriaAtual.paginas.length - 1) {
+    ksrPaginaAtual++;
+    renderStoryPaginas();
+    narrarPaginaAtual();
+  }
+}
+
+function traduzirPalavraStory(palavra, el) {
+  // Mostrar tradução simples via popup
+  falarPalavraKids(palavra);
+  if (el) {
+    el.style.background = '#FFE0B2';
+    el.style.borderRadius = '4px';
+    setTimeout(function() { if(el) el.style.background = ''; }, 1500);
+  }
+}
+
+// Quiz da história
+var ksrQuizIdx = 0;
+var ksrQuizAcertos = 0;
+
+function iniciarStoryQuiz() {
+  if (!ksrHistoriaAtual) return;
+  ksrQuizIdx = 0;
+  ksrQuizAcertos = 0;
+  renderStoryQuiz();
+}
+
+function renderStoryQuiz() {
+  var body = document.getElementById('ksrBody');
+  if (!body || !ksrHistoriaAtual) return;
+  
+  var quiz = ksrHistoriaAtual.quiz;
+  if (ksrQuizIdx >= quiz.length) {
+    // Resultado
+    var pct = Math.round((ksrQuizAcertos / quiz.length) * 100);
+    ganharSementes(ksrQuizAcertos * 10, 'story quiz!');
+    body.innerHTML =
+      '<div style="text-align:center;padding:30px;">' +
+      '<div style="font-size:72px;">' + (pct >= 70 ? '🌟' : '📚') + '</div>' +
+      '<div style="font-size:22px;font-weight:800;color:#E65100;margin:10px 0;">Quiz complete!</div>' +
+      '<div style="font-size:16px;color:#6b7280;">' + ksrQuizAcertos + ' of ' + quiz.length + ' correct!</div>' +
+      '<button onclick="abrirStories()" style="margin-top:20px;padding:12px 28px;border-radius:20px;border:none;background:#FF6F00;color:#fff;font-family:Nunito,Arial,sans-serif;font-size:15px;font-weight:800;cursor:pointer;display:block;width:100%;margin-bottom:8px;">📖 More Stories</button>' +
+      '<button onclick="ir(\'home-kids\')" style="padding:12px 28px;border-radius:20px;border:none;background:#1D9E75;color:#fff;font-family:Nunito,Arial,sans-serif;font-size:15px;font-weight:800;cursor:pointer;display:block;width:100%;">🏠 Home</button>' +
+      '</div>';
+    
+    var nav = document.querySelector('#kids-story-reader .ksr-nav');
+    if (nav) nav.style.display = 'none';
+    return;
+  }
+  
+  var q = quiz[ksrQuizIdx];
+  falarPalavraKids(q.q);
+  
+  body.innerHTML =
+    '<div style="background:#fff;border-radius:20px;padding:20px;margin:14px;">' +
+    '<div style="font-size:12px;font-weight:800;color:#E65100;text-transform:uppercase;margin-bottom:8px;">Question ' + (ksrQuizIdx+1) + ' of ' + quiz.length + '</div>' +
+    '<div style="font-size:16px;font-weight:700;color:#1a1a2e;margin-bottom:16px;line-height:1.5;">❓ ' + q.q + '</div>' +
+    q.ops.map(function(op, i) {
+      return '<button onclick="responderStoryQuiz(' + i + ',' + q.correta + ')" style="width:100%;padding:12px 16px;border-radius:12px;border:2px solid #FFE0B2;background:#FFF8F0;font-family:Nunito,Arial,sans-serif;font-size:14px;font-weight:700;color:#1a1a2e;cursor:pointer;text-align:left;margin-bottom:8px;">' + String.fromCharCode(65+i) + ') ' + op + '</button>';
+    }).join('') +
+    '</div>';
+  
+  var nav = document.querySelector('#kids-story-reader .ksr-nav');
+  if (nav) nav.style.display = 'none';
+}
+
+function responderStoryQuiz(escolha, correta) {
+  var acertou = escolha === correta;
+  if (acertou) { ksrQuizAcertos++; playSound('acerto'); falarPalavraKids('Correct! Well done!'); }
+  else { playSound('erro'); falarPalavraKids('Not quite! The answer is ' + ksrHistoriaAtual.quiz[ksrQuizIdx].ops[correta]); }
+  
+  // Destacar resposta
+  var btns = document.querySelectorAll('#ksrBody button');
+  btns.forEach(function(btn, i) {
+    btn.style.pointerEvents = 'none';
+    if (i === correta) { btn.style.background = '#E8F5E9'; btn.style.borderColor = '#1D9E75'; btn.style.color = '#085041'; }
+    else if (i === escolha && !acertou) { btn.style.background = '#FAECE7'; btn.style.borderColor = '#D85A30'; btn.style.color = '#712B13'; }
+  });
+  
+  setTimeout(function() {
+    ksrQuizIdx++;
+    renderStoryQuiz();
+  }, 1800);
+}
 
 var nomeUsuario = '';
 var nivelAtual = 'B1';
@@ -6646,6 +7376,67 @@ window.onload = function() {
   if (actSubs2[2]) actSubs2[2].textContent = 'Aprenda as frutas';
   if (actNomes2[3]) actNomes2[3].textContent = 'Frases';
   if (actSubs2[3]) actSubs2[3].textContent = 'Monte a frase!';
+
+
+  // GAMES
+  var btnVoltarGames = document.getElementById('btnVoltarGames');
+  if (btnVoltarGames) btnVoltarGames.onclick = function() { ir('home-kids'); };
+
+  // MEMÓRIA
+  var btnVoltarMemoria = document.getElementById('btnVoltarMemoria');
+  if (btnVoltarMemoria) btnVoltarMemoria.onclick = function() { ir('kids-games'); };
+
+  // STORIES
+  var btnVoltarStories = document.getElementById('btnVoltarStories');
+  if (btnVoltarStories) btnVoltarStories.onclick = function() { ir('home-kids'); };
+  abrirStories && abrirStories();
+
+  // STORY READER
+  var btnVoltarReader = document.getElementById('btnVoltarReader');
+  if (btnVoltarReader) btnVoltarReader.onclick = function() {
+    window.speechSynthesis && window.speechSynthesis.cancel();
+    if (ksrAutoTimer) clearTimeout(ksrAutoTimer);
+    ir('kids-stories');
+  };
+  
+  var ksrPlayBtn = document.getElementById('ksrPlayBtn');
+  if (ksrPlayBtn) ksrPlayBtn.onclick = function() {
+    if (ksrNarrando) {
+      window.speechSynthesis && window.speechSynthesis.cancel();
+      ksrNarrando = false;
+      this.textContent = '▶ Play';
+    } else {
+      narrarPaginaAtual();
+    }
+  };
+  
+  var ksrAutoBtn = document.getElementById('ksrAutoBtn');
+  if (ksrAutoBtn) ksrAutoBtn.onclick = function() {
+    ksrAutoPlay = !ksrAutoPlay;
+    this.textContent = 'Auto: ' + (ksrAutoPlay ? 'ON' : 'OFF');
+    this.style.background = ksrAutoPlay ? '#fff' : 'rgba(255,255,255,0.25)';
+    this.style.color = ksrAutoPlay ? '#E65100' : '#fff';
+    if (ksrAutoPlay && !ksrNarrando) narrarPaginaAtual();
+  };
+  
+  var ksrPTBtn = document.getElementById('ksrPTBtn');
+  if (ksrPTBtn) ksrPTBtn.onclick = function() {
+    ksrMostrarPT = !ksrMostrarPT;
+    document.querySelectorAll('.ksr-traducao').forEach(function(el) {
+      el.style.display = ksrMostrarPT ? 'block' : '';
+    });
+    this.style.background = ksrMostrarPT ? '#fff' : 'rgba(255,255,255,0.25)';
+    this.style.color = ksrMostrarPT ? '#E65100' : '#fff';
+  };
+  
+  var ksrProxBtn = document.getElementById('ksrProxBtn');
+  if (ksrProxBtn) ksrProxBtn.onclick = function() { avancarStory(); };
+
+  // NAV KIDS atualizada
+  var knavGames = document.getElementById('knavGames');
+  if (knavGames) knavGames.onclick = function() { ir('kids-games'); };
+  var knavStories = document.getElementById('knavStories');
+  if (knavStories) knavStories.onclick = function() { abrirStories(); };
 
   console.log('Talking Cricket v20260621193446 carregado!');
 };
