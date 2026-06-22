@@ -944,6 +944,66 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 .ksr-traducao { font-size: 13px; color: #6b7280; margin-top: 8px; font-style: italic; display: none; }
 .ksr-pagina.ativa .ksr-traducao { display: block; }
 .ksr-nav { display: flex; gap: 10px; padding: 0 16px 16px; }
+
+/* ===== CAÇA-PALAVRAS ===== */
+#kids-wordsearch { background: linear-gradient(135deg, #E8EAF6, #C5CAE9); }
+.kwsheader { background: linear-gradient(135deg, #5C6BC0, #283593); padding: 50px 16px 16px; position: relative; text-align: center; }
+.kwsback { position: absolute; top: 14px; left: 14px; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.2); border: none; cursor: pointer; font-size: 22px; color: #fff; }
+.kwstitulo { font-size: 20px; font-weight: 800; color: #fff; }
+.kwsbody { padding: 14px; flex: 1; overflow-y: auto; }
+.kws-grid { display: inline-grid; gap: 2px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+.kws-row { display: flex; gap: 2px; }
+.kws-cell { width: 32px; height: 32px; border-radius: 6px; background: #fff; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800; color: #1a1a2e; cursor: pointer; border: 2px solid transparent; transition: all .15s; user-select: none; }
+.kws-cell.selecionada { background: #FFF9C4; border-color: #EF9F27; transform: scale(1.05); }
+.kws-cell.encontrada { background: #E8F5E9; border-color: #1D9E75; color: #085041; }
+.kws-palavras { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; justify-content: center; }
+.kws-palavra-item { font-size: 13px; font-weight: 800; padding: 5px 12px; border-radius: 20px; background: #fff; color: #3F51B5; border: 2px solid #9FA8DA; }
+.kws-palavra-item.encontrada { background: #E8F5E9; color: #085041; border-color: #1D9E75; text-decoration: line-through; }
+
+/* ===== CRUZADINHA ===== */
+#kids-crossword { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); }
+.kcwheader { background: linear-gradient(135deg, #F57C00, #E65100); padding: 50px 16px 16px; position: relative; text-align: center; }
+.kcwback { position: absolute; top: 14px; left: 14px; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.2); border: none; cursor: pointer; font-size: 22px; color: #fff; }
+.kcwtitulo { font-size: 20px; font-weight: 800; color: #fff; }
+.kcwbody { padding: 14px; flex: 1; overflow-y: auto; }
+.kcw-grid { display: flex; flex-direction: column; align-items: center; gap: 2px; margin-bottom: 16px; }
+.kcw-row { display: flex; gap: 2px; }
+.kcw-cell { width: 34px; height: 34px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; position: relative; }
+.kcw-cell.vazia { background: transparent; }
+.kcw-cell.ativa { background: #fff; border: 2px solid #FFB74D; cursor: pointer; }
+.kcw-cell.ativa input { width: 100%; height: 100%; border: none; background: transparent; text-align: center; font-family: 'Nunito', Arial, sans-serif; font-size: 16px; font-weight: 800; color: #1a1a2e; outline: none; text-transform: uppercase; }
+.kcw-cell.correta { background: #E8F5E9; border-color: #1D9E75; }
+.kcw-cell.numero { font-size: 9px; color: #F57C00; position: absolute; top: 1px; left: 2px; font-weight: 800; }
+.kcw-dicas { background: #fff; border-radius: 14px; padding: 14px; margin-bottom: 12px; }
+.kcw-dica-titulo { font-size: 12px; font-weight: 800; color: #F57C00; text-transform: uppercase; margin-bottom: 8px; }
+.kcw-dica-item { font-size: 13px; color: #1a1a2e; margin-bottom: 6px; font-weight: 600; }
+.kcw-dica-item span { color: #F57C00; font-weight: 800; }
+
+/* ===== QUICK QUIZ ===== */
+#kids-quickquiz { background: linear-gradient(135deg, #FCE4EC, #F8BBD9); }
+.kqqheader { background: linear-gradient(135deg, #C2185B, #880E4F); padding: 50px 16px 16px; position: relative; text-align: center; }
+.kqqback { position: absolute; top: 14px; left: 14px; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.2); border: none; cursor: pointer; font-size: 22px; color: #fff; }
+.kqqtitulo { font-size: 20px; font-weight: 800; color: #fff; }
+.kqq-timer { font-size: 36px; font-weight: 800; color: #fff; margin-top: 6px; }
+.kqq-timer.urgente { color: #FFCDD2; animation: pisca .5s infinite; }
+@keyframes pisca { 0%,100%{opacity:1} 50%{opacity:.4} }
+.kqqbody { padding: 16px; flex: 1; display: flex; flex-direction: column; gap: 12px; }
+.kqq-pergunta { background: #fff; border-radius: 20px; padding: 20px; text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+.kqq-emoji { font-size: 64px; display: block; margin-bottom: 8px; }
+.kqq-texto { font-size: 16px; font-weight: 700; color: #1a1a2e; }
+.kqq-opcoes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.kqq-opcao { padding: 14px 10px; border-radius: 16px; border: 3px solid #F48FB1; background: #fff; font-family: 'Nunito', Arial, sans-serif; font-size: 14px; font-weight: 800; cursor: pointer; color: #1a1a2e; transition: all .15s; }
+.kqq-opcao:active { transform: scale(0.96); }
+.kqq-opcao.correta { background: #E8F5E9; border-color: #1D9E75; color: #085041; }
+.kqq-opcao.errada { background: #FAECE7; border-color: #D85A30; color: #712B13; }
+.kqq-score { display: flex; justify-content: center; gap: 20px; }
+.kqq-score-item { font-size: 13px; color: #FFCDD2; font-weight: 700; text-align: center; }
+.kqq-score-val { font-size: 22px; font-weight: 800; color: #fff; display: block; }
+
+/* Memória melhorada */
+.km-back { background: #fff; border: 3px solid #A5D6A7; transform: rotateY(180deg); flex-direction: column; gap: 2px; padding: 4px; }
+.km-back-emoji { font-size: 24px; line-height: 1; }
+.km-back-word { font-size: 10px; font-weight: 800; color: #1a1a2e; text-align: center; }
 </style>
 </head>
 <body>
@@ -1954,27 +2014,35 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div class="kgsub">Learn English while playing!</div>
   </div>
   <div class="kgbody">
+    <div style="font-size:12px;font-weight:800;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;">🎮 Choose a game!</div>
     <div class="kg-games-grid">
-      <div class="kg-game-card" onclick="iniciarMemoria()">
+      <div class="kg-game-card" onclick="iniciarMemoriaCategoria('animais')">
         <span class="kg-game-icon">🃏</span>
         <div class="kg-game-nome">Memory</div>
         <div class="kg-game-sub">Find the pairs!</div>
       </div>
-      <div class="kg-game-card" onclick="iniciarKidsAudio('animais'); ir('kids-audio');">
-        <span class="kg-game-icon">🔊</span>
-        <div class="kg-game-nome">Listen & Find</div>
-        <div class="kg-game-sub">Hear and discover!</div>
+      <div class="kg-game-card" onclick="iniciarQuickQuiz()">
+        <span class="kg-game-icon">⚡</span>
+        <div class="kg-game-nome">Quick Quiz</div>
+        <div class="kg-game-sub">Race the clock!</div>
       </div>
-      <div class="kg-game-card" onclick="ir('kids-frases'); iniciarKidsFrases();">
-        <span class="kg-game-icon">🧩</span>
-        <div class="kg-game-nome">Build a Sentence</div>
-        <div class="kg-game-sub">Put words in order!</div>
+      <div class="kg-game-card" onclick="gerarCacaPalavras(); ir('kids-wordsearch');">
+        <span class="kg-game-icon">🔤</span>
+        <div class="kg-game-nome">Word Search</div>
+        <div class="kg-game-sub">Find hidden words!</div>
       </div>
-      <div class="kg-game-card" onclick="iniciarKidsFalar();">
-        <span class="kg-game-icon">🗣️</span>
-        <div class="kg-game-nome">Say it Right!</div>
-        <div class="kg-game-sub">Speak with Cricket!</div>
+      <div class="kg-game-card" onclick="gerarCruzadinha(); ir('kids-crossword');">
+        <span class="kg-game-icon">✏️</span>
+        <div class="kg-game-nome">Crossword</div>
+        <div class="kg-game-sub">Fill in the words!</div>
       </div>
+    </div>
+    <div style="font-size:12px;font-weight:800;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;margin:14px 0 10px;">🃏 Memory — Pick a theme!</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <button onclick="iniciarMemoriaCategoria('animais')" style="flex:1;padding:10px;border-radius:14px;border:2px solid #A5D6A7;background:#fff;font-family:Nunito,Arial,sans-serif;font-size:13px;font-weight:800;cursor:pointer;">🐶 Animals</button>
+      <button onclick="iniciarMemoriaCategoria('cores')" style="flex:1;padding:10px;border-radius:14px;border:2px solid #90CAF9;background:#fff;font-family:Nunito,Arial,sans-serif;font-size:13px;font-weight:800;cursor:pointer;">🎨 Colours</button>
+      <button onclick="iniciarMemoriaCategoria('frutas')" style="flex:1;padding:10px;border-radius:14px;border:2px solid #FFCC80;background:#fff;font-family:Nunito,Arial,sans-serif;font-size:13px;font-weight:800;cursor:pointer;">🍎 Fruits</button>
+      <button onclick="iniciarMemoriaCategoria('familia')" style="flex:1;padding:10px;border-radius:14px;border:2px solid #F48FB1;background:#fff;font-family:Nunito,Arial,sans-serif;font-size:13px;font-weight:800;cursor:pointer;">👨‍👩‍👧 Family</button>
     </div>
   </div>
 </div>
@@ -2019,6 +2087,58 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
   <div class="ksr-nav">
     <button class="ka-btn ka-btn-cinza" id="ksrQuizBtn" style="display:none;" onclick="iniciarStoryQuiz()">📝 Quiz</button>
     <button class="ka-btn ka-btn-verde" id="ksrProxBtn">Next →</button>
+  </div>
+</div>
+
+
+<!-- ===== CAÇA-PALAVRAS ===== -->
+<div id="kids-wordsearch" class="tela">
+  <div class="kwsheader">
+    <button class="kwsback" id="btnVoltarWS">&#8592;</button>
+    <div class="kwstitulo">🔤 Word Search</div>
+    <div style="font-size:12px;color:#9FA8DA;margin-top:4px;">Find the hidden words!</div>
+  </div>
+  <div class="kwsbody">
+    <div class="kws-grid" id="kwsGrid"></div>
+    <div class="kws-palavras" id="kwsPalavras"></div>
+    <div style="text-align:center;margin-top:10px;">
+      <button onclick="gerarCacaPalavras()" style="padding:10px 24px;border-radius:20px;border:none;background:#5C6BC0;color:#fff;font-family:Nunito,Arial,sans-serif;font-size:14px;font-weight:800;cursor:pointer;">🔄 New Game</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CRUZADINHA ===== -->
+<div id="kids-crossword" class="tela">
+  <div class="kcwheader">
+    <button class="kcwback" id="btnVoltarCW">&#8592;</button>
+    <div class="kcwtitulo">✏️ Crossword</div>
+    <div style="font-size:12px;color:#FFCC80;margin-top:4px;">Fill in the words!</div>
+  </div>
+  <div class="kcwbody">
+    <div class="kcw-grid" id="kcwGrid"></div>
+    <div class="kcw-dicas" id="kcwDicas"></div>
+    <div style="display:flex;gap:10px;">
+      <button onclick="verificarCruzadinha()" style="flex:1;padding:12px;border-radius:14px;border:none;background:#F57C00;color:#fff;font-family:Nunito,Arial,sans-serif;font-size:14px;font-weight:800;cursor:pointer;">✓ Check</button>
+      <button onclick="gerarCruzadinha()" style="flex:1;padding:12px;border-radius:14px;border:none;background:#FFE0B2;color:#E65100;font-family:Nunito,Arial,sans-serif;font-size:14px;font-weight:800;cursor:pointer;">🔄 New</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== QUICK QUIZ ===== -->
+<div id="kids-quickquiz" class="tela">
+  <div class="kqqheader">
+    <button class="kqqback" id="btnVoltarQQ">&#8592;</button>
+    <div class="kqqtitulo">⚡ Quick Quiz</div>
+    <div class="kqq-timer" id="kqqTimer">10</div>
+    <div class="kqq-score">
+      <div class="kqq-score-item"><span class="kqq-score-val" id="kqqAcertos">0</span>correct</div>
+      <div class="kqq-score-item"><span class="kqq-score-val" id="kqqTotal">0</span>total</div>
+      <div class="kqq-score-item"><span class="kqq-score-val" id="kqqStreak">0</span>streak 🔥</div>
+    </div>
+  </div>
+  <div class="kqqbody">
+    <div class="kqq-pergunta" id="kqqPergunta"></div>
+    <div class="kqq-opcoes" id="kqqOpcoes"></div>
   </div>
 </div>
 
@@ -5383,6 +5503,66 @@ async function abrirPainelGestor() {
 .ksr-traducao { font-size: 13px; color: #6b7280; margin-top: 8px; font-style: italic; display: none; }
 .ksr-pagina.ativa .ksr-traducao { display: block; }
 .ksr-nav { display: flex; gap: 10px; padding: 0 16px 16px; }
+
+/* ===== CAÇA-PALAVRAS ===== */
+#kids-wordsearch { background: linear-gradient(135deg, #E8EAF6, #C5CAE9); }
+.kwsheader { background: linear-gradient(135deg, #5C6BC0, #283593); padding: 50px 16px 16px; position: relative; text-align: center; }
+.kwsback { position: absolute; top: 14px; left: 14px; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.2); border: none; cursor: pointer; font-size: 22px; color: #fff; }
+.kwstitulo { font-size: 20px; font-weight: 800; color: #fff; }
+.kwsbody { padding: 14px; flex: 1; overflow-y: auto; }
+.kws-grid { display: inline-grid; gap: 2px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+.kws-row { display: flex; gap: 2px; }
+.kws-cell { width: 32px; height: 32px; border-radius: 6px; background: #fff; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800; color: #1a1a2e; cursor: pointer; border: 2px solid transparent; transition: all .15s; user-select: none; }
+.kws-cell.selecionada { background: #FFF9C4; border-color: #EF9F27; transform: scale(1.05); }
+.kws-cell.encontrada { background: #E8F5E9; border-color: #1D9E75; color: #085041; }
+.kws-palavras { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; justify-content: center; }
+.kws-palavra-item { font-size: 13px; font-weight: 800; padding: 5px 12px; border-radius: 20px; background: #fff; color: #3F51B5; border: 2px solid #9FA8DA; }
+.kws-palavra-item.encontrada { background: #E8F5E9; color: #085041; border-color: #1D9E75; text-decoration: line-through; }
+
+/* ===== CRUZADINHA ===== */
+#kids-crossword { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); }
+.kcwheader { background: linear-gradient(135deg, #F57C00, #E65100); padding: 50px 16px 16px; position: relative; text-align: center; }
+.kcwback { position: absolute; top: 14px; left: 14px; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.2); border: none; cursor: pointer; font-size: 22px; color: #fff; }
+.kcwtitulo { font-size: 20px; font-weight: 800; color: #fff; }
+.kcwbody { padding: 14px; flex: 1; overflow-y: auto; }
+.kcw-grid { display: flex; flex-direction: column; align-items: center; gap: 2px; margin-bottom: 16px; }
+.kcw-row { display: flex; gap: 2px; }
+.kcw-cell { width: 34px; height: 34px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; position: relative; }
+.kcw-cell.vazia { background: transparent; }
+.kcw-cell.ativa { background: #fff; border: 2px solid #FFB74D; cursor: pointer; }
+.kcw-cell.ativa input { width: 100%; height: 100%; border: none; background: transparent; text-align: center; font-family: 'Nunito', Arial, sans-serif; font-size: 16px; font-weight: 800; color: #1a1a2e; outline: none; text-transform: uppercase; }
+.kcw-cell.correta { background: #E8F5E9; border-color: #1D9E75; }
+.kcw-cell.numero { font-size: 9px; color: #F57C00; position: absolute; top: 1px; left: 2px; font-weight: 800; }
+.kcw-dicas { background: #fff; border-radius: 14px; padding: 14px; margin-bottom: 12px; }
+.kcw-dica-titulo { font-size: 12px; font-weight: 800; color: #F57C00; text-transform: uppercase; margin-bottom: 8px; }
+.kcw-dica-item { font-size: 13px; color: #1a1a2e; margin-bottom: 6px; font-weight: 600; }
+.kcw-dica-item span { color: #F57C00; font-weight: 800; }
+
+/* ===== QUICK QUIZ ===== */
+#kids-quickquiz { background: linear-gradient(135deg, #FCE4EC, #F8BBD9); }
+.kqqheader { background: linear-gradient(135deg, #C2185B, #880E4F); padding: 50px 16px 16px; position: relative; text-align: center; }
+.kqqback { position: absolute; top: 14px; left: 14px; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.2); border: none; cursor: pointer; font-size: 22px; color: #fff; }
+.kqqtitulo { font-size: 20px; font-weight: 800; color: #fff; }
+.kqq-timer { font-size: 36px; font-weight: 800; color: #fff; margin-top: 6px; }
+.kqq-timer.urgente { color: #FFCDD2; animation: pisca .5s infinite; }
+@keyframes pisca { 0%,100%{opacity:1} 50%{opacity:.4} }
+.kqqbody { padding: 16px; flex: 1; display: flex; flex-direction: column; gap: 12px; }
+.kqq-pergunta { background: #fff; border-radius: 20px; padding: 20px; text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+.kqq-emoji { font-size: 64px; display: block; margin-bottom: 8px; }
+.kqq-texto { font-size: 16px; font-weight: 700; color: #1a1a2e; }
+.kqq-opcoes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.kqq-opcao { padding: 14px 10px; border-radius: 16px; border: 3px solid #F48FB1; background: #fff; font-family: 'Nunito', Arial, sans-serif; font-size: 14px; font-weight: 800; cursor: pointer; color: #1a1a2e; transition: all .15s; }
+.kqq-opcao:active { transform: scale(0.96); }
+.kqq-opcao.correta { background: #E8F5E9; border-color: #1D9E75; color: #085041; }
+.kqq-opcao.errada { background: #FAECE7; border-color: #D85A30; color: #712B13; }
+.kqq-score { display: flex; justify-content: center; gap: 20px; }
+.kqq-score-item { font-size: 13px; color: #FFCDD2; font-weight: 700; text-align: center; }
+.kqq-score-val { font-size: 22px; font-weight: 800; color: #fff; display: block; }
+
+/* Memória melhorada */
+.km-back { background: #fff; border: 3px solid #A5D6A7; transform: rotateY(180deg); flex-direction: column; gap: 2px; padding: 4px; }
+.km-back-emoji { font-size: 24px; line-height: 1; }
+.km-back-word { font-size: 10px; font-weight: 800; color: #1a1a2e; text-align: center; }
 </style></head><body>`;
     
     var numUsuarios = usuarios.data ? usuarios.data.length : 0;
@@ -6436,6 +6616,500 @@ function pararKeepAlive() {
   if (iosKeepAlive) { clearInterval(iosKeepAlive); iosKeepAlive = null; }
 }
 
+
+// ===== MEMÓRIA COM CATEGORIAS E IMAGEM+PALAVRA =====
+function iniciarMemoriaCategoria(categoria) {
+  var cat = kidsConteudo[categoria] || kidsConteudo.animais;
+  var palavras = cat.palavras.slice(0, 8);
+  
+  kmPares = 0;
+  kmTentativas = 0;
+  kmCartasViradas = [];
+  kmBloqueado = false;
+  
+  // Cada par: carta emoji + carta palavra
+  var cartas = [];
+  palavras.forEach(function(p, i) {
+    cartas.push({id: i*2,   pairId: i, tipo: 'emoji', emoji: p.emoji, palavra: p.en});
+    cartas.push({id: i*2+1, pairId: i, tipo: 'word',  emoji: p.emoji, palavra: p.en});
+  });
+  cartas.sort(function() { return Math.random() - 0.5; });
+  
+  var grid = document.getElementById('kmGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  
+  // Título da categoria
+  var header = document.querySelector('#kids-memory .kmtitulo');
+  if (header) header.textContent = '🃏 Memory — ' + cat.titulo;
+  
+  cartas.forEach(function(carta) {
+    var div = document.createElement('div');
+    div.className = 'km-card';
+    div.dataset.pairId = carta.pairId;
+    
+    var frontContent = '?';
+    var backContent = carta.tipo === 'emoji'
+      ? '<span class="km-back-emoji">' + carta.emoji + '</span><span class="km-back-word">' + carta.palavra + '</span>'
+      : '<span class="km-back-emoji">' + carta.emoji + '</span><span class="km-back-word">' + carta.palavra + '</span>';
+    
+    // Diferença visual: emoji tem fundo verde, palavra tem fundo azul
+    var frontBg = carta.tipo === 'emoji' 
+      ? 'background:linear-gradient(135deg,#1D9E75,#0F6E56)'
+      : 'background:linear-gradient(135deg,#534AB7,#3730A3)';
+    
+    div.innerHTML =
+      '<div class="km-front" style="' + frontBg + '">' + 
+        (carta.tipo === 'emoji' ? '🖼️' : '📝') + 
+      '</div>' +
+      '<div class="km-back">' + backContent + '</div>';
+    
+    div.onclick = function() {
+      virarCartaMemoria(this);
+      falarPalavraKids(cartas.find(function(c){ return c.pairId == this.dataset.pairId && c === carta; }, this) ? carta.palavra : carta.palavra);
+    };
+    grid.appendChild(div);
+  });
+  
+  atualizarStatsMemoria();
+  ir('kids-memory');
+}
+
+// Override da iniciarMemoria original para usar categoria
+var iniciarMemoria = function() { iniciarMemoriaCategoria('animais'); };
+
+// ===== CAÇA-PALAVRAS =====
+var kwsCategorias = [
+  {palavras: ['DOG','CAT','BIRD','FISH','BEAR','FROG'], titulo: 'Animals'},
+  {palavras: ['RED','BLUE','GREEN','PINK','BLACK','WHITE'], titulo: 'Colours'},
+  {palavras: ['APPLE','MANGO','GRAPE','PEACH','CHERRY'], titulo: 'Fruits'},
+  {palavras: ['RUN','JUMP','SING','DANCE','READ','SWIM'], titulo: 'Actions'}
+];
+var kwsCelulasEncontradas = {};
+var kwsPalavrasEncontradas = [];
+var kwsPalavraAtual = [];
+var kwsCategoria = null;
+var kwsGrade = [];
+var kwsTamanho = 10;
+
+function gerarCacaPalavras() {
+  var catIdx = Math.floor(Math.random() * kwsCategorias.length);
+  kwsCategoria = kwsCategorias[catIdx];
+  var palavras = kwsCategoria.palavras;
+  kwsPalavrasEncontradas = [];
+  kwsPalavraAtual = [];
+  kwsCelulasEncontradas = {};
+  
+  // Inicializar grade vazia
+  kwsGrade = [];
+  for (var i = 0; i < kwsTamanho; i++) {
+    kwsGrade.push(new Array(kwsTamanho).fill(''));
+  }
+  
+  // Posicionar palavras
+  var direcoes = [[0,1],[1,0],[1,1]]; // horizontal, vertical, diagonal
+  palavras.forEach(function(palavra) {
+    var colocada = false;
+    var tentativas = 0;
+    while (!colocada && tentativas < 50) {
+      tentativas++;
+      var dir = direcoes[Math.floor(Math.random() * direcoes.length)];
+      var maxRow = kwsTamanho - (dir[0] * palavra.length);
+      var maxCol = kwsTamanho - (dir[1] * palavra.length);
+      if (maxRow <= 0 || maxCol <= 0) continue;
+      var row = Math.floor(Math.random() * maxRow);
+      var col = Math.floor(Math.random() * maxCol);
+      
+      // Verificar se cabe
+      var cabe = true;
+      for (var k = 0; k < palavra.length; k++) {
+        var r = row + dir[0]*k, c = col + dir[1]*k;
+        if (kwsGrade[r][c] !== '' && kwsGrade[r][c] !== palavra[k]) { cabe = false; break; }
+      }
+      if (cabe) {
+        for (var k = 0; k < palavra.length; k++) {
+          kwsGrade[row + dir[0]*k][col + dir[1]*k] = palavra[k];
+        }
+        colocada = true;
+      }
+    }
+  });
+  
+  // Preencher espaços vazios com letras aleatórias
+  var letras = 'ABCDEFGHIJKLMNOPRSTUVW';
+  for (var i = 0; i < kwsTamanho; i++) {
+    for (var j = 0; j < kwsTamanho; j++) {
+      if (kwsGrade[i][j] === '') {
+        kwsGrade[i][j] = letras[Math.floor(Math.random() * letras.length)];
+      }
+    }
+  }
+  
+  renderCacaPalavras();
+}
+
+function renderCacaPalavras() {
+  var grid = document.getElementById('kwsGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  
+  var titulo = document.querySelector('#kids-wordsearch .kwstitulo');
+  if (titulo && kwsCategoria) titulo.textContent = '🔤 ' + kwsCategoria.titulo + ' — Word Search';
+  
+  kwsGrade.forEach(function(row, ri) {
+    var rowDiv = document.createElement('div');
+    rowDiv.className = 'kws-row';
+    row.forEach(function(letra, ci) {
+      var cell = document.createElement('div');
+      cell.className = 'kws-cell';
+      var key = ri + '_' + ci;
+      if (kwsCelulasEncontradas[key]) cell.classList.add('encontrada');
+      cell.textContent = letra;
+      cell.dataset.row = ri;
+      cell.dataset.col = ci;
+      cell.onclick = function() { selecionarCelulaWS(this); };
+      rowDiv.appendChild(cell);
+    });
+    grid.appendChild(rowDiv);
+  });
+  
+  // Lista de palavras
+  var lista = document.getElementById('kwsPalavras');
+  if (lista && kwsCategoria) {
+    lista.innerHTML = '';
+    kwsCategoria.palavras.forEach(function(p) {
+      var span = document.createElement('span');
+      span.className = 'kws-palavra-item' + (kwsPalavrasEncontradas.indexOf(p) >= 0 ? ' encontrada' : '');
+      span.textContent = p;
+      lista.appendChild(span);
+    });
+  }
+}
+
+function selecionarCelulaWS(cell) {
+  var row = parseInt(cell.dataset.row);
+  var col = parseInt(cell.dataset.col);
+  var key = row + '_' + col;
+  
+  if (kwsCelulasEncontradas[key]) return;
+  
+  if (kwsPalavraAtual.length > 0) {
+    var ultimo = kwsPalavraAtual[kwsPalavraAtual.length - 1];
+    // Verificar se é adjacente
+    var dr = Math.abs(row - ultimo.row);
+    var dc = Math.abs(col - ultimo.col);
+    if (dr > 1 || dc > 1) {
+      // Não adjacente — resetar seleção
+      kwsPalavraAtual.forEach(function(c) {
+        var el = document.querySelector('[data-row="'+c.row+'"][data-col="'+c.col+'"]');
+        if (el) el.classList.remove('selecionada');
+      });
+      kwsPalavraAtual = [];
+    }
+  }
+  
+  cell.classList.add('selecionada');
+  kwsPalavraAtual.push({row: row, col: col, letra: kwsGrade[row][col]});
+  
+  // Verificar se formou uma palavra
+  var tentativa = kwsPalavraAtual.map(function(c) { return c.letra; }).join('');
+  var tentativaRev = tentativa.split('').reverse().join('');
+  
+  var encontrou = kwsCategoria.palavras.find(function(p) {
+    return p === tentativa || p === tentativaRev;
+  });
+  
+  if (encontrou && kwsPalavrasEncontradas.indexOf(encontrou) < 0) {
+    kwsPalavrasEncontradas.push(encontrou);
+    kwsPalavraAtual.forEach(function(c) {
+      kwsCelulasEncontradas[c.row + '_' + c.col] = true;
+    });
+    kwsPalavraAtual = [];
+    playSound('acerto');
+    falarPalavraKids(encontrou);
+    ganharSementes(5, 'word found!');
+    renderCacaPalavras();
+    
+    if (kwsPalavrasEncontradas.length === kwsCategoria.palavras.length) {
+      setTimeout(function() {
+        falarPalavraKids('Excellent! You found all the words!');
+        alert('🏆 Amazing! You found all ' + kwsCategoria.palavras.length + ' words!');
+      }, 500);
+    }
+  } else if (tentativa.length >= 8) {
+    // Muito longa e não encontrou — resetar
+    kwsPalavraAtual.forEach(function(c) {
+      var el = document.querySelector('[data-row="'+c.row+'"][data-col="'+c.col+'"]');
+      if (el) el.classList.remove('selecionada');
+    });
+    kwsPalavraAtual = [];
+  }
+}
+
+// ===== CRUZADINHA =====
+var kcwPuzzle = [
+  // [palavra, row, col, dir, dica_em, emoji]
+  {word:'DOG',   row:0, col:0, dir:'h', dica:'A pet that barks 🐶'},
+  {word:'CAT',   row:2, col:0, dir:'h', dica:'A pet that meows 🐱'},
+  {word:'BIRD',  row:4, col:0, dir:'h', dica:'It flies in the sky 🐦'},
+  {word:'FISH',  row:6, col:0, dir:'h', dica:'It lives in water 🐟'},
+  {word:'BEAR',  row:8, col:0, dir:'h', dica:'A big furry animal 🐻'},
+  {word:'DOG',   row:0, col:4, dir:'v', dica:'Man\'s best friend 🐾'},
+];
+
+var kcwAtivoPuzzle = [];
+var kcwInputs = {};
+
+function gerarCruzadinha() {
+  // Puzzle simplificado — palavras horizontais simples para crianças
+  kcwAtivoPuzzle = [
+    {word:'CAT',   row:0, col:1, dir:'h', num:1, dica:'Meows and purrs 🐱'},
+    {word:'DOG',   row:2, col:0, dir:'h', num:2, dica:'Barks and wags tail 🐶'},
+    {word:'BIRD',  row:4, col:2, dir:'h', num:3, dica:'Has wings and feathers 🐦'},
+    {word:'FISH',  row:1, col:5, dir:'v', num:4, dica:'Lives in the ocean 🐟'},
+    {word:'RED',   row:6, col:0, dir:'h', num:5, dica:'The colour of fire 🔴'},
+    {word:'BLUE',  row:8, col:3, dir:'h', num:6, dica:'The colour of the sky 🔵'},
+  ];
+  kcwInputs = {};
+  
+  // Construir grade 10x10
+  var grade = [];
+  for (var i = 0; i < 10; i++) grade.push(new Array(10).fill(null));
+  
+  kcwAtivoPuzzle.forEach(function(entry) {
+    for (var k = 0; k < entry.word.length; k++) {
+      var r = entry.row + (entry.dir === 'v' ? k : 0);
+      var c = entry.col + (entry.dir === 'h' ? k : 0);
+      if (r < 10 && c < 10) {
+        grade[r][c] = {letra: entry.word[k], num: k === 0 ? entry.num : null};
+      }
+    }
+  });
+  
+  var gridEl = document.getElementById('kcwGrid');
+  if (!gridEl) return;
+  gridEl.innerHTML = '';
+  
+  grade.forEach(function(row, ri) {
+    var rowDiv = document.createElement('div');
+    rowDiv.className = 'kcw-row';
+    row.forEach(function(cell, ci) {
+      var div = document.createElement('div');
+      if (!cell) {
+        div.className = 'kcw-cell vazia';
+        div.style.cssText = 'width:34px;height:34px;';
+      } else {
+        div.className = 'kcw-cell ativa';
+        if (cell.num) {
+          var numSpan = document.createElement('span');
+          numSpan.className = 'kcw-numero';
+          numSpan.style.cssText = 'position:absolute;top:1px;left:2px;font-size:9px;color:#F57C00;font-weight:800;';
+          numSpan.textContent = cell.num;
+          div.appendChild(numSpan);
+        }
+        var input = document.createElement('input');
+        input.maxLength = 1;
+        input.dataset.row = ri;
+        input.dataset.col = ci;
+        input.style.cssText = 'width:100%;height:100%;border:none;background:transparent;text-align:center;font-family:Nunito,Arial,sans-serif;font-size:16px;font-weight:800;color:#1a1a2e;outline:none;text-transform:uppercase;';
+        kcwInputs[ri + '_' + ci] = input;
+        div.appendChild(input);
+      }
+      rowDiv.appendChild(div);
+    });
+    gridEl.appendChild(rowDiv);
+  });
+  
+  // Dicas
+  var dicasEl = document.getElementById('kcwDicas');
+  if (dicasEl) {
+    dicasEl.innerHTML = '<div class="kcw-dica-titulo">📋 Clues</div>';
+    kcwAtivoPuzzle.forEach(function(entry) {
+      var div = document.createElement('div');
+      div.className = 'kcw-dica-item';
+      div.innerHTML = '<span>' + entry.num + (entry.dir === 'h' ? '→' : '↓') + '</span> ' + entry.dica;
+      dicasEl.appendChild(div);
+    });
+  }
+}
+
+function verificarCruzadinha() {
+  var acertos = 0;
+  var total = 0;
+  
+  kcwAtivoPuzzle.forEach(function(entry) {
+    for (var k = 0; k < entry.word.length; k++) {
+      var r = entry.row + (entry.dir === 'v' ? k : 0);
+      var c = entry.col + (entry.dir === 'h' ? k : 0);
+      var input = kcwInputs[r + '_' + c];
+      total++;
+      if (input && input.value.toUpperCase() === entry.word[k]) {
+        acertos++;
+        input.parentElement.classList.add('correta');
+        input.style.color = '#085041';
+      } else if (input && input.value) {
+        input.style.color = '#D85A30';
+      }
+    }
+  });
+  
+  playSound(acertos === total ? 'acerto' : 'erro');
+  if (acertos === total) {
+    falarPalavraKids('Perfect! You completed the crossword!');
+    ganharSementes(20, 'crossword complete!');
+    alert('🏆 Perfect! Crossword complete!');
+  } else {
+    falarPalavraKids('Keep trying! ' + acertos + ' out of ' + total + ' correct!');
+    alert('📝 ' + acertos + ' / ' + total + ' correct! Keep going!');
+  }
+}
+
+// ===== QUICK QUIZ =====
+var kqqTimer = null;
+var kqqTempoRestante = 10;
+var kqqAcertos = 0;
+var kqqTotalPerguntas = 0;
+var kqqStreak = 0;
+var kqqRespondida = false;
+var kqqTodasPalavras = [];
+
+function iniciarQuickQuiz() {
+  // Juntar todas as palavras de todas as categorias
+  kqqTodasPalavras = [];
+  Object.keys(kidsConteudo).forEach(function(cat) {
+    kidsConteudo[cat].palavras.forEach(function(p) {
+      kqqTodasPalavras.push(p);
+    });
+  });
+  
+  kqqAcertos = 0;
+  kqqTotalPerguntas = 0;
+  kqqStreak = 0;
+  
+  atualizarScoreQQ();
+  renderQuickQuiz();
+  ir('kids-quickquiz');
+}
+
+function atualizarScoreQQ() {
+  var el1 = document.getElementById('kqqAcertos');
+  var el2 = document.getElementById('kqqTotal');
+  var el3 = document.getElementById('kqqStreak');
+  if (el1) el1.textContent = kqqAcertos;
+  if (el2) el2.textContent = kqqTotalPerguntas;
+  if (el3) el3.textContent = kqqStreak;
+}
+
+function renderQuickQuiz() {
+  kqqRespondida = false;
+  kqqTempoRestante = 10;
+  
+  // Parar timer anterior
+  if (kqqTimer) clearInterval(kqqTimer);
+  
+  // Escolher palavra aleatória
+  var idx = Math.floor(Math.random() * kqqTodasPalavras.length);
+  var correta = kqqTodasPalavras[idx];
+  
+  // Tipo de pergunta: alternar entre emoji→palavra e palavra→emoji
+  var tipo = Math.random() > 0.5 ? 'emoji_para_palavra' : 'palavra_para_emoji';
+  
+  // Gerar opções erradas
+  var erradas = kqqTodasPalavras
+    .filter(function(p) { return p.en !== correta.en; })
+    .sort(function() { return Math.random() - 0.5; })
+    .slice(0, 3);
+  
+  var opcoes = [correta].concat(erradas).sort(function() { return Math.random() - 0.5; });
+  
+  // Renderizar pergunta
+  var pergEl = document.getElementById('kqqPergunta');
+  if (pergEl) {
+    if (tipo === 'emoji_para_palavra') {
+      pergEl.innerHTML =
+        '<span class="kqq-emoji">' + correta.emoji + '</span>' +
+        '<div class="kqq-texto">What is this in English?</div>';
+    } else {
+      pergEl.innerHTML =
+        '<div class="kqq-emoji" style="font-size:32px;margin-bottom:8px;">' + correta.en + '</div>' +
+        '<div class="kqq-texto">Choose the correct picture!</div>';
+    }
+  }
+  
+  // Renderizar opções
+  var opcsEl = document.getElementById('kqqOpcoes');
+  if (opcsEl) {
+    opcsEl.innerHTML = '';
+    opcoes.forEach(function(op) {
+      var btn = document.createElement('button');
+      btn.className = 'kqq-opcao';
+      if (tipo === 'emoji_para_palavra') {
+        btn.innerHTML = op.emoji + '<br>' + op.en;
+      } else {
+        btn.innerHTML = '<span style="font-size:32px">' + op.emoji + '</span><br><span style="font-size:11px">' + op.pt + '</span>';
+      }
+      (function(opcao) {
+        btn.onclick = function() {
+          if (kqqRespondida) return;
+          kqqRespondida = true;
+          clearInterval(kqqTimer);
+          kqqTotalPerguntas++;
+          
+          if (opcao.en === correta.en) {
+            kqqAcertos++;
+            kqqStreak++;
+            btn.classList.add('correta');
+            playSound('acerto');
+            falarPalavraKids(correta.en);
+            ganharSementes(kqqStreak >= 3 ? 5 : 2, 'quiz!');
+          } else {
+            kqqStreak = 0;
+            btn.classList.add('errada');
+            // Destacar correta
+            opcsEl.querySelectorAll('.kqq-opcao').forEach(function(b, i) {
+              if (opcoes[i] && opcoes[i].en === correta.en) b.classList.add('correta');
+            });
+            playSound('erro');
+          }
+          
+          atualizarScoreQQ();
+          setTimeout(renderQuickQuiz, 1500);
+        };
+      })(op);
+      opcsEl.appendChild(btn);
+    });
+  }
+  
+  // Timer
+  var timerEl = document.getElementById('kqqTimer');
+  if (timerEl) timerEl.textContent = kqqTempoRestante;
+  
+  kqqTimer = setInterval(function() {
+    kqqTempoRestante--;
+    if (timerEl) {
+      timerEl.textContent = kqqTempoRestante;
+      timerEl.className = 'kqq-timer' + (kqqTempoRestante <= 3 ? ' urgente' : '');
+    }
+    if (kqqTempoRestante <= 0) {
+      clearInterval(kqqTimer);
+      if (!kqqRespondida) {
+        kqqRespondida = true;
+        kqqTotalPerguntas++;
+        kqqStreak = 0;
+        atualizarScoreQQ();
+        // Mostrar resposta correta
+        if (opcsEl) {
+          opcsEl.querySelectorAll('.kqq-opcao').forEach(function(b, i) {
+            if (opcoes[i] && opcoes[i].en === correta.en) b.classList.add('correta');
+          });
+        }
+        playSound('erro');
+        setTimeout(renderQuickQuiz, 1500);
+      }
+    }
+  }, 1000);
+}
+
 var nomeUsuario = '';
 var nivelAtual = 'B1';
 var tradAtiva = false;
@@ -7485,6 +8159,22 @@ window.onload = function() {
   if (knavGames) knavGames.onclick = function() { ir('kids-games'); };
   var knavStories = document.getElementById('knavStories');
   if (knavStories) knavStories.onclick = function() { abrirStories(); };
+
+
+  // CAÇA-PALAVRAS
+  var btnVoltarWS = document.getElementById('btnVoltarWS');
+  if (btnVoltarWS) btnVoltarWS.onclick = function() { ir('kids-games'); };
+  
+  // CRUZADINHA
+  var btnVoltarCW = document.getElementById('btnVoltarCW');
+  if (btnVoltarCW) btnVoltarCW.onclick = function() { ir('kids-games'); };
+  
+  // QUICK QUIZ
+  var btnVoltarQQ = document.getElementById('btnVoltarQQ');
+  if (btnVoltarQQ) btnVoltarQQ.onclick = function() {
+    if (kqqTimer) clearInterval(kqqTimer);
+    ir('kids-games');
+  };
 
   console.log('Talking Cricket v20260621193446 carregado!');
 };
