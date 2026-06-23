@@ -6366,8 +6366,9 @@ function abrirStoryReader(story) {
   renderStoryPaginas();
   ir('kids-story-reader');
   
-  // Auto-começar a narração
-  setTimeout(function() { narrarPaginaAtual(); }, 800);
+  // NÃO auto-narrar — usuário deve tocar Play primeiro (exigência do iOS)
+  var playBtnInit = document.getElementById('ksrPlayBtn');
+  if (playBtnInit) playBtnInit.textContent = '▶ Play';
 }
 
 function renderStoryPaginas() {
@@ -6417,25 +6418,16 @@ function narrarPaginaAtual() {
   var playBtn = document.getElementById('ksrPlayBtn');
   if (playBtn) playBtn.textContent = '⏸ Pause';
   
-  window.speechSynthesis && window.speechSynthesis.cancel();
-  var utter = new SpeechSynthesisUtterance(pag.en);
-  utter.lang = 'en-GB';
-  utter.rate = 0.75;
-  utter.pitch = 1.1;
-  
-  if (vozEN) utter.voice = vozEN;
-  
-  utter.onend = function() {
-    ksrNarrando = false;
-    if (playBtn) playBtn.textContent = '▶ Play';
-    if (ksrAutoPlay) {
-      ksrAutoTimer = setTimeout(function() {
-        avancarStory();
-      }, 1000);
+  falarEN(pag.en, {
+    rate: 0.85,
+    onend: function() {
+      ksrNarrando = false;
+      if (playBtn) playBtn.textContent = '▶ Play';
+      if (ksrAutoPlay) {
+        ksrAutoTimer = setTimeout(function() { avancarStory(); }, 1000);
+      }
     }
-  };
-  
-  window.speechSynthesis && window.speechSynthesis.speak(utter);
+  });
 }
 
 function avancarStory() {
@@ -7668,6 +7660,7 @@ function renderTemasFiltro(nivel) {
 }
 
 function irBanco() {
+  listeningAtual = null; // Não estamos no listening
   nivelBanco = nivelAtual;
   temaFiltro = 'Todos';
   document.querySelectorAll('.nivel-tab').forEach(function(tab) {
@@ -7753,7 +7746,9 @@ window.onload = function() {
   var _el_knavHome = document.getElementById('knavHome'); if(_el_knavHome) _el_knavHome.onclick = function() { ir('home-kids'); };
 
   // LEITURA
-  var _el_btnVoltarLeitura = document.getElementById('btnVoltarLeitura'); if(_el_btnVoltarLeitura) _el_btnVoltarLeitura.onclick = function() { voltarHome(); };
+  var _el_btnVoltarLeitura = document.getElementById('btnVoltarLeitura'); if(_el_btnVoltarLeitura) _el_btnVoltarLeitura.onclick = function() {
+    // Parar áudio ao sair da leitura
+    if(ttsAtivo) { window.speechSynthesis && window.speechSynthesis.cancel(); ttsAtivo = false; } voltarHome(); };
   var _el_toggleTrad = document.getElementById('toggleTrad'); if(_el_toggleTrad) _el_toggleTrad.onclick = function() {
     tradAtiva = !tradAtiva;
     this.classList.toggle('on', tradAtiva);
@@ -7907,7 +7902,32 @@ window.onload = function() {
   var _el_btnExercicios = document.getElementById('btnExercicios'); if(_el_btnExercicios) _el_btnExercicios.onclick = function() { iniciarQuiz(textoSelecionado ? textoSelecionado.id : 'b1-1'); };
 
   // Conectar botão Audio na leitura
-  var _el_btnAudio = document.getElementById('btnAudio'); if(_el_btnAudio) _el_btnAudio.onclick = function() { abrirAudicaoDoTexto(); };
+  var _el_btnAudio = document.getElementById('btnAudio'); 
+  if(_el_btnAudio) _el_btnAudio.onclick = function() {
+    // Tocar áudio do texto INLINE na tela de leitura (não navega para outra tela)
+    if (!textoSelecionado) return;
+    var textoLimpo = textoSelecionado.en ? textoSelecionado.en.replace(/<w>/g,'').replace(/<\/w>/g,'') : '';
+    if (!textoLimpo && textoSelecionado.texto) textoLimpo = textoSelecionado.texto;
+    if (!textoLimpo) return;
+    
+    if (ttsAtivo) {
+      window.speechSynthesis && window.speechSynthesis.cancel();
+      ttsAtivo = false;
+      this.innerHTML = '<i class="ti ti-volume" style="font-size:16px"></i> Ouvir texto';
+      return;
+    }
+    
+    var self = this;
+    self.innerHTML = '<i class="ti ti-volume" style="font-size:16px"></i> ⏹ Parar';
+    ttsAtivo = true;
+    falarEN(textoLimpo, {
+      rate: velocidadeAtual || 1.0,
+      onend: function() {
+        ttsAtivo = false;
+        if(self) self.innerHTML = '<i class="ti ti-volume" style="font-size:16px"></i> Ouvir texto';
+      }
+    });
+  };
 
 
   // CORRIGIR NAV DO PERFIL
