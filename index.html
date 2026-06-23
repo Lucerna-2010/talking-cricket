@@ -1392,11 +1392,16 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
   <div class="aheader">
     <button class="aback" id="btnVoltarAudicao">&#8592;</button>
     <div class="atitulo" id="atitulo">Listening — B1</div>
-    <div class="abadge" id="abadge">🎧 Audição</div>
+    <div class="abadge" id="abadge">🎧 Listening</div>
   </div>
   <div class="abody">
+
+    <!-- Player de áudio -->
     <div class="audio-player">
       <div class="audio-titulo" id="audio-titulo">Environment & Climate Change</div>
+      <div style="font-size:12px;color:#6b7280;text-align:center;margin-bottom:12px;" id="audioInstrucao">
+        🎧 Listen carefully — you cannot see the text!
+      </div>
       <div class="audio-controls">
         <button class="audio-play" id="btnPlay">▶</button>
         <div class="audio-wave">
@@ -1413,7 +1418,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
           <div class="audio-bar" style="height:18px"></div>
           <div class="audio-bar" style="height:22px"></div>
         </div>
-        <div class="audio-time" id="audio-time">0:00 / 2:30</div>
+        <div class="audio-time" id="audio-time">0:00</div>
       </div>
       <div class="audio-speed">
         <button class="speed-btn" data-speed="0.75">0.75x</button>
@@ -1421,32 +1426,39 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
         <button class="speed-btn" data-speed="1.25">1.25x</button>
         <button class="speed-btn" data-speed="1.5">1.5x</button>
       </div>
-    </div>
-
-    <div class="transcricao-box">
-      <div class="transcricao-header">
-        <div class="transcricao-titulo">Transcrição</div>
-        <div class="lang-toggle">
-          <button class="lang-btn on" id="langEN">EN</button>
-          <button class="lang-btn" id="langPT">PT</button>
-        </div>
-      </div>
-      <div class="transcricao-texto" id="transcricao-en">
-        Climate change is one of the most <button class="w" data-word="pressing">pressing</button> issues of our time. Rising temperatures are <button class="w" data-word="affecting">affecting</button> ecosystems around the world, causing <button class="w" data-word="unprecedented">unprecedented</button> shifts in weather patterns.
-      </div>
-      <div class="transcricao-texto" id="transcricao-pt" style="display:none">
-        A mudança climática é uma das questões mais urgentes do nosso tempo. O aumento das temperaturas está afetando os ecossistemas ao redor do mundo, causando mudanças sem precedentes nos padrões climáticos.
+      <!-- Contador de reproduções -->
+      <div id="audioPlayCount" style="text-align:center;font-size:12px;color:#6b7280;margin-top:8px;font-weight:700;">
+        You can listen as many times as you need!
       </div>
     </div>
 
+    <!-- Botões de ação -->
     <div class="audio-acoes">
-      <button class="audio-acao quiz" id="btnExerciciosAudio"><i class="ti ti-help" style="font-size:15px"></i> Fazer exercícios</button>
-      <button class="audio-acao repeat" id="btnTry again"><i class="ti ti-repeat" style="font-size:15px"></i> Try again</button>
+      <button class="audio-acao quiz" id="btnExerciciosAudio">
+        <i class="ti ti-help" style="font-size:15px"></i> Do the exercises
+      </button>
+      <button class="audio-acao repeat" id="btnRevelarTranscricao" style="display:none;">
+        <i class="ti ti-eye" style="font-size:15px"></i> Reveal transcript
+      </button>
     </div>
+
+    <!-- Transcrição OCULTA — só aparece após o quiz -->
+    <div id="transcricao-box-listening" style="display:none;">
+      <div style="background:#E1F5EE;border-radius:14px;padding:14px;margin-top:10px;">
+        <div style="font-size:12px;font-weight:800;color:#085041;margin-bottom:8px;text-transform:uppercase;">📄 Transcript</div>
+        <div style="display:flex;gap:8px;margin-bottom:10px;">
+          <button id="langEN2" onclick="mostrarTranscricaoEN()" style="padding:5px 14px;border-radius:20px;border:none;background:#1D9E75;color:#fff;font-family:Nunito,Arial,sans-serif;font-size:12px;font-weight:800;cursor:pointer;">EN</button>
+          <button id="langPT2" onclick="mostrarTranscricaoPT()" style="padding:5px 14px;border-radius:20px;border:none;background:#F1EFE8;color:#6b7280;font-family:Nunito,Arial,sans-serif;font-size:12px;font-weight:800;cursor:pointer;">PT</button>
+        </div>
+        <div class="transcricao-texto" id="transcricao-en2"></div>
+        <div class="transcricao-texto" id="transcricao-pt2" style="display:none;"></div>
+      </div>
+    </div>
+
   </div>
   <nav class="nav nav-universal">
     <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
-    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-book"></i>Texts</div>
+    <div class="nitem nav-item-univ on" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-book"></i>Texts</div>
     <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Speak</div>
     <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
     <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
@@ -2379,21 +2391,18 @@ function lerTexto(texto, velocidade) {
     ttsAtivo = false;
     atualizarBtnPlay(false);
     pararAnimacaoAudio();
-    pararKeepAlive();
     return;
   }
   if (!texto || !texto.trim()) return;
   ttsAtivo = true;
   atualizarBtnPlay(true);
   iniciarAnimacaoAudio(texto);
-  iniciarKeepAlive();
   falarEN(texto, {
-    rate: velocidade || 0.9,
+    rate: velocidade || velocidadeAtual || 1.0,
     onend: function() {
       ttsAtivo = false;
       atualizarBtnPlay(false);
       pararAnimacaoAudio();
-      pararKeepAlive();
     }
   });
 }
@@ -2609,12 +2618,12 @@ var respostasContextuais = {
 // Correções gramaticais simuladas
 var correcoesComuns = [
   {errado: " i ", correto: " I ", msg: "Remember: always capitalise I when referring to yourself!"},
-  {errado: "dont", correto: "don't", msg: "Use the apostrophe in don't"},
+  {errado: "dont", correto: "do not", msg: "Use the apostrophe in do not"},
   {errado: "doesnt", correto: "doesn't", msg: "Use the apostrophe in doesn't"},
-  {errado: "cant", correto: "can't", msg: "Use the apostrophe in can't"},
-  {errado: "wont", correto: "won't", msg: "Use the apostrophe in won't"},
-  {errado: "im ", correto: "I'm ", msg: "Use capital I and apostrophe: I'm"},
-  {errado: "ive ", correto: "I've ", msg: "Use the apostrophe in I've"}
+  {errado: "cant", correto: "cannot", msg: "Use the apostrophe in cannot"},
+  {errado: "wont", correto: "will not", msg: "Use the apostrophe in will not"},
+  {errado: "im ", correto: "I am ", msg: "Use capital I and apostrophe: I am"},
+  {errado: "ive ", correto: "I have ", msg: "Use the apostrophe in I have"}
 ];
 
 function detectarTopico(texto) {
@@ -2716,7 +2725,7 @@ function gerarResposta(texto) {
 }
 
 function lerTextoMasculino(texto) {
-  falarEN(texto, {rate: 0.88, pitch: 1.0});
+  falarEN(texto, {rate: 1.0});
 }
 function adicionarMsgCricket(texto) {
   var chat = document.getElementById('ct-chat');
@@ -4854,7 +4863,7 @@ var kaItemsPorPagina = 4;
 var kaRevelados = {};
 
 function falarPalavraKids(palavra, callback) {
-  falarEN(palavra, {rate: 0.8, pitch: 1.1, onend: callback});
+  falarEN(palavra, {rate: 1.0, onend: callback});
 }
 function iniciarKidsAudio(categoria) {
   kaCategoria = categoria;
@@ -6527,96 +6536,21 @@ var vozCarregada = false;
 var iosWorkaround = /iPhone|iPad|iPod/.test(navigator.userAgent);
 
 function carregarVozes() {
-  if (!window.speechSynthesis) return;
-  var vozes = window.speechSynthesis.getVoices();
-  if (vozes.length === 0) return;
-  
-  // Prioridade MASCULINA — o Cricket é um grilo macho!
-  var prioridadeMasc = [
-    'Daniel',       // iOS UK masculino
-    'Alex',         // macOS masculino
-    'Google UK English Male',
-    'Microsoft David',
-    'Aaron',
-    'Fred',
-    'Junior',
-    'Albert',
-    'Bruce',
-    'Ralph'
-  ];
-  
-  for (var i = 0; i < prioridadeMasc.length; i++) {
-    var nome = prioridadeMasc[i];
-    var v = vozes.find(function(v) { return v.name.indexOf(nome) >= 0; });
-    if (v) { vozEN = v; console.log('Voz masculina:', v.name); break; }
-  }
-  
-  // Fallback: voz masculina por nome
-  if (!vozEN) {
-    vozEN = vozes.find(function(v) {
-      return v.lang.startsWith('en') && (
-        v.name.toLowerCase().indexOf('male') >= 0 ||
-        v.name.toLowerCase().indexOf('man') >= 0
-      );
-    });
-  }
-  
-  // Fallback final: qualquer voz inglesa
-  if (!vozEN) {
-    vozEN = vozes.find(function(v) { return v.lang.startsWith('en'); });
-  }
-  
-  vozCarregada = !!vozEN;
-  if (vozEN) console.log('Voz carregada:', vozEN.name);
-}
-
-// Carregar vozes assim que disponíveis
-if (window.speechSynthesis) {
-  carregarVozes();
-  window.speechSynthesis.addEventListener('voiceschanged', carregarVozes);
-  // iOS precisa de múltiplas tentativas
-  setTimeout(carregarVozes, 100);
-  setTimeout(carregarVozes, 500);
-  setTimeout(carregarVozes, 1000);
+  // Deixar o sistema escolher a voz padrão
+  // Não forçar voz masculina — causava problemas no iOS
 }
 
 function falarEN(texto, opcoes) {
   if (!window.speechSynthesis || !texto) return;
   opcoes = opcoes || {};
-  
-  // Cancelar qualquer fala anterior
   window.speechSynthesis.cancel();
-  
   var utter = new SpeechSynthesisUtterance(texto);
-  utter.lang = 'en-GB';
-  utter.rate = opcoes.rate || 0.9;
-  utter.pitch = opcoes.pitch || 1.0;
-  utter.volume = 1;
-  
-  // Garantir voz carregada
-  if (!vozEN) carregarVozes();
-  if (vozEN) utter.voice = vozEN;
-  
+  utter.lang = 'en-US';
+  utter.rate = opcoes.rate !== undefined ? opcoes.rate : 1.0;
+  utter.pitch = 1.0;
+  utter.volume = 1.0;
   if (opcoes.onend) utter.onend = opcoes.onend;
-  
-  var tentar = function() {
-    try {
-      // iOS workaround: precisa de resume()
-      if (window.speechSynthesis.paused) {
-        window.speechSynthesis.resume();
-      }
-      window.speechSynthesis.speak(utter);
-    } catch(e) {
-      console.log('TTS erro:', e);
-    }
-  };
-  
-  // iOS: dar um pequeno delay
-  if (iosWorkaround) {
-    setTimeout(tentar, 50);
-  } else {
-    tentar();
-  }
+  window.speechSynthesis.speak(utter);
 }
 
 // Workaround iOS: speechSynthesis para após ~15s sem interação
@@ -7128,6 +7062,258 @@ function renderQuickQuiz() {
       }
     }
   }, 1000);
+}
+
+
+// ===== TRANSCRIÇÃO NA AUDIÇÃO =====
+var audioPlayCount = 0;
+
+function mostrarTranscricaoEN() {
+  var en = document.getElementById('transcricao-en2');
+  var pt = document.getElementById('transcricao-pt2');
+  if (en) en.style.display = 'block';
+  if (pt) pt.style.display = 'none';
+  var btn1 = document.getElementById('langEN2');
+  var btn2 = document.getElementById('langPT2');
+  if (btn1) { btn1.style.background = '#1D9E75'; btn1.style.color = '#fff'; }
+  if (btn2) { btn2.style.background = '#F1EFE8'; btn2.style.color = '#6b7280'; }
+}
+
+function mostrarTranscricaoPT() {
+  var en = document.getElementById('transcricao-en2');
+  var pt = document.getElementById('transcricao-pt2');
+  if (en) en.style.display = 'none';
+  if (pt) pt.style.display = 'block';
+  var btn1 = document.getElementById('langEN2');
+  var btn2 = document.getElementById('langPT2');
+  if (btn1) { btn1.style.background = '#F1EFE8'; btn1.style.color = '#6b7280'; }
+  if (btn2) { btn2.style.background = '#1D9E75'; btn2.style.color = '#fff'; }
+}
+
+function revelarTranscricao() {
+  var box = document.getElementById('transcricao-box-listening');
+  if (!box || !textoSelecionado) return;
+  
+  // Popular transcrição com o texto atual
+  var enEl = document.getElementById('transcricao-en2');
+  var ptEl = document.getElementById('transcricao-pt2');
+  
+  if (enEl) enEl.textContent = textoSelecionado.texto || '';
+  if (ptEl) ptEl.textContent = textoSelecionado.traducao || '(tradução não disponível)';
+  
+  box.style.display = 'block';
+  box.scrollIntoView({behavior: 'smooth', block: 'start'});
+}
+
+// Modificar abrirAudicao para resetar contadores e ocultar transcrição
+var _abrirAudicaoOriginal = abrirAudicao;
+abrirAudicao = function(t) {
+  _abrirAudicaoOriginal(t);
+  audioPlayCount = 0;
+  
+  // Ocultar transcrição
+  var box = document.getElementById('transcricao-box-listening');
+  if (box) box.style.display = 'none';
+  
+  var revelarBtn = document.getElementById('btnRevelarTranscricao');
+  if (revelarBtn) revelarBtn.style.display = 'none';
+  
+  var countEl = document.getElementById('audioPlayCount');
+  if (countEl) countEl.textContent = 'You can listen as many times as you need!';
+};
+
+// Após completar quiz — revelar transcrição
+var _renderQuizResultadoOriginal2 = renderQuizResultado;
+renderQuizResultado = function() {
+  _renderQuizResultadoOriginal2();
+  // Mostrar botão de revelar transcrição
+  var btn = document.getElementById('btnRevelarTranscricao');
+  if (btn) btn.style.display = 'flex';
+};
+
+
+// ===== BANCO DE TEXTOS LISTENING (diferentes do Reading) =====
+var listeningTextos = {
+  'A2': [
+    {
+      id:'la2-1', titulo:'At the Supermarket', tema:'shopping', icone:'🛒',
+      texto:'Good morning! Can I help you? Yes, please. I am looking for some apples. They are in aisle three, next to the oranges. Thank you! How much do they cost? They are two pounds for a bag. That is fine. I will take one bag, please. Of course! Would you like anything else? No, thank you. That is all for today.',
+      traducao:'Bom dia! Posso ajudá-lo? Sim, por favor. Estou procurando maçãs. Elas estão no corredor três, ao lado das laranjas. Obrigado! Quanto custam? Custam duas libras por saco. Está bom. Vou levar um saco, por favor. Claro! Quer mais alguma coisa? Não, obrigado. É só isso por hoje.',
+      perguntas:[
+        {pergunta:'Where are the apples?', opcoes:['Aisle one','Aisle two','Aisle three','Aisle four'], correta:2, explicacao:'The shop assistant says "They are in aisle three."'},
+        {pergunta:'How much do the apples cost?', opcoes:['One pound','Two pounds','Three pounds','Four pounds'], correta:1, explicacao:'The assistant says "They are two pounds for a bag."'},
+        {pergunta:'What does the customer buy?', opcoes:['Two bags','Nothing','One bag of apples','Oranges'], correta:2, explicacao:'The customer says "I will take one bag, please."'}
+      ]
+    },
+    {
+      id:'la2-2', titulo:'A Phone Call', tema:'daily', icone:'📱',
+      texto:'Hello? Hi, Tom! It is Sarah. Oh, hi Sarah! How are you? I am fine, thanks. Are you busy on Saturday? No, I am free. Why? I want to go to the cinema. There is a new film. That sounds great! What time? The film starts at seven o clock in the evening. Perfect! Let us meet at half past six outside the cinema. See you then!',
+      traducao:'Alô? Oi, Tom! Sou a Sarah. Ah, oi Sarah! Como vai? Estou bem, obrigada. Você está ocupado no sábado? Não, estou livre. Por quê? Quero ir ao cinema. Tem um filme novo. Parece ótimo! Que horas? O filme começa às sete da tarde. Perfeito! Nos encontramos às seis e meia na frente do cinema. Até lá!',
+      perguntas:[
+        {pergunta:'Who is calling Tom?', opcoes:['His mother','Sarah','A colleague','His friend Mike'], correta:1, explicacao:'Sarah says "It is Sarah" when Tom answers.'},
+        {pergunta:'What time does the film start?', opcoes:['Six o clock','Half past six','Seven o clock','Half past seven'], correta:2, explicacao:'Sarah says "The film starts at seven o clock."'},
+        {pergunta:'Where will they meet?', opcoes:['At Tom house','At a café','At the bus stop','Outside the cinema'], correta:3, explicacao:'Sarah says "Let us meet outside the cinema."'}
+      ]
+    },
+    {
+      id:'la2-3', titulo:'The Weather Forecast', tema:'weather', icone:'🌦️',
+      texto:'Good evening. Here is the weather forecast for tomorrow. In the morning, it will be cloudy and cold. Temperatures will be around five degrees. In the afternoon, there is a chance of rain, so please take an umbrella if you go outside. In the evening, the rain will stop and it will be dry but windy. The temperature at night will drop to two degrees. Have a good evening!',
+      traducao:'Boa noite. Aqui está a previsão do tempo para amanhã. De manhã, estará nublado e frio. As temperaturas serão em torno de cinco graus. À tarde, há chance de chuva, então leve um guarda-chuva se sair. À noite, a chuva vai parar e estará seco mas com vento. A temperatura à noite cairá para dois graus. Boa noite!',
+      perguntas:[
+        {pergunta:'What will the weather be like in the morning?', opcoes:['Sunny and warm','Cloudy and cold','Rainy and windy','Dry and clear'], correta:1, explicacao:'The forecast says "In the morning, it will be cloudy and cold."'},
+        {pergunta:'What should people take in the afternoon?', opcoes:['A coat','Sunglasses','An umbrella','A hat'], correta:2, explicacao:'The forecast says "please take an umbrella if you go outside."'},
+        {pergunta:'What will happen to the rain in the evening?', opcoes:['It will get heavier','It will stop','It will start','It will stay the same'], correta:1, explicacao:'The forecast says "In the evening, the rain will stop."'}
+      ]
+    },
+    {
+      id:'la2-4', titulo:'At the Doctor', tema:'health', icone:'🏥',
+      texto:'Good morning, Doctor. Good morning! Please sit down. What is the problem? I have a sore throat and a headache. I also feel very tired. How long have you had these symptoms? For about three days. Do you have a temperature? Yes, I think so. Let me check. Yes, you have a slight fever. I think you have a cold. I will give you some medicine. Get lots of rest and drink plenty of water. Come back if you do not feel better in a week.',
+      traducao:'Bom dia, doutor. Bom dia! Por favor, sente-se. Qual é o problema? Estou com dor de garganta e dor de cabeça. Também me sinto muito cansado. Há quanto tempo você tem esses sintomas? Há cerca de três dias. Você tem febre? Acho que sim. Deixe-me verificar. Sim, você tem uma febre leve. Acho que você tem um resfriado. Vou te dar um remédio. Descanse bastante e beba muita água. Volte se não se sentir melhor em uma semana.',
+      perguntas:[
+        {pergunta:'What symptoms does the patient have?', opcoes:['Back pain and fever','Sore throat and headache','Stomach pain','A broken arm'], correta:1, explicacao:'The patient says "I have a sore throat and a headache."'},
+        {pergunta:'How long has the patient been ill?', opcoes:['One day','Two days','Three days','One week'], correta:2, explicacao:'The patient says "For about three days."'},
+        {pergunta:'What does the doctor tell the patient to do?', opcoes:['Go to hospital','Exercise every day','Rest and drink water','Stop eating'], correta:2, explicacao:'The doctor says "Get lots of rest and drink plenty of water."'}
+      ]
+    },
+    {
+      id:'la2-5', titulo:'Booking a Hotel Room', tema:'travel', icone:'🏨',
+      texto:'Good afternoon, Central Hotel. How can I help you? Hello. I would like to book a room, please. Of course! What dates would you like? I need a room for three nights, from the fifteenth to the eighteenth of March. And would you like a single or double room? A double room, please. We have a double room available at eighty pounds per night. That includes breakfast. Perfect, I will take it. Can I have your name please? Yes, my name is James Wilson. Thank you, Mr Wilson. Your booking is confirmed.',
+      traducao:'Boa tarde, Hotel Central. Como posso ajudá-lo? Olá. Gostaria de reservar um quarto, por favor. Claro! Quais datas você gostaria? Preciso de um quarto por três noites, do décimo quinto ao décimo oitavo de março. E você gostaria de um quarto individual ou duplo? Um quarto duplo, por favor. Temos um quarto duplo disponível por oitenta libras por noite. Isso inclui café da manhã. Perfeito, vou ficar com ele. Pode me dar seu nome? Sim, meu nome é James Wilson. Obrigado, Sr. Wilson. Sua reserva está confirmada.',
+      perguntas:[
+        {pergunta:'How many nights does the guest want to stay?', opcoes:['One night','Two nights','Three nights','Four nights'], correta:2, explicacao:'The guest says "I need a room for three nights."'},
+        {pergunta:'What type of room does the guest want?', opcoes:['Single room','Double room','Suite','Family room'], correta:1, explicacao:'The guest asks for "a double room."'},
+        {pergunta:'What is included in the price?', opcoes:['Dinner','Lunch','Breakfast','All meals'], correta:2, explicacao:'The receptionist says "That includes breakfast."'}
+      ]
+    }
+  ],
+  'B1': [
+    {
+      id:'lb1-1', titulo:'Job Interview', tema:'work', icone:'💼',
+      texto:'Good morning, please come in and take a seat. Thank you. I am a little nervous, I must admit. That is perfectly natural! So, tell me about yourself and why you want this position. Well, I have been working in marketing for five years. I really enjoy working with people and I am passionate about digital media. I believe I can bring fresh ideas to your team. That sounds great. What do you consider your biggest weakness? I sometimes take on too much work because I like everything to be perfect. But I have been learning to delegate tasks more effectively.',
+      traducao:'Bom dia, entre e sente-se. Obrigado. Estou um pouco nervoso, devo admitir. É perfeitamente natural! Então, fale sobre você e por que quer esta vaga. Bem, trabalho em marketing há cinco anos. Gosto muito de trabalhar com pessoas e sou apaixonado por mídia digital. Acredito que posso trazer ideias novas para sua equipe. Ótimo. O que você considera sua maior fraqueza? Às vezes assumo muito trabalho porque gosto que tudo seja perfeito. Mas tenho aprendido a delegar tarefas com mais eficácia.',
+      perguntas:[
+        {pergunta:'How long has the candidate been working in marketing?', opcoes:['Two years','Three years','Four years','Five years'], correta:3, explicacao:'The candidate says "I have been working in marketing for five years."'},
+        {pergunta:'What does the candidate say they are passionate about?', opcoes:['Sales','Digital media','Finance','Customer service'], correta:1, explicacao:'The candidate says "I am passionate about digital media."'},
+        {pergunta:'What is the candidate biggest weakness?', opcoes:['Being lazy','Taking on too much work','Poor communication','Being late'], correta:1, explicacao:'The candidate says "I sometimes take on too much work because I like everything to be perfect."'}
+      ]
+    },
+    {
+      id:'lb1-2', titulo:'A Radio Interview', tema:'culture', icone:'📻',
+      texto:'Welcome back to Morning Talk. I am here with Dr Emma Clarke, who has written a fascinating new book about happiness. Dr Clarke, what is the most important factor in human happiness? That is a great question. Research consistently shows that relationships are the key to happiness, not money or success. People with strong social connections tend to live longer and report higher levels of wellbeing. So what can people do to improve their happiness? The simplest things often make the biggest difference — spending time with family and friends, being kind to others, and finding meaning in everyday activities.',
+      traducao:'Bem-vindo de volta ao Morning Talk. Estou aqui com a Dra. Emma Clarke, que escreveu um novo livro fascinante sobre felicidade. Dra. Clarke, qual é o fator mais importante para a felicidade humana? Ótima pergunta. As pesquisas mostram consistentemente que os relacionamentos são a chave para a felicidade, não o dinheiro ou o sucesso. Pessoas com conexões sociais fortes tendem a viver mais e relatam níveis mais altos de bem-estar. O que as pessoas podem fazer para melhorar sua felicidade? As coisas mais simples costumam fazer a maior diferença — passar tempo com família e amigos, ser gentil com os outros e encontrar significado nas atividades cotidianas.',
+      perguntas:[
+        {pergunta:'According to Dr Clarke, what is the key to happiness?', opcoes:['Money','Success','Relationships','Health'], correta:2, explicacao:'Dr Clarke says "relationships are the key to happiness, not money or success."'},
+        {pergunta:'What do people with strong social connections tend to do?', opcoes:['Earn more money','Live longer','Work harder','Travel more'], correta:1, explicacao:'Dr Clarke says "People with strong social connections tend to live longer."'},
+        {pergunta:'Which of these is NOT mentioned as improving happiness?', opcoes:['Spending time with family','Being kind to others','Finding meaning in activities','Earning a promotion'], correta:3, explicacao:'Earning a promotion is not mentioned. The text focuses on relationships and simple everyday activities.'}
+      ]
+    },
+    {
+      id:'lb1-3', titulo:'Travel Announcement', tema:'travel', icone:'✈️',
+      texto:'Good afternoon, ladies and gentlemen. This is an announcement for passengers travelling on flight BA two forty seven to New York. We regret to inform you that this flight has been delayed by approximately two hours due to a technical issue with the aircraft. We sincerely apologise for any inconvenience this may cause. Passengers are invited to remain in the departure lounge. Refreshments will be provided at gate twelve. Our ground staff will be available to assist you with any questions. We will make a further announcement at four thirty. Thank you for your patience.',
+      traducao:'Boa tarde, senhoras e senhores. Este é um anúncio para passageiros viajando no voo BA 247 para Nova York. Lamentamos informar que este voo foi atrasado por aproximadamente duas horas devido a um problema técnico com a aeronave. Pedimos sinceras desculpas por qualquer inconveniente que isso possa causar. Os passageiros são convidados a permanecer na sala de embarque. Será fornecido um lanche no portão doze. Nossa equipe em terra estará disponível para ajudá-los com quaisquer dúvidas. Faremos um novo anúncio às quatro e meia. Obrigado pela sua paciência.',
+      perguntas:[
+        {pergunta:'Why is the flight delayed?', opcoes:['Bad weather','A technical issue','Staff shortage','Air traffic control'], correta:1, explicacao:'The announcement says "due to a technical issue with the aircraft."'},
+        {pergunta:'Where should passengers go?', opcoes:['To the check-in desk','Back to the terminal','To gate twelve','To the car park'], correta:2, explicacao:'The announcement says "Passengers are invited to remain in the departure lounge" and refreshments at gate twelve.'},
+        {pergunta:'When will the next announcement be made?', opcoes:['At three o clock','At three thirty','At four o clock','At four thirty'], correta:3, explicacao:'The announcement says "We will make a further announcement at four thirty."'}
+      ]
+    },
+    {
+      id:'lb1-4', titulo:'Podcast: City Life', tema:'society', icone:'🏙️',
+      texto:'Today on Urban Voices, we are discussing whether city life is actually better than living in the countryside. Our guest, journalist Maria Santos, recently moved from London to a small village in Wales. Maria, what made you decide to leave the city? Honestly, it was the pace of life. I felt constantly rushed and stressed in London. The traffic, the noise, the crowds — it all became too much. And how is village life treating you? Wonderfully, actually. I sleep better, I eat better, and I have time to think. The community here is incredibly supportive. I do miss the cultural events and restaurants, but overall the quality of life is much higher here.',
+      traducao:'Hoje no Urban Voices, estamos discutindo se a vida na cidade é realmente melhor do que viver no campo. Nossa convidada, a jornalista Maria Santos, se mudou recentemente de Londres para uma pequena aldeia no País de Gales. Maria, o que fez você decidir deixar a cidade? Honestamente, foi o ritmo de vida. Eu me sentia constantemente apressada e estressada em Londres. O trânsito, o barulho, as multidões — tudo ficou demais. E como a vida na aldeia está te tratando? Maravilhosamente, na verdade. Durmo melhor, como melhor e tenho tempo para pensar. A comunidade aqui é incrivelmente solidária. Sinto falta dos eventos culturais e restaurantes, mas no geral a qualidade de vida aqui é muito maior.',
+      perguntas:[
+        {pergunta:'Where did Maria move from?', opcoes:['Manchester','Birmingham','London','Bristol'], correta:2, explicacao:'The podcast says she "moved from London to a small village in Wales."'},
+        {pergunta:'What was the main reason Maria left the city?', opcoes:['Work opportunity','The pace of life','Family reasons','Health problems'], correta:1, explicacao:'Maria says "it was the pace of life" that made her leave.'},
+        {pergunta:'What does Maria say she misses about city life?', opcoes:['The traffic','Cultural events and restaurants','The noise','Her colleagues'], correta:1, explicacao:'Maria says "I do miss the cultural events and restaurants."'}
+      ]
+    },
+    {
+      id:'lb1-5', titulo:'A Documentary Clip', tema:'environment', icone:'🌿',
+      texto:'Every year, millions of tonnes of plastic waste end up in our oceans. This pollution is devastating marine ecosystems and entering the food chain. Scientists estimate that by twenty fifty, there could be more plastic in the ocean than fish. However, there is reason for hope. Around the world, communities are taking action. Volunteers organise beach clean-ups, governments are banning single-use plastics, and innovative companies are developing new materials that naturally break down. The challenge is enormous, but the solutions are there. What is needed now is global cooperation and individual commitment to change.',
+      traducao:'Todos os anos, milhões de toneladas de lixo plástico vão parar nos nossos oceanos. Esta poluição está devastando os ecossistemas marinhos e entrando na cadeia alimentar. Os cientistas estimam que até 2050, pode haver mais plástico no oceano do que peixes. No entanto, há razão para esperança. Em todo o mundo, comunidades estão agindo. Voluntários organizam limpezas de praia, governos estão proibindo plásticos de uso único e empresas inovadoras estão desenvolvendo novos materiais que se decompõem naturalmente. O desafio é enorme, mas as soluções estão lá. O que é necessário agora é cooperação global e compromisso individual com a mudança.',
+      perguntas:[
+        {pergunta:'According to scientists, what could happen by 2050?', opcoes:['Oceans will be clean','More plastic than fish in oceans','All plastic will be recycled','Fish will disappear'], correta:1, explicacao:'Scientists estimate "by twenty fifty, there could be more plastic in the ocean than fish."'},
+        {pergunta:'What are governments doing to help?', opcoes:['Building more factories','Banning single-use plastics','Increasing fishing','Closing beaches'], correta:1, explicacao:'The text says "governments are banning single-use plastics."'},
+        {pergunta:'What does the speaker say is needed most?', opcoes:['More money','New technology','Global cooperation and individual commitment','More scientists'], correta:2, explicacao:'The speaker says "What is needed now is global cooperation and individual commitment to change."'}
+      ]
+    }
+  ]
+};
+
+// Adicionar B2, C1, C2 usando os textos de B1 como fallback por enquanto
+listeningTextos['B2'] = listeningTextos['B1'];
+listeningTextos['C1'] = listeningTextos['B1'];
+listeningTextos['C2'] = listeningTextos['B1'];
+listeningTextos['A1'] = listeningTextos['A2'];
+
+// Estado do listening
+var listeningAtual = null;
+var listeningNivel = 'B1';
+
+function abrirListening(nivel) {
+  listeningNivel = nivel || nivelAtual || 'B1';
+  var textos = listeningTextos[listeningNivel] || listeningTextos['B1'];
+  var idx = Math.floor(Math.random() * textos.length);
+  listeningAtual = textos[idx];
+  
+  // Atualizar UI
+  var titulo = document.getElementById('atitulo');
+  var audioTitulo = document.getElementById('audio-titulo');
+  var badge = document.getElementById('abadge');
+  
+  if (titulo) titulo.textContent = 'Listening — ' + listeningNivel;
+  if (audioTitulo) audioTitulo.textContent = listeningAtual.titulo;
+  if (badge) badge.textContent = listeningAtual.icone + ' ' + listeningAtual.tema;
+  
+  // Reset
+  var box = document.getElementById('transcricao-box-listening');
+  if (box) box.style.display = 'none';
+  var revelBtn = document.getElementById('btnRevelarTranscricao');
+  if (revelBtn) revelBtn.style.display = 'none';
+  
+  // Para qualquer áudio anterior
+  window.speechSynthesis && window.speechSynthesis.cancel();
+  ttsAtivo = false;
+  atualizarBtnPlay && atualizarBtnPlay(false);
+  
+  ir('audicao');
+}
+
+// Conectar btnPlay da audição ao listening
+function setupListeningPlayer() {
+  var btnPlay = document.getElementById('btnPlay');
+  if (!btnPlay) return;
+  
+  btnPlay.onclick = function() {
+    if (!listeningAtual) return;
+    lerTexto(listeningAtual.texto, velocidadeAtual);
+  };
+  
+  // Exercícios do listening
+  var btnExAudio = document.getElementById('btnExerciciosAudio');
+  if (btnExAudio) {
+    btnExAudio.onclick = function() {
+      if (!listeningAtual) return;
+      // Usar as perguntas do listening
+      quizAtual = listeningAtual.perguntas;
+      quizIndex = 0;
+      quizAcertos = 0;
+      ir('quiz');
+      renderQuizPergunta();
+    };
+  }
+  
+  // Revelar transcrição
+  var btnRev = document.getElementById('btnRevelarTranscricao');
+  if (btnRev) btnRev.onclick = function() {
+    if (!listeningAtual) return;
+    var box = document.getElementById('transcricao-box-listening');
+    var en = document.getElementById('transcricao-en2');
+    var pt = document.getElementById('transcricao-pt2');
+    if (en) en.textContent = listeningAtual.texto;
+    if (pt) pt.textContent = listeningAtual.traducao;
+    if (box) { box.style.display = 'block'; box.scrollIntoView({behavior:'smooth'}); }
+  };
 }
 
 var nomeUsuario = '';
@@ -7706,6 +7892,7 @@ window.onload = function() {
     btn.onclick = function() {
       document.querySelectorAll('.speed-btn').forEach(function(b) { b.classList.remove('on'); });
       this.classList.add('on');
+      velocidadeAtual = parseFloat(this.getAttribute('data-speed'));
     };
   });
 
@@ -7749,20 +7936,7 @@ window.onload = function() {
   // Conectar skill cards
   document.getElementById('btnLeitura').onclick = function() { ir('leitura'); };
   document.querySelectorAll('.skcard').forEach(function(card, i) {
-    if (i === 1) card.onclick = function() { 
-      if (textoSelecionado) { 
-        abrirAudicao(textoSelecionado); 
-      } else { 
-        irBanco(); 
-        setTimeout(function() {
-          var aviso = document.createElement('div');
-          aviso.style.cssText = 'position:fixed;top:80px;left:50%;transform:translateX(-50%);background:#1a1a2e;color:#9FE1CB;padding:10px 20px;border-radius:20px;font-size:13px;font-weight:700;z-index:999;';
-          aviso.textContent = '📖 Select a text to listen to it!';
-          document.body.appendChild(aviso);
-          setTimeout(function(){aviso.remove();},2500);
-        }, 300);
-      }
-    };
+    if (i === 1) card.onclick = function() { abrirListening(nivelAtual); };
     if (i === 2) card.onclick = function() { ir('escrita'); };
     if (i === 3) card.onclick = function() { ir('conversacao'); };
   });
@@ -8208,6 +8382,11 @@ window.onload = function() {
     if (kqqTimer) clearInterval(kqqTimer);
     ir('kids-games');
   };
+
+  var btnRevelar = document.getElementById('btnRevelarTranscricao');
+  if (btnRevelar) btnRevelar.onclick = function() { revelarTranscricao(); };
+
+  setupListeningPlayer();
 
   console.log('Talking Cricket v20260621193446 carregado!');
 };
