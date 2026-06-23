@@ -1437,6 +1437,9 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
       <button class="audio-acao quiz" id="btnExerciciosAudio">
         <i class="ti ti-help" style="font-size:15px"></i> Do the exercises
       </button>
+      <button class="audio-acao repeat" id="btnProximoAudio" onclick="proximoListening()">
+        <i class="ti ti-player-skip-forward" style="font-size:15px"></i> Next audio
+      </button>
       <button class="audio-acao repeat" id="btnRevelarTranscricao" style="display:none;">
         <i class="ti ti-eye" style="font-size:15px"></i> Reveal transcript
       </button>
@@ -7250,32 +7253,34 @@ listeningTextos['A1'] = listeningTextos['A2'];
 var listeningAtual = null;
 var listeningNivel = 'B1';
 
+function proximoListening() {
+  abrirListening(listeningNivel);
+}
+
 function abrirListening(nivel) {
   listeningNivel = nivel || nivelAtual || 'B1';
   var textos = listeningTextos[listeningNivel] || listeningTextos['B1'];
   var idx = Math.floor(Math.random() * textos.length);
   listeningAtual = textos[idx];
   
-  // Atualizar UI
   var titulo = document.getElementById('atitulo');
   var audioTitulo = document.getElementById('audio-titulo');
   var badge = document.getElementById('abadge');
-  
   if (titulo) titulo.textContent = 'Listening — ' + listeningNivel;
   if (audioTitulo) audioTitulo.textContent = listeningAtual.titulo;
   if (badge) badge.textContent = listeningAtual.icone + ' ' + listeningAtual.tema;
   
-  // Reset
   var box = document.getElementById('transcricao-box-listening');
   if (box) box.style.display = 'none';
   var revelBtn = document.getElementById('btnRevelarTranscricao');
   if (revelBtn) revelBtn.style.display = 'none';
   
-  // Para qualquer áudio anterior
   window.speechSynthesis && window.speechSynthesis.cancel();
   ttsAtivo = false;
-  atualizarBtnPlay && atualizarBtnPlay(false);
+  if (atualizarBtnPlay) atualizarBtnPlay(false);
   
+  // Configurar player para o listening
+  setupListeningPlayer();
   ir('audicao');
 }
 
@@ -8385,8 +8390,6 @@ window.onload = function() {
 
   var btnRevelar = document.getElementById('btnRevelarTranscricao');
   if (btnRevelar) btnRevelar.onclick = function() { revelarTranscricao(); };
-
-  setupListeningPlayer();
 
   console.log('Talking Cricket v20260621193446 carregado!');
 };
