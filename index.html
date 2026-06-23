@@ -1697,7 +1697,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
       <div class="ct-topico-badge">B1</div>
       <div class="ct-topico-texto">Tópico: Daily Routine & Lifestyle</div>
     </div>
-    <div class="ct-sugestoes">
+    <div class="ct-sugestoes" id="ct-sugestoes">
       <div class="ct-sug" id="sug1">What do you do every day?</div>
       <div class="ct-sug" id="sug2">Tell me about your hobbies</div>
       <div class="ct-sug" id="sug3">Describe your home</div>
@@ -7692,13 +7692,13 @@ window.onload = function() {
   }
 
   // SPLASH
-  document.getElementById('btnCriar').onclick = function() { ir('cadastro'); };
-  document.getElementById('btnLogin').onclick = function() { ir('codigo'); };
+  var _el_btnCriar = document.getElementById('btnCriar'); if(_el_btnCriar) _el_btnCriar.onclick = function() { ir('cadastro'); };
+  var _el_btnLogin = document.getElementById('btnLogin'); if(_el_btnLogin) _el_btnLogin.onclick = function() { ir('codigo'); };
 
   // CADASTRO
-  document.getElementById('btnVoltarCadastro').onclick = function() { ir('splash'); };
-  document.getElementById('btnVoltarInicio1').onclick = function() { ir('splash'); };
-  document.getElementById('btnEnviarCodigo').onclick = function() {
+  var _el_btnVoltarCadastro = document.getElementById('btnVoltarCadastro'); if(_el_btnVoltarCadastro) _el_btnVoltarCadastro.onclick = function() { ir('splash'); };
+  var _el_btnVoltarInicio1 = document.getElementById('btnVoltarInicio1'); if(_el_btnVoltarInicio1) _el_btnVoltarInicio1.onclick = function() { ir('splash'); };
+  var _el_btnEnviarCodigo = document.getElementById('btnEnviarCodigo'); if(_el_btnEnviarCodigo) _el_btnEnviarCodigo.onclick = function() {
     var n = document.getElementById('inp-nome').value.trim();
     var i = document.getElementById('inp-idade').value.trim();
     var c = document.getElementById('inp-contato').value.trim();
@@ -7711,10 +7711,10 @@ window.onload = function() {
   };
 
   // CÓDIGO
-  document.getElementById('btnVoltarCodigo').onclick = function() { ir('cadastro'); };
-  document.getElementById('btnVoltarInicio2').onclick = function() { ir('splash'); };
-  document.getElementById('btnReenviar').onclick = function() { alert('Use o código: 7429'); };
-  document.getElementById('btnConfirmar').onclick = function() {
+  var _el_btnVoltarCodigo = document.getElementById('btnVoltarCodigo'); if(_el_btnVoltarCodigo) _el_btnVoltarCodigo.onclick = function() { ir('cadastro'); };
+  var _el_btnVoltarInicio2 = document.getElementById('btnVoltarInicio2'); if(_el_btnVoltarInicio2) _el_btnVoltarInicio2.onclick = function() { ir('splash'); };
+  var _el_btnReenviar = document.getElementById('btnReenviar'); if(_el_btnReenviar) _el_btnReenviar.onclick = function() { alert('Use o código: 7429'); };
+  var _el_btnConfirmar = document.getElementById('btnConfirmar'); if(_el_btnConfirmar) _el_btnConfirmar.onclick = function() {
     var cod = '';
     for (var i = 0; i < 4; i++) { var d = document.getElementById('d' + i); if (d) cod += d.value; }
     if (cod.length < 4) { alert('Digite os 4 dígitos. Use: 7429'); return; }
@@ -7735,32 +7735,32 @@ window.onload = function() {
   };
 
   // MODO
-  document.getElementById('btnCambridge').onclick = function() { 
+  var _el_btnCambridge = document.getElementById('btnCambridge'); if(_el_btnCambridge) _el_btnCambridge.onclick = function() { 
     voltarHome();
     setTimeout(processarDeepLink, 800);
   };
-  document.getElementById('btnKids').onclick = function() { ir('home-kids'); };
+  var _el_btnKids = document.getElementById('btnKids'); if(_el_btnKids) _el_btnKids.onclick = function() { ir('home-kids'); };
 
   // HOME CAMBRIDGE
-  document.getElementById('btnTrocarModo').onclick = function() { ir('modo'); };
-  document.getElementById('lvpill').onclick = function() { document.getElementById('nivel-sheet').classList.add('show'); };
-  document.getElementById('btnLeitura').onclick = function() { ir('leitura'); };
-  document.getElementById('btnAulaHoje').onclick = function() { ir('leitura'); };
+  var _el_btnTrocarModo = document.getElementById('btnTrocarModo'); if(_el_btnTrocarModo) _el_btnTrocarModo.onclick = function() { ir('modo'); };
+  var _el_lvpill = document.getElementById('lvpill'); if(_el_lvpill) _el_lvpill.onclick = function() { document.getElementById('nivel-sheet').classList.add('show'); };
+  var _el_btnLeitura = document.getElementById('btnLeitura'); if(_el_btnLeitura) _el_btnLeitura.onclick = function() { ir('leitura'); };
+  var _el_btnAulaHoje = document.getElementById('btnAulaHoje'); if(_el_btnAulaHoje) _el_btnAulaHoje.onclick = function() { ir('leitura'); };
 
   // HOME KIDS
-  document.getElementById('btnTrocarModoKids').onclick = function() { ir('modo'); };
-  document.getElementById('btnJogar').onclick = function() { alert('Jogos em breve!'); };
-  document.getElementById('knavHome').onclick = function() { ir('home-kids'); };
+  var _el_btnTrocarModoKids = document.getElementById('btnTrocarModoKids'); if(_el_btnTrocarModoKids) _el_btnTrocarModoKids.onclick = function() { ir('modo'); };
+  var _el_btnJogar = document.getElementById('btnJogar'); if(_el_btnJogar) _el_btnJogar.onclick = function() { alert('Jogos em breve!'); };
+  var _el_knavHome = document.getElementById('knavHome'); if(_el_knavHome) _el_knavHome.onclick = function() { ir('home-kids'); };
 
   // LEITURA
-  document.getElementById('btnVoltarLeitura').onclick = function() { voltarHome(); };
-  document.getElementById('toggleTrad').onclick = function() {
+  var _el_btnVoltarLeitura = document.getElementById('btnVoltarLeitura'); if(_el_btnVoltarLeitura) _el_btnVoltarLeitura.onclick = function() { voltarHome(); };
+  var _el_toggleTrad = document.getElementById('toggleTrad'); if(_el_toggleTrad) _el_toggleTrad.onclick = function() {
     tradAtiva = !tradAtiva;
     this.classList.toggle('on', tradAtiva);
     document.getElementById('texto-pt').style.display = tradAtiva ? 'block' : 'none';
   };
-  document.getElementById('btnExercicios').onclick = function() { alert('Quiz em breve!'); };
-  document.getElementById('btnAudio').onclick = function() { alert('Áudio em breve!'); };
+  var _el_btnExercicios = document.getElementById('btnExercicios'); if(_el_btnExercicios) _el_btnExercicios.onclick = function() { alert('Quiz em breve!'); };
+  var _el_btnAudio = document.getElementById('btnAudio'); if(_el_btnAudio) _el_btnAudio.onclick = function() { alert('Áudio em breve!'); };
 
   // Palavras clicáveis no texto
   document.querySelectorAll('.w').forEach(function(btn) {
@@ -7771,21 +7771,21 @@ window.onload = function() {
   });
 
   // POPUP
-  document.getElementById('btnFecharPopup').onclick = function() { document.getElementById('popup').classList.remove('show'); };
-  document.getElementById('popup').onclick = function(e) { if (e.target === this) this.classList.remove('show'); };
+  var _el_btnFecharPopup = document.getElementById('btnFecharPopup'); if(_el_btnFecharPopup) _el_btnFecharPopup.onclick = function() { document.getElementById('popup').classList.remove('show'); };
+  var _el_popup = document.getElementById('popup'); if(_el_popup) _el_popup.onclick = function(e) { if (e.target === this) this.classList.remove('show'); };
 
   // SELETOR DE NÍVEL
-  document.getElementById('nivel-sheet').onclick = function(e) { if (e.target === this) this.classList.remove('show'); };
+  var _el_nivel_sheet = document.getElementById('nivel-sheet'); if(_el_nivel_sheet) _el_nivel_sheet.onclick = function(e) { if (e.target === this) this.classList.remove('show'); };
   document.querySelectorAll('.nivel-item').forEach(function(item) {
     item.onclick = function() { mudarNivel(this.getAttribute('data-sigla'), this.getAttribute('data-nome')); };
   });
 
   // PERFIL
-  document.getElementById('btnVoltarPerfil').onclick = function() { voltarHome(); };
-  document.getElementById('pnavHome').onclick = function() { voltarHome(); };
-  document.getElementById('btnPerfilModo').onclick = function() { ir('modo'); };
-  document.getElementById('btnPerfilPlano').onclick = function() { alert('Plano de estudos em breve!'); };
-  document.getElementById('btnPerfilNotif').onclick = function() { solicitarNotificacoes(); };
+  var _el_btnVoltarPerfil = document.getElementById('btnVoltarPerfil'); if(_el_btnVoltarPerfil) _el_btnVoltarPerfil.onclick = function() { voltarHome(); };
+  var _el_pnavHome = document.getElementById('pnavHome'); if(_el_pnavHome) _el_pnavHome.onclick = function() { voltarHome(); };
+  var _el_btnPerfilModo = document.getElementById('btnPerfilModo'); if(_el_btnPerfilModo) _el_btnPerfilModo.onclick = function() { ir('modo'); };
+  var _el_btnPerfilPlano = document.getElementById('btnPerfilPlano'); if(_el_btnPerfilPlano) _el_btnPerfilPlano.onclick = function() { alert('Plano de estudos em breve!'); };
+  var _el_btnPerfilNotif = document.getElementById('btnPerfilNotif'); if(_el_btnPerfilNotif) _el_btnPerfilNotif.onclick = function() { solicitarNotificacoes(); };
   // Mostrar botão gestor (toque 5x no avatar)
   var tapCount = 0;
   var pavatar = document.getElementById('pavatar');
@@ -7799,7 +7799,7 @@ window.onload = function() {
   };
   var btnGestor = document.getElementById('btnPainelGestor');
   if (btnGestor) btnGestor.onclick = function() { abrirPainelGestor(); };
-  document.getElementById('btnSair').onclick = function() { if (confirm('Deseja sair?')) { ir('splash'); } };
+  var _el_btnSair = document.getElementById('btnSair'); if(_el_btnSair) _el_btnSair.onclick = function() { if (confirm('Deseja sair?')) { ir('splash'); } };
 
   // DÍGITOS DO CÓDIGO
   (function() {
@@ -7827,7 +7827,7 @@ window.onload = function() {
 
 
   // BANCO DE TEXTOS
-  document.getElementById('btnVoltarBanco').onclick = function() { voltarHome(); };
+  var _el_btnVoltarBanco = document.getElementById('btnVoltarBanco'); if(_el_btnVoltarBanco) _el_btnVoltarBanco.onclick = function() { voltarHome(); };
   document.querySelectorAll('.nivel-tab').forEach(function(tab) {
     tab.onclick = function() {
       nivelBanco = this.getAttribute('data-nivel');
@@ -7843,23 +7843,13 @@ window.onload = function() {
   // QUIZ
 
   // AUDIÇÃO
-  document.getElementById('btnVoltarAudicao').onclick = function() {
+  var _el_btnVoltarAudicao = document.getElementById('btnVoltarAudicao'); if(_el_btnVoltarAudicao) _el_btnVoltarAudicao.onclick = function() {
     listeningAtual = null; // Limpar listening ao sair
     pararTodoAudio();
     ir('banco');
   };
-  document.getElementById('langEN').onclick = function() {
-    this.classList.add('on');
-    document.getElementById('langPT').classList.remove('on');
-    document.getElementById('transcricao-en').style.display = 'block';
-    document.getElementById('transcricao-pt').style.display = 'none';
-  };
-  document.getElementById('langPT').onclick = function() {
-    this.classList.add('on');
-    document.getElementById('langEN').classList.remove('on');
-    document.getElementById('transcricao-en').style.display = 'none';
-    document.getElementById('transcricao-pt').style.display = 'block';
-  };
+  // langEN tratado inline
+  // langPT tratado inline
   document.querySelectorAll('.speed-btn').forEach(function(btn) {
     btn.onclick = function() {
       document.querySelectorAll('.speed-btn').forEach(function(b) { b.classList.remove('on'); });
@@ -7869,14 +7859,14 @@ window.onload = function() {
   });
 
   // ESCRITA
-  document.getElementById('btnVoltarEscrita').onclick = function() { voltarHome(); };
+  var _el_btnVoltarEscrita = document.getElementById('btnVoltarEscrita'); if(_el_btnVoltarEscrita) _el_btnVoltarEscrita.onclick = function() { voltarHome(); };
   document.getElementById('escritaInput').oninput = function() {
     var n = contarPalavras(this.value);
     var el = document.getElementById('escritaCount');
     el.textContent = n + ' palavras';
     el.className = 'ecount ' + (n >= 80 ? 'ok' : n >= 60 ? 'warn' : 'short');
   };
-  document.getElementById('btnEnviarEscrita').onclick = function() {
+  var _el_btnEnviarEscrita = document.getElementById('btnEnviarEscrita'); if(_el_btnEnviarEscrita) _el_btnEnviarEscrita.onclick = function() {
     var texto = document.getElementById('escritaInput').value.trim();
     if (contarPalavras(texto) < 10) { alert('Escreva pelo menos algumas frases antes de enviar!'); return; }
     avaliarEscrita(texto);
@@ -7906,7 +7896,7 @@ window.onload = function() {
   // Conectar botões da home com novas telas
 
   // Conectar skill cards
-  document.getElementById('btnLeitura').onclick = function() { ir('leitura'); };
+  var _el_btnLeitura = document.getElementById('btnLeitura'); if(_el_btnLeitura) _el_btnLeitura.onclick = function() { ir('leitura'); };
   document.querySelectorAll('.skcard').forEach(function(card, i) {
     if (i === 1) card.onclick = function() { abrirListening(nivelAtual); };
     if (i === 2) card.onclick = function() { ir('escrita'); };
@@ -7914,10 +7904,10 @@ window.onload = function() {
   });
 
   // Conectar botão Quiz na leitura
-  document.getElementById('btnExercicios').onclick = function() { iniciarQuiz(textoSelecionado ? textoSelecionado.id : 'b1-1'); };
+  var _el_btnExercicios = document.getElementById('btnExercicios'); if(_el_btnExercicios) _el_btnExercicios.onclick = function() { iniciarQuiz(textoSelecionado ? textoSelecionado.id : 'b1-1'); };
 
   // Conectar botão Audio na leitura
-  document.getElementById('btnAudio').onclick = function() { abrirAudicaoDoTexto(); };
+  var _el_btnAudio = document.getElementById('btnAudio'); if(_el_btnAudio) _el_btnAudio.onclick = function() { abrirAudicaoDoTexto(); };
 
 
   // CORRIGIR NAV DO PERFIL
@@ -7926,7 +7916,7 @@ window.onload = function() {
   var pnavP = document.getElementById('pnavProgresso'); if(pnavP) pnavP.onclick = function() { playSound('clique'); ir('progresso'); };
 
   // TREINO AUDITIVO
-  document.getElementById('btnVoltarTreino').onclick = function() { voltarHome(); };
+  var _el_btnVoltarTreino = document.getElementById('btnVoltarTreino'); if(_el_btnVoltarTreino) _el_btnVoltarTreino.onclick = function() { voltarHome(); };
   document.querySelectorAll('.ta-tab').forEach(function(tab) {
     tab.onclick = function() {
       document.querySelectorAll('.ta-tab').forEach(function(t) { t.classList.remove('on'); });
@@ -7937,14 +7927,14 @@ window.onload = function() {
   renderTreinoLista('B1');
 
   // EXERCÍCIO DE ÁUDIO
-  document.getElementById('btnVoltarExAudio').onclick = function() { ir('treino-audio'); };
-  document.getElementById('eaPlayBtn').onclick = function() {
+  var _el_btnVoltarExAudio = document.getElementById('btnVoltarExAudio'); if(_el_btnVoltarExAudio) _el_btnVoltarExAudio.onclick = function() { ir('treino-audio'); };
+  var _el_eaPlayBtn = document.getElementById('eaPlayBtn'); if(_el_eaPlayBtn) _el_eaPlayBtn.onclick = function() {
     if (exercicioAtual) {
       if (ttsAtivo) { window.speechSynthesis.cancel(); ttsAtivo = false; atualizarBtnPlay(false); }
       else { lerTexto(exercicioAtual.audio, velocidadeAtual); }
     } else { alert('Selecione um exercício primeiro.'); }
   };
-  document.getElementById('eaRevealBtn').onclick = function() {
+  var _el_eaRevealBtn = document.getElementById('eaRevealBtn'); if(_el_eaRevealBtn) _el_eaRevealBtn.onclick = function() {
     var transc = document.getElementById('ea-transcricao');
     if (transc) {
       transc.classList.toggle('show');
@@ -7960,7 +7950,7 @@ window.onload = function() {
   });
 
   // BOTÃO PLAY NA TELA DE AUDIÇÃO (texto)
-  document.getElementById('btnPlay').onclick = function() {
+  var _el_btnPlay = document.getElementById('btnPlay'); if(_el_btnPlay) _el_btnPlay.onclick = function() {
     // Listening tem prioridade se estiver ativo
     if (listeningAtual) {
       lerTexto(listeningAtual.texto, velocidadeAtual);
@@ -7973,7 +7963,7 @@ window.onload = function() {
   };
 
   // CONVERSAÇÃO
-  document.getElementById('btnVoltarConv').onclick = function() {
+  var _el_btnVoltarConv = document.getElementById('btnVoltarConv'); if(_el_btnVoltarConv) _el_btnVoltarConv.onclick = function() {
     // Parar qualquer áudio tocando
     try { window.speechSynthesis.cancel(); } catch(e) {}
     ttsAtivo = false;
@@ -7981,7 +7971,7 @@ window.onload = function() {
     if (reconhecimento) { try { reconhecimento.stop(); } catch(e) {} reconhecimento = null; }
     voltarHome();
   };
-  document.getElementById('ctSend').onclick = function() {
+  var _el_ctSend = document.getElementById('ctSend'); if(_el_ctSend) _el_ctSend.onclick = function() {
     var input = document.getElementById('ctInput');
     if (input && input.value.trim()) {
       // Parar microfone se estiver ativo
@@ -7999,10 +7989,10 @@ window.onload = function() {
   document.getElementById('ctInput').onkeydown = function(e) {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      document.getElementById('ctSend').onclick();
+      var _el_ctSend = document.getElementById('ctSend'); if(_el_ctSend) _el_ctSend.onclick();
     }
   };
-  document.getElementById('ctMic').onclick = function() {
+  var _el_ctMic = document.getElementById('ctMic'); if(_el_ctMic) _el_ctMic.onclick = function() {
     if (micAtivo) {
       // PARAR gravação manualmente
       micAtivo = false;
@@ -8364,7 +8354,7 @@ window.onload = function() {
   var btnRevelar = document.getElementById('btnRevelarTranscricao');
   if (btnRevelar) btnRevelar.onclick = function() { revelarTranscricao(); };
 
-  console.log('Talking Cricket v20260623004939 carregado!');
+  console.log('Talking Cricket v20260623011337 carregado!');
 };
 </script>
 
