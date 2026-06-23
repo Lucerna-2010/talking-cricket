@@ -5659,11 +5659,7 @@ function processarDeepLink() {
 }
 
 // Verificar deep link quando entra na home
-var _voltarHomeOriginal = voltarHome;
-voltarHome = function() {
-  _voltarHomeOriginal();
-  processarDeepLink();
-};
+// deep link processado via processarDeepLink() diretamente
 
 
 // ===== KIDS FALAR =====
@@ -7108,31 +7104,7 @@ function revelarTranscricao() {
   box.scrollIntoView({behavior: 'smooth', block: 'start'});
 }
 
-// Modificar abrirAudicao para resetar contadores e ocultar transcrição
-var _abrirAudicaoOriginal = abrirAudicao;
-abrirAudicao = function(t) {
-  _abrirAudicaoOriginal(t);
-  audioPlayCount = 0;
-  
-  // Ocultar transcrição
-  var box = document.getElementById('transcricao-box-listening');
-  if (box) box.style.display = 'none';
-  
-  var revelarBtn = document.getElementById('btnRevelarTranscricao');
-  if (revelarBtn) revelarBtn.style.display = 'none';
-  
-  var countEl = document.getElementById('audioPlayCount');
-  if (countEl) countEl.textContent = 'You can listen as many times as you need!';
-};
-
-// Após completar quiz — revelar transcrição
-var _renderQuizResultadoOriginal2 = renderQuizResultado;
-renderQuizResultado = function() {
-  _renderQuizResultadoOriginal2();
-  // Mostrar botão de revelar transcrição
-  var btn = document.getElementById('btnRevelarTranscricao');
-  if (btn) btn.style.display = 'flex';
-};
+// Listening player gerenciado por abrirListening()
 
 
 // ===== BANCO DE TEXTOS LISTENING (diferentes do Reading) =====
