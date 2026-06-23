@@ -1880,7 +1880,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <!-- Cricket fala -->
     <div class="kfl-cricket-box">
       <div class="kfl-cricket-avatar">🦗</div>
-      <div class="kfl-cricket-texto" id="kflCricketTexto">Ouça como eu falo e depois repita!</div>
+      <div class="kfl-cricket-texto" id="kflCricketTexto">Listen and repeat with Cricket!</div>
       <button class="kfl-cricket-btn" id="kflCricketBtn">🔊 Ouvir</button>
     </div>
 
@@ -1893,6 +1893,12 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 
     <!-- Feedback -->
     <div id="kflFeedback" style="display:none;width:100%;"></div>
+
+    <!-- Navegação entre palavras -->
+    <div style="display:flex;gap:10px;width:100%;margin-top:8px;">
+      <button id="kflBtnVoltar" style="flex:1;padding:12px;border-radius:14px;border:2px solid #F48FB1;background:#fff;font-family:Nunito,Arial,sans-serif;font-size:14px;font-weight:800;cursor:pointer;color:#E91E63;">← Back</button>
+      <button id="kflBtnPular" style="flex:1;padding:12px;border-radius:14px;border:none;background:#E91E63;color:#fff;font-family:Nunito,Arial,sans-serif;font-size:14px;font-weight:800;cursor:pointer;">Skip →</button>
+    </div>
 
   </div>
 </div>
@@ -5576,11 +5582,55 @@ function avaliarRespostaKids(textoFalado) {
   var esperado = item.en.toLowerCase().trim();
   var falado = textoFalado.toLowerCase().trim();
   
-  var palavrasPrincipais = esperado.split(' ').filter(function(p) { return p.length > 2; });
-  var acertou = palavrasPrincipais.some(function(p) { return falado.indexOf(p) >= 0; });
+  // Mapa de sons similares para palavras curtas
+  var somasSimilares = {
+    'one': ['one','won','wan','un','1','once'],
+    'two': ['two','to','too','tu','2'],
+    'three': ['three','tree','3','free'],
+    'four': ['four','for','fore','4'],
+    'five': ['five','fife','5'],
+    'six': ['six','sicks','6'],
+    'seven': ['seven','7'],
+    'eight': ['eight','ate','8'],
+    'nine': ['nine','9'],
+    'ten': ['ten','then','10'],
+    'red': ['red','read','rad'],
+    'cat': ['cat','kat','cut'],
+    'dog': ['dog','dock','log'],
+    'run': ['run','ran','rung'],
+    'eat': ['eat','it','et'],
+    'big': ['big','bid'],
+    'the': ['the','da'],
+    'is': ['is','iz'],
+    'has': ['has','az'],
+    'can': ['can','ken'],
+    'see': ['see','sea','si'],
+    'fly': ['fly','fli']
+  };
   
-  if (esperado.split(' ').length === 1 && esperado.length <= 4) {
-    acertou = falado.indexOf(esperado) >= 0;
+  // Verificar com mapa de sons similares
+  var acertou = false;
+  var palavrasEsperadas = esperado.split(' ');
+  
+  palavrasEsperadas.forEach(function(palavra) {
+    var similares = somasSimilares[palavra] || [palavra];
+    similares.forEach(function(similar) {
+      if (falado.indexOf(similar) >= 0) acertou = true;
+    });
+  });
+  
+  // Verificação adicional: palavras com mais de 4 letras
+  if (!acertou) {
+    var palavrasPrincipais = palavrasEsperadas.filter(function(p) { return p.length > 4; });
+    if (palavrasPrincipais.length > 0) {
+      acertou = palavrasPrincipais.some(function(p) { return falado.indexOf(p) >= 0; });
+    }
+  }
+  
+  // Verificação fonética simples: primeiras 3 letras coincidem
+  if (!acertou && esperado.length >= 4) {
+    var inicio = esperado.slice(0,3);
+    acertou = falado.indexOf(inicio) >= 0;
   }
   
   kflTentativas++;
@@ -7836,6 +7886,24 @@ window.onload = function() {
   
   var kflMicBtn = document.getElementById('kflMicBtn');
   if (kflMicBtn) kflMicBtn.onclick = function() { toggleKidsFalarMic(); };
+  
+  var kflBtnPular = document.getElementById('kflBtnPular');
+  if (kflBtnPular) kflBtnPular.onclick = function() {
+    if (kflRec) { try { kflRec.stop(); } catch(e) {} kflRec = null; }
+    kflMicAtivo = false;
+    window.speechSynthesis && window.speechSynthesis.cancel();
+    kflIdx++;
+    renderKidsFalar();
+  };
+  
+  var kflBtnVoltar = document.getElementById('kflBtnVoltar');
+  if (kflBtnVoltar) kflBtnVoltar.onclick = function() {
+    if (kflRec) { try { kflRec.stop(); } catch(e) {} kflRec = null; }
+    kflMicAtivo = false;
+    window.speechSynthesis && window.speechSynthesis.cancel();
+    if (kflIdx > 0) kflIdx--;
+    renderKidsFalar();
+  };
 
   var actCards2 = document.querySelectorAll('.acard');
   if (actCards2[0]) actCards2[0].onclick = function() { iniciarKidsAudio('animais'); };
