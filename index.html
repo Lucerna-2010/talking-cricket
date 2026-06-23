@@ -1165,9 +1165,9 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
       <div class="stitle">Skills</div>
       <div class="skills">
         <div class="skcard sk1" id="btnLeitura"><div class="skicon"><i class="ti ti-book-2" style="color:#534AB7"></i></div><div class="sknome">Reading</div><div class="skbar"><div class="skfill"></div></div></div>
-        <div class="skcard sk2"><div class="skicon"><i class="ti ti-headphones" style="color:#085041"></i></div><div class="sknome">Listening</div><div class="skbar"><div class="skfill"></div></div></div>
-        <div class="skcard sk3"><div class="skicon"><i class="ti ti-pencil" style="color:#BA7517"></i></div><div class="sknome">Writing</div><div class="skbar"><div class="skfill"></div></div></div>
-        <div class="skcard sk4"><div class="skicon"><i class="ti ti-microphone" style="color:#993C1D"></i></div><div class="sknome">Speaking</div><div class="skbar"><div class="skfill"></div></div></div>
+        <div class="skcard sk2" id="btnListening"><div class="skicon"><i class="ti ti-headphones" style="color:#085041"></i></div><div class="sknome">Listening</div><div class="skbar"><div class="skfill"></div></div></div>
+        <div class="skcard sk3" id="btnWriting"><div class="skicon"><i class="ti ti-pencil" style="color:#BA7517"></i></div><div class="sknome">Writing</div><div class="skbar"><div class="skfill"></div></div></div>
+        <div class="skcard sk4" id="btnSpeaking"><div class="skicon"><i class="ti ti-microphone" style="color:#993C1D"></i></div><div class="sknome">Speaking</div><div class="skbar"><div class="skfill"></div></div></div>
       </div>
     </div>
     <div>
@@ -7843,15 +7843,10 @@ window.onload = function() {
   // QUIZ
 
   // AUDIÇÃO
-  document.getElementById('btnVoltarAudicao').onclick = function() { voltarHome(); };
-  // btnPlay onclick definido abaixo
-  var _bqa = document.getElementById('btnExerciciosAudio'); if(_bqa) _bqa.onclick = function() { iniciarQuiz(textoSelecionado ? textoSelecionado.id : 'b1-1'); };
-  document.getElementById('btnTry again').onclick = function() {
-    var texto = textoAtualAudicao || (document.getElementById('transcricao-en') ? document.getElementById('transcricao-en').textContent.trim() : '');
-    if (texto) {
-      if (ttsAtivo) { window.speechSynthesis.cancel(); ttsAtivo = false; }
-      setTimeout(function() { lerTexto(texto, velocidadeAtual); }, 300);
-    }
+  document.getElementById('btnVoltarAudicao').onclick = function() {
+    listeningAtual = null; // Limpar listening ao sair
+    pararTodoAudio();
+    ir('banco');
   };
   document.getElementById('langEN').onclick = function() {
     this.classList.add('on');
@@ -7966,8 +7961,14 @@ window.onload = function() {
 
   // BOTÃO PLAY NA TELA DE AUDIÇÃO (texto)
   document.getElementById('btnPlay').onclick = function() {
+    // Listening tem prioridade se estiver ativo
+    if (listeningAtual) {
+      lerTexto(listeningAtual.texto, velocidadeAtual);
+      return;
+    }
+    // Senão usa áudio do texto de leitura
     var texto = textoAtualAudicao || (document.getElementById('transcricao-en') ? document.getElementById('transcricao-en').textContent.trim() : '');
-    if (!texto) { alert('Selecione um texto no banco de textos primeiro.'); return; }
+    if (!texto) { alert('Select a text from the bank first.'); return; }
     lerTexto(texto, velocidadeAtual);
   };
 
