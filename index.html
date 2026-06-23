@@ -1183,7 +1183,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     </div>
     <div class="acoes">
       <button class="acao-btn acao-quiz" id="btnExercicios"><i class="ti ti-help" style="font-size:16px"></i> Fazer exercícios</button>
-      <button class="acao-btn acao-audio" id="btnAudio"><i class="ti ti-volume" style="font-size:16px"></i> Ouvir texto</button>
+      
     </div>
   </div>
   <nav class="nav nav-universal">
@@ -2666,6 +2666,13 @@ function navegar(destino) {
     case 'textos': irBanco(); break;
     case 'falar': 
       ir('conversacao');
+      // Mensagem inicial do Cricket se chat estiver vazio
+      setTimeout(function() {
+        var chat = document.getElementById('ct-chat');
+        if (chat && chat.children.length === 0) {
+          adicionarMsgCricket('Hello! I am Cricket, your English conversation partner. Let us practice together! Tell me, what do you usually do in the morning?');
+        }
+      }, 300);
       break;
     case 'chat':
       ir('chat-membros');
@@ -7049,6 +7056,72 @@ function setupListeningPlayer() {
   };
 }
 
+
+// ===== ÁUDIOS MP3 DO LISTENING (ElevenLabs - Daniel British) =====
+var listeningAudios = {
+  'la2-1': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-a2-01.mp3',
+  'la2-2': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-a2-02.mp3',
+  'la2-3': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-a2-03.mp3',
+  'la2-4': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-a2-04.mp3',
+  'la2-5': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-a2-05.mp3',
+  'lb1-1': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-b1-01.mp3',
+  'lb1-2': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-b1-02.mp3',
+  'lb1-3': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-b1-03.mp3',
+  'lb1-4': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-b1-04.mp3',
+  'lb1-5': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-b1-05.mp3',
+  'lb2-1': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-b2-01.mp3',
+  'lb2-2': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-b2-02.mp3',
+  'lb2-3': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-b2-03.mp3',
+  'lb2-4': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-b2-04.mp3',
+  'lb2-5': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-b2-05.mp3',
+  'lc1-1': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-c1-01.mp3',
+  'lc1-2': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-c1-02.mp3',
+  'lc1-3': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-c1-03.mp3'
+};
+
+var audioAtual = null; // elemento <audio> atual
+var audioPlayCountMP3 = 0;
+
+function tocarMP3Listening(url, onend) {
+  // Parar áudio anterior
+  if (audioAtual) {
+    audioAtual.pause();
+    audioAtual.currentTime = 0;
+  }
+  
+  audioAtual = new Audio(url);
+  audioAtual.playbackRate = velocidadeAtual || 1.0;
+  
+  audioAtual.onended = function() {
+    var playBtn = document.getElementById('btnPlay');
+    if (playBtn) playBtn.textContent = '▶ Play';
+    if (onend) onend();
+  };
+  
+  audioAtual.onerror = function() {
+    // Fallback para TTS se MP3 falhar
+    var playBtn = document.getElementById('btnPlay');
+    if (playBtn) playBtn.textContent = '▶ Play';
+    if (listeningAtual) falarEN(listeningAtual.texto, {rate: velocidadeAtual || 1.0});
+  };
+  
+  var playBtn = document.getElementById('btnPlay');
+  if (playBtn) playBtn.textContent = '⏸ Pause';
+  
+  audioAtual.play().catch(function() {
+    // Autoplay bloqueado - tentar TTS
+    if (listeningAtual) falarEN(listeningAtual.texto, {rate: velocidadeAtual || 1.0});
+  });
+}
+
+function pararMP3() {
+  if (audioAtual) {
+    audioAtual.pause();
+    audioAtual.currentTime = 0;
+    audioAtual = null;
+  }
+}
+
 var nomeUsuario = '';
 var codigoGerado = '7429'; // Código padrão de teste
 var nivelAtual = 'B1';
@@ -7537,38 +7610,8 @@ window.onload = function() {
     document.getElementById('texto-pt').style.display = tradAtiva ? 'block' : 'none';
   };
   var _el_btnExercicios = document.getElementById('btnExercicios'); if(_el_btnExercicios) _el_btnExercicios.onclick = function() { alert('Quiz em breve!'); };
-  var _el_btnAudio = document.getElementById('btnAudio'); if(_el_btnAudio) _el_btnAudio.onclick = function() { alert('Áudio em breve!'); };
+  // Botão ouvir texto removido do Reading
 
-  document.querySelectorAll('.w').forEach(function(btn) {
-    btn.onclick = function() { abrirPalavra(this.getAttribute('data-word')); };
-  });
-  document.querySelectorAll('.vpill').forEach(function(pill) {
-    pill.onclick = function() { abrirPalavra(this.getAttribute('data-word')); };
-  });
-
-  var _el_btnFecharPopup = document.getElementById('btnFecharPopup'); if(_el_btnFecharPopup) _el_btnFecharPopup.onclick = function() { document.getElementById('popup').classList.remove('show'); };
-  var _el_popup = document.getElementById('popup'); if(_el_popup) _el_popup.onclick = function(e) { if (e.target === this) this.classList.remove('show'); };
-
-  var _el_nivel_sheet = document.getElementById('nivel-sheet'); if(_el_nivel_sheet) _el_nivel_sheet.onclick = function(e) { if (e.target === this) this.classList.remove('show'); };
-  document.querySelectorAll('.nivel-item').forEach(function(item) {
-    item.onclick = function() { mudarNivel(this.getAttribute('data-sigla'), this.getAttribute('data-nome')); };
-  });
-
-  var _el_btnVoltarPerfil = document.getElementById('btnVoltarPerfil'); if(_el_btnVoltarPerfil) _el_btnVoltarPerfil.onclick = function() { voltarHome(); };
-  var _el_pnavHome = document.getElementById('pnavHome'); if(_el_pnavHome) _el_pnavHome.onclick = function() { voltarHome(); };
-  var _el_btnPerfilModo = document.getElementById('btnPerfilModo'); if(_el_btnPerfilModo) _el_btnPerfilModo.onclick = function() { ir('modo'); };
-  var _el_btnPerfilPlano = document.getElementById('btnPerfilPlano'); if(_el_btnPerfilPlano) _el_btnPerfilPlano.onclick = function() { alert('Plano de estudos em breve!'); };
-  var _el_btnPerfilNotif = document.getElementById('btnPerfilNotif'); if(_el_btnPerfilNotif) _el_btnPerfilNotif.onclick = function() { solicitarNotificacoes(); };
-  var tapCount = 0;
-  var pavatar = document.getElementById('pavatar');
-  if (pavatar) pavatar.onclick = function() {
-    tapCount++;
-    if (tapCount >= 5) {
-      tapCount = 0;
-      var btnGestor = document.getElementById('btnPainelGestor');
-      if (btnGestor) btnGestor.style.display = 'flex';
-    }
-  };
   var btnGestor = document.getElementById('btnPainelGestor');
   if (btnGestor) btnGestor.onclick = function() { abrirPainelGestor(); };
   var _el_btnSair = document.getElementById('btnSair'); if(_el_btnSair) _el_btnSair.onclick = function() { if (confirm('Deseja sair?')) { ir('splash'); } };
