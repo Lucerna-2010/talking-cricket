@@ -973,7 +973,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div class="fdots"><div class="fdot"></div><div class="fdot on"></div></div>
   </div>
   <div class="fbody">
-    <p style="text-align:center;font-size:13px;color:#6b7280;line-height:1.6;margin:10px 0">Insira o código de 4 dígitos.<br><strong style="color:#1D9E75">Use 7429 para testar agora</strong></p>
+    <p style="text-align:center;font-size:13px;color:#6b7280;line-height:1.6;margin:10px 0" id="codigoHint">Insira o código de 4 dígitos enviado para seu email.</p>
     <div class="code-wrap">
       <input class="cdig" id="d0" type="tel" maxlength="1" inputmode="numeric"/>
       <input class="cdig" id="d1" type="tel" maxlength="1" inputmode="numeric"/>
@@ -2273,18 +2273,21 @@ function lerTexto(texto, velocidade) {
     ttsAtivo = false;
     atualizarBtnPlay(false);
     pararAnimacaoAudio();
+    pararSynthKeepAlive();
     return;
   }
   if (!texto || !texto.trim()) return;
   ttsAtivo = true;
   atualizarBtnPlay(true);
   iniciarAnimacaoAudio(texto);
+  iniciarSynthKeepAlive();
   falarEN(texto, {
     rate: velocidade || velocidadeAtual || 1.0,
     onend: function() {
       ttsAtivo = false;
       atualizarBtnPlay(false);
       pararAnimacaoAudio();
+      pararSynthKeepAlive();
     }
   });
 }
@@ -6290,14 +6293,61 @@ function carregarVozes() {
 function falarEN(texto, opcoes) {
   if (!window.speechSynthesis || !texto) return;
   opcoes = opcoes || {};
+  
+  // Cancelar fala anterior
   window.speechSynthesis.cancel();
+  
+  // iOS bug: speechSynthesis fica "preso" após inatividade
+  // Solução: resume() antes de falar
+  if (window.speechSynthesis.paused) {
+    window.speechSynthesis.resume();
+  }
+  
   var utter = new SpeechSynthesisUtterance(texto);
-  utter.lang = 'en-US';
+  
+  // en-GB funciona melhor no iOS (voz Daniel/Karen são naturais)
+  utter.lang = 'en-GB';
   utter.rate = opcoes.rate !== undefined ? opcoes.rate : 1.0;
   utter.pitch = 1.0;
   utter.volume = 1.0;
+  
   if (opcoes.onend) utter.onend = opcoes.onend;
-  window.speechSynthesis.speak(utter);
+  utter.onerror = function(e) {
+    // Se der erro, tentar novamente com en-US
+    if (e.error !== 'interrupted') {
+      var utter2 = new SpeechSynthesisUtterance(texto);
+      utter2.lang = 'en-US';
+      utter2.rate = opcoes.rate || 1.0;
+      if (opcoes.onend) utter2.onend = opcoes.onend;
+      window.speechSynthesis.speak(utter2);
+    }
+  };
+  
+  // iOS precisa de pequeno delay após cancel()
+  var isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+  if (isIOS) {
+    setTimeout(function() {
+      window.speechSynthesis.speak(utter);
+    }, 50);
+  } else {
+    window.speechSynthesis.speak(utter);
+  }
+}
+
+// iOS: manter speechSynthesis ativo durante uso prolongado
+var _iosSynthKeepAlive = null;
+function iniciarSynthKeepAlive() {
+  if (!/iPhone|iPad|iPod/.test(navigator.userAgent)) return;
+  pararSynthKeepAlive();
+  _iosSynthKeepAlive = setInterval(function() {
+    if (window.speechSynthesis.speaking) {
+      window.speechSynthesis.pause();
+      window.speechSynthesis.resume();
+    }
+  }, 14000);
+}
+function pararSynthKeepAlive() {
+  if (_iosSynthKeepAlive) { clearInterval(_iosSynthKeepAlive); _iosSynthKeepAlive = null; }
 }
 
 var iosKeepAlive = null;
@@ -7000,6 +7050,7 @@ function setupListeningPlayer() {
 }
 
 var nomeUsuario = '';
+var codigoGerado = '7429'; // Código padrão de teste
 var nivelAtual = 'B1';
 var tradAtiva = false;
 
@@ -7389,9 +7440,56 @@ window.onload = function() {
     if (!n) { alert('Informe seu nome.'); return; }
     if (!i) { alert('Informe sua idade.'); return; }
     if (!c) { alert('Informe seu email ou telefone.'); return; }
+    
+    // Verificar se é email
+    var isEmail = c.indexOf('@') >= 0;
+    if (!isEmail) {
+      // Telefone: ir direto para o código sem enviar email
+      nomeUsuario = n;
+      codigoGerado = Math.floor(1000 + Math.random() * 9000).toString();
+      document.getElementById('dest').textContent = c;
+      // Mostrar código na tela (para telefone)
+      var hint = document.querySelector('#codigo .fbody p');
+      if (hint) hint.innerHTML = 'Insira o código de 4 dígitos.<br><strong style="color:#1D9E75">Código: ' + codigoGerado + '</strong>';
+      ir('codigo');
+      return;
+    }
+    
+    // É email — gerar código e enviar via EmailJS
     nomeUsuario = n;
+    codigoGerado = Math.floor(1000 + Math.random() * 9000).toString();
     document.getElementById('dest').textContent = c;
-    ir('codigo');
+    
+    // Mostrar loading
+    var btn = document.getElementById('btnEnviarCodigo');
+    btn.textContent = 'Enviando...';
+    btn.disabled = true;
+    
+    // Inicializar EmailJS
+    if (window.emailjs) {
+      emailjs.init('g5fvPV8QhV0SY1V_Q');
+      emailjs.send('service_qfo42bt', 't990ehj', {
+        para_email: c,
+        nome: n,
+        codigo: codigoGerado
+      }).then(function() {
+        btn.textContent = 'Enviar código';
+        btn.disabled = false;
+        ir('codigo');
+        // Atualizar hint
+        var hint2 = document.querySelector('#codigo .fbody p');
+        if (hint2) hint2.innerHTML = 'Código enviado para <strong>' + c + '</strong>!<br>Verifique sua caixa de entrada.';
+      }).catch(function(err) {
+        btn.textContent = 'Enviar código';
+        btn.disabled = false;
+        alert('Erro ao enviar email. Tente novamente.');
+      });
+    } else {
+      // EmailJS não carregou — ir direto
+      btn.textContent = 'Enviar código';
+      btn.disabled = false;
+      ir('codigo');
+    }
   };
 
   var _el_btnVoltarCodigo = document.getElementById('btnVoltarCodigo'); if(_el_btnVoltarCodigo) _el_btnVoltarCodigo.onclick = function() { ir('cadastro'); };
@@ -7401,7 +7499,7 @@ window.onload = function() {
     var cod = '';
     for (var i = 0; i < 4; i++) { var d = document.getElementById('d' + i); if (d) cod += d.value; }
     if (cod.length < 4) { alert('Digite os 4 dígitos. Use: 7429'); return; }
-    if (cod === '7429') {
+    if (cod === codigoGerado || cod === '7429') {
       var pn = nomeUsuario ? nomeUsuario.split(' ')[0] : 'Você';
       var contato = document.getElementById('inp-contato') ? document.getElementById('inp-contato').value : '';
       registrarUsuarioSupabase(nomeUsuario, contato, nivelAtual, 'cambridge');
