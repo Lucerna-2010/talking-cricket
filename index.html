@@ -1206,20 +1206,20 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 <!-- PERFIL -->
 <div id="perfil" class="tela">
   <div class="pheader">
-    <button class="pback" id="btnVoltarPerfil">&#8592;</button>
+    <button class="pback" id="btnVoltarPerfil" onclick="voltarHome()">&#8592;</button>
     <div class="pavatar" id="pavatar">TC</div>
     <div class="pnome" id="pnome">Aluno</div>
   </div>
   <div class="pbody">
-    <div class="psection">Configurações</div>
+    <div class="psection">Settings</div>
     <div class="pcard" id="btnPerfilModo">
       <div class="pcard-icon" style="background:#EEEDFE">🎓</div>
-      <div class="pcard-info"><div class="pcard-titulo">Trocar modo</div><div class="pcard-sub">Cambridge ou Kids</div></div>
+      <div class="pcard-info"><div class="pcard-titulo">Switch mode</div><div class="pcard-sub">Cambridge or Kids</div></div>
       <span style="color:#D3D1C7">→</span>
     </div>
     <div class="pcard" id="btnPerfilPlano">
       <div class="pcard-icon" style="background:#E1F5EE">📅</div>
-      <div class="pcard-info"><div class="pcard-titulo">Plano de estudos</div><div class="pcard-sub">Cronograma e data da prova</div></div>
+      <div class="pcard-info"><div class="pcard-titulo">Study plan</div><div class="pcard-sub">Schedule and exam date</div></div>
       <span style="color:#D3D1C7">→</span>
     </div>
     <div class="pcard" id="btnPainelGestor" style="display:none;">
@@ -1229,16 +1229,16 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     </div>
     <div class="pcard" id="btnPerfilNotif">
       <div class="pcard-icon" style="background:#FAEEDA">🔔</div>
-      <div class="pcard-info"><div class="pcard-titulo">Notificações</div><div class="pcard-sub">Lembretes de estudo</div></div>
+      <div class="pcard-info"><div class="pcard-titulo">Notifications</div><div class="pcard-sub">Study reminders</div></div>
       <span style="color:#D3D1C7">→</span>
     </div>
-    <button class="btn btn-cinza" id="btnSair">Sair da conta</button>
+    <button class="btn btn-cinza" id="btnSair">Sign out</button>
   </div>
   <nav class="nav">
-    <div class="nitem" id="pnavHome"><i class="ti ti-home"></i>Home</div>
-    <div class="nitem" id="pnavTextos"><i class="ti ti-certificate"></i>Exams</div>
-    <div class="nitem" id="pnavFalar"><i class="ti ti-microphone"></i>Speak</div>
-    <div class="nitem" id="pnavProgresso"><i class="ti ti-chart-bar"></i>Progress</div>
+    <div class="nitem" id="pnavHome" onclick="voltarHome()"><i class="ti ti-home"></i>Home</div>
+    <div class="nitem" id="pnavTextos" onclick="abrirSimulado(nivelAtual||'B1')"><i class="ti ti-certificate"></i>Exams</div>
+    <div class="nitem" id="pnavFalar" onclick="ir('conversacao')"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem" id="pnavProgresso" onclick="ir('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
     <div class="nitem on"><i class="ti ti-user"></i>Profile</div>
   </nav>
 </div>
@@ -2632,6 +2632,13 @@ function adicionarMsgCricket(texto) {
   chat.appendChild(typing);
   chat.scrollTop = chat.scrollHeight;
 
+  // Pre-warm speechSynthesis while still in user gesture context
+  if (window.speechSynthesis) {
+    var warmUp = new SpeechSynthesisUtterance(' ');
+    warmUp.volume = 0;
+    window.speechSynthesis.speak(warmUp);
+  }
+
   setTimeout(function() {
     var typingEl = document.getElementById('ct-typing');
     if (typingEl) typingEl.remove();
@@ -2641,8 +2648,11 @@ function adicionarMsgCricket(texto) {
     msg.innerHTML = '<div class="ct-avatar cricket">🦗</div><div class="ct-bubble">' + texto + '</div>';
     chat.appendChild(msg);
     chat.scrollTop = chat.scrollHeight;
-    falarEN(texto, {rate: 0.88, pitch: 1.0});
-  }, 1200);
+    // Small additional delay to let browser settle
+    setTimeout(function() {
+      falarEN(texto, {rate: 0.88, pitch: 1.0});
+    }, 100);
+  }, 1000);
 }
 
 function enviarMensagemConv(texto) {
@@ -7464,7 +7474,65 @@ function abrirTexto(t) {
   document.getElementById('ltitulo').textContent = t.titulo;
   document.getElementById('lbadge2').textContent = nivelBanco;
 
+  // Render existing text first (fast)
+  renderTextoConteudo(t);
+  ir('leitura');
+
+  // For B1+, expand text via AI if not already expanded
+  var nivelNum = {'A1':1,'A2':2,'B1':3,'B2':4,'C1':5,'C2':6}[nivelBanco] || 1;
+  if (nivelNum >= 3 && !t._expanded) {
+    expandirTextoComIA(t);
+  }
+}
+
+async function expandirTextoComIA(t) {
   var enContent = document.getElementById('texto-en-content');
+  if (!enContent) return;
+
+  // Show loading indicator at bottom of text
+  var loadDiv = document.createElement('div');
+  loadDiv.id = 'texto-loading';
+  loadDiv.style.cssText = 'text-align:center;padding:12px;font-size:12px;color:#6b7280;margin-top:10px;';
+  loadDiv.innerHTML = '🦗 Cricket is expanding the text to full Cambridge length...';
+  enContent.parentNode.appendChild(loadDiv);
+
+  var targetWords = {'B1': 280, 'B2': 380, 'C1': 450, 'C2': 500}[nivelBanco] || 280;
+  var textoLimpo = t.en.replace(/<w>/g,'').replace(/<\/w>/g,'');
+  var vocabList = t.vocab.join(', ');
+
+  try {
+    var res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1000,
+        messages: [{
+          role: 'user',
+          content: 'Expand this ' + nivelBanco + ' Cambridge English reading text to exactly ' + targetWords + ' words. Keep the same topic, style and vocabulary level. Add 2-3 more paragraphs with new information, examples and details. The vocabulary words that must appear in the expanded text (wrap each in <w> tags): ' + vocabList + '. Return ONLY the expanded text with <w> tags around vocabulary words. No intro, no explanation.\n\nOriginal text:\n' + t.en
+        }]
+      })
+    });
+    var data = await res.json();
+    var expanded = data.content && data.content[0] ? data.content[0].text.trim() : null;
+
+    if (expanded && expanded.length > textoLimpo.length) {
+      t._expanded = true;
+      t._enOriginal = t.en;
+      t.en = expanded;
+      renderTextoConteudo(t);
+    }
+  } catch(e) {
+    console.log('Text expansion failed:', e);
+  } finally {
+    var ld = document.getElementById('texto-loading');
+    if (ld) ld.remove();
+  }
+}
+
+function renderTextoConteudo(t) {
+  var enContent = document.getElementById('texto-en-content');
+  if (!enContent) return;
   enContent.innerHTML = '';
   var partes = t.en.split(/<w>|<\/w>/);
   partes.forEach(function(parte, i) {
@@ -7498,8 +7566,6 @@ function abrirTexto(t) {
   if (sw) sw.classList.remove('on');
   var ptBox = document.getElementById('texto-pt');
   if (ptBox) ptBox.style.display = 'none';
-
-  ir('leitura');
 }
 
 function abrirAudicaoDoTexto() {
