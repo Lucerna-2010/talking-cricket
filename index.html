@@ -7275,6 +7275,11 @@ function abrirNivelSheet() {
 
 function mudarNivel(sigla, nomeNivel) {
   nivelAtual = sigla;
+
+  // Save to localStorage so it persists
+  try { localStorage.setItem('tc_nivel', sigla); localStorage.setItem('tc_nivel_nome', nomeNivel); } catch(e) {}
+
+  // Update checkmarks
   document.querySelectorAll('.nivel-item').forEach(function(item) {
     item.classList.remove('ativo');
     var chk = item.querySelector('.nivel-check');
@@ -7288,16 +7293,34 @@ function mudarNivel(sigla, nomeNivel) {
     chk.textContent = '✓';
     el.appendChild(chk);
   }
+
+  // Update all UI labels
   var pill = document.getElementById('lvpill');
   if (pill) pill.textContent = '🌱 ' + sigla + ' — ' + nomeNivel + ' ▾';
   var xplbl = document.getElementById('xplbl');
-  if (xplbl) xplbl.textContent = 'Nível ' + sigla + ' — 620 XP';
+  if (xplbl) xplbl.textContent = 'Level ' + sigla + ' — 🌱 ' + seedsTotal + ' seeds';
   var aulaLbl = document.getElementById('aulaLbl');
   if (aulaLbl) aulaLbl.textContent = 'Reading — ' + sigla;
   var lbadge2 = document.getElementById('lbadge2');
   if (lbadge2) lbadge2.textContent = sigla;
   var homeSimLbl = document.getElementById('homeSimuladoLbl');
   if (homeSimLbl) homeSimLbl.textContent = sigla + ' Cambridge';
+
+  // Propagate to all modules
+  listeningNivel = sigla;
+  simNivel = sigla;
+  nivelBanco = sigla;
+
+  // Update nivel tabs in banco de textos
+  document.querySelectorAll('.nivel-tab').forEach(function(t) {
+    t.classList.toggle('on', t.getAttribute('data-nivel') === sigla);
+  });
+
+  // Update exam tabs
+  document.querySelectorAll('.exam-nivel-tab').forEach(function(t) {
+    t.classList.toggle('on', t.getAttribute('data-nivel') === sigla);
+  });
+
   fecharNivelSheet();
 }
 
@@ -7594,6 +7617,50 @@ window.onload = function() {
   var splash = document.getElementById('splash');
   if (splash) splash.classList.add('ativa');
 
+  // === AUTO-LOGIN: restore session from localStorage ===
+  try {
+    var savedNome = localStorage.getItem('tc_nome');
+    var savedNivel = localStorage.getItem('tc_nivel');
+    var savedNivelNome = localStorage.getItem('tc_nivel_nome');
+    var savedModo = localStorage.getItem('tc_modo');
+    var loggedin = localStorage.getItem('tc_loggedin');
+
+    if (loggedin && savedNome) {
+      nomeUsuario = savedNome;
+      if (savedNivel) nivelAtual = savedNivel;
+      var pn = nomeUsuario.split(' ')[0];
+      var ini = nomeUsuario.split(' ').map(function(x){return x[0];}).slice(0,2).join('').toUpperCase();
+
+      // Restore avatars and names
+      var havatar = document.getElementById('havatar'); if (havatar) havatar.textContent = ini;
+      var pavatar = document.getElementById('pavatar'); if (pavatar) pavatar.textContent = ini;
+      var hcnome = document.getElementById('hcnome'); if (hcnome) hcnome.textContent = pn;
+      var hknome = document.getElementById('hknome'); if (hknome) hknome.textContent = pn;
+      var pnome = document.getElementById('pnome'); if (pnome) pnome.textContent = nomeUsuario;
+
+      // Restore level UI
+      if (savedNivel) {
+        var nm = savedNivelNome || savedNivel;
+        var pill = document.getElementById('lvpill');
+        if (pill) pill.textContent = '🌱 ' + savedNivel + ' — ' + nm + ' ▾';
+        var xplbl = document.getElementById('xplbl');
+        if (xplbl) xplbl.textContent = 'Level ' + savedNivel + ' — 🌱 620 seeds';
+        var aulaLbl = document.getElementById('aulaLbl');
+        if (aulaLbl) aulaLbl.textContent = 'Reading — ' + savedNivel;
+      }
+
+      // Skip splash and go straight to home
+      setTimeout(function() {
+        if (savedModo === 'kids') {
+          ir('home-kids');
+        } else {
+          voltarHome();
+        }
+      }, 600);
+      return; // skip rest of onload splash handling
+    }
+  } catch(e) {}
+
   function addEvt(id, evt, fn) {
     var el = document.getElementById(id);
     if (el) el[evt] = fn;
@@ -7674,7 +7741,16 @@ window.onload = function() {
       var pn = nomeUsuario ? nomeUsuario.split(' ')[0] : 'Você';
       var contato = document.getElementById('inp-contato') ? document.getElementById('inp-contato').value : '';
       registrarUsuarioSupabase(nomeUsuario, contato, nivelAtual, 'cambridge');
-      document.getElementById('modo-nome').textContent = 'Bem-vindo, ' + pn + '!';
+
+      // Save session to localStorage
+      try {
+        localStorage.setItem('tc_nome', nomeUsuario);
+        localStorage.setItem('tc_contato', contato);
+        localStorage.setItem('tc_modo', 'cambridge');
+        localStorage.setItem('tc_loggedin', '1');
+      } catch(e) {}
+
+      document.getElementById('modo-nome').textContent = 'Welcome, ' + pn + '!';
       var ini = nomeUsuario ? nomeUsuario.split(' ').map(function(x){return x[0];}).slice(0,2).join('').toUpperCase() : 'TC';
       document.getElementById('havatar').textContent = ini;
       document.getElementById('pavatar').textContent = ini;
@@ -7682,14 +7758,17 @@ window.onload = function() {
       document.getElementById('hknome').textContent = pn;
       document.getElementById('pnome').textContent = nomeUsuario || pn;
       ir('modo');
-    } else { alert('Código incorreto. Use: 7429'); }
+    } else { alert('Wrong code. Use: 7429'); }
   };
 
   var _el_btnCambridge = document.getElementById('btnCambridge'); if(_el_btnCambridge) _el_btnCambridge.onclick = function() { 
     voltarHome();
     setTimeout(processarDeepLink, 800);
   };
-  var _el_btnKids = document.getElementById('btnKids'); if(_el_btnKids) _el_btnKids.onclick = function() { ir('home-kids'); };
+  var _el_btnKids = document.getElementById('btnKids'); if(_el_btnKids) _el_btnKids.onclick = function() { 
+    try { localStorage.setItem('tc_modo', 'kids'); } catch(e) {}
+    ir('home-kids'); 
+  };
 
   var _el_btnTrocarModo = document.getElementById('btnTrocarModo'); if(_el_btnTrocarModo) _el_btnTrocarModo.onclick = function() { ir('modo'); };
   var _el_lvpill = document.getElementById('lvpill'); if(_el_lvpill) _el_lvpill.onclick = function() { abrirNivelSheet(); };
@@ -7714,7 +7793,13 @@ window.onload = function() {
 
   var btnGestor = document.getElementById('btnPainelGestor');
   if (btnGestor) btnGestor.onclick = function() { abrirPainelGestor(); };
-  var _el_btnSair = document.getElementById('btnSair'); if(_el_btnSair) _el_btnSair.onclick = function() { if (confirm('Deseja sair?')) { ir('splash'); } };
+  var _el_btnSair = document.getElementById('btnSair'); if(_el_btnSair) _el_btnSair.onclick = function() { 
+    if (confirm('Are you sure you want to sign out?')) { 
+      try { localStorage.removeItem('tc_loggedin'); localStorage.removeItem('tc_nome'); localStorage.removeItem('tc_contato'); localStorage.removeItem('tc_modo'); } catch(e) {}
+      nomeUsuario = '';
+      ir('splash'); 
+    } 
+  };
 
   (function() {
     for (var i = 0; i < 4; i++) {
