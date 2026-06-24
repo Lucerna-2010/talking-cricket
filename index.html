@@ -1049,10 +1049,10 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div>
       <div class="stitle">Skills</div>
       <div class="skills">
-        <div class="skcard sk1" id="btnLeitura"><div class="skicon"><i class="ti ti-book-2" style="color:#534AB7"></i></div><div class="sknome">Reading</div><div class="skbar"><div class="skfill"></div></div></div>
-        <div class="skcard sk2" id="btnListening"><div class="skicon"><i class="ti ti-headphones" style="color:#085041"></i></div><div class="sknome">Listening</div><div class="skbar"><div class="skfill"></div></div></div>
-        <div class="skcard sk3" id="btnWriting"><div class="skicon"><i class="ti ti-pencil" style="color:#BA7517"></i></div><div class="sknome">Writing</div><div class="skbar"><div class="skfill"></div></div></div>
-        <div class="skcard sk4" id="btnSpeaking"><div class="skicon"><i class="ti ti-microphone" style="color:#993C1D"></i></div><div class="sknome">Speaking</div><div class="skbar"><div class="skfill"></div></div></div>
+        <div class="skcard sk1" id="btnLeitura" onclick="irBanco()"><div class="skicon"><i class="ti ti-book-2" style="color:#534AB7"></i></div><div class="sknome">Reading</div><div class="skbar"><div class="skfill"></div></div></div>
+        <div class="skcard sk2" id="btnListening" onclick="abrirListening(nivelAtual)"><div class="skicon"><i class="ti ti-headphones" style="color:#085041"></i></div><div class="sknome">Listening</div><div class="skbar"><div class="skfill"></div></div></div>
+        <div class="skcard sk3" id="btnWriting" onclick="ir('escrita')"><div class="skicon"><i class="ti ti-pencil" style="color:#BA7517"></i></div><div class="sknome">Writing</div><div class="skbar"><div class="skfill"></div></div></div>
+        <div class="skcard sk4" id="btnSpeaking" onclick="ir('conversacao')"><div class="skicon"><i class="ti ti-microphone" style="color:#993C1D"></i></div><div class="sknome">Speaking</div><div class="skbar"><div class="skfill"></div></div></div>
       </div>
     </div>
     <div>
@@ -7665,9 +7665,19 @@ function renderTemasFiltro(nivel) {
   });
 }
 
+document.querySelectorAll('.nivel-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.nivel-tab').forEach(function(t) { t.classList.remove('on'); });
+      this.classList.add('on');
+      nivelBanco = this.getAttribute('data-nivel');
+      temaFiltro = 'Todos';
+      renderTemasFiltro(nivelBanco);
+      renderBanco();
+    });
+  });
+
 function irBanco() {
-  listeningAtual = null;
-  nivelBanco = nivelAtual;
+  nivelBanco = nivelAtual || 'B1';
   temaFiltro = 'Todos';
   document.querySelectorAll('.nivel-tab').forEach(function(tab) {
     tab.classList.toggle('on', tab.getAttribute('data-nivel') === nivelBanco);
@@ -7840,8 +7850,11 @@ window.onload = function() {
   var _el_lvpill = document.getElementById('lvpill'); if(_el_lvpill) _el_lvpill.onclick = function() { abrirNivelSheet(); };
   var _nivelSheet = document.getElementById('nivel-sheet');
   if (_nivelSheet) _nivelSheet.onclick = function(e) { if (e.target === this) fecharNivelSheet(); };
-  var _el_btnLeitura = document.getElementById('btnLeitura'); if(_el_btnLeitura) _el_btnLeitura.onclick = function() { ir('leitura'); };
-  var _el_btnAulaHoje = document.getElementById('btnAulaHoje'); if(_el_btnAulaHoje) _el_btnAulaHoje.onclick = function() { ir('leitura'); };
+  var _el_btnLeitura = document.getElementById('btnLeitura'); if(_el_btnLeitura) _el_btnLeitura.onclick = function() { irBanco(); };
+  var _el_btnListening = document.getElementById('btnListening'); if(_el_btnListening) _el_btnListening.onclick = function() { abrirListening(nivelAtual); };
+  var _el_btnWriting = document.getElementById('btnWriting'); if(_el_btnWriting) _el_btnWriting.onclick = function() { ir('escrita'); };
+  var _el_btnSpeaking = document.getElementById('btnSpeaking'); if(_el_btnSpeaking) _el_btnSpeaking.onclick = function() { ir('conversacao'); };
+  var _el_btnAulaHoje = document.getElementById('btnAulaHoje'); if(_el_btnAulaHoje) _el_btnAulaHoje.onclick = function() { irBanco(); };
 
   var _el_btnTrocarModoKids = document.getElementById('btnTrocarModoKids'); if(_el_btnTrocarModoKids) _el_btnTrocarModoKids.onclick = function() { ir('modo'); };
   var _el_btnJogar = document.getElementById('btnJogar'); if(_el_btnJogar) _el_btnJogar.onclick = function() { alert('Jogos em breve!'); };
@@ -7947,7 +7960,7 @@ window.onload = function() {
   var _pt = document.getElementById('pronavTextos'); if(_pt) _pt.onclick = function() { abrirSimulado(nivelAtual || 'B1'); };
   var _pp = document.getElementById('pronavPerfil'); if(_pp) _pp.onclick = function() { ir('perfil'); };
 
-  var _el_btnLeitura = document.getElementById('btnLeitura'); if(_el_btnLeitura) _el_btnLeitura.onclick = function() { ir('leitura'); };
+  // btnLeitura handled by inline onclick
   document.querySelectorAll('.skcard').forEach(function(card, i) {
     if (i === 1) card.onclick = function() { abrirListening(nivelAtual); };
     if (i === 2) card.onclick = function() { ir('escrita'); };
