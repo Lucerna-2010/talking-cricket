@@ -1384,14 +1384,14 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div class="eprompt">
       <div class="eprompt-label">📝 Exercício</div>
       <div class="eprompt-texto">Describe the effects of climate change on the environment. Give examples and explain why it is important to act now. (80-120 words)</div>
-      <div class="eprompt-dica">💡 Dica: Use os conectores "however", "therefore" e "as a result"</div>
+      <div class="eprompt-dica">💡 Tip: Use connectors "however", "therefore" e "as a result"</div>
     </div>
 
     <div class="einput-wrap">
       <textarea class="einput" id="escritaInput" placeholder="Escreva sua resposta aqui em inglês..."></textarea>
       <div class="ecount-bar">
-        <span class="ecount short" id="escritaCount">0 palavras</span>
-        <span style="font-size:11px;color:#6b7280">Meta: 80-120 palavras</span>
+        <span class="ecount short" id="escritaCount">0 words</span>
+        <span style="font-size:11px;color:#6b7280">Target: 80-120 words</span>
       </div>
     </div>
 
@@ -2192,7 +2192,7 @@ function responderQuiz(indice) {
 function renderQuizResultado() {
   var pct = Math.round((quizAcertos / quizAtual.length) * 100);
   var body = document.getElementById('qbody');
-  var msg = pct >= 80 ? 'Excelente trabalho!' : pct >= 60 ? 'Bom resultado!' : 'Continue praticando!';
+  var msg = pct >= 80 ? 'Excellent work!' : pct >= 60 ? 'Good result!' : 'Keep practising!';
   body.innerHTML =
     '<div class="qresultado">' +
       '<div class="qresultado-circulo">' +
@@ -2242,10 +2242,10 @@ function avaliarEscrita(texto) {
   var badgeEl = document.getElementById('enotaBadge');
   var feedEl = document.getElementById('efeedbackTexto');
   if (numEl) numEl.textContent = geral + '/100';
-  if (badgeEl) badgeEl.textContent = geral >= 80 ? 'Excelente' : geral >= 65 ? 'Bom' : 'A melhorar';
+  if (badgeEl) badgeEl.textContent = geral >= 80 ? 'Excellent' : geral >= 65 ? 'Good' : 'Needs improvement';
 
   var feedback = '';
-  if (palavras < 80) feedback += '✗ Sua resposta está curta (' + palavras + ' palavras). Tente escrever pelo menos 80 palavras. ';
+  if (palavras < 80) feedback += '✗ Your answer is too short (' + palavras + ' words). Try to write at least 80 words. ';
   else feedback += '✓ Boa extensão! ';
   if (gramatica >= 75) feedback += '✓ Boa gramática e vocabulário. ';
   else feedback += '✗ Revise a gramática — tente usar mais conectores como "however" e "therefore". ';
@@ -3451,18 +3451,18 @@ function renderSimIntro(body) {
     '<div class="sim-section-header">' +
       '<div class="sim-section-icon" style="background:#EEEDFE">🎓</div>' +
       '<div class="sim-section-info"><div class="sim-section-titulo">' + sim.titulo + '</div>' +
-      '<div class="sim-section-sub">Siga as instruções de cada secção</div></div>' +
+      '<div class="sim-section-sub">Follow the instructions for each section</div></div>' +
     '</div>' +
     '<div class="sim-texto"><div class="sim-texto-titulo">Instruções</div>' +
     '<div class="sim-texto-content">' +
-    '📖 <strong>Reading</strong> — 2 textos com 5 perguntas cada<br><br>' +
-    '🎧 <strong>Listening</strong> — 2 passagens de áudio com perguntas (máximo 2 reproduções cada)<br><br>' +
-    '✍️ <strong>Writing</strong> — 1 redação de 100-150 palavras<br><br>' +
-    '🗣️ <strong>Speaking</strong> — Entrevista e descrição de imagem<br><br>' +
-    '<strong>Tempo estimado:</strong> 45-60 minutos<br>' +
-    '<strong>Dica:</strong> Leia os textos com atenção antes de responder.' +
+    '📖 <strong>Reading</strong> — 2 texts with 5 questions each<br><br>' +
+    '🎧 <strong>Listening</strong> — 2 audio passages with questions (max. 2 plays each)<br><br>' +
+    '✍️ <strong>Writing</strong> — 1 written task of 100-150 words<br><br>' +
+    '🗣️ <strong>Speaking</strong> — Interview and picture description<br><br>' +
+    '<strong>Estimated time:</strong> 45-60 minutos<br>' +
+    '<strong>Tip:</strong> Read the texts carefully before answering.' +
     '</div></div>' +
-    '<button class="sim-btn-next" onclick="proximaSimSecao()">Começar o simulado →</button>' +
+    '<button class="sim-btn-next" onclick="proximaSimSecao()">Start the exam →</button>' +
     '</div>';
 }
 
@@ -3476,7 +3476,7 @@ function renderSimReading(body) {
   html += '<div class="sim-section-header">' +
     '<div class="sim-section-icon" style="background:#EEEDFE">📖</div>' +
     '<div class="sim-section-info"><div class="sim-section-titulo">Reading</div>' +
-    '<div class="sim-section-sub">Leia os textos e responda as perguntas</div></div>' +
+    '<div class="sim-section-sub">Read the texts and answer the questions</div></div>' +
     '<span class="sim-section-badge">B1</span></div>';
 
   textos.forEach(function(texto, ti) {
@@ -3511,7 +3511,7 @@ function renderSimListening(body) {
   html += '<div class="sim-section-header">' +
     '<div class="sim-section-icon" style="background:#E1F5EE">🎧</div>' +
     '<div class="sim-section-info"><div class="sim-section-titulo">Listening</div>' +
-    '<div class="sim-section-sub">Ouça o áudio (máx. 2x) e responda</div></div>' +
+    '<div class="sim-section-sub">Listen to the audio (max. 2x) and answer</div></div>' +
     '<span class="sim-section-badge" style="background:#E1F5EE;color:#085041">B1</span></div>';
 
   passagens.forEach(function(passagem, pi) {
@@ -3523,7 +3523,7 @@ function renderSimListening(body) {
       '<button class="sim-audio-play" id="' + audioId + '_btn" onclick="tocarAudioSimulado(\'' + audioId + '\',\'' + passagem.audio.replace(/'/g, "\\'") + '\')">' +
       '▶</button>' +
       '<div class="sim-audio-info">Clique para ouvir</div>' +
-      '<div class="sim-audio-counter" id="' + audioId + '_counter">Reproduções restantes: 2</div>' +
+      '<div class="sim-audio-counter" id="' + audioId + '_counter">Plays remaining: 2</div>' +
       '</div>';
 
     passagem.perguntas.forEach(function(q, qi) {
@@ -3552,7 +3552,7 @@ function tocarAudioSimulado(audioId, texto) {
   simAudioPlays[audioId]++;
   var restantes = 2 - simAudioPlays[audioId];
   var counter = document.getElementById(audioId + '_counter');
-  if (counter) counter.textContent = restantes > 0 ? 'Reproduções restantes: ' + restantes : 'Limite atingido — sem mais reproduções';
+  if (counter) counter.textContent = restantes > 0 ? 'Plays remaining: ' + restantes : 'Limit reached — no more plays';
   if (restantes === 0) {
     var btn = document.getElementById(audioId + '_btn');
     if (btn) { btn.style.opacity = '0.5'; btn.style.cursor = 'not-allowed'; }
@@ -3609,18 +3609,18 @@ function renderSimWriting(body) {
     '<div class="sim-section-header">' +
       '<div class="sim-section-icon" style="background:#FAEEDA">✍️</div>' +
       '<div class="sim-section-info"><div class="sim-section-titulo">Writing</div>' +
-      '<div class="sim-section-sub">Escreva sua resposta em inglês</div></div>' +
+      '<div class="sim-section-sub">Write your answer in English</div></div>' +
       '<span class="sim-section-badge" style="background:#FAEEDA;color:#BA7517">B1</span></div>' +
     '<div class="sim-writing-prompt">' +
       '<div class="sim-writing-tipo">' + w.tipo + '</div>' +
       '<div class="sim-writing-texto">' + w.instrucoes + '</div>' +
     '</div>' +
     '<textarea class="sim-writing-input" id="simWritingInput" placeholder="Escreva seu texto aqui em inglês..." oninput="atualizarContadorSim()"></textarea>' +
-    '<div class="sim-writing-count" id="simWritingCount">0 palavras (meta: 100-150)</div>' +
+    '<div class="sim-writing-count" id="simWritingCount">0 words (target: 100-150)</div>' +
     '<div class="sim-texto" style="margin-top:10px;"><div class="sim-texto-titulo">Critérios de avaliação</div><div class="sim-texto-content">' +
     w.criterios.map(function(c, i) { return '• ' + c; }).join('<br>') +
     '</div></div>' +
-    '<button class="sim-btn-submit" onclick="submeterWritingSim()">Submeter redação →</button>' +
+    '<button class="sim-btn-submit" onclick="submeterWritingSim()">Submit writing →</button>' +
     '</div>';
 }
 
@@ -3629,7 +3629,7 @@ function atualizarContadorSim() {
   var counter = document.getElementById('simWritingCount');
   if (!input || !counter) return;
   var palavras = input.value.trim() === '' ? 0 : input.value.trim().split(/\s+/).length;
-  counter.textContent = palavras + ' palavras (meta: 100-150)';
+  counter.textContent = palavras + ' words (target: 100-150)';
   counter.style.color = palavras >= 100 && palavras <= 150 ? '#1D9E75' : palavras > 150 ? '#D85A30' : '#BA7517';
 }
 
@@ -3638,7 +3638,7 @@ function submeterWritingSim() {
   if (!input) return;
   var texto = input.value.trim();
   var palavras = texto === '' ? 0 : texto.split(/\s+/).length;
-  if (palavras < 30) { alert('Escreva pelo menos algumas frases antes de submeter!'); return; }
+  if (palavras < 30) { alert('Please write at least a few sentences before submitting!'); return; }
   simRespostas.writing = texto;
   var nota = Math.min(100, Math.max(40,
     (palavras >= 100 && palavras <= 150 ? 25 : palavras >= 80 ? 18 : 10) +
@@ -3655,7 +3655,7 @@ function renderSimSpeaking(body) {
   html += '<div class="sim-section-header">' +
     '<div class="sim-section-icon" style="background:#FAECE7">🗣️</div>' +
     '<div class="sim-section-info"><div class="sim-section-titulo">Speaking</div>' +
-    '<div class="sim-section-sub">Responda em voz alta em inglês</div></div>' +
+    '<div class="sim-section-sub">Answer aloud in English</div></div>' +
     '<span class="sim-section-badge" style="background:#FAECE7;color:#D85A30">B1</span></div>';
 
   partes.forEach(function(parte, pi) {
@@ -3770,7 +3770,7 @@ function renderSimResultado(body) {
   body.innerHTML =
     '<div class="sim-resultado">' +
     '<div class="sim-resultado-card">' +
-      '<div class="sim-resultado-titulo">Resultado do Simulado</div>' +
+      '<div class="sim-resultado-titulo">Exam Results</div>' +
       '<div class="sim-resultado-sub">' + (simulados[simNivel] ? simulados[simNivel].titulo : '') + '</div>' +
       '<div class="sim-geral" style="color:' + cor + '">' + geral + '%</div>' +
       '<div class="sim-geral-lbl">' + classificacao + '</div>' +
@@ -3812,12 +3812,12 @@ function baixarCronograma() {
 
   var cronogramas = {
     'B1': [
-      {titulo:'Reading & Vocabulary', atividades:['Ler 2 textos B1','Aprender 20 palavras novas','Exercícios de vocabulário']},
+      {titulo:'Reading & Vocabulary', atividades:['Read 2 B1 texts','Learn 20 new words','Vocabulary exercises']},
       {titulo:'Grammar B1', atividades:['Present perfect: exercícios','Passive voice: prática','Conditionals: 10 frases']},
       {titulo:'Listening B1', atividades:['Ouvir texto sem legenda','Treino auditivo com quiz','Pronunciação: 15 min']},
-      {titulo:'Writing Practice', atividades:['Redigir email informal (100-150 palavras)','Revisão de coesão','Conectores: however, therefore']},
+      {titulo:'Writing Practice', atividades:['Write informal email (100-150 words)','Cohesion review','Connectors: however, therefore']},
       {titulo:'Speaking B1', atividades:['Conversar com Cricket 15 min','Descrever uma imagem','Discussão de tópico livre']},
-      {titulo:'Simulado B1', atividades:['Reading: 10 perguntas','Listening: 2 passagens','Writing: redação completa','Speaking: entrevista + figura']}
+      {titulo:'Simulado B1', atividades:['Reading: 10 questions','Listening: 2 passages','Writing: full essay','Speaking: interview + picture']}
     ]
   };
 
@@ -4380,7 +4380,7 @@ function renderResultadoKids() {
   var card = document.getElementById('kPalavraCard');
   var total = kJogos[kJogoAtual].palavras.length;
   var emoji = kAcertos === total ? '🏆' : kAcertos >= total * 0.7 ? '🌟' : '💪';
-  var msg = kAcertos === total ? 'Perfeito! Você é incrível!' : kAcertos >= total * 0.7 ? 'Muito bem! Continue assim!' : 'Bom trabalho! Pratique mais!';
+  var msg = kAcertos === total ? 'Perfect! You are amazing!' : kAcertos >= total * 0.7 ? 'Very good! Keep it up!' : 'Good work! Practise more!';
 
   if (card) {
     card.innerHTML =
@@ -7040,11 +7040,22 @@ function abrirListening(nivel) {
   var container = document.getElementById('ll-cards');
   if (container) {
     container.innerHTML = textos.map(function(t, i) {
-      var nivel = listeningNivel;
-      return '<div class="ll-card" onclick="selecionarAudio(listeningTextos['' + nivel + ''][' + i + '])"><div class="ll-icon">' + (t.icone||'🎧') + '</div><div class="ll-info"><div class="ll-titulo">' + t.titulo + '</div><div class="ll-tema">' + t.tema + ' &middot; ' + t.perguntas.length + ' questions</div></div><div class="ll-arrow">&rsaquo;</div></div>';
+      return '<div class="ll-card" onclick="selecionarAudioIdx(' + i + ')">' +
+        '<div class="ll-icon">' + (t.icone||'🎧') + '</div>' +
+        '<div class="ll-info">' +
+          '<div class="ll-titulo">' + t.titulo + '</div>' +
+          '<div class="ll-tema">' + t.tema + ' · ' + t.perguntas.length + ' questions</div>' +
+        '</div>' +
+        '<div class="ll-arrow">›</div>' +
+      '</div>';
     }).join('');
   }
   ir('listening-lista');
+}
+
+function selecionarAudioIdx(i) {
+  var textos = listeningTextos[listeningNivel] || listeningTextos['B1'];
+  selecionarAudio(textos[i]);
 }
 
 function selecionarAudio(audio) {
@@ -7731,17 +7742,17 @@ window.onload = function() {
   document.getElementById('escritaInput').oninput = function() {
     var n = contarPalavras(this.value);
     var el = document.getElementById('escritaCount');
-    el.textContent = n + ' palavras';
+    el.textContent = n + ' words';
     el.className = 'ecount ' + (n >= 80 ? 'ok' : n >= 60 ? 'warn' : 'short');
   };
   var _el_btnEnviarEscrita = document.getElementById('btnEnviarEscrita'); if(_el_btnEnviarEscrita) _el_btnEnviarEscrita.onclick = function() {
     var texto = document.getElementById('escritaInput').value.trim();
-    if (contarPalavras(texto) < 10) { alert('Escreva pelo menos algumas frases antes de enviar!'); return; }
+    if (contarPalavras(texto) < 10) { alert('Please write at least a few sentences before sending!'); return; }
     avaliarEscrita(texto);
     var palavras = contarPalavras(texto);
     registrarAtividade('escrita', {
-      titulo: 'Writing — ' + (textoSelecionado ? textoSelecionado.titulo : 'Redação livre'),
-      subtitulo: palavras + ' palavras • Escrita',
+      titulo: 'Writing — ' + (textoSelecionado ? textoSelecionado.titulo : 'Free writing'),
+      subtitulo: palavras + ' words • Writing',
       icone: '✍️',
       textoId: textoSelecionado ? textoSelecionado.id : null,
       nota: null
@@ -7749,7 +7760,7 @@ window.onload = function() {
     this.textContent = 'Tentar novamente';
     this.onclick = function() {
       document.getElementById('escritaInput').value = '';
-      document.getElementById('escritaCount').textContent = '0 palavras';
+      document.getElementById('escritaCount').textContent = '0 words';
       document.getElementById('eresultado').classList.remove('show');
       this.textContent = 'Enviar para correção';
     };
