@@ -674,38 +674,6 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 .seeds-prox{font-size:11px;color:#9FE1CB;}
 .seeds-progress{height:6px;background:rgba(255,255,255,0.2);border-radius:3px;overflow:hidden;margin-top:4px;}
 .seeds-progress-fill{height:100%;background:#EF9F27;border-radius:3px;transition:width .8s ease;}
-/* SPEAK HUB */
-.speak-hub-header{background:linear-gradient(135deg,#0F6E56,#1D9E75);padding:40px 20px 24px;text-align:center;}
-.speak-hub-title{font-size:22px;font-weight:800;color:#fff;margin-bottom:4px;}
-.speak-hub-sub{font-size:13px;color:#9FE1CB;font-weight:600;}
-.speak-hub-cards{padding:20px 16px;display:flex;flex-direction:column;gap:14px;}
-.speak-card{background:#fff;border-radius:18px;padding:20px;display:flex;align-items:center;gap:16px;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,0.07);border:2px solid transparent;transition:border .15s;}
-.speak-card:active{border-color:#0F6E56;}
-.speak-card-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;}
-.speak-card-info{flex:1;}
-.speak-card-title{font-size:15px;font-weight:800;color:#1a1a2e;margin-bottom:3px;}
-.speak-card-desc{font-size:12px;color:#6b7280;font-weight:600;line-height:1.4;}
-.speak-card-arrow{font-size:20px;color:#0F6E56;font-weight:900;}
-/* EXAMS */
-.exam-hub-header{background:linear-gradient(135deg,#7B2D8B,#A855C8);padding:40px 20px 24px;text-align:center;}
-.exam-hub-title{font-size:22px;font-weight:800;color:#fff;margin-bottom:4px;}
-.exam-hub-sub{font-size:13px;color:#E0AAFF;font-weight:600;}
-.exam-nivel-tabs{display:flex;gap:8px;padding:16px 16px 0;overflow-x:auto;}
-.exam-nivel-tab{padding:6px 16px;border-radius:20px;border:none;font-family:'Nunito',Arial,sans-serif;font-size:12px;font-weight:800;cursor:pointer;background:#F1EFE8;color:#6b7280;white-space:nowrap;}
-.exam-nivel-tab.on{background:#7B2D8B;color:#fff;}
-.exam-cards{padding:14px 16px;display:flex;flex-direction:column;gap:10px;}
-.exam-card{background:#fff;border-radius:14px;padding:16px;display:flex;align-items:center;gap:14px;cursor:pointer;border:2px solid transparent;box-shadow:0 1px 8px rgba(0,0,0,0.06);}
-.exam-card:active{border-color:#7B2D8B;}
-.exam-card-num{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#7B2D8B,#A855C8);color:#fff;font-size:16px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.exam-card-info{flex:1;}
-.exam-card-title{font-size:14px;font-weight:800;color:#1a1a2e;margin-bottom:2px;}
-.exam-card-meta{font-size:11px;color:#6b7280;font-weight:700;}
-.exam-card-done{font-size:18px;}
-/* PHOTO FEEDBACK */
-.photo-feedback-box{background:#E1F5EE;border-radius:14px;padding:14px;margin-top:10px;}
-.photo-feedback-title{font-size:12px;font-weight:800;color:#085041;margin-bottom:6px;text-transform:uppercase;}
-.photo-feedback-text{font-size:13px;color:#0F6E56;line-height:1.6;}
-.photo-feedback-loading{display:flex;align-items:center;gap:8px;font-size:13px;color:#0F6E56;font-weight:700;}
 .figura-timer { display:flex; align-items:center; justify-content:space-between; background:#1a1a2e; border-radius:10px; padding:10px 14px; margin-bottom:10px; }
 .figura-timer-tempo { font-size:28px; font-weight:800; color:#EF9F27; font-variant-numeric:tabular-nums; }
 .figura-timer-label { font-size:11px; color:#9FE1CB; font-weight:700; }
@@ -1072,7 +1040,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
       </div>
     </div>
     <div class="xpcard">
-      <div class="xplbls"><span id="xplbl">Level B1 — 🌱 620 seeds</span><span>Next level in 380 🌱</span></div>
+      <div class="xplbls"><span id="xplbl">Nível B1 — 🌱 620 seeds</span><span>Próximo nível em 380 🌱</span></div>
       <div class="xpbar"><div class="xpfill" id="xpfill" style="width:62%"></div></div>
       <div class="lvpill" id="lvpill">🌱 B1 — Intermediário ▾</div>
     </div>
@@ -1115,11 +1083,11 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     </div>
   </div>
   <nav class="nav nav-universal">
-    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><span style="font-size:18px;line-height:1">🏠</span>Home</div>
-    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><span style="font-size:18px;line-height:1">📋</span>Exams</div>
-    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><span style="font-size:18px;line-height:1">🎤</span>Speak</div>
-    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><span style="font-size:18px;line-height:1">📊</span>Progress</div>
-    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><span style="font-size:18px;line-height:1">👤</span>Profile</div>
+    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
+    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-book"></i>Texts</div>
+    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
+    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
   </nav>
 </div>
 
@@ -1165,7 +1133,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div>
       <div class="stitle">O que vamos fazer hoje?</div>
       <div class="acts">
-        <div class="acard a1"><div class="aicon"><i class="ti ti-headphones" style="color:#185FA5"></i></div><div class="anome">Listen</div><div class="asub">Stories & practice</div></div>
+        <div class="acard a1"><div class="aicon"><i class="ti ti-headphones" style="color:#185FA5"></i></div><div class="anome">Ouvir</div><div class="asub">Histórias e músicas</div></div>
         <div class="acard a2"><div class="aicon"><i class="ti ti-microphone" style="color:#993C1D"></i></div><div class="anome">Speak</div><div class="asub">Repita com Cricket!</div></div>
         <div class="acard a3"><div class="aicon"><i class="ti ti-book-2" style="color:#854F0B"></i></div><div class="anome">Ler</div><div class="asub">Palavras e figuras</div></div>
         <div class="acard a4"><div class="aicon"><i class="ti ti-pencil" style="color:#993556"></i></div><div class="anome">Escrever</div><div class="asub">Complete e forme!</div></div>
@@ -1227,11 +1195,11 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     </div>
   </div>
   <nav class="nav nav-universal">
-    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><span style="font-size:18px;line-height:1">🏠</span>Home</div>
-    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><span style="font-size:18px;line-height:1">📋</span>Exams</div>
-    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><span style="font-size:18px;line-height:1">🎤</span>Speak</div>
-    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><span style="font-size:18px;line-height:1">📊</span>Progress</div>
-    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><span style="font-size:18px;line-height:1">👤</span>Profile</div>
+    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
+    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-book"></i>Texts</div>
+    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
+    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
   </nav>
 </div>
 
@@ -1267,11 +1235,11 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <button class="btn btn-cinza" id="btnSair">Sair da conta</button>
   </div>
   <nav class="nav">
-    <div class="nitem" id="pnavHome"><span style="font-size:18px;line-height:1">🏠</span>Home</div>
-    <div class="nitem" id="pnavTextos" onclick="navegar('textos')"><span style="font-size:18px;line-height:1">📋</span>Exams</div>
-    <div class="nitem" id="pnavFalar"><span style="font-size:18px;line-height:1">🎤</span>Speak</div>
-    <div class="nitem" id="pnavProgresso"><span style="font-size:18px;line-height:1">📊</span>Progress</div>
-    <div class="nitem on"><span style="font-size:18px;line-height:1">👤</span>Profile</div>
+    <div class="nitem" id="pnavHome"><i class="ti ti-home"></i>Home</div>
+    <div class="nitem" id="pnavTextos"><i class="ti ti-book"></i>Texts</div>
+    <div class="nitem" id="pnavFalar"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem" id="pnavProgresso"><i class="ti ti-chart-bar"></i>Progress</div>
+    <div class="nitem on"><i class="ti ti-user"></i>Profile</div>
   </nav>
 </div>
 
@@ -1281,7 +1249,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
   <div class="bheader">
     <div class="bheader-top">
       <button class="bback" id="btnVoltarBanco">&#8592;</button>
-      <div class="btitulo">Text Library</div>
+      <div class="btitulo">Banco de Textos</div>
       <div style="width:40px"></div>
     </div>
     <div class="nivel-tabs" id="nivel-tabs">
@@ -1296,16 +1264,16 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
   <div class="tema-filter" id="tema-filter"></div>
   <div class="texto-lista" id="texto-lista"></div>
   <nav class="nav nav-universal">
-    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><span style="font-size:18px;line-height:1">🏠</span>Home</div>
-    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><span style="font-size:18px;line-height:1">📋</span>Exams</div>
-    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><span style="font-size:18px;line-height:1">🎤</span>Speak</div>
-    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><span style="font-size:18px;line-height:1">📊</span>Progress</div>
-    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><span style="font-size:18px;line-height:1">👤</span>Profile</div>
+    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
+    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-book"></i>Texts</div>
+    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
+    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
   </nav>
 </div>
 
 <!-- ===== AUDIÇÃO ===== -->
-<!-- TELA: Listening list by level -->
+<!-- TELA: Listening list -->
 <div id="listening-lista" class="tela">
   <div class="aheader">
     <button class="aback" onclick="voltarHome()">&#8592;</button>
@@ -1317,11 +1285,11 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div id="ll-cards"></div>
   </div>
   <nav class="nav nav-universal">
-    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><span style="font-size:18px;line-height:1">🏠</span>Home</div>
-    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><span style="font-size:18px;line-height:1">📋</span>Exams</div>
-    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><span style="font-size:18px;line-height:1">🎤</span>Speak</div>
-    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><span style="font-size:18px;line-height:1">📊</span>Progress</div>
-    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><span style="font-size:18px;line-height:1">👤</span>Profile</div>
+    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
+    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-book"></i>Texts</div>
+    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
+    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
   </nav>
 </div>
 
@@ -1397,11 +1365,11 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 
   </div>
   <nav class="nav nav-universal">
-    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><span style="font-size:18px;line-height:1">🏠</span>Home</div>
-    <div class="nitem nav-item-univ on" data-dest="textos" onclick="navegar('textos')"><span style="font-size:18px;line-height:1">📋</span>Exams</div>
-    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><span style="font-size:18px;line-height:1">🎤</span>Speak</div>
-    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><span style="font-size:18px;line-height:1">📊</span>Progress</div>
-    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><span style="font-size:18px;line-height:1">👤</span>Profile</div>
+    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
+    <div class="nitem nav-item-univ on" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-book"></i>Texts</div>
+    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
+    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
   </nav>
 </div>
 
@@ -1445,11 +1413,11 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     </div>
   </div>
   <nav class="nav nav-universal">
-    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><span style="font-size:18px;line-height:1">🏠</span>Home</div>
-    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><span style="font-size:18px;line-height:1">📋</span>Exams</div>
-    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><span style="font-size:18px;line-height:1">🎤</span>Speak</div>
-    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><span style="font-size:18px;line-height:1">📊</span>Progress</div>
-    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><span style="font-size:18px;line-height:1">👤</span>Profile</div>
+    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
+    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-book"></i>Texts</div>
+    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
+    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
   </nav>
 </div>
 
@@ -1468,7 +1436,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
         <div class="pro-nivel-badge" id="proNivelBadge">B1</div>
         <div class="pro-nivel-info">
           <div class="pro-nivel-nome" id="proNivelNome">B1 — Intermediário</div>
-          <div class="pro-nivel-sub">🌱 620 seeds to B2</div>
+          <div class="pro-nivel-sub">🌱 620 seeds para B2</div>
           <div class="pro-xp-bar"><div class="pro-xp-fill" id="proXpFill"></div></div>
         </div>
       </div>
@@ -1531,11 +1499,11 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 
   </div>
   <nav class="nav">
-    <div class="nitem" id="pronavHome"><span style="font-size:18px;line-height:1">🏠</span>Home</div>
-    <div class="nitem" id="pronavTextos" onclick="navegar('textos')"><span style="font-size:18px;line-height:1">📋</span>Exams</div>
-    <div class="nitem" onclick="navegar('falar')"><span style="font-size:18px;line-height:1">🎤</span>Speak</div>
-    <div class="nitem on"><span style="font-size:18px;line-height:1">📊</span>Progress</div>
-    <div class="nitem" id="pronavPerfil"><span style="font-size:18px;line-height:1">👤</span>Profile</div>
+    <div class="nitem" id="pronavHome"><i class="ti ti-home"></i>Home</div>
+    <div class="nitem" id="pronavTextos"><i class="ti ti-book"></i>Texts</div>
+    <div class="nitem"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem on"><i class="ti ti-chart-bar"></i>Progress</div>
+    <div class="nitem" id="pronavPerfil"><i class="ti ti-user"></i>Profile</div>
   </nav>
 </div>
 
@@ -1559,11 +1527,11 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <!-- Gerado por JS -->
   </div>
   <nav class="nav nav-universal">
-    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><span style="font-size:18px;line-height:1">🏠</span>Home</div>
-    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><span style="font-size:18px;line-height:1">📋</span>Exams</div>
-    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><span style="font-size:18px;line-height:1">🎤</span>Speak</div>
-    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><span style="font-size:18px;line-height:1">📊</span>Progress</div>
-    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><span style="font-size:18px;line-height:1">👤</span>Profile</div>
+    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
+    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-book"></i>Texts</div>
+    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
+    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
   </nav>
 </div>
 
@@ -1609,62 +1577,21 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     </div>
   </div>
   <nav class="nav nav-universal">
-    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><span style="font-size:18px;line-height:1">🏠</span>Home</div>
-    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><span style="font-size:18px;line-height:1">📋</span>Exams</div>
-    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><span style="font-size:18px;line-height:1">🎤</span>Speak</div>
-    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><span style="font-size:18px;line-height:1">📊</span>Progress</div>
-    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><span style="font-size:18px;line-height:1">👤</span>Profile</div>
+    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
+    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-book"></i>Texts</div>
+    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
+    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
   </nav>
 </div>
 
 <!-- ===== CONVERSAÇÃO ===== -->
-<!-- ===== SPEAK HUB ===== -->
-<div id="speak-hub" class="tela">
-  <div class="speak-hub-header">
-    <div class="speak-hub-title">🎤 Speak</div>
-    <div class="speak-hub-sub">Choose how you want to practise</div>
-  </div>
-  <div class="speak-hub-cards">
-    <div class="speak-card" onclick="irConversacao()">
-      <div class="speak-card-icon" style="background:#E1F5EE;">🦗</div>
-      <div class="speak-card-info">
-        <div class="speak-card-title">Talk to Cricket</div>
-        <div class="speak-card-desc">Free conversation with your AI English tutor. Ask questions, practise grammar, discuss any topic.</div>
-      </div>
-      <div class="speak-card-arrow">›</div>
-    </div>
-    <div class="speak-card" onclick="navegar('chat')">
-      <div class="speak-card-icon" style="background:#EDE9FE;">💬</div>
-      <div class="speak-card-info">
-        <div class="speak-card-title">Member Chat</div>
-        <div class="speak-card-desc">Chat with other students learning English. Practice writing and reading in real conversations.</div>
-      </div>
-      <div class="speak-card-arrow">›</div>
-    </div>
-    <div class="speak-card" onclick="irDescricaoFiguras()">
-      <div class="speak-card-icon" style="background:#FAF0FF;">🖼️</div>
-      <div class="speak-card-info">
-        <div class="speak-card-title">Describe a Photo</div>
-        <div class="speak-card-desc">Cambridge-style picture description with AI feedback on your vocabulary and fluency.</div>
-      </div>
-      <div class="speak-card-arrow">›</div>
-    </div>
-  </div>
-  <nav class="nav nav-universal">
-    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><span style="font-size:18px;line-height:1">🏠</span>Home</div>
-    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><span style="font-size:18px;line-height:1">📋</span>Exams</div>
-    <div class="nitem nav-item-univ on" data-dest="falar"><span style="font-size:18px;line-height:1">🎤</span>Speak</div>
-    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><span style="font-size:18px;line-height:1">📊</span>Progress</div>
-    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><span style="font-size:18px;line-height:1">👤</span>Profile</div>
-  </nav>
-</div>
-
 <div id="conversacao" class="tela">
   <div class="ctheader">
     <button class="ctback" id="btnVoltarConv">&#8592;</button>
     <div style="display:flex;align-items:center;justify-content:space-between;">
       <div>
-        <div class="cttitulo">Talk to Cricket</div>
+        <div class="cttitulo">Falar com Cricket</div>
         <div class="ctsub">Conversação em inglês com correção</div>
       </div>
       <button onclick="ir('chat-membros'); carregarMensagensChat(); assinarChatRealtime();" style="background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.4);border-radius:20px;padding:5px 12px;font-family:Nunito,Arial,sans-serif;font-size:11px;font-weight:800;color:#fff;cursor:pointer;">💬 Chat</button>
@@ -1709,7 +1636,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div class="plcard">
       <div class="plcard-titulo">📅 Data da prova</div>
       <input type="date" class="pldata-input" id="plDataProva"/>
-      <p style="font-size:11px;color:#6b7280;margin-top:6px;">Choose your Cambridge exam date</p>
+      <p style="font-size:11px;color:#6b7280;margin-top:6px;">Escolha a data do seu exame Cambridge</p>
     </div>
 
     <div class="plcard">
@@ -1759,32 +1686,6 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 
 
 <!-- ===== SIMULADO CAMBRIDGE ===== -->
-<!-- ===== EXAMS HUB ===== -->
-<div id="exams-hub" class="tela">
-  <div class="exam-hub-header">
-    <div class="exam-hub-title">📋 Cambridge Exams</div>
-    <div class="exam-hub-sub">5 full mock tests per level</div>
-  </div>
-  <div style="padding:0 16px;">
-    <div class="exam-nivel-tabs" id="examNivelTabs">
-      <button class="exam-nivel-tab" data-nivel="A1" onclick="renderExamCards('A1')">A1</button>
-      <button class="exam-nivel-tab" data-nivel="A2" onclick="renderExamCards('A2')">A2</button>
-      <button class="exam-nivel-tab on" data-nivel="B1" onclick="renderExamCards('B1')">B1</button>
-      <button class="exam-nivel-tab" data-nivel="B2" onclick="renderExamCards('B2')">B2</button>
-      <button class="exam-nivel-tab" data-nivel="C1" onclick="renderExamCards('C1')">C1</button>
-      <button class="exam-nivel-tab" data-nivel="C2" onclick="renderExamCards('C2')">C2</button>
-    </div>
-  </div>
-  <div class="exam-cards" id="examCards"></div>
-  <nav class="nav nav-universal">
-    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><span style="font-size:18px;line-height:1">🏠</span>Home</div>
-    <div class="nitem nav-item-univ on" data-dest="textos"><span style="font-size:18px;line-height:1">📋</span>Exams</div>
-    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><span style="font-size:18px;line-height:1">🎤</span>Speak</div>
-    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><span style="font-size:18px;line-height:1">📊</span>Progress</div>
-    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><span style="font-size:18px;line-height:1">👤</span>Profile</div>
-  </nav>
-</div>
-
 <div id="simulado" class="tela">
   <div class="simheader">
     <button class="simback" id="btnVoltarSimulado">&#8592;</button>
@@ -1809,11 +1710,11 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <!-- Gerado por JS -->
   </div>
   <nav class="nav nav-universal">
-    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><span style="font-size:18px;line-height:1">🏠</span>Home</div>
-    <div class="nitem nav-item-univ on" data-dest="textos" onclick="navegar('textos')"><span style="font-size:18px;line-height:1">📋</span>Exams</div>
-    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><span style="font-size:18px;line-height:1">🎤</span>Speak</div>
-    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><span style="font-size:18px;line-height:1">📊</span>Progress</div>
-    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><span style="font-size:18px;line-height:1">👤</span>Profile</div>
+    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
+    <div class="nitem nav-item-univ on" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-book"></i>Texts</div>
+    <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
+    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
   </nav>
 </div>
 
@@ -1872,7 +1773,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div style="padding:14px 16px 0;">
       <div class="figura-timer">
         <div>
-          <div class="figura-timer-tempo" id="figuraTimer">5:00</div>
+          <div class="figura-timer-tempo" id="figuraTimer">3:00</div>
           <div class="figura-timer-label">Time to describe</div>
         </div>
         <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
@@ -1883,11 +1784,9 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 
       <!-- Configuração de tempo -->
       <div style="display:flex;gap:6px;margin-bottom:10px;">
-        <button class="figura-chip" data-tempo="60" id="figTempo1">1 min</button>
-        <button class="figura-chip" data-tempo="120" id="figTempo2">2 min</button>
-        <button class="figura-chip" data-tempo="180" id="figTempo3">3 min</button>
+        <button class="figura-chip highlight" data-tempo="180" id="figTempo3">3 min</button>
         <button class="figura-chip" data-tempo="240" id="figTempo4">4 min</button>
-        <button class="figura-chip highlight" data-tempo="300" id="figTempo5">5 min ⭐</button>
+        <button class="figura-chip" data-tempo="300" id="figTempo5">5 min</button>
       </div>
 
       <!-- Imagem para descrever -->
@@ -1916,7 +1815,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
       </button>
       <div id="figTranscricao" style="display:none;background:#fff;border-radius:10px;padding:12px;font-size:13px;color:#1a1a2e;line-height:1.6;border:1px solid #D3D1C7;margin-bottom:10px;"></div>
 
-      <!-- AI Feedback -->
+      <!-- Cricket's Feedback -->
       <div id="figFeedback" style="display:none;background:#E1F5EE;border-radius:12px;padding:14px;margin-bottom:10px;">
         <div style="font-size:12px;font-weight:800;color:#085041;margin-bottom:6px;">🦗 Cricket's Feedback</div>
         <div id="figFeedbackTexto" style="font-size:13px;color:#0F6E56;line-height:1.5;"></div>
@@ -1993,7 +1892,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 <div id="kids-falar" class="tela">
   <div class="kflheader">
     <button class="kflback" id="btnVoltarKidsFalar">&#8592;</button>
-    <div class="kfltitulo">🗣️ Speaking in English</div>
+    <div class="kfltitulo">🗣️ Falar em Inglês</div>
     <div class="kflsub">Listen and repeat with Cricket!</div>
     <div class="kfl-progresso" id="kflProgresso"></div>
   </div>
@@ -2010,7 +1909,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div class="kfl-cricket-box">
       <div class="kfl-cricket-avatar">🦗</div>
       <div class="kfl-cricket-texto" id="kflCricketTexto">Listen and repeat with Cricket!</div>
-      <button class="kfl-cricket-btn" id="kflCricketBtn">🔊 Listen</button>
+      <button class="kfl-cricket-btn" id="kflCricketBtn">🔊 Ouvir</button>
     </div>
 
     <!-- Microfone do aluno -->
@@ -2792,9 +2691,16 @@ function navegar(destino) {
   playSound('clique');
   switch(destino) {
     case 'home': voltarHome(); break;
-    case 'textos': abrirExamsHub(); break;
+    case 'textos': irBanco(); break;
     case 'falar': 
-      ir('speak-hub');
+      ir('conversacao');
+      // Mensagem inicial do Cricket se chat estiver vazio
+      setTimeout(function() {
+        var chat = document.getElementById('ct-chat');
+        if (chat && chat.children.length === 0) {
+          adicionarMsgCricket('Hello! I am Cricket, your English conversation partner. Let us practice together! Tell me, what do you usually do in the morning?');
+        }
+      }, 300);
       break;
     case 'chat':
       ir('chat-membros');
@@ -2811,15 +2717,10 @@ function renderNav(telaId) {
   var mapa = {
     'home-cambridge': 'home',
     'banco': 'textos',
-    'exams-hub': 'textos',
-    'simulado': 'textos',
-    'speak-hub': 'falar',
-    'conversacao': 'falar',
-    'chat-membros': 'falar',
-    'descricao-figuras': 'falar',
     'leitura': 'textos',
-    'audicao': 'textos',
     'listening-lista': 'textos',
+    'audicao': 'textos',
+    'audicao': 'textos',
     'quiz': 'textos',
     'conversacao': 'falar',
     'treino-audio': 'ouvir',
@@ -2840,7 +2741,7 @@ var seedsTotal = 620;
 function ganharSementes(quantidade, motivo) {
   seedsTotal += quantidade;
   var xplbl = document.getElementById('xplbl');
-  if (xplbl) xplbl.textContent = 'Level ' + nivelAtual + ' — 🌱 ' + seedsTotal + ' seeds';
+  if (xplbl) xplbl.textContent = 'Nível ' + nivelAtual + ' — 🌱 ' + seedsTotal + ' seeds';
   var notif = document.createElement('div');
   notif.className = 'seed-earned';
   notif.textContent = '+' + quantidade + ' 🌱 ' + (motivo || 'seeds!');
@@ -2854,7 +2755,7 @@ var _renderResultadoOriginal = renderQuizResultado;
 renderQuizResultado = function() {
   _renderResultadoOriginal();
   var seeds = quizAcertos * 10;
-  ganharSementes(seeds, 'exercises done!');
+  ganharSementes(seeds, 'exercícios completos!');
 };
 
 // ===== PLANO DE ESTUDOS =====
@@ -3610,7 +3511,7 @@ function renderSimListening(body) {
   html += '<div class="sim-section-header">' +
     '<div class="sim-section-icon" style="background:#E1F5EE">🎧</div>' +
     '<div class="sim-section-info"><div class="sim-section-titulo">Listening</div>' +
-    '<div class="sim-section-sub">Listen to the audio (max. 2x) and answer</div></div>' +
+    '<div class="sim-section-sub">Ouça o áudio (máx. 2x) e responda</div></div>' +
     '<span class="sim-section-badge" style="background:#E1F5EE;color:#085041">B1</span></div>';
 
   passagens.forEach(function(passagem, pi) {
@@ -3750,204 +3651,101 @@ function submeterWritingSim() {
 function renderSimSpeaking(body) {
   var sim = simulados[simNivel];
   var partes = sim.speaking.partes;
-
   var html = '<div class="sim-section">';
   html += '<div class="sim-section-header">' +
     '<div class="sim-section-icon" style="background:#FAECE7">🗣️</div>' +
     '<div class="sim-section-info"><div class="sim-section-titulo">Speaking</div>' +
-    '<div class="sim-section-sub">Cambridge format · 3 parts</div></div>' +
-    '<span class="sim-section-badge" style="background:#FAECE7;color:#D85A30">' + simNivel + '</span></div>';
+    '<div class="sim-section-sub">Responda em voz alta em inglês</div></div>' +
+    '<span class="sim-section-badge" style="background:#FAECE7;color:#D85A30">B1</span></div>';
 
-  // PART 1 — Examiner interview (AI chat)
-  html += '<div class="sim-speaking-box">' +
-    '<div class="sim-speaking-titulo">📋 Part 1 — Interview</div>' +
-    '<p style="font-size:12px;color:#712B13;margin-bottom:10px;">The examiner will ask you personal questions. Speak naturally for 1–2 minutes.</p>';
   partes.forEach(function(parte, pi) {
+    html += '<div class="sim-speaking-box">';
+    html += '<div class="sim-speaking-titulo">' + parte.titulo + '</div>';
+    html += '<p style="font-size:12px;color:#712B13;margin-bottom:10px;">' + parte.sub + '</p>';
+
     if (parte.tipo === 'interview') {
-      parte.perguntas.forEach(function(q) {
-        html += '<div class="sim-speaking-pergunta">🎤 ' + q + '</div>';
+      parte.perguntas.forEach(function(q, qi) {
+        html += '<div class="sim-speaking-pergunta">❓ ' + q + '</div>';
       });
       html += '<button class="sim-speaking-mic" id="simMic_' + pi + '" onclick="toggleSimMic(' + pi + ')">🎤 Tap to answer</button>';
-      html += '<div id="simTranscricao_' + pi + '" style="display:none;background:#fff;border-radius:8px;padding:10px;font-size:12px;color:#1a1a2e;margin-top:8px;border:1px solid #D3D1C7;"></div>';
-      html += '<div id="simFeedback_' + pi + '" style="display:none;background:#E1F5EE;border-radius:10px;padding:12px;margin-top:8px;">' +
-        '<div style="font-size:11px;font-weight:800;color:#085041;margin-bottom:4px;">🦗 Cricket\'s Feedback</div>' +
-        '<div id="simFeedbackTexto_' + pi + '" style="font-size:12px;color:#0F6E56;line-height:1.5;"></div></div>';
+    } else if (parte.tipo === 'picture') {
+      html += '<div class="sim-figura">' +
+        '<svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">' +
+        '<rect width="400" height="250" fill="#F5E6D3"/>' +
+        '<rect x="50" y="160" width="300" height="60" rx="8" fill="#8B6347"/>' +
+        '<rect x="60" y="150" width="280" height="20" rx="4" fill="#A0785A"/>' +
+        '<ellipse cx="150" cy="155" rx="25" ry="12" fill="#fff" stroke="#ccc" stroke-width="1"/>' +
+        '<rect x="125" y="143" width="50" height="12" rx="3" fill="#fff" stroke="#ccc" stroke-width="1"/>' +
+        '<ellipse cx="150" cy="143" rx="25" ry="8" fill="#C8860A" opacity="0.6"/>' +
+        '<ellipse cx="250" cy="155" rx="25" ry="12" fill="#fff" stroke="#ccc" stroke-width="1"/>' +
+        '<rect x="225" y="143" width="50" height="12" rx="3" fill="#fff" stroke="#ccc" stroke-width="1"/>' +
+        '<ellipse cx="250" cy="143" rx="25" ry="8" fill="#C8860A" opacity="0.6"/>' +
+        '<circle cx="130" cy="100" r="25" fill="#FDBCB4"/>' +
+        '<rect x="105" y="125" width="50" height="60" rx="8" fill="#3B82F6"/>' +
+        '<line x1="105" y1="140" x2="80" y2="170" stroke="#FDBCB4" stroke-width="8" stroke-linecap="round"/>' +
+        '<line x1="155" y1="140" x2="175" y2="165" stroke="#FDBCB4" stroke-width="8" stroke-linecap="round"/>' +
+        '<rect x="168" y="155" width="16" height="24" rx="3" fill="#1a1a2e"/>' +
+        '<rect x="170" y="157" width="12" height="16" rx="1" fill="#60A5FA"/>' +
+        '<circle cx="270" cy="100" r="25" fill="#DCA080"/>' +
+        '<rect x="245" y="125" width="50" height="60" rx="8" fill="#EF4444"/>' +
+        '<line x1="245" y1="140" x2="220" y2="168" stroke="#DCA080" stroke-width="8" stroke-linecap="round"/>' +
+        '<line x1="295" y1="140" x2="315" y2="165" stroke="#DCA080" stroke-width="8" stroke-linecap="round"/>' +
+        '<circle cx="60" cy="90" r="15" fill="#B8A090" opacity="0.5"/>' +
+        '<rect x="45" y="105" width="30" height="40" rx="5" fill="#9B7B6B" opacity="0.5"/>' +
+        '<circle cx="340" cy="85" r="15" fill="#C4B09A" opacity="0.5"/>' +
+        '<rect x="325" y="100" width="30" height="40" rx="5" fill="#7C6455" opacity="0.5"/>' +
+        '<rect x="160" y="20" width="80" height="60" rx="4" fill="#BFDBFE" stroke="#93C5FD" stroke-width="2"/>' +
+        '<line x1="200" y1="20" x2="200" y2="80" stroke="#93C5FD" stroke-width="1"/>' +
+        '<line x1="160" y1="50" x2="240" y2="50" stroke="#93C5FD" stroke-width="1"/>' +
+        '<text x="200" y="235" text-anchor="middle" font-family="Arial" font-size="11" fill="#8B6347">Describe what you see in this picture</text>' +
+        '</svg></div>';
+      html += '<div class="sim-speaking-pergunta">💬 ' + parte.prompt + '</div>';
+      html += '<p style="font-size:11px;color:#712B13;margin:6px 0;">Contexto: ' + parte.descricao + '</p>';
+      html += '<button class="sim-speaking-mic" id="simMic_' + pi + '" onclick="toggleSimMic(' + pi + ')">🎤 Tap to speak</button>';
     }
+    html += '</div>';
   });
-  html += '</div>';
-
-  // PART 2 — Photo description with timer
-  html += '<div class="sim-speaking-box" id="simFotoBox">' +
-    '<div class="sim-speaking-titulo">🖼️ Part 2 — Describe a Photo</div>' +
-    '<p style="font-size:12px;color:#712B13;margin-bottom:10px;">Describe the photo in detail. You have <strong>5 minutes</strong> — Cambridge exam format.</p>';
-
-  partes.forEach(function(parte, pi) {
-    if (parte.tipo === 'picture') {
-      // Timer bar
-      html += '<div style="background:#1a1a2e;border-radius:10px;padding:10px 14px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;">' +
-        '<div><div id="simFotoTimer" style="font-size:28px;font-weight:800;color:#EF9F27;font-variant-numeric:tabular-nums;">5:00</div>' +
-        '<div style="font-size:11px;color:#9FE1CB;font-weight:700;">Time to describe</div></div>' +
-        '<div style="display:flex;flex-direction:column;gap:6px;">' +
-        '<button id="btnSimFotoTimer" onclick="toggleSimFotoTimer()" style="padding:6px 14px;border-radius:20px;border:none;background:#EF9F27;color:#412402;font-family:Nunito,Arial,sans-serif;font-size:12px;font-weight:800;cursor:pointer;">▶ Start</button>' +
-        '</div></div>';
-
-      // The SVG figure
-      html += '<div style="background:#fff;border-radius:12px;padding:12px;margin-bottom:10px;border:1.5px solid #D3D1C7;">';
-      html += '<div style="font-size:11px;font-weight:800;color:#534AB7;margin-bottom:6px;text-transform:uppercase;">🖼️ ' + (parte.descricao || 'Describe what you see') + '</div>';
-      html += parte.svg || figurasSpeaking[0].svg;
-      html += '<div style="background:#F8F7FF;border-radius:8px;padding:8px;margin-top:8px;">';
-      html += '<div style="font-size:11px;font-weight:800;color:#6b7280;margin-bottom:4px;">GUIDING QUESTIONS</div>';
-      (parte.perguntas || ['What can you see?', 'Who are the people?', 'What might be happening?']).forEach(function(q) {
-        html += '<div style="font-size:12px;color:#1a1a2e;margin-bottom:3px;">• ' + q + '</div>';
-      });
-      html += '</div></div>';
-
-      html += '<div style="background:#EEEDFE;border-radius:10px;padding:10px;margin-bottom:10px;">' +
-        '<div style="font-size:11px;font-weight:800;color:#534AB7;margin-bottom:6px;">💡 Useful phrases</div>' +
-        '<div style="display:flex;gap:6px;flex-wrap:wrap;">' +
-        ['In the foreground...','In the background...','It appears that...','I can see...','On the left/right...','They might be...','The picture shows...'].map(function(f) {
-          return '<span style="font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;background:#EEEDFE;color:#534AB7;">' + f + '</span>';
-        }).join('') + '</div></div>';
-
-      html += '<button class="sim-speaking-mic" id="simMic_' + pi + '" onclick="toggleSimMic(' + pi + ')">🎤 Tap to describe</button>';
-      html += '<div id="simTranscricao_' + pi + '" style="display:none;background:#fff;border-radius:8px;padding:10px;font-size:12px;color:#1a1a2e;margin-top:8px;border:1px solid #D3D1C7;"></div>';
-      html += '<div id="simFeedback_' + pi + '" style="display:none;background:#E1F5EE;border-radius:10px;padding:12px;margin-top:8px;">' +
-        '<div style="font-size:11px;font-weight:800;color:#085041;margin-bottom:4px;">🦗 Cricket\'s Feedback</div>' +
-        '<div id="simFeedbackTexto_' + pi + '" style="font-size:12px;color:#0F6E56;line-height:1.5;"></div></div>';
-    }
-  });
-  html += '</div>';
-
-  // PART 3 — Discussion
-  html += '<div class="sim-speaking-box">' +
-    '<div class="sim-speaking-titulo">💬 Part 3 — Discussion</div>' +
-    '<p style="font-size:12px;color:#712B13;margin-bottom:10px;">Discuss the topic with the examiner. Express opinions and justify them.</p>';
-  partes.forEach(function(parte, pi) {
-    if (parte.tipo === 'discussion') {
-      html += '<div class="sim-speaking-pergunta">💬 ' + (parte.prompt || parte.perguntas && parte.perguntas[0] || 'Share your opinion on the topic.') + '</div>';
-      html += '<button class="sim-speaking-mic" id="simMic_' + pi + '" onclick="toggleSimMic(' + pi + ')">🎤 Tap to discuss</button>';
-      html += '<div id="simTranscricao_' + pi + '" style="display:none;background:#fff;border-radius:8px;padding:10px;font-size:12px;color:#1a1a2e;margin-top:8px;border:1px solid #D3D1C7;"></div>';
-      html += '<div id="simFeedback_' + pi + '" style="display:none;background:#E1F5EE;border-radius:10px;padding:12px;margin-top:8px;">' +
-        '<div style="font-size:11px;font-weight:800;color:#085041;margin-bottom:4px;">🦗 Cricket\'s Feedback</div>' +
-        '<div id="simFeedbackTexto_' + pi + '" style="font-size:12px;color:#0F6E56;line-height:1.5;"></div></div>';
-    }
-  });
-  html += '</div>';
 
   html += '<button class="sim-btn-submit" onclick="submeterSpeakingSim()">Finish Speaking →</button>';
   html += '</div>';
   body.innerHTML = html;
-
-  // Init photo timer
-  window._simFotoTimerSeg = 300;
-  window._simFotoTimerInterval = null;
-  window.toggleSimFotoTimer = function() {
-    var btn = document.getElementById('btnSimFotoTimer');
-    if (window._simFotoTimerInterval) {
-      clearInterval(window._simFotoTimerInterval);
-      window._simFotoTimerInterval = null;
-      if (btn) btn.textContent = '▶ Start';
-    } else {
-      window._simFotoTimerInterval = setInterval(function() {
-        window._simFotoTimerSeg--;
-        var el = document.getElementById('simFotoTimer');
-        if (el) {
-          var m = Math.floor(window._simFotoTimerSeg / 60);
-          var s = window._simFotoTimerSeg % 60;
-          el.textContent = m + ':' + (s < 10 ? '0' : '') + s;
-          el.style.color = window._simFotoTimerSeg <= 30 ? '#D85A30' : '#EF9F27';
-        }
-        if (window._simFotoTimerSeg <= 0) {
-          clearInterval(window._simFotoTimerInterval);
-          window._simFotoTimerInterval = null;
-          if (btn) btn.textContent = '▶ Start';
-        }
-      }, 1000);
-      if (btn) btn.textContent = '⏹ Stop';
-    }
-  };
-}
-
-async function gerarFeedbackSimSpeaking(pi, transcricao, tipo, contexto) {
-  var feedbackDiv = document.getElementById('simFeedback_' + pi);
-  var feedbackTexto = document.getElementById('simFeedbackTexto_' + pi);
-  if (!feedbackDiv || !feedbackTexto) return;
-  feedbackDiv.style.display = 'block';
-  feedbackTexto.innerHTML = '<span style="color:#6b7280;">🦗 Analysing...</span>';
-  var tipoLabel = tipo === 'interview' ? 'personal interview question' : tipo === 'picture' ? 'photo description task' : 'discussion task';
-  var prompt = 'You are Cricket, a Cambridge English examiner giving brief friendly feedback.\n\nTask type: ' + tipoLabel + '\nContext: ' + contexto + '\nStudent said: "' + (transcricao || '(no speech detected)') + '"\n\nGive 3-bullet feedback:\n1. ✅ What was good\n2. 💡 One improvement tip for Cambridge\n3. 🎯 A model phrase to use\n\nKeep it brief and encouraging. English only. No asterisks.';
-  try {
-    var res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({model:'claude-sonnet-4-6', max_tokens:1000, messages:[{role:'user',content:prompt}]})
-    });
-    var data = await res.json();
-    var text = data.content && data.content[0] ? data.content[0].text : 'Great effort!';
-    feedbackTexto.innerHTML = text.replace(/\n/g, '<br>');
-  } catch(e) {
-    feedbackTexto.textContent = 'Good effort! Keep practising.';
-  }
 }
 
 function toggleSimMic(pi) {
   var btn = document.getElementById('simMic_' + pi);
   if (!btn) return;
-
   if (simMicAtivo) {
     simMicAtivo = false;
     btn.classList.remove('recording');
-    btn.textContent = '✓ Recorded — tap to redo';
+    btn.textContent = '✓ Recorded — click to redo';
     if (simReconhecimento) { try { simReconhecimento.stop(); } catch(e) {} }
     simPontos.speaking = Math.floor(Math.random() * 25) + 65;
-    // Get transcript and generate feedback
-    var transcDiv = document.getElementById('simTranscricao_' + pi);
-    var transcricao = transcDiv ? transcDiv.textContent : '';
-    // Determine type from DOM context
-    var sim = simulados[simNivel];
-    var parte = sim && sim.speaking && sim.speaking.partes ? sim.speaking.partes[pi] : null;
-    var tipo = parte ? parte.tipo : 'interview';
-    var contexto = parte ? (parte.descricao || parte.perguntas && parte.perguntas[0] || '') : '';
-    gerarFeedbackSimSpeaking(pi, transcricao, tipo, contexto);
     return;
   }
-
   if (!('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
+    alert('Reconhecimento de voz disponível apenas no Chrome. Sua resposta foi registrada.');
     simPontos.speaking = 75;
-    btn.textContent = '✓ Recorded (no mic — Chrome needed)';
-    gerarFeedbackSimSpeaking(pi, '', 'interview', '');
+    btn.textContent = '✓ Resposta registrada';
     return;
   }
-
   simMicAtivo = true;
   btn.classList.add('recording');
   btn.textContent = '🔴 Recording... tap to stop';
-
   var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   simReconhecimento = new SR();
   simReconhecimento.lang = 'en-US';
   simReconhecimento.continuous = true;
-  simReconhecimento.interimResults = true;
   simReconhecimento.onresult = function(e) {
-    var texto = '';
-    for (var i = 0; i < e.results.length; i++) { texto += e.results[i][0].transcript + ' '; }
-    var transcDiv = document.getElementById('simTranscricao_' + pi);
-    if (transcDiv) { transcDiv.style.display = 'block'; transcDiv.textContent = texto; }
     simPontos.speaking = Math.floor(Math.random() * 25) + 65;
   };
   simReconhecimento.onerror = function() {
     simMicAtivo = false;
     btn.classList.remove('recording');
-    btn.textContent = '🎤 Tap to answer';
-  };
-  simReconhecimento.onend = function() {
-    if (simMicAtivo) { try { simReconhecimento.start(); } catch(e) {} }
   };
   simReconhecimento.start();
 }
 
 function submeterSpeakingSim() {
-  if (window._simFotoTimerInterval) { clearInterval(window._simFotoTimerInterval); window._simFotoTimerInterval = null; }
   if (simPontos.speaking === 0) simPontos.speaking = 70;
   proximaSimSecao();
 }
@@ -3984,7 +3782,7 @@ function renderSimResultado(body) {
       '</div>' +
     '</div>' +
     '<button class="sim-btn-next" onclick="voltarHome()" style="background:#534AB7;color:#fff;margin-bottom:10px;">Voltar ao início</button>' +
-    '<button class="sim-btn-next" onclick="abrirSimulado(\'' + simNivel + '\')" style="background:#1D9E75;color:#fff;">Refazer o simulado</button>' +
+    '<button class="sim-btn-next" onclick="abrirSimulado(\'' + simNivel + '\')" style="background:#1D9E75;color:#fff;">Retake the exam</button>' +
     '</div>';
 }
 
@@ -4016,7 +3814,7 @@ function baixarCronograma() {
     'B1': [
       {titulo:'Reading & Vocabulary', atividades:['Ler 2 textos B1','Aprender 20 palavras novas','Exercícios de vocabulário']},
       {titulo:'Grammar B1', atividades:['Present perfect: exercícios','Passive voice: prática','Conditionals: 10 frases']},
-      {titulo:'Listening B1', atividades:['Listen without transcript','Listening quiz','Pronunciação: 15 min']},
+      {titulo:'Listening B1', atividades:['Ouvir texto sem legenda','Treino auditivo com quiz','Pronunciação: 15 min']},
       {titulo:'Writing Practice', atividades:['Redigir email informal (100-150 palavras)','Revisão de coesão','Conectores: however, therefore']},
       {titulo:'Speaking B1', atividades:['Conversar com Cricket 15 min','Descrever uma imagem','Discussão de tópico livre']},
       {titulo:'Simulado B1', atividades:['Reading: 10 perguntas','Listening: 2 passagens','Writing: redação completa','Speaking: entrevista + figura']}
@@ -4048,7 +3846,7 @@ function baixarCronograma() {
   html += '<div class="header">';
   html += '<h1>🦗 Talking Cricket — Plano de Estudos Cambridge ' + plNivelAlvo + '</h1>';
   html += '<div class="info">';
-  html += '<div class="info-item"><div class="info-label">Target level</div><div class="info-val">' + plNivelAlvo + '</div></div>';
+  html += '<div class="info-item"><div class="info-label">Nível alvo</div><div class="info-val">' + plNivelAlvo + '</div></div>';
   if (prova) html += '<div class="info-item"><div class="info-label">Data da prova</div><div class="info-val">' + prova.toLocaleDateString('pt-BR') + '</div></div>';
   html += '<div class="info-item"><div class="info-label">Semanas de estudo</div><div class="info-val">' + semanasRestantes + '</div></div>';
   html += '<div class="info-item"><div class="info-label">Dias de estudo</div><div class="info-val">' + plDiasSelecionados.join(', ') + '</div></div>';
@@ -4370,7 +4168,7 @@ function mostrarFiguraDescricao() {
     '<div class="ct-figura-prompt">' + fig.prompt + '</div>' +
     '<button class="ct-figura-btn" id="figuraMicBtn" onclick="toggleFiguraMic()">🎤 Clique para descrever em voz alta</button>' +
     '<div style="display:flex;gap:8px;margin-top:8px;">' +
-      '<button style="flex:1;padding:10px;border-radius:10px;border:1.5px solid #D3D1C7;background:#fff;font-family:Nunito,Arial,sans-serif;font-size:12px;font-weight:800;cursor:pointer;color:#6b7280;" onclick="proximaFigura()">⟳ Outra figura</button>' +
+      '<button style="flex:1;padding:10px;border-radius:10px;border:1.5px solid #D3D1C7;background:#fff;font-family:Nunito,Arial,sans-serif;font-size:12px;font-weight:800;cursor:pointer;color:#6b7280;" onclick="proximaFigura()">⟳ New photo</button>' +
       '<button style="flex:1;padding:10px;border-radius:10px;border:none;background:#D85A30;color:#fff;font-family:Nunito,Arial,sans-serif;font-size:12px;font-weight:800;cursor:pointer;" onclick="fecharFigura()">✓ Concluído</button>' +
     '</div>';
 
@@ -4386,7 +4184,7 @@ function toggleFiguraMic() {
   if (figuraMicAtivo) {
     figuraMicAtivo = false;
     btn.classList.remove('recording');
-    btn.textContent = '✓ Recorded! Tap to redo';
+    btn.textContent = '✓ Recorded — tap to redo';
     if (figuraReconhecimento) { try { figuraReconhecimento.stop(); } catch(e) {} }
     setTimeout(function() {
       adicionarMsgCricket('Well done! That was a great attempt at describing the picture. Did you use vocabulary like "in the foreground", "in the background", "it appears that" and "I can see"? These phrases are very useful in the Cambridge Speaking test!');
@@ -4609,7 +4407,7 @@ function renderResultadoKids() {
 // ===== SEMENTES MELHORADAS NA HOME =====
 function atualizarDisplaySementes() {
   var xplbl = document.getElementById('xplbl');
-  if (xplbl) xplbl.textContent = 'Level ' + nivelAtual + ' — 🌱 ' + seedsTotal + ' seeds';
+  if (xplbl) xplbl.textContent = 'Nível ' + nivelAtual + ' — 🌱 ' + seedsTotal + ' seeds';
   var fill = document.getElementById('xpfill');
   if (fill) fill.style.width = Math.min(100, (seedsTotal / 1000) * 100) + '%';
   var pill = document.getElementById('lvpill');
@@ -4664,8 +4462,8 @@ var figurasSpeaking = [
 ];
 
 var figSpeakingIdx = 0;
-var figTimerSeg = 300;
-var figTimerMax = 300;
+var figTimerSeg = 180;
+var figTimerMax = 180;
 var figTimerInterval = null;
 var figMicAtivoSpeaking = false;
 var figRecSpeaking = null;
@@ -4718,13 +4516,13 @@ function iniciarTimerFigura() {
     }
   }, 1000);
   var btn = document.getElementById('btnIniciarTimer');
-  if (btn) btn.textContent = '⏹ Stop';
+  if (btn) btn.textContent = '⏹ Parar';
 }
 
 function pararTimerFigura() {
   if (figTimerInterval) { clearInterval(figTimerInterval); figTimerInterval = null; }
   var btn = document.getElementById('btnIniciarTimer');
-  if (btn) btn.textContent = '▶ Start';
+  if (btn) btn.textContent = '▶ Iniciar';
 }
 
 function mostrarFeedbackFigura() {
@@ -4734,18 +4532,19 @@ function mostrarFeedbackFigura() {
     'Good description! Next time, try to connect your observations: "While the person on the left is reading, the one on the right seems to be..." This shows cohesion in your speaking.',
     'Excellent attempt! In the Cambridge exam, you get extra marks for using a range of vocabulary. Try synonyms: instead of "looking", use "gazing", "glancing" or "observing".'
   ];
+  var feedback = feedbacks[Math.floor(Math.random() * feedbacks.length)];
   var feedbackDiv = document.getElementById('figFeedback');
   var feedbackTexto = document.getElementById('figFeedbackTexto');
   if (feedbackDiv) feedbackDiv.style.display = 'block';
-  if (feedbackTexto) feedbackTexto.innerHTML = '<div class="photo-feedback-loading">🦗 Analysing your description...</div>';
-
-  // Get the current figure description for context
-  var figDisplay = document.getElementById('figuraDisplay');
-  var figDesc = figDisplay ? (figDisplay.querySelector('.figura-desc') ? figDisplay.querySelector('.figura-desc').textContent : 'a scene') : 'a scene';
-  var transcDiv = document.getElementById('figTranscricao');
-  var transcricao = transcDiv ? transcDiv.textContent : '';
-
-  gerarFeedbackFoto(transcricao, figDesc);
+  if (feedbackTexto) feedbackTexto.textContent = feedback;
+  
+  if (window.speechSynthesis) {
+    window.speechSynthesis.cancel();
+    var utter = new SpeechSynthesisUtterance(feedback);
+    utter.lang = 'en-GB';
+    utter.rate = 0.9;
+    window.speechSynthesis.speak(utter);
+  }
 }
 
 function toggleFigSpeakingMic() {
@@ -5642,7 +5441,7 @@ function processarDeepLink() {
   
   var mapa = {
     'banco': function() { irBanco(); },
-    'textos': function() { abrirExamsHub(); },
+    'textos': function() { irBanco(); },
     'escrita': function() { ir('escrita'); },
     'treino-audio': function() { ir('treino-audio'); renderTreinoLista(nivelAtual); },
     'conversacao': function() { ir('conversacao'); },
@@ -5779,7 +5578,7 @@ function toggleKidsFalarMic() {
   
   kflMicAtivo = true;
   if (btn) { btn.textContent = '🛑'; btn.classList.add('recording'); }
-  if (label) label.textContent = 'Recording... speak now!';
+  if (label) label.textContent = 'Gravando... fale agora!';
   if (transcricao) { transcricao.style.display = 'block'; transcricao.textContent = '...'; }
   
   var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -7225,7 +7024,6 @@ var listeningAtual = null;
 var listeningNivel = 'B1';
 
 function proximoListening() {
-  // Pega próximo áudio da lista (circular)
   var textos = listeningTextos[listeningNivel] || listeningTextos['B1'];
   var idx = textos.findIndex(function(t){ return t.id === (listeningAtual && listeningAtual.id); });
   var nextIdx = (idx + 1) % textos.length;
@@ -7235,50 +7033,36 @@ function proximoListening() {
 function abrirListening(nivel) {
   listeningNivel = nivel || nivelAtual || 'B1';
   var textos = listeningTextos[listeningNivel] || listeningTextos['B1'];
-
-  // Renderizar lista
   var llTitulo = document.getElementById('ll-titulo');
   var llBadge = document.getElementById('ll-nivel-badge');
   if (llTitulo) llTitulo.textContent = 'Listening — ' + listeningNivel;
   if (llBadge) llBadge.textContent = listeningNivel;
-
   var container = document.getElementById('ll-cards');
   if (container) {
     container.innerHTML = textos.map(function(t, i) {
-      return '<div class="ll-card" onclick="selecionarAudio(listeningTextos[\'' + listeningNivel + '\'][' + i + '])">' +
-        '<div class="ll-icon">' + (t.icone || '🎧') + '</div>' +
-        '<div class="ll-info">' +
-          '<div class="ll-titulo">' + t.titulo + '</div>' +
-          '<div class="ll-tema">' + t.tema + ' · ' + t.perguntas.length + ' questions</div>' +
-        '</div>' +
-        '<div class="ll-arrow">›</div>' +
-      '</div>';
+      var nivel = listeningNivel;
+      return '<div class="ll-card" onclick="selecionarAudio(listeningTextos['' + nivel + ''][' + i + '])"><div class="ll-icon">' + (t.icone||'🎧') + '</div><div class="ll-info"><div class="ll-titulo">' + t.titulo + '</div><div class="ll-tema">' + t.tema + ' &middot; ' + t.perguntas.length + ' questions</div></div><div class="ll-arrow">&rsaquo;</div></div>';
     }).join('');
   }
-
   ir('listening-lista');
 }
 
 function selecionarAudio(audio) {
   listeningAtual = audio;
-
   var titulo = document.getElementById('atitulo');
   var audioTitulo = document.getElementById('audio-titulo');
   var badge = document.getElementById('abadge');
   if (titulo) titulo.textContent = 'Listening — ' + listeningNivel;
   if (audioTitulo) audioTitulo.textContent = listeningAtual.titulo;
   if (badge) badge.textContent = listeningAtual.icone + ' ' + listeningAtual.tema;
-
   var box = document.getElementById('transcricao-box-listening');
   if (box) box.style.display = 'none';
   var revelBtn = document.getElementById('btnRevelarTranscricao');
   if (revelBtn) revelBtn.style.display = 'none';
-
   window.speechSynthesis && window.speechSynthesis.cancel();
   ttsAtivo = false;
   pararMP3();
   if (atualizarBtnPlay) atualizarBtnPlay(false);
-
   setupListeningPlayer();
   ir('audicao');
 }
@@ -7286,24 +7070,18 @@ function selecionarAudio(audio) {
 function setupListeningPlayer() {
   var btnPlay = document.getElementById('btnPlay');
   if (!btnPlay) return;
-
+  
   btnPlay.onclick = function() {
     if (!listeningAtual) return;
-    // Resolve MP3: tenta pelo id do áudio; se não achar, constrói pela posição no nível
     var mp3 = listeningAudios[listeningAtual.id];
     if (!mp3) {
-      // Para níveis alias (B2, C1, C2 = B1), monta key pelo nivel+posição
       var textos = listeningTextos[listeningNivel] || listeningTextos['B1'];
       var pos = textos.findIndex(function(t){ return t.id === listeningAtual.id; });
-      if (pos >= 0) {
-        var key = 'l' + listeningNivel.toLowerCase() + '-' + (pos + 1);
-        mp3 = listeningAudios[key];
-      }
+      if (pos >= 0) mp3 = listeningAudios['l' + listeningNivel.toLowerCase() + '-' + (pos+1)];
     }
     if (mp3) {
       if (audioAtual && !audioAtual.paused) {
-        audioAtual.pause();
-        audioAtual.currentTime = 0;
+        audioAtual.pause(); audioAtual.currentTime = 0;
         if (atualizarBtnPlay) atualizarBtnPlay(false);
       } else {
         tocarMP3Listening(mp3, function() {
@@ -7775,156 +7553,6 @@ function irBanco() {
   ir('banco');
 }
 
-// ===== SPEAK HUB =====
-function irConversacao() {
-  ir('conversacao');
-  setTimeout(function() {
-    var chat = document.getElementById('ct-chat');
-    if (chat && chat.children.length === 0) {
-      adicionarMsgCricket('Hello! I am Cricket, your English conversation partner. Let us practise together! Tell me, what do you usually do in the morning?');
-    }
-  }, 300);
-}
-
-function irDescricaoFiguras() {
-  proximaFigura();
-  ir('descricao-figuras');
-}
-
-// ===== EXAMS HUB =====
-function abrirExamsHub() {
-  var nivel = nivelAtual || 'B1';
-  document.querySelectorAll('.exam-nivel-tab').forEach(function(t) {
-    t.classList.toggle('on', t.getAttribute('data-nivel') === nivel);
-  });
-  renderExamCards(nivel);
-  ir('exams-hub');
-}
-
-var examData = {
-  A1: [
-    {titulo:'Family & Home', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']},
-    {titulo:'School Life', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']},
-    {titulo:'Food & Daily Routine', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']},
-    {titulo:'Animals & Nature', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']},
-    {titulo:'Shopping & Free Time', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']}
-  ],
-  A2: [
-    {titulo:'Work & Leisure', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']},
-    {titulo:'Travel & Holidays', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']},
-    {titulo:'Health & Lifestyle', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']},
-    {titulo:'People & Relationships', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']},
-    {titulo:'Technology & Communication', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']}
-  ],
-  B1: [
-    {titulo:'Environment & Society', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']},
-    {titulo:'Work & Career', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']},
-    {titulo:'Media & Culture', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']},
-    {titulo:'Science & Technology', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']},
-    {titulo:'Health & Sport', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']}
-  ],
-  B2: [
-    {titulo:'Global Issues', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']},
-    {titulo:'Arts & Entertainment', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']},
-    {titulo:'Education & Research', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']},
-    {titulo:'Business & Economics', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']},
-    {titulo:'Ethics & Philosophy', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']}
-  ],
-  C1: [
-    {titulo:'Politics & Governance', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']},
-    {titulo:'Science & Innovation', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']},
-    {titulo:'Society & Identity', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']},
-    {titulo:'Law & Justice', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']},
-    {titulo:'Media & Influence', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']}
-  ],
-  C2: [
-    {titulo:'Philosophy of Language', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']},
-    {titulo:'Geopolitics & Power', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']},
-    {titulo:'Cognitive Science', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']},
-    {titulo:'Literature & Critical Theory', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']},
-    {titulo:'Economics & Ethics', subtitulo:'Reading · Writing · Listening · Speaking', partes:['Reading','Writing','Listening','Speaking']}
-  ]
-};
-
-var examNivelAtual = 'B1';
-
-function renderExamCards(nivel) {
-  examNivelAtual = nivel;
-  document.querySelectorAll('.exam-nivel-tab').forEach(function(t) {
-    t.classList.toggle('on', t.getAttribute('data-nivel') === nivel);
-  });
-  var data = examData[nivel] || examData['B1'];
-  var done = {};
-  try { done = JSON.parse(localStorage.getItem('tc_exams_done') || '{}'); } catch(e){}
-  var container = document.getElementById('examCards');
-  if (!container) return;
-  container.innerHTML = data.map(function(exam, i) {
-    var key = nivel + '-' + (i+1);
-    var isDone = done[key];
-    return '<div class="exam-card" onclick="abrirSimuladoExam(\'' + nivel + '\',' + i + ')">' +
-      '<div class="exam-card-num">' + (i+1) + '</div>' +
-      '<div class="exam-card-info">' +
-        '<div class="exam-card-title">' + exam.titulo + '</div>' +
-        '<div class="exam-card-meta">4 skills · ~60 min' + (isDone ? ' · <span style="color:#1D9E75">Completed ✓</span>' : '') + '</div>' +
-      '</div>' +
-      '<div class="exam-card-done">' + (isDone ? '✅' : '›') + '</div>' +
-    '</div>';
-  }).join('');
-}
-
-function abrirSimuladoExam(nivel, idx) {
-  simNivel = nivel;
-  // Override simulados with exam data for this nivel/idx
-  var exam = examData[nivel][idx];
-  var key = nivel + '-' + (idx+1);
-  // Mark as opened
-  try {
-    var done = JSON.parse(localStorage.getItem('tc_exams_done') || '{}');
-    done[key] = true;
-    localStorage.setItem('tc_exams_done', JSON.stringify(done));
-  } catch(e){}
-  // Use existing abrirSimulado with the current nivel
-  abrirSimulado(nivel);
-  // Update title
-  setTimeout(function() {
-    var t = document.getElementById('simTitulo');
-    if (t) t.textContent = 'Exam ' + (idx+1) + ' — ' + nivel + ' · ' + exam.titulo;
-    var s = document.getElementById('simSub');
-    if (s) s.textContent = '4 skills · Cambridge format';
-    // Update back button to go to exams-hub
-    var back = document.getElementById('btnVoltarSimulado');
-    if (back) back.onclick = function() { ir('exams-hub'); renderExamCards(examNivelAtual); };
-  }, 100);
-}
-
-// ===== PHOTO DESCRIPTION — AI FEEDBACK =====
-async function gerarFeedbackFoto(transcricao, descricaoFigura) {
-  var feedbackEl = document.getElementById('figFeedback');
-  var feedbackTexto = document.getElementById('figFeedbackTexto');
-  if (!feedbackEl || !feedbackTexto) return;
-  feedbackEl.style.display = 'block';
-  feedbackTexto.innerHTML = '<div class="photo-feedback-loading">🦗 Analysing your description...</div>';
-
-  try {
-    var prompt = 'You are Cricket, a Cambridge English examiner giving friendly feedback to a student.\n\nThe student was asked to describe this scene: "' + descricaoFigura + '"\n\nThe student said: "' + transcricao + '"\n\nGive brief, encouraging feedback in 3 bullet points:\n1. ✅ What they did well (vocabulary, structure, or fluency)\n2. 💡 One specific improvement for Cambridge exam technique\n3. 🎯 A model phrase they could use\n\nKeep it short, friendly and in English. Do not use asterisks for bold.';
-
-    var response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-6',
-        max_tokens: 1000,
-        messages: [{role: 'user', content: prompt}]
-      })
-    });
-    var data = await response.json();
-    var texto = data.content && data.content[0] && data.content[0].text ? data.content[0].text : 'Great effort! Keep practising!';
-    feedbackTexto.innerHTML = texto.replace(/\n/g, '<br>');
-  } catch(e) {
-    feedbackTexto.textContent = 'Great effort! Keep practising your description skills.';
-  }
-}
-
 window.onload = function() {
 
   document.querySelectorAll('.tela').forEach(function(t) { t.classList.remove('ativa'); });
@@ -8128,7 +7756,7 @@ window.onload = function() {
   };
 
   var _ph = document.getElementById('pronavHome'); if(_ph) _ph.onclick = function() { voltarHome(); };
-  var _pt = document.getElementById('pronavTextos'); if(_pt) _pt.onclick = function() { abrirExamsHub(); };
+  var _pt = document.getElementById('pronavTextos'); if(_pt) _pt.onclick = function() { irBanco(); };
   var _pp = document.getElementById('pronavPerfil'); if(_pp) _pp.onclick = function() { ir('perfil'); };
 
   var _el_btnLeitura = document.getElementById('btnLeitura'); if(_el_btnLeitura) _el_btnLeitura.onclick = function() { ir('leitura'); };
@@ -8166,8 +7794,8 @@ window.onload = function() {
     });
   };
 
-  var pnavT = document.getElementById('pnavTextos'); if(pnavT) pnavT.onclick = function() { playSound('clique'); abrirExamsHub(); };
-  var pnavF = document.getElementById('pnavFalar'); if(pnavF) pnavF.onclick = function() { playSound('clique'); ir('speak-hub'); };
+  var pnavT = document.getElementById('pnavTextos'); if(pnavT) pnavT.onclick = function() { playSound('clique'); irBanco(); };
+  var pnavF = document.getElementById('pnavFalar'); if(pnavF) pnavF.onclick = function() { playSound('clique'); ir('conversacao'); };
   var pnavP = document.getElementById('pnavProgresso'); if(pnavP) pnavP.onclick = function() { playSound('clique'); ir('progresso'); };
 
   var _el_btnVoltarTreino = document.getElementById('btnVoltarTreino'); if(_el_btnVoltarTreino) _el_btnVoltarTreino.onclick = function() { voltarHome(); };
@@ -8217,7 +7845,7 @@ window.onload = function() {
     ttsAtivo = false;
     micAtivo = false;
     if (reconhecimento) { try { reconhecimento.stop(); } catch(e) {} reconhecimento = null; }
-    ir('speak-hub');
+    voltarHome();
   };
   var _el_ctSend = document.getElementById('ctSend'); if(_el_ctSend) _el_ctSend.onclick = function() {
     var input = document.getElementById('ctInput');
@@ -8349,7 +7977,7 @@ window.onload = function() {
   if (btnVoltarProgresso) btnVoltarProgresso.onclick = function() { voltarHome(); };
 
   var btnAulaHoje = document.getElementById('btnAulaHoje');
-  if (btnAulaHoje) btnAulaHoje.onclick = function() { ir('listening-lista'); };
+  if (btnAulaHoje) btnAulaHoje.onclick = function() { ir('banco'); };
 
   var btnVoltarQuiz = document.getElementById('btnVoltarQuiz'); if(btnVoltarQuiz) btnVoltarQuiz.onclick = function() { ir('leitura'); };
 
@@ -8380,7 +8008,7 @@ window.onload = function() {
   atualizarDisplaySementes();
 
   var btnVoltarFiguras = document.getElementById('btnVoltarFiguras');
-  if (btnVoltarFiguras) btnVoltarFiguras.onclick = function() { pararTimerFigura(); if(figMicAtivoSpeaking && figRecSpeaking) { try{figRecSpeaking.stop();}catch(e){} } ir('speak-hub'); };
+  if (btnVoltarFiguras) btnVoltarFiguras.onclick = function() { pararTimerFigura(); if(figMicAtivoSpeaking && figRecSpeaking) { try{figRecSpeaking.stop();}catch(e){} } ir('conversacao'); };
   
   var btnIniciarTimer = document.getElementById('btnIniciarTimer');
   if (btnIniciarTimer) btnIniciarTimer.onclick = function() {
