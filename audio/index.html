@@ -2072,16 +2072,17 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 <div class="nivel-sheet" id="nivel-sheet">
   <div class="nivel-sheet-box">
     <div class="nivel-handle"></div>
-    <div class="nivel-titulo">Escolher nível</div>
-    <div class="nivel-sub">Toque no nível para alterar</div>
+    <div class="nivel-titulo">Choose your level</div>
+    <div class="nivel-sub">Tap a level to change</div>
     <div class="nivel-lista">
-      <button class="nivel-item" data-sigla="A1" data-nome="Iniciante"><div class="nivel-sigla">A1</div><div><div class="nivel-nome">A1 — Iniciante</div><div class="nivel-desc">Primeiras palavras e frases simples</div></div></button>
-      <button class="nivel-item" data-sigla="A2" data-nome="Básico"><div class="nivel-sigla">A2</div><div><div class="nivel-nome">A2 — Básico</div><div class="nivel-desc">Conversas simples do dia a dia</div></div></button>
-      <button class="nivel-item ativo" data-sigla="B1" data-nome="Intermediário"><div class="nivel-sigla">B1</div><div><div class="nivel-nome">B1 — Intermediário</div><div class="nivel-desc">Situações cotidianas e viagens</div></div><div class="nivel-check">✓</div></button>
-      <button class="nivel-item" data-sigla="B2" data-nome="Pré-avançado"><div class="nivel-sigla">B2</div><div><div class="nivel-nome">B2 — Pré-avançado</div><div class="nivel-desc">Textos complexos e debates</div></div></button>
-      <button class="nivel-item" data-sigla="C1" data-nome="Avançado"><div class="nivel-sigla">C1</div><div><div class="nivel-nome">C1 — Avançado</div><div class="nivel-desc">Fluência em temas acadêmicos</div></div></button>
-      <button class="nivel-item" data-sigla="C2" data-nome="Proficiente"><div class="nivel-sigla">C2</div><div><div class="nivel-nome">C2 — Proficiente</div><div class="nivel-desc">Domínio total do idioma</div></div></button>
+      <button class="nivel-item" data-sigla="A1" data-nome="Beginner" onclick="mudarNivel('A1','Beginner')"><div class="nivel-sigla">A1</div><div><div class="nivel-nome">A1 — Beginner</div><div class="nivel-desc">First words and simple phrases</div></div></button>
+      <button class="nivel-item" data-sigla="A2" data-nome="Elementary" onclick="mudarNivel('A2','Elementary')"><div class="nivel-sigla">A2</div><div><div class="nivel-nome">A2 — Elementary</div><div class="nivel-desc">Simple everyday conversations</div></div></button>
+      <button class="nivel-item ativo" data-sigla="B1" data-nome="Intermediate" onclick="mudarNivel('B1','Intermediate')"><div class="nivel-sigla">B1</div><div><div class="nivel-nome">B1 — Intermediate</div><div class="nivel-desc">Everyday situations and travel</div></div><div class="nivel-check">✓</div></button>
+      <button class="nivel-item" data-sigla="B2" data-nome="Upper-Intermediate" onclick="mudarNivel('B2','Upper-Intermediate')"><div class="nivel-sigla">B2</div><div><div class="nivel-nome">B2 — Upper-Intermediate</div><div class="nivel-desc">Complex texts and debates</div></div></button>
+      <button class="nivel-item" data-sigla="C1" data-nome="Advanced" onclick="mudarNivel('C1','Advanced')"><div class="nivel-sigla">C1</div><div><div class="nivel-nome">C1 — Advanced</div><div class="nivel-desc">Fluency in academic topics</div></div></button>
+      <button class="nivel-item" data-sigla="C2" data-nome="Proficient" onclick="mudarNivel('C2','Proficient')"><div class="nivel-sigla">C2</div><div><div class="nivel-nome">C2 — Proficient</div><div class="nivel-desc">Full mastery of the language</div></div></button>
     </div>
+    <button onclick="document.getElementById('nivel-sheet').classList.remove('show')" style="margin-top:16px;width:100%;padding:12px;border-radius:12px;border:none;background:#F1EFE8;color:#6b7280;font-family:'Nunito',Arial,sans-serif;font-size:14px;font-weight:800;cursor:pointer;">Close ✕</button>
   </div>
 </div>
 
@@ -7669,6 +7670,8 @@ window.onload = function() {
 
   var _el_btnTrocarModo = document.getElementById('btnTrocarModo'); if(_el_btnTrocarModo) _el_btnTrocarModo.onclick = function() { ir('modo'); };
   var _el_lvpill = document.getElementById('lvpill'); if(_el_lvpill) _el_lvpill.onclick = function() { document.getElementById('nivel-sheet').classList.add('show'); };
+  var _nivelSheet = document.getElementById('nivel-sheet');
+  if (_nivelSheet) _nivelSheet.onclick = function(e) { if (e.target === this) this.classList.remove('show'); };
   var _el_btnLeitura = document.getElementById('btnLeitura'); if(_el_btnLeitura) _el_btnLeitura.onclick = function() { ir('leitura'); };
   var _el_btnAulaHoje = document.getElementById('btnAulaHoje'); if(_el_btnAulaHoje) _el_btnAulaHoje.onclick = function() { ir('leitura'); };
 
