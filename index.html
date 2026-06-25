@@ -71,6 +71,31 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 .mc-info{flex:1;}
 .mc-titulo{font-size:16px;font-weight:800;margin-bottom:3px;}
 .mc-cambridge .mc-titulo{color:#26215C;}
+.mc-placement{background:linear-gradient(135deg,#1a1a2e,#2d2b6b);border:2px solid #534AB7;}
+.mc-placement .mc-titulo{color:#fff;}
+.mc-placement .mc-sub{color:#B8B5E8;}
+.pt-header{background:linear-gradient(135deg,#1a1a2e,#2d2b6b);padding:28px 20px 20px;text-align:center;}
+.pt-titulo{font-size:20px;font-weight:800;color:#fff;margin-bottom:4px;}
+.pt-sub{font-size:12px;color:#B8B5E8;font-weight:600;}
+.pt-progresso{height:6px;background:rgba(255,255,255,0.2);border-radius:3px;margin:16px 0 0;}
+.pt-progresso-fill{height:6px;background:#7C6AE8;border-radius:3px;transition:width .3s;}
+.pt-body{padding:20px 16px;flex:1;overflow-y:auto;}
+.pt-num{font-size:11px;font-weight:800;color:#7C6AE8;text-transform:uppercase;margin-bottom:6px;}
+.pt-nivel-tag{display:inline-block;background:#EDE9FE;color:#534AB7;font-size:10px;font-weight:800;padding:2px 8px;border-radius:10px;margin-bottom:10px;}
+.pt-pergunta{font-size:15px;font-weight:700;color:#1a1a2e;line-height:1.5;margin-bottom:14px;}
+.pt-texto{background:#F8F7FF;border-radius:12px;padding:12px;font-size:13px;color:#3a3a5c;line-height:1.6;margin-bottom:14px;border-left:3px solid #534AB7;}
+.pt-opcao{width:100%;padding:12px 16px;border-radius:12px;border:2px solid #E5E3F5;background:#fff;font-family:Nunito,Arial,sans-serif;font-size:14px;font-weight:700;color:#1a1a2e;cursor:pointer;text-align:left;margin-bottom:8px;transition:all .15s;}
+.pt-opcao:active{border-color:#534AB7;background:#EDE9FE;}
+.pt-opcao.correta{border-color:#1D9E75;background:#E1F5EE;color:#085041;}
+.pt-opcao.errada{border-color:#D85A30;background:#FAECE7;color:#712B13;}
+.pt-resultado{text-align:center;padding:20px 0;}
+.pt-nivel-circulo{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,#534AB7,#7C6AE8);margin:0 auto 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.pt-nivel-letter{font-size:36px;font-weight:800;color:#fff;}
+.pt-nivel-name{font-size:11px;font-weight:700;color:#B8B5E8;}
+.pt-score{font-size:14px;color:#6b7280;margin-bottom:20px;}
+.pt-desc{font-size:14px;color:#3a3a5c;line-height:1.6;margin-bottom:24px;text-align:left;background:#F8F7FF;padding:14px;border-radius:12px;}
+.pt-btn-aceitar{width:100%;padding:14px;border-radius:14px;border:none;background:#534AB7;color:#fff;font-family:Nunito,Arial,sans-serif;font-size:15px;font-weight:800;cursor:pointer;margin-bottom:10px;}
+.pt-btn-escolher{width:100%;padding:14px;border-radius:14px;border:2px solid #534AB7;background:#fff;color:#534AB7;font-family:Nunito,Arial,sans-serif;font-size:15px;font-weight:800;cursor:pointer;}
 .mc-kids .mc-titulo{color:#085041;}
 .mc-sub{font-size:12px;line-height:1.4;}
 .mc-cambridge .mc-sub{color:#534AB7;}
@@ -321,6 +346,19 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 .ll-tema{font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;}
 .ll-arrow{font-size:18px;color:#0F6E56;font-weight:900;}
 .ll-nivel-badge{display:inline-block;background:#0F6E56;color:#fff;font-size:11px;font-weight:800;padding:3px 10px;border-radius:20px;margin-bottom:14px;}
+.speak-hub-header{background:linear-gradient(135deg,#0F6E56,#1D9E75);padding:40px 20px 28px;text-align:center;}
+.speak-hub-title{font-size:22px;font-weight:800;color:#fff;margin-bottom:4px;}
+.speak-hub-sub{font-size:13px;color:#9FE1CB;font-weight:600;}
+.speak-hub-cards{padding:20px 16px;display:flex;flex-direction:column;gap:14px;}
+.speak-card{background:#fff;border-radius:18px;padding:20px;display:flex;align-items:center;gap:16px;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,0.07);border:2px solid transparent;transition:border .15s;}
+.speak-card:active{border-color:#0F6E56;}
+.speak-card-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;}
+.speak-card-info{flex:1;}
+.speak-card-title{font-size:15px;font-weight:800;color:#1a1a2e;margin-bottom:3px;}
+.speak-card-desc{font-size:12px;color:#6b7280;font-weight:600;line-height:1.4;}
+.speak-card-arrow{font-size:22px;color:#0F6E56;font-weight:900;}
+.photo-feedback-box{background:#E1F5EE;border-radius:14px;padding:14px;margin-top:10px;}
+.photo-feedback-loading{font-size:13px;color:#0F6E56;font-weight:700;}
 .audio-titulo{font-size:13px;font-weight:800;color:#1a1a2e;margin-bottom:12px;}
 .audio-controls{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
 .audio-play{width:48px;height:48px;border-radius:50%;background:#0F6E56;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;flex-shrink:0;}
@@ -936,14 +974,14 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
   <ellipse cx="95" cy="125" rx="20" ry="10" fill="#F9C851" opacity="0.4"/>
 </svg>
     <div class="splash-nome">Talking Cricket</div>
-    <div class="splash-tag">Aprenda inglês de verdade</div>
+    <div class="splash-tag">Learn real English</div>
   </div>
   <div class="splash-base">
-    <div class="splash-titulo">Pronto para aprender?</div>
-    <div class="splash-sub">Prepare-se para o Cambridge ou comece do zero com o Grilo Cricket.</div>
-    <button class="btn btn-verde" id="btnCriar">Criar conta grátis</button>
-    <button class="btn btn-borda" id="btnLogin">Já tenho conta</button>
-    <p class="termos">Ao continuar você aceita os <a href="#">Termos de uso</a> e a <a href="#">Privacidade</a></p>
+    <div class="splash-titulo">Ready to learn?</div>
+    <div class="splash-sub">Prepare for Cambridge or start from scratch with Cricket.</div>
+    <button class="btn btn-verde" id="btnCriar">Create free account</button>
+    <button class="btn btn-borda" id="btnLogin">I already have an account</button>
+    <p class="termos">By continuing you accept our <a href="#">Termos de uso</a> e a <a href="#">Privacidade</a></p>
   </div>
 </div>
 
@@ -951,23 +989,23 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 <div id="cadastro" class="tela">
   <div class="fheader">
     <button class="fbtn-back" id="btnVoltarCadastro">&#8592;</button>
-    <div class="fstep">Passo 1 de 2</div>
-    <div class="ftitle">Quem é você?</div>
-    <div class="fsub">Leva menos de 1 minuto</div>
+    <div class="fstep">Step 1 of 2</div>
+    <div class="ftitle">Who are you?</div>
+    <div class="fsub">Takes less than 1 minute</div>
     <div class="fdots"><div class="fdot on"></div><div class="fdot"></div></div>
   </div>
   <div class="fbody">
-    <div class="flbl">Nome completo</div>
-    <input class="finp" id="inp-nome" type="text" placeholder="Seu nome completo" autocomplete="name"/>
+    <div class="flbl">Full name</div>
+    <input class="finp" id="inp-nome" type="text" placeholder="Your full name" autocomplete="name"/>
     <div class="flbl">Idade</div>
-    <input class="finp" id="inp-idade" type="number" placeholder="Sua idade" min="3" max="120"/>
-    <div class="flbl">Email ou telefone</div>
-    <input class="finp" id="inp-contato" type="text" placeholder="email@exemplo.com ou (21) 9..."/>
-    <p class="fhint">Vamos enviar um código de 4 dígitos para confirmar seu acesso.</p>
+    <input class="finp" id="inp-idade" type="number" placeholder="Your age" min="3" max="120"/>
+    <div class="flbl">Email or phone</div>
+    <input class="finp" id="inp-contato" type="text" placeholder="email@example.com or phone number"/>
+    <p class="fhint">We will show you a 4-digit code to confirm your access.</p>
   </div>
   <div class="ffooter">
-    <button class="btn btn-verde" id="btnEnviarCodigo">Enviar código</button>
-    <button class="btn btn-borda" id="btnVoltarInicio1">← Voltar ao início</button>
+    <button class="btn btn-verde" id="btnEnviarCodigo">Continue →</button>
+    <button class="btn btn-borda" id="btnVoltarInicio1">← Back</button>
   </div>
 </div>
 
@@ -975,7 +1013,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 <div id="codigo" class="tela">
   <div class="fheader">
     <button class="fbtn-back" id="btnVoltarCodigo">&#8592;</button>
-    <div class="fstep">Passo 2 de 2</div>
+    <div class="fstep">Step 2 of 2</div>
     <div class="ftitle">Digite o código</div>
     <div class="fsub">Enviado para <span id="dest">seu contato</span></div>
     <div class="fdots"><div class="fdot"></div><div class="fdot on"></div></div>
@@ -1003,29 +1041,52 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
   </div>
   <div class="ffooter">
     <button class="btn btn-verde" id="btnConfirmar">Confirmar e entrar</button>
-    <button class="btn btn-borda" id="btnVoltarInicio2">← Voltar ao início</button>
+    <button class="btn btn-borda" id="btnVoltarInicio2">← Back</button>
   </div>
 </div>
 
 <!-- MODO -->
+<!-- PLACEMENT TEST -->
+<div id="nivelamento" class="tela">
+  <div class="pt-header">
+    <div class="pt-titulo">🎯 Placement Test</div>
+    <div class="pt-sub">35 questions · ~10 minutes · Grammar, Reading & Listening</div>
+    <div class="pt-progresso"><div class="pt-progresso-fill" id="ptProgresso" style="width:0%"></div></div>
+  </div>
+  <div class="pt-body" id="ptBody"></div>
+</div>
+
+<div id="nivelamento-resultado" class="tela">
+  <div class="pt-header">
+    <div class="pt-titulo">🎯 Your Result</div>
+    <div class="pt-sub">Cambridge English Placement</div>
+  </div>
+  <div class="pt-body" id="ptResultadoBody"></div>
+</div>
+
 <div id="modo" class="tela">
   <div class="modo-header">
     <div class="check-ok">✓</div>
     <div class="modo-titulo" id="modo-nome">Bem-vindo!</div>
-    <div class="modo-sub">Conta criada com sucesso. Como você quer aprender?</div>
+    <div class="modo-sub">Account created! How do you want to learn?</div>
   </div>
   <div class="modo-body">
+    <button class="modo-card mc-placement" id="btnPlacement">
+      <div class="mc-icon">🎯</div>
+      <div class="mc-info"><div class="mc-titulo">Find My Level</div><div class="mc-sub">35-question placement test · Grammar, Reading & Listening</div></div>
+      <span style="font-size:22px;color:#7C6AE8">→</span>
+    </button>
     <button class="modo-card mc-cambridge" id="btnCambridge">
       <div class="mc-icon">🎓</div>
-      <div class="mc-info"><div class="mc-titulo">Modo Cambridge</div><div class="mc-sub">Preparação A1 → C2 com plano de estudos personalizado</div></div>
+      <div class="mc-info"><div class="mc-titulo">Cambridge Mode</div><div class="mc-sub">A1 → C2 preparation with a personalised study plan</div></div>
       <span style="font-size:22px;color:#534AB7">→</span>
     </button>
     <button class="modo-card mc-kids" id="btnKids">
       <div class="mc-icon">🦗</div>
-      <div class="mc-info"><div class="mc-titulo">Modo Kids</div><div class="mc-sub">Aprendizado lúdico com o Cricket para crianças de 3 a 10 anos</div></div>
+      <div class="mc-info"><div class="mc-titulo">Kids Mode</div><div class="mc-sub">Fun learning with Cricket for children aged 3-10</div></div>
       <span style="font-size:22px;color:#1D9E75">→</span>
     </button>
-    <p class="modo-nota">Pode trocar o modo a qualquer momento nas configurações.</p>
+    <p class="modo-nota">You can change mode anytime in settings.</p>
   </div>
 </div>
 
@@ -1033,14 +1094,14 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 <div id="home-cambridge" class="tela">
   <div class="hheader">
     <div class="htopo">
-      <div><div class="hgreet">Olá, bem-vindo de volta 👋</div><div class="hnome" id="hcnome">Aluno</div></div>
+      <div><div class="hgreet">Hello, welcome back 👋</div><div class="hnome" id="hcnome">Aluno</div></div>
       <div style="display:flex;flex-direction:column;align-items:flex-end;">
         <div class="avatar" id="havatar">TC</div>
-        <button class="btn-trocar" id="btnTrocarModo">⇄ Trocar modo</button>
+        <button class="btn-trocar" id="btnTrocarModo">⇄ Switch mode</button>
       </div>
     </div>
     <div class="xpcard">
-      <div class="xplbls"><span id="xplbl">Nível B1 — 🌱 620 seeds</span><span>Próximo nível em 380 🌱</span></div>
+      <div class="xplbls"><span id="xplbl">Nível B1 — 🌱 620 seeds</span><span>Next level in 380 🌱</span></div>
       <div class="xpbar"><div class="xpfill" id="xpfill" style="width:62%"></div></div>
       <div class="lvpill" id="lvpill">🌱 B1 — Intermediate ▾</div>
     </div>
@@ -1052,7 +1113,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
         <div class="skcard sk1" id="btnLeitura" onclick="irBanco()"><div class="skicon"><i class="ti ti-book-2" style="color:#534AB7"></i></div><div class="sknome">Reading</div><div class="skbar"><div class="skfill"></div></div></div>
         <div class="skcard sk2" id="btnListening" onclick="abrirListening(nivelAtual)"><div class="skicon"><i class="ti ti-headphones" style="color:#085041"></i></div><div class="sknome">Listening</div><div class="skbar"><div class="skfill"></div></div></div>
         <div class="skcard sk3" id="btnWriting" onclick="ir('escrita')"><div class="skicon"><i class="ti ti-pencil" style="color:#BA7517"></i></div><div class="sknome">Writing</div><div class="skbar"><div class="skfill"></div></div></div>
-        <div class="skcard sk4" id="btnSpeaking" onclick="ir('conversacao')"><div class="skicon"><i class="ti ti-microphone" style="color:#993C1D"></i></div><div class="sknome">Speaking</div><div class="skbar"><div class="skfill"></div></div></div>
+        <div class="skcard sk4" id="btnSpeaking" onclick="ir('speak-hub')"><div class="skicon"><i class="ti ti-microphone" style="color:#993C1D"></i></div><div class="sknome">Speaking</div><div class="skbar"><div class="skfill"></div></div></div>
       </div>
     </div>
     <div>
@@ -1109,7 +1170,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
           <circle cx="54" cy="10" r="2.5" fill="#EF9F27"/>
           <path d="M18 41 L10 33 L5 44" stroke="#27500A" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        <button class="btn-trocar" id="btnTrocarModoKids">⇄ Trocar modo</button>
+        <button class="btn-trocar" id="btnTrocarModoKids">⇄ Switch mode</button>
       </div>
     </div>
     <div class="stars"><span style="font-size:16px">⭐⭐⭐</span><div class="stars-count">47</div><div class="stars-lbl">estrelas</div></div>
@@ -1586,6 +1647,47 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 </div>
 
 <!-- ===== CONVERSAÇÃO ===== -->
+<div id="speak-hub" class="tela">
+  <div class="speak-hub-header">
+    <div style="font-size:40px;margin-bottom:8px;">🎤</div>
+    <div class="speak-hub-title">Speak</div>
+    <div class="speak-hub-sub">Choose how you want to practise</div>
+  </div>
+  <div class="speak-hub-cards">
+    <div class="speak-card" onclick="irConversacao()">
+      <div class="speak-card-icon" style="background:#E1F5EE;">🦗</div>
+      <div class="speak-card-info">
+        <div class="speak-card-title">Talk to Cricket</div>
+        <div class="speak-card-desc">Free conversation with your AI English tutor. Ask anything, practise grammar, discuss any topic.</div>
+      </div>
+      <div class="speak-card-arrow">›</div>
+    </div>
+    <div class="speak-card" onclick="irDescreverFoto()">
+      <div class="speak-card-icon" style="background:#FAF0FF;">🖼️</div>
+      <div class="speak-card-info">
+        <div class="speak-card-title">Describe a Photo</div>
+        <div class="speak-card-desc">Cambridge-style picture description with AI feedback on your vocabulary and fluency. 5 min timer.</div>
+      </div>
+      <div class="speak-card-arrow">›</div>
+    </div>
+    <div class="speak-card" onclick="navegar('chat')">
+      <div class="speak-card-icon" style="background:#EDE9FE;">💬</div>
+      <div class="speak-card-info">
+        <div class="speak-card-title">Member Chat</div>
+        <div class="speak-card-desc">Chat with other students learning English. Practise writing in real conversations.</div>
+      </div>
+      <div class="speak-card-arrow">›</div>
+    </div>
+  </div>
+  <nav class="nav nav-universal">
+    <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
+    <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-certificate"></i>Exams</div>
+    <div class="nitem nav-item-univ on" data-dest="falar"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
+    <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
+  </nav>
+</div>
+
 <div id="conversacao" class="tela">
   <div class="ctheader">
     <button class="ctback" id="btnVoltarConv">&#8592;</button>
@@ -1703,7 +1805,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 <div id="quiz" class="tela">
   <div class="qheader">
     <button class="qback" id="btnVoltarQuiz">&#8592;</button>
-    <div class="qtitulo" id="qtitulo">Exercícios — Reading B1</div>
+    <div class="qtitulo" id="qtitulo">Exercises — Reading B1</div>
     <div class="qprogresso" id="qprogresso"></div>
   </div>
   <div class="qbody" id="qbody">
@@ -2101,6 +2203,11 @@ var quizzes = {"b1-1": [{"pergunta": "What does \"pressing\" mean in the text?",
 
 function iniciarQuiz(textoId) {
   var id = textoId || (textoSelecionado ? textoSelecionado.id : 'b1-1');
+  // Update title and back button for reading context
+  var qtitulo = document.getElementById('qtitulo');
+  if (qtitulo) qtitulo.textContent = 'Exercises — Reading ' + nivelBanco;
+  var btnVQ = document.getElementById('btnVoltarQuiz');
+  if (btnVQ) btnVQ.onclick = function() { ir('leitura'); };
   var perguntas = quizzes[id];
   if (!perguntas) {
     var nivel = id ? id.substring(0,2) : 'b1';
@@ -2412,7 +2519,7 @@ function renderTreinoLista(nivel) {
           '<span class="ta-dur">Listening + Quiz</span>' +
         '</div>' +
       '</div>' +
-      '<div class="ta-arrow">→</div>';
+      '<div class="ta-arrow">&rarr;</div>';
     card.onclick = function() { abrirExercicioAudio(ex, nivel); };
     lista.appendChild(card);
   });
@@ -2704,14 +2811,7 @@ function navegar(destino) {
     case 'home': voltarHome(); break;
     case 'textos': abrirSimulado(nivelAtual || 'B1'); break;
     case 'falar': 
-      ir('conversacao');
-      // Mensagem inicial do Cricket se chat estiver vazio
-      setTimeout(function() {
-        var chat = document.getElementById('ct-chat');
-        if (chat && chat.children.length === 0) {
-          adicionarMsgCricket('Hello! I am Cricket, your English conversation partner. Let us practice together! Tell me, what do you usually do in the morning?');
-        }
-      }, 300);
+      ir('speak-hub');
       break;
     case 'chat':
       ir('chat-membros');
@@ -2733,7 +2833,9 @@ function renderNav(telaId) {
     'audicao': 'textos',
     'audicao': 'textos',
     'quiz': 'textos',
+    'speak-hub': 'falar',
     'conversacao': 'falar',
+    'descricao-figuras': 'falar',
     'treino-audio': 'ouvir',
     'exercicio-audio': 'ouvir',
     'progresso': 'progresso',
@@ -3500,7 +3602,7 @@ function renderSimReading(body) {
         '<div class="sim-pergunta-num">Pergunta ' + (qi + 1) + '</div>' +
         '<div class="sim-pergunta-texto">' + q.texto + '</div>';
       q.opcoes.forEach(function(op, oi) {
-        html += '<button class="sim-opcao" id="so_' + qId + '_' + oi + '" onclick="responderSim(\'' + qId + '\',' + oi + ',' + q.correta + ',\'' + q.exp + '\',\'reading\')">' +
+        html += '<button class="sim-opcao" id="so_' + qId + '_' + oi + '" onclick="responderSimSafe(\'' + qId + '\',' + oi + ',\'reading\')">' +
           String.fromCharCode(65 + oi) + ') ' + op + '</button>';
       });
       html += '</div>';
@@ -3543,7 +3645,7 @@ function renderSimListening(body) {
         '<div class="sim-pergunta-num">Pergunta ' + (qi + 1) + '</div>' +
         '<div class="sim-pergunta-texto">' + q.texto + '</div>';
       q.opcoes.forEach(function(op, oi) {
-        html += '<button class="sim-opcao" id="so_' + qId + '_' + oi + '" onclick="responderSim(\'' + qId + '\',' + oi + ',' + q.correta + ',\'' + q.exp + '\',\'listening\')">' +
+        html += '<button class="sim-opcao" id="so_' + qId + '_' + oi + '" onclick="responderSimSafe(\'' + qId + '\',' + oi + ',\'listening\')">' +
           String.fromCharCode(65 + oi) + ') ' + op + '</button>';
       });
       html += '</div>';
@@ -3574,6 +3676,15 @@ function tocarAudioSimulado(audioId, texto) {
 var simReadingRespondidas = {};
 var simListeningRespondidas = {};
 
+// Safe question data store - avoids quote issues in onclick
+var simQuestaoData = {};
+
+function responderSimSafe(qId, opcaoIdx, tipo) {
+  var dados = simQuestaoData[qId];
+  if (!dados) return;
+  responderSim(qId, opcaoIdx, dados.correta, dados.exp, tipo);
+}
+
 function responderSim(qId, opcaoIdx, correta, exp, tipo) {
   var respondidas = tipo === 'reading' ? simReadingRespondidas : simListeningRespondidas;
   if (respondidas[qId]) return;
@@ -3600,7 +3711,7 @@ function responderSim(qId, opcaoIdx, correta, exp, tipo) {
   if (pergDiv) {
     var fb = document.createElement('div');
     fb.style.cssText = 'background:' + (acertou ? '#E1F5EE' : '#FAECE7') + ';border-radius:8px;padding:8px 12px;margin-top:6px;font-size:12px;color:' + (acertou ? '#085041' : '#712B13') + ';font-weight:700;';
-    fb.textContent = (acertou ? '✓ Correto! ' : '✗ Incorreto. ') + exp;
+    fb.textContent = (acertou ? '✓ Correct! ' : '✗ Incorrect. ') + exp;
     pergDiv.appendChild(fb);
   }
 
@@ -4602,6 +4713,11 @@ function toggleFigSpeakingMic() {
   figRecSpeaking.onerror = function() {
     figMicAtivoSpeaking = false;
     if (btn) { btn.classList.remove('recording'); btn.textContent = '🎤 Tap to speak'; }
+    // Trigger AI feedback
+    var transcDiv = document.getElementById('figTranscricao');
+    var fig = figurasSpeaking[figSpeakingIdx % figurasSpeaking.length];
+    var transcricao = transcDiv ? transcDiv.textContent : '';
+    gerarFeedbackFoto(transcricao, fig ? fig.desc : 'a scene');
   };
   
   figRecSpeaking.onend = function() {
@@ -6957,7 +7073,7 @@ var listeningTextos = {
       traducao:'Gosto de animais. Tenho um gato. Seu nome é Mia. Ela é preta e branca. Ela dorme muito. Meu amigo tem um cachorro. O cachorro dele é grande e marrom. Cachorros são amigáveis. Minha escola tem peixes num aquário. Peixes são quietos. De que animal você gosta?',
       perguntas:[
         {pergunta:'What is the name of the cat?', opcoes:['Max','Bella','Mia','Luna'], correta:2, explicacao:'The text says "Her name is Mia."'},
-        {pergunta:'What colour is the friend's dog?', opcoes:['Black','White','Yellow','Brown'], correta:3, explicacao:'The text says "His dog is big and brown."'},
+        {pergunta:'What colour is the friend\'s dog?', opcoes:['Black','White','Yellow','Brown'], correta:3, explicacao:'The text says "His dog is big and brown."'},
         {pergunta:'Where are the fish?', opcoes:['At home','In the park','In a tank at school','In the river'], correta:2, explicacao:'The text says "My school has fish in a tank."'}
       ]
     },
@@ -7103,8 +7219,8 @@ var listeningTextos = {
       traducao:'Ana Ferreira fundou a GreenBox, uma empresa de embalagens sustentáveis que cresceu para cinquenta milhões de libras em seis anos. A maior dificuldade foi mudar a mentalidade das grandes corporações sobre custos de sustentabilidade.',
       perguntas:[
         {pergunta:'What does GreenBox produce?', opcoes:['Organic food','Sustainable packaging','Electric vehicles','Recycled clothing'], correta:1, explicacao:'The text describes GreenBox as "a sustainable packaging company."'},
-        {pergunta:'What was Ana's original problem?', opcoes:['Finding customers','Finding investors','Finding affordable sustainable packaging','Finding good staff'], correta:2, explicacao:'Ana says she "could not find packaging that was both affordable and genuinely sustainable."'},
-        {pergunta:'What has been Ana's biggest challenge?', opcoes:['Technology development','Finding suppliers','Changing corporate mindsets','Marketing the product'], correta:2, explicacao:'Ana says "Changing the mindset of large corporations" has been her biggest challenge.'}
+        {pergunta:'What was Ana\'s original problem?', opcoes:['Finding customers','Finding investors','Finding affordable sustainable packaging','Finding good staff'], correta:2, explicacao:'Ana says she "could not find packaging that was both affordable and genuinely sustainable."'},
+        {pergunta:'What has been Ana\'s biggest challenge?', opcoes:['Technology development','Finding suppliers','Changing corporate mindsets','Marketing the product'], correta:2, explicacao:'Ana says "Changing the mindset of large corporations" has been her biggest challenge.'}
       ]
     },
     {
@@ -7131,11 +7247,11 @@ var listeningTextos = {
   'C1': [
     {
       id:'lc1-1', titulo:'Philosophy Lecture', tema:'philosophy', icone:'🧠',
-      texto:'What does it mean to act freely? This question has occupied philosophers for millennia, and remains as contested today as it was in ancient Greece. The compatibilist position, most associated with thinkers such as Hume and Frankfurt, holds that free will is perfectly compatible with determinism, provided we understand freedom not as some mysterious capacity to escape causal determination, but simply as the ability to act in accordance with one's own desires and reasons, without external compulsion. On this view, what matters is not whether your desires were themselves causally determined, but whether the action flows from those desires without interference. Critics of compatibilism argue that this definition trivialises the very concept it purports to save. If everything we do is ultimately the product of factors entirely outside our control — our genes, our upbringing, our neural architecture — then the compatibilist notion of freedom amounts to little more than a semantic manoeuvre.',
+      texto:'What does it mean to act freely? This question has occupied philosophers for millennia, and remains as contested today as it was in ancient Greece. The compatibilist position, most associated with thinkers such as Hume and Frankfurt, holds that free will is perfectly compatible with determinism, provided we understand freedom not as some mysterious capacity to escape causal determination, but simply as the ability to act in accordance with one\'s own desires and reasons, without external compulsion. On this view, what matters is not whether your desires were themselves causally determined, but whether the action flows from those desires without interference. Critics of compatibilism argue that this definition trivialises the very concept it purports to save. If everything we do is ultimately the product of factors entirely outside our control — our genes, our upbringing, our neural architecture — then the compatibilist notion of freedom amounts to little more than a semantic manoeuvre.',
       traducao:'O compatibilismo defende que o livre-arbítrio é compatível com o determinismo, desde que entendamos liberdade como agir de acordo com nossos próprios desejos sem compulsão externa. Críticos argumentam que essa definição trivializa o conceito.',
       perguntas:[
         {pergunta:'What does the compatibilist position argue?', opcoes:['Free will is impossible','Free will is compatible with determinism','Determinism is false','Free will requires escaping causation'], correta:1, explicacao:'The text says compatibilism "holds that free will is perfectly compatible with determinism."'},
-        {pergunta:'According to compatibilism, what matters for freedom?', opcoes:['Escaping all causes','Acting without any desires','Acting from one's own desires without interference','Having unpredictable behaviour'], correta:2, explicacao:'The text says what matters "is whether the action flows from those desires without interference."'},
+        {pergunta:'According to compatibilism, what matters for freedom?', opcoes:['Escaping all causes','Acting without any desires','Acting from one\'s own desires without interference','Having unpredictable behaviour'], correta:2, explicacao:'The text says what matters "is whether the action flows from those desires without interference."'},
         {pergunta:'What do critics say about compatibilism?', opcoes:['It is too complex','It trivialises the concept of freedom','It ignores science','It is too religious'], correta:1, explicacao:'Critics argue compatibilism "amounts to little more than a semantic manoeuvre."'}
       ]
     },
@@ -7144,18 +7260,18 @@ var listeningTextos = {
       texto:'The concept of inequality has moved from the margins to the centre of economic debate over the past two decades, driven in large part by the work of economists such as Thomas Piketty, whose monumental study of wealth distribution across two centuries demonstrated that, absent countervailing forces such as progressive taxation or war, capital tends to accumulate disproportionately among those who already possess it. The implications are profound. Extreme inequality does not merely offend our moral intuitions; it also corrodes democratic institutions by concentrating political influence alongside economic power. Moreover, recent research suggests that high inequality is associated with lower social mobility, poorer health outcomes, and reduced levels of social trust — findings that challenge the once-dominant assumption that inequality is an acceptable price for economic dynamism.',
       traducao:'A desigualdade tornou-se central no debate econômico. O trabalho de Piketty demonstrou que o capital tende a se acumular desproporcionalmente. A desigualdade extrema corrói instituições democráticas e está associada a menor mobilidade social.',
       perguntas:[
-        {pergunta:'What did Piketty's study demonstrate?', opcoes:['Inequality always decreases over time','Capital tends to accumulate among those who already have it','Progressive taxation increases inequality','War causes more inequality'], correta:1, explicacao:'The text says Piketty showed "capital tends to accumulate disproportionately among those who already possess it."'},
+        {pergunta:'What did Piketty\'s study demonstrate?', opcoes:['Inequality always decreases over time','Capital tends to accumulate among those who already have it','Progressive taxation increases inequality','War causes more inequality'], correta:1, explicacao:'The text says Piketty showed "capital tends to accumulate disproportionately among those who already possess it."'},
         {pergunta:'How does extreme inequality affect democracy?', opcoes:['It strengthens it','It has no effect','It corrodes democratic institutions','It improves political participation'], correta:2, explicacao:'The text says inequality "corrodes democratic institutions by concentrating political influence alongside economic power."'},
         {pergunta:'What is associated with high inequality according to research?', opcoes:['Higher economic growth','Better health outcomes','Lower social mobility','More innovation'], correta:2, explicacao:'The text says high inequality is associated with "lower social mobility, poorer health outcomes."'}
       ]
     },
     {
       id:'lc1-3', titulo:'Psychology Podcast', tema:'psychology', icone:'🧬',
-      texto:'One of the most robust findings in social psychology is that human beings are far more susceptible to social influence than they believe themselves to be. Classic experiments, from Asch's conformity studies to Milgram's obedience research, revealed the extraordinary degree to which individuals adjust their behaviour, judgements and even perceptions to align with those of the group or authority figure. More recent work in behavioural economics has demonstrated that apparently trivial contextual factors — the order in which options are presented, the default settings of a form, the way a choice is framed — can profoundly alter decisions in domains as consequential as retirement savings, organ donation and energy consumption. This body of evidence has given rise to the nudge theory, which proposes that decision environments can be designed to steer people towards better choices without restricting their freedom.',
+      texto:'One of the most robust findings in social psychology is that human beings are far more susceptible to social influence than they believe themselves to be. Classic experiments, from Asch\'s conformity studies to Milgram\'s obedience research, revealed the extraordinary degree to which individuals adjust their behaviour, judgements and even perceptions to align with those of the group or authority figure. More recent work in behavioural economics has demonstrated that apparently trivial contextual factors — the order in which options are presented, the default settings of a form, the way a choice is framed — can profoundly alter decisions in domains as consequential as retirement savings, organ donation and energy consumption. This body of evidence has given rise to the nudge theory, which proposes that decision environments can be designed to steer people towards better choices without restricting their freedom.',
       traducao:'Humanos são muito mais suscetíveis à influência social do que acreditam. Experimentos clássicos revelaram isso. A teoria do nudge propõe que ambientes de decisão podem ser projetados para guiar pessoas a melhores escolhas.',
       perguntas:[
-        {pergunta:'What do Asch's and Milgram's experiments reveal?', opcoes:['People are independent thinkers','People resist authority','People adjust behaviour to align with groups','People make rational decisions'], correta:2, explicacao:'The experiments "revealed the extraordinary degree to which individuals adjust their behaviour to align with those of the group."'},
-        {pergunta:'What does nudge theory propose?', opcoes:['Restricting people's choices','Designing environments to steer people towards better choices','Punishing bad decisions','Educating people about choices'], correta:1, explicacao:'Nudge theory "proposes that decision environments can be designed to steer people towards better choices."'},
+        {pergunta:'What do Asch\'s and Milgram\'s experiments reveal?', opcoes:['People are independent thinkers','People resist authority','People adjust behaviour to align with groups','People make rational decisions'], correta:2, explicacao:'The experiments "revealed the extraordinary degree to which individuals adjust their behaviour to align with those of the group."'},
+        {pergunta:'What does nudge theory propose?', opcoes:['Restricting people\'s choices','Designing environments to steer people towards better choices','Punishing bad decisions','Educating people about choices'], correta:1, explicacao:'Nudge theory "proposes that decision environments can be designed to steer people towards better choices."'},
         {pergunta:'Which area is NOT mentioned as affected by contextual factors?', opcoes:['Retirement savings','Organ donation','Energy consumption','Exercise habits'], correta:3, explicacao:'Exercise habits are not mentioned. The text mentions retirement savings, organ donation and energy consumption.'}
       ]
     },
@@ -7196,7 +7312,7 @@ var listeningTextos = {
       texto:'The international order established in the aftermath of the Second World War — centred on the United Nations system, the Bretton Woods economic institutions and a network of security alliances anchored by American power — is under more severe strain than at any point since its creation. The rise of China as a peer competitor to the United States has introduced a structural rivalry into the international system that the existing rules-based order was not designed to accommodate. Meanwhile, the resurgence of Russian revisionism, exemplified by the invasion of Ukraine, has shattered the post-Cold War assumption that territorial conquest had been permanently banished from European politics. Simultaneously, the diffusion of technological capabilities — particularly in the domains of cyber operations, precision-guided munitions and artificial intelligence — has eroded the military primacy that underpinned American hegemony during the unipolar moment of the 1990s.',
       traducao:'A ordem internacional pós-Segunda Guerra está sob severa pressão. A ascensão da China, o revisionismo russo exemplificado pela invasão da Ucrânia e a difusão tecnológica desafiam a hegemonia americana estabelecida.',
       perguntas:[
-        {pergunta:'What has China's rise introduced into the international system?', opcoes:['Economic cooperation','A structural rivalry','New trade agreements','Democratic reforms'], correta:1, explicacao:'The text says China's rise "has introduced a structural rivalry into the international system."'},
+        {pergunta:'What has China\'s rise introduced into the international system?', opcoes:['Economic cooperation','A structural rivalry','New trade agreements','Democratic reforms'], correta:1, explicacao:'The text says China\'s rise "has introduced a structural rivalry into the international system."'},
         {pergunta:'What assumption did the invasion of Ukraine shatter?', opcoes:['That NATO was strong','That Russia was declining','That territorial conquest had been banished from Europe','That China would not expand'], correta:2, explicacao:'The invasion shattered "the post-Cold War assumption that territorial conquest had been permanently banished from European politics."'},
         {pergunta:'What has eroded American military primacy?', opcoes:['Economic decline','Internal political divisions','Diffusion of technological capabilities','Reduction in military spending'], correta:2, explicacao:'The text says "the diffusion of technological capabilities has eroded the military primacy that underpinned American hegemony."'}
       ]
@@ -7206,7 +7322,7 @@ var listeningTextos = {
       texto:'The emerging field of social neuroscience has begun to illuminate the neurobiological mechanisms through which human beings navigate the extraordinarily complex social environments that characterise our species. Unlike other primates, humans routinely engage in sophisticated mental state attribution — what psychologists term theory of mind — inferring the beliefs, desires, intentions and emotional states of others from remarkably sparse behavioural cues. Neuroimaging studies have identified a network of brain regions, including the medial prefrontal cortex, the temporoparietal junction and the superior temporal sulcus, that are consistently activated during tasks requiring social cognition. What is particularly striking is that this network shows substantial overlap with the default mode network — the system of regions that becomes active during mind-wandering and self-referential thought — suggesting an intimate connection between our capacity to understand others and our capacity to understand ourselves.',
       traducao:'A neurociência social ilumina os mecanismos neurobiológicos da navegação social humana. A teoria da mente — inferir estados mentais alheios — envolve uma rede cerebral que se sobrepõe ao modo padrão ativo durante o pensamento autodirecionado.',
       perguntas:[
-        {pergunta:'What is "theory of mind" as described in the text?', opcoes:['Understanding scientific theories','Inferring the mental states of others','A type of brain scan','Self-awareness of one's own thoughts'], correta:1, explicacao:'The text defines theory of mind as "inferring the beliefs, desires, intentions and emotional states of others."'},
+        {pergunta:'What is "theory of mind" as described in the text?', opcoes:['Understanding scientific theories','Inferring the mental states of others','A type of brain scan','Self-awareness of one\'s own thoughts'], correta:1, explicacao:'The text defines theory of mind as "inferring the beliefs, desires, intentions and emotional states of others."'},
         {pergunta:'Which brain region is NOT mentioned in the social cognition network?', opcoes:['Medial prefrontal cortex','Temporoparietal junction','Amygdala','Superior temporal sulcus'], correta:2, explicacao:'The amygdala is not mentioned. The text lists the medial prefrontal cortex, temporoparietal junction and superior temporal sulcus.'},
         {pergunta:'What does the overlap with the default mode network suggest?', opcoes:['That social thinking is irrational','A connection between understanding others and understanding ourselves','That mind-wandering is antisocial','That self-reference impairs social cognition'], correta:1, explicacao:'The overlap suggests "an intimate connection between our capacity to understand others and our capacity to understand ourselves."'}
       ]
@@ -7268,7 +7384,7 @@ function abrirListening(nivel) {
 
 function selecionarAudioIdx(i) {
   var textos = listeningTextos[listeningNivel] || listeningTextos['B1'];
-  selecionarAudio(textos[i]);
+  if (textos && textos[i]) selecionarAudio(textos[i]);
 }
 
 function selecionarAudio(audio) {
@@ -7326,6 +7442,11 @@ function setupListeningPlayer() {
       quizAtual = listeningAtual.perguntas;
       quizIndex = 0;
       quizAcertos = 0;
+      // Update quiz title and back button for listening context
+      var qtitulo = document.getElementById('qtitulo');
+      if (qtitulo) qtitulo.textContent = 'Exercises — Listening ' + listeningNivel;
+      var btnVQ = document.getElementById('btnVoltarQuiz');
+      if (btnVQ) btnVQ.onclick = function() { ir('audicao'); };
       ir('quiz');
       renderQuizPergunta();
     };
@@ -7477,6 +7598,21 @@ function abrirPalavra(word) {
   document.getElementById('pm').textContent = p.meaning;
   document.getElementById('pe').textContent = p.example;
   document.getElementById('popup').classList.add('show');
+}
+
+function irConversacao() {
+  ir('conversacao');
+  setTimeout(function() {
+    var chat = document.getElementById('ct-chat');
+    if (chat && chat.children.length === 0) {
+      adicionarMsgCricket('Hello! I am Cricket, your English conversation partner. Let us practise together! What would you like to talk about today?');
+    }
+  }, 300);
+}
+
+function irDescreverFoto() {
+  proximaFigura();
+  ir('descricao-figuras');
 }
 
 function fecharNivelSheet() {
@@ -7906,61 +8042,179 @@ function irBanco() {
   ir('banco');
 }
 
+async function gerarFeedbackFoto(transcricao, descricao) {
+  var feedbackEl = document.getElementById('figFeedback');
+  var feedbackTexto = document.getElementById('figFeedbackTexto');
+  if (!feedbackEl || !feedbackTexto) return;
+  feedbackEl.style.display = 'block';
+  feedbackTexto.innerHTML = '<span style="color:#6b7280;">🦗 Analysing your description...</span>';
+  try {
+    var res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1000,
+        messages: [{role: 'user', content: 'You are Cricket, a friendly Cambridge English examiner. The student described this scene: "' + descricao + '". They said: "' + (transcricao || '(no speech detected)') + '". Give brief encouraging feedback in 3 bullet points: 1) What they did well 2) One Cambridge exam tip 3) A model phrase they could use. Keep it short and friendly. English only. No asterisks.'}]
+      })
+    });
+    var data = await res.json();
+    var text = data.content && data.content[0] ? data.content[0].text : 'Great effort! Keep practising!';
+    feedbackTexto.innerHTML = text.replace(/\n/g, '<br>');
+  } catch(e) {
+    feedbackTexto.textContent = 'Great effort! Keep practising your description skills.';
+  }
+}
+
+
+// ===== PLACEMENT TEST =====
+var ptQuestoes = [
+  {nivel:'A1',tipo:'grammar',pergunta:'Choose the correct verb: She ___ a teacher.',opcoes:['am','is','are','be'],correta:1},
+  {nivel:'A1',tipo:'grammar',pergunta:'What is the plural of "child"?',opcoes:['childs','childes','children','child'],correta:2},
+  {nivel:'A1',tipo:'vocab',pergunta:'What colour is the sky on a sunny day?',opcoes:['green','red','blue','yellow'],correta:2},
+  {nivel:'A1',tipo:'grammar',pergunta:'___ you like coffee?',opcoes:['Do','Does','Is','Are'],correta:0},
+  {nivel:'A1',tipo:'grammar',pergunta:'I have ___ apple and ___ orange.',opcoes:['a / a','an / an','an / a','a / an'],correta:2},
+  {nivel:'A2',tipo:'grammar',pergunta:'She ___ to the cinema last Saturday.',opcoes:['go','goes','went','gone'],correta:2},
+  {nivel:'A2',tipo:'grammar',pergunta:'They ___ in London for five years when they were children.',opcoes:['live','lived','have lived','are living'],correta:1},
+  {nivel:'A2',tipo:'vocab',pergunta:'Choose the correct preposition: I arrive ___ the airport at noon.',opcoes:['in','on','at','to'],correta:2},
+  {nivel:'A2',tipo:'grammar',pergunta:'___ she speak French? Yes, she ___.',opcoes:['Does / does','Do / do','Is / is','Can / does'],correta:0},
+  {nivel:'A2',tipo:'vocab',pergunta:'Which word means "very happy"?',opcoes:['furious','delighted','anxious','exhausted'],correta:1},
+  {nivel:'B1',tipo:'grammar',pergunta:'I ___ never ___ to Japan, but I would love to go.',opcoes:['have / been','had / been','have / went','did / go'],correta:0},
+  {nivel:'B1',tipo:'grammar',pergunta:'If it ___ tomorrow, we will cancel the picnic.',opcoes:['rain','rains','rained','will rain'],correta:1},
+  {nivel:'B1',tipo:'grammar',pergunta:'She asked me where ___ from.',opcoes:['I come','do I come','I came','came I'],correta:2},
+  {nivel:'B1',tipo:'vocab',pergunta:'Choose the word that best completes: The new policy will ___ thousands of jobs.',opcoes:['affect','effect','infect','detect'],correta:0},
+  {nivel:'B1',tipo:'grammar',pergunta:'The book ___ by J.K. Rowling is very popular.',opcoes:['write','wrote','written','writing'],correta:2},
+  {nivel:'B2',tipo:'grammar',pergunta:'By the time she arrives, we ___ for three hours.',opcoes:['will wait','will have been waiting','are waiting','have waited'],correta:1},
+  {nivel:'B2',tipo:'grammar',pergunta:'___ he studied harder, he might have passed the exam.',opcoes:['If','Had','Should','Were'],correta:1},
+  {nivel:'B2',tipo:'vocab',pergunta:'The findings were considered ___; they changed the field completely.',opcoes:['trivial','mundane','groundbreaking','redundant'],correta:2},
+  {nivel:'B2',tipo:'grammar',pergunta:'The report ___ that further research is needed.',opcoes:['suggests','is suggesting','suggested','has been suggesting'],correta:0},
+  {nivel:'B2',tipo:'vocab',pergunta:'Despite ___ tired, she continued working until midnight.',opcoes:['to be','being','been','be'],correta:1},
+  {nivel:'C1',tipo:'grammar',pergunta:'No sooner ___ the meeting than it started raining.',opcoes:['they left','did they leave','had they left','they had left'],correta:2},
+  {nivel:'C1',tipo:'vocab',pergunta:'The speech was criticised for its ___; it said everything and nothing.',opcoes:['verbosity','ambiguity','eloquence','brevity'],correta:1},
+  {nivel:'C1',tipo:'grammar',pergunta:'It is essential that every student ___ the examination rules.',opcoes:['follows','follow','is following','has followed'],correta:1},
+  {nivel:'C1',tipo:'vocab',pergunta:'The company decided to ___ its operations, leading to job losses.',opcoes:['downsize','upsize','maximise','stabilise'],correta:0},
+  {nivel:'C1',tipo:'grammar',pergunta:'___ as he was, he could not solve the puzzle.',opcoes:['Clever','However clever','Although clever','Being clever'],correta:1},
+  {nivel:'C2',tipo:'grammar',pergunta:'The proposal, ___ at first, eventually gained widespread support.',opcoes:['having rejected','being rejected','rejected','to reject'],correta:2},
+  {nivel:'C2',tipo:'vocab',pergunta:'Her argument was so ___ that even opponents had to concede its validity.',opcoes:['cogent','ambiguous','verbose','facile'],correta:0},
+  {nivel:'C2',tipo:'grammar',pergunta:'Had circumstances been different, the outcome ___ quite another matter.',opcoes:['will be','would be','would have been','had been'],correta:2},
+  {nivel:'C2',tipo:'vocab',pergunta:'The discovery ___ decades of established scientific consensus.',opcoes:['undermined','reinforced','consolidated','perpetuated'],correta:0},
+  {nivel:'C2',tipo:'grammar',pergunta:'It was not until she had read the letter twice ___ its full implications.',opcoes:['that she grasped','she grasped','when she grasped','did she grasp'],correta:0},
+  {nivel:'B1',tipo:'reading',texto:'Scientists have discovered that regular exercise has benefits beyond physical fitness. Research shows that people who exercise at least three times a week report significantly lower levels of stress and anxiety. Furthermore, exercise has been shown to improve memory and concentration, making it particularly beneficial for students. One study found that students who exercised before exams scored an average of 15% higher than those who did not. Despite these findings, many people still struggle to maintain a regular exercise routine, often citing lack of time as the main obstacle.',pergunta:'What is the main topic of the text?',opcoes:['The importance of physical fitness','The mental benefits of exercise','How to improve exam results','Time management strategies'],correta:1},
+  {nivel:'B1',tipo:'reading',texto:null,pergunta:'According to the text, how often should people exercise to see benefits?',opcoes:['Every day','Once a week','At least three times a week','Twice a month'],correta:2},
+  {nivel:'B1',tipo:'reading',texto:null,pergunta:'What did the study about students find?',opcoes:['Exercise has no effect on results','Students who exercised scored 15% higher','Exercise reduces study time','All students exercise before exams'],correta:1},
+  {nivel:'B1',tipo:'reading',texto:null,pergunta:'What reason do people most commonly give for not exercising?',opcoes:['Lack of motivation','Physical limitations','Lack of money','Lack of time'],correta:3},
+  {nivel:'B1',tipo:'listening',audio:'https://lucerna-2010.github.io/talking-cricket/audio/placement-listening.mp3',pergunta:'Why is the train delayed?',opcoes:['Bad weather','A staff shortage','Engineering works','A technical fault'],correta:2},
+  {nivel:'B1',tipo:'listening',audio:null,pergunta:'Where can passengers get refreshments?',opcoes:['On the train','Platform one','The station cafe on platform two','The waiting room'],correta:2},
+  {nivel:'B1',tipo:'listening',audio:null,pergunta:'What will a further announcement confirm?',opcoes:['The arrival time','The platform number','The ticket price','The delay duration'],correta:1},
+  {nivel:'B1',tipo:'listening',audio:null,pergunta:'How long is the approximate delay?',opcoes:['Twenty minutes','Thirty minutes','Forty minutes','Fifty minutes'],correta:2}
+];
+
+var ptIndex = 0;
+var ptAcertos = 0;
+var ptRespostas = [];
+var ptTextoAtual = null;
+var ptAudioAtual = null;
+
+function iniciarNivelamento() {
+  ptIndex = 0; ptAcertos = 0; ptRespostas = []; ptTextoAtual = null; ptAudioAtual = null;
+  ir('nivelamento');
+  renderPtQuestao();
+}
+
+function renderPtQuestao() {
+  var body = document.getElementById('ptBody');
+  var prog = document.getElementById('ptProgresso');
+  if (!body) return;
+  if (prog) prog.style.width = Math.round((ptIndex / ptQuestoes.length) * 100) + '%';
+  if (ptIndex >= ptQuestoes.length) { mostrarResultadoNivelamento(); return; }
+  var q = ptQuestoes[ptIndex];
+  var h = '<div class="pt-num">Question ' + (ptIndex+1) + ' of ' + ptQuestoes.length + '</div>';
+  h += '<div class="pt-nivel-tag">' + q.nivel + ' · ' + q.tipo.charAt(0).toUpperCase() + q.tipo.slice(1) + '</div>';
+  if (q.tipo === 'reading' && q.texto) { ptTextoAtual = q.texto; h += '<div class="pt-texto">' + q.texto + '</div>'; }
+  else if (q.tipo === 'reading' && ptTextoAtual) { h += '<div class="pt-texto">' + ptTextoAtual + '</div>'; }
+  if (q.tipo === 'listening' && q.audio) {
+    ptAudioAtual = q.audio;
+    h += '<div style="background:#E1F5EE;border-radius:12px;padding:14px;margin-bottom:14px;">' +
+      '<div style="font-size:12px;font-weight:800;color:#085041;margin-bottom:10px;">🎧 Listen to the audio — you can play it up to 3 times</div>' +
+      '<audio id="ptAudioPlayer" src="' + q.audio + '" style="width:100%;border-radius:8px;" controls controlsList="nodownload"></audio>' +
+      '</div>';
+  } else if (q.tipo === 'listening' && ptAudioAtual) {
+    h += '<div style="background:#E1F5EE;border-radius:12px;padding:14px;margin-bottom:14px;">' +
+      '<div style="font-size:12px;font-weight:800;color:#085041;margin-bottom:10px;">🎧 Same audio as previous question</div>' +
+      '<audio id="ptAudioPlayer" src="' + ptAudioAtual + '" style="width:100%;border-radius:8px;" controls controlsList="nodownload"></audio>' +
+      '</div>';
+  }
+  h += '<div class="pt-pergunta">' + q.pergunta + '</div><div id="ptOpcoes">';
+  q.opcoes.forEach(function(op, i) { h += '<button class="pt-opcao" onclick="responderPt(' + i + ')">' + String.fromCharCode(65+i) + ') ' + op + '</button>'; });
+  h += '</div>';
+  body.innerHTML = h;
+  body.scrollTop = 0;
+}
+
+function responderPt(idx) {
+  var q = ptQuestoes[ptIndex];
+  document.querySelectorAll('.pt-opcao').forEach(function(b, i) {
+    b.disabled = true;
+    if (i === q.correta) b.classList.add('correta');
+    else if (i === idx && idx !== q.correta) b.classList.add('errada');
+  });
+  if (idx === q.correta) ptAcertos++;
+  ptRespostas.push({nivel: q.nivel, correta: idx === q.correta});
+  setTimeout(function() { ptIndex++; renderPtQuestao(); }, 800);
+}
+
+function mostrarResultadoNivelamento() {
+  var scores = {A1:0,A2:0,B1:0,B2:0,C1:0,C2:0};
+  var totais = {A1:0,A2:0,B1:0,B2:0,C1:0,C2:0};
+  ptRespostas.forEach(function(r) { totais[r.nivel]++; if(r.correta) scores[r.nivel]++; });
+  var nivelSugerido = 'A1';
+  var niveis = ['A1','A2','B1','B2','C1','C2'];
+  for (var i=0; i<niveis.length; i++) {
+    var n = niveis[i];
+    if (totais[n] > 0 && scores[n]/totais[n] >= 0.6) nivelSugerido = n;
+    else break;
+  }
+  var descricoes = {
+    A1:'You are at beginner level. You understand basic words and phrases. Start with A1 to build a strong foundation.',
+    A2:'You are at elementary level. You can handle simple everyday conversations. A2 will develop your core skills.',
+    B1:'You are at intermediate level. You can deal with most situations and discuss familiar topics. B1 is your ideal starting point.',
+    B2:'You are at upper-intermediate level. You can interact with native speakers with ease. B2 will develop your fluency.',
+    C1:'You are at advanced level. You can express yourself fluently. C1 will refine your academic and professional English.',
+    C2:'You are at proficiency level. You have mastered the language. C2 will perfect your command of English.'
+  };
+  var nomeNivel = {A1:'Beginner',A2:'Elementary',B1:'Intermediate',B2:'Upper-Intermediate',C1:'Advanced',C2:'Proficient'};
+  ir('nivelamento-resultado');
+  var body = document.getElementById('ptResultadoBody');
+  if (!body) return;
+  var pctGeral = Math.round((ptAcertos / ptQuestoes.length) * 100);
+  body.innerHTML = '<div class="pt-resultado">' +
+    '<div class="pt-nivel-circulo"><div class="pt-nivel-letter">' + nivelSugerido + '</div><div class="pt-nivel-name">' + nomeNivel[nivelSugerido] + '</div></div>' +
+    '<div class="pt-score">Score: ' + ptAcertos + '/' + ptQuestoes.length + ' (' + pctGeral + '%)</div>' +
+    '<div class="pt-desc">' + descricoes[nivelSugerido] + '</div>' +
+    '<button class="pt-btn-aceitar" onclick="aceitarNivelamento(\'' + nivelSugerido + '\')">Start with ' + nivelSugerido + ' &#8594;</button>' +
+    '<button class="pt-btn-escolher" onclick="escolherNivelManual()">Choose my own level</button>' +
+    '</div>';
+}
+
+function aceitarNivelamento(nivel) {
+  var nomes = {A1:'Beginner',A2:'Elementary',B1:'Intermediate',B2:'Upper-Intermediate',C1:'Advanced',C2:'Proficient'};
+  mudarNivel(nivel, nomes[nivel]);
+  voltarHome();
+}
+
+function escolherNivelManual() {
+  voltarHome();
+  setTimeout(function() { abrirNivelSheet(); }, 400);
+}
+
+
 window.onload = function() {
 
   document.querySelectorAll('.tela').forEach(function(t) { t.classList.remove('ativa'); });
   var splash = document.getElementById('splash');
   if (splash) splash.classList.add('ativa');
 
-  // === AUTO-LOGIN: restore session from localStorage ===
-  try {
-    var savedNome = localStorage.getItem('tc_nome');
-    var savedNivel = localStorage.getItem('tc_nivel');
-    var savedNivelNome = localStorage.getItem('tc_nivel_nome');
-    var savedModo = localStorage.getItem('tc_modo');
-    var loggedin = localStorage.getItem('tc_loggedin');
-
-    if (loggedin && savedNome) {
-      nomeUsuario = savedNome;
-      if (savedNivel) nivelAtual = savedNivel;
-      var pn = nomeUsuario.split(' ')[0];
-      var ini = nomeUsuario.split(' ').map(function(x){return x[0];}).slice(0,2).join('').toUpperCase();
-
-      // Restore avatars and names
-      var havatar = document.getElementById('havatar'); if (havatar) havatar.textContent = ini;
-      var pavatar = document.getElementById('pavatar'); if (pavatar) pavatar.textContent = ini;
-      var hcnome = document.getElementById('hcnome'); if (hcnome) hcnome.textContent = pn;
-      var hknome = document.getElementById('hknome'); if (hknome) hknome.textContent = pn;
-      var pnome = document.getElementById('pnome'); if (pnome) pnome.textContent = nomeUsuario;
-
-      // Restore level UI
-      if (savedNivel) {
-        var nm = savedNivelNome || savedNivel;
-        var pill = document.getElementById('lvpill');
-        if (pill) pill.textContent = '🌱 ' + savedNivel + ' — ' + nm + ' ▾';
-        var xplbl = document.getElementById('xplbl');
-        if (xplbl) xplbl.textContent = 'Level ' + savedNivel + ' — 🌱 620 seeds';
-        var aulaLbl = document.getElementById('aulaLbl');
-        if (aulaLbl) aulaLbl.textContent = 'Reading — ' + savedNivel;
-      }
-
-      // Skip splash and go straight to home
-      setTimeout(function() {
-        if (savedModo === 'kids') {
-          ir('home-kids');
-        } else {
-          voltarHome();
-        }
-      }, 600);
-      return; // skip rest of onload splash handling
-    }
-  } catch(e) {}
-
-  function addEvt(id, evt, fn) {
-    var el = document.getElementById(id);
-    if (el) el[evt] = fn;
-  }
-
+  // Register ALL events first
   var _el_btnCriar = document.getElementById('btnCriar'); if(_el_btnCriar) _el_btnCriar.onclick = function() { ir('cadastro'); };
   var _el_btnLogin = document.getElementById('btnLogin'); if(_el_btnLogin) _el_btnLogin.onclick = function() { ir('codigo'); };
 
@@ -7970,59 +8224,16 @@ window.onload = function() {
     var n = document.getElementById('inp-nome').value.trim();
     var i = document.getElementById('inp-idade').value.trim();
     var c = document.getElementById('inp-contato').value.trim();
-    if (!n) { alert('Informe seu nome.'); return; }
-    if (!i) { alert('Informe sua idade.'); return; }
-    if (!c) { alert('Informe seu email ou telefone.'); return; }
-    
-    // Verificar se é email
-    var isEmail = c.indexOf('@') >= 0;
-    if (!isEmail) {
-      // Telefone: ir direto para o código sem enviar email
-      nomeUsuario = n;
-      codigoGerado = Math.floor(1000 + Math.random() * 9000).toString();
-      document.getElementById('dest').textContent = c;
-      // Mostrar código na tela (para telefone)
-      var hint = document.querySelector('#codigo .fbody p');
-      if (hint) hint.innerHTML = 'Insira o código de 4 dígitos.<br><strong style="color:#1D9E75">Código: ' + codigoGerado + '</strong>';
-      ir('codigo');
-      return;
-    }
-    
-    // É email — gerar código e enviar via EmailJS
+    if (!n) { alert('Please enter your name.'); return; }
+    if (!i) { alert('Please enter your age.'); return; }
+    if (!c) { alert('Please enter your email or phone.'); return; }
     nomeUsuario = n;
     codigoGerado = Math.floor(1000 + Math.random() * 9000).toString();
-    document.getElementById('dest').textContent = c;
-    
-    // Mostrar loading
-    var btn = document.getElementById('btnEnviarCodigo');
-    btn.textContent = 'Enviando...';
-    btn.disabled = true;
-    
-    // Inicializar EmailJS
-    if (window.emailjs) {
-      emailjs.init('g5fvPV8QhV0SY1V_Q');
-      emailjs.send('service_qfo42bt', 't990ehj', {
-        para_email: c,
-        nome: n,
-        codigo: codigoGerado
-      }).then(function() {
-        btn.textContent = 'Enviar código';
-        btn.disabled = false;
-        ir('codigo');
-        // Atualizar hint
-        var hint2 = document.querySelector('#codigo .fbody p');
-        if (hint2) hint2.innerHTML = 'Código enviado para <strong>' + c + '</strong>!<br>Verifique sua caixa de entrada.';
-      }).catch(function(err) {
-        btn.textContent = 'Enviar código';
-        btn.disabled = false;
-        alert('Erro ao enviar email. Tente novamente.');
-      });
-    } else {
-      // EmailJS não carregou — ir direto
-      btn.textContent = 'Enviar código';
-      btn.disabled = false;
-      ir('codigo');
-    }
+    var destEl = document.getElementById('dest');
+    if (destEl) destEl.textContent = c;
+    var hint = document.querySelector('#codigo .fbody p');
+    if (hint) hint.innerHTML = 'Enter this 4-digit code:<br><strong style="font-size:32px;color:#1D9E75;letter-spacing:8px;display:block;text-align:center;margin-top:8px">' + codigoGerado + '</strong>';
+    ir('codigo');
   };
 
   var _el_btnVoltarCodigo = document.getElementById('btnVoltarCodigo'); if(_el_btnVoltarCodigo) _el_btnVoltarCodigo.onclick = function() { ir('cadastro'); };
@@ -8056,6 +8267,7 @@ window.onload = function() {
     } else { alert('Wrong code. Use: 7429'); }
   };
 
+  var _el_btnPlacement = document.getElementById('btnPlacement'); if(_el_btnPlacement) _el_btnPlacement.onclick = function() { iniciarNivelamento(); };
   var _el_btnCambridge = document.getElementById('btnCambridge'); if(_el_btnCambridge) _el_btnCambridge.onclick = function() { 
     voltarHome();
     setTimeout(processarDeepLink, 800);
@@ -8072,7 +8284,7 @@ window.onload = function() {
   var _el_btnLeitura = document.getElementById('btnLeitura'); if(_el_btnLeitura) _el_btnLeitura.onclick = function() { irBanco(); };
   var _el_btnListening = document.getElementById('btnListening'); if(_el_btnListening) _el_btnListening.onclick = function() { abrirListening(nivelAtual); };
   var _el_btnWriting = document.getElementById('btnWriting'); if(_el_btnWriting) _el_btnWriting.onclick = function() { ir('escrita'); };
-  var _el_btnSpeaking = document.getElementById('btnSpeaking'); if(_el_btnSpeaking) _el_btnSpeaking.onclick = function() { ir('conversacao'); };
+  var _el_btnSpeaking = document.getElementById('btnSpeaking'); if(_el_btnSpeaking) _el_btnSpeaking.onclick = function() { ir('speak-hub'); };
   var _el_btnAulaHoje = document.getElementById('btnAulaHoje'); if(_el_btnAulaHoje) _el_btnAulaHoje.onclick = function() { irBanco(); };
 
   var _el_btnTrocarModoKids = document.getElementById('btnTrocarModoKids'); if(_el_btnTrocarModoKids) _el_btnTrocarModoKids.onclick = function() { ir('modo'); };
@@ -8428,7 +8640,7 @@ window.onload = function() {
   atualizarDisplaySementes();
 
   var btnVoltarFiguras = document.getElementById('btnVoltarFiguras');
-  if (btnVoltarFiguras) btnVoltarFiguras.onclick = function() { pararTimerFigura(); if(figMicAtivoSpeaking && figRecSpeaking) { try{figRecSpeaking.stop();}catch(e){} } ir('conversacao'); };
+  if (btnVoltarFiguras) btnVoltarFiguras.onclick = function() { pararTimerFigura(); if(figMicAtivoSpeaking && figRecSpeaking) { try{figRecSpeaking.stop();}catch(e){} } ir('speak-hub'); };
   
   var btnIniciarTimer = document.getElementById('btnIniciarTimer');
   if (btnIniciarTimer) btnIniciarTimer.onclick = function() {
@@ -8615,6 +8827,43 @@ window.onload = function() {
 
   var btnRevelar = document.getElementById('btnRevelarTranscricao');
   if (btnRevelar) btnRevelar.onclick = function() { revelarTranscricao(); };
+
+  // === AUTO-LOGIN: restore session from localStorage ===
+  // Done AFTER all events are registered so buttons always work
+  try {
+    var savedNome = localStorage.getItem('tc_nome');
+    var savedNivel = localStorage.getItem('tc_nivel');
+    var savedNivelNome = localStorage.getItem('tc_nivel_nome');
+    var savedModo = localStorage.getItem('tc_modo');
+    var loggedin = localStorage.getItem('tc_loggedin');
+
+    if (loggedin && savedNome) {
+      nomeUsuario = savedNome;
+      if (savedNivel) nivelAtual = savedNivel;
+      var pn = nomeUsuario.split(' ')[0];
+      var ini = nomeUsuario.split(' ').map(function(x){return x[0];}).slice(0,2).join('').toUpperCase();
+
+      var havatar = document.getElementById('havatar'); if (havatar) havatar.textContent = ini;
+      var pavatar = document.getElementById('pavatar'); if (pavatar) pavatar.textContent = ini;
+      var hcnome = document.getElementById('hcnome'); if (hcnome) hcnome.textContent = pn;
+      var hknome = document.getElementById('hknome'); if (hknome) hknome.textContent = pn;
+      var pnome = document.getElementById('pnome'); if (pnome) pnome.textContent = nomeUsuario;
+
+      if (savedNivel) {
+        var nm = savedNivelNome || savedNivel;
+        var pill = document.getElementById('lvpill');
+        if (pill) pill.textContent = '🌱 ' + savedNivel + ' — ' + nm + ' ▾';
+        var xplbl = document.getElementById('xplbl');
+        if (xplbl) xplbl.textContent = 'Level ' + savedNivel + ' — 🌱 620 seeds';
+        var aulaLbl = document.getElementById('aulaLbl');
+        if (aulaLbl) aulaLbl.textContent = 'Reading — ' + savedNivel;
+      }
+
+      setTimeout(function() {
+        if (savedModo === 'kids') { ir('home-kids'); } else { voltarHome(); }
+      }, 400);
+    }
+  } catch(e) {}
 
   };
 </script>
