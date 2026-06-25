@@ -1053,7 +1053,8 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 <!-- MODO -->
 <!-- PLACEMENT TEST -->
 <div id="nivelamento" class="tela">
-  <div class="pt-header">
+  <div class="pt-header" style="position:relative;">
+    <button onclick="sairNivelamento()" style="position:absolute;top:16px;left:16px;background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:18px;width:34px;height:34px;border-radius:50%;cursor:pointer;font-weight:800;display:flex;align-items:center;justify-content:center;">←</button>
     <div class="pt-titulo">🎯 Placement Test</div>
     <div class="pt-sub">35 questions · Grammar, Reading &amp; Listening</div>
     <div class="pt-timer">
@@ -8179,9 +8180,20 @@ function renderPtQuestao() {
   }
   h += '<div class="pt-pergunta">' + q.pergunta + '</div><div id="ptOpcoes">';
   q.opcoes.forEach(function(op, i) { h += '<button class="pt-opcao" onclick="responderPt(' + i + ')">' + String.fromCharCode(65+i) + ') ' + op + '</button>'; });
+  // Show finish button after 5 questions
+  if (ptIndex >= 5) {
+    h += '<div style="margin-top:20px;text-align:center;">' +
+      '<button onclick="mostrarResultadoNivelamento()" style="background:none;border:1px solid #D3D1C7;color:#6b7280;font-family:Nunito,Arial,sans-serif;font-size:12px;font-weight:700;padding:8px 16px;border-radius:20px;cursor:pointer;">Finish &amp; See Result →</button>' +
+      '</div>';
+  }
   h += '</div>';
   body.innerHTML = h;
   body.scrollTop = 0;
+}
+
+function sairNivelamento() {
+  if (ptTimerInterval) { clearInterval(ptTimerInterval); ptTimerInterval = null; }
+  ir('modo');
 }
 
 function responderPt(idx) {
