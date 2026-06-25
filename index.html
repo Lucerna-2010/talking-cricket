@@ -6920,6 +6920,58 @@ function revelarTranscricao() {
 
 // ===== BANCO DE TEXTOS LISTENING (diferentes do Reading) =====
 var listeningTextos = {
+  'A1': [
+    {
+      id:'la1-1', titulo:'At the Park', tema:'daily', icone:'🌳',
+      texto:'It is a sunny day. Tom and his dog are at the park. The dog runs and plays. Tom sits on the grass. He eats a sandwich. A girl comes to the park. Her name is Lucy. She has a ball. Tom and Lucy play together. They are happy.',
+      traducao:'É um dia ensolarado. Tom e seu cachorro estão no parque. O cachorro corre e brinca. Tom senta na grama. Ele come um sanduíche. Uma menina vem ao parque. Seu nome é Lucy. Ela tem uma bola. Tom e Lucy brincam juntos. Eles estão felizes.',
+      perguntas:[
+        {pergunta:'Where are Tom and his dog?', opcoes:['At school','At the park','At home','At the shops'], correta:1, explicacao:'The text says "Tom and his dog are at the park."'},
+        {pergunta:'What does Tom eat?', opcoes:['An apple','A cake','A sandwich','Soup'], correta:2, explicacao:'The text says "He eats a sandwich."'},
+        {pergunta:'What does Lucy have?', opcoes:['A dog','A kite','A ball','A book'], correta:2, explicacao:'The text says "She has a ball."'}
+      ]
+    },
+    {
+      id:'la1-2', titulo:'My Morning', tema:'routine', icone:'☀️',
+      texto:'I wake up at seven. I wash my face and brush my teeth. Then I eat breakfast. I have cereal and orange juice. I put on my school uniform. I take my bag. My mum drives me to school. School starts at eight thirty. I like school.',
+      traducao:'Acordo às sete. Lavo meu rosto e escovo meus dentes. Depois tomo café da manhã. Como cereal e suco de laranja. Visto meu uniforme escolar. Pego minha mochila. Minha mãe me leva à escola de carro. A escola começa às oito e meia. Eu gosto da escola.',
+      perguntas:[
+        {pergunta:'What does the child eat for breakfast?', opcoes:['Toast and tea','Cereal and orange juice','Eggs and milk','Bread and butter'], correta:1, explicacao:'The text says "I have cereal and orange juice."'},
+        {pergunta:'How does the child get to school?', opcoes:['By bus','On foot','By bike','By car'], correta:3, explicacao:'The text says "My mum drives me to school."'},
+        {pergunta:'What time does school start?', opcoes:['Eight o clock','Eight fifteen','Eight thirty','Nine o clock'], correta:2, explicacao:'The text says "School starts at eight thirty."'}
+      ]
+    },
+    {
+      id:'la1-3', titulo:'The Colours', tema:'learning', icone:'🎨',
+      texto:'Look at this picture. The sky is blue. The grass is green. The sun is yellow. The flower is red. The cat is orange. The house is white. The door is brown. Can you see all the colours? Colours are beautiful.',
+      traducao:'Olhe para esta figura. O céu é azul. A grama é verde. O sol é amarelo. A flor é vermelha. O gato é laranja. A casa é branca. A porta é marrom. Você consegue ver todas as cores? As cores são bonitas.',
+      perguntas:[
+        {pergunta:'What colour is the sky?', opcoes:['Green','Yellow','Blue','White'], correta:2, explicacao:'The text says "The sky is blue."'},
+        {pergunta:'What colour is the flower?', opcoes:['Orange','Red','Brown','Yellow'], correta:1, explicacao:'The text says "The flower is red."'},
+        {pergunta:'What colour is the house?', opcoes:['Blue','Green','White','Red'], correta:2, explicacao:'The text says "The house is white."'}
+      ]
+    },
+    {
+      id:'la1-4', titulo:'Animals', tema:'animals', icone:'🐾',
+      texto:'I like animals. I have a cat. Her name is Mia. She is black and white. She sleeps a lot. My friend has a dog. His dog is big and brown. Dogs are friendly. My school has fish in a tank. Fish are quiet. What animal do you like?',
+      traducao:'Gosto de animais. Tenho um gato. Seu nome é Mia. Ela é preta e branca. Ela dorme muito. Meu amigo tem um cachorro. O cachorro dele é grande e marrom. Cachorros são amigáveis. Minha escola tem peixes num aquário. Peixes são quietos. De que animal você gosta?',
+      perguntas:[
+        {pergunta:'What is the name of the cat?', opcoes:['Max','Bella','Mia','Luna'], correta:2, explicacao:'The text says "Her name is Mia."'},
+        {pergunta:'What colour is the friend's dog?', opcoes:['Black','White','Yellow','Brown'], correta:3, explicacao:'The text says "His dog is big and brown."'},
+        {pergunta:'Where are the fish?', opcoes:['At home','In the park','In a tank at school','In the river'], correta:2, explicacao:'The text says "My school has fish in a tank."'}
+      ]
+    },
+    {
+      id:'la1-5', titulo:'The Shop', tema:'shopping', icone:'🛍️',
+      texto:'We go to the shop on Saturday. My mum buys milk, bread and eggs. I like the sweet shop. I choose a chocolate bar. It costs one pound. My dad buys a newspaper. The shop is not very big. We pay and say thank you. Then we go home.',
+      traducao:'Vamos à loja no sábado. Minha mãe compra leite, pão e ovos. Gosto da loja de doces. Escolho uma barra de chocolate. Custa uma libra. Meu pai compra um jornal. A loja não é muito grande. Pagamos e dizemos obrigado. Depois vamos para casa.',
+      perguntas:[
+        {pergunta:'When do they go to the shop?', opcoes:['Friday','Saturday','Sunday','Monday'], correta:1, explicacao:'The text says "We go to the shop on Saturday."'},
+        {pergunta:'What does the child choose?', opcoes:['A cake','Sweets','A chocolate bar','Crisps'], correta:2, explicacao:'The text says "I choose a chocolate bar."'},
+        {pergunta:'How much does it cost?', opcoes:['50p','One pound','Two pounds','Free'], correta:1, explicacao:'The text says "It costs one pound."'}
+      ]
+    }
+  ],
   'A2': [
     {
       id:'la2-1', titulo:'At the Supermarket', tema:'shopping', icone:'🛒',
@@ -6979,61 +7031,211 @@ var listeningTextos = {
       traducao:'Bom dia, entre e sente-se. Obrigado. Estou um pouco nervoso, devo admitir. É perfeitamente natural! Então, fale sobre você e por que quer esta vaga. Bem, trabalho em marketing há cinco anos. Gosto muito de trabalhar com pessoas e sou apaixonado por mídia digital. Acredito que posso trazer ideias novas para sua equipe. Ótimo. O que você considera sua maior fraqueza? Às vezes assumo muito trabalho porque gosto que tudo seja perfeito. Mas tenho aprendido a delegar tarefas com mais eficácia.',
       perguntas:[
         {pergunta:'How long has the candidate been working in marketing?', opcoes:['Two years','Three years','Four years','Five years'], correta:3, explicacao:'The candidate says "I have been working in marketing for five years."'},
-        {pergunta:'What does the candidate say they are passionate about?', opcoes:['Sales','Digital media','Finance','Customer service'], correta:1, explicacao:'The candidate says "I am passionate about digital media."'},
-        {pergunta:'What is the candidate biggest weakness?', opcoes:['Being lazy','Taking on too much work','Poor communication','Being late'], correta:1, explicacao:'The candidate says "I sometimes take on too much work because I like everything to be perfect."'}
+        {pergunta:'What is the candidate passionate about?', opcoes:['Sales','Digital media','Finance','Customer service'], correta:1, explicacao:'The candidate says "I am passionate about digital media."'},
+        {pergunta:'What is the candidate biggest weakness?', opcoes:['Being lazy','Taking on too much work','Poor communication','Being late'], correta:1, explicacao:'The candidate says "I sometimes take on too much work."'}
       ]
     },
     {
       id:'lb1-2', titulo:'A Radio Interview', tema:'culture', icone:'📻',
       texto:'Welcome back to Morning Talk. I am here with Dr Emma Clarke, who has written a fascinating new book about happiness. Dr Clarke, what is the most important factor in human happiness? That is a great question. Research consistently shows that relationships are the key to happiness, not money or success. People with strong social connections tend to live longer and report higher levels of wellbeing. So what can people do to improve their happiness? The simplest things often make the biggest difference — spending time with family and friends, being kind to others, and finding meaning in everyday activities.',
-      traducao:'Bem-vindo de volta ao Morning Talk. Estou aqui com a Dra. Emma Clarke, que escreveu um novo livro fascinante sobre felicidade. Dra. Clarke, qual é o fator mais importante para a felicidade humana? Ótima pergunta. As pesquisas mostram consistentemente que os relacionamentos são a chave para a felicidade, não o dinheiro ou o sucesso. Pessoas com conexões sociais fortes tendem a viver mais e relatam níveis mais altos de bem-estar. O que as pessoas podem fazer para melhorar sua felicidade? As coisas mais simples costumam fazer a maior diferença — passar tempo com família e amigos, ser gentil com os outros e encontrar significado nas atividades cotidianas.',
+      traducao:'Bem-vindo de volta ao Morning Talk. Estou aqui com a Dra. Emma Clarke. Dra. Clarke, qual é o fator mais importante para a felicidade? As pesquisas mostram que os relacionamentos são a chave para a felicidade, não o dinheiro ou o sucesso.',
       perguntas:[
-        {pergunta:'According to Dr Clarke, what is the key to happiness?', opcoes:['Money','Success','Relationships','Health'], correta:2, explicacao:'Dr Clarke says "relationships are the key to happiness, not money or success."'},
-        {pergunta:'What do people with strong social connections tend to do?', opcoes:['Earn more money','Live longer','Work harder','Travel more'], correta:1, explicacao:'Dr Clarke says "People with strong social connections tend to live longer."'},
-        {pergunta:'Which of these is NOT mentioned as improving happiness?', opcoes:['Spending time with family','Being kind to others','Finding meaning in activities','Earning a promotion'], correta:3, explicacao:'Earning a promotion is not mentioned. The text focuses on relationships and simple everyday activities.'}
+        {pergunta:'What is the key to happiness according to research?', opcoes:['Money','Success','Relationships','Health'], correta:2, explicacao:'Dr Clarke says "relationships are the key to happiness."'},
+        {pergunta:'What do people with strong social connections tend to do?', opcoes:['Earn more','Live longer','Work harder','Travel more'], correta:1, explicacao:'Dr Clarke says "People with strong social connections tend to live longer."'},
+        {pergunta:'Which is NOT mentioned as improving happiness?', opcoes:['Time with family','Being kind','Finding meaning','Earning more'], correta:3, explicacao:'Earning more is not mentioned as a way to improve happiness.'}
       ]
     },
     {
       id:'lb1-3', titulo:'Travel Announcement', tema:'travel', icone:'✈️',
       texto:'Good afternoon, ladies and gentlemen. This is an announcement for passengers travelling on flight BA two forty seven to New York. We regret to inform you that this flight has been delayed by approximately two hours due to a technical issue with the aircraft. We sincerely apologise for any inconvenience this may cause. Passengers are invited to remain in the departure lounge. Refreshments will be provided at gate twelve. Our ground staff will be available to assist you with any questions. We will make a further announcement at four thirty. Thank you for your patience.',
-      traducao:'Boa tarde, senhoras e senhores. Este é um anúncio para passageiros viajando no voo BA 247 para Nova York. Lamentamos informar que este voo foi atrasado por aproximadamente duas horas devido a um problema técnico com a aeronave. Pedimos sinceras desculpas por qualquer inconveniente que isso possa causar. Os passageiros são convidados a permanecer na sala de embarque. Será fornecido um lanche no portão doze. Nossa equipe em terra estará disponível para ajudá-los com quaisquer dúvidas. Faremos um novo anúncio às quatro e meia. Obrigado pela sua paciência.',
+      traducao:'Boa tarde, senhoras e senhores. Este é um anúncio para passageiros do voo BA 247 para Nova York. Lamentamos informar que este voo foi atrasado por aproximadamente duas horas devido a um problema técnico com a aeronave.',
       perguntas:[
         {pergunta:'Why is the flight delayed?', opcoes:['Bad weather','A technical issue','Staff shortage','Air traffic control'], correta:1, explicacao:'The announcement says "due to a technical issue with the aircraft."'},
-        {pergunta:'Where should passengers go?', opcoes:['To the check-in desk','Back to the terminal','To gate twelve','To the car park'], correta:2, explicacao:'The announcement says "Passengers are invited to remain in the departure lounge" and refreshments at gate twelve.'},
+        {pergunta:'Where will refreshments be available?', opcoes:['Gate ten','Gate eleven','Gate twelve','Gate thirteen'], correta:2, explicacao:'The announcement says "Refreshments will be provided at gate twelve."'},
         {pergunta:'When will the next announcement be made?', opcoes:['At three o clock','At three thirty','At four o clock','At four thirty'], correta:3, explicacao:'The announcement says "We will make a further announcement at four thirty."'}
       ]
     },
     {
       id:'lb1-4', titulo:'Podcast: City Life', tema:'society', icone:'🏙️',
       texto:'Today on Urban Voices, we are discussing whether city life is actually better than living in the countryside. Our guest, journalist Maria Santos, recently moved from London to a small village in Wales. Maria, what made you decide to leave the city? Honestly, it was the pace of life. I felt constantly rushed and stressed in London. The traffic, the noise, the crowds — it all became too much. And how is village life treating you? Wonderfully, actually. I sleep better, I eat better, and I have time to think. The community here is incredibly supportive. I do miss the cultural events and restaurants, but overall the quality of life is much higher here.',
-      traducao:'Hoje no Urban Voices, estamos discutindo se a vida na cidade é realmente melhor do que viver no campo. Nossa convidada, a jornalista Maria Santos, se mudou recentemente de Londres para uma pequena aldeia no País de Gales. Maria, o que fez você decidir deixar a cidade? Honestamente, foi o ritmo de vida. Eu me sentia constantemente apressada e estressada em Londres. O trânsito, o barulho, as multidões — tudo ficou demais. E como a vida na aldeia está te tratando? Maravilhosamente, na verdade. Durmo melhor, como melhor e tenho tempo para pensar. A comunidade aqui é incrivelmente solidária. Sinto falta dos eventos culturais e restaurantes, mas no geral a qualidade de vida aqui é muito maior.',
+      traducao:'Hoje discutimos se a vida na cidade é melhor do que no campo. Nossa convidada, Maria Santos, se mudou de Londres para uma aldeia no País de Gales. O ritmo de vida a fez sair da cidade.',
       perguntas:[
         {pergunta:'Where did Maria move from?', opcoes:['Manchester','Birmingham','London','Bristol'], correta:2, explicacao:'The podcast says she "moved from London to a small village in Wales."'},
         {pergunta:'What was the main reason Maria left the city?', opcoes:['Work opportunity','The pace of life','Family reasons','Health problems'], correta:1, explicacao:'Maria says "it was the pace of life" that made her leave.'},
-        {pergunta:'What does Maria say she misses about city life?', opcoes:['The traffic','Cultural events and restaurants','The noise','Her colleagues'], correta:1, explicacao:'Maria says "I do miss the cultural events and restaurants."'}
+        {pergunta:'What does Maria miss about city life?', opcoes:['The traffic','Cultural events and restaurants','The noise','Her colleagues'], correta:1, explicacao:'Maria says "I do miss the cultural events and restaurants."'}
       ]
     },
     {
       id:'lb1-5', titulo:'A Documentary Clip', tema:'environment', icone:'🌿',
       texto:'Every year, millions of tonnes of plastic waste end up in our oceans. This pollution is devastating marine ecosystems and entering the food chain. Scientists estimate that by twenty fifty, there could be more plastic in the ocean than fish. However, there is reason for hope. Around the world, communities are taking action. Volunteers organise beach clean-ups, governments are banning single-use plastics, and innovative companies are developing new materials that naturally break down. The challenge is enormous, but the solutions are there. What is needed now is global cooperation and individual commitment to change.',
-      traducao:'Todos os anos, milhões de toneladas de lixo plástico vão parar nos nossos oceanos. Esta poluição está devastando os ecossistemas marinhos e entrando na cadeia alimentar. Os cientistas estimam que até 2050, pode haver mais plástico no oceano do que peixes. No entanto, há razão para esperança. Em todo o mundo, comunidades estão agindo. Voluntários organizam limpezas de praia, governos estão proibindo plásticos de uso único e empresas inovadoras estão desenvolvendo novos materiais que se decompõem naturalmente. O desafio é enorme, mas as soluções estão lá. O que é necessário agora é cooperação global e compromisso individual com a mudança.',
+      traducao:'Todos os anos, milhões de toneladas de lixo plástico vão parar nos oceanos. Esta poluição está devastando os ecossistemas marinhos. Cientistas estimam que até 2050 pode haver mais plástico do que peixes no oceano.',
       perguntas:[
-        {pergunta:'According to scientists, what could happen by 2050?', opcoes:['Oceans will be clean','More plastic than fish in oceans','All plastic will be recycled','Fish will disappear'], correta:1, explicacao:'Scientists estimate "by twenty fifty, there could be more plastic in the ocean than fish."'},
-        {pergunta:'What are governments doing to help?', opcoes:['Building more factories','Banning single-use plastics','Increasing fishing','Closing beaches'], correta:1, explicacao:'The text says "governments are banning single-use plastics."'},
-        {pergunta:'What does the speaker say is needed most?', opcoes:['More money','New technology','Global cooperation and individual commitment','More scientists'], correta:2, explicacao:'The speaker says "What is needed now is global cooperation and individual commitment to change."'}
+        {pergunta:'What could happen by 2050 according to scientists?', opcoes:['Oceans will be clean','More plastic than fish','All plastic recycled','Fish will disappear'], correta:1, explicacao:'Scientists estimate "by twenty fifty, there could be more plastic in the ocean than fish."'},
+        {pergunta:'What are governments doing?', opcoes:['Building factories','Banning single-use plastics','Increasing fishing','Closing beaches'], correta:1, explicacao:'The text says "governments are banning single-use plastics."'},
+        {pergunta:'What does the speaker say is needed?', opcoes:['More money','New technology','Global cooperation and individual commitment','More scientists'], correta:2, explicacao:'The speaker says "What is needed now is global cooperation and individual commitment."'}
+      ]
+    }
+  ],
+  'B2': [
+    {
+      id:'lb2-1', titulo:'Technology Debate', tema:'technology', icone:'💻',
+      texto:'Welcome to Tech Talk. Tonight we are asking whether social media companies should be more tightly regulated. Our first guest, Dr Rachel Green, argues that stronger regulation is urgently needed. Dr Green, why do you hold this view? The evidence is clear. These platforms have contributed to a rise in mental health problems among young people, they have allowed misinformation to spread unchecked, and they have harvested personal data without meaningful consent. Surely the time for voluntary action has passed. Our second guest, entrepreneur David Park, disagrees. David? Look, regulation sounds appealing in principle, but the reality is that it would stifle innovation and push users towards unregulated alternatives. The solution lies in better digital literacy education, not government control.',
+      traducao:'Hoje debatemos se as redes sociais deveriam ser mais regulamentadas. A Dra. Rachel Green argumenta que regulamentação mais rígida é necessária devido aos danos à saúde mental e desinformação. David Park discorda, dizendo que a regulamentação sufocaria a inovação.',
+      perguntas:[
+        {pergunta:'What does Dr Green say has risen due to social media?', opcoes:['Employment','Mental health problems','Innovation','Digital literacy'], correta:1, explicacao:'Dr Green says social media has "contributed to a rise in mental health problems among young people."'},
+        {pergunta:'What does David Park say regulation would do?', opcoes:['Improve safety','Stifle innovation','Help young people','Reduce data collection'], correta:1, explicacao:'David says regulation "would stifle innovation."'},
+        {pergunta:'What solution does David Park propose?', opcoes:['Government control','More platforms','Better digital literacy education','Banning social media'], correta:2, explicacao:'David says "The solution lies in better digital literacy education."'}
+      ]
+    },
+    {
+      id:'lb2-2', titulo:'Health Documentary', tema:'health', icone:'🏃',
+      texto:'The relationship between exercise and mental health is more profound than many people realise. When we exercise, our bodies release endorphins — natural chemicals that create feelings of wellbeing and reduce perceptions of pain. But the benefits extend far beyond this immediate biochemical response. Regular physical activity has been shown to reduce symptoms of depression and anxiety as effectively as medication in some studies, without the side effects. It also improves sleep quality, increases energy levels and enhances cognitive function. Psychologists now recommend that clinicians consider exercise as a first-line treatment for mild to moderate depression before prescribing antidepressants. The challenge is motivating people to start and maintain an exercise habit, particularly when depression itself reduces motivation.',
+      traducao:'A relação entre exercício e saúde mental é mais profunda do que muitos percebem. O exercício libera endorfinas e pode reduzir sintomas de depressão e ansiedade tão eficazmente quanto medicamentos em alguns estudos.',
+      perguntas:[
+        {pergunta:'What do our bodies release when we exercise?', opcoes:['Adrenaline','Serotonin','Endorphins','Cortisol'], correta:2, explicacao:'The text says "our bodies release endorphins — natural chemicals that create feelings of wellbeing."'},
+        {pergunta:'What does regular exercise improve?', opcoes:['Only physical strength','Only weight loss','Sleep quality and cognitive function','Only endurance'], correta:2, explicacao:'The text says exercise "improves sleep quality, increases energy levels and enhances cognitive function."'},
+        {pergunta:'What is the challenge mentioned in the text?', opcoes:['Finding time to exercise','Motivating people to start and maintain exercise','Paying for gym memberships','Finding the right exercise'], correta:1, explicacao:'The text says "The challenge is motivating people to start and maintain an exercise habit."'}
+      ]
+    },
+    {
+      id:'lb2-3', titulo:'Business Interview', tema:'business', icone:'📈',
+      texto:'Today I am speaking with Ana Ferreira, founder of GreenBox, a sustainable packaging company that has grown from a small startup to a fifty million pound business in just six years. Ana, what was the original idea behind GreenBox? It started from frustration, honestly. I was running a small online shop and I could not find packaging that was both affordable and genuinely sustainable. Everything either cost too much or was not really as eco-friendly as it claimed to be. So I decided to solve the problem myself. What has been your biggest challenge? Changing the mindset of large corporations. They understand sustainability in theory, but when it comes to increasing costs by even five percent, they hesitate. The key has been showing them the commercial case — that sustainable packaging is increasingly what customers demand.',
+      traducao:'Ana Ferreira fundou a GreenBox, uma empresa de embalagens sustentáveis que cresceu para cinquenta milhões de libras em seis anos. A maior dificuldade foi mudar a mentalidade das grandes corporações sobre custos de sustentabilidade.',
+      perguntas:[
+        {pergunta:'What does GreenBox produce?', opcoes:['Organic food','Sustainable packaging','Electric vehicles','Recycled clothing'], correta:1, explicacao:'The text describes GreenBox as "a sustainable packaging company."'},
+        {pergunta:'What was Ana's original problem?', opcoes:['Finding customers','Finding investors','Finding affordable sustainable packaging','Finding good staff'], correta:2, explicacao:'Ana says she "could not find packaging that was both affordable and genuinely sustainable."'},
+        {pergunta:'What has been Ana's biggest challenge?', opcoes:['Technology development','Finding suppliers','Changing corporate mindsets','Marketing the product'], correta:2, explicacao:'Ana says "Changing the mindset of large corporations" has been her biggest challenge.'}
+      ]
+    },
+    {
+      id:'lb2-4', titulo:'Science Report', tema:'science', icone:'🔬',
+      texto:'Scientists at the University of Edinburgh have made a significant breakthrough in the treatment of antibiotic-resistant bacteria. The team, led by Professor James Mackay, has developed a new class of compounds that can destroy bacteria without triggering resistance. Unlike conventional antibiotics, which target specific bacterial processes that can be mutated to resist the drug, these new compounds attack the physical structure of the bacterial cell membrane, making resistance essentially impossible. The research, published this week in the journal Nature Medicine, represents a potential turning point in the global fight against superbugs, which currently kill approximately seven hundred thousand people per year worldwide. Clinical trials in humans are expected to begin within the next two years.',
+      traducao:'Cientistas da Universidade de Edimburgo desenvolveram novos compostos que destroem bactérias sem desencadear resistência, atacando a estrutura física da membrana celular. Isso pode ser um avanço crucial contra superbactérias.',
+      perguntas:[
+        {pergunta:'Where did this research take place?', opcoes:['Oxford','Cambridge','Edinburgh','London'], correta:2, explicacao:'The text says "Scientists at the University of Edinburgh."'},
+        {pergunta:'How do the new compounds work differently from antibiotics?', opcoes:['They are taken as injections','They attack the cell membrane structure','They target specific genes','They boost the immune system'], correta:1, explicacao:'The text says "these new compounds attack the physical structure of the bacterial cell membrane."'},
+        {pergunta:'How many people do superbugs kill per year?', opcoes:['100,000','500,000','700,000','1 million'], correta:2, explicacao:'The text says superbugs "kill approximately seven hundred thousand people per year worldwide."'}
+      ]
+    },
+    {
+      id:'lb2-5', titulo:'Environmental Lecture', tema:'environment', icone:'♻️',
+      texto:'Good afternoon and welcome to this session on sustainable travel. I want to start by challenging a common misconception: that sustainable travel means sacrificing comfort or convenience. In reality, some of the most rewarding travel experiences come from choosing slower, more mindful approaches to exploring the world. Train travel across Europe, for example, offers not only significantly lower carbon emissions than flying, but also the pleasure of watching landscapes unfold gradually. Local accommodation — guesthouses, family-run hotels, homestays — puts more money directly into local economies and provides a far more authentic cultural experience. When it comes to food, choosing restaurants that source ingredients locally reduces transport emissions and supports regional producers. Simply spending more time in fewer destinations allows for deeper cultural immersion while reducing your overall environmental footprint.',
+      traducao:'Uma sessão sobre viagens sustentáveis questiona o mito de que sustentabilidade significa sacrificar conforto. Viagens de trem, acomodações locais e comida local são alternativas mais sustentáveis e igualmente satisfatórias.',
+      perguntas:[
+        {pergunta:'What misconception does the speaker challenge?', opcoes:['That travel is expensive','That sustainable travel means sacrificing comfort','That trains are slow','That local food is unhealthy'], correta:1, explicacao:'The speaker challenges "that sustainable travel means sacrificing comfort or convenience."'},
+        {pergunta:'What advantage does train travel offer over flying?', opcoes:['It is faster','Lower carbon emissions','It is cheaper','More routes available'], correta:1, explicacao:'The text says train travel offers "significantly lower carbon emissions than flying."'},
+        {pergunta:'What benefit do local restaurants provide?', opcoes:['Lower prices','Faster service','Reduced transport emissions and support for producers','Better quality food'], correta:2, explicacao:'The text says choosing local restaurants "reduces transport emissions and supports regional producers."'}
+      ]
+    }
+  ],
+  'C1': [
+    {
+      id:'lc1-1', titulo:'Philosophy Lecture', tema:'philosophy', icone:'🧠',
+      texto:'What does it mean to act freely? This question has occupied philosophers for millennia, and remains as contested today as it was in ancient Greece. The compatibilist position, most associated with thinkers such as Hume and Frankfurt, holds that free will is perfectly compatible with determinism, provided we understand freedom not as some mysterious capacity to escape causal determination, but simply as the ability to act in accordance with one's own desires and reasons, without external compulsion. On this view, what matters is not whether your desires were themselves causally determined, but whether the action flows from those desires without interference. Critics of compatibilism argue that this definition trivialises the very concept it purports to save. If everything we do is ultimately the product of factors entirely outside our control — our genes, our upbringing, our neural architecture — then the compatibilist notion of freedom amounts to little more than a semantic manoeuvre.',
+      traducao:'O compatibilismo defende que o livre-arbítrio é compatível com o determinismo, desde que entendamos liberdade como agir de acordo com nossos próprios desejos sem compulsão externa. Críticos argumentam que essa definição trivializa o conceito.',
+      perguntas:[
+        {pergunta:'What does the compatibilist position argue?', opcoes:['Free will is impossible','Free will is compatible with determinism','Determinism is false','Free will requires escaping causation'], correta:1, explicacao:'The text says compatibilism "holds that free will is perfectly compatible with determinism."'},
+        {pergunta:'According to compatibilism, what matters for freedom?', opcoes:['Escaping all causes','Acting without any desires','Acting from one's own desires without interference','Having unpredictable behaviour'], correta:2, explicacao:'The text says what matters "is whether the action flows from those desires without interference."'},
+        {pergunta:'What do critics say about compatibilism?', opcoes:['It is too complex','It trivialises the concept of freedom','It ignores science','It is too religious'], correta:1, explicacao:'Critics argue compatibilism "amounts to little more than a semantic manoeuvre."'}
+      ]
+    },
+    {
+      id:'lc1-2', titulo:'Economics Discussion', tema:'economics', icone:'📊',
+      texto:'The concept of inequality has moved from the margins to the centre of economic debate over the past two decades, driven in large part by the work of economists such as Thomas Piketty, whose monumental study of wealth distribution across two centuries demonstrated that, absent countervailing forces such as progressive taxation or war, capital tends to accumulate disproportionately among those who already possess it. The implications are profound. Extreme inequality does not merely offend our moral intuitions; it also corrodes democratic institutions by concentrating political influence alongside economic power. Moreover, recent research suggests that high inequality is associated with lower social mobility, poorer health outcomes, and reduced levels of social trust — findings that challenge the once-dominant assumption that inequality is an acceptable price for economic dynamism.',
+      traducao:'A desigualdade tornou-se central no debate econômico. O trabalho de Piketty demonstrou que o capital tende a se acumular desproporcionalmente. A desigualdade extrema corrói instituições democráticas e está associada a menor mobilidade social.',
+      perguntas:[
+        {pergunta:'What did Piketty's study demonstrate?', opcoes:['Inequality always decreases over time','Capital tends to accumulate among those who already have it','Progressive taxation increases inequality','War causes more inequality'], correta:1, explicacao:'The text says Piketty showed "capital tends to accumulate disproportionately among those who already possess it."'},
+        {pergunta:'How does extreme inequality affect democracy?', opcoes:['It strengthens it','It has no effect','It corrodes democratic institutions','It improves political participation'], correta:2, explicacao:'The text says inequality "corrodes democratic institutions by concentrating political influence alongside economic power."'},
+        {pergunta:'What is associated with high inequality according to research?', opcoes:['Higher economic growth','Better health outcomes','Lower social mobility','More innovation'], correta:2, explicacao:'The text says high inequality is associated with "lower social mobility, poorer health outcomes."'}
+      ]
+    },
+    {
+      id:'lc1-3', titulo:'Psychology Podcast', tema:'psychology', icone:'🧬',
+      texto:'One of the most robust findings in social psychology is that human beings are far more susceptible to social influence than they believe themselves to be. Classic experiments, from Asch's conformity studies to Milgram's obedience research, revealed the extraordinary degree to which individuals adjust their behaviour, judgements and even perceptions to align with those of the group or authority figure. More recent work in behavioural economics has demonstrated that apparently trivial contextual factors — the order in which options are presented, the default settings of a form, the way a choice is framed — can profoundly alter decisions in domains as consequential as retirement savings, organ donation and energy consumption. This body of evidence has given rise to the nudge theory, which proposes that decision environments can be designed to steer people towards better choices without restricting their freedom.',
+      traducao:'Humanos são muito mais suscetíveis à influência social do que acreditam. Experimentos clássicos revelaram isso. A teoria do nudge propõe que ambientes de decisão podem ser projetados para guiar pessoas a melhores escolhas.',
+      perguntas:[
+        {pergunta:'What do Asch's and Milgram's experiments reveal?', opcoes:['People are independent thinkers','People resist authority','People adjust behaviour to align with groups','People make rational decisions'], correta:2, explicacao:'The experiments "revealed the extraordinary degree to which individuals adjust their behaviour to align with those of the group."'},
+        {pergunta:'What does nudge theory propose?', opcoes:['Restricting people's choices','Designing environments to steer people towards better choices','Punishing bad decisions','Educating people about choices'], correta:1, explicacao:'Nudge theory "proposes that decision environments can be designed to steer people towards better choices."'},
+        {pergunta:'Which area is NOT mentioned as affected by contextual factors?', opcoes:['Retirement savings','Organ donation','Energy consumption','Exercise habits'], correta:3, explicacao:'Exercise habits are not mentioned. The text mentions retirement savings, organ donation and energy consumption.'}
+      ]
+    },
+    {
+      id:'lc1-4', titulo:'Science Documentary', tema:'science', icone:'🔭',
+      texto:'The discovery that the universe is not merely expanding but accelerating in its expansion — announced in 1998 by two independent research teams who were subsequently awarded the Nobel Prize in Physics — ranks among the most consequential and perplexing findings in the history of cosmology. To account for this acceleration, physicists have postulated the existence of a mysterious repulsive force, which they have termed dark energy, that permeates all of space and counteracts the gravitational attraction of matter. The problem is that no one has the faintest idea what dark energy actually is. Current measurements suggest it constitutes approximately sixty-eight percent of the total energy content of the universe, yet it remains entirely invisible, detectable only through its gravitational effects on the large-scale structure of the cosmos.',
+      traducao:'A descoberta de que o universo está acelerando sua expansão levou à postulação da energia escura — uma força repulsiva misteriosa que constitui aproximadamente 68% do conteúdo energético total do universo, mas permanece completamente invisível.',
+      perguntas:[
+        {pergunta:'When was the accelerating expansion of the universe announced?', opcoes:['1988','1993','1998','2003'], correta:2, explicacao:'The text says the discovery was "announced in 1998."'},
+        {pergunta:'What percentage of the universe does dark energy constitute?', opcoes:['About 27%','About 5%','About 68%','About 95%'], correta:2, explicacao:'The text says dark energy "constitutes approximately sixty-eight percent of the total energy content of the universe."'},
+        {pergunta:'How is dark energy detected?', opcoes:['Through direct observation','Through its light emissions','Through its gravitational effects','Through particle colliders'], correta:2, explicacao:'The text says dark energy is "detectable only through its gravitational effects on the large-scale structure of the cosmos."'}
+      ]
+    },
+    {
+      id:'lc1-5', titulo:'Political Analysis', tema:'politics', icone:'🗳️',
+      texto:'The erosion of public trust in democratic institutions represents one of the defining political challenges of the early twenty-first century. Survey data from across the developed world consistently show declining confidence in parliaments, political parties, judiciaries and the media. The causes are multiple and contested. Some scholars emphasise the role of economic disappointment — the failure of mainstream parties to address stagnating wages and growing inequality in the decades following the financial crisis of 2008. Others point to the transformative effects of digital media, which has fragmented the shared informational environment that once sustained common public discourse, creating instead a landscape of competing realities in which citizens in the same country can inhabit entirely different epistemic worlds. A third school of thought focuses on the intrinsic limitations of representative democracy as a mechanism for translating complex citizen preferences into policy.',
+      traducao:'A erosão da confiança pública nas instituições democráticas é um desafio político central do século XXI. As causas incluem decepção econômica, efeitos dos media digitais e limitações da democracia representativa.',
+      perguntas:[
+        {pergunta:'What do surveys consistently show?', opcoes:['Rising trust in institutions','Stable levels of confidence','Declining confidence in democratic institutions','Increasing political participation'], correta:2, explicacao:'The text says surveys show "declining confidence in parliaments, political parties, judiciaries and the media."'},
+        {pergunta:'What economic event is mentioned as a cause?', opcoes:['The 1990s recession','The 2001 dot-com crash','The 2008 financial crisis','The 2020 pandemic'], correta:2, explicacao:'The text mentions "stagnating wages and growing inequality in the decades following the financial crisis of 2008."'},
+        {pergunta:'What has digital media created according to the text?', opcoes:['More informed citizens','A shared informational environment','Citizens inhabiting different epistemic worlds','Greater political engagement'], correta:2, explicacao:'Digital media has created "a landscape of competing realities in which citizens can inhabit entirely different epistemic worlds."'}
+      ]
+    }
+  ],
+  'C2': [
+    {
+      id:'lc2-1', titulo:'Philosophy Seminar', tema:'philosophy', icone:'🎓',
+      texto:'The question of whether there exist moral facts — objective truths about what is right and wrong that obtain independently of what any individual or culture happens to believe — has divided moral philosophers since antiquity. Moral realists contend that ethical claims are genuinely truth-apt: when we assert that gratuitous cruelty is wrong, we are not merely expressing an attitude or issuing a command, but stating something that is either true or false in the same sense that empirical claims about the physical world are true or false. The anti-realist tradition, encompassing positions as diverse as expressivism, error theory and relativism, challenges this picture from multiple directions. Expressivists such as Blackburn deny that moral utterances have truth conditions at all, arguing that they function to express emotional attitudes rather than to describe moral facts. Error theorists like Mackie accept that moral discourse purports to describe objective features of reality, but argue that the world contains no such features, rendering all positive moral claims systematically false.',
+      traducao:'O debate entre realismo moral e anti-realismo questiona se existem fatos morais objetivos. Realistas defendem que afirmações éticas são verdadeiras ou falsas. Expressivistas e teóricos do erro desafiam essa visão de formas diferentes.',
+      perguntas:[
+        {pergunta:'What do moral realists argue?', opcoes:['Morality is purely subjective','Ethical claims can be true or false like empirical claims','Moral facts do not exist','Culture determines all moral truths'], correta:1, explicacao:'The text says moral realists contend "ethical claims are genuinely truth-apt" and comparable to empirical claims.'},
+        {pergunta:'What do expressivists like Blackburn argue?', opcoes:['Moral claims are always true','Moral utterances express emotional attitudes','Moral facts are objective','Ethics is relative to culture'], correta:1, explicacao:'Expressivists argue that moral utterances "function to express emotional attitudes rather than to describe moral facts."'},
+        {pergunta:'What is the error theorist position?', opcoes:['Moral claims are true','Moral claims express desires','Moral claims are systematically false','Morality is culturally determined'], correta:2, explicacao:'Error theorists argue "all positive moral claims are systematically false" because no objective moral features exist.'}
+      ]
+    },
+    {
+      id:'lc2-2', titulo:'Geopolitics Lecture', tema:'geopolitics', icone:'🌐',
+      texto:'The international order established in the aftermath of the Second World War — centred on the United Nations system, the Bretton Woods economic institutions and a network of security alliances anchored by American power — is under more severe strain than at any point since its creation. The rise of China as a peer competitor to the United States has introduced a structural rivalry into the international system that the existing rules-based order was not designed to accommodate. Meanwhile, the resurgence of Russian revisionism, exemplified by the invasion of Ukraine, has shattered the post-Cold War assumption that territorial conquest had been permanently banished from European politics. Simultaneously, the diffusion of technological capabilities — particularly in the domains of cyber operations, precision-guided munitions and artificial intelligence — has eroded the military primacy that underpinned American hegemony during the unipolar moment of the 1990s.',
+      traducao:'A ordem internacional pós-Segunda Guerra está sob severa pressão. A ascensão da China, o revisionismo russo exemplificado pela invasão da Ucrânia e a difusão tecnológica desafiam a hegemonia americana estabelecida.',
+      perguntas:[
+        {pergunta:'What has China's rise introduced into the international system?', opcoes:['Economic cooperation','A structural rivalry','New trade agreements','Democratic reforms'], correta:1, explicacao:'The text says China's rise "has introduced a structural rivalry into the international system."'},
+        {pergunta:'What assumption did the invasion of Ukraine shatter?', opcoes:['That NATO was strong','That Russia was declining','That territorial conquest had been banished from Europe','That China would not expand'], correta:2, explicacao:'The invasion shattered "the post-Cold War assumption that territorial conquest had been permanently banished from European politics."'},
+        {pergunta:'What has eroded American military primacy?', opcoes:['Economic decline','Internal political divisions','Diffusion of technological capabilities','Reduction in military spending'], correta:2, explicacao:'The text says "the diffusion of technological capabilities has eroded the military primacy that underpinned American hegemony."'}
+      ]
+    },
+    {
+      id:'lc2-3', titulo:'Neuroscience Talk', tema:'science', icone:'🧬',
+      texto:'The emerging field of social neuroscience has begun to illuminate the neurobiological mechanisms through which human beings navigate the extraordinarily complex social environments that characterise our species. Unlike other primates, humans routinely engage in sophisticated mental state attribution — what psychologists term theory of mind — inferring the beliefs, desires, intentions and emotional states of others from remarkably sparse behavioural cues. Neuroimaging studies have identified a network of brain regions, including the medial prefrontal cortex, the temporoparietal junction and the superior temporal sulcus, that are consistently activated during tasks requiring social cognition. What is particularly striking is that this network shows substantial overlap with the default mode network — the system of regions that becomes active during mind-wandering and self-referential thought — suggesting an intimate connection between our capacity to understand others and our capacity to understand ourselves.',
+      traducao:'A neurociência social ilumina os mecanismos neurobiológicos da navegação social humana. A teoria da mente — inferir estados mentais alheios — envolve uma rede cerebral que se sobrepõe ao modo padrão ativo durante o pensamento autodirecionado.',
+      perguntas:[
+        {pergunta:'What is "theory of mind" as described in the text?', opcoes:['Understanding scientific theories','Inferring the mental states of others','A type of brain scan','Self-awareness of one's own thoughts'], correta:1, explicacao:'The text defines theory of mind as "inferring the beliefs, desires, intentions and emotional states of others."'},
+        {pergunta:'Which brain region is NOT mentioned in the social cognition network?', opcoes:['Medial prefrontal cortex','Temporoparietal junction','Amygdala','Superior temporal sulcus'], correta:2, explicacao:'The amygdala is not mentioned. The text lists the medial prefrontal cortex, temporoparietal junction and superior temporal sulcus.'},
+        {pergunta:'What does the overlap with the default mode network suggest?', opcoes:['That social thinking is irrational','A connection between understanding others and understanding ourselves','That mind-wandering is antisocial','That self-reference impairs social cognition'], correta:1, explicacao:'The overlap suggests "an intimate connection between our capacity to understand others and our capacity to understand ourselves."'}
+      ]
+    },
+    {
+      id:'lc2-4', titulo:'Literature Analysis', tema:'arts', icone:'📚',
+      texto:'The modernist movement in literature, which flourished roughly between 1890 and 1940, represented a radical rupture with the conventions of Victorian realism, driven by a conviction — shaped by the trauma of the First World War, the discoveries of Freudian psychology, and the relativising effects of Einsteinian physics — that the stable, coherent narrative voice of the nineteenth century novel could no longer adequately represent the fragmented, uncertain nature of modern experience. Writers such as Woolf, Joyce, Eliot and Faulkner experimented with stream of consciousness techniques, multiple and unreliable narrators, non-linear time structures and dense patterns of allusion and symbol, creating texts that demanded active, interpretative engagement from readers rather than the passive consumption of a story. The implicit claim was epistemological as much as aesthetic: reality, these writers suggested, is not a simple given but a complex construction, differently apprehended by different minds at different moments.',
+      traducao:'O modernismo literário representou uma ruptura radical com o realismo vitoriano. Woolf, Joyce, Eliot e Faulkner experimentaram com fluxo de consciência e narradores não confiáveis, sugerindo que a realidade é uma construção complexa.',
+      perguntas:[
+        {pergunta:'What period did the modernist movement flourish?', opcoes:['1850-1900','1890-1940','1920-1960','1945-1970'], correta:1, explicacao:'The text says modernism "flourished roughly between 1890 and 1940."'},
+        {pergunta:'Which of these was NOT mentioned as influencing modernism?', opcoes:['The First World War','Freudian psychology','Einsteinian physics','The Russian Revolution'], correta:3, explicacao:'The Russian Revolution is not mentioned. The text cites WWI, Freudian psychology and Einsteinian physics.'},
+        {pergunta:'What implicit claim did modernist writers make?', opcoes:['That reality is simple and objective','That literature should be entertaining','That reality is a complex construction','That traditional forms were superior'], correta:2, explicacao:'The text says modernists suggested "reality is not a simple given but a complex construction."'}
+      ]
+    },
+    {
+      id:'lc2-5', titulo:'Economics Symposium', tema:'economics', icone:'💹',
+      texto:'The emergence of behavioural economics as a serious intellectual discipline over the past four decades has fundamentally challenged the homo economicus model — the assumption, central to neoclassical economic theory, that human decision-makers are rational, self-interested agents who process available information accurately and make choices that maximise their expected utility. The pioneering work of Daniel Kahneman and Amos Tversky demonstrated through a series of ingeniously designed experiments that human judgment systematically deviates from the predictions of rational choice theory in ways that are predictable, replicable and consequential. Their prospect theory showed that people evaluate outcomes relative to a reference point rather than in absolute terms, are more sensitive to losses than to equivalent gains — a phenomenon they termed loss aversion — and employ cognitive shortcuts, or heuristics, that produce reliable patterns of error across a wide range of decision domains.',
+      traducao:'A economia comportamental desafiou o modelo do homo economicus. Kahneman e Tversky demonstraram que o julgamento humano desvia sistematicamente da racionalidade. A teoria da perspectiva revelou aversão a perdas e uso de heurísticas.',
+      perguntas:[
+        {pergunta:'What is the homo economicus model?', opcoes:['A model of irrational behaviour','The assumption that humans are rational self-interested agents','A theory of social behaviour','A model of consumer spending'], correta:1, explicacao:'The text defines it as "the assumption that human decision-makers are rational, self-interested agents who maximise their expected utility."'},
+        {pergunta:'What is loss aversion?', opcoes:['Preferring gains to losses equally','Being more sensitive to losses than equivalent gains','Avoiding all risky decisions','Being unable to make decisions'], correta:1, explicacao:'The text defines loss aversion as people being "more sensitive to losses than to equivalent gains."'},
+        {pergunta:'What are heuristics described as in the text?', opcoes:['Logical reasoning tools','Emotional responses','Cognitive shortcuts that produce reliable patterns of error','Statistical models'], correta:2, explicacao:'The text describes heuristics as "cognitive shortcuts that produce reliable patterns of error."'}
       ]
     }
   ]
 };
 
-listeningTextos['B2'] = listeningTextos['B1'];
-listeningTextos['C1'] = listeningTextos['B1'];
-listeningTextos['C2'] = listeningTextos['B1'];
-listeningTextos['A1'] = listeningTextos['A2'];
-
 var listeningAtual = null;
 var listeningNivel = 'B1';
-
 function proximoListening() {
   var textos = listeningTextos[listeningNivel] || listeningTextos['B1'];
   var idx = textos.findIndex(function(t){ return t.id === (listeningAtual && listeningAtual.id); });
@@ -7144,6 +7346,16 @@ function setupListeningPlayer() {
 
 // ===== ÁUDIOS MP3 DO LISTENING (ElevenLabs - Daniel British) =====
 var listeningAudios = {
+  'la1-1': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-a1-01.mp3',
+  'la1-2': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-a1-02.mp3',
+  'la1-3': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-a1-03.mp3',
+  'la1-4': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-a1-04.mp3',
+  'la1-5': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-a1-05.mp3',
+  'la1-1': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-a2-01.mp3',
+  'la1-2': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-a2-02.mp3',
+  'la1-3': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-a2-03.mp3',
+  'la1-4': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-a2-04.mp3',
+  'la1-5': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-a2-05.mp3',
   'la2-1': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-a2-01.mp3',
   'la2-2': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-a2-02.mp3',
   'la2-3': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-a2-03.mp3',
@@ -7161,7 +7373,14 @@ var listeningAudios = {
   'lb2-5': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-b2-05.mp3',
   'lc1-1': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-c1-01.mp3',
   'lc1-2': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-c1-02.mp3',
-  'lc1-3': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-c1-03.mp3'
+  'lc1-3': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-c1-03.mp3',
+  'lc1-4': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-c1-04.mp3',
+  'lc1-5': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-c1-05.mp3',
+  'lc2-1': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-c2-01.mp3',
+  'lc2-2': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-c2-02.mp3',
+  'lc2-3': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-c2-03.mp3',
+  'lc2-4': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-c2-04.mp3',
+  'lc2-5': 'https://lucerna-2010.github.io/talking-cricket/audio/listen-c2-05.mp3'
 };
 
 var audioAtual = null; // elemento <audio> atual
