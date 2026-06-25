@@ -1138,7 +1138,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
   <div class="modo-body">
     <button class="modo-card mc-tutorial" id="btnTutorial">
       <div class="mc-icon">📚</div>
-      <div class="mc-info"><div class="mc-titulo">How it works</div><div class="mc-sub">Quick tour of all features · 2 minutes</div></div>
+      <div class="mc-info"><div class="mc-titulo">Tutorial</div><div class="mc-sub">Conheça todas as funcionalidades · 2 minutos</div></div>
       <span style="font-size:22px;color:#9FE1CB">&#8594;</span>
     </button>
     <button class="modo-card mc-placement" id="btnPlacement">
@@ -6527,44 +6527,82 @@ function carregarVozes() {
 function falarEN(texto, opcoes) {
   if (!window.speechSynthesis || !texto) return;
   opcoes = opcoes || {};
-  
-  // Cancelar fala anterior
+
   window.speechSynthesis.cancel();
-  
-  // iOS bug: speechSynthesis fica "preso" após inatividade
-  // Solução: resume() antes de falar
+
   if (window.speechSynthesis.paused) {
     window.speechSynthesis.resume();
   }
-  
+
   var utter = new SpeechSynthesisUtterance(texto);
-  
-  // en-GB funciona melhor no iOS (voz Daniel/Karen são naturais)
   utter.lang = 'en-GB';
-  utter.rate = opcoes.rate !== undefined ? opcoes.rate : 1.0;
-  utter.pitch = 1.0;
+  utter.rate = opcoes.rate !== undefined ? opcoes.rate : 0.92;
+  utter.pitch = opcoes.pitch !== undefined ? opcoes.pitch : 1.05;
   utter.volume = 1.0;
-  
+
+  // Try to select the best available English voice
+  function getBestVoice() {
+    var voices = window.speechSynthesis.getVoices();
+    if (!voices || voices.length === 0) return null;
+    // Priority order: natural-sounding English voices
+    var preferred = [
+      'Daniel',           // iOS/macOS British male - excellent
+      'Karen',            // iOS/macOS Australian - very natural
+      'Moira',            // iOS/macOS Irish - natural
+      'Samantha',         // iOS/macOS American - clear
+      'Google UK English Male',
+      'Google UK English Female',
+      'Google US English',
+      'Microsoft George',
+      'Microsoft Hazel',
+      'Microsoft Zira'
+    ];
+    for (var i = 0; i < preferred.length; i++) {
+      for (var j = 0; j < voices.length; j++) {
+        if (voices[j].name.indexOf(preferred[i]) !== -1) {
+          return voices[j];
+        }
+      }
+    }
+    // Fallback: any en-GB voice
+    for (var j = 0; j < voices.length; j++) {
+      if (voices[j].lang === 'en-GB') return voices[j];
+    }
+    // Fallback: any English voice
+    for (var j = 0; j < voices.length; j++) {
+      if (voices[j].lang.indexOf('en') === 0) return voices[j];
+    }
+    return null;
+  }
+
+  var bestVoice = getBestVoice();
+  if (bestVoice) utter.voice = bestVoice;
+
   if (opcoes.onend) utter.onend = opcoes.onend;
   utter.onerror = function(e) {
-    // Se der erro, tentar novamente com en-US
     if (e.error !== 'interrupted') {
       var utter2 = new SpeechSynthesisUtterance(texto);
       utter2.lang = 'en-US';
-      utter2.rate = opcoes.rate || 1.0;
+      utter2.rate = opcoes.rate || 0.92;
       if (opcoes.onend) utter2.onend = opcoes.onend;
       window.speechSynthesis.speak(utter2);
     }
   };
-  
-  // iOS precisa de pequeno delay após cancel()
+
   var isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
   if (isIOS) {
-    setTimeout(function() {
-      window.speechSynthesis.speak(utter);
-    }, 50);
+    setTimeout(function() { window.speechSynthesis.speak(utter); }, 50);
   } else {
-    window.speechSynthesis.speak(utter);
+    // Wait for voices to load if needed
+    if (window.speechSynthesis.getVoices().length === 0) {
+      window.speechSynthesis.onvoiceschanged = function() {
+        var v = getBestVoice();
+        if (v) utter.voice = v;
+        window.speechSynthesis.speak(utter);
+      };
+    } else {
+      window.speechSynthesis.speak(utter);
+    }
   }
 }
 
@@ -8320,111 +8358,111 @@ var tutIndex = 0;
 var tutData = [
   {
     icon: '&#127968;',
-    titulo: 'Home',
-    desc: 'Your learning dashboard. See your daily progress, streak and the lesson of the day.',
+    titulo: 'Tela Inicial (Home)',
+    desc: 'A tela inicial é o seu painel de aprendizado. Aqui você acompanha seu progresso diário e acessa as atividades.',
     steps: [
-      'Check your <strong>Seeds</strong> — points earned by completing activities',
-      'Keep your <strong>Day Streak</strong> alive by studying every day',
-      'Tap <strong>Today&#39;s Lesson</strong> to jump into your next activity',
-      'See your <strong>Skills progress</strong> across all four skills'
+      'Acompanhe seus <strong>Seeds</strong> — pontos ganhos ao completar atividades',
+      'Mantenha sua <strong>sequência diária</strong> estudando todos os dias',
+      'Toque em <strong>Today\'s Lesson</strong> para ir direto à próxima atividade',
+      'Veja seu progresso nas quatro habilidades: <strong>Reading, Listening, Writing e Speaking</strong>'
     ],
-    svg: '<svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="130" rx="10" fill="#F8F7FF"/><rect x="10" y="8" width="260" height="36" rx="8" fill="#534AB7"/><text x="140" y="30" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold" fill="#fff">&#127968; Home</text><rect x="10" y="50" width="78" height="36" rx="8" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><text x="49" y="65" text-anchor="middle" font-family="Arial" font-size="9" fill="#6b7280">&#128293; Streak</text><text x="49" y="79" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#1a1a2e">14</text><rect x="101" y="50" width="78" height="36" rx="8" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><text x="140" y="65" text-anchor="middle" font-family="Arial" font-size="9" fill="#6b7280">&#127807; Seeds</text><text x="140" y="79" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#1a1a2e">620</text><rect x="192" y="50" width="78" height="36" rx="8" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><text x="231" y="65" text-anchor="middle" font-family="Arial" font-size="9" fill="#6b7280">&#9201; Studied</text><text x="231" y="79" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#1a1a2e">42h</text><rect x="10" y="94" width="260" height="28" rx="8" fill="#534AB7" opacity="0.1" stroke="#534AB7" stroke-width="1"/><text x="140" y="112" text-anchor="middle" font-family="Arial" font-size="9" fill="#534AB7" font-weight="bold">&#128214; Reading B1 — Environment and Climate Change &#8594;</text></svg>'
+    svg: '<svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="130" rx="10" fill="#F8F7FF"/><rect x="10" y="8" width="260" height="36" rx="8" fill="#534AB7"/><text x="140" y="30" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold" fill="#fff">&#127968; Home</text><rect x="10" y="50" width="78" height="36" rx="8" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><text x="49" y="65" text-anchor="middle" font-family="Arial" font-size="9" fill="#6b7280">&#128293; Streak</text><text x="49" y="79" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#1a1a2e">14</text><rect x="101" y="50" width="78" height="36" rx="8" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><text x="140" y="65" text-anchor="middle" font-family="Arial" font-size="9" fill="#6b7280">&#127807; Seeds</text><text x="140" y="79" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#1a1a2e">620</text><rect x="192" y="50" width="78" height="36" rx="8" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><text x="231" y="65" text-anchor="middle" font-family="Arial" font-size="9" fill="#6b7280">&#9201; Estudado</text><text x="231" y="79" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#1a1a2e">42h</text><rect x="10" y="94" width="260" height="28" rx="8" fill="#534AB7" opacity="0.1" stroke="#534AB7" stroke-width="1"/><text x="140" y="112" text-anchor="middle" font-family="Arial" font-size="9" fill="#534AB7" font-weight="bold">&#128214; Reading B1 — Environment and Climate Change &#8594;</text></svg>'
   },
   {
     icon: '&#128214;',
-    titulo: 'Reading',
-    desc: 'Read authentic Cambridge-level texts. Tap highlighted words to see meanings and pronunciation.',
+    titulo: 'Reading (Leitura)',
+    desc: 'Na aba Reading você pratica a leitura com textos autênticos no seu nível Cambridge. Toque nas palavras destacadas para aprender vocabulário.',
     steps: [
-      'Tap any <strong>highlighted word</strong> to see its meaning and example sentence',
-      'Toggle <strong>Show Translation</strong> to see the Portuguese version',
-      'After reading, tap <strong>Do the exercises</strong> to test comprehension',
-      'Earn Seeds for each exercise you complete correctly'
+      'Toque em qualquer <strong>palavra destacada</strong> para ver o significado e pronúncia',
+      'Ative <strong>Show Translation</strong> para ver a tradução em português',
+      'Após ler, toque em <strong>Do the exercises</strong> para responder as perguntas',
+      'Ganhe <strong>Seeds</strong> a cada exercício completado corretamente'
     ],
-    svg: '<svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="130" rx="10" fill="#F8F7FF"/><rect x="10" y="8" width="260" height="20" rx="6" fill="#534AB7"/><text x="140" y="22" text-anchor="middle" font-family="Arial" font-size="9" fill="#fff">&#128214; Reading B1</text><rect x="10" y="34" width="260" height="62" rx="8" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><text x="20" y="50" font-family="Arial" font-size="9" fill="#3a3a5c">Climate change is one of the most</text><rect x="176" y="40" width="44" height="14" rx="4" fill="#EDE9FE" stroke="#534AB7" stroke-width="1"/><text x="198" y="50" text-anchor="middle" font-family="Arial" font-size="8" font-weight="bold" fill="#534AB7">pressing</text><text x="20" y="66" font-family="Arial" font-size="9" fill="#3a3a5c">issues of our time. Rising temperatures are</text><text x="20" y="82" font-family="Arial" font-size="9" fill="#3a3a5c">affecting ecosystems worldwide...</text><text x="20" y="100" font-family="Arial" font-size="8" fill="#9b7b6b">KEY VOCABULARY — TAP TO LEARN</text><rect x="10" y="108" width="260" height="16" rx="6" fill="#1a1a2e"/><text x="140" y="119" text-anchor="middle" font-family="Arial" font-size="8" fill="#fff" font-weight="bold">Do the exercises</text></svg>'
+    svg: '<svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="130" rx="10" fill="#F8F7FF"/><rect x="10" y="8" width="260" height="20" rx="6" fill="#534AB7"/><text x="140" y="22" text-anchor="middle" font-family="Arial" font-size="9" fill="#fff">&#128214; Reading B1</text><rect x="10" y="34" width="260" height="62" rx="8" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><text x="20" y="50" font-family="Arial" font-size="9" fill="#3a3a5c">Climate change is one of the most</text><rect x="176" y="40" width="44" height="14" rx="4" fill="#EDE9FE" stroke="#534AB7" stroke-width="1"/><text x="198" y="50" text-anchor="middle" font-family="Arial" font-size="8" font-weight="bold" fill="#534AB7">pressing</text><text x="20" y="66" font-family="Arial" font-size="9" fill="#3a3a5c">issues of our time. Rising temperatures</text><text x="20" y="80" font-family="Arial" font-size="8" fill="#9b7b6b">VOCABULÁRIO — TOQUE PARA APRENDER</text><rect x="10" y="104" width="260" height="20" rx="6" fill="#1a1a2e"/><text x="140" y="117" text-anchor="middle" font-family="Arial" font-size="8" fill="#fff" font-weight="bold">Do the exercises</text></svg>'
   },
   {
     icon: '&#127911;',
-    titulo: 'Listening',
-    desc: 'Choose an audio at your level and answer comprehension questions. Real Cambridge-style practice.',
+    titulo: 'Listening (Áudio)',
+    desc: 'No Listening você pratica a compreensão auditiva com áudios reais no estilo Cambridge. Escolha o áudio do seu nível e responda as perguntas.',
     steps: [
-      'Select your level and choose an audio from the list',
-      'Press <strong>Play</strong> and listen carefully without seeing the text',
-      'Use speed controls (0.75x, 1x, 1.25x) to adjust difficulty',
-      'Answer questions then tap <strong>Reveal transcript</strong> to check'
+      'Selecione seu nível e escolha um áudio na lista',
+      'Toque em <strong>Play</strong> e ouça com atenção — você não pode ver o texto!',
+      'Use os controles de velocidade (0.75x, 1x, 1.25x) para ajustar a dificuldade',
+      'Após ouvir, toque em <strong>Do the exercises</strong> e depois em <strong>Reveal transcript</strong>'
     ],
-    svg: '<svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="130" rx="10" fill="#F8F7FF"/><rect x="10" y="8" width="260" height="20" rx="6" fill="#0F6E56"/><text x="140" y="22" text-anchor="middle" font-family="Arial" font-size="9" fill="#fff">&#127911; Listening B1 — Choose an audio</text><rect x="10" y="34" width="260" height="28" rx="8" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><circle cx="28" cy="48" r="10" fill="#E1F5EE"/><text x="28" y="52" text-anchor="middle" font-family="Arial" font-size="9">&#127997;</text><text x="44" y="45" font-family="Arial" font-size="9" font-weight="bold" fill="#1a1a2e">A Radio Interview</text><text x="44" y="57" font-family="Arial" font-size="8" fill="#6b7280">CULTURE · 3 QUESTIONS</text><text x="258" y="52" text-anchor="middle" font-family="Arial" font-size="14" fill="#0F6E56">&#8250;</text><rect x="10" y="68" width="260" height="36" rx="8" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><circle cx="30" cy="86" r="14" fill="#0F6E56"/><text x="30" y="91" text-anchor="middle" font-family="Arial" font-size="14" fill="#fff">&#9654;</text><rect x="52" y="82" width="90" height="8" rx="3" fill="#E1F5EE"/><rect x="52" y="82" width="35" height="8" rx="3" fill="#0F6E56"/><text x="210" y="90" font-family="Arial" font-size="9" fill="#6b7280">0:00 / 2:34</text><rect x="10" y="108" width="130" height="16" rx="6" fill="#1a1a2e"/><text x="75" y="119" text-anchor="middle" font-family="Arial" font-size="8" fill="#fff" font-weight="bold">Do the exercises</text><rect x="150" y="108" width="120" height="16" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/><text x="210" y="119" text-anchor="middle" font-family="Arial" font-size="8" fill="#0F6E56" font-weight="bold">Next audio</text></svg>'
+    svg: '<svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="130" rx="10" fill="#F8F7FF"/><rect x="10" y="8" width="260" height="20" rx="6" fill="#0F6E56"/><text x="140" y="22" text-anchor="middle" font-family="Arial" font-size="9" fill="#fff">&#127911; Listening B1 — Escolha um áudio</text><rect x="10" y="34" width="260" height="28" rx="8" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><circle cx="28" cy="48" r="10" fill="#E1F5EE"/><text x="28" y="52" text-anchor="middle" font-family="Arial" font-size="9">&#127997;</text><text x="44" y="45" font-family="Arial" font-size="9" font-weight="bold" fill="#1a1a2e">A Radio Interview</text><text x="44" y="57" font-family="Arial" font-size="8" fill="#6b7280">CULTURE · 3 PERGUNTAS</text><rect x="10" y="68" width="260" height="36" rx="8" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><circle cx="30" cy="86" r="14" fill="#0F6E56"/><text x="30" y="91" text-anchor="middle" font-family="Arial" font-size="14" fill="#fff">&#9654;</text><rect x="52" y="82" width="90" height="8" rx="3" fill="#E1F5EE"/><rect x="52" y="82" width="35" height="8" rx="3" fill="#0F6E56"/><text x="210" y="90" font-family="Arial" font-size="9" fill="#6b7280">0:00 / 2:34</text><rect x="10" y="108" width="130" height="16" rx="6" fill="#1a1a2e"/><text x="75" y="119" text-anchor="middle" font-family="Arial" font-size="8" fill="#fff" font-weight="bold">Do the exercises</text><rect x="150" y="108" width="120" height="16" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/><text x="210" y="119" text-anchor="middle" font-family="Arial" font-size="8" fill="#0F6E56" font-weight="bold">Next audio</text></svg>'
   },
   {
     icon: '&#9998;',
-    titulo: 'Writing',
-    desc: 'Practice written English with guided prompts. Get instant AI feedback on grammar and vocabulary.',
+    titulo: 'Writing (Escrita)',
+    desc: 'No Writing você pratica a redação em inglês com temas guiados e recebe feedback imediato do Cricket sobre gramática e vocabulário.',
     steps: [
-      'Open a text then tap <strong>Do the exercises</strong> and choose Writing',
-      'Write your response in the text box (target: 100-150 words)',
-      'Tap <strong>Submit</strong> to receive instant AI feedback from Cricket',
-      'Cricket analyses grammar, vocabulary, coherence and word count'
+      'Abra um texto e toque em <strong>Do the exercises</strong> e depois em <strong>Writing</strong>',
+      'Escreva sua resposta na caixa de texto (meta: 100 a 150 palavras)',
+      'Toque em <strong>Submit</strong> para receber o feedback instantâneo do Cricket',
+      'O Cricket analisa gramática, vocabulário, coesão e extensão do texto'
     ],
-    svg: '<svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="130" rx="10" fill="#F8F7FF"/><rect x="10" y="8" width="260" height="20" rx="6" fill="#BA7517"/><text x="140" y="22" text-anchor="middle" font-family="Arial" font-size="9" fill="#fff">&#9998; Writing B1</text><rect x="10" y="34" width="260" height="56" rx="8" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><text x="20" y="50" font-family="Arial" font-size="8" fill="#9b7b6b">Write about the importance of exercise...</text><text x="20" y="64" font-family="Arial" font-size="8" fill="#3a3a5c">Regular exercise is essential for good</text><text x="20" y="76" font-family="Arial" font-size="8" fill="#3a3a5c">health. Studies show that people who...</text><text x="20" y="84" font-family="Arial" font-size="8" fill="#3a3a5c">_</text><text x="242" y="84" font-family="Arial" font-size="8" fill="#BA7517">87 words</text><rect x="10" y="96" width="260" height="28" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/><text x="20" y="108" font-family="Arial" font-size="8" font-weight="bold" fill="#085041">&#127997; Cricket Feedback</text><text x="20" y="120" font-family="Arial" font-size="7" fill="#0F6E56">Good use of connectors · Try more complex sentences</text></svg>'
+    svg: '<svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="130" rx="10" fill="#F8F7FF"/><rect x="10" y="8" width="260" height="20" rx="6" fill="#BA7517"/><text x="140" y="22" text-anchor="middle" font-family="Arial" font-size="9" fill="#fff">&#9998; Writing B1</text><rect x="10" y="34" width="260" height="56" rx="8" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><text x="20" y="50" font-family="Arial" font-size="8" fill="#9b7b6b">Escreva sobre a importância do exercício...</text><text x="20" y="64" font-family="Arial" font-size="8" fill="#3a3a5c">Regular exercise is essential for good</text><text x="20" y="76" font-family="Arial" font-size="8" fill="#3a3a5c">health. Studies show that people who...</text><text x="242" y="84" font-family="Arial" font-size="8" fill="#BA7517">87 words</text><rect x="10" y="96" width="260" height="28" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/><text x="20" y="108" font-family="Arial" font-size="8" font-weight="bold" fill="#085041">&#127997; Feedback do Cricket</text><text x="20" y="120" font-family="Arial" font-size="7" fill="#0F6E56">Bom uso de conectores · Tente frases mais complexas</text></svg>'
   },
   {
     icon: '&#127908;',
-    titulo: 'Speak',
-    desc: 'Three ways to practise speaking: chat with Cricket AI, describe a photo, or chat with members.',
+    titulo: 'Speak (Fala)',
+    desc: 'Na aba Speak você pratica a conversação em inglês de três formas diferentes. Escolha a que preferir!',
     steps: [
-      '<strong>Talk to Cricket</strong> — free AI conversation on any topic in English',
-      '<strong>Describe a Photo</strong> — Cambridge-style with 5 min timer and AI feedback',
-      '<strong>Member Chat</strong> — practise writing with other students',
-      'Cricket gives personalised feedback on vocabulary and fluency'
+      'Toque em <strong>Talk to Cricket</strong> para conversar livremente com a IA em inglês',
+      'Toque em <strong>Describe a Photo</strong> para descrever uma imagem no estilo Cambridge com timer de 5 minutos e feedback da IA',
+      'Toque em <strong>Member Chat</strong> para trocar mensagens com outros alunos',
+      'O Cricket dá feedback personalizado sobre seu vocabulário e fluência'
     ],
-    svg: '<svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="130" rx="10" fill="#F8F7FF"/><rect x="10" y="8" width="260" height="20" rx="6" fill="#0F6E56"/><text x="140" y="22" text-anchor="middle" font-family="Arial" font-size="9" fill="#fff">&#127908; Speak</text><rect x="10" y="34" width="260" height="26" rx="7" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><circle cx="27" cy="47" r="9" fill="#E1F5EE"/><text x="27" y="51" text-anchor="middle" font-family="Arial" font-size="9">&#127997;</text><text x="42" y="44" font-family="Arial" font-size="9" font-weight="bold" fill="#1a1a2e">Talk to Cricket</text><text x="42" y="55" font-family="Arial" font-size="7" fill="#6b7280">Free AI conversation on any topic</text><rect x="10" y="66" width="260" height="26" rx="7" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><circle cx="27" cy="79" r="9" fill="#FAF0FF"/><text x="27" y="83" text-anchor="middle" font-family="Arial" font-size="9">&#128444;</text><text x="42" y="76" font-family="Arial" font-size="9" font-weight="bold" fill="#1a1a2e">Describe a Photo</text><text x="42" y="87" font-family="Arial" font-size="7" fill="#6b7280">Cambridge style · 5 min timer · AI feedback</text><rect x="10" y="98" width="260" height="26" rx="7" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><circle cx="27" cy="111" r="9" fill="#EDE9FE"/><text x="27" y="115" text-anchor="middle" font-family="Arial" font-size="9">&#128172;</text><text x="42" y="108" font-family="Arial" font-size="9" font-weight="bold" fill="#1a1a2e">Member Chat</text><text x="42" y="119" font-family="Arial" font-size="7" fill="#6b7280">Chat with other students learning English</text></svg>'
+    svg: '<svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="130" rx="10" fill="#F8F7FF"/><rect x="10" y="8" width="260" height="20" rx="6" fill="#0F6E56"/><text x="140" y="22" text-anchor="middle" font-family="Arial" font-size="9" fill="#fff">&#127908; Speak — Escolha como praticar</text><rect x="10" y="34" width="260" height="26" rx="7" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><circle cx="27" cy="47" r="9" fill="#E1F5EE"/><text x="27" y="51" text-anchor="middle" font-family="Arial" font-size="9">&#127997;</text><text x="42" y="44" font-family="Arial" font-size="9" font-weight="bold" fill="#1a1a2e">Talk to Cricket</text><text x="42" y="55" font-family="Arial" font-size="7" fill="#6b7280">Conversação livre com IA em inglês</text><rect x="10" y="66" width="260" height="26" rx="7" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><circle cx="27" cy="79" r="9" fill="#FAF0FF"/><text x="27" y="83" text-anchor="middle" font-family="Arial" font-size="9">&#128444;</text><text x="42" y="76" font-family="Arial" font-size="9" font-weight="bold" fill="#1a1a2e">Describe a Photo</text><text x="42" y="87" font-family="Arial" font-size="7" fill="#6b7280">Estilo Cambridge · Timer 5 min · Feedback IA</text><rect x="10" y="98" width="260" height="26" rx="7" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><circle cx="27" cy="111" r="9" fill="#EDE9FE"/><text x="27" y="115" text-anchor="middle" font-family="Arial" font-size="9">&#128172;</text><text x="42" y="108" font-family="Arial" font-size="9" font-weight="bold" fill="#1a1a2e">Member Chat</text><text x="42" y="119" font-family="Arial" font-size="7" fill="#6b7280">Converse com outros alunos</text></svg>'
   },
   {
     icon: '&#128203;',
-    titulo: 'Exams',
-    desc: 'Full Cambridge mock exams with all 4 skills. Choose your level and complete a timed test.',
+    titulo: 'Exams (Simulados)',
+    desc: 'Na aba Exams você realiza simulados completos no formato Cambridge com as 4 habilidades. Escolha seu nível e teste seus conhecimentos!',
     steps: [
-      'Select your target Cambridge level (A1 to C2)',
-      'Complete all 4 sections: Reading, Listening, Writing and Speaking',
-      'The Speaking section uses AI to evaluate your spoken answers',
-      'Your score per skill helps guide your study focus'
+      'Toque na aba <strong>Exams</strong> na barra inferior para acessar os simulados',
+      'Selecione seu nível Cambridge (A1 a C2) e escolha um dos 5 simulados disponíveis',
+      'Complete as 4 seções: <strong>Reading, Listening, Writing e Speaking</strong>',
+      'No final veja sua pontuação por habilidade para guiar seus estudos'
     ],
-    svg: '<svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="130" rx="10" fill="#F8F7FF"/><rect x="10" y="8" width="260" height="20" rx="6" fill="#7B2D8B"/><text x="140" y="22" text-anchor="middle" font-family="Arial" font-size="9" fill="#fff">&#128203; Cambridge Exams</text><rect x="10" y="34" width="260" height="20" rx="6" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><circle cx="24" cy="44" r="8" fill="#7B2D8B"/><text x="24" y="48" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold" fill="#fff">1</text><text x="38" y="41" font-family="Arial" font-size="8" font-weight="bold" fill="#1a1a2e">Environment and Society</text><text x="38" y="51" font-family="Arial" font-size="7" fill="#6b7280">4 skills · ~60 min</text><rect x="10" y="58" width="260" height="20" rx="6" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><circle cx="24" cy="68" r="8" fill="#7B2D8B"/><text x="24" y="72" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold" fill="#fff">2</text><text x="38" y="65" font-family="Arial" font-size="8" font-weight="bold" fill="#1a1a2e">Work and Career</text><text x="38" y="75" font-family="Arial" font-size="7" fill="#6b7280">4 skills · ~60 min</text><rect x="10" y="82" width="260" height="18" rx="6" fill="#EDE9FE" stroke="#7B2D8B" stroke-width="1"/><text x="140" y="94" text-anchor="middle" font-family="Arial" font-size="8" fill="#7B2D8B">&#128214; Reading · &#127911; Listening · &#9998; Writing · &#127908; Speaking</text><rect x="10" y="106" width="260" height="18" rx="6" fill="#7B2D8B"/><text x="140" y="118" text-anchor="middle" font-family="Arial" font-size="8" fill="#fff" font-weight="bold">Start Exam &#8594;</text></svg>'
+    svg: '<svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="130" rx="10" fill="#F8F7FF"/><rect x="10" y="8" width="260" height="20" rx="6" fill="#7B2D8B"/><text x="140" y="22" text-anchor="middle" font-family="Arial" font-size="9" fill="#fff">&#128203; Exams — Simulados Cambridge</text><rect x="10" y="34" width="260" height="20" rx="6" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><circle cx="24" cy="44" r="8" fill="#7B2D8B"/><text x="24" y="48" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold" fill="#fff">1</text><text x="38" y="41" font-family="Arial" font-size="8" font-weight="bold" fill="#1a1a2e">Environment and Society</text><text x="38" y="51" font-family="Arial" font-size="7" fill="#6b7280">4 habilidades · ~60 min</text><rect x="10" y="58" width="260" height="20" rx="6" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><circle cx="24" cy="68" r="8" fill="#7B2D8B"/><text x="24" y="72" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold" fill="#fff">2</text><text x="38" y="65" font-family="Arial" font-size="8" font-weight="bold" fill="#1a1a2e">Work and Career</text><text x="38" y="75" font-family="Arial" font-size="7" fill="#6b7280">4 habilidades · ~60 min</text><rect x="10" y="82" width="260" height="18" rx="6" fill="#EDE9FE" stroke="#7B2D8B" stroke-width="1"/><text x="140" y="94" text-anchor="middle" font-family="Arial" font-size="8" fill="#7B2D8B">&#128214; Reading · &#127911; Listening · &#9998; Writing · &#127908; Speaking</text><rect x="10" y="106" width="260" height="18" rx="6" fill="#7B2D8B"/><text x="140" y="118" text-anchor="middle" font-family="Arial" font-size="8" fill="#fff" font-weight="bold">Start Exam &#8594;</text></svg>'
   },
   {
     icon: '&#127919;',
-    titulo: 'Placement Test',
-    desc: 'Not sure which level to start? Take our 35-question test to find your Cambridge level.',
+    titulo: 'Teste de Nivelamento',
+    desc: 'Não sabe por qual nível começar? Faça o Teste de Nivelamento com 35 questões e descubra seu nível Cambridge ideal!',
     steps: [
-      '35 questions: Grammar, Vocabulary, Reading and Listening',
-      'You have <strong>10 minutes</strong> — answer as many as you can',
-      'Tap <strong>Finish and See Result</strong> anytime after question 5',
-      'Accept the suggested level or choose your own manually'
+      'Toque em <strong>Find My Level</strong> na tela de seleção de modo',
+      'Responda 35 questões de Grammar, Vocabulary, Reading e Listening',
+      'Você tem <strong>10 minutos</strong> — responda o máximo que conseguir',
+      'Toque em <strong>Finish and See Result</strong> a qualquer momento após a questão 5'
     ],
-    svg: '<svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="130" rx="10" fill="#F8F7FF"/><rect x="10" y="8" width="260" height="32" rx="8" fill="#1a1a2e"/><text x="140" y="22" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold" fill="#fff">&#127919; Placement Test</text><text x="140" y="34" text-anchor="middle" font-family="Arial" font-size="8" fill="#B8B5E8">&#9201; 08:45 remaining</text><rect x="10" y="44" width="260" height="6" rx="3" fill="rgba(255,255,255,0.1)"/><rect x="10" y="44" width="100" height="6" rx="3" fill="#7C6AE8"/><rect x="10" y="56" width="260" height="48" rx="8" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><text x="20" y="70" font-family="Arial" font-size="8" font-weight="bold" fill="#7C6AE8">QUESTION 12 OF 35 · Grammar</text><text x="20" y="84" font-family="Arial" font-size="9" fill="#1a1a2e">She asked me where ___ from.</text><rect x="20" y="90" width="55" height="10" rx="3" fill="#EDE9FE" stroke="#7C6AE8" stroke-width="1"/><text x="47" y="98" text-anchor="middle" font-family="Arial" font-size="7" fill="#534AB7">A) I come</text><rect x="82" y="90" width="55" height="10" rx="3" fill="#EDE9FE" stroke="#7C6AE8" stroke-width="1"/><text x="109" y="98" text-anchor="middle" font-family="Arial" font-size="7" fill="#534AB7">B) I came</text><rect x="10" y="110" width="260" height="14" rx="6" fill="#F8F7FF" stroke="#E5E3F5" stroke-width="1"/><text x="140" y="120" text-anchor="middle" font-family="Arial" font-size="7" fill="#6b7280">Finish and See Result &#8594;</text></svg>'
+    svg: '<svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="130" rx="10" fill="#F8F7FF"/><rect x="10" y="8" width="260" height="32" rx="8" fill="#1a1a2e"/><text x="140" y="22" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold" fill="#fff">&#127919; Teste de Nivelamento</text><text x="140" y="34" text-anchor="middle" font-family="Arial" font-size="8" fill="#B8B5E8">&#9201; 08:45 restantes</text><rect x="10" y="44" width="260" height="6" rx="3" fill="rgba(255,255,255,0.1)"/><rect x="10" y="44" width="100" height="6" rx="3" fill="#7C6AE8"/><rect x="10" y="56" width="260" height="48" rx="8" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><text x="20" y="70" font-family="Arial" font-size="8" font-weight="bold" fill="#7C6AE8">QUESTÃO 12 DE 35 · Grammar</text><text x="20" y="84" font-family="Arial" font-size="9" fill="#1a1a2e">She asked me where ___ from.</text><rect x="10" y="110" width="260" height="14" rx="6" fill="#F8F7FF" stroke="#E5E3F5" stroke-width="1"/><text x="140" y="120" text-anchor="middle" font-family="Arial" font-size="7" fill="#6b7280">Finish and See Result &#8594;</text></svg>'
   },
   {
     icon: '&#128202;',
-    titulo: 'Progress',
-    desc: 'Track your learning journey with detailed stats, medals and complete study history.',
+    titulo: 'Progress (Progresso)',
+    desc: 'Na aba Progress você acompanha toda a sua evolução: pontos, medalhas e histórico completo de atividades.',
     steps: [
-      'View your <strong>Seeds</strong> earned and level progress bar',
-      'Unlock <strong>Medals</strong> by completing special achievements',
-      'See your full <strong>Study History</strong> with every activity done',
-      'Track time studied and exercises completed per skill area'
+      'Veja seus <strong>Seeds</strong> acumulados e a barra de progresso do nível atual',
+      'Desbloqueie <strong>Medalhas</strong> conquistando metas especiais',
+      'Consulte seu <strong>histórico completo</strong> de todas as atividades realizadas',
+      'Acompanhe o tempo estudado e os exercícios concluídos por habilidade'
     ],
-    svg: '<svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="130" rx="10" fill="#F8F7FF"/><rect x="10" y="8" width="260" height="20" rx="6" fill="#534AB7"/><text x="140" y="22" text-anchor="middle" font-family="Arial" font-size="9" fill="#fff">&#128202; My Progress</text><rect x="10" y="34" width="260" height="28" rx="8" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><text x="20" y="48" font-family="Arial" font-size="8" fill="#6b7280">Level B1 — 620 Seeds</text><rect x="20" y="52" width="220" height="6" rx="3" fill="#E5E3F5"/><rect x="20" y="52" width="140" height="6" rx="3" fill="#534AB7"/><text x="244" y="58" font-family="Arial" font-size="7" fill="#534AB7">64%</text><text x="10" y="78" font-family="Arial" font-size="8" font-weight="bold" fill="#6b7280">MEDALS</text><circle cx="30" cy="96" r="12" fill="#FFD700" opacity="0.3" stroke="#FFD700" stroke-width="2"/><text x="30" y="100" text-anchor="middle" font-family="Arial" font-size="12">&#127945;</text><circle cx="58" cy="96" r="12" fill="#FFD700" opacity="0.3" stroke="#FFD700" stroke-width="2"/><text x="58" y="100" text-anchor="middle" font-family="Arial" font-size="12">&#127919;</text><circle cx="86" cy="96" r="12" fill="#ddd" stroke="#ddd" stroke-width="2"/><text x="86" y="100" text-anchor="middle" font-family="Arial" font-size="12">&#127911;</text><circle cx="114" cy="96" r="12" fill="#ddd" stroke="#ddd" stroke-width="2"/><text x="114" y="100" text-anchor="middle" font-family="Arial" font-size="12">&#9998;</text><text x="140" y="100" font-family="Arial" font-size="8" fill="#6b7280">+ more unlockable</text><rect x="10" y="112" width="260" height="14" rx="6" fill="#F8F7FF" stroke="#E5E3F5" stroke-width="1"/><text x="20" y="122" font-family="Arial" font-size="7" fill="#6b7280">&#128214; Environment and Climate Change · Reading · Today</text></svg>'
+    svg: '<svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="130" rx="10" fill="#F8F7FF"/><rect x="10" y="8" width="260" height="20" rx="6" fill="#534AB7"/><text x="140" y="22" text-anchor="middle" font-family="Arial" font-size="9" fill="#fff">&#128202; Progress</text><rect x="10" y="34" width="260" height="28" rx="8" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><text x="20" y="48" font-family="Arial" font-size="8" fill="#6b7280">Nível B1 — 620 Seeds</text><rect x="20" y="52" width="220" height="6" rx="3" fill="#E5E3F5"/><rect x="20" y="52" width="140" height="6" rx="3" fill="#534AB7"/><text x="244" y="58" font-family="Arial" font-size="7" fill="#534AB7">64%</text><text x="10" y="78" font-family="Arial" font-size="8" font-weight="bold" fill="#6b7280">MEDALHAS</text><circle cx="30" cy="96" r="12" fill="#FFD700" opacity="0.3" stroke="#FFD700" stroke-width="2"/><text x="30" y="100" text-anchor="middle" font-family="Arial" font-size="12">&#127945;</text><circle cx="58" cy="96" r="12" fill="#FFD700" opacity="0.3" stroke="#FFD700" stroke-width="2"/><text x="58" y="100" text-anchor="middle" font-family="Arial" font-size="12">&#127919;</text><circle cx="86" cy="96" r="12" fill="#ddd" stroke="#ddd" stroke-width="2"/><text x="86" y="100" text-anchor="middle" font-family="Arial" font-size="12">&#127911;</text><text x="114" y="100" font-family="Arial" font-size="8" fill="#6b7280">+ mais para desbloquear</text><rect x="10" y="112" width="260" height="14" rx="6" fill="#F8F7FF" stroke="#E5E3F5" stroke-width="1"/><text x="20" y="122" font-family="Arial" font-size="7" fill="#6b7280">&#128214; Environment and Climate Change · Reading · Hoje</text></svg>'
   },
   {
     icon: '&#9881;',
-    titulo: 'Settings and Profile',
-    desc: 'Manage your account, change level, or switch between Cambridge and Kids mode anytime.',
+    titulo: 'Configurações e Perfil',
+    desc: 'No Profile você gerencia sua conta, altera seu nível de inglês e troca entre os modos Cambridge e Kids.',
     steps: [
-      'Tap the <strong>Profile</strong> tab at the bottom to open settings',
-      'Change your <strong>English level</strong> using the green pill on the Home screen',
-      'Switch between <strong>Cambridge</strong> and <strong>Kids</strong> mode in Profile settings',
-      'Tap <strong>Sign out</strong> to log out — your progress is always saved'
+      'Toque na aba <strong>Profile</strong> na barra inferior para abrir as configurações',
+      'Para alterar seu nível, toque na pílula verde na tela inicial e selecione o nível desejado',
+      'Em <strong>Switch mode</strong> você alterna entre o modo <strong>Cambridge</strong> e o modo <strong>Kids</strong>',
+      'Toque em <strong>Sign out</strong> para sair da conta — seu progresso fica sempre salvo'
     ],
-    svg: '<svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="130" rx="10" fill="#F8F7FF"/><rect x="10" y="8" width="260" height="44" rx="8" fill="#534AB7"/><circle cx="140" cy="26" r="12" fill="rgba(255,255,255,0.2)"/><text x="140" y="31" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold" fill="#fff">TC</text><text x="140" y="46" text-anchor="middle" font-family="Arial" font-size="8" fill="rgba(255,255,255,0.8)">Your Name</text><rect x="10" y="58" width="260" height="20" rx="6" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><text x="26" y="71" font-family="Arial" font-size="8" fill="#1a1a2e">&#127891; Switch mode</text><text x="255" y="71" text-anchor="end" font-family="Arial" font-size="10" fill="#6b7280">&#8250;</text><rect x="10" y="82" width="260" height="20" rx="6" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><text x="26" y="95" font-family="Arial" font-size="8" fill="#1a1a2e">&#128197; Study plan and exam date</text><text x="255" y="95" text-anchor="end" font-family="Arial" font-size="10" fill="#6b7280">&#8250;</text><rect x="10" y="106" width="260" height="18" rx="6" fill="#FEE2E2" stroke="#FECACA" stroke-width="1"/><text x="140" y="118" text-anchor="middle" font-family="Arial" font-size="8" font-weight="bold" fill="#DC2626">Sign out</text></svg>'
+    svg: '<svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="130" rx="10" fill="#F8F7FF"/><rect x="10" y="8" width="260" height="44" rx="8" fill="#534AB7"/><circle cx="140" cy="26" r="12" fill="rgba(255,255,255,0.2)"/><text x="140" y="31" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold" fill="#fff">TC</text><text x="140" y="46" text-anchor="middle" font-family="Arial" font-size="8" fill="rgba(255,255,255,0.8)">Seu Nome</text><rect x="10" y="58" width="260" height="20" rx="6" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><text x="26" y="71" font-family="Arial" font-size="8" fill="#1a1a2e">&#127891; Switch mode</text><text x="255" y="71" text-anchor="end" font-family="Arial" font-size="10" fill="#6b7280">&#8250;</text><rect x="10" y="82" width="260" height="20" rx="6" fill="#fff" stroke="#E5E3F5" stroke-width="1"/><text x="26" y="95" font-family="Arial" font-size="8" fill="#1a1a2e">&#128197; Study plan e data da prova</text><text x="255" y="95" text-anchor="end" font-family="Arial" font-size="10" fill="#6b7280">&#8250;</text><rect x="10" y="106" width="260" height="18" rx="6" fill="#FEE2E2" stroke="#FECACA" stroke-width="1"/><text x="140" y="118" text-anchor="middle" font-family="Arial" font-size="8" font-weight="bold" fill="#DC2626">Sign out</text></svg>'
   }
 ];
 
