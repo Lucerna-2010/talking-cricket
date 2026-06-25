@@ -79,6 +79,11 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 .pt-sub{font-size:12px;color:#B8B5E8;font-weight:600;}
 .pt-progresso{height:6px;background:rgba(255,255,255,0.2);border-radius:3px;margin:16px 0 0;}
 .pt-progresso-fill{height:6px;background:#7C6AE8;border-radius:3px;transition:width .3s;}
+.pt-timer{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px;}
+.pt-timer-clock{font-size:22px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums;letter-spacing:2px;}
+.pt-timer-clock.warning{color:#EF9F27;}
+.pt-timer-clock.danger{color:#EF4444;}
+.pt-timer-label{font-size:11px;color:#B8B5E8;font-weight:600;}
 .pt-body{padding:20px 16px;flex:1;overflow-y:auto;}
 .pt-num{font-size:11px;font-weight:800;color:#7C6AE8;text-transform:uppercase;margin-bottom:6px;}
 .pt-nivel-tag{display:inline-block;background:#EDE9FE;color:#534AB7;font-size:10px;font-weight:800;padding:2px 8px;border-radius:10px;margin-bottom:10px;}
@@ -1050,8 +1055,13 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 <div id="nivelamento" class="tela">
   <div class="pt-header">
     <div class="pt-titulo">🎯 Placement Test</div>
-    <div class="pt-sub">35 questions · ~10 minutes · Grammar, Reading & Listening</div>
-    <div class="pt-progresso"><div class="pt-progresso-fill" id="ptProgresso" style="width:0%"></div></div>
+    <div class="pt-sub">35 questions · Grammar, Reading &amp; Listening</div>
+    <div class="pt-timer">
+      <span class="pt-timer-label">⏱</span>
+      <span class="pt-timer-clock" id="ptTimerDisplay">10:00</span>
+      <span class="pt-timer-label">remaining</span>
+    </div>
+    <div class="pt-progresso" style="margin-top:10px;"><div class="pt-progresso-fill" id="ptProgresso" style="width:0%"></div></div>
   </div>
   <div class="pt-body" id="ptBody"></div>
 </div>
@@ -8115,10 +8125,33 @@ var ptRespostas = [];
 var ptTextoAtual = null;
 var ptAudioAtual = null;
 
+var ptTimerInterval = null;
+var ptTimerSeg = 600; // 10 minutes
+
 function iniciarNivelamento() {
   ptIndex = 0; ptAcertos = 0; ptRespostas = []; ptTextoAtual = null; ptAudioAtual = null;
+  ptTimerSeg = 600;
+  if (ptTimerInterval) clearInterval(ptTimerInterval);
   ir('nivelamento');
   renderPtQuestao();
+  // Start timer
+  ptTimerInterval = setInterval(function() {
+    ptTimerSeg--;
+    var el = document.getElementById('ptTimerDisplay');
+    if (el) {
+      var m = Math.floor(ptTimerSeg / 60);
+      var s = ptTimerSeg % 60;
+      el.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+      el.className = 'pt-timer-clock';
+      if (ptTimerSeg <= 60) el.className = 'pt-timer-clock danger';
+      else if (ptTimerSeg <= 120) el.className = 'pt-timer-clock warning';
+    }
+    if (ptTimerSeg <= 0) {
+      clearInterval(ptTimerInterval);
+      ptTimerInterval = null;
+      mostrarResultadoNivelamento();
+    }
+  }, 1000);
 }
 
 function renderPtQuestao() {
@@ -8128,8 +8161,8 @@ function renderPtQuestao() {
   if (prog) prog.style.width = Math.round((ptIndex / ptQuestoes.length) * 100) + '%';
   if (ptIndex >= ptQuestoes.length) { mostrarResultadoNivelamento(); return; }
   var q = ptQuestoes[ptIndex];
-  var h = '<div class="pt-num">Question ' + (ptIndex+1) + ' of ' + ptQuestoes.length + '</div>';
-  h += '<div class="pt-nivel-tag">' + q.nivel + ' · ' + q.tipo.charAt(0).toUpperCase() + q.tipo.slice(1) + '</div>';
+  var tipoLabel = {grammar:'Grammar',vocab:'Vocabulary',reading:'Reading',listening:'Listening'}[q.tipo] || q.tipo;
+  var h = '<div class="pt-num">Question ' + (ptIndex+1) + ' of ' + ptQuestoes.length + ' &nbsp;·&nbsp; ' + tipoLabel + '</div>';
   if (q.tipo === 'reading' && q.texto) { ptTextoAtual = q.texto; h += '<div class="pt-texto">' + q.texto + '</div>'; }
   else if (q.tipo === 'reading' && ptTextoAtual) { h += '<div class="pt-texto">' + ptTextoAtual + '</div>'; }
   if (q.tipo === 'listening' && q.audio) {
@@ -8164,6 +8197,7 @@ function responderPt(idx) {
 }
 
 function mostrarResultadoNivelamento() {
+  if (ptTimerInterval) { clearInterval(ptTimerInterval); ptTimerInterval = null; }
   var scores = {A1:0,A2:0,B1:0,B2:0,C1:0,C2:0};
   var totais = {A1:0,A2:0,B1:0,B2:0,C1:0,C2:0};
   ptRespostas.forEach(function(r) { totais[r.nivel]++; if(r.correta) scores[r.nivel]++; });
