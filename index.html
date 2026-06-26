@@ -5237,13 +5237,22 @@ var usuarioCorChat = '#534AB7';
 
 function initSupabase() {
   try {
-    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-      } catch(e) {
-      }
+    if (window.supabase) {
+      supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+      console.log('Supabase: initialized OK');
+    } else {
+      console.error('Supabase: window.supabase not found');
+    }
+  } catch(e) {
+    console.error('Supabase init error:', e);
+  }
 }
 
 async function registrarUsuarioSupabase(nome, contato, nivel, modo) {
-  if (!supabaseClient) return null;
+  if (!supabaseClient) {
+    console.error('Supabase: client not initialized');
+    return null;
+  }
   try {
     var existing = await supabaseClient
       .from('usuarios')
@@ -5254,6 +5263,7 @@ async function registrarUsuarioSupabase(nome, contato, nivel, modo) {
     if (existing.data) {
       usuarioId = existing.data.id;
       await supabaseClient.from('usuarios').update({last_seen: new Date().toISOString()}).eq('id', usuarioId);
+      console.log('Supabase: user updated', usuarioId);
       return usuarioId;
     }
     
@@ -5265,9 +5275,15 @@ async function registrarUsuarioSupabase(nome, contato, nivel, modo) {
       seeds: 0
     }).select('id').single();
     
+    if (result.error) {
+      console.error('Supabase insert error:', JSON.stringify(result.error));
+      return null;
+    }
+    
     if (result.data) {
       usuarioId = result.data.id;
-          }
+      console.log('Supabase: user registered', usuarioId);
+    }
     return usuarioId;
   } catch(e) {
         return null;
