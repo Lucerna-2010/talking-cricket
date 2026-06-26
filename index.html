@@ -2548,6 +2548,12 @@ function pararAnimacaoAudio() {
 function pararTodoAudio() {
   try { window.speechSynthesis.cancel(); } catch(e) {}
   ttsAtivo = false;
+  // Also stop MP3 if playing
+  if (audioAtual) {
+    audioAtual.pause();
+    audioAtual.currentTime = 0;
+    audioAtual = null;
+  }
   atualizarBtnPlay(false);
   pararAnimacaoAudio();
 }
@@ -7521,26 +7527,36 @@ function setupListeningPlayer() {
   
   btnPlay.onclick = function() {
     if (!listeningAtual) return;
+
+    // If audio is playing, STOP it
+    if (audioAtual && !audioAtual.paused) {
+      audioAtual.pause();
+      audioAtual.currentTime = 0;
+      audioAtual = null;
+      atualizarBtnPlay(false);
+      return;
+    }
+
+    // Also cancel any TTS
+    try { window.speechSynthesis.cancel(); } catch(e) {}
+    ttsAtivo = false;
+
+    // Find MP3 URL
     var mp3 = listeningAudios[listeningAtual.id];
     if (!mp3) {
       var textos = listeningTextos[listeningNivel] || listeningTextos['B1'];
       var pos = textos.findIndex(function(t){ return t.id === listeningAtual.id; });
       if (pos >= 0) mp3 = listeningAudios['l' + listeningNivel.toLowerCase() + '-' + (pos+1)];
     }
+
     if (mp3) {
-      if (audioAtual && !audioAtual.paused) {
-        audioAtual.pause(); audioAtual.currentTime = 0;
-        if (atualizarBtnPlay) atualizarBtnPlay(false);
-      } else {
-        tocarMP3Listening(mp3, function() {
-          if (atualizarBtnPlay) atualizarBtnPlay(false);
-          var revelBtn = document.getElementById('btnRevelarTranscricao');
-          if (revelBtn) revelBtn.style.display = '';
-        });
-      }
-    } else {
-      lerTexto(listeningAtual.texto, velocidadeAtual);
+      tocarMP3Listening(mp3, function() {
+        atualizarBtnPlay(false);
+        var revelBtn = document.getElementById('btnRevelarTranscricao');
+        if (revelBtn) revelBtn.style.display = '';
+      });
     }
+    // No TTS fallback - if no MP3, just do nothing
   };
   
   var btnExAudio = document.getElementById('btnExerciciosAudio');
@@ -7616,34 +7632,36 @@ var audioAtual = null; // elemento <audio> atual
 var audioPlayCountMP3 = 0;
 
 function tocarMP3Listening(url, onend) {
-  // Parar áudio anterior
   if (audioAtual) {
     audioAtual.pause();
     audioAtual.currentTime = 0;
+    audioAtual = null;
   }
-  
+  try { window.speechSynthesis.cancel(); } catch(e) {}
+
   audioAtual = new Audio(url);
   audioAtual.playbackRate = velocidadeAtual || 1.0;
-  
+
   audioAtual.onended = function() {
-    var playBtn = document.getElementById('btnPlay');
-    if (playBtn) playBtn.textContent = '▶ Play';
+    atualizarBtnPlay(false);
+    audioAtual = null;
     if (onend) onend();
   };
-  
+
   audioAtual.onerror = function() {
-    // Fallback para TTS se MP3 falhar
+    // MP3 failed - show message, NO TTS fallback
+    atualizarBtnPlay(false);
+    audioAtual = null;
     var playBtn = document.getElementById('btnPlay');
-    if (playBtn) playBtn.textContent = '▶ Play';
-    if (listeningAtual) falarEN(listeningAtual.texto, {rate: velocidadeAtual || 1.0});
+    if (playBtn) playBtn.textContent = '▶';
   };
-  
-  var playBtn = document.getElementById('btnPlay');
-  if (playBtn) playBtn.textContent = '⏸ Pause';
-  
-  audioAtual.play().catch(function() {
-    // Autoplay bloqueado - tentar TTS
-    if (listeningAtual) falarEN(listeningAtual.texto, {rate: velocidadeAtual || 1.0});
+
+  atualizarBtnPlay(true);
+
+  audioAtual.play().catch(function(e) {
+    // Autoplay blocked - just reset button, no TTS
+    atualizarBtnPlay(false);
+    audioAtual = null;
   });
 }
 
@@ -8768,10 +8786,14 @@ window.onload = function() {
   });
 
   var _el_btnPlay = document.getElementById('btnPlay'); if(_el_btnPlay) _el_btnPlay.onclick = function() {
+    // btnPlay for listening - handled by setupListeningPlayer
+    // This is only called if setupListeningPlayer hasn't run yet
     if (listeningAtual) {
-      lerTexto(listeningAtual.texto, velocidadeAtual);
+      setupListeningPlayer();
+      document.getElementById('btnPlay').click();
       return;
     }
+    // For reading TTS (text screen)
     var texto = textoAtualAudicao || (document.getElementById('transcricao-en') ? document.getElementById('transcricao-en').textContent.trim() : '');
     if (!texto) { alert('Select a text from the bank first.'); return; }
     lerTexto(texto, velocidadeAtual);
