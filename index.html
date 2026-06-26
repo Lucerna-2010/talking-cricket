@@ -1199,7 +1199,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
       </div>
     </div>
     <div class="xpcard">
-      <div class="xplbls"><span id="xplbl">Nível B1 — 🌱 620 seeds</span><span>Next level in 380 🌱</span></div>
+      <div class="xplbls"><span id="xplbl">Level B1 — 🌱 0 seeds</span><span id="xpnext">Next level in 1000 🌱</span></div>
       <div class="xpbar"><div class="xpfill" id="xpfill" style="width:62%"></div></div>
       <div class="lvpill" id="lvpill">🌱 B1 — Intermediate ▾</div>
     </div>
@@ -1217,9 +1217,9 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div>
       <div class="stitle">Sequência &amp; Conquistas</div>
       <div class="streak">
-        <div class="stcard"><div class="sticon">🔥</div><div class="stval">14</div><div class="stlbl">day streak</div></div>
-        <div class="stcard"><div class="sticon">🌱</div><div class="stval">620</div><div class="stlbl">seeds</div></div>
-        <div class="stcard"><div class="sticon">⏱️</div><div class="stval">42h</div><div class="stlbl">studied</div></div>
+        <div class="stcard"><div class="sticon">🔥</div><div class="stval" id="statStreak">0</div><div class="stlbl">day streak</div></div>
+        <div class="stcard"><div class="sticon">🌱</div><div class="stval" id="statSeeds">0</div><div class="stlbl">seeds</div></div>
+        <div class="stcard"><div class="sticon">⏱️</div><div class="stval" id="statHoras">0h</div><div class="stlbl">studied</div></div>
       </div>
     </div>
     <div>
@@ -1595,7 +1595,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
         <div class="pro-nivel-badge" id="proNivelBadge">B1</div>
         <div class="pro-nivel-info">
           <div class="pro-nivel-nome" id="proNivelNome">B1 — Intermediário</div>
-          <div class="pro-nivel-sub">🌱 620 seeds para B2</div>
+          <div class="pro-nivel-sub" id="proNivelSub">🌱 0 seeds</div>
           <div class="pro-xp-bar"><div class="pro-xp-fill" id="proXpFill"></div></div>
         </div>
       </div>
@@ -1604,8 +1604,8 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div class="pro-card">
       <div class="pro-card-titulo">Estatísticas</div>
       <div class="pro-stats">
-        <div class="pro-stat"><div class="pro-stat-val">14</div><div class="pro-stat-lbl">Day streak</div></div>
-        <div class="pro-stat"><div class="pro-stat-val">42h</div><div class="pro-stat-lbl">Study time</div></div>
+        <div class="pro-stat"><div class="pro-stat-val" id="proStreak">0</div><div class="pro-stat-lbl">Day streak</div></div>
+        <div class="pro-stat"><div class="pro-stat-val" id="proHoras">0h</div><div class="pro-stat-lbl">Study time</div></div>
         <div class="pro-stat"><div class="pro-stat-val">38</div><div class="pro-stat-lbl">Texts read</div></div>
         <div class="pro-stat"><div class="pro-stat-val">89%</div><div class="pro-stat-lbl">Exercise accuracy</div></div>
       </div>
@@ -2953,7 +2953,7 @@ function renderNav(telaId) {
 }
 
 // ===== SISTEMA DE SEMENTES =====
-var seedsTotal = 620;
+var seedsTotal = 0;
 
 function ganharSementes(quantidade, motivo) {
   seedsTotal += quantidade;
@@ -4166,14 +4166,15 @@ var historicoAtividades = [];
 
 function carregarHistorico() {
   try {
-    var saved = localStorage.getItem('tc_historico');
+    var histKey = 'tc_historico_' + (nomeUsuario || 'guest');
+    var saved = localStorage.getItem(histKey) || localStorage.getItem('tc_historico');
     if (saved) historicoAtividades = JSON.parse(saved);
   } catch(e) { historicoAtividades = []; }
 }
 
 function salvarHistorico() {
   try {
-    localStorage.setItem('tc_historico', JSON.stringify(historicoAtividades.slice(0, 20)));
+    localStorage.setItem('tc_historico_' + (nomeUsuario || 'guest'), JSON.stringify(historicoAtividades.slice(0, 20)));
   } catch(e) {}
 }
 
@@ -4638,13 +4639,14 @@ function atualizarDisplaySementes() {
   if (fill) fill.style.width = Math.min(100, (seedsTotal / 1000) * 100) + '%';
   var pill = document.getElementById('lvpill');
   if (pill) pill.textContent = '🌱 ' + nivelAtual + ' ▾';
-  try { localStorage.setItem('tc_seeds', seedsTotal); } catch(e) {}
+  try { localStorage.setItem('tc_seeds_' + (nomeUsuario || 'guest'), seedsTotal); } catch(e) {}
 }
 
 (function() {
   try {
-    var saved = localStorage.getItem('tc_seeds');
-    if (saved) seedsTotal = parseInt(saved) || 620;
+    var userKey = 'tc_seeds_' + (nomeUsuario || 'guest');
+    var saved = localStorage.getItem(userKey) || localStorage.getItem('tc_seeds_' + nomeUsuario);
+    seedsTotal = saved ? (parseInt(saved) || 0) : 0;
   } catch(e) {}
 })();
 
@@ -5260,7 +5262,7 @@ async function registrarUsuarioSupabase(nome, contato, nivel, modo) {
       contato: contato || '',
       nivel: nivel || 'B1',
       modo: modo || 'cambridge',
-      seeds: 620
+      seeds: 0
     }).select('id').single();
     
     if (result.data) {
@@ -7736,6 +7738,32 @@ function ir(id) {
   renderNav(id);
 }
 
+function atualizarStats() {
+  // Update all stat displays with real data
+  var s = document.getElementById('statSeeds');
+  if (s) s.textContent = seedsTotal;
+  var x = document.getElementById('xplbl');
+  if (x) x.textContent = 'Level ' + nivelAtual + ' — 🌱 ' + seedsTotal + ' seeds';
+  var ps = document.getElementById('proNivelSub');
+  if (ps) ps.textContent = '🌱 ' + seedsTotal + ' seeds';
+  var ph = document.getElementById('proHoras');
+  // Load horas from localStorage
+  try {
+    var horas = parseInt(localStorage.getItem('tc_horas_' + nomeUsuario) || '0');
+    var h = document.getElementById('statHoras');
+    if (h) h.textContent = horas + 'h';
+    if (ph) ph.textContent = horas + 'h';
+  } catch(e) {}
+  // Load streak from localStorage
+  try {
+    var streak = parseInt(localStorage.getItem('tc_streak_' + nomeUsuario) || '0');
+    var st = document.getElementById('statStreak');
+    if (st) st.textContent = streak;
+    var pst = document.getElementById('proStreak');
+    if (pst) pst.textContent = streak;
+  } catch(e) {}
+}
+
 function voltarHome() {
   ir('home-cambridge');
   setTimeout(function() {
@@ -8657,6 +8685,15 @@ window.onload = function() {
         localStorage.setItem('tc_contato', contato);
         localStorage.setItem('tc_modo', 'cambridge');
         localStorage.setItem('tc_loggedin', '1');
+        // Reset progress for new user if no existing seeds
+        var existingSeeds = localStorage.getItem('tc_seeds_' + nomeUsuario);
+        if (!existingSeeds) {
+          seedsTotal = 0;
+          localStorage.setItem('tc_seeds_' + nomeUsuario, '0');
+          localStorage.setItem('tc_historico_' + nomeUsuario, '[]');
+        } else {
+          seedsTotal = parseInt(existingSeeds) || 0;
+        }
       } catch(e) {}
 
       document.getElementById('modo-nome').textContent = 'Welcome, ' + pn + '!';
@@ -9262,7 +9299,7 @@ window.onload = function() {
         var pill = document.getElementById('lvpill');
         if (pill) pill.textContent = '🌱 ' + savedNivel + ' — ' + nm + ' ▾';
         var xplbl = document.getElementById('xplbl');
-        if (xplbl) xplbl.textContent = 'Level ' + savedNivel + ' — 🌱 620 seeds';
+        if (xplbl) xplbl.textContent = 'Level ' + savedNivel + ' — 🌱 ' + seedsTotal + ' seeds';
         var aulaLbl = document.getElementById('aulaLbl');
         if (aulaLbl) aulaLbl.textContent = 'Reading — ' + savedNivel;
       }
