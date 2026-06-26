@@ -102,6 +102,19 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 .mc-cambridge .mc-titulo{color:#26215C;}
 .mc-placement{background:linear-gradient(135deg,#1a1a2e,#2d2b6b);border:2px solid #534AB7;}
 .mc-tutorial{background:linear-gradient(135deg,#0F6E56,#1D9E75);border:2px solid #1D9E75;}
+.admin-header{background:linear-gradient(135deg,#1a1a2e,#2d2b6b);padding:32px 20px 20px;text-align:center;}
+.admin-titulo{font-size:20px;font-weight:800;color:#fff;margin-bottom:4px;}
+.admin-sub{font-size:12px;color:#B8B5E8;}
+.admin-card{background:#fff;border-radius:14px;padding:14px 16px;margin-bottom:10px;border:1px solid #E5E3F5;}
+.admin-card-nome{font-size:14px;font-weight:800;color:#1a1a2e;margin-bottom:2px;}
+.admin-card-info{font-size:12px;color:#6b7280;margin-bottom:4px;}
+.admin-badge{display:inline-block;background:#EDE9FE;color:#534AB7;font-size:10px;font-weight:800;padding:2px 8px;border-radius:10px;margin-right:4px;}
+.admin-badge.green{background:#E1F5EE;color:#0F6E56;}
+.admin-stats{display:flex;gap:10px;margin-bottom:16px;}
+.admin-stat{flex:1;background:#fff;border-radius:12px;padding:12px;text-align:center;border:1px solid #E5E3F5;}
+.admin-stat-num{font-size:22px;font-weight:800;color:#534AB7;}
+.admin-stat-label{font-size:10px;color:#6b7280;font-weight:700;}
+.admin-loading{text-align:center;padding:40px;color:#6b7280;font-size:14px;}
 .mc-tutorial .mc-titulo{color:#fff;}
 .mc-tutorial .mc-sub{color:#9FE1CB;}
 .tut-header{background:linear-gradient(135deg,#0F6E56,#1D9E75);padding:32px 20px 20px;text-align:center;position:relative;}
@@ -1104,6 +1117,21 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 <!-- PLACEMENT TEST -->
 <div id="tutorial" class="tela">
   <div id="tutConteudo" style="height:100%;display:flex;flex-direction:column;"></div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="admin" class="tela">
+  <div class="admin-header">
+    <div style="font-size:11px;color:#B8B5E8;font-weight:700;margin-bottom:4px;">🔐 RESTRICTED ACCESS</div>
+    <div class="admin-titulo">⚙️ Admin Panel</div>
+    <div class="admin-sub">Talking Cricket — Member Management</div>
+  </div>
+  <div style="padding:16px;flex:1;overflow-y:auto;" id="adminBody">
+    <div class="admin-loading">Loading data...</div>
+  </div>
+  <div style="padding:12px 16px;border-top:1px solid #E5E3F5;">
+    <button onclick="ir('splash')" style="width:100%;padding:12px;border-radius:12px;border:1.5px solid #D3D1C7;background:#fff;color:#6b7280;font-family:Nunito,Arial,sans-serif;font-size:14px;font-weight:800;cursor:pointer;">← Exit Admin</button>
+  </div>
 </div>
 
 <div id="nivelamento" class="tela">
@@ -8530,6 +8558,57 @@ function renderTutSlide() {
 }
 
 
+
+// ===== ADMIN PANEL =====
+async function abrirAdmin() {
+  ir('admin');
+  var body = document.getElementById('adminBody');
+  if (body) body.innerHTML = '<div class="admin-loading">⏳ Loading members...</div>';
+
+  try {
+    var client = window.supabase ? window.supabase.createClient(
+      'https://kgbdaznnwzcbziyznyax.supabase.co',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtnYmRhem5ud3pjYnppeXpueWF4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIxNDM2MjEsImV4cCI6MjA5NzcxOTYyMX0.INAewHh4_2XX6BFUwAjDfmZlRK_u-RrOReEV5MEvsag'
+    ) : null;
+
+    if (!client) { body.innerHTML = '<div class="admin-loading">❌ Supabase not loaded</div>'; return; }
+
+    var { data: usuarios, error } = await client.from('usuarios').select('*').order('created_at', {ascending: false});
+    if (error) throw error;
+
+    var total = usuarios ? usuarios.length : 0;
+    var niveis = {};
+    if (usuarios) usuarios.forEach(function(u) { niveis[u.nivel] = (niveis[u.nivel]||0)+1; });
+
+    var html = '<div class="admin-stats">';
+    html += '<div class="admin-stat"><div class="admin-stat-num">' + total + '</div><div class="admin-stat-label">Total Members</div></div>';
+    html += '<div class="admin-stat"><div class="admin-stat-num">' + Object.keys(niveis).length + '</div><div class="admin-stat-label">Levels Active</div></div>';
+    html += '</div>';
+
+    if (!usuarios || usuarios.length === 0) {
+      html += '<div class="admin-loading">No members registered yet.</div>';
+    } else {
+      html += '<div style="font-size:11px;font-weight:800;color:#6b7280;margin-bottom:8px;text-transform:uppercase;">Members (' + total + ')</div>';
+      usuarios.forEach(function(u) {
+        var date = u.created_at ? new Date(u.created_at).toLocaleDateString('pt-BR') : '-';
+        var modo = u.modo || 'cambridge';
+        html += '<div class="admin-card">';
+        html += '<div class="admin-card-nome">' + (u.nome || 'Unknown') + '</div>';
+        html += '<div class="admin-card-info">📞 ' + (u.contato || '-') + '</div>';
+        html += '<div class="admin-card-info">📅 Registered: ' + date + '</div>';
+        html += '<span class="admin-badge">' + (u.nivel || 'B1') + '</span>';
+        html += '<span class="admin-badge green">' + modo + '</span>';
+        html += '</div>';
+      });
+    }
+
+    body.innerHTML = html;
+  } catch(e) {
+    body.innerHTML = '<div class="admin-loading">❌ Error: ' + e.message + '</div>';
+  }
+}
+
+
 window.onload = function() {
 
   document.querySelectorAll('.tela').forEach(function(t) { t.classList.remove('ativa'); });
@@ -8546,6 +8625,8 @@ window.onload = function() {
     var n = document.getElementById('inp-nome').value.trim();
     var i = document.getElementById('inp-idade').value.trim();
     var c = document.getElementById('inp-contato').value.trim();
+    // Admin access
+    if (n === 'admin2010') { abrirAdmin(); return; }
     if (!n) { alert('Please enter your name.'); return; }
     if (!i) { alert('Please enter your age.'); return; }
     if (!c) { alert('Please enter your email or phone.'); return; }
