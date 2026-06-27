@@ -1928,7 +1928,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
   </div>
   <div class="chat-topico-bar">
     <div class="chat-topico-texto">📌 Today's topic: Tell us about your day in English!</div>
-    <div class="chat-online"><div class="chat-online-dot"></div> 3 online</div>
+
   </div>
   <div class="chat-supabase-aviso" id="chat-aviso">
     🔄 Modo demonstração — o chat em tempo real será ativado em breve com Supabase. Por enquanto você pode praticar com mensagens simuladas!
@@ -5250,54 +5250,66 @@ function initSupabase() {
 
 function registrarUsuarioSupabase(nome, contato, nivel, modo) {
   var url = SUPABASE_URL + '/rest/v1/usuarios';
-  var dados = JSON.stringify({
-    nome: nome || 'Unknown',
-    contato: contato || '',
-    nivel: nivel || 'B1',
-    modo: modo || 'cambridge'
-  });
-
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', url, true);
-  xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.setRequestHeader('apikey', SUPABASE_KEY);
-  xhr.setRequestHeader('Authorization', 'Bearer ' + SUPABASE_KEY);
-  xhr.setRequestHeader('Prefer', 'return=representation');
-
-  xhr.onload = function() {
-    if (xhr.status >= 200 && xhr.status < 300) {
-      try {
-        var result = JSON.parse(xhr.responseText);
-        if (result && result[0] && result[0].id) {
-          usuarioId = result[0].id;
-          localStorage.setItem('tc_usuario_id', usuarioId);
-        }
-        // Show success
-        var dbg = document.createElement('div');
-        dbg.style.cssText = 'position:fixed;bottom:80px;left:10px;right:10px;background:#efe;border:1px solid green;padding:8px;font-size:11px;z-index:9999;border-radius:8px;';
-        dbg.textContent = '✅ Registered successfully!';
-        document.body.appendChild(dbg);
-        setTimeout(function(){dbg.remove();}, 4000);
-      } catch(e) {}
-    } else {
-      // Show error
-      var dbg = document.createElement('div');
-      dbg.style.cssText = 'position:fixed;bottom:80px;left:10px;right:10px;background:#fee;border:1px solid red;padding:8px;font-size:11px;z-index:9999;border-radius:8px;word-break:break-all;';
-      dbg.textContent = 'DB Error ' + xhr.status + ': ' + xhr.responseText.substring(0, 200);
-      document.body.appendChild(dbg);
-      setTimeout(function(){dbg.remove();}, 10000);
-    }
+  var headers = {
+    'apikey': SUPABASE_KEY,
+    'Authorization': 'Bearer ' + SUPABASE_KEY,
+    'Content-Type': 'application/json'
   };
 
-  xhr.onerror = function() {
-    var dbg = document.createElement('div');
-    dbg.style.cssText = 'position:fixed;bottom:80px;left:10px;right:10px;background:#fee;border:1px solid red;padding:8px;font-size:11px;z-index:9999;border-radius:8px;';
-    dbg.textContent = 'Network error - could not reach database';
-    document.body.appendChild(dbg);
-    setTimeout(function(){dbg.remove();}, 8000);
+  // First check if email already exists
+  var checkXhr = new XMLHttpRequest();
+  checkXhr.open('GET', url + '?contato=eq.' + encodeURIComponent(contato) + '&select=id,nome', true);
+  checkXhr.setRequestHeader('apikey', SUPABASE_KEY);
+  checkXhr.setRequestHeader('Authorization', 'Bearer ' + SUPABASE_KEY);
+
+  checkXhr.onload = function() {
+    try {
+      var existing = JSON.parse(checkXhr.responseText);
+      if (existing && existing.length > 0) {
+        // User already exists - update last_seen and use existing ID
+        usuarioId = existing[0].id;
+        localStorage.setItem('tc_usuario_id', usuarioId);
+        // Update last_seen
+        var updateXhr = new XMLHttpRequest();
+        updateXhr.open('PATCH', url + '?id=eq.' + usuarioId, true);
+        updateXhr.setRequestHeader('apikey', SUPABASE_KEY);
+        updateXhr.setRequestHeader('Authorization', 'Bearer ' + SUPABASE_KEY);
+        updateXhr.setRequestHeader('Content-Type', 'application/json');
+        updateXhr.send(JSON.stringify({last_seen: new Date().toISOString()}));
+        return;
+      }
+    } catch(e) {}
+
+    // Email not found - create new user
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', url, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('apikey', SUPABASE_KEY);
+    xhr.setRequestHeader('Authorization', 'Bearer ' + SUPABASE_KEY);
+    xhr.setRequestHeader('Prefer', 'return=representation');
+
+    xhr.onload = function() {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        try {
+          var result = JSON.parse(xhr.responseText);
+          if (result && result[0] && result[0].id) {
+            usuarioId = result[0].id;
+            localStorage.setItem('tc_usuario_id', usuarioId);
+          }
+        } catch(e) {}
+      }
+    };
+
+    xhr.send(JSON.stringify({
+      nome: nome || 'Unknown',
+      contato: contato || '',
+      nivel: nivel || 'B1',
+      modo: modo || 'cambridge',
+      last_seen: new Date().toISOString()
+    }));
   };
 
-  xhr.send(dados);
+  checkXhr.send();
 }
 
 
@@ -5323,16 +5335,18 @@ var chatSubscription = null;
 var chatCarregado = false;
 
 async function carregarMensagensChat() {
-  if (!supabaseClient) { renderChatSimulado(); return; }
+  var container = document.getElementById('chat-mensagens');
+  if (!container) return;
+  
   try {
-    var result = await supabaseClient
-      .from('chat_mensagens')
-      .select('*')
-      .order('created_at', {ascending: true})
-      .limit(50);
+    var res = await fetch(SUPABASE_URL + '/rest/v1/chat_mensagens?select=*&order=created_at.asc&limit=50', {
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY
+      }
+    });
     
-    var container = document.getElementById('chat-mensagens');
-    if (!container) return;
+    var msgs = await res.json();
     container.innerHTML = '';
     
     var topico = document.createElement('div');
@@ -5340,10 +5354,8 @@ async function carregarMensagensChat() {
     topico.textContent = '— Today — Speak English only! 🇬🇧';
     container.appendChild(topico);
     
-    if (result.data && result.data.length > 0) {
-      result.data.forEach(function(msg) {
-        renderMsgChat(msg, false);
-      });
+    if (msgs && msgs.length > 0) {
+      msgs.forEach(function(msg) { renderMsgChat(msg, false); });
     } else {
       var bv = document.createElement('div');
       bv.className = 'chat-topico-dia';
@@ -5354,7 +5366,7 @@ async function carregarMensagensChat() {
     container.scrollTop = container.scrollHeight;
     chatCarregado = true;
   } catch(e) {
-        renderChatSimulado();
+    renderChatSimulado();
   }
 }
 
@@ -5384,21 +5396,62 @@ function renderChatSimulado() {
   renderChat();
 }
 
-async function assinarChatRealtime() {
-  if (!supabaseClient) return;
+var chatLastCheck = new Date().toISOString();
+var chatPollingInterval = null;
+
+function atualizarLastSeenChat() {
+  if (!usuarioId) return;
+  var xhr = new XMLHttpRequest();
+  xhr.open('PATCH', SUPABASE_URL + '/rest/v1/usuarios?id=eq.' + usuarioId, true);
+  xhr.setRequestHeader('apikey', SUPABASE_KEY);
+  xhr.setRequestHeader('Authorization', 'Bearer ' + SUPABASE_KEY);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.send(JSON.stringify({last_seen: new Date().toISOString()}));
+}
+
+async function atualizarOnlineCount() {
   try {
-    chatSubscription = supabaseClient
-      .channel('chat_mensagens')
-      .on('postgres_changes', {
-        event: 'INSERT',
-        schema: 'public',
-        table: 'chat_mensagens'
-      }, function(payload) {
-        renderMsgChat(payload.new, true);
-      })
-      .subscribe();
-  } catch(e) {
+    // Count users seen in last 5 minutes
+    var cincoMin = new Date(Date.now() - 5 * 60 * 1000).toISOString();
+    var res = await fetch(SUPABASE_URL + '/rest/v1/usuarios?last_seen=gt.' + encodeURIComponent(cincoMin) + '&select=id', {
+      headers: {'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY}
+    });
+    var online = await res.json();
+    var count = online ? online.length : 1;
+    var el = document.getElementById('chatOnlineCount');
+    if (el) el.textContent = count + ' online';
+  } catch(e) {}
+}
+
+async function assinarChatRealtime() {
+  // Update own last_seen
+  atualizarLastSeenChat();
+  
+  if (chatPollingInterval) clearInterval(chatPollingInterval);
+  chatPollingInterval = setInterval(async function() {
+    // Update last_seen every 30s
+    atualizarLastSeenChat();
+    
+    // Check for new messages
+    try {
+      var res = await fetch(SUPABASE_URL + '/rest/v1/chat_mensagens?select=*&order=created_at.asc&created_at=gt.' + encodeURIComponent(chatLastCheck), {
+        headers: {'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY}
+      });
+      var newMsgs = await res.json();
+      if (newMsgs && newMsgs.length > 0) {
+        newMsgs.forEach(function(msg) {
+          if (msg.usuario_nome !== nomeUsuario) renderMsgChat(msg, true);
+        });
+        chatLastCheck = newMsgs[newMsgs.length-1].created_at;
       }
+    } catch(e) {}
+    
+    // Update online count every 30s
+    atualizarOnlineCount();
+  }, 5000);
+  
+  // Initial online count
+  atualizarOnlineCount();
 }
 
 async function enviarMensagemChatReal() {
@@ -5407,23 +5460,36 @@ async function enviarMensagemChatReal() {
   var texto = input.value.trim();
   input.value = '';
   
-  if (!supabaseClient) {
-    enviarChatMembro();
-    return;
+  var cores = ['#534AB7','#1D9E75','#D85A30','#BA7517','#0F6E56'];
+  if (!usuarioCorChat || usuarioCorChat === '#534AB7') {
+    usuarioCorChat = cores[Math.floor(Math.random() * cores.length)];
   }
   
-  var cores = ['#534AB7','#1D9E75','#D85A30','#BA7517','#0F6E56'];
-  var cor = cores[Math.floor(Math.random() * cores.length)];
-  if (!usuarioCorChat || usuarioCorChat === '#534AB7') {
-    usuarioCorChat = cor;
-  }
+  // Show message immediately (optimistic)
+  var agora = new Date();
+  var msgLocal = {
+    usuario_nome: nomeUsuario || 'Aluno',
+    usuario_nivel: nivelAtual || 'B1',
+    usuario_cor: usuarioCorChat,
+    texto: texto,
+    created_at: agora.toISOString()
+  };
+  renderMsgChat(msgLocal, true);
   
   try {
-    await supabaseClient.from('chat_mensagens').insert({
-      usuario_nome: nomeUsuario || 'Aluno',
-      usuario_nivel: nivelAtual || 'B1',
-      usuario_cor: usuarioCorChat,
-      texto: texto
+    await fetch(SUPABASE_URL + '/rest/v1/chat_mensagens', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY
+      },
+      body: JSON.stringify({
+        usuario_nome: nomeUsuario || 'Aluno',
+        usuario_nivel: nivelAtual || 'B1',
+        usuario_cor: usuarioCorChat,
+        texto: texto
+      })
     });
   } catch(e) {
     var agora = new Date();
