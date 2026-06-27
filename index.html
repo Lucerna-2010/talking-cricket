@@ -1185,6 +1185,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
       <span style="font-size:22px;color:#1D9E75">→</span>
     </button>
     <p class="modo-nota">You can change mode anytime in settings.</p>
+    <button onclick="fazerLogout()" style="width:100%;padding:12px;border-radius:12px;border:1.5px solid #FECACA;background:#FEF2F2;color:#DC2626;font-family:Nunito,Arial,sans-serif;font-size:14px;font-weight:800;cursor:pointer;margin-top:8px;">Sign out</button>
   </div>
 </div>
 
@@ -5248,57 +5249,73 @@ function initSupabase() {
   }
 }
 
-async function registrarUsuarioSupabase(nome, contato, nivel, modo) {
-  if (!supabaseClient) {
-    console.error('Supabase: client not initialized');
-    return null;
-  }
-  try {
-    var existing = await supabaseClient
-      .from('usuarios')
-      .select('id')
-      .eq('contato', contato)
-      .single();
-    
-    if (existing.data) {
-      usuarioId = existing.data.id;
-      await supabaseClient.from('usuarios').update({last_seen: new Date().toISOString()}).eq('id', usuarioId);
-      console.log('Supabase: user updated', usuarioId);
-      return usuarioId;
+function registrarUsuarioSupabase(nome, contato, nivel, modo) {
+  var url = SUPABASE_URL + '/rest/v1/usuarios';
+  var dados = JSON.stringify({
+    nome: nome || 'Unknown',
+    contato: contato || '',
+    nivel: nivel || 'B1',
+    modo: modo || 'cambridge',
+    seeds: 0
+  });
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', url, true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.setRequestHeader('apikey', SUPABASE_KEY);
+  xhr.setRequestHeader('Authorization', 'Bearer ' + SUPABASE_KEY);
+  xhr.setRequestHeader('Prefer', 'return=representation');
+
+  xhr.onload = function() {
+    if (xhr.status >= 200 && xhr.status < 300) {
+      try {
+        var result = JSON.parse(xhr.responseText);
+        if (result && result[0] && result[0].id) {
+          usuarioId = result[0].id;
+          localStorage.setItem('tc_usuario_id', usuarioId);
+        }
+        // Show success
+        var dbg = document.createElement('div');
+        dbg.style.cssText = 'position:fixed;bottom:80px;left:10px;right:10px;background:#efe;border:1px solid green;padding:8px;font-size:11px;z-index:9999;border-radius:8px;';
+        dbg.textContent = '✅ Registered successfully!';
+        document.body.appendChild(dbg);
+        setTimeout(function(){dbg.remove();}, 4000);
+      } catch(e) {}
+    } else {
+      // Show error
+      var dbg = document.createElement('div');
+      dbg.style.cssText = 'position:fixed;bottom:80px;left:10px;right:10px;background:#fee;border:1px solid red;padding:8px;font-size:11px;z-index:9999;border-radius:8px;word-break:break-all;';
+      dbg.textContent = 'DB Error ' + xhr.status + ': ' + xhr.responseText.substring(0, 200);
+      document.body.appendChild(dbg);
+      setTimeout(function(){dbg.remove();}, 10000);
     }
-    
-    var result = await supabaseClient.from('usuarios').insert({
-      nome: nome,
-      contato: contato || '',
-      nivel: nivel || 'B1',
-      modo: modo || 'cambridge',
-      seeds: 0
-    }).select('id').single();
-    
-    if (result.error) {
-      console.error('Supabase insert error:', JSON.stringify(result.error));
-      return null;
-    }
-    
-    if (result.data) {
-      usuarioId = result.data.id;
-      console.log('Supabase: user registered', usuarioId);
-    }
-    return usuarioId;
-  } catch(e) {
-        return null;
-  }
+  };
+
+  xhr.onerror = function() {
+    var dbg = document.createElement('div');
+    dbg.style.cssText = 'position:fixed;bottom:80px;left:10px;right:10px;background:#fee;border:1px solid red;padding:8px;font-size:11px;z-index:9999;border-radius:8px;';
+    dbg.textContent = 'Network error - could not reach database';
+    document.body.appendChild(dbg);
+    setTimeout(function(){dbg.remove();}, 8000);
+  };
+
+  xhr.send(dados);
 }
+
 
 async function registrarAtividadeSupabase(tipo, titulo, nivel, nota) {
   if (!supabaseClient || !usuarioId) return;
   try {
-    await supabaseClient.from('progresso').insert({
+    await fetch(url, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify({
       usuario_id: usuarioId,
       tipo: tipo,
       titulo: titulo,
       nivel: nivel || nivelAtual,
       nota: nota || null
+      })
     });
   } catch(e) {}
 }
@@ -8650,6 +8667,23 @@ async function abrirAdmin() {
   } catch(e) {
     body.innerHTML = '<div class="admin-loading">❌ Error: ' + e.message + '</div>';
   }
+}
+
+
+
+function fazerLogout() {
+  pararTodoAudio();
+  try {
+    localStorage.removeItem('tc_loggedin');
+    localStorage.removeItem('tc_nome');
+    localStorage.removeItem('tc_nivel');
+    localStorage.removeItem('tc_nivel_nome');
+    localStorage.removeItem('tc_modo');
+  } catch(e) {}
+  nomeUsuario = '';
+  nivelAtual = 'B1';
+  usuarioId = null;
+  ir('splash');
 }
 
 
