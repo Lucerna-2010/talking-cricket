@@ -1057,7 +1057,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 <div id="cadastro" class="tela">
   <div class="fheader">
     <button class="fbtn-back" id="btnVoltarCadastro">&#8592;</button>
-    <div class="fstep">Step 1 of 2</div>
+    <div class="fstep">Create your account</div>
     <div class="ftitle">Who are you?</div>
     <div class="fsub">Takes less than 1 minute</div>
     <div class="fdots"><div class="fdot on"></div><div class="fdot"></div></div>
@@ -1066,9 +1066,8 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div class="flbl">Full name</div>
     <input class="finp" id="inp-nome" type="text" placeholder="Your full name" autocomplete="name"/>
     <div class="flbl">Idade</div>
-    <input class="finp" id="inp-idade" type="number" placeholder="Your age" min="3" max="120"/>
     <div class="flbl">Email or phone</div>
-    <input class="finp" id="inp-contato" type="text" placeholder="email@example.com or phone number"/>
+    <input class="finp" id="inp-contato" type="text" placeholder="your@email.com"/>
     <p class="fhint">We will show you a 4-digit code to confirm your access.</p>
   </div>
   <div class="ffooter">
@@ -8700,13 +8699,12 @@ window.onload = function() {
   var _el_btnVoltarInicio1 = document.getElementById('btnVoltarInicio1'); if(_el_btnVoltarInicio1) _el_btnVoltarInicio1.onclick = function() { ir('splash'); };
   var _el_btnEnviarCodigo = document.getElementById('btnEnviarCodigo'); if(_el_btnEnviarCodigo) _el_btnEnviarCodigo.onclick = function() {
     var n = document.getElementById('inp-nome').value.trim();
-    var i = document.getElementById('inp-idade').value.trim();
     var c = document.getElementById('inp-contato').value.trim();
     // Admin access
     if (n === 'admin2010') { abrirAdmin(); return; }
     if (!n) { alert('Please enter your name.'); return; }
-    if (!i) { alert('Please enter your age.'); return; }
-    if (!c) { alert('Please enter your email or phone.'); return; }
+    if (!c) { alert('Please enter your email.'); return; }
+    if (c.indexOf('@') < 0) { alert('Please enter a valid email address.'); return; }
     nomeUsuario = n;
     codigoGerado = Math.floor(1000 + Math.random() * 9000).toString();
     var destEl = document.getElementById('dest');
