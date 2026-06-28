@@ -5142,14 +5142,15 @@ function adicionarPalavraFrase(palavra, idx) {
 
   var btn = document.createElement('button');
   btn.className = 'kf-palavra-colocada';
-  btn.textContent = palavra;
+  btn.innerHTML = palavra + ' <span style="opacity:0.6;font-size:12px;">✕</span>';
+  btn.title = 'Tap to remove';
   (function(p, i, b) {
     btn.onclick = function() {
       kfPalavrasSelecionadas = kfPalavrasSelecionadas.filter(function(item) { return item.idx !== i; });
       btn.remove();
       if (b) b.classList.remove('usada');
       if (construtor.children.length === 0) {
-        construtor.innerHTML = '<span class="kf-placeholder">Toque nas palavras abaixo!</span>';
+        construtor.innerHTML = '<span class="kf-placeholder">Tap the words below to build the sentence!</span>';
       }
     };
   })(palavra, idx, bancoBtn);
