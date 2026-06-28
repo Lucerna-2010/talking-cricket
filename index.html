@@ -1507,6 +1507,9 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
       <button class="audio-acao repeat" id="btnRevelarTranscricao" style="display:none;">
         <i class="ti ti-eye" style="font-size:15px"></i> Reveal transcript
       </button>
+      <button class="audio-acao repeat" id="btnTraducaoListening" onclick="toggleTraducaoListening()">
+        🇧🇷 PT
+      </button>
     </div>
 
     <!-- Transcrição OCULTA — só aparece após o quiz -->
@@ -2205,7 +2208,6 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div class="ksr-titulo" id="ksrTitulo">Story</div>
     <div class="ksr-controls">
       <button class="ksr-btn play" id="ksrPlayBtn">▶ Play</button>
-      <button class="ksr-btn" id="ksrAutoBtn">Auto: OFF</button>
       <button class="ksr-btn" id="ksrPTBtn">🇧🇷 PT</button>
     </div>
   </div>
@@ -6487,6 +6489,8 @@ function abrirStories() {
   ir('kids-stories');
 }
 
+var ksrAudio = null;
+
 function abrirStoryReader(story) {
   ksrHistoriaAtual = story;
   ksrPaginaAtual = 0;
@@ -6494,12 +6498,12 @@ function abrirStoryReader(story) {
   ksrMostrarPT = false;
   ksrNarrando = false;
   if (ksrAutoTimer) clearTimeout(ksrAutoTimer);
+  // Stop any playing audio
+  if (ksrAudio) { ksrAudio.pause(); ksrAudio.currentTime = 0; ksrAudio = null; }
+  try { window.speechSynthesis && window.speechSynthesis.cancel(); } catch(e) {}
   
   var titulo = document.getElementById('ksrTitulo');
   if (titulo) titulo.textContent = story.emoji + ' ' + story.titulo;
-  
-  var autoBtn = document.getElementById('ksrAutoBtn');
-  if (autoBtn) autoBtn.textContent = 'Auto: OFF';
   
   renderStoryPaginas();
   ir('kids-story-reader');
@@ -6545,22 +6549,43 @@ function renderStoryPaginas() {
 
 function narrarPaginaAtual() {
   if (!ksrHistoriaAtual) return;
-  var pag = ksrHistoriaAtual.paginas[ksrPaginaAtual];
-  if (!pag) return;
-  
-  ksrNarrando = true;
   var playBtn = document.getElementById('ksrPlayBtn');
-  if (playBtn) playBtn.textContent = '⏸ Pause';
-  
-  falarEN(pag.en, {
-    rate: 0.85,
-    onend: function() {
-      ksrNarrando = false;
-      if (playBtn) playBtn.textContent = '▶ Play';
-      if (ksrAutoPlay) {
-        ksrAutoTimer = setTimeout(function() { avancarStory(); }, 1000);
-      }
-    }
+
+  // If already playing, stop
+  if (ksrAudio && !ksrAudio.paused) {
+    ksrAudio.pause();
+    ksrAudio.currentTime = 0;
+    ksrAudio = null;
+    ksrNarrando = false;
+    if (playBtn) playBtn.textContent = '▶ Play';
+    return;
+  }
+
+  // Build MP3 URL - story id is 1-10, padded to 2 digits
+  var storyNum = String(ksrHistoriaAtual.id).padStart(2, '0');
+  var mp3Url = 'https://lucerna-2010.github.io/talking-cricket/audio/story-' + storyNum + '.mp3';
+
+  ksrAudio = new Audio(mp3Url);
+  ksrNarrando = true;
+  if (playBtn) playBtn.textContent = '⏸ Stop';
+
+  ksrAudio.onended = function() {
+    ksrNarrando = false;
+    ksrAudio = null;
+    if (playBtn) playBtn.textContent = '▶ Play';
+  };
+
+  ksrAudio.onerror = function() {
+    // Fallback to TTS if MP3 not found
+    ksrAudio = null;
+    ksrNarrando = false;
+    if (playBtn) playBtn.textContent = '▶ Play';
+  };
+
+  ksrAudio.play().catch(function() {
+    ksrAudio = null;
+    ksrNarrando = false;
+    if (playBtn) playBtn.textContent = '▶ Play';
   });
 }
 
@@ -7261,6 +7286,30 @@ function mostrarTranscricaoPT() {
   if (btn2) { btn2.style.background = '#1D9E75'; btn2.style.color = '#fff'; }
 }
 
+function toggleTraducaoListening() {
+  var box = document.getElementById('traducao-listening-box');
+  if (!box) {
+    // Create translation box
+    box = document.createElement('div');
+    box.id = 'traducao-listening-box';
+    box.style.cssText = 'background:#E1F5EE;border-radius:14px;padding:14px;margin-top:10px;font-size:13px;color:#085041;line-height:1.6;';
+    var texto = listeningAtual ? (listeningAtual.traducao || listeningAtual.pt || '') : '';
+    if (!texto) {
+      box.textContent = 'Tradução não disponível para este áudio.';
+    } else {
+      box.innerHTML = '<div style="font-size:11px;font-weight:800;color:#085041;margin-bottom:6px;text-transform:uppercase;">🇧🇷 Tradução</div>' + texto;
+    }
+    var container = document.getElementById('audicao');
+    if (container) container.appendChild(box);
+    document.getElementById('btnTraducaoListening').style.background = '#1D9E75';
+    document.getElementById('btnTraducaoListening').style.color = '#fff';
+  } else {
+    box.remove();
+    document.getElementById('btnTraducaoListening').style.background = '';
+    document.getElementById('btnTraducaoListening').style.color = '';
+  }
+}
+
 function revelarTranscricao() {
   var box = document.getElementById('transcricao-box-listening');
   if (!box || !textoSelecionado) return;
@@ -7630,6 +7679,11 @@ function selecionarAudioIdx(i) {
 
 function selecionarAudio(audio) {
   listeningAtual = audio;
+  // Clear translation box if open
+  var tbox = document.getElementById('traducao-listening-box');
+  if (tbox) { tbox.remove(); }
+  var ptBtn = document.getElementById('btnTraducaoListening');
+  if (ptBtn) { ptBtn.style.background = ''; ptBtn.style.color = ''; }
   var titulo = document.getElementById('atitulo');
   var audioTitulo = document.getElementById('audio-titulo');
   var badge = document.getElementById('abadge');
@@ -9328,6 +9382,8 @@ window.onload = function() {
 
   var btnVoltarReader = document.getElementById('btnVoltarReader');
   if (btnVoltarReader) btnVoltarReader.onclick = function() {
+    if (ksrAudio) { ksrAudio.pause(); ksrAudio.currentTime = 0; ksrAudio = null; }
+    try { window.speechSynthesis && window.speechSynthesis.cancel(); } catch(e) {}
     window.speechSynthesis && window.speechSynthesis.cancel();
     if (ksrAutoTimer) clearTimeout(ksrAutoTimer);
     ir('kids-stories');
