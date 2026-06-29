@@ -8805,6 +8805,18 @@ function responderPt(idx) {
 
 function mostrarResultadoNivelamento() {
   if (ptTimerInterval) { clearInterval(ptTimerInterval); ptTimerInterval = null; }
+  // Mark as tested and save level to Supabase
+  try { localStorage.setItem('tc_nivelou_' + nomeUsuario, '1'); } catch(e) {}
+  // Update level in Supabase if user is registered
+  var savedId = localStorage.getItem('tc_usuario_id');
+  if (savedId && nivelFinal) {
+    var xhrNivel = new XMLHttpRequest();
+    xhrNivel.open('PATCH', SUPABASE_URL + '/rest/v1/usuarios?id=eq.' + savedId, true);
+    xhrNivel.setRequestHeader('apikey', SUPABASE_KEY);
+    xhrNivel.setRequestHeader('Authorization', 'Bearer ' + SUPABASE_KEY);
+    xhrNivel.setRequestHeader('Content-Type', 'application/json');
+    xhrNivel.send(JSON.stringify({nivel: nivelFinal}));
+  }
   var scores = {A1:0,A2:0,B1:0,B2:0,C1:0,C2:0};
   var totais = {A1:0,A2:0,B1:0,B2:0,C1:0,C2:0};
   ptRespostas.forEach(function(r) { totais[r.nivel]++; if(r.correta) scores[r.nivel]++; });
@@ -9370,6 +9382,21 @@ function renderTools() {
 }
 
 
+
+function mostrarConviteNivelamento() {
+  ir('convite-nivelamento');
+}
+
+
+
+function pularNivelamento() {
+  // User skips test — no level set
+  try { localStorage.setItem('tc_nivelou_' + nomeUsuario, 'skip'); } catch(e) {}
+  nivelAtual = '';
+  ir('modo');
+}
+
+
 window.onload = function() {
 
   document.querySelectorAll('.tela').forEach(function(t) { t.classList.remove('ativa'); });
@@ -9435,7 +9462,13 @@ window.onload = function() {
       document.getElementById('hcnome').textContent = pn;
       document.getElementById('hknome').textContent = pn;
       document.getElementById('pnome').textContent = nomeUsuario || pn;
-      ir('modo');
+      // New user: go to placement test first
+      var jaNivelou = localStorage.getItem('tc_nivelou_' + nomeUsuario);
+      if (!jaNivelou) {
+        mostrarConviteNivelamento();
+      } else {
+        ir('modo');
+      }
     } else { alert('Wrong code. Use: 7429'); }
   };
 
