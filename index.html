@@ -102,6 +102,8 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 .mc-cambridge .mc-titulo{color:#26215C;}
 .mc-placement{background:linear-gradient(135deg,#1a1a2e,#2d2b6b);border:2px solid #534AB7;}
 .mc-tutorial{background:linear-gradient(135deg,#0F6E56,#1D9E75);border:2px solid #1D9E75;}
+.kp-dia{padding:8px 10px;border-radius:10px;border:2px solid #E5E3F5;background:#F8F9FA;font-family:Nunito,Arial,sans-serif;font-size:12px;font-weight:800;cursor:pointer;color:#6b7280;}
+.kp-dia.ativo{background:#1D9E75;color:#fff;border-color:#1D9E75;}
 .admin-header{background:linear-gradient(135deg,#1a1a2e,#2d2b6b);padding:32px 20px 20px;text-align:center;}
 .admin-titulo{font-size:20px;font-weight:800;color:#fff;margin-bottom:4px;}
 .admin-sub{font-size:12px;color:#B8B5E8;}
@@ -1308,7 +1310,78 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div class="nitem knitem on" id="knavHome" onclick="ir('home-kids')"><i class="ti ti-home"></i>Home</div>
     <div class="nitem knitem" id="knavGames" onclick="ir('kids-games')"><i class="ti ti-device-gamepad-2"></i>Games</div>
     <div class="nitem knitem" id="knavStories" onclick="abrirStories()"><i class="ti ti-book"></i>Stories</div>
-    <div class="nitem knitem" id="knavPerfil" onclick="voltarHome()"><i class="ti ti-user"></i>Profile</div>
+    <div class="nitem knitem" id="knavPerfil" onclick="ir('kids-profile')"><i class="ti ti-user"></i>Profile</div>
+  </nav>
+</div>
+
+
+<!-- KIDS PROFILE -->
+<div id="kids-profile" class="tela">
+  <div style="background:linear-gradient(135deg,#1D9E75,#0F6E56);padding:40px 20px 24px;text-align:center;">
+    <div style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,0.2);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:32px;">🦗</div>
+    <div style="font-size:20px;font-weight:800;color:#fff;" id="kpNome">My Profile</div>
+    <div style="font-size:12px;color:#9FE1CB;margin-top:4px;" id="kpNivel">Kids Mode</div>
+  </div>
+
+  <div style="padding:16px;overflow-y:auto;flex:1;">
+
+    <!-- Stats -->
+    <div style="display:flex;gap:10px;margin-bottom:16px;">
+      <div style="flex:1;background:#fff;border-radius:14px;padding:14px;text-align:center;border:1px solid #E5E3F5;">
+        <div style="font-size:22px;font-weight:800;color:#1D9E75;" id="kpSeeds">0</div>
+        <div style="font-size:10px;color:#6b7280;font-weight:700;">🌱 Seeds</div>
+      </div>
+      <div style="flex:1;background:#fff;border-radius:14px;padding:14px;text-align:center;border:1px solid #E5E3F5;">
+        <div style="font-size:22px;font-weight:800;color:#1D9E75;" id="kpHistorias">0</div>
+        <div style="font-size:10px;color:#6b7280;font-weight:700;">📚 Stories</div>
+      </div>
+      <div style="flex:1;background:#fff;border-radius:14px;padding:14px;text-align:center;border:1px solid #E5E3F5;">
+        <div style="font-size:22px;font-weight:800;color:#1D9E75;" id="kpStreak">0</div>
+        <div style="font-size:10px;color:#6b7280;font-weight:700;">🔥 Streak</div>
+      </div>
+    </div>
+
+    <!-- Study Plan -->
+    <div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px;border:1px solid #E5E3F5;">
+      <div style="font-size:13px;font-weight:800;color:#1a1a2e;margin-bottom:12px;">📅 Study Plan</div>
+      <div style="font-size:12px;color:#6b7280;margin-bottom:10px;">Which days should your child study?</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;" id="kpDias">
+        <button class="kp-dia" data-dia="Mon" onclick="toggleDiaKids(this)">Mon</button>
+        <button class="kp-dia" data-dia="Tue" onclick="toggleDiaKids(this)">Tue</button>
+        <button class="kp-dia" data-dia="Wed" onclick="toggleDiaKids(this)">Wed</button>
+        <button class="kp-dia" data-dia="Thu" onclick="toggleDiaKids(this)">Thu</button>
+        <button class="kp-dia" data-dia="Fri" onclick="toggleDiaKids(this)">Fri</button>
+        <button class="kp-dia" data-dia="Sat" onclick="toggleDiaKids(this)">Sat</button>
+        <button class="kp-dia" data-dia="Sun" onclick="toggleDiaKids(this)">Sun</button>
+      </div>
+      <div style="font-size:12px;color:#6b7280;margin-bottom:6px;">Daily study time goal</div>
+      <select id="kpTempo" onchange="salvarPlanoKids()" style="width:100%;padding:10px;border-radius:10px;border:1.5px solid #E5E3F5;font-family:Nunito,Arial,sans-serif;font-size:13px;color:#1a1a2e;">
+        <option value="10">10 minutes</option>
+        <option value="15">15 minutes</option>
+        <option value="20" selected>20 minutes</option>
+        <option value="30">30 minutes</option>
+        <option value="45">45 minutes</option>
+      </select>
+    </div>
+
+    <!-- Switch mode -->
+    <div style="background:#fff;border-radius:14px;padding:14px;margin-bottom:12px;border:1px solid #E5E3F5;display:flex;align-items:center;justify-content:space-between;cursor:pointer;" onclick="ir('modo')">
+      <div>
+        <div style="font-size:13px;font-weight:800;color:#1a1a2e;">🎓 Switch to Cambridge Mode</div>
+        <div style="font-size:11px;color:#6b7280;">For older students A1–C2</div>
+      </div>
+      <span style="color:#6b7280;font-size:18px;">›</span>
+    </div>
+
+    <!-- Sign out -->
+    <button onclick="fazerLogout()" style="width:100%;padding:14px;border-radius:14px;border:1.5px solid #FECACA;background:#FEF2F2;color:#DC2626;font-family:Nunito,Arial,sans-serif;font-size:14px;font-weight:800;cursor:pointer;">Sign out</button>
+  </div>
+
+  <nav class="nav">
+    <div class="nitem knitem" onclick="ir('home-kids')"><i class="ti ti-home"></i>Home</div>
+    <div class="nitem knitem" onclick="ir('kids-games')"><i class="ti ti-device-gamepad-2"></i>Games</div>
+    <div class="nitem knitem" onclick="abrirStories()"><i class="ti ti-book"></i>Stories</div>
+    <div class="nitem knitem on"><i class="ti ti-user"></i>Profile</div>
   </nav>
 </div>
 
@@ -8995,6 +9068,59 @@ function fazerLogout() {
   nivelAtual = 'B1';
   usuarioId = null;
   ir('splash');
+}
+
+
+
+function abrirKidsProfile() {
+  // Update profile stats
+  var nome = document.getElementById('kpNome');
+  var nivel = document.getElementById('kpNivel');
+  var seeds = document.getElementById('kpSeeds');
+  var historias = document.getElementById('kpHistorias');
+  var streak = document.getElementById('kpStreak');
+  
+  if (nome) nome.textContent = nomeUsuario || 'My Profile';
+  if (nivel) nivel.textContent = 'Kids Mode · Level ' + (nivelAtual || 'A1');
+  if (seeds) seeds.textContent = seedsTotal || 0;
+  
+  // Load stories read count
+  try {
+    var hist = JSON.parse(localStorage.getItem('tc_historico_' + nomeUsuario) || '[]');
+    var storiesLidas = hist.filter(function(h) { return h.tipo === 'story'; }).length;
+    if (historias) historias.textContent = storiesLidas;
+    var str = parseInt(localStorage.getItem('tc_streak_' + nomeUsuario) || '0');
+    if (streak) streak.textContent = str;
+  } catch(e) {}
+  
+  // Load study plan
+  try {
+    var plano = JSON.parse(localStorage.getItem('tc_plano_kids_' + nomeUsuario) || '{}');
+    var dias = plano.dias || [];
+    document.querySelectorAll('.kp-dia').forEach(function(btn) {
+      if (dias.indexOf(btn.dataset.dia) !== -1) btn.classList.add('ativo');
+      else btn.classList.remove('ativo');
+    });
+    var tempo = document.getElementById('kpTempo');
+    if (tempo && plano.tempo) tempo.value = plano.tempo;
+  } catch(e) {}
+}
+
+function toggleDiaKids(btn) {
+  btn.classList.toggle('ativo');
+  salvarPlanoKids();
+}
+
+function salvarPlanoKids() {
+  try {
+    var dias = [];
+    document.querySelectorAll('.kp-dia.ativo').forEach(function(btn) {
+      dias.push(btn.dataset.dia);
+    });
+    var tempo = document.getElementById('kpTempo');
+    var plano = { dias: dias, tempo: tempo ? tempo.value : '20' };
+    localStorage.setItem('tc_plano_kids_' + nomeUsuario, JSON.stringify(plano));
+  } catch(e) {}
 }
 
 
