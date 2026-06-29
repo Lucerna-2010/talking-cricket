@@ -1217,11 +1217,6 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div class="modo-sub">Account created! How do you want to learn?</div>
   </div>
   <div class="modo-body">
-    <button class="modo-card mc-cidex" id="btnCidex">
-      <div class="mc-icon" style="background:#8B1A1A;">🎖️</div>
-      <div class="mc-info"><div class="mc-titulo">CIDEx</div><div class="mc-sub">Exame de Proficiência Linguística do Exército</div></div>
-      <span style="font-size:22px;color:#C4A35A">→</span>
-    </button>
     <button class="modo-card mc-tutorial" id="btnTutorial">
       <div class="mc-icon">📚</div>
       <div class="mc-info"><div class="mc-titulo">Tutorial</div><div class="mc-sub">Conheça todas as funcionalidades · 2 minutos</div></div>
@@ -1241,6 +1236,11 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
       <div class="mc-icon">🦗</div>
       <div class="mc-info"><div class="mc-titulo">Kids Mode</div><div class="mc-sub">Fun learning with Cricket for children aged 3-10</div></div>
       <span style="font-size:22px;color:#1D9E75">→</span>
+    </button>
+    <button class="modo-card mc-cidex" id="btnCidex" onclick="abrirCidex()">
+      <div class="mc-icon" style="background:#8B1A1A;">🎖️</div>
+      <div class="mc-info"><div class="mc-titulo">CIDEx</div><div class="mc-sub">Exame de Proficiência Linguística do Exército</div></div>
+      <span style="font-size:22px;color:#C4A35A">→</span>
     </button>
     <p class="modo-nota">You can change mode anytime in settings.</p>
     <button onclick="fazerLogout()" style="width:100%;padding:12px;border-radius:12px;border:1.5px solid #FECACA;background:#FEF2F2;color:#DC2626;font-family:Nunito,Arial,sans-serif;font-size:14px;font-weight:800;cursor:pointer;margin-top:8px;">Sign out</button>
