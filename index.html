@@ -102,6 +102,78 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 .mc-cambridge .mc-titulo{color:#26215C;}
 .mc-placement{background:linear-gradient(135deg,#1a1a2e,#2d2b6b);border:2px solid #534AB7;}
 .mc-tutorial{background:linear-gradient(135deg,#0F6E56,#1D9E75);border:2px solid #1D9E75;}
+.mc-cidex{background:linear-gradient(135deg,#1a0a0a,#3d1010);border:2px solid #8B1A1A;}
+.mc-cidex .mc-titulo{color:#C4A35A;font-size:16px;}
+.mc-cidex .mc-sub{color:#c4a35a99;}
+.cidex-header{background:linear-gradient(135deg,#1a0a0a,#3d1010);padding:40px 20px 24px;text-align:center;position:relative;}
+.cidex-titulo{font-size:22px;font-weight:800;color:#C4A35A;margin-bottom:4px;letter-spacing:1px;}
+.cidex-sub{font-size:12px;color:#c4a35a99;letter-spacing:2px;text-transform:uppercase;}
+.cidex-placar{background:rgba(196,163,90,0.1);border:1px solid #C4A35A33;border-radius:16px;padding:16px;margin:16px;text-align:center;}
+.cidex-placar-num{font-size:32px;font-weight:800;color:#C4A35A;letter-spacing:6px;font-family:monospace;}
+.cidex-placar-label{font-size:10px;color:#c4a35a88;text-transform:uppercase;letter-spacing:2px;margin-top:4px;}
+.cidex-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px;}
+.cidex-card{background:#fff;border-radius:16px;padding:16px;border:1px solid #E5E3F5;cursor:pointer;transition:all .2s;}
+.cidex-card:active{transform:scale(0.97);}
+.cidex-card-icon{font-size:28px;margin-bottom:8px;}
+.cidex-card-nome{font-size:13px;font-weight:800;color:#1a1a2e;margin-bottom:4px;}
+.cidex-card-nivel{font-size:11px;color:#6b7280;}
+.cidex-card-resultado{font-size:18px;font-weight:800;color:#8B1A1A;margin-top:6px;}
+.cidex-sel-header{background:linear-gradient(135deg,#1a0a0a,#3d1010);padding:32px 20px 20px;text-align:center;}
+.cidex-nivel-btn{width:100%;padding:16px;border-radius:14px;border:2px solid #C4A35A33;background:rgba(196,163,90,0.05);color:#C4A35A;font-family:Nunito,Arial,sans-serif;font-size:15px;font-weight:800;cursor:pointer;margin-bottom:10px;text-align:left;display:flex;align-items:center;justify-content:space-between;}
+.cidex-nivel-btn:hover{background:rgba(196,163,90,0.15);border-color:#C4A35A;}
+.cidex-prova-header{background:linear-gradient(135deg,#1a0a0a,#3d1010);padding:20px 16px;display:flex;align-items:center;justify-content:space-between;}
+.cidex-timer{font-size:20px;font-weight:800;color:#C4A35A;font-family:monospace;}
+.cidex-timer.warning{color:#EF9F27;}
+.cidex-timer.danger{color:#EF4444;animation:piscar .5s infinite;}
+.cidex-questao{background:#fff;border-radius:16px;margin:12px 16px;padding:16px;border:1px solid #E5E3F5;}
+.cidex-opcao{width:100%;padding:12px 16px;border-radius:12px;border:2px solid #E5E3F5;background:#fff;font-family:Nunito,Arial,sans-serif;font-size:13px;font-weight:700;cursor:pointer;margin-bottom:8px;text-align:left;color:#1a1a2e;transition:all .15s;}
+.cidex-opcao:hover{border-color:#8B1A1A;background:#fdf5f5;}
+.cidex-opcao.correta{background:#E1F5EE;border-color:#1D9E75;color:#085041;}
+.cidex-opcao.errada{background:#FAECE7;border-color:#D85A30;color:#7a2010;}
+.cidex-resultado-box{background:linear-gradient(135deg,#1a0a0a,#3d1010);border-radius:20px;padding:24px;margin:16px;text-align:center;}
+.cidex-resultado-num{font-size:48px;font-weight:800;color:#C4A35A;font-family:monospace;}
+.cidex-resultado-status{font-size:14px;font-weight:800;margin-top:8px;}
+.cidex-escrita-area{width:100%;min-height:180px;padding:14px;border-radius:12px;border:2px solid #E5E3F5;font-family:Nunito,Arial,sans-serif;font-size:14px;line-height:1.6;color:#1a1a2e;resize:vertical;box-sizing:border-box;}
+.cidex-escrita-area:focus{border-color:#8B1A1A;outline:none;}
+.mc-cidex{background:linear-gradient(135deg,#1a2e1a,#2d4a1e);border:2px solid #4a7c2d;}
+.mc-cidex .mc-titulo{color:#fff;}
+.mc-cidex .mc-sub{color:#9FD87A;}
+.cidex-header{background:linear-gradient(135deg,#1a2e1a,#2d4a1e);padding:36px 20px 24px;text-align:center;position:relative;}
+.cidex-titulo{font-size:22px;font-weight:800;color:#fff;margin-bottom:4px;}
+.cidex-sub{font-size:12px;color:#9FD87A;}
+.cidex-placar{background:rgba(255,255,255,0.1);border-radius:16px;padding:16px;margin:16px;text-align:center;}
+.cidex-placar-num{font-size:36px;font-weight:800;color:#fff;letter-spacing:4px;font-family:monospace;}
+.cidex-placar-label{font-size:10px;color:#9FD87A;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-top:4px;}
+.cidex-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 16px 16px;}
+.cidex-prof-card{background:#fff;border-radius:14px;padding:14px;text-align:center;border:2px solid #E5E3F5;cursor:pointer;transition:all .2s;}
+.cidex-prof-card:hover{border-color:#4a7c2d;transform:scale(1.02);}
+.cidex-prof-icon{font-size:28px;margin-bottom:6px;}
+.cidex-prof-nome{font-size:12px;font-weight:800;color:#1a1a2e;margin-bottom:4px;}
+.cidex-prof-nivel{font-size:20px;font-weight:800;color:#4a7c2d;font-family:monospace;}
+.cidex-prof-sub{font-size:10px;color:#6b7280;}
+.cidex-nivel-sel{padding:16px;background:#F8F9FA;}
+.cidex-nivel-btn{width:100%;padding:14px;border-radius:14px;border:2px solid #E5E3F5;background:#fff;font-family:Nunito,Arial,sans-serif;font-size:14px;font-weight:800;cursor:pointer;margin-bottom:8px;text-align:left;display:flex;align-items:center;gap:12px;}
+.cidex-nivel-btn:hover{border-color:#4a7c2d;background:#F0F7E8;}
+.cidex-prova-header{background:linear-gradient(135deg,#1a2e1a,#2d4a1e);padding:32px 20px 16px;position:relative;}
+.cidex-prova-titulo{font-size:16px;font-weight:800;color:#fff;margin-bottom:4px;}
+.cidex-timer{font-size:28px;font-weight:800;color:#fff;font-family:monospace;letter-spacing:2px;}
+.cidex-timer.warning{color:#EF9F27;}
+.cidex-timer.danger{color:#EF4444;}
+.cidex-progresso{height:4px;background:rgba(255,255,255,0.2);border-radius:2px;margin-top:10px;}
+.cidex-progresso-fill{height:4px;background:#9FD87A;border-radius:2px;transition:width .3s;}
+.cidex-body{padding:16px;flex:1;overflow-y:auto;}
+.cidex-q-num{font-size:11px;font-weight:800;color:#4a7c2d;text-transform:uppercase;margin-bottom:8px;}
+.cidex-q-texto{font-size:15px;font-weight:700;color:#1a1a2e;line-height:1.5;margin-bottom:16px;}
+.cidex-opcao{width:100%;padding:14px 16px;border-radius:12px;border:2px solid #E5E3F5;background:#fff;font-family:Nunito,Arial,sans-serif;font-size:14px;font-weight:600;cursor:pointer;margin-bottom:8px;text-align:left;transition:all .15s;}
+.cidex-opcao:hover{border-color:#4a7c2d;background:#F0F7E8;}
+.cidex-opcao.correta{border-color:#1D9E75;background:#E1F5EE;color:#085041;}
+.cidex-opcao.errada{border-color:#D85A30;background:#FAECE7;color:#7a2010;}
+.cidex-resultado{padding:24px;text-align:center;}
+.cidex-resultado-num{font-size:64px;font-weight:800;font-family:monospace;}
+.cidex-resultado-num.aprovado{color:#1D9E75;}
+.cidex-resultado-num.reprovado{color:#D85A30;}
+.cidex-escrita-area{width:100%;min-height:180px;padding:14px;border-radius:12px;border:2px solid #E5E3F5;font-family:Nunito,Arial,sans-serif;font-size:14px;line-height:1.6;resize:vertical;box-sizing:border-box;}
+.cidex-word-count{font-size:11px;font-weight:700;text-align:right;margin-top:4px;}
 .kp-dia{padding:8px 10px;border-radius:10px;border:2px solid #E5E3F5;background:#F8F9FA;font-family:Nunito,Arial,sans-serif;font-size:12px;font-weight:800;cursor:pointer;color:#6b7280;}
 .kp-dia.ativo{background:#1D9E75;color:#fff;border-color:#1D9E75;}
 .admin-header{background:linear-gradient(135deg,#1a1a2e,#2d2b6b);padding:32px 20px 20px;text-align:center;}
@@ -1165,6 +1237,11 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div class="modo-sub">Account created! How do you want to learn?</div>
   </div>
   <div class="modo-body">
+    <button class="modo-card mc-cidex" id="btnCidex">
+      <div class="mc-icon" style="background:#8B1A1A;">🎖️</div>
+      <div class="mc-info"><div class="mc-titulo">CIDEx</div><div class="mc-sub">Exame de Proficiência Linguística do Exército</div></div>
+      <span style="font-size:22px;color:#C4A35A">→</span>
+    </button>
     <button class="modo-card mc-tutorial" id="btnTutorial">
       <div class="mc-icon">📚</div>
       <div class="mc-info"><div class="mc-titulo">Tutorial</div><div class="mc-sub">Conheça todas as funcionalidades · 2 minutos</div></div>
@@ -1179,6 +1256,11 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
       <div class="mc-icon">🎓</div>
       <div class="mc-info"><div class="mc-titulo">Cambridge Mode</div><div class="mc-sub">A1 → C2 preparation with a personalised study plan</div></div>
       <span style="font-size:22px;color:#534AB7">→</span>
+    </button>
+    <button class="modo-card mc-cidex" id="btnCidex">
+      <div class="mc-icon">🎖️</div>
+      <div class="mc-info"><div class="mc-titulo">CIDEx</div><div class="mc-sub">Exame de Proficiência Linguística · Exército Brasileiro</div></div>
+      <span style="font-size:22px;color:#9FD87A">→</span>
     </button>
     <button class="modo-card mc-kids" id="btnKids">
       <div class="mc-icon">🦗</div>
@@ -9471,6 +9553,487 @@ function pularNivelamento() {
 }
 
 
+
+// ===== CIDEX =====
+var cidexProfAtual = '';
+var cidexNivelAtual = 0;
+var cidexQuestaoAtual = 0;
+var cidexRespostas = [];
+var cidexTimerInterval = null;
+var cidexTimerSeg = 0;
+
+var cidexResultados = {
+  auditiva: 0, oral: 0, leitora: 0, escrita: 0
+};
+
+function abrirCidex() {
+  ir('cidex-home');
+  atualizarCidexHome();
+}
+
+function atualizarCidexHome() {
+  var profs = ['auditiva', 'oral', 'leitora', 'escrita'];
+  var placar = profs.map(function(p) { return cidexResultados[p] || 0; });
+  var el = document.getElementById('cidexPlacar');
+  if (el) el.textContent = placar.join('-');
+  profs.forEach(function(p) {
+    var el2 = document.getElementById('cidex-nivel-' + p);
+    if (el2) el2.textContent = cidexResultados[p] || '0';
+  });
+  var hab = document.getElementById('cidexHabilitacao');
+  if (hab) {
+    var minimos = {auditiva:2, oral:1, leitora:2, escrita:2};
+    var habilitado = profs.every(function(p) { return (cidexResultados[p]||0) >= minimos[p]; });
+    if (habilitado && placar.some(function(n){return n>0;})) {
+      hab.textContent = '✅ Habilitado — Nível mínimo atingido (2-1-2-2)';
+      hab.style.color = '#9FD87A';
+    } else if (placar.some(function(n){return n>0;})) {
+      hab.textContent = '⚠️ Em progresso — Meta: 2-1-2-2';
+      hab.style.color = '#EF9F27';
+    } else {
+      hab.textContent = 'Faça as provas para ver seu resultado';
+      hab.style.color = '#9FD87A';
+    }
+  }
+}
+
+function carregarCidexResultados() {
+  try {
+    var saved = localStorage.getItem('tc_cidex_' + nomeUsuario);
+    if (saved) cidexResultados = JSON.parse(saved);
+  } catch(e) {}
+}
+
+function salvarCidexResultados() {
+  try {
+    localStorage.setItem('tc_cidex_' + nomeUsuario, JSON.stringify(cidexResultados));
+  } catch(e) {}
+}
+
+var cidexQuestoes = {
+  auditiva: {
+    1: [
+      // Prova 1 N1
+      [
+        {audio: null, texto: 'Listen: "Good morning. The base cafeteria will be open from six to eight. Breakfast includes eggs, bread and coffee. Personnel must show their military ID."', pergunta: 'What time does the cafeteria close for breakfast?', opcoes: ['Six o clock','Seven o clock','Eight o clock','Nine o clock'], correta: 2},
+        {audio: null, texto: 'Listen: "Attention please. The morning formation will be at zero six hundred hours in the main parade ground. Wear combat uniform."', pergunta: 'Where will the formation take place?', opcoes: ['In the barracks','In the gymnasium','In the main parade ground','At the main gate'], correta: 2},
+        {audio: null, texto: 'Listen: "Hello, this is Sergeant Miller. I need to reschedule my appointment with the medical officer to Thursday morning, please."', pergunta: 'What does Sergeant Miller want to do?', opcoes: ['Cancel his appointment','Change his appointment to Thursday','Make a new appointment','See the medical officer today'], correta: 1},
+        {audio: null, texto: 'Listen: "The weather forecast for today is cloudy with some rain in the afternoon. Temperature around eighteen degrees. Carry your rain gear."', pergunta: 'What does the forecast advise soldiers to carry?', opcoes: ['Sunscreen','Extra water','Rain gear','Warm clothing'], correta: 2},
+        {audio: null, texto: 'Listen: "Turn left at the main gate, walk two blocks and the administration building is on your right, next to the flag pole."', pergunta: 'Where is the administration building?', opcoes: ['On the left after the main gate','Two blocks right of the main gate','Next to the flag pole on the right','At the main gate'], correta: 2},
+        {audio: null, texto: 'Listen: "The PX store will be closed this Saturday for inventory. It will reopen on Sunday at ten in the morning."', pergunta: 'When will the PX store reopen?', opcoes: ['Saturday morning','Saturday afternoon','Sunday at ten','Monday morning'], correta: 2},
+        {audio: null, texto: 'Listen: "Private Santos, your transfer to the Third Battalion has been approved. Report there next Monday at zero eight hundred."', pergunta: 'When must Private Santos report to the Third Battalion?', opcoes: ['This Friday','Next Monday at eight','Next Tuesday','Today at eight'], correta: 1},
+        {audio: null, texto: 'Listen: "The gym is open Monday to Friday from five in the morning to nine at night. On weekends it closes at six."', pergunta: 'What time does the gym close on weekends?', opcoes: ['Five in the morning','Nine at night','Six in the evening','Eight at night'], correta: 2},
+        {audio: null, texto: 'Listen: "Could you tell me where the officers mess is? I am new here and I need to have lunch."', pergunta: 'What does the speaker need?', opcoes: ['A map of the base','To find the officers mess','To speak to an officer','To find the main gate'], correta: 1},
+        {audio: null, texto: 'Listen: "All vehicles entering the base must stop at the checkpoint. Show your ID and state your business."', pergunta: 'What must vehicles do at the checkpoint?', opcoes: ['Drive through without stopping','Show ID and state their business','Park and wait','Call the duty officer'], correta: 1},
+        {audio: null, texto: 'Listen: "The training exercise will start on Monday and finish on Wednesday. Soldiers must bring three days of rations and full combat gear."', pergunta: 'How many days will the training exercise last?', opcoes: ['Two days','Three days','Four days','Five days'], correta: 1},
+        {audio: null, texto: 'Listen: "Lost and found: a black military backpack was found near the parade ground. Contact the duty sergeant to claim it."', pergunta: 'Where was the backpack found?', opcoes: ['At the main gate','In the cafeteria','Near the parade ground','At the duty office'], correta: 2},
+        {audio: null, texto: 'Listen: "The commanding officer will inspect the barracks at fourteen hundred hours. All personnel must be present and in dress uniform."', pergunta: 'What time is the inspection?', opcoes: ['Twelve hundred','Thirteen hundred','Fourteen hundred','Fifteen hundred'], correta: 2},
+        {audio: null, texto: 'Listen: "Hi John. I cannot make it to the briefing today. Can you take notes for me? I will be at the medical centre all morning."', pergunta: 'Why cannot the speaker attend the briefing?', opcoes: ['He is on leave','He is at the medical centre','He is on duty','He forgot about it'], correta: 1},
+        {audio: null, texto: 'Listen: "The bus to the city centre leaves at oh eight thirty and returns at seventeen hundred. The next bus is on Thursday."', pergunta: 'What time does the bus leave for the city?', opcoes: ['Seven thirty','Eight thirty','Nine thirty','Seventeen hundred'], correta: 1},
+        {audio: null, texto: 'Listen: "Corporal Lima, your leave request has been approved for two weeks starting the fifteenth of next month."', pergunta: 'How long is Corporal Lima leave?', opcoes: ['One week','Ten days','Two weeks','One month'], correta: 2},
+        {audio: null, texto: 'Listen: "The water in sector B will be cut off for maintenance from eight to twelve tomorrow. Use the facilities in sector A."', pergunta: 'What should personnel use during the water cut?', opcoes: ['Bottled water','Facilities in sector C','Facilities in sector A','Wait until twelve'], correta: 2},
+        {audio: null, texto: 'Listen: "Welcome to Fort Bragg. Please proceed to the visitor centre on your left to register. Have your ID ready."', pergunta: 'What do visitors need to have ready?', opcoes: ['A letter of invitation','Their ID','Their vehicle documents','A military pass'], correta: 1},
+        {audio: null, texto: 'Listen: "Sergeant Davis, the colonel wants to see you in his office at fifteen hundred today. Please confirm you received this message."', pergunta: 'Who wants to see Sergeant Davis?', opcoes: ['The major','The lieutenant','The colonel','The duty officer'], correta: 2},
+        {audio: null, texto: 'Listen: "All soldiers must complete the mandatory first aid course before the end of the month. Sign up at the training office."', pergunta: 'Where should soldiers sign up for the course?', opcoes: ['At the medical centre','At the duty office','At the training office','Online'], correta: 2}
+      ]
+    ],
+    2: [
+      // Prova 1 N2
+      [
+        {audio: null, texto: 'Listen: "This is the six o clock news. The Ministry of Defence announced today that a new peacekeeping mission will be deployed to the region next month. The contingent will include five hundred soldiers from various branches of the armed forces."', pergunta: 'What did the Ministry of Defence announce?', opcoes: ['A new military base','A peacekeeping mission next month','The return of troops','New military equipment'], correta: 1},
+        {audio: null, texto: 'Listen: "Captain Rodriguez, I wanted to follow up on the logistics report you submitted last week. There are some figures on page seven that do not match our inventory records. Could we meet tomorrow to go over them?"', pergunta: 'What is the purpose of the call?', opcoes: ['To request a new report','To discuss figures that do not match','To arrange a logistics delivery','To cancel a meeting'], correta: 1},
+        {audio: null, texto: 'Listen: "The exercise will simulate a humanitarian assistance mission in a disaster zone. Units will practice coordinating with civilian agencies, distributing supplies and setting up field hospitals. Communication between units is critical."', pergunta: 'What is a critical element of the exercise according to the briefing?', opcoes: ['Physical fitness','Supply distribution only','Communication between units','Setting up hospitals only'], correta: 2},
+        {audio: null, texto: 'Listen: "Compared to last year training cycle, this year we have increased the focus on urban warfare scenarios. However, we have reduced the time allocated to individual marksmanship to accommodate the new joint exercises with allied forces."', pergunta: 'What change has been made compared to last year?', opcoes: ['More time for marksmanship','Less focus on urban warfare','More focus on urban warfare and less on marksmanship','No changes were made'], correta: 2},
+        {audio: null, texto: 'Listen: "To reach the forward operating base from here, take the northern route via checkpoint Delta. Avoid the eastern road due to ongoing repairs. Travel time is approximately two hours under normal conditions."', pergunta: 'Why should the eastern road be avoided?', opcoes: ['It is too dangerous','It is longer','There are ongoing repairs','It is closed permanently'], correta: 2},
+        {audio: null, texto: 'Listen: "In my opinion, the current rotation schedule puts too much strain on junior officers. While I understand the operational requirements, I believe we need to review the policy before the next deployment cycle begins."', pergunta: 'What is the speaker opinion about the rotation schedule?', opcoes: ['It is working well','It should be extended','It puts too much strain on junior officers','It needs no changes'], correta: 2},
+        {audio: null, texto: 'Listen: "The delegation from the allied nation will arrive on Tuesday. Protocol requires that a senior officer greet them at the airport, followed by a formal dinner at the officers mess. Interpreters have been arranged."', pergunta: 'What has been arranged for the allied delegation?', opcoes: ['A military parade','An airport greeting, formal dinner and interpreters','A tour of the base only','A press conference'], correta: 1},
+        {audio: null, texto: 'Listen: "Our unit performed well in the joint exercise. However, after reviewing the after action report, it is clear that we need to improve our communications procedures and response time during night operations."', pergunta: 'What does the after action report indicate needs improvement?', opcoes: ['Daytime operations and equipment','Communications procedures and response time at night','Physical training and marksmanship','Supply management and logistics'], correta: 1},
+        {audio: null, texto: 'Listen: "The new field rations have been tested and approved. They provide more calories and better nutritional balance than the previous model. Distribution will begin next quarter, starting with units currently deployed."', pergunta: 'Which units will receive the new rations first?', opcoes: ['Units in training','Headquarters staff','Units currently deployed','Reserve units'], correta: 2},
+        {audio: null, texto: 'Listen: "In the event of a communication blackout, units will revert to pre-arranged signal protocols. Each squad leader has been briefed on the alternative procedures. Do not attempt to use unsecured channels under any circumstances."', pergunta: 'What should units NOT do during a communication blackout?', opcoes: ['Use signal protocols','Contact squad leaders','Use unsecured channels','Follow alternative procedures'], correta: 2},
+        {audio: null, texto: 'Listen: "The annual language proficiency assessment will take place in March. All personnel in international liaison roles are required to participate. Results will be used to determine deployment eligibility."', pergunta: 'What will the results of the assessment be used for?', opcoes: ['Promotion decisions','Determining salary increases','Determining deployment eligibility','Training assignments only'], correta: 2},
+        {audio: null, texto: 'Listen: "I would like to draw your attention to the fact that the maintenance schedule for our armoured vehicles has fallen behind by approximately three weeks. This is affecting operational readiness and must be addressed immediately."', pergunta: 'What problem is mentioned regarding armoured vehicles?', opcoes: ['They need new equipment','The maintenance schedule is three weeks behind','There are not enough vehicles','The vehicles failed inspection'], correta: 1},
+        {audio: null, texto: 'Listen: "During the patrol, the team observed unusual activity near the perimeter at approximately oh two hundred hours. The patrol leader documented the incident and reported it to the duty officer upon return to base."', pergunta: 'When did the unusual activity occur?', opcoes: ['At midnight','At oh two hundred hours','At oh four hundred hours','During daylight'], correta: 1},
+        {audio: null, texto: 'Listen: "The new barracks construction is ahead of schedule and is expected to be completed by the end of August, two months before the original deadline. This will allow us to accommodate the incoming battalion."', pergunta: 'How far ahead of schedule is the construction?', opcoes: ['One month','Two months','Three months','Six months'], correta: 1},
+        {audio: null, texto: 'Listen: "Personnel assigned to the international mission must complete cultural awareness training, language preparation and a medical examination before departure. The deadline for all requirements is the thirtieth of this month."', pergunta: 'What is the deadline for completing mission requirements?', opcoes: ['The fifteenth','The twentieth','The twenty-fifth','The thirtieth'], correta: 3},
+        {audio: null, texto: 'Listen: "The intelligence report suggests increased activity along the northern border. As a precaution, we are reinforcing our observation posts and increasing patrol frequency from twice to four times daily."', pergunta: 'How has patrol frequency changed?', opcoes: ['From once to twice daily','From twice to four times daily','From four to six times daily','No change'], correta: 1},
+        {audio: null, texto: 'Listen: "I would like to commend Sergeant Oliveira for her outstanding performance during the recent field exercise. Her leadership under pressure and ability to keep her team motivated in difficult conditions were exemplary."', pergunta: 'Why is Sergeant Oliveira being commended?', opcoes: ['For winning a competition','For outstanding performance and leadership','For completing a course','For a long period of service'], correta: 1},
+        {audio: null, texto: 'Listen: "The joint training agreement between our two nations covers four areas: urban operations, counter-terrorism procedures, medical support and logistics coordination. The programme runs for eighteen months."', pergunta: 'How long does the joint training programme run?', opcoes: ['Six months','Twelve months','Eighteen months','Twenty-four months'], correta: 2},
+        {audio: null, texto: 'Listen: "All officers must submit their annual training plans by the end of next week. Plans should reflect the new operational priorities outlined in the commander directive issued last month."', pergunta: 'What should training plans reflect?', opcoes: ['Last year priorities','The new operational priorities from the commander directive','Personal development goals','Budget constraints'], correta: 1},
+        {audio: null, texto: 'Listen: "The field hospital can treat up to one hundred and fifty patients simultaneously. In mass casualty situations, triage procedures will be activated and the most critical cases will be prioritised for immediate treatment."', pergunta: 'What happens in mass casualty situations?', opcoes: ['All patients are treated equally','The hospital closes for safety','Triage procedures are activated and critical cases prioritised','Extra staff are called in only'], correta: 2}
+      ]
+    ]
+  },
+  leitora: {
+    1: [
+      [
+        {texto: 'NOTICE TO ALL PERSONNEL\n\nThe annual physical fitness test will be conducted on 15 March. All active duty soldiers must participate. Soldiers with medical exemptions must present documentation from the base medical officer no later than 10 March. The test will include a two-mile run, push-ups and sit-ups. Results will be recorded in each soldier\'s personnel file.', pergunta: 'What must soldiers with medical exemptions do?', opcoes: ['Skip the test without notice','Present medical documentation by 10 March','Request a postponement in writing','Contact their unit commander'], correta: 1},
+        {texto: 'MEMORANDUM\nFROM: Base Commander\nTO: All Unit Commanders\nSUBJECT: Uniform Policy\n\nEffective immediately, the wear of civilian clothing in the operations area is prohibited during duty hours. Personnel may wear civilian attire only in the recreation areas after eighteen hundred hours. Violation of this policy will result in disciplinary action.', pergunta: 'When may personnel wear civilian clothing?', opcoes: ['At any time in the base','Never on the base','In recreation areas after 1800','During lunch break only'], correta: 2},
+        {texto: 'LOST PROPERTY NOTICE\n\nA set of military dog tags was found near the main parade ground on Tuesday morning. The tags belong to someone with the surname COSTA. If these are yours or you know the owner, please contact the Duty Sergeant at extension 4412.', pergunta: 'How should the owner contact the Duty Sergeant?', opcoes: ['By email','In person only','At extension 4412','Through their unit commander'], correta: 2},
+        {texto: 'TRAINING SCHEDULE — WEEK 3\n\nMONDAY: Physical training 0600-0730. Map reading 0900-1200.\nTUESDAY: Weapons maintenance 0800-1000. First aid 1300-1700.\nWEDNESDAY: Field exercise — full day.\nTHURSDAY: Classroom instruction 0800-1700.\nFRIDAY: Unit PT and administrative tasks.', pergunta: 'Which day has a full day field exercise?', opcoes: ['Monday','Tuesday','Wednesday','Friday'], correta: 2},
+        {texto: 'Dear Private Johnson,\n\nI am writing to confirm that your application for advanced infantry training has been received and is under review. You will be notified of the decision within fifteen working days. If you have any questions, please contact the Training Division at training@base.mil.', pergunta: 'When will Private Johnson be notified of the decision?', opcoes: ['Within five working days','Within ten working days','Within fifteen working days','Within one month'], correta: 2},
+        {texto: 'BASE CINEMA SCHEDULE\n\nFriday: Action Film — 2000 hrs\nSaturday: Documentary — 1800 hrs and 2100 hrs\nSunday: Family Film — 1600 hrs\n\nEntry is free for all military personnel and their dependants. Civilians must purchase tickets at the door.', pergunta: 'Who must pay for cinema tickets?', opcoes: ['All personnel','Dependants of soldiers','Civilians','Officers only'], correta: 2},
+        {texto: 'IMPORTANT NOTICE\n\nDue to essential maintenance work, the swimming pool will be CLOSED from Monday 8th to Friday 12th. We apologise for the inconvenience. For further information, contact the Sports and Recreation Office.', pergunta: 'Why is the swimming pool closed?', opcoes: ['It is being expanded','For essential maintenance work','Due to a water shortage','For a swimming competition'], correta: 1},
+        {texto: 'CANTEEN MENU — TUESDAY\n\nBreakfast (0600-0800): Eggs, toast, cereal, coffee, juice\nLunch (1200-1330): Grilled chicken, rice, salad, fruit\nDinner (1800-1930): Beef stew, mashed potatoes, bread, dessert\n\nVegetarian options available at all meals. Speak to the canteen staff.', pergunta: 'Until what time is lunch served?', opcoes: ['Twelve hundred','Thirteen hundred','Thirteen thirty','Fourteen hundred'], correta: 2},
+        {texto: 'APPLICATION FORM — BASE SPORTS CLUB\n\nName: ________________________\nRank: ________________________\nUnit: ________________________\nSport of interest: ________________________\nAvailability: ________________________\n\nReturn completed forms to the Sports Office by Friday. New members are welcome to join any team.', pergunta: 'Where should completed forms be returned?', opcoes: ['To the unit commander','To the canteen','To the Sports Office','By email'], correta: 2},
+        {texto: 'WEATHER ALERT\n\nStrong winds and heavy rain are expected tomorrow. All outdoor training activities have been cancelled. Personnel should report to their assigned indoor facilities. Vehicle movement is restricted to essential operations only.', pergunta: 'What has been cancelled due to the weather?', opcoes: ['All indoor activities','All vehicle movements','All outdoor training activities','The morning formation'], correta: 2},
+        {texto: 'LIBRARY HOURS\n\nMonday to Friday: 0800 - 2000\nSaturday: 0900 - 1700\nSunday: CLOSED\n\nThe library has computers available for use. Soldiers may borrow up to three books for two weeks. Late returns will result in a fine of fifty cents per day.', pergunta: 'How many books may soldiers borrow at one time?', opcoes: ['One','Two','Three','Four'], correta: 2},
+        {texto: 'TO: All Platoon Commanders\nFROM: Operations Officer\nSUBJECT: Ammunition Accountability\n\nAll platoon commanders must submit ammunition accountability reports by 1600 on the last Friday of each month. Reports must include all ammunition issued, expended and returned. No exceptions will be made.', pergunta: 'When must ammunition reports be submitted?', opcoes: ['Every Monday morning','The first Friday of the month','The last Friday at 1600','Every day at 1600'], correta: 2},
+        {texto: 'INVITATION\n\nYou are cordially invited to the Battalion Change of Command Ceremony on Saturday, 20th April at 1000 hours at the Main Parade Ground. Smart dress is required. Please RSVP to the adjutant by 15th April.', pergunta: 'What is the dress code for the ceremony?', opcoes: ['Combat uniform','Casual clothing','Smart dress','Physical training kit'], correta: 2},
+        {texto: 'SAFETY NOTICE\n\nAll personnel must wear high-visibility vests when working in the vehicle maintenance area. Hard hats are compulsory in the construction zone. Failure to comply with safety regulations may result in removal from the area and disciplinary action.', pergunta: 'What must personnel wear in the vehicle maintenance area?', opcoes: ['Hard hats','High-visibility vests','Combat boots','Safety goggles'], correta: 1},
+        {texto: 'From: Lt Col Peterson\nTo: Major Williams\nSubject: Conference attendance\n\nI would like you to represent our unit at the annual logistics conference next month in Brasília. Travel and accommodation will be arranged by HQ. Please confirm your availability by end of week.', pergunta: 'What does Lt Col Peterson want Major Williams to do?', opcoes: ['Organise the conference','Travel to HQ','Represent the unit at a conference','Arrange accommodation'], correta: 1},
+        {texto: 'NOTICE — FUEL ALLOCATION\n\nDue to budget restrictions, fuel allocation for non-operational vehicles has been reduced by thirty percent this month. Unit commanders must submit fuel requests at least forty-eight hours in advance. Emergency requests will be handled by the duty officer.', pergunta: 'How much has fuel allocation been reduced?', opcoes: ['Ten percent','Twenty percent','Thirty percent','Fifty percent'], correta: 2},
+        {texto: 'HEALTH AND WELLNESS BRIEFING\n\nThe base medical officer will conduct a health briefing on Wednesday at 1400 in Conference Room B. Topics will include nutrition, stress management and sleep hygiene. Attendance is voluntary but strongly encouraged for all personnel.', pergunta: 'Is attendance at the briefing compulsory?', opcoes: ['Yes, for all personnel','Yes, for officers only','No, it is voluntary','No information given'], correta: 2},
+        {texto: 'PROMOTION BOARD NOTICE\n\nThe promotion board for Sergeant to Staff Sergeant will convene on 3rd May. Eligible candidates must have completed at least four years of service and passed the leadership course. Files must be submitted to the personnel office by 20th April.', pergunta: 'What is one requirement for promotion board eligibility?', opcoes: ['Two years of service','Completion of a medical course','At least four years of service and leadership course','Officer recommendation only'], correta: 2},
+        {texto: 'NOTICE TO FAMILIES\n\nA family day event will be held on base on the last Saturday of the month. Activities will include sports competitions, a barbecue and live music. Children under twelve must be accompanied by an adult at all times. Parking is available at the main gate.', pergunta: 'What is required for children under twelve?', opcoes: ['They must register in advance','They must wear ID badges','They must be accompanied by an adult','They are not allowed at the event'], correta: 2},
+        {texto: 'EMAIL\nFrom: Training Sergeant\nTo: All Recruits\nSubject: Equipment check\n\nPlease ensure all your equipment is clean, serviceable and correctly labelled before tomorrow morning inspection. Any missing or damaged items must be reported to your squad leader tonight. No excuses will be accepted during inspection.', pergunta: 'When must missing or damaged items be reported?', opcoes: ['During inspection','The following morning','Tonight to the squad leader','By the end of the week'], correta: 2}
+      ]
+    ],
+    2: [
+      [
+        {texto: 'OPERATIONAL ORDER — EXTRACT\nMISSION: 2nd Platoon will conduct a reconnaissance patrol of grid square 456789 on 15 March, departing at 0400 hours. The objective is to gather information on reported enemy activity in the area. The patrol will return no later than 1200 hours. All findings must be documented and reported to the intelligence officer immediately upon return.\n\nCOMMAND AND SIGNAL: Communications will be maintained on frequency 43.50. In the event of a communications failure, visual signals as per standing operating procedures will be used.', pergunta: 'What is the latest time the patrol must return?', opcoes: ['0400 hours','0800 hours','1200 hours','1600 hours'], correta: 2},
+        {texto: 'AFTER ACTION REPORT — SUMMARY\n\nThe joint training exercise conducted between 5-8 March achieved most of its stated objectives. Units demonstrated improved coordination in urban environments compared to the previous exercise. However, significant deficiencies were identified in night navigation and communication procedures under electronic warfare conditions. It is recommended that additional training in these areas be incorporated into the next training cycle before the unit is considered operationally ready for deployment.', pergunta: 'What recommendation does the report make?', opcoes: ['Declare the unit ready for deployment','Reduce training in urban environments','Incorporate additional training in night navigation and communications','Cancel the next training cycle'], correta: 2},
+        {texto: 'MEMORANDUM FOR RECORD\nSUBJECT: Lessons Learned — International Liaison Operations\n\nDuring our recent participation in the multinational exercise, several important lessons were identified. First, cultural awareness training proved invaluable in facilitating effective communication with allied forces. Second, standardised reporting formats significantly reduced confusion during joint operations. Third, the lack of common terminology in some technical areas caused delays. It is strongly recommended that a glossary of standardised military terms be developed prior to future multinational operations.', pergunta: 'What caused delays during joint operations?', opcoes: ['Poor cultural awareness','Lack of common terminology in technical areas','Insufficient reporting formats','Poor physical preparation'], correta: 1},
+        {texto: 'FROM: Brigade Commander\nTO: All Battalion Commanders\nSUBJECT: New Rules of Engagement\n\nEffective immediately, all personnel must be briefed on the updated Rules of Engagement. Key changes include: modified procedures for engagement in populated areas, new requirements for proportionality assessments before any use of force, and stricter documentation requirements for all incidents. Battalion commanders are personally responsible for ensuring all subordinates understand and comply with these changes within seventy-two hours of receipt of this order.', pergunta: 'Who is personally responsible for briefing subordinates on the new ROE?', opcoes: ['The brigade commander','The operations officer','Battalion commanders','Squad leaders'], correta: 2},
+        {texto: 'INTELLIGENCE SUMMARY — UNCLASSIFIED\n\nRecent analysis of open-source information suggests an increase in social media activity from non-state actors in the region. This activity appears to be coordinated and is aimed at undermining public confidence in the armed forces. Units should be aware that soldiers personal social media use may inadvertently provide information useful to adversaries. Personnel are reminded of existing regulations regarding social media use and the importance of operational security.', pergunta: 'What concern is raised about soldiers social media use?', opcoes: ['It takes too much time','It may provide information useful to adversaries','It is prohibited at all times','It creates disciplinary problems'], correta: 1},
+        {texto: 'LOGISTICS REPORT — QUARTERLY SUMMARY\n\nDuring the reporting period, the unit consumed eighty-seven percent of allocated fuel, one hundred and twelve percent of rations (due to increased operational tempo) and sixty-three percent of spare parts allocation. The overage in rations has been flagged to higher headquarters and a supplemental allocation has been requested. All other consumption figures are within acceptable parameters.', pergunta: 'What caused the overage in rations consumption?', opcoes: ['Poor planning','Increased operational tempo','Supply chain problems','Incorrect initial allocation'], correta: 1},
+        {texto: 'TRAINING DIRECTIVE\nSUBJECT: Language Proficiency Requirements for International Assignments\n\nAll officers and non-commissioned officers nominated for international assignments must achieve a minimum language proficiency rating of 2-2-2-2 in English prior to departure. Personnel who do not meet this requirement will not be eligible for nomination regardless of their other qualifications. Units must ensure candidates begin language training at least twelve months before the projected assignment date.', pergunta: 'When must candidates begin language training?', opcoes: ['Six months before','Three months before','Twelve months before','Immediately upon nomination'], correta: 2},
+        {texto: 'REPORT ON HUMANITARIAN ASSISTANCE OPERATION\n\nDuring the three-week operation, the unit distributed food supplies to approximately twelve thousand civilians in six different villages. Medical teams treated over two thousand patients, of whom four hundred required hospitalisation. Engineer elements repaired three bridges and restored electricity to two communities. Coordination with civilian agencies and local authorities was generally effective, although communication difficulties were encountered in the initial phase due to language barriers.', pergunta: 'What difficulties were encountered in the initial phase?', opcoes: ['Lack of supplies','Poor weather conditions','Communication difficulties due to language barriers','Insufficient medical personnel'], correta: 2},
+        {texto: 'POLICY DOCUMENT — EXTRACT\nSUBJECT: Physical Fitness Standards for Deployment\n\nPersonnel must meet the following minimum standards to be considered for deployment: score in the top fifty percent of their age group on the physical fitness test, have no active medical limitations, and have completed all required vaccinations. Personnel who fail to meet any one of these requirements will be returned to their home unit for remediation before reconsideration for deployment.', pergunta: 'What happens to personnel who fail to meet deployment requirements?', opcoes: ['They are discharged','They are promoted to other roles','They are returned to their home unit for remediation','They can still deploy with special permission'], correta: 2},
+        {texto: 'PRESS RELEASE — MINISTRY OF DEFENCE\n\nThe Brazilian Army today concluded a successful ten-day joint exercise with forces from four allied nations. The exercise, which involved approximately three thousand soldiers, focused on interoperability in complex joint operations. The Chief of Staff stated that the exercise demonstrated the high level of professionalism of Brazilian forces and strengthened relationships with key international partners. Planning for the next exercise is already underway.', pergunta: 'What did the Chief of Staff say about the exercise?', opcoes: ['It needed significant improvement','It demonstrated high professionalism and strengthened partnerships','It was too short to be effective','It revealed major gaps in training'], correta: 1},
+        {texto: 'SAFETY INCIDENT REPORT\n\nOn 12 February at approximately 1430 hours, a soldier sustained a minor injury during a vehicle maintenance procedure. The soldier failed to follow the established lockout/tagout procedure before working on the vehicle. The injury required treatment at the medical centre but did not result in hospitalisation. A safety stand-down has been ordered for all vehicle maintenance personnel, and refresher training on lockout/tagout procedures will be conducted this week.', pergunta: 'What caused the injury according to the report?', opcoes: ['Faulty equipment','Failure to follow the lockout/tagout procedure','Insufficient lighting in the maintenance area','Lack of proper tools'], correta: 1},
+        {texto: 'STRATEGIC COMMUNICATIONS PLAN — SUMMARY\n\nThe objective of this plan is to maintain public trust in the armed forces through transparent and accurate communication. Key messages will focus on the professionalism of military personnel, commitment to national security and contributions to international peace operations. All public statements must be approved by the Public Affairs Office before release. Social media engagement will be monitored daily and any misinformation will be addressed promptly.', pergunta: 'What must happen before public statements are released?', opcoes: ['The commander must sign them','They must be approved by the Public Affairs Office','They must be translated into English','They must be reviewed by all battalion commanders'], correta: 1},
+        {texto: 'CONTRACT FOR SERVICES\n\nThis agreement is between the Brazilian Army Logistics Command and ABC Supply Company. The company will provide catering services for a period of twelve months beginning 1 April. Services include three meals per day for up to five hundred personnel. The contract may be terminated with thirty days written notice if service standards are not maintained. Payment will be made monthly upon receipt of a valid invoice.', pergunta: 'Under what condition can the contract be terminated?', opcoes: ['At any time without notice','With thirty days written notice if service standards are not maintained','After twelve months automatically','With the agreement of both parties only'], correta: 1},
+        {texto: 'FIELD MANUAL EXTRACT — SECTION 4\nSUBJECT: Principles of Small Unit Leadership\n\nEffective small unit leaders must demonstrate technical and tactical competence, earn the trust and respect of their subordinates through consistent and fair treatment, maintain high personal standards in all areas, and communicate clearly and concisely. Leaders who exhibit these qualities consistently produce units with higher morale, better discipline and superior operational performance compared to units with poor leadership.', pergunta: 'What do units with effective leadership consistently demonstrate?', opcoes: ['Lower operational costs','Higher morale, better discipline and superior performance','Less need for training','More independent decision-making'], correta: 1},
+        {texto: 'EMAIL FROM MILITARY ATTACHE\n\nDear Colonel Santos,\n\nI am writing to inform you that the schedule for the official visit has been confirmed. The delegation will arrive on Tuesday at 1500 hours and depart on Thursday morning. The programme includes a base tour on Tuesday afternoon, a working dinner that evening, formal meetings on Wednesday and a farewell breakfast on Thursday. Please ensure appropriate protocol arrangements are in place, including transport and accommodation for eight delegates.', pergunta: 'How many delegates need transport and accommodation?', opcoes: ['Six','Seven','Eight','Ten'], correta: 2},
+        {texto: 'EVALUATION REPORT — SERGEANT FIRST CLASS ALMEIDA\n\nSgt First Class Almeida has consistently performed above the expected standard throughout the rating period. Her technical knowledge is excellent, and she demonstrates sound judgment in complex situations. She has shown particular strength in mentoring junior soldiers and in cross-cultural communication, skills that have proven invaluable during joint operations with allied forces. She is strongly recommended for promotion and for nomination to an international assignment.', pergunta: 'What is the report recommending for Sgt Almeida?', opcoes: ['Discharge from service','Additional training before promotion','Promotion and international assignment nomination','Transfer to another unit'], correta: 2},
+        {texto: 'NOTICE — CHANGE IN REPORTING PROCEDURES\n\nWith effect from 1 April, all unit readiness reports will be submitted electronically through the new SIGSREP system. Paper submissions will no longer be accepted after this date. Unit administrators must complete the online training module for SIGSREP before 25 March to ensure a smooth transition. Technical support is available at extension 5500.', pergunta: 'What will no longer be accepted after 1 April?', opcoes: ['Electronic reports','Reports submitted late','Paper submissions','Reports without commander signature'], correta: 2},
+        {texto: 'BRIEFING NOTES — OPERATION SILVER STAR\n\nThe operation was designed to test the unit ability to conduct sustained operations in a degraded communications environment. Overall assessment: the unit performed creditably in most areas. Notable strengths included adaptability to changing situations and effective use of alternative communication methods. Areas requiring further development include maintenance of accurate records under field conditions and coordination of logistics during extended operations beyond seventy-two hours.', pergunta: 'What was identified as requiring further development?', opcoes: ['Physical fitness and weapons training','Adaptability and communication methods','Record keeping and logistics coordination beyond 72 hours','Urban warfare procedures'], correta: 2},
+        {texto: 'ADMINISTRATIVE INSTRUCTION — LEAVE POLICY\n\nPersonnel are entitled to thirty days of annual leave. Leave must be requested at least two weeks in advance and is subject to operational requirements. A maximum of ten days may be carried over to the following year. Personnel going on leave for more than five days must brief their replacement on all ongoing tasks and ensure all files are updated before departure.', pergunta: 'What must personnel do before going on leave for more than five days?', opcoes: ['Submit a medical certificate','Request special permission from HQ','Brief their replacement and update all files','Submit a detailed leave plan'], correta: 2},
+        {texto: 'INTEROPERABILITY ASSESSMENT — FINAL REPORT\n\nThe assessment concluded that the unit has achieved an acceptable level of interoperability with allied forces in the areas of communications, logistics and medical support. However, language barriers continue to represent a significant challenge, particularly at non-commissioned officer level. It is recommended that investment in language training be increased and that language proficiency be weighted more heavily in selection criteria for personnel assigned to joint or multinational roles.', pergunta: 'What does the report recommend regarding language training?', opcoes: ['Reduce investment to save costs','Maintain current investment levels','Increase investment and weight proficiency more in selection criteria','Provide training only for officers'], correta: 2}
+      ]
+    ]
+  },
+  escrita: {
+    1: [
+      {
+        nivel: 1,
+        instrucao: 'You are a soldier at a military base. Write a SHORT NOTE (80-120 words) to your sergeant explaining that you will be late for tomorrow morning formation because you have a medical appointment. Include: the reason you will be late, the time of your appointment, and when you expect to arrive at the unit.',
+        minPalavras: 80,
+        maxPalavras: 120,
+        dicas: ['Use simple, clear sentences','Include all three required points','Use appropriate military language','Check your spelling and punctuation']
+      }
+    ],
+    2: [
+      {
+        nivel: 2,
+        instrucao: 'You are a non-commissioned officer preparing to receive a small allied delegation at your base. Write a FORMAL EMAIL (150-200 words) to your commanding officer outlining the programme you have prepared for the visit. Include: the arrival time and welcome arrangements, planned activities and meals, and any logistical details that require the commander approval.',
+        minPalavras: 150,
+        maxPalavras: 200,
+        dicas: ['Use formal language appropriate for email to a superior','Structure your email clearly with an opening, body and closing','Include all three required elements','Use appropriate military register and terminology']
+      }
+    ]
+  }
+};
+
+var cidexProvaAtual = [];
+var cidexProvaIndex = 0;
+var cidexTimerSeg = 0;
+var cidexTimerInterval = null;
+var cidexAcertos = 0;
+var cidexRespostas = [];
+
+
+function iniciarCidexProva(nivel) {
+  cidexNivelAtual = nivel;
+  
+  if (cidexProfAtual === 'escrita') {
+    iniciarCidexEscrita(nivel);
+    return;
+  }
+  
+  if (cidexProfAtual === 'oral') {
+    iniciarCidexOral(nivel);
+    return;
+  }
+
+  // Get questions for this proficiency and level
+  var questoes = cidexQuestoes[cidexProfAtual] && cidexQuestoes[cidexProfAtual][nivel] && cidexQuestoes[cidexProfAtual][nivel][0];
+  if (!questoes || questoes.length === 0) {
+    alert('Prova em desenvolvimento. Em breve!');
+    return;
+  }
+
+  cidexProvaAtual = questoes.slice().sort(function() { return Math.random() - 0.5; });
+  cidexProvaIndex = 0;
+  cidexAcertos = 0;
+  cidexRespostas = [];
+  cidexTimerSeg = cidexProfAtual === 'auditiva' ? 1800 : 2700; // 30 or 45 min
+
+  var tipo = {auditiva:'AUDITIVA', leitora:'LEITORA'}[cidexProfAtual] || cidexProfAtual.toUpperCase();
+  var tipoEl = document.getElementById('cidexProvaTipo');
+  if (tipoEl) tipoEl.textContent = tipo + ' · N' + nivel;
+
+  ir('cidex-prova');
+  renderCidexQuestao();
+  iniciarCidexTimer();
+}
+
+function iniciarCidexTimer() {
+  if (cidexTimerInterval) clearInterval(cidexTimerInterval);
+  cidexTimerInterval = setInterval(function() {
+    cidexTimerSeg--;
+    var el = document.getElementById('cidexTimer');
+    if (el) {
+      var m = Math.floor(cidexTimerSeg / 60);
+      var s = cidexTimerSeg % 60;
+      el.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+      el.className = 'cidex-timer';
+      if (cidexTimerSeg <= 60) el.className = 'cidex-timer danger';
+      else if (cidexTimerSeg <= 300) el.className = 'cidex-timer warning';
+    }
+    if (cidexTimerSeg <= 0) {
+      clearInterval(cidexTimerInterval);
+      cidexTimerInterval = null;
+      // Auto-answer remaining as wrong
+      while (cidexProvaIndex < cidexProvaAtual.length) {
+        cidexRespostas.push(false);
+        cidexProvaIndex++;
+      }
+      mostrarCidexResultado();
+    }
+  }, 1000);
+}
+
+function renderCidexQuestao() {
+  var body = document.getElementById('cidexProvaBody');
+  if (!body) return;
+  
+  var qEl = document.getElementById('cidexProvaQNum');
+  if (qEl) qEl.textContent = 'Questão ' + (cidexProvaIndex + 1) + ' de ' + cidexProvaAtual.length;
+
+  if (cidexProvaIndex >= cidexProvaAtual.length) {
+    mostrarCidexResultado();
+    return;
+  }
+
+  var q = cidexProvaAtual[cidexProvaIndex];
+  var h = '<div class="cidex-questao">';
+  h += '<div style="font-size:12px;font-weight:800;color:#8B1A1A;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Questão ' + (cidexProvaIndex + 1) + '</div>';
+  
+  if (q.texto) {
+    h += '<div style="background:#f8f7ff;border-radius:10px;padding:12px;margin-bottom:12px;font-size:13px;color:#3a3a5c;line-height:1.6;font-style:italic;">' + q.texto.replace(/\n/g, '<br>') + '</div>';
+  }
+  
+  h += '<div style="font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:12px;">' + q.pergunta + '</div>';
+  
+  q.opcoes.forEach(function(op, i) {
+    var letra = ['A','B','C','D'][i];
+    h += '<button class="cidex-opcao" onclick="responderCidex(' + i + ')">';
+    h += '<span style="font-weight:800;color:#8B1A1A;margin-right:8px;">' + letra + '.</span>' + op;
+    h += '</button>';
+  });
+  
+  h += '</div>';
+  body.innerHTML = h;
+  body.scrollTop = 0;
+}
+
+function responderCidex(idx) {
+  var q = cidexProvaAtual[cidexProvaIndex];
+  var opcoes = document.querySelectorAll('.cidex-opcao');
+  opcoes.forEach(function(btn, i) {
+    btn.disabled = true;
+    if (i === q.correta) btn.classList.add('correta');
+    else if (i === idx && idx !== q.correta) btn.classList.add('errada');
+  });
+  var acertou = idx === q.correta;
+  if (acertou) cidexAcertos++;
+  cidexRespostas.push(acertou);
+  setTimeout(function() {
+    cidexProvaIndex++;
+    renderCidexQuestao();
+  }, 800);
+}
+
+function mostrarCidexResultado() {
+  if (cidexTimerInterval) { clearInterval(cidexTimerInterval); cidexTimerInterval = null; }
+  
+  var total = cidexRespostas.length;
+  var acertos = cidexAcertos;
+  var pct = Math.round((acertos / total) * 100);
+  var aprovado = pct >= 60;
+  
+  // Update result
+  if (aprovado) {
+    if (!cidexResultados[cidexProfAtual] || cidexResultados[cidexProfAtual] < cidexNivelAtual) {
+      cidexResultados[cidexProfAtual] = cidexNivelAtual;
+      cidexSalvarResultados();
+    }
+  }
+
+  var body = document.getElementById('cidexResultadoBody');
+  if (!body) { ir('cidex'); return; }
+
+  var profNomes = {auditiva:'Auditiva', oral:'Oral', leitora:'Leitora', escrita:'Escrita'};
+  
+  var h = '<div class="cidex-resultado-box">';
+  h += '<div style="font-size:12px;color:#C4A35A99;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;">' + profNomes[cidexProfAtual] + ' · N' + cidexNivelAtual + '</div>';
+  h += '<div class="cidex-resultado-num">' + acertos + '/' + total + '</div>';
+  h += '<div style="font-size:14px;color:#C4A35A88;margin-top:4px;">' + pct + '% de acerto</div>';
+  h += '<div class="cidex-resultado-status" style="color:' + (aprovado ? '#4ade80' : '#f87171') + ';margin-top:12px;">';
+  h += aprovado ? '✅ HABILITADO N' + cidexNivelAtual : '❌ NÃO HABILITADO — Mínimo 60%';
+  h += '</div></div>';
+
+  // Updated placar
+  cidexAtualizarPlacar();
+  var a = cidexResultados.auditiva || 0;
+  var o = cidexResultados.oral || 0;
+  var l = cidexResultados.leitora || 0;
+  var e = cidexResultados.escrita || 0;
+
+  h += '<div style="background:#fff;border-radius:16px;padding:16px;margin-bottom:16px;border:1px solid #E5E3F5;">';
+  h += '<div style="font-size:11px;font-weight:800;color:#6b7280;text-transform:uppercase;margin-bottom:8px;">Seu placar CIDEx</div>';
+  h += '<div style="font-size:28px;font-weight:800;color:#8B1A1A;font-family:monospace;letter-spacing:4px;">' + a + '-' + o + '-' + l + '-' + e + '</div>';
+  h += '<div style="font-size:10px;color:#6b7280;margin-top:4px;">Auditiva · Oral · Leitora · Escrita</div>';
+  h += '</div>';
+
+  h += '<button onclick="abrirCidex()" style="width:100%;padding:14px;border-radius:14px;border:none;background:#8B1A1A;color:#fff;font-family:Nunito,Arial,sans-serif;font-size:15px;font-weight:800;cursor:pointer;margin-bottom:10px;">← Voltar ao CIDEx</button>';
+  h += '<button onclick="iniciarCidexProva(' + cidexNivelAtual + ')" style="width:100%;padding:14px;border-radius:14px;border:2px solid #C4A35A33;background:none;color:#C4A35A;font-family:Nunito,Arial,sans-serif;font-size:14px;font-weight:700;cursor:pointer;">🔄 Refazer esta prova</button>';
+
+  body.innerHTML = h;
+  ir('cidex-resultado');
+}
+
+function iniciarCidexEscrita(nivel) {
+  var prova = cidexQuestoes.escrita[nivel] && cidexQuestoes.escrita[nivel][0];
+  if (!prova) { alert('Prova em desenvolvimento!'); return; }
+  
+  cidexTimerSeg = 2700; // 45 min
+  var tipoEl = document.getElementById('cidexEscritaTipo');
+  if (tipoEl) tipoEl.textContent = 'ESCRITA · N' + nivel;
+  
+  var body = document.getElementById('cidexEscritaBody');
+  if (body) {
+    var h = '<div style="background:#fff8e6;border-radius:14px;padding:16px;margin-bottom:16px;border:1px solid #C4A35A33;">';
+    h += '<div style="font-size:11px;font-weight:800;color:#8B1A1A;text-transform:uppercase;margin-bottom:8px;">Instrução</div>';
+    h += '<div style="font-size:13px;color:#1a1a2e;line-height:1.6;">' + prova.instrucao + '</div>';
+    h += '</div>';
+    h += '<div style="margin-bottom:8px;">';
+    h += '<div style="font-size:11px;font-weight:800;color:#6b7280;text-transform:uppercase;margin-bottom:4px;">Dicas</div>';
+    prova.dicas.forEach(function(d) { h += '<div style="font-size:12px;color:#4a4a6a;padding:3px 0;">• ' + d + '</div>'; });
+    h += '</div>';
+    h += '<textarea class="cidex-escrita-area" id="cidexEscritaTexto" placeholder="Write your response here..."></textarea>';
+    h += '<div style="display:flex;justify-content:space-between;margin-top:8px;margin-bottom:16px;">';
+    h += '<div style="font-size:12px;color:#6b7280;">Palavras: <span id="cidexEscritaCount">0</span></div>';
+    h += '<div style="font-size:12px;color:#6b7280;">' + prova.minPalavras + '–' + prova.maxPalavras + ' palavras</div>';
+    h += '</div>';
+    h += '<button onclick="submeterCidexEscrita(' + nivel + ',' + prova.minPalavras + ',' + prova.maxPalavras + ')" style="width:100%;padding:14px;border-radius:14px;border:none;background:#8B1A1A;color:#fff;font-family:Nunito,Arial,sans-serif;font-size:15px;font-weight:800;cursor:pointer;">Submeter para avaliação</button>';
+    body.innerHTML = h;
+    
+    var ta = document.getElementById('cidexEscritaTexto');
+    if (ta) ta.oninput = function() {
+      var words = this.value.trim().split(/\s+/).filter(function(w){return w.length>0;}).length;
+      var el = document.getElementById('cidexEscritaCount');
+      if (el) el.textContent = words;
+    };
+  }
+  
+  ir('cidex-escrita');
+  
+  if (cidexTimerInterval) clearInterval(cidexTimerInterval);
+  cidexTimerInterval = setInterval(function() {
+    cidexTimerSeg--;
+    var el = document.getElementById('cidexEscritaTimer');
+    if (el) {
+      var m = Math.floor(cidexTimerSeg / 60);
+      var s = cidexTimerSeg % 60;
+      el.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+      el.className = 'cidex-timer';
+      if (cidexTimerSeg <= 60) el.className = 'cidex-timer danger';
+      else if (cidexTimerSeg <= 300) el.className = 'cidex-timer warning';
+    }
+    if (cidexTimerSeg <= 0) {
+      clearInterval(cidexTimerInterval);
+      submeterCidexEscrita(nivel, 0, 9999);
+    }
+  }, 1000);
+}
+
+async function submeterCidexEscrita(nivel, minPal, maxPal) {
+  if (cidexTimerInterval) { clearInterval(cidexTimerInterval); cidexTimerInterval = null; }
+  var ta = document.getElementById('cidexEscritaTexto');
+  var texto = ta ? ta.value.trim() : '';
+  var words = texto.split(/\s+/).filter(function(w){return w.length>0;}).length;
+  
+  if (words < minPal) {
+    alert('Seu texto tem ' + words + ' palavras. O mínimo é ' + minPal + '.');
+    if (cidexTimerInterval) return;
+    iniciarCidexEscrita(nivel);
+    return;
+  }
+
+  var body = document.getElementById('cidexEscritaBody');
+  if (body) body.innerHTML = '<div style="text-align:center;padding:40px;"><div style="font-size:32px;margin-bottom:16px;">⏳</div><div style="color:#C4A35A;font-weight:800;">Cricket está avaliando seu texto...</div></div>';
+
+  try {
+    var prompt = 'You are a strict military English language examiner evaluating a CIDEx (Brazilian Army language certificate) written production test at level N' + nivel + '. The candidate wrote:\n\n' + texto + '\n\nEvaluate this text for a military context. Consider: task completion (did they address all required points?), grammatical accuracy, vocabulary range and appropriateness, coherence and cohesion, and register (formal/informal as required). Provide: 1) A score from 0-20, 2) Pass or Fail (pass = 12 or more), 3) Brief feedback in Portuguese highlighting 2 strengths and 2 areas for improvement. Keep feedback concise and practical.';
+    
+    var response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1000,
+        messages: [{role: 'user', content: prompt}]
+      })
+    });
+    var data = await response.json();
+    var feedback = data.content && data.content[0] ? data.content[0].text : 'Avaliação não disponível.';
+    
+    // Try to extract score
+    var scoreMatch = feedback.match(/(\d+)\s*\/\s*20/);
+    var score = scoreMatch ? parseInt(scoreMatch[1]) : 10;
+    var aprovado = score >= 12;
+    
+    if (aprovado) {
+      if (!cidexResultados.escrita || cidexResultados.escrita < nivel) {
+        cidexResultados.escrita = nivel;
+        cidexSalvarResultados();
+      }
+    }
+    
+    if (body) {
+      var h = '<div class="cidex-resultado-box" style="margin-bottom:16px;">';
+      h += '<div style="font-size:12px;color:#C4A35A99;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;">ESCRITA · N' + nivel + '</div>';
+      h += '<div class="cidex-resultado-num">' + score + '/20</div>';
+      h += '<div class="cidex-resultado-status" style="color:' + (aprovado ? '#4ade80' : '#f87171') + ';margin-top:8px;">' + (aprovado ? '✅ HABILITADO N' + nivel : '❌ NÃO HABILITADO') + '</div>';
+      h += '</div>';
+      h += '<div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:16px;border:1px solid #E5E3F5;">';
+      h += '<div style="font-size:11px;font-weight:800;color:#8B1A1A;text-transform:uppercase;margin-bottom:10px;">🦗 Feedback do Cricket</div>';
+      h += '<div style="font-size:13px;color:#3a3a5c;line-height:1.6;">' + feedback.replace(/\n/g, '<br>') + '</div>';
+      h += '</div>';
+      h += '<button onclick="abrirCidex()" style="width:100%;padding:14px;border-radius:14px;border:none;background:#8B1A1A;color:#fff;font-family:Nunito,Arial,sans-serif;font-size:15px;font-weight:800;cursor:pointer;">← Voltar ao CIDEx</button>';
+      body.innerHTML = h;
+    }
+  } catch(e) {
+    if (body) body.innerHTML = '<div style="padding:16px;color:#f87171;">Erro ao avaliar. Tente novamente.</div>';
+  }
+}
+
+function iniciarCidexOral(nivel) {
+  // Oral uses existing Talk to Cricket with military context
+  var contexto = nivel === 1 
+    ? 'You are a CIDEx oral examiner. Conduct a brief structured conversation in English with a Brazilian Army soldier being tested at Level N1 (Survival level). Start by asking them to introduce themselves - name, rank, unit and daily routine. Then ask 2-3 simple questions about their work and personal life. Use simple, clear language. Speak slowly and clearly. If they cannot respond, end the test politely. Evaluate informally as you go.'
+    : 'You are a CIDEx oral examiner. Conduct a structured conversation in English with a Brazilian Army soldier being tested at Level N2 (Functional level). Start with a self-introduction request, then discuss their military duties, ask them to describe their unit or base, compare two situations, and give their opinion on a work-related topic. Include some military context such as missions, training or international operations. Maintain a professional but friendly tone.';
+  
+  // Store context and open oral practice
+  localStorage.setItem('cidex_oral_contexto', contexto);
+  localStorage.setItem('cidex_oral_nivel', nivel);
+  alert('A prova oral será conduzida pelo Cricket em inglês. Responda como se estivesse em uma banca examinadora. Boa sorte! 🎖️');
+  ir('falar');
+}
+
+
 window.onload = function() {
 
   document.querySelectorAll('.tela').forEach(function(t) { t.classList.remove('ativa'); });
@@ -9546,6 +10109,8 @@ window.onload = function() {
     } else { alert('Wrong code. Use: 7429'); }
   };
 
+  var _el_btnCidex = document.getElementById('btnCidex'); if(_el_btnCidex) _el_btnCidex.onclick = function() { carregarCidexResultados(); abrirCidex(); };
+  var _el_btnCidex = document.getElementById('btnCidex'); if(_el_btnCidex) _el_btnCidex.onclick = function() { abrirCidex(); };
   var _el_btnTutorial = document.getElementById('btnTutorial'); if(_el_btnTutorial) _el_btnTutorial.onclick = function() { iniciarTutorial(); };
   var _el_btnPlacement = document.getElementById('btnPlacement'); if(_el_btnPlacement) _el_btnPlacement.onclick = function() { iniciarNivelamento(); };
   var _el_btnCambridge = document.getElementById('btnCambridge'); if(_el_btnCambridge) _el_btnCambridge.onclick = function() { 
