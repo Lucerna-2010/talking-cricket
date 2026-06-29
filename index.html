@@ -1144,7 +1144,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div class="pt-sub">35 questions · Grammar, Reading &amp; Listening</div>
     <div class="pt-timer">
       <span class="pt-timer-label">⏱</span>
-      <span class="pt-timer-clock" id="ptTimerDisplay">10:00</span>
+      <span class="pt-timer-clock" id="ptTimerDisplay">40:00</span>
       <span class="pt-timer-label">remaining</span>
     </div>
     <div class="pt-progresso" style="margin-top:10px;"><div class="pt-progresso-fill" id="ptProgresso" style="width:0%"></div></div>
@@ -3305,12 +3305,54 @@ var simulados = {
       ]
     },
     writing: {
-      titulo: 'Writing — Part 1',
-      tipo: 'Informal Email',
-      instrucoes: 'You have received an email from your English-speaking friend, Sam, who is planning to visit your city next month. Sam asks: "What should I visit while I am there? Are there any local restaurants you would recommend? What is the best way to get around the city?" Write an email to Sam answering all three questions. Write 100-150 words.',
+      titulo: "Writing Task",
+      tipo: "Informal Email",
+      instrucoes: "You have received an email from your English-speaking friend Sam, who is planning to visit your city next month. Sam asks: \"What should I visit? Are there any local restaurants you would recommend? What is the best way to get around?\" Write an email answering all three questions. Write 100-150 words.",
       minPalavras: 100,
       maxPalavras: 150,
-      criterios: ['Conteúdo (responde às 3 perguntas)', 'Linguagem (vocabulário e gramática B1)', 'Organização (introdução, desenvolvimento, conclusão)', 'Registro (informal e amigável)']
+      criterios: ["Responde as 3 perguntas", "Linguagem B1 adequada", "Organizacao clara", "Registro informal e amigavel"],
+      prompts: [
+        {
+          titulo: "Informal Email",
+          tipo: "Informal Email",
+          instrucoes: "You have received an email from your English-speaking friend Sam, who is planning to visit your city next month. Sam asks: \"What should I visit? Are there any local restaurants you would recommend? What is the best way to get around?\" Write an email answering all three questions. Write 100-150 words.",
+          minPalavras: 100,
+          maxPalavras: 150,
+          criterios: ["Responde as 3 perguntas", "Linguagem B1 adequada", "Organizacao clara", "Registro informal e amigavel"]
+        },
+        {
+          titulo: "Article",
+          tipo: "Article",
+          instrucoes: "Write an ARTICLE for your school magazine (100-150 words) about the advantages and disadvantages of social media for young people. Include your own opinion.",
+          minPalavras: 100,
+          maxPalavras: 150,
+          criterios: ["Equilibrio entre vantagens e desvantagens", "Opiniao pessoal clara", "Conectores de contraste", "Vocabulario de tecnologia e sociedade"]
+        },
+        {
+          titulo: "Letter",
+          tipo: "Letter",
+          instrucoes: "Write a LETTER (100-150 words) to a local newspaper about a problem in your neighbourhood. Describe the problem, explain how it affects people, and suggest a solution.",
+          minPalavras: 100,
+          maxPalavras: 150,
+          criterios: ["Descreve o problema claramente", "Explica o impacto", "Sugere solucao viavel", "Registro formal adequado"]
+        },
+        {
+          titulo: "Story",
+          tipo: "Story",
+          instrucoes: "Write a SHORT STORY (100-150 words) ending with: \"...and that was the day everything changed.\" Use a variety of past tenses and descriptive language.",
+          minPalavras: 100,
+          maxPalavras: 150,
+          criterios: ["Narrativa envolvente", "Variedade de tempos verbais", "Linguagem descritiva", "Desfecho coerente"]
+        },
+        {
+          titulo: "Report",
+          tipo: "Report",
+          instrucoes: "Your school has asked you to write a SHORT REPORT (100-150 words) about what students do in their free time. Include: most popular activities, how much time they spend, and one recommendation for the school.",
+          minPalavras: 100,
+          maxPalavras: 150,
+          criterios: ["Estrutura de relatorio", "Linguagem objetiva", "Dados incluidos", "Recomendacao justificada"]
+        }
+      ]
     },
     speaking: {
       titulo: 'Speaking Test — B1',
@@ -3394,12 +3436,54 @@ var simulados = {
       ]
     },
     writing: {
-      titulo: 'Writing — Part 1',
-      tipo: 'Short Message',
-      instrucoes: 'Your English friend Alex wants to visit your city. Write a message to Alex. Tell Alex: one place to visit, one local food to try, and the best way to travel in the city. Write 35-45 words.',
-      minPalavras: 35,
-      maxPalavras: 45,
-      criterios: ['Conteúdo (responde às 3 questões)', 'Linguagem (vocabulário A2)', 'Clareza da mensagem']
+      titulo: "Writing Task",
+      tipo: "Informal Email",
+      instrucoes: "Your English friend is visiting your city next month. Write an EMAIL (80-100 words) telling them: one place to visit, one restaurant to try, and the best way to travel around the city.",
+      minPalavras: 80,
+      maxPalavras: 100,
+      criterios: ["Responde as 3 perguntas", "Registro informal", "Vocabulario A2", "Gramatica basica correta"],
+      prompts: [
+        {
+          titulo: "Informal Email",
+          tipo: "Informal Email",
+          instrucoes: "Your English friend is visiting your city next month. Write an EMAIL (80-100 words) telling them: one place to visit, one restaurant to try, and the best way to travel around the city.",
+          minPalavras: 80,
+          maxPalavras: 100,
+          criterios: ["Responde as 3 perguntas", "Registro informal", "Vocabulario A2", "Gramatica basica correta"]
+        },
+        {
+          titulo: "Story",
+          tipo: "Story",
+          instrucoes: "Write a SHORT STORY (80-100 words) beginning with: \"Last Saturday, something very unusual happened...\" Use past simple and past continuous.",
+          minPalavras: 80,
+          maxPalavras: 100,
+          criterios: ["Narrativa clara e coerente", "Usa past simple e continuous", "Vocabulario narrativo", "Conectores basicos"]
+        },
+        {
+          titulo: "Description",
+          tipo: "Description",
+          instrucoes: "Write a DESCRIPTION (80-100 words) of your home. Include: where it is, how many rooms it has, your favourite room and why you like it.",
+          minPalavras: 80,
+          maxPalavras: 100,
+          criterios: ["Descreve a casa com detalhes", "Usa there is/there are", "Vocabulario da casa", "Adjetivos variados"]
+        },
+        {
+          titulo: "Note",
+          tipo: "Note",
+          instrucoes: "Write a NOTE (80-100 words) to your neighbour. Explain that you are going on holiday for two weeks. Ask them to: collect your post, water your plants, and feed your cat.",
+          minPalavras: 80,
+          maxPalavras: 100,
+          criterios: ["Inclui todos os pedidos", "Tom educado e amigavel", "Imperatives corretos", "Informacao clara"]
+        },
+        {
+          titulo: "Review",
+          tipo: "Review",
+          instrucoes: "Write a SHORT REVIEW (80-100 words) of a film or book you enjoyed recently. Include: the title, what it is about, why you liked it, and who you would recommend it to.",
+          minPalavras: 80,
+          maxPalavras: 100,
+          criterios: ["Inclui todos os elementos", "Opinioes claras", "Vocabulario de avaliacao", "Registro semi-formal"]
+        }
+      ]
     },
     speaking: {
       titulo: 'Speaking Test — A2',
@@ -3484,12 +3568,54 @@ var simulados = {
       ]
     },
     writing: {
-      titulo: 'Writing — Part 1',
-      tipo: 'Essay',
-      instrucoes: 'Your teacher has asked you to write an essay on the following question: "The internet has had more positive than negative effects on society. Do you agree?" Write your essay giving reasons for your opinion and discussing both sides of the argument. Write 140-190 words.',
+      titulo: "Writing Task",
+      tipo: "Essay",
+      instrucoes: "Write an ESSAY (140-190 words) on the following topic: \"Technology has made modern life easier but has also created new problems.\" Discuss both sides and give your own opinion.",
       minPalavras: 140,
       maxPalavras: 190,
-      criterios: ['Conteúdo (argumento bem desenvolvido)', 'Organização (introdução, desenvolvimento, conclusão)', 'Linguagem (vocabulário e gramática B2)', 'Registro (formal e académico)']
+      criterios: ["Argumentos equilibrados", "Opiniao pessoal fundamentada", "Conectores sofisticados", "Vocabulario academico B2"],
+      prompts: [
+        {
+          titulo: "Essay",
+          tipo: "Essay",
+          instrucoes: "Write an ESSAY (140-190 words) on the following topic: \"Technology has made modern life easier but has also created new problems.\" Discuss both sides and give your own opinion.",
+          minPalavras: 140,
+          maxPalavras: 190,
+          criterios: ["Argumentos equilibrados", "Opiniao pessoal fundamentada", "Conectores sofisticados", "Vocabulario academico B2"]
+        },
+        {
+          titulo: "Formal Letter of Complaint",
+          tipo: "Formal Letter of Complaint",
+          instrucoes: "Write a FORMAL LETTER OF COMPLAINT (140-190 words) to the manager of a hotel where you recently stayed. You were unhappy with the room, the food and the service. Request appropriate compensation.",
+          minPalavras: 140,
+          maxPalavras: 190,
+          criterios: ["Estrutura formal de carta", "Tom profissional", "Reclamacoes claras", "Pedido de compensacao justificado"]
+        },
+        {
+          titulo: "Review",
+          tipo: "Review",
+          instrucoes: "Write a REVIEW (140-190 words) of a book, film or television series. Include: a brief summary, what you liked and disliked, and who you would recommend it to.",
+          minPalavras: 140,
+          maxPalavras: 190,
+          criterios: ["Resumo conciso", "Avaliacao equilibrada", "Linguagem avaliativa variada", "Recomendacao justificada"]
+        },
+        {
+          titulo: "Report",
+          tipo: "Report",
+          instrucoes: "Write a REPORT (140-190 words) for your company manager about the results of a recent survey on employee wellbeing. Include: key findings, main concerns raised, and two recommendations.",
+          minPalavras: 140,
+          maxPalavras: 190,
+          criterios: ["Estrutura formal de relatorio", "Linguagem impessoal", "Dados claros", "Recomendacoes viaveiss"]
+        },
+        {
+          titulo: "Article",
+          tipo: "Article",
+          instrucoes: "Write an ARTICLE (140-190 words) for an international magazine about how your country or city has changed in the last twenty years. Discuss changes in lifestyle, technology and the environment.",
+          minPalavras: 140,
+          maxPalavras: 190,
+          criterios: ["Perspectiva pessoal", "Comparacoes passado/presente", "Vocabulario de mudanca", "Tom engajante"]
+        }
+      ]
     },
     speaking: {
       titulo: 'Speaking Test — B2',
@@ -3574,12 +3700,54 @@ var simulados = {
       ]
     },
     writing: {
-      titulo: 'Writing — Part 1',
-      tipo: 'Essay — Discursive',
-      instrucoes: 'Your professor has asked you to write an essay in response to the following statement: "Governments should invest in space exploration rather than addressing problems on Earth." Discuss the arguments for and against this statement, presenting your own well-reasoned conclusion. Write 220-260 words.',
-      minPalavras: 220,
-      maxPalavras: 260,
-      criterios: ['Desenvolvimento de argumentos (prós e contras)', 'Conclusão fundamentada', 'Coesão e coerência discursiva', 'Amplitude e precisão lexical C1']
+      titulo: "Writing Task",
+      tipo: "Essay",
+      instrucoes: "Write an ESSAY (200-250 words) on the following question: \"To what extent should governments restrict freedom of expression in the digital age?\" Develop a coherent argument, considering multiple perspectives.",
+      minPalavras: 200,
+      maxPalavras: 250,
+      criterios: ["Tese clara e desenvolvida", "Contraponto refutado", "Linguagem academica sofisticada", "Coesao e coerencia", "Conclusao sintetizada"],
+      prompts: [
+        {
+          titulo: "Essay",
+          tipo: "Essay",
+          instrucoes: "Write an ESSAY (200-250 words) on the following question: \"To what extent should governments restrict freedom of expression in the digital age?\" Develop a coherent argument, considering multiple perspectives.",
+          minPalavras: 200,
+          maxPalavras: 250,
+          criterios: ["Tese clara e desenvolvida", "Contraponto refutado", "Linguagem academica sofisticada", "Coesao e coerencia", "Conclusao sintetizada"]
+        },
+        {
+          titulo: "Proposal",
+          tipo: "Proposal",
+          instrucoes: "Write a PROPOSAL (200-250 words) to your city council suggesting improvements to public transport. Include: the current problems, your proposed solutions, expected benefits, and how the project could be funded.",
+          minPalavras: 200,
+          maxPalavras: 250,
+          criterios: ["Estrutura de proposta", "Argumentacao persuasiva", "Linguagem formal", "Solucoes viaveiss", "Tom construtivo"]
+        },
+        {
+          titulo: "Report",
+          tipo: "Report",
+          instrucoes: "Write a REPORT (200-250 words) for a senior manager on the impact of remote working on productivity and employee wellbeing. Include findings, analysis and at least three recommendations.",
+          minPalavras: 200,
+          maxPalavras: 250,
+          criterios: ["Estrutura formal clara", "Linguagem impessoal", "Analise critica", "Recomendacoes especificas", "Registro formal"]
+        },
+        {
+          titulo: "Article",
+          tipo: "Article",
+          instrucoes: "Write an ARTICLE (200-250 words) for an academic journal exploring the relationship between social media use and mental health in young people. Present evidence, consider different viewpoints and draw a conclusion.",
+          minPalavras: 200,
+          maxPalavras: 250,
+          criterios: ["Linguagem academica", "Evidencias consideradas", "Multiplas perspectivas", "Estrutura logica", "Vocabulario especializado"]
+        },
+        {
+          titulo: "Formal Letter",
+          tipo: "Formal Letter",
+          instrucoes: "Write a FORMAL LETTER (200-250 words) to the editor of a newspaper responding to an article that argued that environmental regulations are harmful to economic growth. Challenge the argument with evidence and propose an alternative view.",
+          minPalavras: 200,
+          maxPalavras: 250,
+          criterios: ["Estrutura formal", "Contraargumentacao logica", "Tom assertivo e respeitoso", "Evidencias especificas", "Conclusao forte"]
+        }
+      ]
     },
     speaking: {
       titulo: 'Speaking Test — C1',
@@ -3664,12 +3832,54 @@ var simulados = {
       ]
     },
     writing: {
-      titulo: 'Writing — Part 1',
-      tipo: 'Essay — Advanced Critical',
-      instrucoes: 'A literary magazine has asked you to contribute an essay responding to the following proposition: "Literature can achieve what political argument cannot: it can change the way people fundamentally think and feel about the world." Write a critical essay examining this claim, drawing on specific examples and presenting a nuanced, well-argued position. Write 280-320 words.',
-      minPalavras: 280,
-      maxPalavras: 320,
-      criterios: ['Argumentação sofisticada e nuançada', 'Exemplos específicos e bem integrados', 'Amplitude lexical e precisão C2', 'Estrutura ensaística elegante e coesa']
+      titulo: "Writing Task",
+      tipo: "Critical Essay",
+      instrucoes: "Write a CRITICAL ESSAY (250-300 words) examining the following claim: \"Artificial intelligence will ultimately benefit humanity more than it will harm it.\" Draw on specific examples and engage critically with counterarguments.",
+      minPalavras: 250,
+      maxPalavras: 300,
+      criterios: ["Tese sofisticada e nuancada", "Engajamento critico", "Exemplos convincentes", "Linguagem academica avancada", "Conclusao reflexiva"],
+      prompts: [
+        {
+          titulo: "Critical Essay",
+          tipo: "Critical Essay",
+          instrucoes: "Write a CRITICAL ESSAY (250-300 words) examining the following claim: \"Artificial intelligence will ultimately benefit humanity more than it will harm it.\" Draw on specific examples and engage critically with counterarguments.",
+          minPalavras: 250,
+          maxPalavras: 300,
+          criterios: ["Tese sofisticada e nuancada", "Engajamento critico", "Exemplos convincentes", "Linguagem academica avancada", "Conclusao reflexiva"]
+        },
+        {
+          titulo: "Analytical Report",
+          tipo: "Analytical Report",
+          instrucoes: "Write an ANALYTICAL REPORT (250-300 words) for a government advisory committee on the social and economic consequences of automation in the labour market. Assess the evidence, identify key risks and opportunities, and propose a policy framework.",
+          minPalavras: 250,
+          maxPalavras: 300,
+          criterios: ["Analise critica de evidencias", "Riscos e oportunidades identificados", "Proposta de politica fundamentada", "Linguagem tecnica de alto nivel", "Estrutura analitica sofisticada"]
+        },
+        {
+          titulo: "Philosophy Article",
+          tipo: "Philosophy Article",
+          instrucoes: "Write an ARTICLE (250-300 words) for a philosophy journal examining whether it is ever morally justifiable to break the law. Consider at least two philosophical frameworks and reach a reasoned conclusion.",
+          minPalavras: 250,
+          maxPalavras: 300,
+          criterios: ["Rigor filosofico", "Analise de casos concretos", "Linguagem academica precisa", "Conclusao nuancada", "Estrutura argumentativa coerente"]
+        },
+        {
+          titulo: "Argumentative Letter",
+          tipo: "Argumentative Letter",
+          instrucoes: "Write a LETTER (250-300 words) to a prominent technology entrepreneur who has publicly argued that social media platforms should be completely unregulated. Challenge their position with a carefully constructed counter-argument.",
+          minPalavras: 250,
+          maxPalavras: 300,
+          criterios: ["Tom assertivo e respeitoso", "Contraargumentacao com evidencias", "Reconhecimento e refutacao", "Linguagem persuasiva", "Proposta alternativa fundamentada"]
+        },
+        {
+          titulo: "Critical Review",
+          tipo: "Critical Review",
+          instrucoes: "Write a CRITICAL REVIEW (250-300 words) of a significant work of literature, film or music that has had a demonstrable cultural impact. Analyse its themes, technique and significance within its cultural context.",
+          minPalavras: 250,
+          maxPalavras: 300,
+          criterios: ["Analise tematica e tecnica", "Contextualizacao cultural", "Avaliacao critica equilibrada", "Linguagem critica sofisticada", "Perspectiva original"]
+        }
+      ]
     },
     speaking: {
       titulo: 'Speaking Test — C2',
@@ -3907,33 +4117,55 @@ function responderSim(qId, opcaoIdx, correta, exp, tipo) {
 function renderSimWriting(body) {
   var sim = simulados[simNivel];
   var w = sim.writing;
+  var prompts = w.prompts || [w];
+  var promptAtual = window.simWritingPromptIdx || 0;
+  var p = prompts[promptAtual];
+
+  var promptBtns = prompts.map(function(pr, i) {
+    var active = i === promptAtual;
+    return '<button onclick="trocarSimWritingPrompt(' + i + ')" style="padding:6px 12px;border-radius:10px;border:2px solid ' + (active ? '#BA7517' : '#E5E3F5') + ';background:' + (active ? '#FAEEDA' : '#fff') + ';font-family:Nunito,Arial,sans-serif;font-size:11px;font-weight:800;cursor:pointer;color:' + (active ? '#BA7517' : '#6b7280') + ';">' + (i + 1) + '. ' + pr.tipo + '</button>';
+  }).join(' ');
+
   body.innerHTML =
     '<div class="sim-section">' +
     '<div class="sim-section-header">' +
       '<div class="sim-section-icon" style="background:#FAEEDA">✍️</div>' +
       '<div class="sim-section-info"><div class="sim-section-titulo">Writing</div>' +
-      '<div class="sim-section-sub">Write your answer in English</div></div>' +
-      '<span class="sim-section-badge" style="background:#FAEEDA;color:#BA7517">B1</span></div>' +
+      '<div class="sim-section-sub">Choose a task and write your answer in English</div></div>' +
+      '<span class="sim-section-badge" style="background:#FAEEDA;color:#BA7517">' + simNivel + '</span></div>' +
+    '<div style="margin-bottom:12px;"><div style="font-size:11px;font-weight:800;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;">Choose your writing task:</div>' +
+    '<div style="display:flex;flex-wrap:wrap;gap:6px;">' + promptBtns + '</div></div>' +
     '<div class="sim-writing-prompt">' +
-      '<div class="sim-writing-tipo">' + w.tipo + '</div>' +
-      '<div class="sim-writing-texto">' + w.instrucoes + '</div>' +
+      '<div class="sim-writing-tipo">' + p.tipo + '</div>' +
+      '<div class="sim-writing-texto">' + p.instrucoes + '</div>' +
     '</div>' +
-    '<textarea class="sim-writing-input" id="simWritingInput" placeholder="Escreva seu texto aqui em inglês..." oninput="atualizarContadorSim()"></textarea>' +
-    '<div class="sim-writing-count" id="simWritingCount">0 words (target: 100-150)</div>' +
-    '<div class="sim-texto" style="margin-top:10px;"><div class="sim-texto-titulo">Critérios de avaliação</div><div class="sim-texto-content">' +
-    w.criterios.map(function(c, i) { return '• ' + c; }).join('<br>') +
+    '<textarea class="sim-writing-input" id="simWritingInput" placeholder="Write your answer here in English..." oninput="atualizarContadorSim()"></textarea>' +
+    '<div class="sim-writing-count" id="simWritingCount">0 words (target: ' + p.minPalavras + '-' + p.maxPalavras + ')</div>' +
+    '<div class="sim-texto" style="margin-top:10px;"><div class="sim-texto-titulo">Assessment criteria</div><div class="sim-texto-content">' +
+    p.criterios.map(function(c) { return '• ' + c; }).join('<br>') +
     '</div></div>' +
     '<button class="sim-btn-submit" onclick="submeterWritingSim()">Submit writing →</button>' +
     '</div>';
 }
+
+function trocarSimWritingPrompt(idx) {
+  window.simWritingPromptIdx = idx;
+  var body = document.getElementById('simBody');
+  if (body) renderSimWriting(body);
+}
+
 
 function atualizarContadorSim() {
   var input = document.getElementById('simWritingInput');
   var counter = document.getElementById('simWritingCount');
   if (!input || !counter) return;
   var palavras = input.value.trim() === '' ? 0 : input.value.trim().split(/\s+/).length;
-  counter.textContent = palavras + ' words (target: 100-150)';
-  counter.style.color = palavras >= 100 && palavras <= 150 ? '#1D9E75' : palavras > 150 ? '#D85A30' : '#BA7517';
+  var sim = simulados[simNivel];
+  var w = sim ? sim.writing : null;
+  var prompts = w ? (w.prompts || [w]) : [];
+  var p = prompts[window.simWritingPromptIdx || 0] || {minPalavras:100, maxPalavras:150};
+  counter.textContent = palavras + ' words (target: ' + p.minPalavras + '-' + p.maxPalavras + ')';
+  counter.style.color = palavras >= p.minPalavras && palavras <= p.maxPalavras ? '#1D9E75' : palavras > p.maxPalavras ? '#D85A30' : '#BA7517';
 }
 
 function submeterWritingSim() {
@@ -3941,13 +4173,23 @@ function submeterWritingSim() {
   if (!input) return;
   var texto = input.value.trim();
   var palavras = texto === '' ? 0 : texto.split(/\s+/).length;
-  if (palavras < 30) { alert('Please write at least a few sentences before submitting!'); return; }
+  if (palavras < 20) { alert('Please write at least a few sentences before submitting!'); return; }
+
+  var sim = simulados[simNivel];
+  var w = sim.writing;
+  var prompts = w.prompts || [w];
+  var promptAtual = window.simWritingPromptIdx || 0;
+  var p = prompts[promptAtual];
+  var minP = p.minPalavras || 100;
+  var maxP = p.maxPalavras || 150;
+
   simRespostas.writing = texto;
   var nota = Math.min(100, Math.max(40,
-    (palavras >= 100 && palavras <= 150 ? 25 : palavras >= 80 ? 18 : 10) +
+    (palavras >= minP && palavras <= maxP ? 25 : palavras >= minP * 0.8 ? 18 : 10) +
     Math.floor(Math.random() * 40) + 35
   ));
   simPontos.writing = nota;
+  window.simWritingPromptIdx = 0;
   proximaSimSecao();
 }
 
@@ -8827,11 +9069,11 @@ var ptTextoAtual = null;
 var ptAudioAtual = null;
 
 var ptTimerInterval = null;
-var ptTimerSeg = 600; // 10 minutes
+var ptTimerSeg = 2400; // 10 minutes
 
 function iniciarNivelamento() {
   ptIndex = 0; ptAcertos = 0; ptRespostas = []; ptTextoAtual = null; ptAudioAtual = null;
-  ptTimerSeg = 600;
+  ptTimerSeg = 2400;
   if (ptTimerInterval) clearInterval(ptTimerInterval);
   ir('nivelamento');
   renderPtQuestao();
