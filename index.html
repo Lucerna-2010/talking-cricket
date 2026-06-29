@@ -9533,6 +9533,7 @@ function renderTutSlide() {
 
 // ===== ADMIN PANEL =====
 async function abrirAdmin() {
+  window.cidexAdminAccess = true;
   ir('admin');
   var body = document.getElementById('adminBody');
   if (body) body.innerHTML = '<div class="admin-loading">⏳ Loading members...</div>';
@@ -9840,30 +9841,111 @@ var cidexResps = [];
 var cidexResultados = {auditiva:0, oral:0, leitora:0, escrita:0};
 
 // Questions for Auditiva N1 (20 questions)
-var cidexQAuditiva1 = [
-  {texto:'Listen: "Good morning. The base cafeteria will be open from six to eight. Breakfast includes eggs, bread and coffee. Personnel must show their military ID."',pergunta:'What time does the cafeteria close for breakfast?',opcoes:['Six oclock','Seven oclock','Eight oclock','Nine oclock'],correta:2},
-  {texto:'Listen: "Attention please. The morning formation will be at zero six hundred hours in the main parade ground. Wear combat uniform."',pergunta:'Where will the formation take place?',opcoes:['In the barracks','In the gymnasium','In the main parade ground','At the main gate'],correta:2},
-  {texto:'Listen: "Hello, this is Sergeant Miller. I need to reschedule my appointment with the medical officer to Thursday morning."',pergunta:'What does Sergeant Miller want to do?',opcoes:['Cancel his appointment','Change his appointment to Thursday','Make a new appointment','See the medical officer today'],correta:1},
-  {texto:'Listen: "The weather forecast for today is cloudy with some rain in the afternoon. Temperature around eighteen degrees. Carry your rain gear."',pergunta:'What does the forecast advise soldiers to carry?',opcoes:['Sunscreen','Extra water','Rain gear','Warm clothing'],correta:2},
-  {texto:'Listen: "Turn left at the main gate, walk two blocks and the administration building is on your right, next to the flag pole."',pergunta:'Where is the administration building?',opcoes:['On the left after the main gate','Two blocks right of the main gate','Next to the flag pole on the right','At the main gate'],correta:2},
-  {texto:'Listen: "The PX store will be closed this Saturday for inventory. It will reopen on Sunday at ten in the morning."',pergunta:'When will the PX store reopen?',opcoes:['Saturday morning','Saturday afternoon','Sunday at ten','Monday morning'],correta:2},
-  {texto:'Listen: "Private Santos, your transfer to the Third Battalion has been approved. Report there next Monday at zero eight hundred."',pergunta:'When must Private Santos report to the Third Battalion?',opcoes:['This Friday','Next Monday at eight','Next Tuesday','Today at eight'],correta:1},
-  {texto:'Listen: "The gym is open Monday to Friday from five in the morning to nine at night. On weekends it closes at six."',pergunta:'What time does the gym close on weekends?',opcoes:['Five in the morning','Nine at night','Six in the evening','Eight at night'],correta:2},
-  {texto:'Listen: "Could you tell me where the officers mess is? I am new here and I need to have lunch."',pergunta:'What does the speaker need?',opcoes:['A map of the base','To find the officers mess','To speak to an officer','To find the main gate'],correta:1},
-  {texto:'Listen: "All vehicles entering the base must stop at the checkpoint. Show your ID and state your business."',pergunta:'What must vehicles do at the checkpoint?',opcoes:['Drive through without stopping','Show ID and state their business','Park and wait','Call the duty officer'],correta:1},
-  {texto:'Listen: "The training exercise will start on Monday and finish on Wednesday. Soldiers must bring three days of rations and full combat gear."',pergunta:'How many days will the training exercise last?',opcoes:['Two days','Three days','Four days','Five days'],correta:1},
-  {texto:'Listen: "Lost and found: a black military backpack was found near the parade ground. Contact the duty sergeant to claim it."',pergunta:'Where was the backpack found?',opcoes:['At the main gate','In the cafeteria','Near the parade ground','At the duty office'],correta:2},
-  {texto:'Listen: "The commanding officer will inspect the barracks at fourteen hundred hours. All personnel must be present and in dress uniform."',pergunta:'What time is the inspection?',opcoes:['Twelve hundred','Thirteen hundred','Fourteen hundred','Fifteen hundred'],correta:2},
-  {texto:'Listen: "Hi John. I cannot make it to the briefing today. I will be at the medical centre all morning."',pergunta:'Why cannot the speaker attend the briefing?',opcoes:['He is on leave','He is at the medical centre','He is on duty','He forgot about it'],correta:1},
-  {texto:'Listen: "The bus to the city centre leaves at oh eight thirty and returns at seventeen hundred. The next bus is on Thursday."',pergunta:'What time does the bus leave for the city?',opcoes:['Seven thirty','Eight thirty','Nine thirty','Seventeen hundred'],correta:1},
-  {texto:'Listen: "Corporal Lima, your leave request has been approved for two weeks starting the fifteenth of next month."',pergunta:'How long is Corporal Lima leave?',opcoes:['One week','Ten days','Two weeks','One month'],correta:2},
-  {texto:'Listen: "The water in sector B will be cut off for maintenance from eight to twelve tomorrow. Use the facilities in sector A."',pergunta:'What should personnel use during the water cut?',opcoes:['Bottled water','Facilities in sector C','Facilities in sector A','Wait until twelve'],correta:2},
-  {texto:'Listen: "Welcome to Fort Bragg. Please proceed to the visitor centre on your left to register. Have your ID ready."',pergunta:'What do visitors need to have ready?',opcoes:['A letter of invitation','Their ID','Their vehicle documents','A military pass'],correta:1},
-  {texto:'Listen: "Sergeant Davis, the colonel wants to see you in his office at fifteen hundred today."',pergunta:'Who wants to see Sergeant Davis?',opcoes:['The major','The lieutenant','The colonel','The duty officer'],correta:2},
-  {texto:'Listen: "All soldiers must complete the mandatory first aid course before the end of the month. Sign up at the training office."',pergunta:'Where should soldiers sign up for the course?',opcoes:['At the medical centre','At the duty office','At the training office','Online'],correta:2}
+var cidexAuditivaN1 = [
+  // PROVA 1
+  {
+    audios: [
+      {arquivo:'cidex-a-n1-p1-01.mp3', questoes:[
+        {pergunta:'What time does the cafeteria open?',opcoes:['Five hundred','Six hundred','Seven hundred','Eight hundred'],correta:1},
+        {pergunta:'What must personnel show at the entrance?',opcoes:['Their unit badge','A meal ticket','Their military ID','Nothing'],correta:2},
+        {pergunta:'Why will the cafeteria be closed on Saturday?',opcoes:['For maintenance','For cleaning','For a special event','For renovation'],correta:1},
+        {pergunta:'Which of these is NOT mentioned as a breakfast item?',opcoes:['Eggs','Toast','Coffee','Juice'],correta:3},
+        {pergunta:'Who is this announcement for?',opcoes:['Officers only','New recruits only','All personnel','Civilian staff only'],correta:2}
+      ]},
+      {arquivo:'cidex-a-n1-p1-02.mp3', questoes:[
+        {pergunta:'Why is Private Carter calling?',opcoes:['To request leave','To say he will be late','To cancel an appointment','To speak to the doctor'],correta:1},
+        {pergunta:'What time is his medical appointment?',opcoes:['Six thirty','Seven thirty','Eight thirty','Nine thirty'],correta:1},
+        {pergunta:'Who already knows about the absence?',opcoes:['The company commander','The duty officer','His squad leader','The medical officer'],correta:2},
+        {pergunta:'What time will Private Carter arrive at the unit?',opcoes:['Eight hundred','Nine hundred','Ten hundred','Eleven hundred'],correta:2},
+        {pergunta:'Where is the medical appointment?',opcoes:['At a civilian hospital','At the base hospital','At the medical centre downtown','At the unit clinic'],correta:1}
+      ]},
+      {arquivo:'cidex-a-n1-p1-03.mp3', questoes:[
+        {pergunta:'What is the weather expected in the afternoon?',opcoes:['Sunny','Windy','Rain','Snow'],correta:2},
+        {pergunta:'What is the temperature today?',opcoes:['Fifteen degrees','Twenty degrees','Twenty-five degrees','Thirty degrees'],correta:1},
+        {pergunta:'What must personnel bring to outdoor training?',opcoes:['Extra water','Sunscreen','Rain gear','Warm clothing'],correta:2},
+        {pergunta:'Where will evening formation be held if it rains?',opcoes:['In the barracks','In the cafeteria','In the gymnasium','Outside as planned'],correta:2},
+        {pergunta:'Who is this message for?',opcoes:['Officers only','The duty officer','All units','Training instructors only'],correta:2}
+      ]},
+      {arquivo:'cidex-a-n1-p1-04.mp3', questoes:[
+        {pergunta:'What is the person looking for?',opcoes:['The sports centre','The base library','The water tower','The cafeteria'],correta:1},
+        {pergunta:'Which direction should they turn at the water tower?',opcoes:['Right','Left','Straight ahead','Back the way they came'],correta:1},
+        {pergunta:'What building is next to the library?',opcoes:['The cafeteria','The barracks','The sports centre','The administration building'],correta:2},
+        {pergunta:'What time does the library open?',opcoes:['Seven','Eight','Nine','Ten'],correta:1},
+        {pergunta:'How long does it take to walk there?',opcoes:['Two minutes','Three minutes','Five minutes','Ten minutes'],correta:2}
+      ]}
+    ]
+  },
+  // PROVA 2
+  {
+    audios: [
+      {arquivo:'cidex-a-n1-p2-01.mp3', questoes:[
+        {pergunta:'When will the physical fitness test take place?',opcoes:['Monday','Wednesday','Friday','Saturday'],correta:2},
+        {pergunta:'What time does the test start?',opcoes:['Five hundred','Six hundred','Seven hundred','Eight hundred'],correta:1},
+        {pergunta:'Where will the test be held?',opcoes:['At the gymnasium','At the sports centre','At the main parade ground','At the training field'],correta:2},
+        {pergunta:'By when must medical exemption documents be submitted?',opcoes:['Monday','Wednesday','Thursday','Friday morning'],correta:2},
+        {pergunta:'What uniform should soldiers wear?',opcoes:['Combat uniform','Dress uniform','Physical training uniform','Any uniform'],correta:2}
+      ]},
+      {arquivo:'cidex-a-n1-p2-02.mp3', questoes:[
+        {pergunta:'Who does the caller want to speak to?',opcoes:['Sergeant Lima','Major Santos','The duty officer','The supply officer'],correta:1},
+        {pergunta:'Why can the Major not speak now?',opcoes:['He is on leave','He is at lunch','He is in a meeting','He is not on base'],correta:2},
+        {pergunta:'Until what time is the Major busy?',opcoes:['One in the afternoon','Two in the afternoon','Three in the afternoon','Four in the afternoon'],correta:2},
+        {pergunta:'What is the message about?',opcoes:['A medical report','A training schedule','The supply report','A promotion'],correta:2},
+        {pergunta:'What is the caller extension?',opcoes:['Two one four','Three one two','Four one two','Four two one'],correta:2}
+      ]},
+      {arquivo:'cidex-a-n1-p2-03.mp3', questoes:[
+        {pergunta:'What was found?',opcoes:['A military helmet','A water bottle','A black military backpack','A set of documents'],correta:2},
+        {pergunta:'Where was the item found?',opcoes:['At the cafeteria','At the gymnasium','Near the parade ground','At the main gate'],correta:2},
+        {pergunta:'What should the owner do?',opcoes:['Go to the lost and found office','Contact the duty sergeant','File a police report','Ask their commander'],correta:1},
+        {pergunta:'What is the contact extension?',opcoes:['Two one four two','Two four one two','Four one two four','Four two one two'],correta:1},
+        {pergunta:'By what time must the owner claim the item?',opcoes:['Fifteen hundred','Seventeen hundred','Eighteen hundred','Tomorrow morning'],correta:1}
+      ]},
+      {arquivo:'cidex-a-n1-p2-04.mp3', questoes:[
+        {pergunta:'What type of film is showing on Friday?',opcoes:['A documentary','A family film','An action film','A comedy'],correta:2},
+        {pergunta:'What time is the Friday film?',opcoes:['Eighteen hundred','Nineteen hundred','Twenty hundred','Twenty-one hundred'],correta:2},
+        {pergunta:'How many times is the documentary shown on Saturday?',opcoes:['Once','Twice','Three times','It is not shown on Saturday'],correta:1},
+        {pergunta:'What time is the family film on Sunday?',opcoes:['Fourteen hundred','Fifteen hundred','Sixteen hundred','Seventeen hundred'],correta:2},
+        {pergunta:'Who must pay for a ticket?',opcoes:['All military personnel','Military families','Civilians','Everyone'],correta:2}
+      ]}
+    ]
+  },
+  // PROVA 3
+  {
+    audios: [
+      {arquivo:'cidex-a-n1-p3-01.mp3', questoes:[
+        {pergunta:'What is the problem with the jeep?',opcoes:['It is blocking the road','It is parked in the wrong place','The lights have been left on','It has a flat tyre'],correta:2},
+        {pergunta:'What colour is the jeep?',opcoes:['Black','Brown','Green','Grey'],correta:2},
+        {pergunta:'Where is the jeep parked?',opcoes:['Near the parade ground','Near the gymnasium','Near the administration building','Near the main gate'],correta:2},
+        {pergunta:'What might happen if the lights are not turned off?',opcoes:['The jeep will be towed','The battery will go flat','The owner will be fined','The alarm will go off'],correta:1},
+        {pergunta:'What reminder is given at the end?',opcoes:['Vehicles must be locked','Vehicles must park in designated areas','Vehicles must display a permit','Vehicles must be registered'],correta:1}
+      ]},
+      {arquivo:'cidex-a-n1-p3-02.mp3', questoes:[
+        {pergunta:'What does the new arrival need?',opcoes:['A meal card','A room assignment','A base pass','A uniform'],correta:1},
+        {pergunta:'Where is the accommodation office?',opcoes:['Building two','Building three','Building four','Building five'],correta:2},
+        {pergunta:'Where is it located relative to the main gate?',opcoes:['On the right','On the left','Straight ahead','Behind the gate'],correta:1},
+        {pergunta:'What documents are required?',opcoes:['Military ID only','Transfer orders only','Military ID and transfer orders','A letter from the commander'],correta:2},
+        {pergunta:'What time does the office close?',opcoes:['Fifteen hundred','Sixteen hundred','Seventeen hundred','Eighteen hundred'],correta:2}
+      ]},
+      {arquivo:'cidex-a-n1-p3-03.mp3', questoes:[
+        {pergunta:'What will be cut off tomorrow?',opcoes:['Electricity','Internet','Water supply','Heating'],correta:2},
+        {pergunta:'Which sector is affected?',opcoes:['Sector A','Sector B','Sector C','All sectors'],correta:1},
+        {pergunta:'What time will the cut-off start?',opcoes:['Six hundred','Seven hundred','Eight hundred','Nine hundred'],correta:2},
+        {pergunta:'What time will it end?',opcoes:['Ten hundred','Eleven hundred','Twelve hundred','Thirteen hundred'],correta:2},
+        {pergunta:'Where should personnel go during the cut-off?',opcoes:['Sector C','Sector D','Sector A','The gymnasium'],correta:2}
+      ]},
+      {arquivo:'cidex-a-n1-p3-04.mp3', questoes:[
+        {pergunta:'Where is the call going?',opcoes:['The base gym','The base medical centre','The base pharmacy','The administration office'],correta:1},
+        {pergunta:'Who does the caller want to see?',opcoes:['Doctor Lima','Doctor Martinez','Doctor Santos','The duty nurse'],correta:1},
+        {pergunta:'What is the caller problem?',opcoes:['A broken arm','A fever','A headache','A stomach ache'],correta:2},
+        {pergunta:'When is the appointment?',opcoes:['Tuesday','Wednesday','Thursday','Friday'],correta:2},
+        {pergunta:'What is the caller rank?',opcoes:['Private','Sergeant','Corporal','Lieutenant'],correta:2}
+      ]}
+    ]
+  }
 ];
 
-// Questions for Auditiva N2 (20 questions)
+// Questions for Auditiva N2N2 (20 questions)
+var cidexAuditivaN2 = []; // Aguardando áudios N2 - sera preenchido em breve
+
 var cidexQAuditiva2 = [
   {texto:'Listen: "The Ministry of Defence announced today that a new peacekeeping mission will be deployed to the region next month. The contingent will include five hundred soldiers from various branches."',pergunta:'What did the Ministry of Defence announce?',opcoes:['A new military base','A peacekeeping mission next month','The return of troops','New military equipment'],correta:1},
   {texto:'Listen: "Captain Rodriguez, there are some figures on page seven that do not match our inventory records. Could we meet tomorrow to go over them?"',pergunta:'What is the purpose of the call?',opcoes:['To request a new report','To discuss figures that do not match','To arrange a logistics delivery','To cancel a meeting'],correta:1},
@@ -9993,6 +10075,10 @@ function cidexUpdateUI() {
 }
 
 function abrirCidex() {
+  if (!window.cidexAdminAccess) {
+    alert('🎖️ CIDEx — Em Breve!\n\nEste módulo está em desenvolvimento e será liberado em breve.');
+    return;
+  }
   cidexLoad();
   cidexUpdateUI();
   ir('cidex');
@@ -10011,25 +10097,196 @@ function cidexIniciar(nivel) {
   if (cidexProf === 'escrita') { cidexIniciarEscrita(nivel); return; }
   if (cidexProf === 'oral') { cidexIniciarOral(nivel); return; }
 
-  var questoes;
-  if (cidexProf === 'auditiva') questoes = nivel===1 ? cidexQAuditiva1 : cidexQAuditiva2;
-  else questoes = nivel===1 ? cidexQLeitora1 : cidexQLeitora2;
+  if (cidexProf === 'auditiva') {
+    cidexMostrarSelProva(nivel);
+    return;
+  }
 
-  // Shuffle
+  // Leitora (unchanged flat structure for now)
+  var questoes = nivel===1 ? cidexQLeitora1 : cidexQLeitora2;
   cidexResps = [];
   cidexAcertos = 0;
   cidexQIdx = 0;
   var q = questoes.slice().sort(function(){return Math.random()-.5;});
   window._cidexQuestoes = q;
+  window._cidexAudioMode = false;
 
-  var tipo = (cidexProf==='auditiva'?'AUDITIVA':'LEITORA') + ' N' + nivel;
+  var tipo = 'LEITORA N' + nivel;
   var t=document.getElementById('cidexProvaTipo'); if(t) t.textContent=tipo;
-  cidexSeg = cidexProf==='auditiva' ? 1800 : 2700;
-  var td=document.getElementById('cidexTimer'); if(td) td.textContent=(cidexProf==='auditiva'?'30':'45')+':00';
+  cidexSeg = 2700;
+  var td=document.getElementById('cidexTimer'); if(td) td.textContent='45:00';
 
   ir('cidex-prova');
   cidexRenderQ();
   cidexStartTimer('cidexTimer', function(){ cidexFinish(true); });
+}
+
+function cidexMostrarSelProva(nivel) {
+  var provas = nivel === 1 ? cidexAuditivaN1 : cidexAuditivaN2;
+  var body = document.getElementById('cidexProvaBody');
+  ir('cidex-prova');
+  var t=document.getElementById('cidexProvaTipo'); if(t) t.textContent='AUDITIVA N'+nivel;
+  var qEl=document.getElementById('cidexProvaQ'); if(qEl) qEl.textContent='Escolha a prova';
+  var td=document.getElementById('cidexTimer'); if(td) td.textContent='--:--';
+
+  if (!provas || provas.length === 0) {
+    body.innerHTML = '<div style="text-align:center;padding:40px 20px;"><div style="font-size:40px;margin-bottom:16px;">🎧</div><div style="color:#C4A35A;font-weight:800;font-size:15px;">Áudios em produção</div><div style="color:#6b7280;font-size:13px;margin-top:8px;">As provas de Auditiva N'+nivel+' estarão disponíveis em breve.</div></div>';
+    return;
+  }
+
+  var h = '<div style="padding:8px 0;">';
+  h += '<div style="font-size:13px;color:#6b7280;margin-bottom:16px;text-align:center;">Escolha qual prova de Auditiva N'+nivel+' você quer fazer:</div>';
+  for (var i = 0; i < provas.length; i++) {
+    h += '<button class="cidex-nivel-btn" onclick="cidexIniciarAuditivaProva('+nivel+','+i+')">';
+    h += '<div><div style="font-size:16px;font-weight:800;">Prova '+(i+1)+'</div><div style="font-size:12px;color:#C4A35A88;margin-top:2px;">4 áudios · 20 questões · 30 minutos</div></div>';
+    h += '<span style="font-size:20px;">&#8594;</span></button>';
+  }
+  h += '</div>';
+  body.innerHTML = h;
+}
+
+function cidexIniciarAuditivaProva(nivel, provaIdx) {
+  var provas = nivel === 1 ? cidexAuditivaN1 : cidexAuditivaN2;
+  var prova = provas[provaIdx];
+
+  cidexResps = [];
+  cidexAcertos = 0;
+  cidexQIdx = 0;
+  window._cidexAudioMode = true;
+  window._cidexAudios = prova.audios;
+  window._cidexAudioIdx = 0;
+  window._cidexAudioPlayCount = 0;
+
+  // Build flat list of all 20 questions for progress tracking
+  var allQ = [];
+  prova.audios.forEach(function(a, ai) {
+    a.questoes.forEach(function(q) {
+      allQ.push(Object.assign({}, q, {_audioIdx: ai}));
+    });
+  });
+  window._cidexQuestoes = allQ;
+
+  var tipo = 'AUDITIVA N' + nivel + ' · Prova ' + (provaIdx + 1);
+  var t=document.getElementById('cidexProvaTipo'); if(t) t.textContent=tipo;
+  cidexSeg = 1800;
+  var td=document.getElementById('cidexTimer'); if(td) td.textContent='30:00';
+
+  cidexRenderAudioBloco();
+  cidexStartTimer('cidexTimer', function(){ cidexFinish(true); });
+}
+
+function cidexRenderAudioBloco() {
+  var body = document.getElementById('cidexProvaBody');
+  var qEl = document.getElementById('cidexProvaQ');
+  if (!body) return;
+
+  var audioIdx = window._cidexAudioIdx;
+  var audios = window._cidexAudios;
+
+  if (audioIdx >= audios.length) { cidexFinish(false); return; }
+
+  var audio = audios[audioIdx];
+  window._cidexAudioPlayCount = 0;
+  window._cidexBlocoQIdx = 0;
+  window._cidexBlocoAcertos = 0;
+  window._cidexBlocoResps = [];
+
+  if (qEl) qEl.textContent = 'Áudio ' + (audioIdx + 1) + ' de ' + audios.length;
+
+  var audioUrl = 'https://lucerna-2010.github.io/talking-cricket/audio/' + audio.arquivo;
+
+  var h = '<div style="background:#fff;border-radius:16px;margin-bottom:12px;padding:16px;border:1px solid #E5E3F5;">';
+  h += '<div style="font-size:11px;font-weight:800;color:#8B1A1A;text-transform:uppercase;margin-bottom:10px;">Áudio ' + (audioIdx+1) + '</div>';
+  h += '<audio id="cidexAudioPlayer" src="' + audioUrl + '" style="display:none;"></audio>';
+  h += '<button id="cidexPlayBtn" onclick="cidexTocarAudio()" style="width:100%;padding:16px;border-radius:14px;border:2px solid #8B1A1A;background:#fff8e6;color:#8B1A1A;font-family:Nunito,Arial,sans-serif;font-size:15px;font-weight:800;cursor:pointer;margin-bottom:8px;">▶ Tocar áudio (2 reproduções disponíveis)</button>';
+  h += '<div id="cidexPlayCount" style="text-align:center;font-size:11px;color:#6b7280;margin-bottom:12px;">0 de 2 reproduções usadas</div>';
+  h += '<div style="background:#f0eeff;border-radius:10px;padding:10px 12px;margin-bottom:14px;font-size:11px;color:#534AB7;text-align:center;">💡 Dica: você pode ler as questões antes de tocar o áudio</div>';
+  h += '<div id="cidexAudioQuestoes"></div>';
+  h += '</div>';
+  body.innerHTML = h;
+  body.scrollTop = 0;
+
+  // Show questions immediately (strategic reading allowed)
+  cidexRenderBlocoQuestao();
+}
+
+function cidexTocarAudio() {
+  var player = document.getElementById('cidexAudioPlayer');
+  var btn = document.getElementById('cidexPlayBtn');
+  var countEl = document.getElementById('cidexPlayCount');
+  if (!player) return;
+
+  if (window._cidexAudioPlayCount >= 2) {
+    alert('Você já usou as 2 reproduções permitidas para este áudio.');
+    return;
+  }
+
+  window._cidexAudioPlayCount++;
+  if (countEl) countEl.textContent = window._cidexAudioPlayCount + ' de 2 reproduções usadas';
+
+  if (btn) { btn.disabled = true; btn.textContent = '🔊 Reproduzindo...'; }
+  player.currentTime = 0;
+  player.play();
+
+  player.onended = function() {
+    if (btn) {
+      if (window._cidexAudioPlayCount >= 2) {
+        btn.textContent = '✓ Reproduções esgotadas';
+        btn.disabled = true;
+        btn.style.opacity = '0.5';
+      } else {
+        btn.disabled = false;
+        btn.textContent = '▶ Tocar novamente (' + (2 - window._cidexAudioPlayCount) + ' restante)';
+      }
+    }
+  };
+}
+
+function cidexRenderBlocoQuestao() {
+  var qDiv = document.getElementById('cidexAudioQuestoes');
+  if (!qDiv) return;
+  var audio = window._cidexAudios[window._cidexAudioIdx];
+  var idx = window._cidexBlocoQIdx;
+
+  if (idx >= audio.questoes.length) {
+    // Move to next audio block
+    window._cidexAudioIdx++;
+    cidexRenderAudioBloco();
+    return;
+  }
+
+  var cur = audio.questoes[idx];
+  var globalQNum = (window._cidexAudioIdx * 5) + idx + 1;
+
+  var h = '<div style="border-top:1px solid #E5E3F5;padding-top:14px;margin-top:10px;">';
+  h += '<div style="font-size:11px;font-weight:800;color:#6b7280;margin-bottom:8px;">Questão ' + globalQNum + ' de 20</div>';
+  h += '<div style="font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:12px;">' + cur.pergunta + '</div>';
+  cur.opcoes.forEach(function(op, i) {
+    var l = ['A','B','C','D'][i];
+    h += '<button class="cidex-opcao" onclick="cidexResponderBloco(' + i + ')">';
+    h += '<span style="font-weight:800;color:#8B1A1A;margin-right:8px;">' + l + '.</span>' + op;
+    h += '</button>';
+  });
+  h += '</div>';
+  qDiv.innerHTML = h;
+}
+
+function cidexResponderBloco(idx) {
+  var audio = window._cidexAudios[window._cidexAudioIdx];
+  var cur = audio.questoes[window._cidexBlocoQIdx];
+  var btns = document.querySelectorAll('#cidexAudioQuestoes .cidex-opcao');
+  btns.forEach(function(b, i) {
+    b.disabled = true;
+    if (i === cur.correta) b.classList.add('correta');
+    else if (i === idx && idx !== cur.correta) b.classList.add('errada');
+  });
+  var acertou = idx === cur.correta;
+  if (acertou) cidexAcertos++;
+  cidexResps.push(acertou);
+  setTimeout(function() {
+    window._cidexBlocoQIdx++;
+    cidexRenderBlocoQuestao();
+  }, 700);
 }
 
 function cidexRenderQ() {
@@ -10350,10 +10607,20 @@ window.onload = function() {
     var c = document.getElementById('inp-contato').value.trim();
     // Admin access
     if (n === 'admin2010') { abrirAdmin(); return; }
+    if (n === '7429') {
+      window.cidexAdminAccess = true;
+      try { localStorage.setItem('tc_cidex_unlock', '1'); } catch(e) {}
+      alert('🎖️ Acesso CIDEx liberado! Use o botão "I already have an account" para entrar normalmente.');
+      ir('splash');
+      return;
+    }
     if (!n) { alert('Please enter your name.'); return; }
     if (!c) { alert('Please enter your email.'); return; }
     if (c.indexOf('@') < 0) { alert('Please enter a valid email address.'); return; }
     nomeUsuario = n;
+    if (n.toLowerCase().indexOf('diego') !== -1 || n.toLowerCase().indexOf('grilo') !== -1) {
+      window.cidexAdminAccess = true;
+    }
     codigoGerado = Math.floor(1000 + Math.random() * 9000).toString();
     var destEl = document.getElementById('dest');
     if (destEl) destEl.textContent = c;
@@ -10982,6 +11249,10 @@ window.onload = function() {
 
     if (loggedin && savedNome) {
       nomeUsuario = savedNome;
+      if (savedNome.toLowerCase().indexOf('diego') !== -1 || savedNome.toLowerCase().indexOf('grilo') !== -1) {
+        window.cidexAdminAccess = true;
+      }
+      try { if (localStorage.getItem('tc_cidex_unlock') === '1') window.cidexAdminAccess = true; } catch(e) {}
       if (savedNivel) nivelAtual = savedNivel;
       var pn = nomeUsuario.split(' ')[0];
       var ini = nomeUsuario.split(' ').map(function(x){return x[0];}).slice(0,2).join('').toUpperCase();
