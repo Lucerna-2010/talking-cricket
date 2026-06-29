@@ -102,6 +102,10 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 .mc-cambridge .mc-titulo{color:#26215C;}
 .mc-placement{background:linear-gradient(135deg,#1a1a2e,#2d2b6b);border:2px solid #534AB7;}
 .mc-tutorial{background:linear-gradient(135deg,#0F6E56,#1D9E75);border:2px solid #1D9E75;}
+.kp-dia{padding:8px 10px;border-radius:10px;border:2px solid #E5E3F5;background:#F8F9FA;font-family:Nunito,Arial,sans-serif;font-size:12px;font-weight:800;cursor:pointer;color:#6b7280;}
+.kp-dia.ativo{background:#1D9E75;color:#fff;border-color:#1D9E75;}
+.kp-dia{padding:8px 10px;border-radius:10px;border:2px solid #E5E3F5;background:#F8F9FA;font-family:Nunito,Arial,sans-serif;font-size:12px;font-weight:800;cursor:pointer;color:#6b7280;}
+.kp-dia.ativo{background:#1D9E75;color:#fff;border-color:#1D9E75;}
 .admin-header{background:linear-gradient(135deg,#1a1a2e,#2d2b6b);padding:32px 20px 20px;text-align:center;}
 .admin-titulo{font-size:20px;font-weight:800;color:#fff;margin-bottom:4px;}
 .admin-sub{font-size:12px;color:#B8B5E8;}
@@ -1245,6 +1249,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
     <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-certificate"></i>Exams</div>
     <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="tools" onclick="abrirTools()"><i class="ti ti-books"></i>Tools</div>
     <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
     <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
   </nav>
@@ -1308,7 +1313,68 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div class="nitem knitem on" id="knavHome" onclick="ir('home-kids')"><i class="ti ti-home"></i>Home</div>
     <div class="nitem knitem" id="knavGames" onclick="ir('kids-games')"><i class="ti ti-device-gamepad-2"></i>Games</div>
     <div class="nitem knitem" id="knavStories" onclick="abrirStories()"><i class="ti ti-book"></i>Stories</div>
-    <div class="nitem knitem" id="knavPerfil" onclick="voltarHome()"><i class="ti ti-user"></i>Profile</div>
+    <div class="nitem knitem" id="knavPerfil" onclick="abrirKidsProfile()"><i class="ti ti-user"></i>Profile</div>
+  </nav>
+</div>
+
+
+<!-- KIDS PROFILE -->
+<div id="kids-profile" class="tela">
+  <div style="background:linear-gradient(135deg,#1D9E75,#0F6E56);padding:40px 20px 24px;text-align:center;">
+    <div style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,0.2);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:32px;">🦗</div>
+    <div style="font-size:20px;font-weight:800;color:#fff;" id="kpNome">My Profile</div>
+    <div style="font-size:12px;color:#9FE1CB;margin-top:4px;" id="kpNivel">Kids Mode</div>
+  </div>
+  <div style="padding:16px;overflow-y:auto;flex:1;">
+    <div style="display:flex;gap:10px;margin-bottom:16px;">
+      <div style="flex:1;background:#fff;border-radius:14px;padding:14px;text-align:center;border:1px solid #E5E3F5;">
+        <div style="font-size:22px;font-weight:800;color:#1D9E75;" id="kpSeeds">0</div>
+        <div style="font-size:10px;color:#6b7280;font-weight:700;">🌱 Seeds</div>
+      </div>
+      <div style="flex:1;background:#fff;border-radius:14px;padding:14px;text-align:center;border:1px solid #E5E3F5;">
+        <div style="font-size:22px;font-weight:800;color:#1D9E75;" id="kpHistorias">0</div>
+        <div style="font-size:10px;color:#6b7280;font-weight:700;">📚 Stories</div>
+      </div>
+      <div style="flex:1;background:#fff;border-radius:14px;padding:14px;text-align:center;border:1px solid #E5E3F5;">
+        <div style="font-size:22px;font-weight:800;color:#1D9E75;" id="kpStreak">0</div>
+        <div style="font-size:10px;color:#6b7280;font-weight:700;">🔥 Streak</div>
+      </div>
+    </div>
+    <div style="background:#fff;border-radius:14px;padding:16px;margin-bottom:12px;border:1px solid #E5E3F5;">
+      <div style="font-size:13px;font-weight:800;color:#1a1a2e;margin-bottom:12px;">📅 Study Plan</div>
+      <div style="font-size:12px;color:#6b7280;margin-bottom:10px;">Which days should your child study?</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">
+        <button class="kp-dia" data-dia="Mon" onclick="toggleDiaKids(this)">Mon</button>
+        <button class="kp-dia" data-dia="Tue" onclick="toggleDiaKids(this)">Tue</button>
+        <button class="kp-dia" data-dia="Wed" onclick="toggleDiaKids(this)">Wed</button>
+        <button class="kp-dia" data-dia="Thu" onclick="toggleDiaKids(this)">Thu</button>
+        <button class="kp-dia" data-dia="Fri" onclick="toggleDiaKids(this)">Fri</button>
+        <button class="kp-dia" data-dia="Sat" onclick="toggleDiaKids(this)">Sat</button>
+        <button class="kp-dia" data-dia="Sun" onclick="toggleDiaKids(this)">Sun</button>
+      </div>
+      <div style="font-size:12px;color:#6b7280;margin-bottom:6px;">Daily study time goal</div>
+      <select id="kpTempo" onchange="salvarPlanoKids()" style="width:100%;padding:10px;border-radius:10px;border:1.5px solid #E5E3F5;font-family:Nunito,Arial,sans-serif;font-size:13px;color:#1a1a2e;">
+        <option value="10">10 minutes</option>
+        <option value="15">15 minutes</option>
+        <option value="20" selected>20 minutes</option>
+        <option value="30">30 minutes</option>
+        <option value="45">45 minutes</option>
+      </select>
+    </div>
+    <div style="background:#fff;border-radius:14px;padding:14px;margin-bottom:12px;border:1px solid #E5E3F5;display:flex;align-items:center;justify-content:space-between;cursor:pointer;" onclick="ir('modo')">
+      <div>
+        <div style="font-size:13px;font-weight:800;color:#1a1a2e;">🎓 Switch to Cambridge Mode</div>
+        <div style="font-size:11px;color:#6b7280;">For older students A1–C2</div>
+      </div>
+      <span style="color:#6b7280;font-size:18px;">›</span>
+    </div>
+    <button onclick="fazerLogout()" style="width:100%;padding:14px;border-radius:14px;border:1.5px solid #FECACA;background:#FEF2F2;color:#DC2626;font-family:Nunito,Arial,sans-serif;font-size:14px;font-weight:800;cursor:pointer;">Sign out</button>
+  </div>
+  <nav class="nav">
+    <div class="nitem knitem" onclick="ir('home-kids')"><i class="ti ti-home"></i>Home</div>
+    <div class="nitem knitem" onclick="ir('kids-games')"><i class="ti ti-device-gamepad-2"></i>Games</div>
+    <div class="nitem knitem" onclick="abrirStories()"><i class="ti ti-book"></i>Stories</div>
+    <div class="nitem knitem on"><i class="ti ti-user"></i>Profile</div>
   </nav>
 </div>
 
@@ -1357,6 +1423,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
     <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-certificate"></i>Exams</div>
     <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="tools" onclick="abrirTools()"><i class="ti ti-books"></i>Tools</div>
     <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
     <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
   </nav>
@@ -1426,6 +1493,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
     <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-certificate"></i>Exams</div>
     <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="tools" onclick="abrirTools()"><i class="ti ti-books"></i>Tools</div>
     <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
     <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
   </nav>
@@ -1447,6 +1515,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
     <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-certificate"></i>Exams</div>
     <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="tools" onclick="abrirTools()"><i class="ti ti-books"></i>Tools</div>
     <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
     <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
   </nav>
@@ -1530,6 +1599,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
     <div class="nitem nav-item-univ on" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-certificate"></i>Exams</div>
     <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="tools" onclick="abrirTools()"><i class="ti ti-books"></i>Tools</div>
     <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
     <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
   </nav>
@@ -1578,6 +1648,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
     <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-certificate"></i>Exams</div>
     <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="tools" onclick="abrirTools()"><i class="ti ti-books"></i>Tools</div>
     <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
     <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
   </nav>
@@ -1692,6 +1763,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
     <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-certificate"></i>Exams</div>
     <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="tools" onclick="abrirTools()"><i class="ti ti-books"></i>Tools</div>
     <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
     <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
   </nav>
@@ -1742,6 +1814,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
     <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-certificate"></i>Exams</div>
     <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="tools" onclick="abrirTools()"><i class="ti ti-books"></i>Tools</div>
     <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
     <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
   </nav>
@@ -1784,6 +1857,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
     <div class="nitem nav-item-univ" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-certificate"></i>Exams</div>
     <div class="nitem nav-item-univ on" data-dest="falar"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="tools" onclick="abrirTools()"><i class="ti ti-books"></i>Tools</div>
     <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
     <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
   </nav>
@@ -1916,6 +1990,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
     <div class="nitem nav-item-univ" data-dest="home" onclick="navegar('home')"><i class="ti ti-home"></i>Home</div>
     <div class="nitem nav-item-univ on" data-dest="textos" onclick="navegar('textos')"><i class="ti ti-certificate"></i>Exams</div>
     <div class="nitem nav-item-univ" data-dest="falar" onclick="navegar('falar')"><i class="ti ti-microphone"></i>Speak</div>
+    <div class="nitem nav-item-univ" data-dest="tools" onclick="abrirTools()"><i class="ti ti-books"></i>Tools</div>
     <div class="nitem nav-item-univ" data-dest="progresso" onclick="navegar('progresso')"><i class="ti ti-chart-bar"></i>Progress</div>
     <div class="nitem nav-item-univ" data-dest="perfil" onclick="navegar('perfil')"><i class="ti ti-user"></i>Profile</div>
   </nav>
@@ -4926,6 +5001,116 @@ var kidsConteudo = {
       {en:'Read', pt:'Ler', emoji:'📚', audio:'Read'},
       {en:'Draw', pt:'Desenhar', emoji:'✏️', audio:'Draw'}
     ]
+  },
+  casa: {
+    titulo: '🏠 Casa',
+    palavras: [
+      {en:'House', pt:'Casa', emoji:'🏠', audio:'House'},
+      {en:'Door', pt:'Porta', emoji:'🚪', audio:'Door'},
+      {en:'Window', pt:'Janela', emoji:'🪟', audio:'Window'},
+      {en:'Bed', pt:'Cama', emoji:'🛏️', audio:'Bed'},
+      {en:'Chair', pt:'Cadeira', emoji:'🪑', audio:'Chair'},
+      {en:'Table', pt:'Mesa', emoji:'🍽️', audio:'Table'},
+      {en:'Sofa', pt:'Sofá', emoji:'🛋️', audio:'Sofa'},
+      {en:'Kitchen', pt:'Cozinha', emoji:'🍳', audio:'Kitchen'},
+      {en:'Bathroom', pt:'Banheiro', emoji:'🚿', audio:'Bathroom'},
+      {en:'Garden', pt:'Jardim', emoji:'🌻', audio:'Garden'},
+      {en:'Lamp', pt:'Lâmpada', emoji:'💡', audio:'Lamp'},
+      {en:'Book', pt:'Livro', emoji:'📚', audio:'Book'},
+      {en:'Clock', pt:'Relógio', emoji:'🕐', audio:'Clock'},
+      {en:'Mirror', pt:'Espelho', emoji:'🪞', audio:'Mirror'},
+      {en:'Stairs', pt:'Escadas', emoji:'🪜', audio:'Stairs'}
+    ]
+  },
+  comidas: {
+    titulo: '🍕 Comidas',
+    palavras: [
+      {en:'Bread', pt:'Pão', emoji:'🍞', audio:'Bread'},
+      {en:'Rice', pt:'Arroz', emoji:'🍚', audio:'Rice'},
+      {en:'Egg', pt:'Ovo', emoji:'🥚', audio:'Egg'},
+      {en:'Cheese', pt:'Queijo', emoji:'🧀', audio:'Cheese'},
+      {en:'Milk', pt:'Leite', emoji:'🥛', audio:'Milk'},
+      {en:'Pizza', pt:'Pizza', emoji:'🍕', audio:'Pizza'},
+      {en:'Soup', pt:'Sopa', emoji:'🍲', audio:'Soup'},
+      {en:'Cake', pt:'Bolo', emoji:'🎂', audio:'Cake'},
+      {en:'Cookie', pt:'Biscoito', emoji:'🍪', audio:'Cookie'},
+      {en:'Ice cream', pt:'Sorvete', emoji:'🍦', audio:'Ice cream'},
+      {en:'Sandwich', pt:'Sanduíche', emoji:'🥪', audio:'Sandwich'},
+      {en:'Pasta', pt:'Macarrão', emoji:'🍝', audio:'Pasta'},
+      {en:'Salad', pt:'Salada', emoji:'🥗', audio:'Salad'},
+      {en:'Juice', pt:'Suco', emoji:'🧃', audio:'Juice'},
+      {en:'Water', pt:'Água', emoji:'💧', audio:'Water'}
+    ]
+  },
+  roupas: {
+    titulo: '👕 Roupas',
+    palavras: [
+      {en:'Shirt', pt:'Camisa', emoji:'👕', audio:'Shirt'},
+      {en:'Trousers', pt:'Calça', emoji:'👖', audio:'Trousers'},
+      {en:'Dress', pt:'Vestido', emoji:'👗', audio:'Dress'},
+      {en:'Shoes', pt:'Sapatos', emoji:'👟', audio:'Shoes'},
+      {en:'Hat', pt:'Chapéu', emoji:'🧢', audio:'Hat'},
+      {en:'Coat', pt:'Casaco', emoji:'🧥', audio:'Coat'},
+      {en:'Socks', pt:'Meias', emoji:'🧦', audio:'Socks'},
+      {en:'Scarf', pt:'Cachecol', emoji:'🧣', audio:'Scarf'},
+      {en:'Gloves', pt:'Luvas', emoji:'🧤', audio:'Gloves'},
+      {en:'Jacket', pt:'Jaqueta', emoji:'🫲', audio:'Jacket'},
+      {en:'Skirt', pt:'Saia', emoji:'👚', audio:'Skirt'},
+      {en:'Boots', pt:'Botas', emoji:'🥾', audio:'Boots'}
+    ]
+  },
+  escola: {
+    titulo: '🏫 Escola',
+    palavras: [
+      {en:'School', pt:'Escola', emoji:'🏫', audio:'School'},
+      {en:'Teacher', pt:'Professor', emoji:'👩‍🏫', audio:'Teacher'},
+      {en:'Student', pt:'Aluno', emoji:'🧑‍🎓', audio:'Student'},
+      {en:'Pencil', pt:'Lápis', emoji:'✏️', audio:'Pencil'},
+      {en:'Pen', pt:'Caneta', emoji:'🖊️', audio:'Pen'},
+      {en:'Ruler', pt:'Régua', emoji:'📏', audio:'Ruler'},
+      {en:'Notebook', pt:'Caderno', emoji:'📓', audio:'Notebook'},
+      {en:'Backpack', pt:'Mochila', emoji:'🎒', audio:'Backpack'},
+      {en:'Scissors', pt:'Tesoura', emoji:'✂️', audio:'Scissors'},
+      {en:'Glue', pt:'Cola', emoji:'🧴', audio:'Glue'},
+      {en:'Desk', pt:'Carteira', emoji:'🪑', audio:'Desk'},
+      {en:'Blackboard', pt:'Quadro', emoji:'🖊️', audio:'Blackboard'},
+      {en:'Classroom', pt:'Sala de aula', emoji:'🏛️', audio:'Classroom'}
+    ]
+  },
+  transporte: {
+    titulo: '🚗 Transportes',
+    palavras: [
+      {en:'Car', pt:'Carro', emoji:'🚗', audio:'Car'},
+      {en:'Bus', pt:'Ônibus', emoji:'🚌', audio:'Bus'},
+      {en:'Train', pt:'Trem', emoji:'🚂', audio:'Train'},
+      {en:'Plane', pt:'Avião', emoji:'✈️', audio:'Plane'},
+      {en:'Bicycle', pt:'Bicicleta', emoji:'🚲', audio:'Bicycle'},
+      {en:'Boat', pt:'Barco', emoji:'⛵', audio:'Boat'},
+      {en:'Taxi', pt:'Táxi', emoji:'🚕', audio:'Taxi'},
+      {en:'Motorbike', pt:'Moto', emoji:'🏍️', audio:'Motorbike'},
+      {en:'Helicopter', pt:'Helicóptero', emoji:'🚁', audio:'Helicopter'},
+      {en:'Ship', pt:'Navio', emoji:'🚢', audio:'Ship'},
+      {en:'Truck', pt:'Caminhão', emoji:'🚚', audio:'Truck'},
+      {en:'Rocket', pt:'Foguete', emoji:'🚀', audio:'Rocket'}
+    ]
+  },
+  natureza: {
+    titulo: '🌤️ Natureza',
+    palavras: [
+      {en:'Sun', pt:'Sol', emoji:'☀️', audio:'Sun'},
+      {en:'Moon', pt:'Lua', emoji:'🌙', audio:'Moon'},
+      {en:'Star', pt:'Estrela', emoji:'⭐', audio:'Star'},
+      {en:'Rain', pt:'Chuva', emoji:'🌧️', audio:'Rain'},
+      {en:'Snow', pt:'Neve', emoji:'❄️', audio:'Snow'},
+      {en:'Wind', pt:'Vento', emoji:'💨', audio:'Wind'},
+      {en:'Cloud', pt:'Nuvem', emoji:'☁️', audio:'Cloud'},
+      {en:'Tree', pt:'Árvore', emoji:'🌳', audio:'Tree'},
+      {en:'Flower', pt:'Flor', emoji:'🌸', audio:'Flower'},
+      {en:'River', pt:'Rio', emoji:'🏞️', audio:'River'},
+      {en:'Mountain', pt:'Montanha', emoji:'⛰️', audio:'Mountain'},
+      {en:'Sea', pt:'Mar', emoji:'🌊', audio:'Sea'},
+      {en:'Forest', pt:'Floresta', emoji:'🌲', audio:'Forest'}
+    ]
   }
 };
 
@@ -5142,14 +5327,15 @@ function adicionarPalavraFrase(palavra, idx) {
 
   var btn = document.createElement('button');
   btn.className = 'kf-palavra-colocada';
-  btn.textContent = palavra;
+  btn.innerHTML = palavra + ' <span style="opacity:0.6;font-size:11px;">✕</span>';
+  btn.title = 'Tap to remove';
   (function(p, i, b) {
     btn.onclick = function() {
       kfPalavrasSelecionadas = kfPalavrasSelecionadas.filter(function(item) { return item.idx !== i; });
       btn.remove();
       if (b) b.classList.remove('usada');
       if (construtor.children.length === 0) {
-        construtor.innerHTML = '<span class="kf-placeholder">Toque nas palavras abaixo!</span>';
+        construtor.innerHTML = '<span class="kf-placeholder">Tap the words below to build the sentence!</span>';
       }
     };
   })(palavra, idx, bancoBtn);
@@ -8994,6 +9180,236 @@ function fazerLogout() {
   nivelAtual = 'B1';
   usuarioId = null;
   ir('splash');
+}
+
+
+
+// ===== KIDS PROFILE =====
+function abrirKidsProfile() {
+  var nome = document.getElementById('kpNome');
+  var nivel = document.getElementById('kpNivel');
+  var seeds = document.getElementById('kpSeeds');
+  var historias = document.getElementById('kpHistorias');
+  var streak = document.getElementById('kpStreak');
+  if (nome) nome.textContent = nomeUsuario || 'My Profile';
+  if (nivel) nivel.textContent = 'Kids Mode';
+  if (seeds) seeds.textContent = seedsTotal || 0;
+  try {
+    var hist = JSON.parse(localStorage.getItem('tc_historico_' + nomeUsuario) || '[]');
+    var storiesLidas = hist.filter(function(h) { return h.tipo === 'story'; }).length;
+    if (historias) historias.textContent = storiesLidas;
+    var str = parseInt(localStorage.getItem('tc_streak_' + nomeUsuario) || '0');
+    if (streak) streak.textContent = str;
+    var plano = JSON.parse(localStorage.getItem('tc_plano_kids_' + nomeUsuario) || '{}');
+    var dias = plano.dias || [];
+    document.querySelectorAll('.kp-dia').forEach(function(btn) {
+      if (dias.indexOf(btn.dataset.dia) !== -1) btn.classList.add('ativo');
+      else btn.classList.remove('ativo');
+    });
+    var tempo = document.getElementById('kpTempo');
+    if (tempo && plano.tempo) tempo.value = plano.tempo;
+  } catch(e) {}
+  ir('kids-profile');
+}
+
+function toggleDiaKids(btn) {
+  btn.classList.toggle('ativo');
+  salvarPlanoKids();
+}
+
+function salvarPlanoKids() {
+  try {
+    var dias = [];
+    document.querySelectorAll('.kp-dia.ativo').forEach(function(btn) { dias.push(btn.dataset.dia); });
+    var tempo = document.getElementById('kpTempo');
+    localStorage.setItem('tc_plano_kids_' + nomeUsuario, JSON.stringify({dias:dias, tempo:tempo?tempo.value:'20'}));
+  } catch(e) {}
+}
+
+// ===== TOOLS =====
+var toolsAbaAtual = 'verbos';
+var verbosIrregulares = [
+  {base:'be',past:'was/were',pp:'been',pt:'ser/estar'},
+  {base:'beat',past:'beat',pp:'beaten',pt:'bater/vencer'},
+  {base:'become',past:'became',pp:'become',pt:'tornar-se'},
+  {base:'begin',past:'began',pp:'begun',pt:'começar'},
+  {base:'break',past:'broke',pp:'broken',pt:'quebrar'},
+  {base:'bring',past:'brought',pp:'brought',pt:'trazer'},
+  {base:'build',past:'built',pp:'built',pt:'construir'},
+  {base:'buy',past:'bought',pp:'bought',pt:'comprar'},
+  {base:'catch',past:'caught',pp:'caught',pt:'pegar'},
+  {base:'choose',past:'chose',pp:'chosen',pt:'escolher'},
+  {base:'come',past:'came',pp:'come',pt:'vir'},
+  {base:'cost',past:'cost',pp:'cost',pt:'custar'},
+  {base:'cut',past:'cut',pp:'cut',pt:'cortar'},
+  {base:'do',past:'did',pp:'done',pt:'fazer'},
+  {base:'draw',past:'drew',pp:'drawn',pt:'desenhar'},
+  {base:'drink',past:'drank',pp:'drunk',pt:'beber'},
+  {base:'drive',past:'drove',pp:'driven',pt:'dirigir'},
+  {base:'eat',past:'ate',pp:'eaten',pt:'comer'},
+  {base:'fall',past:'fell',pp:'fallen',pt:'cair'},
+  {base:'feel',past:'felt',pp:'felt',pt:'sentir'},
+  {base:'fight',past:'fought',pp:'fought',pt:'lutar'},
+  {base:'find',past:'found',pp:'found',pt:'encontrar'},
+  {base:'fly',past:'flew',pp:'flown',pt:'voar'},
+  {base:'forget',past:'forgot',pp:'forgotten',pt:'esquecer'},
+  {base:'get',past:'got',pp:'got/gotten',pt:'obter'},
+  {base:'give',past:'gave',pp:'given',pt:'dar'},
+  {base:'go',past:'went',pp:'gone',pt:'ir'},
+  {base:'grow',past:'grew',pp:'grown',pt:'crescer'},
+  {base:'have',past:'had',pp:'had',pt:'ter'},
+  {base:'hear',past:'heard',pp:'heard',pt:'ouvir'},
+  {base:'hide',past:'hid',pp:'hidden',pt:'esconder'},
+  {base:'hit',past:'hit',pp:'hit',pt:'bater'},
+  {base:'hold',past:'held',pp:'held',pt:'segurar'},
+  {base:'hurt',past:'hurt',pp:'hurt',pt:'machucar'},
+  {base:'keep',past:'kept',pp:'kept',pt:'manter'},
+  {base:'know',past:'knew',pp:'known',pt:'saber/conhecer'},
+  {base:'lead',past:'led',pp:'led',pt:'liderar'},
+  {base:'leave',past:'left',pp:'left',pt:'sair/deixar'},
+  {base:'lend',past:'lent',pp:'lent',pt:'emprestar'},
+  {base:'let',past:'let',pp:'let',pt:'deixar/permitir'},
+  {base:'lose',past:'lost',pp:'lost',pt:'perder'},
+  {base:'make',past:'made',pp:'made',pt:'fazer/criar'},
+  {base:'mean',past:'meant',pp:'meant',pt:'significar'},
+  {base:'meet',past:'met',pp:'met',pt:'encontrar/conhecer'},
+  {base:'pay',past:'paid',pp:'paid',pt:'pagar'},
+  {base:'put',past:'put',pp:'put',pt:'colocar'},
+  {base:'read',past:'read',pp:'read',pt:'ler'},
+  {base:'ride',past:'rode',pp:'ridden',pt:'andar'},
+  {base:'ring',past:'rang',pp:'rung',pt:'tocar/ligar'},
+  {base:'run',past:'ran',pp:'run',pt:'correr'},
+  {base:'say',past:'said',pp:'said',pt:'dizer'},
+  {base:'see',past:'saw',pp:'seen',pt:'ver'},
+  {base:'sell',past:'sold',pp:'sold',pt:'vender'},
+  {base:'send',past:'sent',pp:'sent',pt:'enviar'},
+  {base:'show',past:'showed',pp:'shown',pt:'mostrar'},
+  {base:'sing',past:'sang',pp:'sung',pt:'cantar'},
+  {base:'sit',past:'sat',pp:'sat',pt:'sentar'},
+  {base:'sleep',past:'slept',pp:'slept',pt:'dormir'},
+  {base:'speak',past:'spoke',pp:'spoken',pt:'falar'},
+  {base:'spend',past:'spent',pp:'spent',pt:'gastar'},
+  {base:'stand',past:'stood',pp:'stood',pt:'ficar em pe'},
+  {base:'steal',past:'stole',pp:'stolen',pt:'roubar'},
+  {base:'swim',past:'swam',pp:'swum',pt:'nadar'},
+  {base:'take',past:'took',pp:'taken',pt:'pegar/levar'},
+  {base:'teach',past:'taught',pp:'taught',pt:'ensinar'},
+  {base:'tell',past:'told',pp:'told',pt:'contar/dizer'},
+  {base:'think',past:'thought',pp:'thought',pt:'pensar'},
+  {base:'throw',past:'threw',pp:'thrown',pt:'jogar/lancar'},
+  {base:'understand',past:'understood',pp:'understood',pt:'entender'},
+  {base:'wake',past:'woke',pp:'woken',pt:'acordar'},
+  {base:'wear',past:'wore',pp:'worn',pt:'usar/vestir'},
+  {base:'win',past:'won',pp:'won',pt:'ganhar/vencer'},
+  {base:'write',past:'wrote',pp:'written',pt:'escrever'}
+];
+
+var phrasalVerbs = [
+  {verbo:'carry out',tema:'Work',exemplo:'We need to carry out more research.',pt:'realizar/executar'},
+  {verbo:'call off',tema:'Work',exemplo:'They called off the meeting.',pt:'cancelar'},
+  {verbo:'deal with',tema:'Work',exemplo:'She deals with complaints every day.',pt:'lidar com'},
+  {verbo:'fill in',tema:'Work',exemplo:'Please fill in this form.',pt:'preencher'},
+  {verbo:'follow up',tema:'Work',exemplo:'I will follow up with an email.',pt:'dar seguimento'},
+  {verbo:'hand in',tema:'Work',exemplo:'Please hand in your assignments by Friday.',pt:'entregar'},
+  {verbo:'look into',tema:'Work',exemplo:'We are looking into the problem.',pt:'investigar'},
+  {verbo:'set up',tema:'Work',exemplo:'He set up his own company.',pt:'criar/estabelecer'},
+  {verbo:'take on',tema:'Work',exemplo:'The firm is taking on new staff.',pt:'contratar/assumir'},
+  {verbo:'turn down',tema:'Work',exemplo:'She turned down the job offer.',pt:'recusar/rejeitar'},
+  {verbo:'break down',tema:'Daily Life',exemplo:'My car broke down on the motorway.',pt:'enguicar/quebrar'},
+  {verbo:'bring up',tema:'Daily Life',exemplo:'She was brought up by her grandparents.',pt:'criar/educar'},
+  {verbo:'come across',tema:'Daily Life',exemplo:'I came across an old photo album.',pt:'encontrar por acaso'},
+  {verbo:'cut down on',tema:'Daily Life',exemplo:'I need to cut down on sugar.',pt:'reduzir/cortar'},
+  {verbo:'end up',tema:'Daily Life',exemplo:'We ended up taking a taxi.',pt:'acabar/terminar'},
+  {verbo:'give up',tema:'Daily Life',exemplo:'She gave up smoking last year.',pt:'desistir/parar de'},
+  {verbo:'grow up',tema:'Daily Life',exemplo:'I grew up in Rio de Janeiro.',pt:'crescer/se criar'},
+  {verbo:'look after',tema:'Daily Life',exemplo:'Can you look after my cat?',pt:'cuidar de'},
+  {verbo:'look forward to',tema:'Daily Life',exemplo:'I am looking forward to seeing you.',pt:'estar ansioso por'},
+  {verbo:'run out of',tema:'Daily Life',exemplo:'We ran out of milk.',pt:'ficar sem'},
+  {verbo:'sort out',tema:'Daily Life',exemplo:'I need to sort out my finances.',pt:'resolver/organizar'},
+  {verbo:'take up',tema:'Daily Life',exemplo:'She took up yoga last month.',pt:'comecar (hobby)'},
+  {verbo:'turn up',tema:'Daily Life',exemplo:'He turned up two hours late.',pt:'aparecer/chegar'},
+  {verbo:'check in',tema:'Travel',exemplo:'Passengers must check in two hours early.',pt:'fazer check-in'},
+  {verbo:'check out',tema:'Travel',exemplo:'We need to check out by noon.',pt:'fazer check-out'},
+  {verbo:'get off',tema:'Travel',exemplo:'Get off the bus at the town hall.',pt:'desembarcar'},
+  {verbo:'get on',tema:'Travel',exemplo:'Get on the train at platform 3.',pt:'embarcar'},
+  {verbo:'pick up',tema:'Travel',exemplo:'Can you pick me up from the airport?',pt:'buscar/pegar'},
+  {verbo:'set off',tema:'Travel',exemplo:'We set off at six in the morning.',pt:'partir/sair'},
+  {verbo:'take off',tema:'Travel',exemplo:'The plane took off on time.',pt:'decolar'},
+  {verbo:'break up',tema:'Relationships',exemplo:'They broke up after two years.',pt:'terminar (namoro)'},
+  {verbo:'fall for',tema:'Relationships',exemplo:'She fell for him immediately.',pt:'apaixonar-se'},
+  {verbo:'get on with',tema:'Relationships',exemplo:'I get on well with my colleagues.',pt:'dar-se bem com'},
+  {verbo:'make up',tema:'Relationships',exemplo:'They argued but made up the next day.',pt:'reconciliar-se'},
+  {verbo:'put up with',tema:'Relationships',exemplo:'I cannot put up with his rudeness.',pt:'tolerar/aguentar'},
+  {verbo:'stand up for',tema:'Relationships',exemplo:'She always stands up for her friends.',pt:'defender'},
+  {verbo:'catch up',tema:'Education',exemplo:'I need to catch up on the work I missed.',pt:'se atualizar/recuperar'},
+  {verbo:'drop out',tema:'Education',exemplo:'He dropped out of university.',pt:'abandonar'},
+  {verbo:'fall behind',tema:'Education',exemplo:'She fell behind with her coursework.',pt:'ficar para tras'},
+  {verbo:'go over',tema:'Education',exemplo:'Let me go over the main points again.',pt:'revisar/rever'},
+  {verbo:'look up',tema:'Education',exemplo:'Look up any words you do not understand.',pt:'procurar/consultar'},
+  {verbo:'work out',tema:'Education',exemplo:'Can you work out the answer?',pt:'descobrir/resolver'}
+];
+
+var toolsFiltrados = {verbos: verbosIrregulares, phrasal: phrasalVerbs};
+
+function abrirTools() {
+  toolsAbaAtual = 'verbos';
+  toolsFiltrados = {verbos: verbosIrregulares, phrasal: phrasalVerbs};
+  var si = document.getElementById('toolsSearch');
+  if (si) si.value = '';
+  ir('tools');
+  mostrarToolsTab('verbos');
+}
+
+function mostrarToolsTab(aba) {
+  toolsAbaAtual = aba;
+  var btnV = document.getElementById('toolsTabVerbos');
+  var btnP = document.getElementById('toolsTabPhrasa');
+  if (btnV) { btnV.style.color = aba==='verbos'?'#534AB7':'#6b7280'; btnV.style.borderBottomColor = aba==='verbos'?'#534AB7':'transparent'; }
+  if (btnP) { btnP.style.color = aba==='phrasal'?'#534AB7':'#6b7280'; btnP.style.borderBottomColor = aba==='phrasal'?'#534AB7':'transparent'; }
+  renderTools();
+}
+
+function filtrarTools() {
+  var q = (document.getElementById('toolsSearch').value || '').toLowerCase().trim();
+  toolsFiltrados.verbos = q ? verbosIrregulares.filter(function(v) { return v.base.includes(q)||v.past.includes(q)||v.pp.includes(q)||v.pt.toLowerCase().includes(q); }) : verbosIrregulares;
+  toolsFiltrados.phrasal = q ? phrasalVerbs.filter(function(p) { return p.verbo.includes(q)||p.pt.toLowerCase().includes(q)||p.tema.toLowerCase().includes(q); }) : phrasalVerbs;
+  renderTools();
+}
+
+function renderTools() {
+  var container = document.getElementById('toolsConteudo');
+  if (!container) return;
+  if (toolsAbaAtual === 'verbos') {
+    var lista = toolsFiltrados.verbos;
+    if (!lista.length) { container.innerHTML = '<div style="text-align:center;padding:40px;color:#6b7280;">No verbs found</div>'; return; }
+    var h = '<div style="background:#EDE9FE;border-radius:10px;padding:10px 14px;margin:10px 0;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:4px;">';
+    h += '<div style="font-size:10px;font-weight:800;color:#534AB7;">BASE</div><div style="font-size:10px;font-weight:800;color:#534AB7;">PAST</div><div style="font-size:10px;font-weight:800;color:#534AB7;">PAST P.</div><div style="font-size:10px;font-weight:800;color:#534AB7;">PT</div></div>';
+    lista.forEach(function(v) {
+      h += '<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:4px;padding:9px 14px;border-bottom:1px solid #F0EEF8;align-items:center;">';
+      h += '<div style="font-size:13px;font-weight:800;color:#1a1a2e;">'+v.base+'</div>';
+      h += '<div style="font-size:12px;color:#534AB7;">'+v.past+'</div>';
+      h += '<div style="font-size:12px;color:#0F6E56;">'+v.pp+'</div>';
+      h += '<div style="font-size:11px;color:#6b7280;">'+v.pt+'</div></div>';
+    });
+    container.innerHTML = h;
+  } else {
+    var lista = toolsFiltrados.phrasal;
+    if (!lista.length) { container.innerHTML = '<div style="text-align:center;padding:40px;color:#6b7280;">No phrasal verbs found</div>'; return; }
+    var temas = {};
+    lista.forEach(function(p) { if (!temas[p.tema]) temas[p.tema]=[]; temas[p.tema].push(p); });
+    var h = '';
+    Object.keys(temas).forEach(function(tema) {
+      h += '<div style="font-size:11px;font-weight:800;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;padding:14px 0 6px;">'+tema+'</div>';
+      temas[tema].forEach(function(p) {
+        h += '<div style="background:#fff;border-radius:12px;padding:12px 14px;margin-bottom:8px;border:1px solid #E5E3F5;">';
+        h += '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">';
+        h += '<span style="font-size:14px;font-weight:800;color:#534AB7;">'+p.verbo+'</span>';
+        h += '<span style="font-size:11px;color:#6b7280;background:#F0EEF8;padding:2px 8px;border-radius:10px;">'+p.pt+'</span></div>';
+        h += '<div style="font-size:12px;color:#3a3a5c;font-style:italic;">'+p.exemplo+'</div></div>';
+      });
+    });
+    container.innerHTML = h;
+  }
 }
 
 
