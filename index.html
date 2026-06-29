@@ -8724,13 +8724,24 @@ var ptAudioAtual = null;
 var ptTimerInterval = null;
 var ptTimerSeg = 600; // 10 minutes
 
-function iniciarNivelamento() {
-  ptIndex = 0; ptAcertos = 0; ptRespostas = []; ptTextoAtual = null; ptAudioAtual = null;
-  ptTimerSeg = 600;
+function ptSalvarProgresso() {
+  try {
+    var estado = {
+      index: ptIndex,
+      acertos: ptAcertos,
+      respostas: ptRespostas,
+      timerSeg: ptTimerSeg
+    };
+    localStorage.setItem('tc_pt_progresso_' + (nomeUsuario || 'guest'), JSON.stringify(estado));
+  } catch(e) {}
+}
+
+function ptLimparProgresso() {
+  try { localStorage.removeItem('tc_pt_progresso_' + (nomeUsuario || 'guest')); } catch(e) {}
+}
+
+function ptIniciarTimer() {
   if (ptTimerInterval) clearInterval(ptTimerInterval);
-  ir('nivelamento');
-  renderPtQuestao();
-  // Start timer
   ptTimerInterval = setInterval(function() {
     ptTimerSeg--;
     var el = document.getElementById('ptTimerDisplay');
@@ -8742,12 +8753,72 @@ function iniciarNivelamento() {
       if (ptTimerSeg <= 60) el.className = 'pt-timer-clock danger';
       else if (ptTimerSeg <= 120) el.className = 'pt-timer-clock warning';
     }
+    // Save progress every 10 seconds
+    if (ptTimerSeg % 10 === 0) ptSalvarProgresso();
     if (ptTimerSeg <= 0) {
       clearInterval(ptTimerInterval);
       ptTimerInterval = null;
+      ptLimparProgresso();
       mostrarResultadoNivelamento();
     }
   }, 1000);
+}
+
+function iniciarNivelamento() {
+  // Check for saved progress
+  try {
+    var saved = localStorage.getItem('tc_pt_progresso_' + (nomeUsuario || 'guest'));
+    if (saved) {
+      var estado = JSON.parse(saved);
+      if (estado.index > 0 && estado.index < ptQuestoes.length) {
+        mostrarConviteRetomada(estado);
+        return;
+      }
+    }
+  } catch(e) {}
+  ptIniciarFresh();
+}
+
+function mostrarConviteRetomada(estado) {
+  var m = Math.floor(estado.timerSeg / 60);
+  var s = estado.timerSeg % 60;
+  var tempoStr = m + ':' + (s < 10 ? '0' : '') + s;
+  ir('nivelamento');
+  var body = document.getElementById('ptBody');
+  if (!body) return;
+  body.innerHTML = '<div style="padding:24px;text-align:center;">' +
+    '<div style="font-size:40px;margin-bottom:16px;">⏸️</div>' +
+    '<div style="font-size:18px;font-weight:800;color:#fff;margin-bottom:8px;">Continue your test?</div>' +
+    '<div style="font-size:13px;color:#B8B5E8;margin-bottom:24px;">You were on question <strong>' + (estado.index + 1) + '</strong> of ' + ptQuestoes.length + ' with <strong>' + tempoStr + '</strong> remaining.</div>' +
+    '<button onclick="ptRetomar()" style="width:100%;padding:14px;border-radius:14px;border:none;background:#7C6AE8;color:#fff;font-family:Nunito,Arial,sans-serif;font-size:15px;font-weight:800;cursor:pointer;margin-bottom:10px;">▶ Continue from Q' + (estado.index + 1) + '</button>' +
+    '<button onclick="ptIniciarFresh()" style="width:100%;padding:14px;border-radius:14px;border:2px solid rgba(255,255,255,0.2);background:none;color:#B8B5E8;font-family:Nunito,Arial,sans-serif;font-size:14px;font-weight:700;cursor:pointer;">🔄 Start over from Q1</button>' +
+    '</div>';
+}
+
+function ptRetomar() {
+  try {
+    var saved = localStorage.getItem('tc_pt_progresso_' + (nomeUsuario || 'guest'));
+    var estado = JSON.parse(saved);
+    ptIndex = estado.index;
+    ptAcertos = estado.acertos;
+    ptRespostas = estado.respostas;
+    ptTimerSeg = estado.timerSeg;
+    ptTextoAtual = null; ptAudioAtual = null;
+  } catch(e) {
+    ptIniciarFresh(); return;
+  }
+  renderPtQuestao();
+  ptIniciarTimer();
+}
+
+function ptIniciarFresh() {
+  ptLimparProgresso();
+  ptIndex = 0; ptAcertos = 0; ptRespostas = []; ptTextoAtual = null; ptAudioAtual = null;
+  ptTimerSeg = 600;
+  if (ptTimerInterval) clearInterval(ptTimerInterval);
+  ir('nivelamento');
+  renderPtQuestao();
+  ptIniciarTimer();
 }
 
 function renderPtQuestao() {
@@ -8788,6 +8859,7 @@ function renderPtQuestao() {
 
 function sairNivelamento() {
   if (ptTimerInterval) { clearInterval(ptTimerInterval); ptTimerInterval = null; }
+  ptSalvarProgresso(); // Save current progress before leaving
   ir('modo');
 }
 
@@ -8800,11 +8872,13 @@ function responderPt(idx) {
   });
   if (idx === q.correta) ptAcertos++;
   ptRespostas.push({nivel: q.nivel, correta: idx === q.correta});
+  ptSalvarProgresso();
   setTimeout(function() { ptIndex++; renderPtQuestao(); }, 800);
 }
 
 function mostrarResultadoNivelamento() {
   if (ptTimerInterval) { clearInterval(ptTimerInterval); ptTimerInterval = null; }
+  ptLimparProgresso();
   // Mark as tested and save level to Supabase
   try { localStorage.setItem('tc_nivelou_' + nomeUsuario, '1'); } catch(e) {}
   // Update level in Supabase if user is registered
