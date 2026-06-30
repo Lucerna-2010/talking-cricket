@@ -122,6 +122,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 .cidex-opcao{width:100%;padding:12px 16px;border-radius:12px;border:2px solid #E5E3F5;background:#fff;font-family:Nunito,Arial,sans-serif;font-size:13px;font-weight:700;cursor:pointer;margin-bottom:8px;text-align:left;color:#1a1a2e;}
 .cidex-opcao.correta{background:#E1F5EE;border-color:#1D9E75;}
 .cidex-opcao.errada{background:#FAECE7;border-color:#D85A30;}
+.cidex-opcao.selecionada{background:#fff3e0;border-color:#8B1A1A;}
 .cidex-escrita-area{width:100%;min-height:180px;padding:14px;border-radius:12px;border:2px solid #E5E3F5;font-family:Nunito,Arial,sans-serif;font-size:14px;line-height:1.6;resize:vertical;box-sizing:border-box;}
 .cidex-oral-msg{background:#fff;border-radius:14px;padding:14px;margin-bottom:10px;border:1px solid #E5E3F5;}
 .cidex-oral-examinador{background:#1a0a0a;border-radius:14px;padding:14px;margin-bottom:10px;color:#C4A35A;font-size:14px;}
@@ -149,6 +150,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 .cidex-opcao{width:100%;padding:12px 16px;border-radius:12px;border:2px solid #E5E3F5;background:#fff;font-family:Nunito,Arial,sans-serif;font-size:13px;font-weight:700;cursor:pointer;margin-bottom:8px;text-align:left;color:#1a1a2e;}
 .cidex-opcao.correta{background:#E1F5EE;border-color:#1D9E75;}
 .cidex-opcao.errada{background:#FAECE7;border-color:#D85A30;}
+.cidex-opcao.selecionada{background:#fff3e0;border-color:#8B1A1A;}
 .cidex-escrita-area{width:100%;min-height:180px;padding:14px;border-radius:12px;border:2px solid #E5E3F5;font-family:Nunito,Arial,sans-serif;font-size:14px;line-height:1.6;resize:vertical;box-sizing:border-box;}
 .cidex-oral-msg{background:#fff;border-radius:14px;padding:14px;margin-bottom:10px;border:1px solid #E5E3F5;}
 .cidex-oral-examinador{background:#1a0a0a;border-radius:14px;padding:14px;margin-bottom:10px;color:#C4A35A;font-size:14px;}
@@ -210,6 +212,7 @@ body{font-family:'Nunito',Arial,sans-serif;background:#1D9E75;display:flex;justi
 .pt-opcao:active{border-color:#534AB7;background:#EDE9FE;}
 .pt-opcao.correta{border-color:#1D9E75;background:#E1F5EE;color:#085041;}
 .pt-opcao.errada{border-color:#D85A30;background:#FAECE7;color:#712B13;}
+.pt-opcao.selecionada{border-color:#7C6AE8;background:#EDE9FE;color:#3a2d8f;}
 .pt-resultado{text-align:center;padding:20px 0;}
 .pt-nivel-circulo{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,#534AB7,#7C6AE8);margin:0 auto 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
 .pt-nivel-letter{font-size:36px;font-weight:800;color:#fff;}
@@ -9277,6 +9280,7 @@ function renderPtQuestao() {
   if (prog) prog.style.width = Math.round((ptIndex / ptQuestoes.length) * 100) + '%';
   if (ptIndex >= ptQuestoes.length) { mostrarResultadoNivelamento(); return; }
   var q = ptQuestoes[ptIndex];
+  var respostaAtual = ptRespostas[ptIndex] ? ptRespostas[ptIndex].opcaoIdx : null;
   var tipoLabel = {grammar:'Grammar',vocab:'Vocabulary',reading:'Reading',listening:'Listening'}[q.tipo] || q.tipo;
   var h = '<div class="pt-num">Question ' + (ptIndex+1) + ' of ' + ptQuestoes.length + ' &nbsp;·&nbsp; ' + tipoLabel + '</div>';
   if (q.tipo === 'reading' && q.texto) { ptTextoAtual = q.texto; h += '<div class="pt-texto">' + q.texto + '</div>'; }
@@ -9294,14 +9298,26 @@ function renderPtQuestao() {
       '</div>';
   }
   h += '<div class="pt-pergunta">' + q.pergunta + '</div><div id="ptOpcoes">';
-  q.opcoes.forEach(function(op, i) { h += '<button class="pt-opcao" onclick="responderPt(' + i + ')">' + String.fromCharCode(65+i) + ') ' + op + '</button>'; });
+  q.opcoes.forEach(function(op, i) {
+    var sel = (respostaAtual === i) ? ' selecionada' : '';
+    h += '<button class="pt-opcao' + sel + '" onclick="selecionarPt(' + i + ')">' + String.fromCharCode(65+i) + ') ' + op + '</button>';
+  });
+  h += '</div>';
+
+  // Navigation buttons: Back / Skip / Next
+  h += '<div style="display:flex;gap:8px;margin-top:16px;">';
+  if (ptIndex > 0) {
+    h += '<button onclick="ptVoltar()" style="flex:1;padding:12px;border-radius:12px;border:1.5px solid #D3D1C7;background:#fff;color:#6b7280;font-family:Nunito,Arial,sans-serif;font-size:13px;font-weight:700;cursor:pointer;">← Voltar</button>';
+  }
+  h += '<button onclick="ptSeguir()" style="flex:2;padding:12px;border-radius:12px;border:none;background:#7C6AE8;color:#fff;font-family:Nunito,Arial,sans-serif;font-size:13px;font-weight:800;cursor:pointer;">' + (respostaAtual !== null ? 'Próxima →' : 'Pular →') + '</button>';
+  h += '</div>';
+
   // Show finish button after 5 questions
   if (ptIndex >= 5) {
-    h += '<div style="margin-top:20px;text-align:center;">' +
+    h += '<div style="margin-top:14px;text-align:center;">' +
       '<button onclick="mostrarResultadoNivelamento()" style="background:none;border:1px solid #D3D1C7;color:#6b7280;font-family:Nunito,Arial,sans-serif;font-size:12px;font-weight:700;padding:8px 16px;border-radius:20px;cursor:pointer;">Finish &amp; See Result →</button>' +
       '</div>';
   }
-  h += '</div>';
   body.innerHTML = h;
   body.scrollTop = 0;
 }
@@ -9311,23 +9327,34 @@ function sairNivelamento() {
   ir('modo');
 }
 
-function responderPt(idx) {
+function selecionarPt(idx) {
   var q = ptQuestoes[ptIndex];
-  document.querySelectorAll('.pt-opcao').forEach(function(b, i) {
-    b.disabled = true;
-    if (i === q.correta) b.classList.add('correta');
-    else if (i === idx && idx !== q.correta) b.classList.add('errada');
+  ptRespostas[ptIndex] = { nivel: q.nivel, opcaoIdx: idx, correta: idx === q.correta };
+  document.querySelectorAll('#ptOpcoes .pt-opcao').forEach(function(b, i) {
+    b.classList.toggle('selecionada', i === idx);
   });
-  if (idx === q.correta) ptAcertos++;
-  ptRespostas.push({nivel: q.nivel, correta: idx === q.correta});
-  setTimeout(function() { ptIndex++; renderPtQuestao(); }, 800);
+  var nextBtn = document.querySelector('#ptBody button[onclick="ptSeguir()"]');
+  if (nextBtn) nextBtn.textContent = 'Próxima →';
+}
+
+function ptVoltar() {
+  if (ptIndex > 0) { ptIndex--; renderPtQuestao(); }
+}
+
+function ptSeguir() {
+  ptIndex++;
+  renderPtQuestao();
+}
+
+function responderPt(idx) {
+  selecionarPt(idx);
 }
 
 function mostrarResultadoNivelamento() {
   if (ptTimerInterval) { clearInterval(ptTimerInterval); ptTimerInterval = null; }
   var scores = {A1:0,A2:0,B1:0,B2:0,C1:0,C2:0};
   var totais = {A1:0,A2:0,B1:0,B2:0,C1:0,C2:0};
-  ptRespostas.forEach(function(r) { totais[r.nivel]++; if(r.correta) scores[r.nivel]++; });
+  ptRespostas.forEach(function(r) { if (r) { totais[r.nivel]++; if(r.correta) scores[r.nivel]++; } });
   var nivelSugerido = 'A1';
   var niveis = ['A1','A2','B1','B2','C1','C2'];
   for (var i=0; i<niveis.length; i++) {
@@ -10249,7 +10276,13 @@ function cidexRenderBlocoQuestao() {
   var idx = window._cidexBlocoQIdx;
 
   if (idx >= audio.questoes.length) {
-    // Move to next audio block
+    // Consolidate answers from this audio block before moving on
+    audio.questoes.forEach(function(q, i) {
+      var respIdx = window._cidexBlocoResps[i];
+      var acertou = respIdx === q.correta;
+      cidexResps.push(acertou);
+      if (acertou) cidexAcertos++;
+    });
     window._cidexAudioIdx++;
     cidexRenderAudioBloco();
     return;
@@ -10257,36 +10290,50 @@ function cidexRenderBlocoQuestao() {
 
   var cur = audio.questoes[idx];
   var globalQNum = (window._cidexAudioIdx * 5) + idx + 1;
+  var respAtual = window._cidexBlocoResps[idx];
 
   var h = '<div style="border-top:1px solid #E5E3F5;padding-top:14px;margin-top:10px;">';
   h += '<div style="font-size:11px;font-weight:800;color:#6b7280;margin-bottom:8px;">Questão ' + globalQNum + ' de 20</div>';
   h += '<div style="font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:12px;">' + cur.pergunta + '</div>';
   cur.opcoes.forEach(function(op, i) {
     var l = ['A','B','C','D'][i];
-    h += '<button class="cidex-opcao" onclick="cidexResponderBloco(' + i + ')">';
+    var sel = (respAtual === i) ? ' selecionada' : '';
+    h += '<button class="cidex-opcao' + sel + '" onclick="cidexSelecionarBloco(' + i + ')">';
     h += '<span style="font-weight:800;color:#8B1A1A;margin-right:8px;">' + l + '.</span>' + op;
     h += '</button>';
   });
-  h += '</div>';
+  h += '<div style="display:flex;gap:8px;margin-top:10px;">';
+  if (idx > 0) {
+    h += '<button onclick="cidexVoltarBloco()" style="flex:1;padding:11px;border-radius:12px;border:1.5px solid #D3D1C7;background:#fff;color:#6b7280;font-family:Nunito,Arial,sans-serif;font-size:13px;font-weight:700;cursor:pointer;">← Voltar</button>';
+  }
+  h += '<button onclick="cidexSeguirBloco()" style="flex:2;padding:11px;border-radius:12px;border:none;background:#8B1A1A;color:#fff;font-family:Nunito,Arial,sans-serif;font-size:13px;font-weight:800;cursor:pointer;">' + (respAtual !== undefined ? 'Próxima →' : 'Pular →') + '</button>';
+  h += '</div></div>';
   qDiv.innerHTML = h;
 }
 
-function cidexResponderBloco(idx) {
-  var audio = window._cidexAudios[window._cidexAudioIdx];
-  var cur = audio.questoes[window._cidexBlocoQIdx];
-  var btns = document.querySelectorAll('#cidexAudioQuestoes .cidex-opcao');
-  btns.forEach(function(b, i) {
-    b.disabled = true;
-    if (i === cur.correta) b.classList.add('correta');
-    else if (i === idx && idx !== cur.correta) b.classList.add('errada');
+function cidexSelecionarBloco(idx) {
+  window._cidexBlocoResps[window._cidexBlocoQIdx] = idx;
+  document.querySelectorAll('#cidexAudioQuestoes .cidex-opcao').forEach(function(b, i) {
+    b.classList.toggle('selecionada', i === idx);
   });
-  var acertou = idx === cur.correta;
-  if (acertou) cidexAcertos++;
-  cidexResps.push(acertou);
-  setTimeout(function() {
-    window._cidexBlocoQIdx++;
+  var nextBtn = document.querySelector('#cidexAudioQuestoes button[onclick="cidexSeguirBloco()"]');
+  if (nextBtn) nextBtn.textContent = 'Próxima →';
+}
+
+function cidexVoltarBloco() {
+  if (window._cidexBlocoQIdx > 0) {
+    window._cidexBlocoQIdx--;
     cidexRenderBlocoQuestao();
-  }, 700);
+  }
+}
+
+function cidexSeguirBloco() {
+  window._cidexBlocoQIdx++;
+  cidexRenderBlocoQuestao();
+}
+
+function cidexResponderBloco(idx) {
+  cidexSelecionarBloco(idx);
 }
 
 function cidexRenderQ() {
@@ -10298,42 +10345,72 @@ function cidexRenderQ() {
   if (qEl) qEl.textContent = 'Questao '+(cidexQIdx+1)+' de '+q.length;
 
   var cur = q[cidexQIdx];
+  var respAtual = cidexResps[cidexQIdx];
   var h = '<div style="background:#fff;border-radius:16px;margin-bottom:12px;padding:16px;border:1px solid #E5E3F5;">';
   h += '<div style="font-size:11px;font-weight:800;color:#8B1A1A;text-transform:uppercase;margin-bottom:10px;">Questao '+(cidexQIdx+1)+'</div>';
   h += '<div style="background:#f8f7ff;border-radius:10px;padding:12px;margin-bottom:12px;font-size:13px;color:#3a3a5c;line-height:1.6;font-style:italic;">'+cur.texto+'</div>';
   h += '<div style="font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:12px;">'+cur.pergunta+'</div>';
   cur.opcoes.forEach(function(op,i){
     var l=['A','B','C','D'][i];
-    h += '<button class="cidex-opcao" onclick="cidexResponder('+i+')">';
+    var sel = (respAtual === i) ? ' selecionada' : '';
+    h += '<button class="cidex-opcao' + sel + '" onclick="cidexSelecionar('+i+')">';
     h += '<span style="font-weight:800;color:#8B1A1A;margin-right:8px;">'+l+'.</span>'+op;
     h += '</button>';
   });
+  h += '<div style="display:flex;gap:8px;margin-top:10px;">';
+  if (cidexQIdx > 0) {
+    h += '<button onclick="cidexVoltarQ()" style="flex:1;padding:11px;border-radius:12px;border:1.5px solid #D3D1C7;background:#fff;color:#6b7280;font-family:Nunito,Arial,sans-serif;font-size:13px;font-weight:700;cursor:pointer;">← Voltar</button>';
+  }
+  h += '<button onclick="cidexSeguirQ()" style="flex:2;padding:11px;border-radius:12px;border:none;background:#8B1A1A;color:#fff;font-family:Nunito,Arial,sans-serif;font-size:13px;font-weight:800;cursor:pointer;">' + (respAtual !== undefined ? 'Próxima →' : 'Pular →') + '</button>';
+  h += '</div>';
   h += '</div>';
   body.innerHTML = h;
   body.scrollTop = 0;
 }
 
-function cidexResponder(idx) {
-  var q = window._cidexQuestoes[cidexQIdx];
-  var btns = document.querySelectorAll('.cidex-opcao');
-  btns.forEach(function(b,i){
-    b.disabled=true;
-    if(i===q.correta) b.classList.add('correta');
-    else if(i===idx&&idx!==q.correta) b.classList.add('errada');
+function cidexSelecionar(idx) {
+  cidexResps[cidexQIdx] = idx;
+  document.querySelectorAll('#cidexProvaBody .cidex-opcao').forEach(function(b, i) {
+    b.classList.toggle('selecionada', i === idx);
   });
-  if (idx===q.correta) cidexAcertos++;
-  cidexResps.push(idx===q.correta);
-  setTimeout(function(){ cidexQIdx++; cidexRenderQ(); }, 700);
+  var nextBtn = document.querySelector('#cidexProvaBody button[onclick="cidexSeguirQ()"]');
+  if (nextBtn) nextBtn.textContent = 'Próxima →';
+}
+
+function cidexVoltarQ() {
+  if (cidexQIdx > 0) { cidexQIdx--; cidexRenderQ(); }
+}
+
+function cidexSeguirQ() {
+  cidexQIdx++;
+  cidexRenderQ();
+}
+
+function cidexResponder(idx) {
+  cidexSelecionar(idx);
 }
 
 function cidexFinish(timeout) {
   cidexStopTimer();
-  // Fill remaining as wrong if timeout
-  while (cidexResps.length < (window._cidexQuestoes||[]).length) {
-    cidexResps.push(false);
+  var total, pct;
+  if (window._cidexAudioMode) {
+    // Auditiva: cidexAcertos/cidexResps already consolidated per audio block
+    total = cidexResps.length || 20;
+    pct = Math.round((cidexAcertos/total)*100);
+  } else {
+    var questoes = window._cidexQuestoes || [];
+    cidexAcertos = 0;
+    var resultadosFinais = [];
+    questoes.forEach(function(q, i) {
+      var respIdx = cidexResps[i];
+      var acertou = respIdx === q.correta;
+      if (acertou) cidexAcertos++;
+      resultadosFinais.push(acertou);
+    });
+    cidexResps = resultadosFinais;
+    total = questoes.length || 20;
+    pct = Math.round((cidexAcertos/total)*100);
   }
-  var total = cidexResps.length || 20;
-  var pct = Math.round((cidexAcertos/total)*100);
   var aprovado = pct >= 60;
   if (aprovado && (!cidexResultados[cidexProf] || cidexResultados[cidexProf] < cidexNivel)) {
     cidexResultados[cidexProf] = cidexNivel;
