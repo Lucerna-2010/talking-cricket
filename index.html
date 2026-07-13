@@ -5730,36 +5730,6 @@ function renderKidsFrase() {
   }
 }
 
-function adicionarPalavraFrase(palavra, idx) {
-  if (kfVerificada) return;
-  kfPalavrasSelecionadas.push({palavra: palavra, idx: idx});
-  
-  var bancoBtn = document.getElementById('kf-banco-' + idx);
-  if (bancoBtn) bancoBtn.classList.add('usada');
-
-  var construtor = document.getElementById('kfConstrutor');
-  if (!construtor) return;
-  
-  var placeholder = construtor.querySelector('.kf-placeholder');
-  if (placeholder) placeholder.remove();
-
-  var btn = document.createElement('button');
-  btn.className = 'kf-palavra-colocada';
-  btn.innerHTML = palavra + ' <span style="opacity:0.6;font-size:11px;">✕</span>';
-  btn.title = 'Tap to remove';
-  (function(p, i, b) {
-    btn.onclick = function() {
-      kfPalavrasSelecionadas = kfPalavrasSelecionadas.filter(function(item) { return item.idx !== i; });
-      btn.remove();
-      if (b) b.classList.remove('usada');
-      if (construtor.children.length === 0) {
-        construtor.innerHTML = '<span class="kf-placeholder">Tap the words below to build the sentence!</span>';
-      }
-    };
-  })(palavra, idx, bancoBtn);
-  construtor.appendChild(btn);
-}
-
 function limparFraseKids() {
   kfPalavrasSelecionadas = [];
   var construtor = document.getElementById('kfConstrutor');
